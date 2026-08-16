@@ -342,6 +342,10 @@ h1 em {
   isolation: isolate;
 }
 
+.project-entry + .project-entry {
+  border-top: 0;
+}
+
 .project-entry::before {
   content: "";
   position: absolute;
@@ -586,6 +590,11 @@ h1 em {
 
   .project-entry {
     display: block;
+  }
+
+  .project-main h3 {
+    font-size: clamp(1.7rem, 8vw, 2.5rem);
+    overflow-wrap: anywhere;
   }
 
   .project-entry > div {
