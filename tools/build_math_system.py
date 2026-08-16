@@ -148,6 +148,10 @@ def content_digest(source: pathlib.Path, files: list[pathlib.Path]) -> str:
         digest.update(len(relative).to_bytes(4, "big"))
         digest.update(relative)
         data = path.read_bytes()
+        if path.suffix.lower() in TEXT_SUFFIXES:
+            # Git may check the same text out with CRLF on Windows and LF on Linux.
+            # Hash a canonical representation so identical source stays idempotent.
+            data = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
         digest.update(len(data).to_bytes(8, "big"))
         digest.update(data)
     return digest.hexdigest()
