@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 0 · Sprache und Beweis · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-0-sprache.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 0 · Sprache und Beweis · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-0-sprache.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html" aria-current="page">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-0-language.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 0</h1>
+
+<section id="s0">
+  <h2 class="sec"><span class="num">Strang 0</span>Die Sprache der Mathematik und das Beweisen</h2>
+  <p class="sec-lead">Dieser Strang beantwortet keine mathematische Frage. Er regelt etwas anderes: <strong>welche Art von Antwort überhaupt zählt.</strong></p>
+
+  <p>Die anderen sieben Stränge untersuchen jeweils einen Gegenstand — Zahlen, Formen, Veränderung, Zufall. Dieser untersucht keinen Gegenstand, sondern <em>die Art, wie jene sieben sprechen</em>. Deshalb steht er auf der Landkarte nicht als achter Strang daneben, sondern als Schicht darunter.</p>
+
+  <p>Er ist auch der Strang, der in der Schule am wenigsten vorkommt. Man lernt Gleichungen zu lösen, aber selten sagt jemand, was «gelöst» eigentlich heißt; man beweist Dreieckskongruenz, aber selten wird erklärt, welchen Regeln die Handlung «beweisen» selbst folgt. Das Ergebnis: Viele lernen zehn Jahre Mathematik, ohne je zu bemerken, dass sie die ganze Zeit in einer sehr strengen Grammatik gesprochen haben.</p>
+
+  <p>Diesen Strang gibt es, um genau diese Grammatik auf den Tisch zu legen. Der handfeste Nutzen davon: <strong>Wer diese Grammatik einmal durchschaut hat, für den werden alle anderen Stränge leichter</strong> — weil er endlich weiß, was er da eigentlich liest.</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Mengen · die Behälter der Mathematik</h3>
+      <p class="de">Menge · set</p>
+    </div>
+    <div class="body">
+      <p class="lead">Mehrere Dinge zusammenfassen und als ein Ganzes betrachten — dieses Ganze heißt Menge. So einfach ist das. Und so einfach, dass es als Fundament der gesamten Mathematik taugt.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Überall in der Mathematik muss man «diese Sorte von Dingen» sagen können: alle geraden Zahlen, alle Dreiecke, alle Primzahlen unter 10, alle möglichen Ergebnisse eines Würfelwurfs. Die Menge ist die offizielle Art, «diese Sorte von Dingen» auszudrücken.</p>
+        <p>Das wirkt harmlos, aber gegen Ende des 19. Jahrhunderts fiel etwas Erstaunliches auf: <strong>Fast jedes mathematische Objekt lässt sich aus Mengen bauen.</strong> Zahlen lassen sich als Mengen definieren, Funktionen als besondere Mengen, geometrische Figuren sind Punktmengen. Damit wurde die Mengenlehre zum Fundament des ganzen Gebäudes — auch wenn man beim Bauen der oberen Stockwerke selten so tief hinunterschaut.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel</span>
+        <div class="demo">
+          <p>Geschrieben wird mit geschweiften Klammern: <span class="m">A = {2, 3, 5, 7}</span>, gelesen «A ist die Menge aus 2, 3, 5 und 7».</p>
+          <p class="calc">3 ∈ A　　（3 ist Element von A）<br>4 ∉ A　　（4 ist nicht Element von A）<br>{2, 3} ⊂ A　（{2,3} ist Teilmenge von A）</p>
+          <p>Mit Mengen lässt sich rechnen, ganz ähnlich wie mit Zahlen:</p>
+          <p class="calc">A ∪ B　Vereinigung: alles aus A und alles aus B<br>A ∩ B　Schnittmenge: was in beiden steckt<br>A \ B　Differenz: was in A ist, aber nicht in B</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Von nirgends. Das ist der unterste Stein dieses ganzen Hefts.</div>
+          <div><span class="lbl">Wohin</span>Definitions- und Wertebereich von Funktionen (Strang 4) · Ergebnismenge in der Stochastik (Strang 5) · die Zahlbereiche ℕ ℤ ℚ ℝ ℂ sind selbst Mengen (Strang 1) · Figuren als Punktmengen (Strang 3)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>In einer Menge gibt es keine Reihenfolge und keine Vielfachheit.</strong> <span class="m">{1, 2, 3}</span>, <span class="m">{3, 2, 1}</span> und <span class="m">{1, 2, 2, 3}</span> sind <em>dieselbe</em> Menge. Wenn die Reihenfolge zählt, brauchst du eine Folge oder ein Tupel, keine Menge. In Stochastikaufgaben führt diese Verwechslung regelmäßig zu falschen Ergebnissen.</p>
+          <p>Ebenso leicht zu verwechseln: <span class="m">∈</span> heißt «Element ist in Menge», <span class="m">⊂</span> heißt «Menge ist Teil von Menge». <span class="m">3 ∈ A</span> ist richtig, <span class="m">3 ⊂ A</span> falsch; <span class="m">{3} ⊂ A</span> ist richtig, <span class="m">{3} ∈ A</span> falsch (außer in A steckt tatsächlich eine Menge).</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Menge</b> set</span>
+          <span><b>Element</b> element</span>
+          <span><b>Teilmenge</b> subset</span>
+          <span><b>Vereinigung</b> union</span>
+          <span><b>Schnittmenge</b> intersection</span>
+          <span><b>Differenzmenge</b> difference</span>
+          <span><b>leere Menge ∅</b> empty set</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Aussagen · ein Satz ist wahr oder falsch</h3>
+      <p class="de">Aussage · proposition</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ein Aussagesatz, dem sich wahr oder falsch zuordnen lässt, heißt Aussage. Jeder ernst gemeinte Satz in einem Mathebuch ist eine — <strong>das ist der größte Unterschied zwischen Mathematik und jeder anderen Textsorte.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>«Der Wievielte ist heute?» ist keine Aussage, denn Fragen sind weder wahr noch falsch. «Diese Aufgabe ist schwer» auch nicht, denn «schwer» hat kein objektives Maß. Aber «17 ist eine Primzahl» ist eine Aussage (und wahr), und «alle geraden Zahlen sind durch 4 teilbar» ebenfalls (und falsch).</p>
+        <p>Warum darauf herumreiten? Weil damit die <strong>Spielregel</strong> der Mathematik festgelegt wird: Hier ist ein Satz entweder wahr oder falsch, es gibt kein «so ungefähr», «wahrscheinlich schon», «in gewissem Sinne». Genau diese Strenge ist der Grund, warum sich Mathematik Schicht auf Schicht stapeln lässt — jeder Stein muss massiv sein, sonst bricht alles darüber ein.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel</span>
+        <div class="demo">
+          <p>Was davon ist eine Aussage?</p>
+          <p class="calc">«7 + 5 = 12»　　　　　　ja, und wahr<br>
+          «7 + 5 = 13»　　　　　　ja, aber falsch<br>
+          «x + 5 = 12»　　　　　　nein — solange x offen ist, ist nichts entschieden<br>
+          «Löse die Gleichung»　　nein, Aufforderung<br>
+          «√2 ist irrational»　　　ja, und wahr (in Strang 1 bewiesen)</p>
+          <p>Der dritte Fall verdient Aufmerksamkeit. Ein Ausdruck mit Unbekannten hat für sich genommen keinen Wahrheitswert; er wird erst zur Aussage, wenn «für alle x» oder «es gibt ein x» davorgesetzt wird. Genau davon handelt die nächste Karte.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Mengen (0.1), denn viele Aussagen handeln von Mengen</div>
+          <div><span class="lbl">Wohin</span>Quantoren (0.3) · Implikation (0.4) · alle Sätze und Beweise · Boolesche Algebra und Logikgatter (Strang 6)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>«Dieser Satz ist falsch» — wahr oder falsch? Ist er wahr, dann ist er falsch; ist er falsch, dann ist er wahr. Er ist <strong>keine Aussage</strong>, sondern ein Paradox. Solche selbstbezüglichen Sätze waren zweitausend Jahre lang ein philosophisches Spielzeug — bis im 20. Jahrhundert klar wurde, dass in ihnen eine grundsätzliche Grenze der Mathematik steckt. Das ist die Aussicht am Gipfel dieses Strangs (0.9).</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Aussage</b> proposition</span>
+          <span><b>wahr / falsch</b> true / false</span>
+          <span><b>Aussageform</b> open statement</span>
+          <span><b>Verneinung</b> negation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>«Für alle» und «es existiert» · die nützlichste Asymmetrie</h3>
+      <p class="de">Allquantor ∀ · Existenzquantor ∃</p>
+    </div>
+    <div class="body">
+      <p class="lead">Fast jeder wichtige Satz der Mathematik beginnt versteckt mit «für alle» oder «es existiert». Und zwischen diesen beiden liegt eine ungeheuer nützliche Asymmetrie: <strong>Das eine zu widerlegen kostet fast nichts, das andere fast alles.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>«Primzahlen sind ungerade» — was heißt das? Dass <em>alle</em> Primzahlen ungerade sind (falsch, die 2)? Oder dass es <em>ungerade Primzahlen gibt</em> (wahr)? Die Alltagssprache ist hier hoffnungslos unscharf, und Mathematik darf das nicht sein. Also gibt es zwei eigene Zeichen:</p>
+        <p class="calc" style="font-family:var(--f-serif);font-size:1.1rem">∀ &nbsp;«für alle»　　∃ &nbsp;«es existiert»</p>
+        <p>Sauber geschrieben trennen sich die beiden Lesarten vollständig, eine wahr und eine falsch, und nichts kann mehr durcheinandergeraten.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Die Asymmetrie</span>
+        <p>Diese Tabelle lohnt sich zum Auswendiglernen. Sie ist einer der billigsten Hebel der Mathematik und erklärt direkt, warum «ein Gegenbeispiel suchen» so mächtig ist:</p>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:24%"></th><th style="width:38%"><b>Beweisen</b></th><th style="width:38%"><b>Widerlegen</b></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>∀</b> alle x erfüllen P<br><span style="font-size:12.5px;color:var(--ink-2)">«alle Primzahlen sind ungerade»</span></td>
+              <td class="dear"><b>teuer.</b> Muss für jedes x gelten — meist braucht es ein Argument, das alle Fälle abdeckt</td>
+              <td class="cheap"><b>billig.</b> <em>Ein</em> Gegenbeispiel genügt — etwa die 2</td>
+            </tr>
+            <tr>
+              <td><b>∃</b> es gibt ein x mit P<br><span style="font-size:12.5px;color:var(--ink-2)">«es gibt eine gerade Primzahl»</span></td>
+              <td class="cheap"><b>billig.</b> <em>Ein</em> Beispiel genügt — etwa die 2</td>
+              <td class="dear"><b>teuer.</b> Man muss zeigen, dass <em>kein</em> x es erfüllt, also alles durchgehen</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Der praktische Wert: <strong>Wenn du eine Aussage vor dir hast und unsicher bist, such zwei Minuten lang ein Gegenbeispiel.</strong> Ist sie falsch, findest du es oft in Minuten; findest du keines, hast du hinterher ein viel besseres Gefühl dafür, <em>warum</em> sie gilt — und der Beweis fällt leichter. Griff 3 im Werkzeugkasten sagt genau das.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel: «alle» verneinen</span>
+        <div class="demo">
+          <p>Was ist die Verneinung von «alle Schwäne sind weiß»?</p>
+          <p>Nicht «alle Schwäne sind nicht weiß», sondern <strong>«es gibt einen Schwan, der nicht weiß ist»</strong>.</p>
+          <p class="calc">¬(∀x : P(x))　⟺　∃x : ¬P(x)<br>¬(∃x : P(x))　⟺　∀x : ¬P(x)</p>
+          <p>Beim Verneinen tauschen <span class="m">∀</span> und <span class="m">∃</span> die Plätze, und die Verneinung rutscht nach innen. Diese Regel braucht man bei jedem Widerspruchsbeweis, denn dessen erster Schritt ist immer, die Behauptung zu verneinen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Aussagen (0.2) · Mengen (0.1)</div>
+          <div><span class="lbl">Wohin</span>Widerspruchsbeweis (0.6) · die ε-δ-Definition des Grenzwerts (Analysis I — dort stehen drei, vier Quantoren ineinander) · «mindestens eine Lösung», «genau eine Lösung» (Strang 2)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Die Reihenfolge der Quantoren ist nicht vertauschbar.</strong> «Jeder Mensch hat eine Mutter» und «es gibt einen Menschen, der die Mutter aller ist» unterscheiden sich in den Zeichen nur durch die Reihenfolge — im Sinn liegen Welten dazwischen.</p>
+          <p class="calc" style="font-size:.98rem">∀ Mensch x, ∃ Mensch y : y ist Mutter von x　　（wahr）<br>∃ Mensch y, ∀ Mensch x : y ist Mutter von x　　（falsch）</p>
+          <p>In der Schule ist das selten tödlich, an der Uni sofort: Der gesamte Unterschied zwischen «stetig» und «gleichmäßig stetig» steckt in der Reihenfolge zweier Quantoren. Fürs Erste genügt es, den Eindruck zu behalten.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>für alle ∀</b> for all</span>
+          <span><b>es existiert ∃</b> there exists</span>
+          <span><b>Allquantor</b> universal quantifier</span>
+          <span><b>Existenzquantor</b> existential quantifier</span>
+          <span><b>Gegenbeispiel</b> counterexample</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>«Wenn – dann» · das meistmissverstandene Bindewort</h3>
+      <p class="de">Implikation · hinreichend und notwendig</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">A ⟹ B</span> heißt: «Wenn A gilt, dann gilt auch B.» Es heißt <strong>nicht</strong>, dass es umgekehrt auch stimmt — und praktisch alle drehen es irgendwann versehentlich um.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>«Wenn es regnet, ist die Straße nass» stimmt. Und «wenn die Straße nass ist, hat es geregnet»? Nicht unbedingt — vielleicht war der Sprengwagen da. Zwei völlig verschiedene Sätze, zwischen denen im Alltag ständig hin und her gerutscht wird.</p>
+        <p>In der Mathematik ist Rutschen nicht erlaubt. Aus einem <span class="m">A ⟹ B</span> entstehen deshalb drei Verwandte, und ihre Wahrheitswerte bilden ein bemerkenswert hübsches Muster:</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="Vier Aussagen im Quadrat: Implikation und Kontraposition sind gleichwertig, Umkehrung und Gegenaussage ebenfalls, aber die beiden Paare sind es nicht.">
+          <rect x="60" y="30" width="250" height="86" rx="4" class="f1"/>
+          <text x="185" y="58" text-anchor="middle" class="svg-t tx1">Aussage　A ⟹ B</text>
+          <text x="185" y="81" text-anchor="middle" class="svg-ts tx1">Regen ⟹ Straße nass</text>
+          <text x="185" y="102" text-anchor="middle" class="svg-ts tx1">wahr</text>
+
+          <rect x="390" y="30" width="250" height="86" rx="4" class="fm"/>
+          <text x="515" y="58" text-anchor="middle" class="svg-t txm">Umkehrung　B ⟹ A</text>
+          <text x="515" y="81" text-anchor="middle" class="svg-ts txm">Straße nass ⟹ Regen</text>
+          <text x="515" y="102" text-anchor="middle" class="svg-ts txm">nicht unbedingt</text>
+
+          <rect x="390" y="170" width="250" height="86" rx="4" class="fm"/>
+          <text x="515" y="198" text-anchor="middle" class="svg-t txm">Gegenaussage　¬A ⟹ ¬B</text>
+          <text x="515" y="221" text-anchor="middle" class="svg-ts txm">kein Regen ⟹ nicht nass</text>
+          <text x="515" y="242" text-anchor="middle" class="svg-ts txm">nicht unbedingt</text>
+
+          <rect x="60" y="170" width="250" height="86" rx="4" class="f1"/>
+          <text x="185" y="198" text-anchor="middle" class="svg-t tx1">Kontraposition　¬B ⟹ ¬A</text>
+          <text x="185" y="221" text-anchor="middle" class="svg-ts tx1">nicht nass ⟹ kein Regen</text>
+          <text x="185" y="242" text-anchor="middle" class="svg-ts tx1">wahr</text>
+
+          <line x1="185" y1="120" x2="185" y2="166" class="svg-l" stroke-width="2"/>
+          <text x="196" y="147" class="svg-tm tx1">immer gleich</text>
+          <line x1="515" y1="120" x2="515" y2="166" class="svg-l" stroke-width="2"/>
+          <text x="526" y="147" class="svg-tm txm">immer gleich</text>
+
+          <line x1="314" y1="73" x2="386" y2="73" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <text x="350" y="66" text-anchor="middle" class="svg-tm">≠</text>
+          <line x1="314" y1="213" x2="386" y2="213" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <text x="350" y="206" text-anchor="middle" class="svg-tm">≠</text>
+
+          <text x="350" y="288" text-anchor="middle" class="svg-tm">Links eine Sache, rechts eine andere — senkrecht ist immer sicher, waagerecht nie</text>
+        </svg>
+        <figcaption><b>Kontraposition und Aussage haben immer denselben Wahrheitswert, und darauf beruht der gesamte Widerspruchsbeweis.</b> «Die Straße ist nicht nass, also hat es nicht geregnet» ist völlig zuverlässig, auch wenn es umständlicher klingt als das Original. Wenn eine Aussage direkt schwer zu beweisen ist, beweist man ihre Kontraposition — ein Griff, der in der Mathematik ausgesprochen oft gebraucht wird.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Hinreichend und notwendig</span>
+        <div class="demo">
+          <p>Gilt <span class="m">A ⟹ B</span>, dann sagt man:</p>
+          <p><strong>A ist hinreichend für B</strong> — A zu haben <em>reicht</em>, um B zu sichern.<br>
+          <strong>B ist notwendig für A</strong> — ohne B kann A gar nicht gelten.</p>
+          <p>Die deutschen Wörter sagen es zum Glück wörtlich: <span class="m-up m">hinreichend</span> heißt «reicht hin», <span class="m-up m">notwendig</span> heißt «wird gebraucht». Wer sich an die wörtliche Bedeutung hält, verwechselt die beiden kaum.</p>
+          <p>Beispiel: «ist ein Quadrat» <span class="m">⟹</span> «ist ein Rechteck». Quadrat zu sein ist also hinreichend dafür, Rechteck zu sein; Rechteck zu sein ist notwendig dafür, Quadrat zu sein (was kein Rechteck ist, kann erst recht kein Quadrat sein).</p>
+          <p>Gelten beide Richtungen, schreibt man <span class="m">A ⟺ B</span> und sagt <strong>«genau dann, wenn»</strong>. Dann sind A und B zwei Formulierungen derselben Sache — und genau das meinen mathematische Definitionen fast immer, wenn dieses Wort auftaucht.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Aussagen (0.2) · Verneinung und Quantoren (0.3)</div>
+          <div><span class="lbl">Wohin</span>Widerspruchsbeweis (0.6) · sämtliche Geometriebeweise (Strang 3) · Äquivalenzumformungen beim Gleichungslösen (Strang 2 — jeder Umformungsschritt ist ein ⟺ oder eben keins) · bedingte Wahrscheinlichkeit (Strang 5, sieht ähnlich aus und ist etwas ganz anderes)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Die Pfeilrichtung beim Gleichungslösen.</strong> Beide Seiten quadrieren ist ein <span class="m">⟹</span>, kein <span class="m">⟺</span> — dabei können Scheinlösungen aus dem Nichts entstehen. Deshalb ist die Probe am Ende kein Ritual, das die Lehrkraft verlangt, sondern mathematisch <em>notwendig</em>. Umgekehrt ist «auf beiden Seiten dasselbe addieren» ein <span class="m">⟺</span> und damit unbedenklich.</p>
+          <p>Angewöhnen: Bei jedem Umformungsschritt innerlich fragen «geht das auch rückwärts?».</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Implikation</b> implication</span>
+          <span><b>Umkehrung</b> converse</span>
+          <span><b>Kontraposition</b> contrapositive</span>
+          <span><b>hinreichend</b> sufficient</span>
+          <span><b>notwendig</b> necessary</span>
+          <span><b>genau dann, wenn</b> if and only if</span>
+          <span><b>äquivalent</b> equivalent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Definition, Axiom, Satz · wer wofür zuständig ist</h3>
+      <p class="de">Definition · Axiom · Satz</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Sätze in einem Mathebuch haben verschiedene Ämter. Wer sie verwechselt, liest Mathematik dauerhaft durch einen Schleier.</p>
+
+      <div class="field">
+        <span class="lbl">Drei Ämter</span>
+        <p><strong>Definition</strong> — gibt einer Sache einen Namen. Eine Definition ist <em>weder richtig noch falsch</em>, nur mehr oder weniger brauchbar. «Wir nennen eine Zahl größer als 1, die nur durch 1 und sich selbst teilbar ist, eine Primzahl» — dieser Satz kann nicht falsch sein. Man kann nur fragen, ob er nützt. (Er nützt außerordentlich, siehe Strang 1.)</p>
+        <p><strong>Axiom</strong> — ein Ausgangspunkt, den man ohne Beweis annimmt. Auch Axiome sind <em>keine entdeckten Wahrheiten</em>, sondern <strong>gewählte</strong> Startpunkte. Irgendwo muss man anfangen, sonst fragt man unendlich weiter zurück.</p>
+        <p><strong>Satz</strong> — eine Folgerung, Schritt für Schritt aus Definitionen und Axiomen hergeleitet. Ein Satz <em>muss bewiesen werden</em>. Das ist die einzige Sorte Satz, die dich Arbeit kostet.</p>
+        <p>Dazu zwei Nebenrollen: Ein <strong>Lemma</strong> ist ein kleiner Satz, den man vorab beweist, um damit einen großen zu bekommen; ein <strong>Korollar</strong> ist das, was nach einem großen Satz fast von selbst herausfällt.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 280" role="img" aria-label="Die drei Schichten der Mathematik: Definitionen unten, Axiome darüber, Sätze oben, mit Lemma und Korollar an den Seiten.">
+          <defs>
+            <marker id="a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="120" y="190" width="460" height="58" rx="4" class="svg-face"/>
+          <text x="350" y="214" text-anchor="middle" class="svg-t">Definition</text>
+          <text x="350" y="234" text-anchor="middle" class="svg-ts">Namen vergeben — weder wahr noch falsch, nur brauchbar</text>
+
+          <rect x="150" y="112" width="400" height="58" rx="4" class="f1"/>
+          <text x="350" y="136" text-anchor="middle" class="svg-t tx1">Axiom</text>
+          <text x="350" y="156" text-anchor="middle" class="svg-ts tx1">gewählter Startpunkt — unbewiesen, weil man irgendwo anfangen muss</text>
+
+          <rect x="190" y="34" width="320" height="58" rx="4" class="f2"/>
+          <text x="350" y="58" text-anchor="middle" class="svg-t tx2">Satz</text>
+          <text x="350" y="78" text-anchor="middle" class="svg-ts tx2">muss bewiesen werden — die einzige Schicht mit Arbeit</text>
+
+          <line x1="350" y1="186" x2="350" y2="174" class="svg-l" marker-end="url(#a0)"/>
+          <line x1="350" y1="108" x2="350" y2="96" class="svg-l" marker-end="url(#a0)"/>
+
+          <rect x="540" y="34" width="130" height="58" rx="4" class="f2"/>
+          <text x="605" y="58" text-anchor="middle" class="svg-ts tx2">Korollar</text>
+          <text x="605" y="78" text-anchor="middle" class="svg-ts tx2">fällt nebenbei ab</text>
+          <line x1="514" y1="63" x2="536" y2="63" class="svg-l" marker-end="url(#a0)"/>
+
+          <rect x="30" y="34" width="130" height="58" rx="4" class="f2"/>
+          <text x="95" y="58" text-anchor="middle" class="svg-ts tx2">Lemma</text>
+          <text x="95" y="78" text-anchor="middle" class="svg-ts tx2">ebnet den Weg</text>
+          <line x1="164" y1="63" x2="186" y2="63" class="svg-l" marker-end="url(#a0)"/>
+        </svg>
+        <figcaption><b>Tausche die Axiome aus, und du bekommst eine andere Mathematik.</b> Das ist kein Bild, sondern wörtlich gemeint. Als Euklids fünftes Postulat ersetzt wurde, wuchs daraus die nichteuklidische Geometrie — Dreiecke haben dort keine 180 Grad mehr, und genau so eine Geometrie brauchte Einstein für die allgemeine Relativitätstheorie. <b>Mathematik untersucht nicht, «was wahr ist», sondern «was woraus folgt».</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Eine wahre Geschichte: das fünfte Postulat</span>
+        <div class="demo">
+          <p>Euklid stellte fünf Axiome auf. Die ersten vier sind kurz und einleuchtend («durch zwei Punkte geht eine Gerade»), das fünfte dagegen lang und sperrig: Es besagt sinngemäß, dass es durch einen Punkt außerhalb einer Geraden <em>genau eine</em> Parallele gibt.</p>
+          <p>Zweitausend Jahre lang hielten unzählige Mathematiker das fünfte für zu kompliziert und versuchten, es aus den ersten vier herzuleiten. Alle scheiterten.</p>
+          <p>Im 19. Jahrhundert drehte jemand den Spieß um: <strong>Wenn es sich nicht herleiten lässt, nehme ich eben an, es sei falsch, und schaue, ob ein Widerspruch entsteht.</strong> Es entstand keiner — stattdessen wuchs eine ganze, in sich stimmige neue Geometrie: Auf der Kugel gibt es gar keine Parallele, auf der hyperbolischen Fläche unendlich viele.</p>
+          <p>Diese Geschichte ist deshalb wichtig, weil sie das Verständnis von Mathematik grundlegend verändert hat: <em>Axiome sind keine vom Himmel abgeschriebenen Wahrheiten, sondern selbst gewählte Regeln. Andere Regeln, anderes Spiel — und jedes Spiel kann einer Seite der Wirklichkeit entsprechen.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Aussagen (0.2) · Implikation (0.4)</div>
+          <div><span class="lbl">Wohin</span>Beweismethoden (0.6) · das Axiomensystem der euklidischen Geometrie (Strang 3) · nichteuklidische Geometrie (Gipfel von Strang 3) · Axiomatisierung der Wahrscheinlichkeit (Strang 5) · Gödel (0.9)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Eine Definition wie einen Satz «verstehen» zu wollen, ist die häufigste Zeitverschwendung beim Lesen. Steht «Definition: …», frag nicht «warum ist das so», sondern <strong>«was bringt es, das so festzulegen»</strong>. Die erste Frage hat keine Antwort, die zweite erschließt oft den ganzen Abschnitt.</p>
+          <p>Umgekehrt: Steht «Satz: …», dann musst du «wieso denn?» fragen — dort gibt es einen Beweis, und der Beweis <em>ist</em> der Inhalt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Definition</b> definition</span>
+          <span><b>Axiom</b> axiom</span>
+          <span><b>Satz / Theorem</b> theorem</span>
+          <span><b>Lemma / Hilfssatz</b> lemma</span>
+          <span><b>Korollar / Folgerung</b> corollary</span>
+          <span><b>Beweis</b> proof</span>
+          <span><b>Voraussetzung</b> hypothesis</span>
+          <span><b>Behauptung</b> claim</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">Beweise in deutschen Lehrbüchern folgen oft einem festen Aufbau: <span class="m-up m">Voraussetzung</span>, <span class="m-up m">Behauptung</span>, <span class="m-up m">Beweis</span>, am Ende <span class="m-up m">q.e.d.</span> oder ∎. Wer diese drei Wörter erkennt, weiß immer, an welcher Stelle er gerade liest.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Fünf Beweiswaffen</h3>
+      <p class="de">Beweismethoden</p>
+    </div>
+    <div class="body">
+      <p class="lead">«Beweisen» klingt geheimnisvoll, läuft aber immer wieder auf dieselben fünf Vorgehensweisen hinaus. Wer weiß, welche fünf es sind, hat beim Feststecken etwas zum Auswählen.</p>
+
+      <div class="moves">
+        <div class="move">
+          <span class="when">Standardwahl in den meisten Fällen</span>
+          <h5>1 · Direkter Beweis</h5>
+          <p>Von der Voraussetzung Schritt für Schritt zur Behauptung. <em>Jeder Schritt braucht eine Begründung</em> — welche Definition, welcher Satz, welches Rechengesetz. Die schlichteste und häufigste Methode.</p>
+        </div>
+        <div class="move">
+          <span class="when">«unmöglich», «eindeutig», «unendlich viele»</span>
+          <h5>2 · Widerspruchsbeweis</h5>
+          <p>Nimm an, die Behauptung sei <em>falsch</em>, und leite daraus etwas offensichtlich Unsinniges her — dann war die Annahme unhaltbar. In Strang 1 zweimal benutzt: unendlich viele Primzahlen, und √2 ist kein Bruch. <em>Immer zuerst daran denken, wenn «es geht nicht» zu zeigen ist.</em></p>
+        </div>
+        <div class="move">
+          <span class="when">Eine Behauptung soll gekippt werden</span>
+          <h5>3 · Gegenbeispiel</h5>
+          <p>Ein einziger Fall, in dem es nicht stimmt, bringt jedes «für alle …» zum Einsturz. Die billigste Waffe überhaupt (siehe die Tabelle in 0.3). <em>Bei unsicheren Aussagen zuerst zwei Minuten Widerlegen versuchen.</em></p>
+        </div>
+        <div class="move">
+          <span class="when">Die Fälle zerfallen von selbst</span>
+          <h5>4 · Fallunterscheidung</h5>
+          <p>Zerlege alle Möglichkeiten in überschneidungsfreie Fälle, die zusammen alles abdecken, und behandle jeden einzeln. <em>Entscheidend ist «lückenlos und überschneidungsfrei» — ein vergessener Fall macht den ganzen Beweis wertlos.</em> Bei Beträgen und Vorzeichen fast immer nötig.</p>
+        </div>
+        <div class="move">
+          <span class="when">Gilt für jede natürliche Zahl n</span>
+          <h5>5 · Vollständige Induktion</h5>
+          <p>Ersten Dominostein umwerfen und zeigen, dass jeder Stein den nächsten mitreißt. <em>Unendlich viele Aussagen in zwei Schritten erledigt.</em> Zu wichtig für diese Liste — bekommt gleich eine eigene Karte.</p>
+        </div>
+        <div class="move">
+          <span class="when">Der direkte Weg ist zu sperrig</span>
+          <h5>Zugabe · Kontraposition</h5>
+          <p>Statt <span class="m">A ⟹ B</span> beweise <span class="m">¬B ⟹ ¬A</span>. Beide haben immer denselben Wahrheitswert (siehe das Quadrat in 0.4), und die zweite Fassung ist oft viel bequemer. <em>Streng genommen ein naher Verwandter des Widerspruchsbeweises.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Beispiele sind kein Beweis.</strong> Auch wenn du hundert Zahlen geprüft hast, ist «für alle Zahlen» damit nicht gezeigt. Beispiele können eine Allaussage nur <em>widerlegen</em>, niemals beweisen. Das ist der häufigste und teuerste Anfängerfehler.</p>
+          <p>Umgekehrt gilt: Beim Beweis einer Existenzaussage <em>ist</em> ein einziges Beispiel der vollständige Beweis. Der Unterschied hängt allein daran, ob der Satz mit <span class="m">∀</span> oder mit <span class="m">∃</span> beginnt — zurück zur Tabelle in 0.3.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>direkter Beweis</b> direct proof</span>
+          <span><b>Widerspruchsbeweis</b> proof by contradiction</span>
+          <span><b>Gegenbeispiel</b> counterexample</span>
+          <span><b>Fallunterscheidung</b> case analysis</span>
+          <span><b>vollständige Induktion</b> induction</span>
+          <span><b>Kontraposition</b> contrapositive</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Vollständige Induktion · eine unendlich lange Dominoreihe</h3>
+      <p class="de">vollständige Induktion</p>
+    </div>
+    <div class="body">
+      <p class="lead">Etwas soll für <em>jede</em> natürliche Zahl gelten, und davon gibt es unendlich viele. Die Induktion erledigt diese scheinbar unmögliche Aufgabe in zwei Schritten.</p>
+
+      <div class="field">
+        <span class="lbl">Warum das funktioniert</span>
+        <p>Stell dir eine unendlich lange Reihe Dominosteine vor. Damit alle fallen, musst du genau zwei Dinge sicherstellen — und nur diese zwei:</p>
+        <p><strong>Erstens: Der erste Stein fällt tatsächlich.</strong> (Induktionsanfang)<br>
+        <strong>Zweitens: Ganz gleich welcher Stein — wenn er fällt, reißt er den nächsten mit.</strong> (Induktionsschritt)</p>
+        <p>Gelten beide, müssen zwangsläufig alle unendlich vielen fallen: Der erste wirft den zweiten, der zweite den dritten, und so weiter ohne Ende, keiner kann sich entziehen. Du hast keinen einzigen Stein einzeln umgeworfen — und trotzdem bewiesen, dass alle fallen.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="Dominoreihe als Bild der Induktion: der erste Stein wird angestoßen, jeder fallende reißt den nächsten mit, und das setzt sich unendlich fort.">
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="40" y1="150" x2="660" y2="150" class="svg-l-soft"/>
+
+          <g transform="rotate(-52 76 150)"><rect x="66" y="88" width="20" height="62" rx="2" class="fm"/></g>
+          <text x="56" y="176" class="svg-tm txm">n = 1</text>
+          <text x="42" y="196" class="svg-tm txm">anstoßen</text>
+
+          <g transform="rotate(-30 156 150)"><rect x="146" y="88" width="20" height="62" rx="2" class="f1"/></g>
+          <text x="140" y="176" class="svg-tm">n = 2</text>
+
+          <g transform="rotate(-14 236 150)"><rect x="226" y="88" width="20" height="62" rx="2" class="f1"/></g>
+          <text x="220" y="176" class="svg-tm">n = 3</text>
+
+          <rect x="306" y="88" width="20" height="62" rx="2" class="f1"/>
+          <text x="300" y="176" class="svg-tm">n = 4</text>
+          <rect x="376" y="88" width="20" height="62" rx="2" class="f1"/>
+          <rect x="446" y="88" width="20" height="62" rx="2" class="f1"/>
+          <rect x="516" y="88" width="20" height="62" rx="2" class="f1"/>
+          <rect x="586" y="88" width="20" height="62" rx="2" class="f1"/>
+          <text x="622" y="126" class="svg-tm">… unendlich</text>
+
+          <path d="M 250 60 L 320 60" class="svg-l" marker-end="url(#a1)"/>
+          <text x="285" y="48" text-anchor="middle" class="svg-tm">wer fällt, reißt den nächsten mit</text>
+
+          <text x="350" y="212" text-anchor="middle" class="svg-tm">Zwei Schritte: ① der erste fällt　② jeder reißt den nächsten mit　⟹ alle fallen</text>
+        </svg>
+        <figcaption><b>Du hast keine unendlich vielen Steine umgeworfen — du hast nur dafür gesorgt, dass sie fallen müssen.</b> So geht die Mathematik typischerweise mit dem Unendlichen um: nicht einzeln nachprüfen, sondern einen Mechanismus finden, der sich selbst weitergibt.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Ein vollständiges Beispiel</span>
+        <div class="proof">
+          <span class="lbl">Behauptung: 1 + 2 + 3 + … + n = n(n+1)/2</span>
+          <p><strong>Anfang (n = 1):</strong> Links steht 1, rechts <span class="m">1·2/2 = 1</span>. Gleich — der erste Stein fällt.</p>
+          <p><strong>Schritt:</strong> Angenommen, es gilt für ein bestimmtes <span class="m">n = k</span>, also</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">1 + 2 + … + k = k(k+1)/2</p>
+          <p>Nun betrachte <span class="m">n = k+1</span>. Links kommt genau ein <span class="m">k+1</span> dazu:</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">1 + 2 + … + k + (k+1) = k(k+1)/2 + (k+1)</p>
+          <p>Rechts <span class="m">(k+1)</span> ausklammern:</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">= (k+1)·(k/2 + 1) = (k+1)(k+2)/2</p>
+          <p>Und genau so sieht die Formel für <span class="m">n = k+1</span> aus. Fällt also Stein k, fällt auch Stein k+1.</p>
+          <p>Beide Schritte erledigt — die Formel gilt für alle natürlichen Zahlen n. ∎</p>
+        </div>
+        <p>Diese Formel ist dir bereits zweimal begegnet: In Vorführung 2 des Werkzeugkastens diente sie dazu, die Gebiete von n Geraden zu zählen, und in Strang 1 taucht sie in der Gauß-Anekdote auf. <strong>Jetzt ist sie endlich wirklich bewiesen.</strong> Die ersten beiden Male hatten wir nur «ein Muster gesehen», dieses Mal wissen wir, dass sie gelten <em>muss</em> — und genau dafür gibt es diesen Strang.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Quantoren (0.3) · Implikation (0.4) · natürliche Zahlen (Strang 1)</div>
+          <div><span class="lbl">Wohin</span>Folgen und Rekursion (Strang 6) · binomischer Lehrsatz (Strang 2) · Korrektheit rekursiver Algorithmen (Strang 6) · fast alles, was «für beliebiges n» behauptet wird</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>«Ist das nicht ein Zirkelschluss? Ich nehme doch an, was ich beweisen will.»</strong> — diesen Einwand hat jeder beim ersten Mal, und er ist berechtigt gestellt.</p>
+          <p>Die Antwort: Du nimmst <em>nicht</em> an, dass die Behauptung für alle n gilt, sondern nur, dass sie für <em>ein einzelnes</em> n gilt — und zeigst dann, dass sie sich aufs nächste überträgt. Bewiesen wird also <strong>eine Weitergaberegel</strong>, nicht die Behauptung selbst. Erst Regel plus Anfang ergeben zusammen das Ergebnis.</p>
+          <p>Zweite Falle: <strong>Den Anfang nicht vergessen.</strong> Wer nur die Weitergaberegel zeigt, aber nie einen Stein anstößt, hat eine wunderbar aufgestellte Reihe, die einfach stehen bleibt. Dieser Schritt ist eine Zeile lang — und ohne ihn ist der ganze Beweis ungültig.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>vollständige Induktion</b> mathematical induction</span>
+          <span><b>Induktionsanfang</b> base case</span>
+          <span><b>Induktionsvoraussetzung</b> induction hypothesis</span>
+          <span><b>Induktionsschritt</b> inductive step</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.8 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Woher die Zeichen kommen · eine Karte zum Durchatmen</h3>
+      <p class="de">mathematische Notation</p>
+    </div>
+    <div class="body">
+      <p class="lead">Mathematik sieht aus wie lauter Symbole — dabei sind die meisten davon noch keine fünfhundert Jahre alt. Davor wurde Mathematik <strong>in normalen Sätzen geschrieben.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Wie sich Mathematik in Worten anfühlt</span>
+        <p>Eine Gleichung des 16. Jahrhunderts sah ungefähr so aus:</p>
+        <div class="demo">
+          <p style="font-family:var(--f-serif);font-size:1.05rem">«Gesucht ist eine Zahl, deren Kubus zusammen mit ihrem Sechsfachen zwanzig ergibt.»</p>
+          <p>Heute geschrieben: <span class="m">x³ + 6x = 20</span>.</p>
+        </div>
+        <p>Einen Satz so zu lesen geht noch. Seitenweise so zu rechnen ist im Kopf unmöglich. <strong>Die Erfindung der Zeichen war im Kern eine Verlagerung der Denklast vom Kopf aufs Papier</strong> — dasselbe Prinzip wie Griff 1 im Werkzeugkasten, nur in ganz anderem Maßstab.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Woher einzelne Zeichen stammen</span>
+        <ul class="plain">
+          <li><span class="m">+</span> und <span class="m">−</span>: Lagerzeichen deutscher Kaufleute des 15. Jahrhunderts — zu viel in der Kiste bekam einen Querstrich mit Senkrechten, zu wenig nur den Querstrich. Später von den Mathematikbüchern übernommen.</li>
+          <li><span class="m">=</span>: 1557 vom Engländer Robert Recorde eingeführt. Seine Begründung ist charmant: <em>Es könne nichts gleicher sein als zwei parallele Linien.</em> Davor schrieb man «aequalis» oder einfach «ist gleich».</li>
+          <li><span class="m">√</span>: vermutlich aus einem flüchtig geschriebenen r für lateinisch <em>radix</em> (Wurzel) entstanden. Der Querstrich darüber kam später dazu, um den Bereich einzuklammern.</li>
+          <li><span class="m">x</span> für das Unbekannte: eine Gewohnheit von Descartes. Er nahm die Buchstaben vom Ende des Alphabets (<span class="m">x, y, z</span>) für Unbekanntes und die vom Anfang (<span class="m">a, b, c</span>) für Bekanntes — eine Verabredung, die seit vierhundert Jahren unverändert gilt.</li>
+          <li><span class="m">∑</span> und <span class="m">∫</span>: das griechische Sigma (S wie Summe) und ein langgezogenes s (von <em>summa</em>). Beide bedeuten «summieren», das eine diskret, das andere kontinuierlich.</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Gute Zeichen denken für dich mit</span>
+        <p>Das ist keine Redewendung. Newton und Leibniz erfanden die Infinitesimalrechnung unabhängig voneinander, benutzten aber verschiedene Schreibweisen: Newton setzte einen Punkt über den Buchstaben, Leibniz schrieb <span class="m">dy/dx</span>.</p>
+        <p>Die Folge: Leibniz' Schreibweise <em>sieht aus wie ein Bruch</em>, und dadurch liest sich die Kettenregel so selbstverständlich wie das Kürzen von Brüchen. Die britischen Mathematiker hielten aus Patriotismus an Newtons Punkt fest — und hingen dem Kontinent daraufhin gut hundert Jahre hinterher.</p>
+        <p><strong>Bei der richtigen Notation erledigt das Zeichen die halbe Denkarbeit.</strong> Deshalb lohnt sich die Mühe, Terme sauber aufzuschreiben: Wer klar schreibt, denkt meistens auch klar.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Nichts. Jederzeit lesbar.</div>
+          <div><span class="lbl">Wohin</span>Buchstabenrechnung (Strang 2) · Funktionsschreibweise f(x) (Strang 4) · Summen- und Integralzeichen (Strang 4) · LaTeX und mathematischer Satz</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Notation</b> notation</span>
+          <span><b>Variable</b> variable</span>
+          <span><b>Term</b> expression</span>
+          <span><b>Gleichung</b> equation</span>
+          <span><b>Summenzeichen ∑</b> summation sign</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista0">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Der Gipfel dieses Strangs ist besonders steil, denn er führt dorthin, wo die Mathematik über <em>sich selbst</em> nachdenkt. Auch hier gilt: <strong>nichts davon musst du verstehen.</strong> Aber es sind vermutlich die Seiten dieses Hefts, über die man am ehesten einen Abend lang nachdenken möchte.</p>
+
+  <div class="vista">
+    <h4>Das Schließen selbst zum Gegenstand machen</h4>
+    <p>Wenn Beweise festen Regeln folgen — lassen sich dann die Regeln selbst untersuchen? Gegen Ende des 19. Jahrhunderts begann man, Aussagen als Zeichenreihen und Schlussschritte als Rechenoperationen zu schreiben. Damit wurde aus «Logik» ein Teilgebiet der Mathematik: die <strong>mathematische Logik</strong>.</p>
+    <p>Das hatte eine unerwartete Nebenwirkung: Wenn sich Schließen als Symbolmanipulation formalisieren lässt, kann eine Maschine es ausführen. Computer, Programmiersprachen und die Logikgatter im Chip sind alle auf diesem Weg entstanden. <em>Aus «wahr» und «falsch» von Karte 0.2 wurden 1 und 0.</em></p>
+
+    <h4>Die Mengenlehre wäre fast eingestürzt: Russells Paradox</h4>
+    <p>Karte 0.1 sagte, Mengen seien das Fundament. 1901 stellte Russell eine lächerlich einfache Frage, die dieses Fundament fast weggerissen hätte:</p>
+    <p><em>Die Menge aller Mengen, die sich nicht selbst enthalten — enthält sie sich selbst?</em></p>
+    <p>Wenn ja, dürfte sie es nach ihrer eigenen Definition nicht; wenn nein, müsste sie es. Beide Wege enden im Widerspruch. Die populäre Fassung ist das Barbier-Paradox: Der Dorfbarbier rasiert genau diejenigen, die sich nicht selbst rasieren — rasiert er sich selbst?</p>
+    <p>Das Paradox zwang die Mathematik, das Fundament der Mengenlehre neu zu gießen (heute das ZFC-Axiomensystem), in dem nicht mehr jede beliebige Eigenschaft eine Menge bilden darf. Das Fundament hält wieder — aber der Schrecken saß tief.</p>
+
+    <h4>Gödel: Manche Wahrheiten lassen sich nie beweisen</h4>
+    <p>Nach Russell schlug Hilbert ein gewaltiges Programm vor: Man finde ein Axiomensystem für die gesamte Mathematik und beweise, dass es <em>widerspruchsfrei</em> ist und <em>jede wahre Aussage beweisen kann</em>. Das ehrgeizigste Vorhaben der Mathematikgeschichte.</p>
+    <p>1931 bewies der fünfundzwanzigjährige Gödel, dass es <strong>unmöglich</strong> ist. Seine Unvollständigkeitssätze besagen: In jedem hinreichend starken, widerspruchsfreien Axiomensystem gibt es Aussagen, die <em>wahr sind, sich in diesem System aber nicht beweisen lassen</em>. Und das System kann seine eigene Widerspruchsfreiheit nicht beweisen.</p>
+    <p>Sein Kunstgriff ist von fast schelmischer Eleganz: Er nummeriert jede Aussage durch und konstruiert damit einen Satz, der übersetzt lautet «dieser Satz ist in diesem System nicht beweisbar». Ein entfernter Verwandter des «dieser Satz ist falsch» aus 0.2 — nur hat Gödel daraus strenge Mathematik gemacht.</p>
+    <p>Das ist keine schlechte Nachricht, sondern eine tiefe. Sie zieht die Grenze des formalen Schließens, und zu wissen, wo eine Grenze verläuft, ist selbst ein gewaltiger Fortschritt.</p>
+
+    <h4>Maschinen beweisen mit</h4>
+    <p>1976 wurde der Vierfarbensatz bewiesen (jede Landkarte lässt sich mit vier Farben so färben, dass benachbarte Gebiete verschieden sind) — allerdings, indem das Problem auf über tausend Fälle zurückgeführt und diese vom Computer einzeln geprüft wurden. Die Fachwelt stritt heftig: <em>Ist ein Beweis, den kein Mensch ganz lesen kann, noch ein Beweis?</em></p>
+    <p>Heute ist das kaum noch strittig. Beweisassistenten wie <strong>Lean</strong> und <strong>Coq</strong> prüfen Beweise Zeile für Zeile auf Lücken, weit strenger als jeder menschliche Gutachter; führende Mathematiker formalisieren wichtige Sätze Stück für Stück hinein. Auch KI wirkt mit — nicht als Beweiserin an unserer Stelle, sondern beim Absuchen möglicher Wege.</p>
+    <p>In gewissem Sinne wird dieser Strang gerade in den Händen dieser Generation lebendig.</p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Logik</strong> — 0.2 bis 0.4 in strenger Form, meist im ersten Jahr Mathematik oder Informatik</li>
+      <li><strong>Mengenlehre</strong> — die formale Entfaltung von 0.1 und der Wiederaufbau nach Russell</li>
+      <li><strong>Beweistheorie</strong> — die Struktur von Beweisen selbst, Gödels Gebiet</li>
+      <li><strong>Berechenbarkeitstheorie</strong> — «welche Probleme kann keine Maschine lösen», Anschluss an Strang 6</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss0">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Besonders die Beweis-Vokabeln (<span class="m-up m">Voraussetzung</span>, <span class="m-up m">Behauptung</span>, <span class="m-up m">Beweis</span>) begegnen dir in jedem Lehrbuch. Die chinesische Spalte ist für den Abgleich mit der chinesischen Fassung gedacht.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">Menge / Element</td><td class="en">set / element</td><td>集合 / 元素</td></tr>
+      <tr><td class="de">Teilmenge</td><td class="en">subset</td><td>子集</td></tr>
+      <tr><td class="de">Vereinigung / Schnittmenge</td><td class="en">union / intersection</td><td>并集 / 交集</td></tr>
+      <tr><td class="de">leere Menge ∅</td><td class="en">empty set</td><td>空集</td></tr>
+      <tr><td class="de">Aussage</td><td class="en">proposition</td><td>命题</td></tr>
+      <tr><td class="de">wahr / falsch</td><td class="en">true / false</td><td>真 / 假</td></tr>
+      <tr><td class="de">Verneinung</td><td class="en">negation</td><td>否定</td></tr>
+      <tr><td class="de">für alle ∀ · Allquantor</td><td class="en">for all · universal quantifier</td><td>对所有 · 全称量词</td></tr>
+      <tr><td class="de">es existiert ∃ · Existenzquantor</td><td class="en">there exists · existential quantifier</td><td>存在 · 存在量词</td></tr>
+      <tr><td class="de">Gegenbeispiel</td><td class="en">counterexample</td><td>反例</td></tr>
+      <tr><td class="de">Implikation</td><td class="en">implication</td><td>蕴含</td></tr>
+      <tr><td class="de">Umkehrung</td><td class="en">converse</td><td>逆命题</td></tr>
+      <tr><td class="de">Kontraposition</td><td class="en">contrapositive</td><td>逆否命题</td></tr>
+      <tr><td class="de">hinreichend / notwendig</td><td class="en">sufficient / necessary</td><td>充分的 / 必要的</td></tr>
+      <tr><td class="de">genau dann, wenn</td><td class="en">if and only if</td><td>当且仅当</td></tr>
+      <tr><td class="de">äquivalent</td><td class="en">equivalent</td><td>等价的</td></tr>
+      <tr><td class="de">Definition</td><td class="en">definition</td><td>定义</td></tr>
+      <tr><td class="de">Axiom</td><td class="en">axiom</td><td>公理</td></tr>
+      <tr><td class="de">Satz / Theorem</td><td class="en">theorem</td><td>定理</td></tr>
+      <tr><td class="de">Lemma / Hilfssatz</td><td class="en">lemma</td><td>引理</td></tr>
+      <tr><td class="de">Korollar / Folgerung</td><td class="en">corollary</td><td>推论</td></tr>
+      <tr><td class="de">Beweis</td><td class="en">proof</td><td>证明</td></tr>
+      <tr><td class="de">Voraussetzung / Behauptung</td><td class="en">hypothesis / claim</td><td>已知 / 求证</td></tr>
+      <tr><td class="de">direkter Beweis</td><td class="en">direct proof</td><td>直接证明</td></tr>
+      <tr><td class="de">Widerspruchsbeweis</td><td class="en">proof by contradiction</td><td>反证法</td></tr>
+      <tr><td class="de">Fallunterscheidung</td><td class="en">case analysis</td><td>分情况讨论</td></tr>
+      <tr><td class="de">vollständige Induktion</td><td class="en">mathematical induction</td><td>数学归纳法</td></tr>
+      <tr><td class="de">Induktionsanfang / -schritt</td><td class="en">base case / inductive step</td><td>归纳起点 / 归纳步骤</td></tr>
+      <tr><td class="de">Notation</td><td class="en">notation</td><td>记号</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs0">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>Bei welchem von beiden — Definition oder Satz — darf man fragen «stimmt das?», und bei welchem nicht? Warum?</li>
+    <li>Wie viel Arbeit kostet es, «alle Schwäne sind weiß» zu widerlegen? Und «es gibt einen schwarzen Schwan»? Woher kommt der Unterschied?</li>
+    <li>Warum haben «wenn es regnet, ist die Straße nass» und «wenn die Straße nicht nass ist, hat es nicht geregnet» zwangsläufig denselben Wahrheitswert? Erklär es mit eigenen Worten.</li>
+    <li>Warum beweisen hundert Beispiele keine Allaussage, ein einziges Beispiel aber sehr wohl eine Existenzaussage?</li>
+    <li>Bei der Induktion nimmt man an, es gelte für <span class="m">n = k</span>. Ist das nicht genau das, was bewiesen werden soll? Warum ist es kein Zirkelschluss?</li>
+    <li>Beide Seiten einer Gleichung quadrieren — ist das <span class="m">⟹</span> oder <span class="m">⟺</span>? Welche praktische Folge hat der Unterschied beim Rechnen?</li>
+    <li>Was passiert, wenn man Euklids fünftes Postulat austauscht? Was sagt das darüber, was ein Axiom eigentlich ist?</li>
+    <li>Die beiden Beweise in Strang 1 (unendlich viele Primzahlen, √2 irrational) — welche der Waffen aus diesem Kapitel benutzen sie jeweils?</li>
+    <li>Was bliebe von den anderen sieben Strängen übrig, wenn man dieses Kapitel aus dem Heft entfernte?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="werkzeugkasten.html"><span class="dir">Vorige Seite</span><span class="t">§ 2 · Werkzeugkasten</span></a>
+  <a class="next" href="strang-1-zahlen.html"><span class="dir">Nächste Seite</span><span class="t">Strang 1 · Zahlen und Zahlbereiche</span></a>
+</div>
+
+</main>
+</body>
+</html>

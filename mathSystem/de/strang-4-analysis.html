@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 4 · Funktionen und Veränderung · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-4-analysis.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 4 · Funktionen und Veränderung · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-4-analysis.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html" aria-current="page">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-4-analysis.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 4</h1>
+
+<section id="s4">
+  <h2 class="sec"><span class="num">Strang 4</span>Funktionen und Veränderung</h2>
+  <p class="sec-lead">Die ersten drei Stränge handeln von <strong>unbeweglichen Dingen</strong>: Zahlen liegen fest, Figuren stehen still, eine gelöste Gleichung ist erledigt. Dieser hier befasst sich zum ersten Mal mit <strong>Dingen in Bewegung</strong> — und dafür braucht es ein völlig neues Werkzeug.</p>
+
+  <p>Der ganze Strang beantwortet nur drei Fragen, und die bauen aufeinander auf:</p>
+
+  <ul class="plain">
+    <li><strong>Wenn sich das eine ändert, wie folgt das andere?</strong>　→　das ist die <em>Funktion</em></li>
+    <li><strong>Wie schnell ändert es sich?</strong>　→　das ist die <em>Ableitung</em></li>
+    <li><strong>Wie viel hat sich insgesamt geändert?</strong>　→　das ist das <em>Integral</em></li>
+  </ul>
+
+  <p>Und dann kommt der schönste Schlag dieses Strangs, eines der überraschendsten Ergebnisse des ganzen Hefts: <strong>Die letzten beiden Fragen sind Umkehrungen voneinander.</strong> «Wie schnell» spricht von der Steilheit einer Tangente, «wie viel insgesamt» von der Fläche unter einer Kurve — das sieht nach zwei völlig verschiedenen Dingen aus, und doch sind es Vorder- und Rückseite derselben Sache. Das ist der <strong>Hauptsatz der Differential- und Integralrechnung</strong>.</p>
+
+  <p>Wo wir schon bei «Umkehrung» sind: Das ist der <strong>vierte</strong> Auftritt dieses Motors in diesem Heft. Strang 1, 1.3 sagte, die Umkehrung der Addition sei die Subtraktion und die der Multiplikation die Division; 1.8 zeigte, dass das Potenzieren zwei Umkehrungen hat (Wurzel und Logarithmus); jetzt sind es Ableiten und Integrieren. <em>Jedes Mal hat die Menschheit zuerst gelernt, vorwärts zu gehen, und erst sehr viel später herausgefunden, wie man rückwärts geht.</em></p>
+
+  <p>Noch eine Vorbemerkung: Dies ist der gewichtigste Block der gesamten Schulmathematik, er hat in Prüfungen das größte Gewicht, und er ist zugleich Pflichtstoff im ersten Studienjahr jedes naturwissenschaftlich-technischen Fachs. Sein Fundament ist die Brücke aus Strang 3: <strong>Ohne Koordinatensystem gäbe es keine Funktionsgraphen und damit diesen ganzen Strang nicht.</strong></p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Funktionen · eine Maschine mit einer Regel</h3>
+      <p class="de">Funktion · Zuordnung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Funktion ist eine Maschine: <strong>Man steckt etwas hinein, es kommt etwas heraus.</strong> Es gibt nur eine Regel — bei gleicher Eingabe muss immer dieselbe Ausgabe kommen, und zwar genau eine.</p>
+
+      <div class="field">
+        <span class="lbl">Das Wort, das man beim Lesen überspringt</span>
+        <p>Im Lehrbuch steht meist: «Jedem x wird genau ein y zugeordnet.» Die meisten lesen bis «zugeordnet» und blättern weiter — entscheidend ist aber <strong>«genau ein»</strong> (auf Deutsch <span class="m-up m">eindeutig</span>).</p>
+        <p>«Einem Menschen wird sein Geburtstag zugeordnet» ist eine Funktion — jeder Mensch hat genau einen. «Einem Geburtstag werden die Menschen zugeordnet, die dann Geburtstag haben» ist <em>keine</em> — an einem Tag haben viele Geburtstag. Dreht man die Richtung um, ändert sich, ob überhaupt eine Funktion vorliegt.</p>
+        <p>Für den Graphen gibt es dafür einen Test, den man auf einen Blick machen kann: <strong>Jede senkrechte Gerade darf den Graphen höchstens einmal treffen.</strong> Ein Kreis ist deshalb kein Funktionsgraph, denn eine Senkrechte schneidet ihn zweimal. In Klausuren ist dieser kleine Test sehr nützlich.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Vier Gesichter derselben Funktion</span>
+        <div class="demo">
+          <p><strong>Als Satz</strong>: «Ein Kilo Äpfel kostet 3 Euro; was kosten x Kilo?»</p>
+          <p><strong>Als Tabelle</strong>: 1 → 3, 　2 → 6, 　3 → 9 …</p>
+          <p><strong>Als Formel</strong>: <span class="m">f(x) = 3x</span></p>
+          <p><strong>Als Graph</strong>: eine Gerade durch den Ursprung</p>
+          <p>Alle vier sagen dasselbe, jedes hat seine Stärke: Mit der Formel rechnet man, am Graphen sieht man den Verlauf, in der Tabelle schlägt man einzelne Werte nach, und der Satz führt zurück in die Wirklichkeit. <em>Wenn man bei einer Aufgabe hängt, hilft oft schon der Wechsel des Gesichts</em> — Griff 1 und Griff 9 aus dem Werkzeugkasten.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Definitionsbereich: was die Maschine verträgt</span>
+        <p>Nicht alles darf hinein. <span class="m">f(x) = 1/x</span> verträgt keine 0 (warum, steht in Strang 1, 1.5), <span class="m">f(x) = √x</span> im Reellen keine negativen Zahlen, <span class="m">f(x) = log x</span> nur positive. Die Menge des Erlaubten heißt <strong>Definitionsbereich</strong>, die Menge des Herauskommenden <strong>Wertebereich</strong>.</p>
+        <p>Beachte die Form dieser beiden Wörter: Es sind <em>Mengen</em> (Strang 0, 0.1). Eine Funktion besteht vollständig aus drei Dingen — Definitionsbereich, Wertebereich und Zuordnungsvorschrift; bloß eine Formel hinzuschreiben ist die Kurzfassung.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Koordinatensystem (Strang 3, 3.7) · Variable und Parameter unterscheiden (Strang 2, 2.1) · Mengen (Strang 0, 0.1)</div>
+          <div><span class="lbl">Wohin</span>Dieser ganze Strang · Zufallsvariable in der Stochastik (Strang 5) · eine Folge ist eine Funktion auf ℕ (Strang 6) · Modellieren (Strang 7)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">f</span> und <span class="m">f(x)</span> sind nicht dasselbe. <span class="m">f</span> ist die Maschine selbst, <span class="m">f(x)</span> ist der <em>Wert</em>, den sie zu x ausspuckt. Im Alltag mischt man das folgenlos, aber bei «leite f ab» gegenüber «berechne f(x)» ist der Unterschied real.</p>
+          <p>Und: <span class="m">f(x)</span> ist <strong>nicht</strong> f mal x. Diese Schreibkollision bringt tatsächlich Leute zu Fall.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Funktion</b> function</span>
+          <span><b>Zuordnung</b> mapping</span>
+          <span><b>eindeutig</b> unique</span>
+          <span><b>Definitionsbereich</b> domain</span>
+          <span><b>Wertebereich</b> range</span>
+          <span><b>Funktionswert</b> function value</span>
+          <span><b>Graph</b> graph</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Lineare Funktionen · der erste Auftritt der Änderungsrate</h3>
+      <p class="de">lineare Funktion · Steigung</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">y = mx + b</span>. Die einfachste Funktion überhaupt — aber das <span class="m">m</span> darin ist außerordentlich wichtig: <strong>Es ist der Samen des ganzen Strangs und wird später zur Ableitung heranwachsen.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Was die Steigung wirklich sagt</span>
+        <p><span class="m">m</span> heißt Steigung, aber «steil» ist nur ihr Aussehen. Ihre eigentliche Bedeutung ist: <strong>Um wie viel wächst y, wenn x um 1 wächst.</strong> Mit anderen Worten, sie ist die <em>Geschwindigkeit der Veränderung</em>.</p>
+        <p class="calc">m = Δy / Δx　　（Änderung senkrecht ÷ Änderung waagerecht）</p>
+        <p>Diesen Ausdruck sollte man sich einprägen, denn er taucht später unverändert in der Definition der Ableitung auf. <strong>Die Ableitung ist nichts anderes als: was wird aus diesem Quotienten, wenn Δx so klein wird wie irgend möglich.</strong> Die Kerntechnik des ganzen Strangs hast du also bereits in der Hand — es fehlt nur die Bewegung «kleiner werden».</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Warum Geraden so wichtig sind</span>
+        <p>In der Wirklichkeit gibt es fast keine echten geraden Zusammenhänge — Temperaturen steigen nicht gleichmäßig, Bevölkerungen wachsen nicht gleichmäßig. Aber Geraden haben einen unersetzlichen Vorzug: <strong>Betrachtet man eine glatte Kurve nah genug, sieht sie gerade aus.</strong></p>
+        <p>Vergrößert man die Erde auf das Stück unter den eigenen Füßen, wirkt sie eben. Vergrößert man irgendeine Kurve um einen Punkt herum, wird sie zur Geraden — und die Steigung dieser Geraden ist die Ableitung an dieser Stelle. <em>Die gesamte Differentialrechnung steht auf diesem einen Gedanken: Kompliziertes ist im Kleinen einfach.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Funktion (4.1) · lineare Gleichungen (Strang 2, 2.4) · Verhältnis (Strang 1, 1.5) · Koordinatensystem (Strang 3, 3.7)</div>
+          <div><span class="lbl">Wohin</span><strong>Ableitung (4.6) — sie ist die Steigung im unendlich Kleinen</strong> · lineare Regression (Strang 5) · das erste Glied der Taylorentwicklung (Gipfel) · jede Technik, die Kurven durch Geraden annähert</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Beim Berechnen der Steigung steht <strong>Δy oben und Δx unten</strong>; wer sie vertauscht, bekommt Vorzeichen und Größe falsch. Ein zuverlässiger Trick: Die Einheit der Steigung ist «Einheit von y geteilt durch Einheit von x» — bei Weg gegen Zeit also «Meter pro Sekunde», also Geschwindigkeit. <em>Stimmt die Einheit, stehen Zähler und Nenner richtig</em> (das ist der Maßstab «Einheiten prüfen» aus Strang 7).</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>lineare Funktion</b> linear function</span>
+          <span><b>Steigung</b> slope</span>
+          <span><b>y-Achsenabschnitt</b> y-intercept</span>
+          <span><b>Steigungsdreieck</b> slope triangle</span>
+          <span><b>proportional</b> proportional</span>
+          <span><b>Änderungsrate</b> rate of change</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.3 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Der Funktionen-Zoo · Gesichter erkennen und wer schneller läuft</h3>
+      <p class="de">Funktionsklassen</p>
+    </div>
+    <div class="body">
+      <p class="lead">In den nächsten Jahren begegnen dir sieben oder acht Funktionsarten. Statt für jede die Eigenschaften auswendig zu lernen, lohnt es sich, eines zu begreifen: <strong>Der Unterschied liegt vor allem darin, wie heftig sie wachsen.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Das Verzeichnis</span>
+        <div class="demo">
+          <p><strong>linear</strong> <span class="m">mx+b</span>　Gerade. Gleichmäßiges Wachstum.</p>
+          <p><strong>quadratisch</strong> <span class="m">x²</span>　Parabel. Beschleunigtes Wachstum, mit einem höchsten oder tiefsten Punkt.</p>
+          <p><strong>ganzrational</strong> <span class="m">x³−2x+1</span>　Der Grad bestimmt, wie oft die Kurve höchstens umbiegt (Strang 2, 2.7).</p>
+          <p><strong>gebrochenrational</strong> <span class="m">1/x</span>　Mit Nenner, also mit «verbotenen Stellen»; im Graphen erscheinen Asymptoten.</p>
+          <p><strong>exponentiell</strong> <span class="m">2ˣ</span>, <span class="m">eˣ</span>　Bei jedem Schritt wird mit einem festen Faktor multipliziert. Wächst grotesk schnell.</p>
+          <p><strong>logarithmisch</strong> <span class="m">ln x</span>　Die Umkehrung des Exponentiellen (Strang 1, 1.8). Wächst grotesk langsam.</p>
+          <p><strong>trigonometrisch</strong> <span class="m">sin x</span>, <span class="m">cos x</span>　Periodisch, hin und her schwingend (Strang 3, 3.6).</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein Wettlauf, den man einmal gesehen haben muss</span>
+        <p>Die Exponentialfunktion schlägt am Ende jedes Polynom — nicht «ein bisschen schneller», sondern in einem völlig anderen Maßstab. An der Formel spürt man das nicht, am Bild schon:</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 320" role="img" aria-label="Vergleich dreier Wachstumsarten im selben Koordinatensystem: linear, quadratisch und exponentiell, wobei die Exponentialkurve schnell oben aus dem Bild läuft.">
+          <line x1="80" y1="260" x2="560" y2="260" class="svg-l"/>
+          <line x1="80" y1="260" x2="80" y2="50" class="svg-l"/>
+
+          <line x1="80" y1="260" x2="540" y2="100" class="svg-l" stroke-width="2"/>
+          <text x="548" y="104" class="svg-t tx1">linear 8x</text>
+
+          <path d="M 80 260 Q 310 260 540 60" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="548" y="64" class="svg-t tx2">quadr. x²</text>
+
+          <polyline points="80,258 126,256 172,252 218,244 264,228 310,196 356,132 385,60" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="392" y="76" class="svg-t txm">exp. 2ˣ</text>
+
+          <text x="70" y="266" text-anchor="end" class="svg-tm">0</text>
+          <text x="300" y="284" text-anchor="middle" class="svg-tm">x wird größer →</text>
+
+          <line x1="80" y1="300" x2="660" y2="300" class="svg-l-soft"/>
+          <text x="80" y="316" class="svg-t">Bei x = 10: 80, 100, 1024. Bei x = 20: 160, 400, über eine Million.</text>
+        </svg>
+        <figcaption><b>Exponentielles Wachstum wirkt im Kleinen harmlos und läuft dann plötzlich davon.</b> Ein Blatt Papier 42-mal gefaltet reicht bis zum Mond — jedes Mal nur mal zwei, aber 2⁴² sind schon über vier Billionen. Daher rührt auch die Wucht des Zinseszinses, daher die notorische Unterschätzung von Epidemien in der Frühphase, und daher ist «Verdopplungszeit» eine aussagekräftigere Größe als «Zuwachs». <b>Die menschliche Intuition ist linear, viele Dinge der Welt sind exponentiell</b> — an dieser Lücke verrechnen sich Menschen Jahr für Jahr.</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Potenz, Wurzel, Logarithmus (Strang 1, 1.8) · quadratische Gleichungen und Parabel (Strang 2, 2.5) · Winkelfunktionen (Strang 3, 3.6) · Polynome (Strang 2, 2.7)</div>
+          <div><span class="lbl">Wohin</span>Funktionsfamilien (4.4) · Wachstumsmodelle (4.10) · Zinseszins und Bevölkerung (Strang 7) · Komplexität von Algorithmen (Strang 6) · Halbwertszeit und Zerfall</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">x²</span> und <span class="m">2ˣ</span> sehen ähnlich aus und sind grundverschieden. <strong>Bei der Potenzfunktion verändert sich die Basis, bei der Exponentialfunktion der Exponent.</strong> Bei <span class="m">x = 10</span> ist <span class="m">x²</span> gleich 100 und <span class="m">2ˣ</span> gleich 1024; bei <span class="m">x = 100</span> ist das eine zehntausend und das andere eine dreißigstellige Zahl. Vor dem Rechnen erst schauen, an welcher Stelle der Buchstabe steht.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>ganzrationale Funktion</b> polynomial function</span>
+          <span><b>gebrochenrationale Funktion</b> rational function</span>
+          <span><b>Exponentialfunktion</b> exponential function</span>
+          <span><b>Logarithmusfunktion</b> logarithmic function</span>
+          <span><b>Potenzfunktion</b> power function</span>
+          <span><b>Asymptote</b> asymptote</span>
+          <span><b>Wachstum</b> growth</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Funktionsfamilien · eine Formel für eine ganze Sippe von Kurven</h3>
+      <p class="de">Verschiebung · Streckung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Wer die Regel <span class="m">a·f(b(x−c)) + d</span> beherrscht, macht aus einer Funktion sofort eine ganze Familie. Und der Punkt, an dem fast alle hängen bleiben, ist dieser: <strong>Was in der Klammer steht, wirkt in die Gegenrichtung.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Innen und außen</span>
+        <div class="demo">
+          <p><strong>Außerhalb der Klammer → senkrecht, und intuitiv richtig herum</strong><br>
+          <span class="m">f(x) + d</span>　die ganze Kurve wandert um d nach oben (für positives d)<br>
+          <span class="m">a · f(x)</span>　senkrecht um den Faktor a gestreckt (bei negativem a zusätzlich gespiegelt)</p>
+          <p><strong>Innerhalb der Klammer → waagerecht, und andersherum</strong><br>
+          <span class="m">f(x − c)</span>　die ganze Kurve wandert um c nach <em>rechts</em><br>
+          <span class="m">f(b · x)</span>　waagerecht um den Faktor b gestaucht (je größer b, desto schmaler)</p>
+        </div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="Links verschiebt eine Addition außerhalb der Klammer die Kurve nach oben, rechts verschiebt eine Subtraktion innerhalb der Klammer sie nach rechts.">
+          <line x1="70" y1="210" x2="310" y2="210" class="svg-l-soft"/>
+          <line x1="190" y1="240" x2="190" y2="60" class="svg-l-soft"/>
+          <path d="M 130 150 Q 190 270 250 150" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <path d="M 130 100 Q 190 220 250 100" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M 202 200 L 202 168" class="svg-l" stroke-width="1.4"/>
+          <path d="M 198 172 L 202 164 L 206 172 Z" fill="currentColor"/>
+          <text x="212" y="188" class="svg-tm tx1">nach oben</text>
+          <text x="190" y="266" text-anchor="middle" class="svg-t tx1">f(x) + 2</text>
+          <text x="190" y="286" text-anchor="middle" class="svg-tm">außen · senkrecht · intuitiv</text>
+
+          <line x1="390" y1="210" x2="670" y2="210" class="svg-l-soft"/>
+          <line x1="450" y1="240" x2="450" y2="60" class="svg-l-soft"/>
+          <path d="M 390 130 Q 450 250 510 130" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <path d="M 450 130 Q 510 250 570 130" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M 462 178 L 498 178" class="svg-l" stroke-width="1.4"/>
+          <path d="M 494 174 L 502 178 L 494 182 Z" fill="currentColor"/>
+          <text x="466" y="168" class="svg-tm tx2">nach rechts</text>
+          <text x="530" y="266" text-anchor="middle" class="svg-t tx2">f(x − 2)</text>
+          <text x="530" y="286" text-anchor="middle" class="svg-tm">innen · waagerecht · umgekehrt</text>
+        </svg>
+        <figcaption><b>Warum verschiebt ein Minus nach rechts?</b> Weil der Klammerinhalt wieder seinen alten Wert annehmen muss, damit die Funktion dasselbe Ergebnis liefert. Ursprünglich lieferte <span class="svg-tm">x = 0</span> einen bestimmten Wert; steht nun f(x−2) da, muss x bis 2 laufen, damit in der Klammer wieder 0 steht. <b>Die ganze Kurve wird also nach rechts «mitgezogen».</b> Anders gesagt: Was in der Klammer steht, wirkt auf die <b>Eingabe</b> — und um es auszugleichen, muss die Eingabe gegensteuern.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Was diese Regel praktisch bringt</span>
+        <p>Sie verwandelt «für jede Funktionsart den Graphen auswendig lernen» in «wenige Grundformen kennen und sie schieben und ziehen können». Die Scheitelpunktform der Parabel <span class="m">y = a(x−d)² + e</span> ist die unmittelbare Folge — der Scheitel liegt bei <span class="m">(d, e)</span> und ist ohne quadratische Ergänzung ablesbar (Strang 2, 2.5).</p>
+        <p>Bei den Winkelfunktionen ebenso: In <span class="m">y = A·sin(ω(x−φ)) + c</span> steuern die vier Parameter Amplitude, Frequenz, Phase und Verschiebung. <em>Genau mit diesen vier Zahlen beschreibt die Physik eine Welle.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Funktionen-Zoo (4.3) · Scheitelpunktform (Strang 2, 2.5) · Abbildungen und Symmetrie (Strang 3, 3.9)</div>
+          <div><span class="lbl">Wohin</span>Kurvendiskussion (4.7) · Beschreibung von Wellen · Fourier-Analysis (Gipfel) · Standardisierung von Daten (Strang 5)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">f(2x)</span> <strong>staucht</strong> waagerecht auf die Hälfte, es streckt nicht — wieder das «innen verkehrt herum». Wenn du unsicher bist, gibt es ein narrensicheres Mittel: <em>Nimm einen konkreten Punkt und verfolge ihn.</em> Lag bei <span class="m">x=4</span> ein besonderer Punkt, so muss jetzt <span class="m">2x=4</span> gelten, also <span class="m">x=2</span> — der Punkt ist näher an den Ursprung gerückt, also wurde gestaucht. <strong>Nicht das Ergebnis auswendig lernen, sondern einen Punkt mitlaufen lassen.</strong></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Verschiebung</b> shift</span>
+          <span><b>Streckung / Stauchung</b> stretch / compression</span>
+          <span><b>Spiegelung</b> reflection</span>
+          <span><b>Parameter</b> parameter</span>
+          <span><b>Amplitude</b> amplitude</span>
+          <span><b>Periode</b> period</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Grenzwert · «unendlich nah» berechenbar machen</h3>
+      <p class="de">Grenzwert · Stetigkeit</p>
+    </div>
+    <div class="body">
+      <p class="lead">«Kommt immer näher an einen Wert heran, erreicht ihn vielleicht nie» — das klingt nach Philosophie, doch die Mathematik hat daraus etwas Berechenbares gemacht. <strong>Die gesamte Infinitesimalrechnung ruht auf diesem einen Kniff.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Ein zweitausend Jahre altes Problem</span>
+        <p>Zenon sagte: Du holst die Schildkröte nie ein. Denn zuerst musst du dorthin, wo sie jetzt ist — doch bis dahin ist sie ein Stück weiter; läufst du dorthin, ist sie wieder ein Stück weiter, und so fort. Wie soll man unendlich viele Schritte in endlicher Zeit schaffen?</p>
+        <p>Die Auflösung ist der Grenzwert: <strong>Unendlich viele immer kleiner werdende Größen können sich zu einer endlichen Summe addieren.</strong></p>
+        <div class="demo">
+          <p class="calc">½ + ¼ + ⅛ + 1/16 + … = 1</p>
+          <p>Jeder Summand ist die Hälfte des vorigen; die Summe unendlich vieler ist genau 1, nicht mehr und nicht weniger. Die Strecke, die du zurücklegst, ist endlich — also holst du die Schildkröte in endlicher Zeit ein.</p>
+        </div>
+        <p>Auch die Frage nach <span class="m">0,999… = 1</span> aus Strang 1, 1.5 findet hier ihre Antwort. <span class="m">0,999…</span> ist kein «Vorgang, der sich der 1 nähert», sondern <em>ist</em> der Grenzwert, und der ist gleich 1. <strong>Die damals gelegte Spur wird hier eingelöst.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Worauf das beruht: Die reellen Zahlen lecken nicht</span>
+        <p>Dass Grenzwerte existieren, hängt an dem scheinbar selbstverständlichen Satz aus Strang 1, 1.7: <strong>Die Zahlengerade hat keine Lücken.</strong> Wenn sich eine Zahlenfolge immer enger zusammendrängt, muss sie sich auf <em>eine wirklich vorhandene Zahl</em> zubewegen.</p>
+        <p>Mit bloß rationalen Zahlen wäre das nicht garantiert: <span class="m">1, 1.4, 1.41, 1.414, …</span> drängt sich sichtbar zusammen, aber das Ziel <span class="m">√2</span> liegt nicht in ℚ — die Folge strebt gegen ein Loch. <em>Erst nachdem die Löcher gestopft sind, hat der Grenzwert einen Ort, an den er gehen kann</em> — das ist der Ertrag jener alten Stopfarbeit, eingelöst mit großer Verspätung.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Stetigkeit: in einem Zug zeichenbar</span>
+        <p>Eine Funktion, die an einer Stelle «nicht abreißt, nicht springt, kein Loch hat», heißt dort <strong>stetig</strong>. Anschaulich: Der Graph lässt sich zeichnen, ohne den Stift abzusetzen.</p>
+        <p>Stetige Funktionen haben eine sehr nützliche Eigenschaft (den <strong>Zwischenwertsatz</strong>): Ist die Funktion am einen Ende negativ und am anderen positiv, muss sie dazwischen die Null <em>durchqueren</em>. Dass ein Polynom dritten Grades mindestens eine reelle Nullstelle hat (Strang 2, 2.7), liegt genau daran — der Graph läuft von links unten nach rechts oben und ist durchgehend, also muss er die x-Achse treffen. <em>Damals ging das nur über die Anschauung, jetzt hat es einen Namen.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Vollständigkeit der reellen Zahlen (Strang 1, 1.7) · 0,999… (Strang 1, 1.5) · Folgen (Strang 6)</div>
+          <div><span class="lbl">Wohin</span><strong>Ableitung (4.6) und Integral (4.8) — beide sind Grenzwerte</strong> · Zwischenwertsatz · Reihen (Gipfel) · numerische Verfahren (Strang 6)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>«Der Grenzwert ist 3» heißt <strong>nicht</strong> «der Funktionswert ist 3». Die Funktion kann an dieser Stelle gar nicht definiert sein oder einen anderen Wert haben, und der Grenzwert existiert trotzdem — er fragt danach, wohin die <em>Umgebung</em> läuft, nicht danach, was an dieser einen Stelle steht.</p>
+          <p>Das klingt nach Wortklauberei, aber die gesamte Definition der Ableitung steht darauf: Der Quotient ist bei <span class="m">Δx = 0</span> ein <span class="m">0/0</span> und damit überhaupt nicht definiert — gefragt ist gerade der Verlauf <em>drumherum</em>.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Grenzwert</b> limit</span>
+          <span><b>Folge</b> sequence</span>
+          <span><b>konvergent / divergent</b> convergent / divergent</span>
+          <span><b>stetig / Stetigkeit</b> continuous / continuity</span>
+          <span><b>Zwischenwertsatz</b> intermediate value theorem</span>
+          <span><b>Unendlichkeit ∞</b> infinity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Die Ableitung · wie schnell es sich in diesem Augenblick ändert</h3>
+      <p class="de">Ableitung · Differentialquotient</p>
+    </div>
+    <div class="body">
+      <p class="lead">«Auf dieser Strecke im Schnitt 60 km/h» kann jeder ausrechnen. Aber «wie schnell ist es <strong>in diesem Augenblick</strong>» — wie soll man in einem Moment ohne Dauer von Geschwindigkeit sprechen? Genau darauf antwortet die Ableitung.</p>
+
+      <div class="field">
+        <span class="lbl">Von zwei Punkten zu einem</span>
+        <p>In 4.2 war die Steigung <span class="m">Δy/Δx</span>, dafür braucht man aber <em>zwei Punkte</em>. Will man die Steilheit an einer einzigen Stelle wissen, schiebt man den zweiten Punkt Schritt für Schritt heran:</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 356" role="img" aria-label="Sekanten nähern sich der Tangente: von einem festen Punkt P aus werden Sekanten zu drei immer näher rückenden Punkten gezogen, sie nähern sich der Tangente in P.">
+          <path d="M 100 280 Q 360 280 620 111" fill="none" stroke="currentColor" stroke-width="2"/>
+
+          <line x1="200" y1="274" x2="560" y2="148" class="svg-l-soft"/>
+          <line x1="200" y1="274" x2="420" y2="216" class="svg-l-soft"/>
+          <line x1="200" y1="274" x2="300" y2="255" class="svg-l-soft"/>
+          <line x1="110" y1="285" x2="470" y2="240" class="svg-l" stroke-width="2.4"/>
+
+          <circle cx="200" cy="274" r="5" class="fm" stroke-width="2"/>
+          <circle cx="560" cy="148" r="4" class="f2" stroke-width="2"/>
+          <circle cx="420" cy="216" r="4" class="f2" stroke-width="2"/>
+          <circle cx="300" cy="255" r="4" class="f2" stroke-width="2"/>
+
+          <text x="192" y="296" text-anchor="end" class="svg-t txm">P</text>
+          <text x="568" y="144" class="svg-t tx2">Q₁</text>
+          <text x="428" y="212" class="svg-t tx2">Q₂</text>
+          <text x="308" y="250" class="svg-t tx2">Q₃</text>
+          <text x="478" y="244" class="svg-t tx1">Tangente</text>
+
+          <text x="350" y="196" text-anchor="middle" class="svg-tm">Sekanten</text>
+
+          <line x1="100" y1="306" x2="660" y2="306" class="svg-l-soft"/>
+          <text x="100" y="324" class="svg-t">Je näher Q an P rückt, desto mehr gleicht die Sekante der Tangente</text>
+          <text x="100" y="344" class="svg-t">Ihr Grenzwert ist die Ableitung in P</text>
+        </svg>
+        <figcaption><b>Das ist die vollständige Definition der Ableitung, in einem Bild.</b> Die Steigung zwischen zwei Punkten heißt <b>Differenzenquotient</b> und lässt sich direkt ausrechnen; lässt man die beiden Punkte unendlich nah zusammenrücken, heißt der Grenzwert <b>Differentialquotient</b> — die Ableitung. Beachte, dass <span class="svg-tm">Δx</span> nicht wirklich 0 werden darf (dann stünde 0/0 da) — gefragt ist der Verlauf beim <b>Streben</b> gegen 0, genau der Unterschied, auf dem Karte 4.5 besteht.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Dasselbe Ding, drei Lesarten</span>
+        <div class="demo">
+          <p><strong>Geometrisch</strong>: die Steigung der Tangente an dieser Stelle. Steil heißt große Ableitung.</p>
+          <p><strong>Physikalisch</strong>: Ort nach der Zeit abgeleitet ergibt Geschwindigkeit, noch einmal abgeleitet die Beschleunigung. <em>Newton hat die Infinitesimalrechnung erfunden, um die Bewegungsgesetze aufschreiben zu können.</em></p>
+          <p><strong>Alltäglich</strong>: Jedes «pro Einheit … verändert sich um» ist eine Ableitung. Grenzkosten, Bevölkerungswachstumsrate, Konzentrationsänderung eines Medikaments im Blut, Tempo eines Kursanstiegs.</p>
+        </div>
+        <p>Es gibt zwei Schreibweisen: <span class="m">f′(x)</span> stammt von Lagrange und ist knapp; <span class="m">dy/dx</span> stammt von Leibniz und sieht aus wie ein Bruch. Strang 0, 0.8 hat es gesagt: Gerade weil Leibniz' Schreibweise <em>wie ein Bruch aussieht</em>, liest sich die Kettenregel so selbstverständlich — gute Notation denkt für dich mit.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Steigung (4.2) · Grenzwert (4.5) · Tangente (Strang 3, 3.5) · Funktion (4.1)</div>
+          <div><span class="lbl">Wohin</span>Kurvendiskussion und Optimierung (4.7) · <strong>Integral (4.8) — seine Umkehrung</strong> · Differentialgleichungen (4.10) · die gesamte Physik · Gradientenabstieg im maschinellen Lernen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Nicht jede Funktion ist überall differenzierbar.</strong> <span class="m">|x|</span> hat bei 0 eine Spitze: Von links gesehen ist die Steigung −1, von rechts +1, die beiden stimmen nicht überein — es gibt dort keine Tangente und damit keine Ableitung. <em>Stetigkeit garantiert nur, dass nichts abreißt, nicht, dass nichts knickt.</em> Differenzierbarkeit ist die stärkere Forderung.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Ableitung / ableiten</b> derivative / differentiate</span>
+          <span><b>Differenzenquotient</b> difference quotient</span>
+          <span><b>Differentialquotient</b> differential quotient</span>
+          <span><b>Sekante / Tangente</b> secant / tangent</span>
+          <span><b>momentane Änderungsrate</b> instantaneous rate</span>
+          <span><b>Kettenregel</b> chain rule</span>
+          <span><b>Produktregel</b> product rule</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Kurvendiskussion · eine Kurve mit der Ableitung auslesen</h3>
+      <p class="de">Kurvendiskussion · Extremwertaufgaben</p>
+    </div>
+    <div class="body">
+      <p class="lead">Aus einer Formel sagen können, wie die Kurve aussieht, ohne sie zu zeichnen — wo sie steigt und fällt, wo der höchste Punkt liegt, wo sie umbiegt. In deutschen Lehrbüchern heißt das <span class="m-up m">Kurvendiskussion</span> und gehört zu den gewichtigsten Aufgabentypen.</p>
+
+      <div class="field">
+        <span class="lbl">Drei Kurven gemeinsam betrachten</span>
+        <p>Der Kern des Verfahrens: <strong>f, f′ und f″ untereinander ausrichten und die entscheidenden Stellen senkrecht verbinden.</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 370" role="img" aria-label="Funktion, erste und zweite Ableitung untereinander: an den Extremstellen ist die erste Ableitung null, am Wendepunkt die zweite.">
+          <line x1="225" y1="15" x2="225" y2="335" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="350" y1="15" x2="350" y2="335" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="475" y1="15" x2="475" y2="335" class="svg-l-soft" stroke-dasharray="4 4"/>
+
+          <line x1="95" y1="70" x2="620" y2="70" class="svg-l-soft"/>
+          <polyline points="100,120 131,73 162,42 194,25 225,20 256,24 287,36 319,52 350,70 381,88 412,104 444,116 475,120 506,115 537,98 569,67 600,20" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <circle cx="225" cy="20" r="4.5" class="f1" stroke-width="2"/>
+          <circle cx="350" cy="70" r="4.5" class="f3" stroke-width="2"/>
+          <circle cx="475" cy="120" r="4.5" class="f1" stroke-width="2"/>
+          <text x="60" y="76" class="svg-t">f</text>
+          <text x="225" y="12" text-anchor="middle" class="svg-tm tx1">Hochpunkt</text>
+          <text x="350" y="12" text-anchor="middle" class="svg-tm tx3">Wendepunkt</text>
+          <text x="475" y="140" text-anchor="middle" class="svg-tm tx1">Tiefpunkt</text>
+
+          <line x1="95" y1="190" x2="620" y2="190" class="svg-l-soft"/>
+          <polyline points="100,118 131,141 162,160 194,177 225,190 256,201 287,208 319,213 350,214 381,213 412,208 444,201 475,190 506,177 537,160 569,141 600,118" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <circle cx="225" cy="190" r="4.5" class="f1" stroke-width="2"/>
+          <circle cx="475" cy="190" r="4.5" class="f1" stroke-width="2"/>
+          <text x="56" y="196" class="svg-t">f′</text>
+          <text x="640" y="196" text-anchor="end" class="svg-tm tx1">f′ = 0</text>
+
+          <line x1="95" y1="280" x2="620" y2="280" class="svg-l-soft"/>
+          <line x1="100" y1="328" x2="600" y2="232" class="svg-l" stroke-width="2.2"/>
+          <circle cx="350" cy="280" r="4.5" class="f3" stroke-width="2"/>
+          <text x="54" y="286" class="svg-t">f″</text>
+          <text x="640" y="286" text-anchor="end" class="svg-tm tx3">f″ = 0</text>
+
+          <line x1="60" y1="348" x2="660" y2="348" class="svg-l-soft"/>
+          <text x="60" y="366" class="svg-t">Wo f′ die Null kreuzt, hat f einen Extrempunkt; wo f″ sie kreuzt, wechselt die Krümmung</text>
+        </svg>
+        <figcaption><b>Senkrecht gelesen passt alles zusammen.</b> Im Moment, in dem f einen Gipfel oder ein Tal erreicht, ist die Tangente waagerecht, also f′ genau 0. Und f″ beschreibt die Krümmungsrichtung: positiv heißt, die Kurve liegt wie eine Schale, negativ wie ein Deckel; wo f″ die Null kreuzt, liegt der <b>Wendepunkt</b>. <b>Achtung: f′ = 0 ist nur notwendig, nicht hinreichend</b> — bei <span class="svg-tm">y = x³</span> ist f′ an der Stelle 0 ebenfalls null, dort ist aber weder Gipfel noch Tal, die Kurve wird nur kurz flach und steigt weiter.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Wozu das wirklich gut ist: das Beste finden</span>
+        <p>Kurvendiskussion klingt nach Prüfungsstoff, dahinter steht aber eine äußerst praktische Aufgabenklasse: <strong>möglichst sparsam, möglichst groß, möglichst schnell.</strong></p>
+        <div class="demo">
+          <p>Aus einem Blech soll eine Konservendose mit vorgegebenem Volumen entstehen — welche Form braucht am wenigsten Material?</p>
+          <p>Man schreibt die benötigte Blechfläche als Funktion des Radius, leitet ab und setzt die Ableitung null — der so bestimmte Radius ist der sparsamste. (Das Ergebnis ist hübsch: <em>Höhe gleich Durchmesser</em>. In Wirklichkeit sehen Dosen selten so aus, weil Transport und Regalhöhe mitreden.)</p>
+        </div>
+        <p>Auf Deutsch heißen sie <span class="m-up m">Extremwertaufgaben</span>. Konstruktion, wirtschaftliche Entscheidungen, Logistikwege — überall, wo etwas «optimal» sein soll, steckt derselbe Griff dahinter: <em>Das Ziel als Funktion schreiben und die Ableitung null setzen.</em> Auch das Training eines neuronalen Netzes tut heute im Kern dasselbe, nur mit einigen Milliarden Variablen.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Ableitung (4.6) · Funktionsfamilien (4.4) · Nullstellen durch Faktorisieren (Strang 2, 2.6)</div>
+          <div><span class="lbl">Wohin</span>Optimierung und Operations Research (Strang 7) · Gradientenabstieg und maschinelles Lernen (Gipfel von Strang 5) · das Prinzip der kleinsten Wirkung in der Physik</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Die Ränder nicht vergessen.</strong> Sucht man das Maximum auf einem Intervall, muss man außer den Stellen mit <span class="m">f′ = 0</span> unbedingt auch die <em>beiden Endpunkte</em> vergleichen — das Maximum kann sehr wohl am Rand liegen, und dort ist die Ableitung nicht null. Das ist der größte Punkteverlust bei Extremwertaufgaben.</p>
+          <p>Und: Bei Sachaufgaben prüfen, ob das Ergebnis Sinn ergibt. Ein negativer Radius oder «man braucht −3 Bleche» ist eine mathematische, aber keine wirkliche Lösung und muss verworfen werden. <em>Dieser Schritt gehört zum Modellierungskreislauf aus Strang 7.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Kurvendiskussion</b> curve sketching</span>
+          <span><b>Extremstelle</b> extremum</span>
+          <span><b>Hochpunkt / Tiefpunkt</b> maximum / minimum</span>
+          <span><b>Wendepunkt</b> inflection point</span>
+          <span><b>Monotonie</b> monotonicity</span>
+          <span><b>Krümmung</b> curvature</span>
+          <span><b>Extremwertaufgabe</b> optimisation problem</span>
+          <span><b>notwendig / hinreichend</b> necessary / sufficient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Das Integral · wie viel sich insgesamt geändert hat</h3>
+      <p class="de">Integral · Riemannsumme</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Ableitung fragt «wie schnell gerade jetzt», das Integral die umgekehrte Frage: <strong>wie viel hat sich unterwegs insgesamt angesammelt.</strong> Im Bild ist das die Fläche unter der Kurve.</p>
+
+      <div class="field">
+        <span class="lbl">Wie man eine krumm berandete Fläche berechnet</span>
+        <p>Die Fläche eines Rechtecks kann jeder ausrechnen, aber wie geht das unter einer Kurve? Die Methode ist rührend schlicht und funktioniert vollständig: <strong>in schmale Rechtecke zerschneiden, addieren; dann feiner zerschneiden und noch einmal addieren; und immer feiner.</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 322" role="img" aria-label="Riemannsumme: mit vier breiten Rechtecken ist der Fehler deutlich sichtbar, mit zehn schmalen deutlich kleiner.">
+          <rect x="60" y="195" width="65" height="35" class="f2"/>
+          <rect x="125" y="178" width="65" height="52" class="f2"/>
+          <rect x="190" y="152" width="65" height="78" class="f2"/>
+          <rect x="255" y="115" width="65" height="115" class="f2"/>
+          <path d="M 60 195 Q 190 175 320 70" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="60" y1="230" x2="320" y2="230" class="svg-l"/>
+          <text x="190" y="262" text-anchor="middle" class="svg-t tx2">4 Streifen · Fehler sichtbar</text>
+
+          <rect x="400" y="195" width="26" height="35" class="f1"/>
+          <rect x="426" y="190" width="26" height="40" class="f1"/>
+          <rect x="452" y="184" width="26" height="46" class="f1"/>
+          <rect x="478" y="175" width="26" height="55" class="f1"/>
+          <rect x="504" y="165" width="26" height="65" class="f1"/>
+          <rect x="530" y="154" width="26" height="76" class="f1"/>
+          <rect x="556" y="140" width="26" height="90" class="f1"/>
+          <rect x="582" y="125" width="26" height="105" class="f1"/>
+          <rect x="608" y="109" width="26" height="121" class="f1"/>
+          <rect x="634" y="90" width="26" height="140" class="f1"/>
+          <path d="M 400 195 Q 530 175 660 70" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="400" y1="230" x2="660" y2="230" class="svg-l"/>
+          <text x="530" y="262" text-anchor="middle" class="svg-t tx1">10 Streifen · viel kleiner</text>
+
+          <line x1="60" y1="276" x2="660" y2="276" class="svg-l-soft"/>
+          <text x="60" y="294" class="svg-t">Gehen Anzahl gegen unendlich und Breite gegen null, geht der Fehler gegen null</text>
+          <text x="60" y="314" class="svg-t">Dieser Grenzwert ist das Integral</text>
+        </svg>
+        <figcaption><b>Wie die Ableitung ist auch das Integral im Kern ein Grenzwert.</b> Diese Summe von Rechtecken heißt <b>Riemannsumme</b>. Beachte, dass hier wieder das Werkzeug aus 4.5 arbeitet: Ein «nie zu Ende zu rechnender» unendlicher Vorgang wird durch den Grenzwert zu einer bestimmten Zahl. <b>Das Zeichen ∫ ist ein langgezogenes s, von lateinisch summa</b> — es erinnert wörtlich daran, dass Integrieren Summieren ist (Strang 0, 0.8).</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Es ist nicht bloß Fläche</span>
+        <p>«Die Fläche unter der Kurve» ist nur das <em>Aussehen</em> des Integrals, nicht seine Bedeutung. Die Bedeutung hängt daran, wofür die senkrechte Achse steht:</p>
+        <div class="demo">
+          <p>senkrecht <strong>Geschwindigkeit</strong>, waagerecht <strong>Zeit</strong> → die Fläche ist der <strong>zurückgelegte Weg</strong></p>
+          <p>senkrecht <strong>Leistung</strong>, waagerecht <strong>Zeit</strong> → die Fläche ist die <strong>verbrauchte Energie</strong></p>
+          <p>senkrecht <strong>Durchfluss</strong>, waagerecht <strong>Zeit</strong> → die Fläche ist die <strong>geflossene Wassermenge</strong></p>
+          <p>senkrecht <strong>Dichte</strong>, waagerecht <strong>Wert</strong> → die Fläche ist die <strong>Wahrscheinlichkeit</strong> (das braucht Strang 5)</p>
+        </div>
+        <p><em>Überall, wo eine sich ständig ändernde Größe aufsummiert wird, steht ein Integral.</em> Dieser Satz ist weit brauchbarer als «Fläche berechnen».</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Grenzwert (4.5) · Flächeninhalt (Strang 3, 3.1) · Summen (Strang 6) · Funktion (4.1)</div>
+          <div><span class="lbl">Wohin</span><strong>Hauptsatz (4.9)</strong> · Volumen und Bogenlänge · Dichtefunktion und Normalverteilung (Strang 5) · Arbeit, Energie und Schwerpunkt in der Physik · numerische Integration (Strang 6)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Flächen unterhalb der x-Achse zählen negativ.</strong> Verläuft eine Kurve zur Hälfte oben und zur Hälfte unten, kann das bestimmte Integral 0 ergeben — das heißt nicht «es gibt keine Fläche», sondern dass Positives und Negatives sich aufheben. Für den <em>tatsächlichen</em> Flächeninhalt muss man zuerst die Nullstellen suchen, abschnittsweise rechnen und die Beträge addieren.</p>
+          <p>Das ist keine Schikane der Mathematik. Eine negative Geschwindigkeit bedeutet Rückwärtsfahren, und dieser Weg muss von der Gesamtverschiebung abgezogen werden. <em>Das Vorzeichen trägt physikalische Bedeutung.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Integral / integrieren</b> integral / integrate</span>
+          <span><b>Stammfunktion</b> antiderivative</span>
+          <span><b>bestimmtes Integral</b> definite integral</span>
+          <span><b>unbestimmtes Integral</b> indefinite integral</span>
+          <span><b>Riemannsumme</b> Riemann sum</span>
+          <span><b>Integrationsgrenzen</b> limits of integration</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg · Gipfel dieses Kapitels</span></span>
+      <h3>Der Hauptsatz · zwei Fragen waren von Anfang an eine</h3>
+      <p class="de">Hauptsatz der Differential- und Integralrechnung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Steigung einer Tangente und die Fläche unter einer Kurve. Die beiden scheinen nichts miteinander zu tun zu haben — <strong>und sind doch Umkehrungen voneinander.</strong> Das ist eine der überraschendsten Entdeckungen der Mathematikgeschichte und der ganze Sinn dieses Strangs.</p>
+
+      <div class="field">
+        <span class="lbl">Warum das so überraschend ist</span>
+        <p>Stell die beiden Fragen nebeneinander:</p>
+        <div class="demo">
+          <p><strong>Die Ableitung fragt:</strong> Wie steil ist die Kurve an <em>dieser einen Stelle</em>? Eine rein lokale Frage, es zählt nur, was in unmittelbarer Nähe passiert.</p>
+          <p><strong>Das Integral fragt:</strong> Wie viel hat sich <em>über die ganze Strecke</em> von a bis b unter der Kurve angesammelt? Eine globale Frage, ein ganzer Bereich muss berücksichtigt werden.</p>
+        </div>
+        <p>Die eine schaut auf einen Punkt, die andere auf eine ganze Fläche; die eine handelt von Steigung, die andere von Flächeninhalt. Wieso sollten das dieselben sein?</p>
+        <p>Newton und Leibniz haben es unabhängig voneinander entdeckt, und genau das meint der Satz «sie haben die Infinitesimalrechnung erfunden» — <em>nicht dass sie das Ableiten erfunden hätten oder das Flächenberechnen (beides gab es bei den Griechen schon), sondern dass sie diese Brücke gefunden haben.</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein Bild erklärt, warum</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 310" role="img" aria-label="Anschauung zum Hauptsatz: schiebt man die rechte Grenze der angesammelten Fläche ein kleines Stück weiter, so ist der hinzugekommene schmale Streifen ungefähr Höhe mal Breite.">
+          <path d="M 100 250 L 100 200 L 150 195 L 200 189 L 250 182 L 300 173 L 350 163 L 400 151 L 420 146 L 420 250 Z" class="f1"/>
+          <path d="M 420 250 L 420 146 L 450 138 L 450 250 Z" class="fm"/>
+          <polyline points="100,200 150,195 200,189 250,182 300,173 350,163 400,151 420,146 450,138 500,123 550,107 600,90" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="80" y1="250" x2="620" y2="250" class="svg-l"/>
+
+          <line x1="100" y1="250" x2="100" y2="196" class="svg-l-soft"/>
+          <line x1="420" y1="250" x2="420" y2="142" class="svg-l-soft"/>
+          <line x1="450" y1="250" x2="450" y2="134" class="svg-l-soft"/>
+
+          <text x="100" y="270" text-anchor="middle" class="svg-tm">a</text>
+          <text x="414" y="270" text-anchor="end" class="svg-tm">x</text>
+          <text x="458" y="270" class="svg-tm">x + dx</text>
+
+          <text x="255" y="225" text-anchor="middle" class="svg-t tx1">angesammelte Fläche A(x)</text>
+          <text x="470" y="160" class="svg-t txm">der neue Streifen</text>
+          <text x="470" y="180" class="svg-tm txm">≈ Höhe f(x) × Breite dx</text>
+
+          <line x1="80" y1="286" x2="660" y2="286" class="svg-l-soft"/>
+          <text x="80" y="304" class="svg-t">Wachstumstempo der Fläche = aktuelle Höhe　⟹　A′(x) = f(x)</text>
+        </svg>
+        <figcaption><b>Schiebt man die rechte Grenze ein winziges Stück weiter, kommt genau ein schmaler Streifen hinzu.</b> Seine Breite ist <span class="svg-tm">dx</span>, seine Höhe ungefähr <span class="svg-tm">f(x)</span>, also beträgt die hinzugekommene Fläche etwa <span class="svg-tm">f(x)·dx</span>. Mit anderen Worten: <b>Das Wachstumstempo der Flächenfunktion A ist genau die momentane Höhe f.</b> «Wachstumstempo» heißt Ableitung, also <span class="svg-tm">A′ = f</span> — Flächenbestimmung und Ableiten sind Umkehrungen voneinander.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Was das praktisch bedeutet</span>
+        <p>Dieser Satz verwandelt das Integrieren von einer verzweifelten Angelegenheit («in unendlich viele Streifen zerschneiden und alles addieren») in eine leichte Übung: <strong>Um das Integral von f zu bestimmen, sucht man eine Funktion F, deren Ableitung genau f ist, und berechnet die Differenz von F an beiden Grenzen.</strong></p>
+        <p class="calc">∫ₐᵇ f(x) dx = F(b) − F(a)</p>
+        <p>Dieses F heißt <strong>Stammfunktion</strong>. Eine Stammfunktion zu finden heißt «rückwärts ableiten» — wer die Ableitungsregeln sicher beherrscht, kann damit schon einen großen Teil des Integrierens. <em>Das ist die alte Regel der Umkehroperation: die Technik des Vorwärtsgehens rückwärts benutzt.</em></p>
+        <p>Ehrlicherweise gehört dazu: <strong>Rückwärts ist meistens erheblich schwerer als vorwärts.</strong> Jede elementare Funktion lässt sich ableiten, aber viele elementare Funktionen haben überhaupt keine elementare Stammfunktion — <span class="m">e^(−x²)</span> ist das berühmteste Beispiel, und ausgerechnet sie steht im Zentrum der Normalverteilung (Strang 5). Dann bleibt nur die numerische Berechnung (Strang 6). <em>Dieses «vorwärts leicht, rückwärts schwer» ist uns in Strang 1, 1.6 schon begegnet: Zwei große Primzahlen zu multiplizieren ist leicht, das Produkt wieder zu zerlegen so schwer, dass man Verschlüsselung darauf bauen kann.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Ableitung (4.6) · Integral (4.8) · Grenzwert (4.5) · der Gedanke der Umkehroperation (Strang 1, 1.3)</div>
+          <div><span class="lbl">Wohin</span>Differentialgleichungen (4.10) · die Formulierung physikalischer Gesetze · Dichtefunktionen (Strang 5) · Analysis I an der Uni</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Hauptsatz</b> fundamental theorem of calculus</span>
+          <span><b>Stammfunktion</b> antiderivative</span>
+          <span><b>aufleiten</b> «anti-differentiate» (umgangssprachlich)</span>
+          <span><b>Integrationskonstante</b> constant of integration</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">Beim Bestimmen einer Stammfunktion das <span class="m">+ C</span> nicht vergessen: Eine Konstante wird beim Ableiten zu 0, also ist die Stammfunktion nicht eindeutig — alle, die sich nur um eine Konstante unterscheiden, sind gültig. <em>Auch das ist ein Beispiel dafür, dass Umkehrungen nicht eindeutig sein müssen</em>: Was beim Vorwärtsgehen verlorengeht, lässt sich beim Rückwärtsgehen nicht zurückholen.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.10 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg → Gipfel</span></span>
+      <h3>Differentialgleichungen · die Grammatik der Welt</h3>
+      <p class="de">Differentialgleichung · Wachstumsmodelle</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Natur sagt einem selten direkt, «wie groß» eine Größe ist. Was sie einem sagt, ist meist: <strong>«Wie schnell sich diese Größe ändert und wovon das abhängt.»</strong> Schreibt man diesen Satz als Formel, hat man eine Differentialgleichung.</p>
+
+      <div class="field">
+        <span class="lbl">Die einfachste und wichtigste</span>
+        <div class="demo">
+          <p class="calc">y′ = k · y</p>
+          <p>Ausgesprochen: <em>«Die Wachstumsgeschwindigkeit einer Größe ist proportional zu ihrer aktuellen Menge.»</em></p>
+          <p>Je mehr Bakterien, desto mehr neue entstehen; je mehr Geld, desto mehr Zinsen; je mehr radioaktives Material, desto mehr Atome zerfallen pro Sekunde (dann ist k negativ).</p>
+          <p>Die Lösung dieser Gleichung ist die <strong>Exponentialfunktion</strong> <span class="m">y = y₀·e^(kt)</span>. <em>Das ist der Grund, warum exponentielles Wachstum in der Natur überall auftaucht</em> — es ist kein Zufall, sondern die einzige Antwort auf den Satz «die Wachstumsrate ist proportional zum Bestand». Die Kurve, die in 4.3 das Wettrennen gewonnen hat, kommt von hier.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Aber nichts wächst ewig exponentiell</span>
+        <p>Bakterien fressen ihre Nährlösung leer, Bevölkerungen füllen ihr Land. Deshalb sind in der Wirklichkeit <strong>beschränktes</strong> und <strong>logistisches Wachstum</strong> häufiger:</p>
+        <div class="demo">
+          <p class="calc">y′ = k · (S − y)　　　beschränktes Wachstum</p>
+          <p>Weit unter der Grenze S geht es schnell, je näher an S, desto langsamer. <em>Das Abkühlen einer Tasse Kaffee, die letzten 20 Prozent beim Laden des Handys, die Lernkurve einer neuen Fertigkeit</em> haben alle diese Form.</p>
+          <p class="calc">y′ = k · y · (S − y)　　logistisches Wachstum</p>
+          <p>Am Anfang wie exponentiell (y ist klein, aber es wächst proportional), in der Mitte am schnellsten, danach flacht es wie beim beschränkten Wachstum ab — insgesamt eine S-Form. <em>Die Ausbreitungskurve einer Epidemie ist genau das</em> — und deshalb werden die Zahlen in der Frühphase regelmäßig unterschätzt, denn dieser Abschnitt ist tatsächlich exponentiell.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Warum das «die Grammatik der Welt» ist</span>
+        <p>Newtons zweites Gesetz <span class="m">F = ma</span> enthält mit a die zweite Ableitung des Ortes — es ist eine Differentialgleichung. Die Maxwellgleichungen für den Elektromagnetismus sind Differentialgleichungen. Wärmeleitung, Strömungen, Wellen, die Schrödingergleichung der Quantenmechanik, die Bewertung von Optionen im Finanzwesen — alles Differentialgleichungen.</p>
+        <p><strong>Dass die neuzeitliche Wissenschaft die Zukunft vorhersagen kann, beruht auf genau diesem Verfahren: erst die Regel der Veränderung aufschreiben, dann den künftigen Zustand ausrechnen.</strong> Newton hat die Infinitesimalrechnung nicht für Übungsaufgaben erfunden, sondern um die Gesetze der Himmelsbewegung aufzuschreiben und auszurechnen, wo die Planeten sein werden — und er hat richtig gerechnet.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Ableitung (4.6) · Hauptsatz (4.9) · Exponential und Logarithmus (Strang 1, 1.8)</div>
+          <div><span class="lbl">Wohin</span>Die gesamte Physik und Technik · Modellieren (Strang 7) · numerische Lösungsverfahren (Strang 6) · Chaos und dynamische Systeme (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Differentialgleichung</b> differential equation</span>
+          <span><b>exponentielles Wachstum</b> exponential growth</span>
+          <span><b>beschränktes Wachstum</b> bounded growth</span>
+          <span><b>logistisches Wachstum</b> logistic growth</span>
+          <span><b>Zerfall</b> decay</span>
+          <span><b>Halbwertszeit</b> half-life</span>
+          <span><b>Sättigungsgrenze</b> saturation limit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista4">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Der Gipfel dieses Strangs ist das größte Hochplateau der modernen Mathematik; fast jedes naturwissenschaftlich-technische Fach muss hier vorbei. Auch hier: <strong>nichts davon musst du verstehen.</strong></p>
+
+  <div class="vista">
+    <h4>«Unendlich nah» wasserdicht sagen</h4>
+    <p>Newton und Leibniz haben mit der Infinitesimalrechnung unzählige richtige Ergebnisse erzielt, konnten aber nicht sagen, was das «unendlich Kleine» eigentlich ist. Der Philosoph Berkeley spottete, es seien «die Geister verstorbener Größen» — mal soll es nicht null sein (damit man dadurch teilen darf), mal doch (damit man es wegwerfen kann); ist das nicht Schwindel?</p>
+    <p>Der Einwand war berechtigt und scharf. Die Mathematik brauchte <strong>hundertfünfzig Jahre</strong>, um das Loch zu schließen: Cauchy und Weierstraß erfanden die <span class="m">ε-δ</span>-Sprache und übersetzten «unendlich nah» in einen Satz ohne jeden Spielraum — <em>«wie nah du es auch verlangst, ich kann einen hinreichend kleinen Bereich angeben, in dem es erreicht wird»</em>.</p>
+    <p>In diesem Satz stecken mehrere «für alle» und «es existiert» ineinander, und ihre Reihenfolge ist nicht vertauschbar (die Stolperfalle aus Strang 0, 0.3). <strong>Der erste Monat der Analysis I besteht im Wesentlichen daraus, mit diesem einen Satz zu ringen.</strong></p>
+
+    <h4>Jede Funktion in Polynome zerlegen: die Taylorentwicklung</h4>
+    <p>Mit Polynomen rechnet es sich am leichtesten, doch <span class="m">sin x</span>, <span class="m">eˣ</span> und <span class="m">ln x</span> sind keine. Die <strong>Taylorentwicklung</strong> sagt: kein Problem, man kann sie durch ein Polynom mit unendlich vielen Gliedern darstellen.</p>
+    <p class="calc">eˣ = 1 + x + x²/2 + x³/6 + x⁴/24 + …</p>
+    <p>Wenn du auf dem Taschenrechner <span class="m-up m">sin</span> drückst, rechnet der Chip im Inneren die ersten Glieder einer solchen Entwicklung. <em>In 4.2 hieß es «nah genug betrachtet ist jede Kurve gerade» — die Taylorentwicklung ist die vollständige Fassung davon: Ein Glied ergibt eine Konstante, zwei Glieder die Tangente, drei eine Parabel, und je mehr Glieder, desto enger schmiegt es sich an.</em></p>
+    <p>Als Nebenprodukt entsteht die Formel, die viele für die schönste der Mathematik halten: Legt man die Entwicklungen von <span class="m">eˣ</span>, <span class="m">sin</span> und <span class="m">cos</span> nebeneinander, ergibt sich <span class="m">e^(iπ) + 1 = 0</span>. <strong>Fünf der wichtigsten Konstanten, eine Gleichung, nichts Überflüssiges.</strong> Und Voraussetzung dafür ist die imaginäre Einheit i, die in Strang 1 erzwungen wurde.</p>
+
+    <h4>Jede Schwingung in Sinuswellen zerlegen: Fourier</h4>
+    <p>Taylor benutzt Polynome als Bausteine, <strong>Fourier</strong> benutzt Sinuswellen: Jedes periodische Signal lässt sich als Summe von Sinuswellen verschiedener Frequenz schreiben.</p>
+    <p>Der praktische Wert davon ist kaum zu überschätzen. <em>MP3-Kompression</em> zerlegt Klang in Frequenzen und wirft weg, was das Ohr nicht hört; <em>JPEG</em> tut dasselbe mit Bildern; <em>Kopfhörer mit Geräuschunterdrückung</em> müssen den Lärm erst zerlegen, um ihn gegenphasig auslöschen zu können; und die <em>Kernspintomographie</em> im Krankenhaus ist im Kern eine riesige Fourier-Transformation. <strong>In der Hälfte der Geräte, die er täglich benutzt, läuft Fourier.</strong></p>
+
+    <h4>Auch bestimmte Gleichungen können die Zukunft verweigern</h4>
+    <p>Wenn Differentialgleichungen Planetenbahnen vorhersagen können — lässt sich dann alles vorhersagen? <strong>Nein.</strong> Bei der Arbeit an einem Wettermodell entdeckte Lorenz: Manche Gleichungen sind vollständig deterministisch, ohne jeden Zufallsanteil, und trotzdem führen Anfangswerte, die sich nur im Zehntausendstel unterscheiden, zu völlig verschiedenen Ergebnissen.</p>
+    <p>Das ist das <strong>Chaos</strong>, umgangssprachlich «Schmetterlingseffekt». Es bedeutet, dass die Wettervorhersage eine prinzipielle Grenze hat — nicht weil die Geräte zu schlecht wären, sondern weil solche Systeme langfristige Vorhersage grundsätzlich nicht zulassen. <em>Determiniertheit und Vorhersagbarkeit sind also zweierlei.</em> Vom Charakter her ist das dasselbe wie Gödels Ergebnis in Strang 0: Beide ziehen eine Linie um das, was prinzipiell nicht geht.</p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Analysis I / II</strong> — ε-δ, Reihen, mehrdimensionale Analysis. Pflicht im ersten Jahr aller MINT-Fächer</li>
+      <li><strong>Höhere Mathematik I–III</strong> — die Fassung für Ingenieur- und Physikstudiengänge, ähnlicher Inhalt in höherem Tempo</li>
+      <li><strong>Differentialgleichungen</strong> — die ausgewachsene Fassung von 4.10</li>
+      <li><strong>Funktionalanalysis</strong> — Räume, in denen Funktionen selbst als «Punkte» behandelt werden</li>
+      <li><strong>Numerik</strong> — was tun, wenn es keine geschlossene Lösung gibt; Anschluss an Strang 6</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss4">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Diese Begriffe kommen in der Oberstufe am häufigsten vor — <span class="m-up m">Kurvendiskussion</span>, <span class="m-up m">Stammfunktion</span> und <span class="m-up m">Extremwertaufgabe</span> praktisch in jeder Stunde.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">Funktion / Zuordnung</td><td class="en">function / mapping</td><td>函数 / 对应</td></tr>
+      <tr><td class="de">eindeutig</td><td class="en">unique</td><td>唯一的</td></tr>
+      <tr><td class="de">Definitionsbereich / Wertebereich</td><td class="en">domain / range</td><td>定义域 / 值域</td></tr>
+      <tr><td class="de">Funktionswert / Graph</td><td class="en">function value / graph</td><td>函数值 / 图像</td></tr>
+      <tr><td class="de">lineare Funktion</td><td class="en">linear function</td><td>一次函数</td></tr>
+      <tr><td class="de">Steigung</td><td class="en">slope</td><td>斜率</td></tr>
+      <tr><td class="de">y-Achsenabschnitt</td><td class="en">y-intercept</td><td>y 轴截距</td></tr>
+      <tr><td class="de">Änderungsrate</td><td class="en">rate of change</td><td>变化率</td></tr>
+      <tr><td class="de">ganzrationale Funktion</td><td class="en">polynomial function</td><td>多项式函数</td></tr>
+      <tr><td class="de">gebrochenrationale Funktion</td><td class="en">rational function</td><td>有理函数</td></tr>
+      <tr><td class="de">Exponential- / Logarithmusfunktion</td><td class="en">exponential / log function</td><td>指数函数 / 对数函数</td></tr>
+      <tr><td class="de">Asymptote</td><td class="en">asymptote</td><td>渐近线</td></tr>
+      <tr><td class="de">Verschiebung / Streckung / Stauchung</td><td class="en">shift / stretch / compression</td><td>平移 / 拉伸 / 压缩</td></tr>
+      <tr><td class="de">Amplitude / Periode</td><td class="en">amplitude / period</td><td>振幅 / 周期</td></tr>
+      <tr><td class="de">Grenzwert</td><td class="en">limit</td><td>极限</td></tr>
+      <tr><td class="de">konvergent / divergent</td><td class="en">convergent / divergent</td><td>收敛 / 发散</td></tr>
+      <tr><td class="de">stetig / Stetigkeit</td><td class="en">continuous / continuity</td><td>连续 / 连续性</td></tr>
+      <tr><td class="de">Zwischenwertsatz</td><td class="en">intermediate value theorem</td><td>介值定理</td></tr>
+      <tr><td class="de">Ableitung / ableiten</td><td class="en">derivative / differentiate</td><td>导数 / 求导</td></tr>
+      <tr><td class="de">Differenzen- / Differentialquotient</td><td class="en">difference / differential quotient</td><td>差商 / 微商</td></tr>
+      <tr><td class="de">Sekante / Tangente</td><td class="en">secant / tangent</td><td>割线 / 切线</td></tr>
+      <tr><td class="de">Kettenregel / Produktregel</td><td class="en">chain / product rule</td><td>链式法则 / 乘积法则</td></tr>
+      <tr><td class="de">Kurvendiskussion</td><td class="en">curve sketching</td><td>曲线讨论</td></tr>
+      <tr><td class="de">Extremstelle</td><td class="en">extremum</td><td>极值点</td></tr>
+      <tr><td class="de">Hochpunkt / Tiefpunkt</td><td class="en">maximum / minimum</td><td>极大点 / 极小点</td></tr>
+      <tr><td class="de">Wendepunkt</td><td class="en">inflection point</td><td>拐点</td></tr>
+      <tr><td class="de">Monotonie / Krümmung</td><td class="en">monotonicity / curvature</td><td>单调性 / 曲率</td></tr>
+      <tr><td class="de">Extremwertaufgabe</td><td class="en">optimisation problem</td><td>极值应用题</td></tr>
+      <tr><td class="de">Integral / integrieren</td><td class="en">integral / integrate</td><td>积分</td></tr>
+      <tr><td class="de">Stammfunktion</td><td class="en">antiderivative</td><td>原函数</td></tr>
+      <tr><td class="de">bestimmtes / unbestimmtes Integral</td><td class="en">definite / indefinite integral</td><td>定积分 / 不定积分</td></tr>
+      <tr><td class="de">Riemannsumme / Integrationsgrenzen</td><td class="en">Riemann sum / limits</td><td>黎曼和 / 积分限</td></tr>
+      <tr><td class="de">Hauptsatz</td><td class="en">fundamental theorem of calculus</td><td>微积分基本定理</td></tr>
+      <tr><td class="de">Differentialgleichung</td><td class="en">differential equation</td><td>微分方程</td></tr>
+      <tr><td class="de">exponentielles / beschränktes / logistisches Wachstum</td><td class="en">exponential / bounded / logistic growth</td><td>指数 / 有限 / 逻辑斯蒂增长</td></tr>
+      <tr><td class="de">Zerfall / Halbwertszeit</td><td class="en">decay / half-life</td><td>衰变 / 半衰期</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs4">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>Was ginge schief, wenn man das Wort «genau ein» aus der Funktionsdefinition strich? Wie prüft man mit einer senkrechten Geraden, ob ein Bild ein Funktionsgraph ist?</li>
+    <li>In welchem Verhältnis stehen die Steigung m einer linearen Funktion und die Ableitung? Warum heißt sie der Samen dieses Strangs?</li>
+    <li>Warum ist der Satz «nah genug betrachtet ist jede glatte Kurve gerade» das Fundament der ganzen Differentialrechnung?</li>
+    <li>Worin unterscheiden sich <span class="m">x²</span> und <span class="m">2ˣ</span> grundsätzlich? Warum heißt es, unsere Intuition sei linear und vieles in der Welt exponentiell?</li>
+    <li>Warum verschiebt <span class="m">f(x−2)</span> nach <em>rechts</em> und nicht nach links? Erklär es, indem du einen konkreten Punkt mitlaufen lässt.</li>
+    <li>Worauf beruht die Existenz von Grenzwerten? Welche Eigenschaft aus Strang 1 wird gebraucht, und was wäre mit bloß rationalen Zahlen?</li>
+    <li>Was ist der Unterschied zwischen «der Grenzwert ist 3» und «der Funktionswert ist 3»? Warum braucht die Definition der Ableitung unbedingt Ersteres?</li>
+    <li>Was ist die Ableitung geometrisch, physikalisch und in der Alltagssprache?</li>
+    <li>Ist <span class="m">f′ = 0</span> für ein Extremum notwendig oder hinreichend? Nenne ein Gegenbeispiel.</li>
+    <li>Warum reicht die Deutung des Integrals als «Fläche» nicht aus? Was bedeutet die Fläche in einem Geschwindigkeits-Zeit-Diagramm?</li>
+    <li>Wieso sollten Ableiten und Flächenbestimmen Umkehrungen voneinander sein? Erklär es am Bild mit dem schmalen Streifen.</li>
+    <li>Warum ist Ableiten viel leichter als das Finden einer Stammfunktion? Wo in Strang 1 ist dieses «vorwärts leicht, rückwärts schwer» schon aufgetaucht?</li>
+    <li>Warum begegnet einem die Exponentialfunktion in der Natur überall? Lösung welcher Differentialgleichung ist sie?</li>
+    <li>Zum wievielten Mal tritt in diesem Kapitel der Motor «Umkehroperation» auf? Welche waren die vorherigen Male?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strang-3-geometrie.html"><span class="dir">Vorige Seite</span><span class="t">Strang 3 · Form und Raum</span></a>
+  <a class="next" href="strang-5-stochastik.html"><span class="dir">Nächste Seite</span><span class="t">Strang 5 · Stochastik</span></a>
+</div>
+
+</main>
+</body>
+</html>

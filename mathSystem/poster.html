@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>挂墙版 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+<style>
+/* 挂墙版：一张纸装下整块大陆。
+   屏幕上和打印时用同一套布局，只切换 .sheet 的字号——
+   里面所有尺寸都是 em，所以换一个基准字号，整张图跟着等比缩放。 */
+.sheet{font-size:15px; line-height:1.5; max-width:1500px; margin:0 auto 4rem;
+  background:var(--surface-2); border:1px solid var(--rule); border-radius:4px; padding:2.2em 2.4em}
+.sheet *{box-sizing:border-box}
+.p-head{display:grid; grid-template-columns:1fr auto; gap:1.4em; align-items:end;
+  border-bottom:.18em solid var(--ink); padding-bottom:1em; margin-bottom:1.4em}
+.p-head h1{font-size:3.1em; letter-spacing:.06em; line-height:1; margin:0 0 .28em}
+.p-head .kicker{font-family:var(--f-mono); font-size:.78em; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 .7em}
+.p-head .tag{font-size:.95em; color:var(--ink-2); margin:0; max-width:34em}
+.p-key{display:grid; gap:.5em; min-width:19em}
+.p-key .row{display:grid; grid-template-columns:6.6em 1fr; gap:.8em; align-items:baseline; font-size:.8em}
+.p-key .row b{font-family:var(--f-mono); font-size:.92em; letter-spacing:.08em; text-transform:uppercase;
+  padding:.2em .5em; border-radius:.2em; border:1px solid; text-align:center; font-weight:400}
+.p-key .k1{color:var(--el1); background:var(--el1-bg); border-color:var(--el1-line)}
+.p-key .k2{color:var(--el2); background:var(--el2-bg); border-color:var(--el2-line)}
+.p-key .k3{color:var(--el3); background:var(--el3-bg); border-color:var(--el3-line)}
+.p-key p{margin:0; color:var(--ink-2); line-height:1.5}
+
+.p-scroll{overflow-x:auto; border-radius:3px}
+table.poster{width:100%; min-width:50em; border-collapse:collapse; font-size:.79em; line-height:1.55; table-layout:fixed}
+table.poster th,table.poster td{border:1px solid var(--rule); padding:.62em .7em; vertical-align:top; text-align:left}
+table.poster thead th{font-family:var(--f-mono); font-size:.92em; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:400; color:var(--ink-3); background:var(--surface); line-height:1.6}
+table.poster thead th span{display:block; color:var(--ink-2); letter-spacing:.04em; text-transform:none; font-size:.98em}
+table.poster th.s{background:var(--surface-2); font-weight:600; font-size:1.16em; letter-spacing:.02em; width:9.4em}
+table.poster th.s em{display:block; font-style:normal; font-family:var(--f-mono); font-size:.66em;
+  color:var(--ink-3); letter-spacing:.08em; margin-top:.3em; font-weight:400}
+table.poster td.c1{background:var(--el1-bg); color:var(--el1)}
+table.poster td.c2{background:var(--el2-bg); color:var(--el2)}
+table.poster td.c3{background:var(--el3-bg); color:var(--el3)}
+table.poster tr.bed th.s,table.poster tr.bed td{background:var(--surface); color:var(--ink-2); border-top:.16em solid var(--ink-3)}
+
+.p-foot{display:grid; grid-template-columns:1.15fr 1fr; gap:1.8em; margin-top:1.4em}
+.p-foot h2{font-size:1.02em; letter-spacing:.04em; margin:0 0 .7em;
+  font-family:var(--f-mono); font-size:.78em; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); font-weight:400}
+.p-foot svg{display:block; width:100%; height:auto; color:var(--ink)}
+.threads{display:grid; gap:.62em; margin:0; padding:0; list-style:none}
+.threads li{border-left:.16em solid var(--mark); padding:.1em 0 .1em .8em; font-size:.83em; line-height:1.6}
+.threads b{display:block; color:var(--ink); font-weight:600; margin-bottom:.1em}
+.threads span{color:var(--ink-2)}
+.p-sign{display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6em 1.5em;
+  border-top:1px solid var(--rule); margin-top:1.3em; padding-top:.8em;
+  font-family:var(--f-mono); font-size:.68em; letter-spacing:.1em; color:var(--ink-3)}
+
+.hint{border:1px solid var(--el2-line); background:var(--el2-bg); color:var(--el2);
+  border-radius:4px; padding:1rem 1.2rem; margin:2rem auto; max-width:1500px; font-size:.93rem; line-height:1.7}
+.hint b{color:var(--el2)}
+.hint kbd{font-family:var(--f-mono); font-size:.9em; border:1px solid currentColor; border-radius:2px; padding:.05em .35em}
+
+/* 窄屏上这张海报当然挤不下——但它至少不该把整个页面撑出横向滚动条。
+   两块并排的栏收成一栏，表格自己带横滚。 */
+@media (max-width:900px){
+  .sheet{padding:1.4em 1.2em}
+  .p-head{grid-template-columns:1fr; gap:1.6em}
+  .p-key{min-width:0}
+  .p-key .row{grid-template-columns:6.6em 1fr}
+  .p-foot{grid-template-columns:1fr; gap:2em}
+}
+@media print{
+  @page{size:A2 landscape; margin:11mm}
+  .p-scroll{overflow:visible}
+  nav.toc,.hint,header.masthead{display:none!important}
+  body{background:#fff}
+  /* 14.5pt 是量出来的：A2 横向去掉页边后可用 572×398mm，这个字号占 358mm，
+     留 40mm 缓冲，用户的打印机换字体也不会挤到第二页去。 */
+  .sheet{font-size:14.5pt; max-width:none; margin:0; padding:0; border:0; border-radius:0; background:#fff}
+  .sheet,.p-head,.p-foot,table.poster{break-inside:avoid}
+  table.poster{font-size:.82em}
+}
+</style>
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/poster.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="挂墙版 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/poster.html">
+</head>
+<body>
+<header class="masthead">
+  <div class="page-frame">
+    <p class="eyebrow">Wandposter · 附页</p>
+    <h1>挂墙版</h1>
+    <p class="sub">整本册子压缩成一张纸，贴在书桌旁边。它不解释任何东西——解释在正文里。它只干一件事：每天路过的时候，让整块大陆在余光里待着。</p>
+  </div>
+</header>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html" aria-current="page">挂墙版</a></li>
+      <li class="lang"><a href="de/poster.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hint">
+  <b>怎么印：</b>按 <kbd>Ctrl</kbd>+<kbd>P</kbd>（Mac 上是 <kbd>⌘</kbd>+<kbd>P</kbd>），纸张选 <b>A2 横向</b>，<b>背景图形打开</b>（否则三层海拔的底色不会印出来，整张表就白了）。<br>
+  版面是照着 A2 量的：正文约 9.4 pt，贴墙一米外看得清。<b>换小纸就得缩放</b>——A3 选「适合纸张」，字缩到 6.5 pt 左右，凑近能看，适合摆桌上而不是贴墙；A4 就别贴了，夹文件夹里还行。<br>
+  下面看到的就是印出来的样子。深色模式下也会自动印成白底黑字，不会浪费墨。
+</div>
+<p class="public-download"><strong>A2 单页下载：</strong> <a href="downloads/math-atlas-a2-zh.pdf">中文版 PDF</a> · <a href="downloads/math-atlas-a2-de.pdf">Deutsch PDF</a></p>
+
+<div class="sheet">
+  <div class="p-head">
+    <div>
+      <p class="kicker">Ein Atlas der Mathematik</p>
+      <h1>数学版图</h1>
+      <p class="tag">横着是<b>七条主线</b>——数学在问的七个不同问题。竖着是<b>三层海拔</b>——同一条路上的三个高度，按需要什么前置知识来分，不按年级分。底下垫着第零条：它不回答问题，它规定什么样的回答才算数。</p>
+    </div>
+    <div class="p-key">
+      <div class="row"><b class="k1">山脚</b><p>不需要前置知识。会算术、接受得了用字母代表数，今天读今天能用。</p></div>
+      <div class="row"><b class="k2">山腰</b><p>需要会解方程、认得函数和坐标系。中学后半程的分量几乎全在这一层。</p></div>
+      <div class="row"><b class="k3">山顶与远方</b><p>大学以及更远处的风景。只做导览，不要求懂——知道那儿有东西就够了。</p></div>
+    </div>
+  </div>
+
+  <div class="p-scroll">
+  <table class="poster">
+    <thead>
+      <tr>
+        <th class="s">主线 ↓ 　海拔 →</th>
+        <th style="width:25%">山脚<span>不需要前置知识</span></th>
+        <th style="width:38%">山腰<span>需要代数与函数打底</span></th>
+        <th style="width:26%">山顶与远方<span>大学以后 · 只做导览</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="s">一 · 数与数系<em>Zahlen</em></th>
+        <td class="c1">自然数与位值制 · 四则运算的多重意义 · 负数 · 分数与小数 · 素数与整除</td>
+        <td class="c2">无理数与实数轴 · 幂、根、对数三兄弟 · 科学记数法与误差 · 复数（选修）· 数列的第一瞥</td>
+        <td class="c3">可数与不可数 · 实数的严格构造 · 代数数与超越数 · 数论与 RSA 加密 · p-进数</td>
+      </tr>
+      <tr>
+        <th class="s">二 · 代数与结构<em>Algebra</em></th>
+        <td class="c1">字母代替数 · 化简与合并同类项 · 一元一次方程 · 二项公式 · 不等式</td>
+        <td class="c2">二次方程与判别式 · 因式分解 · 多项式与零点 · 线性方程组与高斯消元 · 矩阵入门</td>
+        <td class="c3">群、环、域 · 伽罗瓦理论（五次方程为何无公式）· 线性代数 I/II · 抽象代数</td>
+      </tr>
+      <tr>
+        <th class="s">三 · 形与空间<em>Geometrie</em></th>
+        <td class="c1">角与平行线 · 三角形的构造与全等 · 圆的基本量 · 面积与体积 · 对称与变换</td>
+        <td class="c2">勾股定理家族 · 相似与射线定理 · 三角学与单位圆 · 正弦余弦定理 · 向量、直线与平面、点积叉积</td>
+        <td class="c3">非欧几何 · 拓扑与欧拉公式 · 微分几何 · 射影几何 · 分形与维数</td>
+      </tr>
+      <tr>
+        <th class="s">四 · 函数与变化<em>Analysis</em></th>
+        <td class="c1">正比与反比 · 坐标系 · 一次函数与斜率 · 从表格到图像</td>
+        <td class="c2">函数动物园（幂、指、对、三角、有理式）· 平移伸缩的家族规律 · 极限直觉 · 导数与曲线讨论 · 积分与微积分基本定理 · 增长与衰减模型</td>
+        <td class="c3">ε-δ 严格化 · 多元微积分 · 级数与泰勒展开 · 傅里叶分析 · 复分析 · 微分方程</td>
+      </tr>
+      <tr>
+        <th class="s">五 · 概率与统计<em>Stochastik</em></th>
+        <td class="c1">平均数中位数 · 相对频率 · 树形图与路径法则 · 简单古典概型</td>
+        <td class="c2">组合计数与二项系数 · 条件概率与贝叶斯 · 随机变量、期望与方差 · 二项分布与正态分布 · 假设检验与两类错误</td>
+        <td class="c3">大数定律与中心极限定理 · 随机过程 · 贝叶斯统计 · 统计学习与机器学习</td>
+      </tr>
+      <tr>
+        <th class="s">六 · 离散与算法<em>Diskrete Math.</em></th>
+        <td class="c1">数列与规律 · 真与假的判断 · 二进制与其他进制 · 简单计数</td>
+        <td class="c2">递推与数学归纳法 · 图论入门（七桥问题、最短路）· 鸽笼原理 · 数值方法（牛顿法、数值积分）· 算法的步数感</td>
+        <td class="c3">复杂度与 P 对 NP · 密码学 · 编码与纠错 · 组合优化 · 计算理论</td>
+      </tr>
+      <tr>
+        <th class="s">七 · 建模与应用<em>Modellieren</em></th>
+        <td class="c1">百分比与利息 · 单位换算与量纲 · 数量级估算 · 比例尺</td>
+        <td class="c2">建模五步循环（现实→模型→求解→回译→检验）· 复利与指数增长 · 物理里的数学 · 图表如何骗人</td>
+        <td class="c3">运筹学与最优化 · 数理金融 · 数据科学 · 数学建模竞赛</td>
+      </tr>
+      <tr class="bed">
+        <th class="s">零 · 数学的语言<em>贯穿全书</em></th>
+        <td>集合与元素 · 一句话是真是假 · 「所有」和「存在」· 「当且仅当」· 举一个反例</td>
+        <td>定义、公理、定理各干什么 · 直接证明 · 反证法 · 数学归纳法 · 充分与必要 · 逆否命题</td>
+        <td>数理逻辑 · 集合论与选择公理 · 哥德尔不完备定理 · 计算机辅助证明（Lean、Coq）</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="p-foot">
+    <div>
+      <h2>主线之间怎么互相借工具</h2>
+      <svg viewBox="0 0 1000 300" role="img" aria-label="七条主线之间的主要依赖关系：数与数系向代数和几何输送工具，代数与几何经由坐标系合流成函数与分析，分析再输往概率统计与建模应用，数学的语言作为地基托着全部七条">
+        <defs>
+          <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="20" y="248" width="960" height="42" rx="4" class="svg-face" stroke-dasharray="5 4"/>
+        <text x="500" y="266" text-anchor="middle" class="svg-t">零 · 数学的语言与证明</text>
+        <text x="500" y="283" text-anchor="middle" class="svg-ts">定义 · 公理 · 定理 · 反证 · 归纳 —— 上面七条全站在这层上</text>
+
+        <rect x="20" y="98" width="160" height="62" rx="4" class="f1"/>
+        <text x="100" y="124" text-anchor="middle" class="svg-t tx1">一 · 数与数系</text>
+        <text x="100" y="144" text-anchor="middle" class="svg-ts tx1">ℕ ℤ ℚ ℝ ℂ</text>
+
+        <rect x="255" y="18" width="160" height="62" rx="4" class="f1"/>
+        <text x="335" y="44" text-anchor="middle" class="svg-t tx1">二 · 代数与结构</text>
+        <text x="335" y="64" text-anchor="middle" class="svg-ts tx1">把未知数逼出来</text>
+
+        <rect x="255" y="178" width="160" height="62" rx="4" class="f1"/>
+        <text x="335" y="204" text-anchor="middle" class="svg-t tx1">三 · 形与空间</text>
+        <text x="335" y="224" text-anchor="middle" class="svg-ts tx1">图形与度量</text>
+
+        <rect x="490" y="98" width="170" height="62" rx="4" class="f2"/>
+        <text x="575" y="124" text-anchor="middle" class="svg-t tx2">四 · 函数与变化</text>
+        <text x="575" y="144" text-anchor="middle" class="svg-ts tx2">中学的重头戏</text>
+
+        <rect x="740" y="18" width="170" height="62" rx="4" class="f2"/>
+        <text x="825" y="44" text-anchor="middle" class="svg-t tx2">五 · 概率与统计</text>
+        <text x="825" y="64" text-anchor="middle" class="svg-ts tx2">说不准的事</text>
+
+        <rect x="740" y="178" width="170" height="62" rx="4" class="f2"/>
+        <text x="825" y="204" text-anchor="middle" class="svg-t tx2">七 · 建模与应用</text>
+        <text x="825" y="224" text-anchor="middle" class="svg-ts tx2">咬住现实</text>
+
+        <rect x="490" y="14" width="170" height="26" rx="4" class="f3"/>
+        <text x="575" y="31" text-anchor="middle" class="svg-ts tx3">六 · 离散与算法</text>
+
+        <path d="M 180 116 L 249 52" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 180 146 L 249 206" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 415 58 L 484 112" class="svg-l" marker-end="url(#pa)"/>
+        <text x="418" y="96" class="svg-tm txm">坐标系</text>
+        <path d="M 415 202 L 484 148" class="svg-l" marker-end="url(#pa)"/>
+        <text x="418" y="184" class="svg-tm txm">这座桥</text>
+        <path d="M 660 116 L 734 58" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 660 146 L 734 202" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 575 94 L 575 44" class="svg-l-soft" stroke-dasharray="4 4" marker-end="url(#pa)"/>
+        <path d="M 500 244 L 500 166" class="svg-l-soft" stroke-dasharray="4 4"/>
+        <path d="M 100 244 L 100 164" class="svg-l-soft" stroke-dasharray="4 4"/>
+        <path d="M 825 244 L 825 244" class="svg-l-soft" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+    <div>
+      <h2>四条贯穿全书的暗线</h2>
+      <ul class="threads">
+        <li><b>同一台引擎，装了五次</b><span>减法是加法的逆，除法是乘法的逆，开方和对数是乘方的逆，积分是求导的逆，统计是概率的逆。每次都是「把一个已知的操作倒过来问」，每次都逼出新东西。</span></li>
+        <li><b>正着做容易，倒着做难</b><span>两个大素数相乘一秒钟，把乘积拆回去几万年——整个网络的加密就靠这个不对称。求导有固定套路，求积分要靠猜。</span></li>
+        <li><b>最深的结论常常是「做不到」</b><span>√2 写不成分数、五次方程没有求根公式、尺规三等分角不可能、哥德尔说有些真命题证不出来。数学最硬的成果，往往是划定边界而不是拓展疆土。</span></li>
+        <li><b>P(A|B) 不等于 P(B|A)</b><span>这个错误追着主线五、主线七、主线零跑了一路：检测呈阳性不等于真的有病，符合模型不等于模型是对的。混淆这两个方向，是现实世界里代价最高的数学错误。</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="p-sign">
+    <span>七条主线 · 三层海拔 · 114 个知识点</span>
+    <span>正文、工具箱、实验室、进度表见完整册子</span>
+    <span>Ein Atlas der Mathematik · 中文版 / Deutsche Fassung</span>
+  </div>
+</div>
+</body>
+</html>

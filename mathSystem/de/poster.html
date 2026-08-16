@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wandposter · Atlas der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+<style>
+/* Wandposter: der ganze Kontinent auf einem Blatt.
+   Bildschirm und Druck teilen sich dasselbe Layout, nur die Grundschrift von .sheet wechselt —
+   alle Maße darin sind em, also skaliert das Blatt komplett mit. */
+.sheet{font-size:15px; line-height:1.5; max-width:1500px; margin:0 auto 4rem;
+  background:var(--surface-2); border:1px solid var(--rule); border-radius:4px; padding:2.2em 2.4em}
+.sheet *{box-sizing:border-box}
+.p-head{display:grid; grid-template-columns:1fr auto; gap:1.4em; align-items:end;
+  border-bottom:.18em solid var(--ink); padding-bottom:1em; margin-bottom:1.4em}
+.p-head h1{font-size:3.1em; letter-spacing:.06em; line-height:1; margin:0 0 .28em}
+.p-head .kicker{font-family:var(--f-mono); font-size:.78em; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 .7em}
+.p-head .tag{font-size:.95em; color:var(--ink-2); margin:0; max-width:34em}
+.p-key{display:grid; gap:.5em; min-width:21em}
+.p-key .row{display:grid; grid-template-columns:8.6em 1fr; gap:.8em; align-items:baseline; font-size:.8em}
+.p-key .row b{font-family:var(--f-mono); font-size:.92em; letter-spacing:.08em; text-transform:uppercase;
+  padding:.2em .5em; border-radius:.2em; border:1px solid; text-align:center; font-weight:400}
+.p-key .k1{color:var(--el1); background:var(--el1-bg); border-color:var(--el1-line)}
+.p-key .k2{color:var(--el2); background:var(--el2-bg); border-color:var(--el2-line)}
+.p-key .k3{color:var(--el3); background:var(--el3-bg); border-color:var(--el3-line)}
+.p-key p{margin:0; color:var(--ink-2); line-height:1.5}
+
+.p-scroll{overflow-x:auto; border-radius:3px}
+table.poster{width:100%; min-width:50em; border-collapse:collapse; font-size:.79em; line-height:1.55; table-layout:fixed}
+table.poster th,table.poster td{border:1px solid var(--rule); padding:.62em .7em; vertical-align:top; text-align:left}
+table.poster thead th{font-family:var(--f-mono); font-size:.92em; letter-spacing:.1em; text-transform:uppercase;
+  font-weight:400; color:var(--ink-3); background:var(--surface); line-height:1.6}
+table.poster thead th span{display:block; color:var(--ink-2); letter-spacing:.04em; text-transform:none; font-size:.98em}
+table.poster th.s{background:var(--surface-2); font-weight:600; font-size:1.16em; letter-spacing:.02em; width:9.8em}
+table.poster th.s em{display:block; font-style:normal; font-family:var(--f-mono); font-size:.66em;
+  color:var(--ink-3); letter-spacing:.08em; margin-top:.3em; font-weight:400}
+table.poster td.c1{background:var(--el1-bg); color:var(--el1)}
+table.poster td.c2{background:var(--el2-bg); color:var(--el2)}
+table.poster td.c3{background:var(--el3-bg); color:var(--el3)}
+table.poster tr.bed th.s,table.poster tr.bed td{background:var(--surface); color:var(--ink-2); border-top:.16em solid var(--ink-3)}
+
+.p-foot{display:grid; grid-template-columns:1.15fr 1fr; gap:1.8em; margin-top:1.4em}
+.p-foot h2{margin:0 0 .7em; font-family:var(--f-mono); font-size:.78em; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:400}
+.p-foot svg{display:block; width:100%; height:auto; color:var(--ink)}
+.threads{display:grid; gap:.62em; margin:0; padding:0; list-style:none}
+.threads li{border-left:.16em solid var(--mark); padding:.1em 0 .1em .8em; font-size:.83em; line-height:1.6}
+.threads b{display:block; color:var(--ink); font-weight:600; margin-bottom:.1em}
+.threads span{color:var(--ink-2)}
+.p-sign{display:flex; justify-content:space-between; flex-wrap:wrap; gap:.6em 1.5em;
+  border-top:1px solid var(--rule); margin-top:1.3em; padding-top:.8em;
+  font-family:var(--f-mono); font-size:.68em; letter-spacing:.1em; color:var(--ink-3)}
+
+.hint{border:1px solid var(--el2-line); background:var(--el2-bg); color:var(--el2);
+  border-radius:4px; padding:1rem 1.2rem; margin:2rem auto; max-width:1500px; font-size:.93rem; line-height:1.7}
+.hint b{color:var(--el2)}
+.hint kbd{font-family:var(--f-mono); font-size:.9em; border:1px solid currentColor; border-radius:2px; padding:.05em .35em}
+
+/* Auf schmalen Bildschirmen passt das Poster natürlich nicht — es soll aber wenigstens
+   nicht die ganze Seite waagerecht aufziehen. Nebeneinander wird untereinander,
+   die Tabelle bekommt ihren eigenen Scrollbereich. */
+@media (max-width:900px){
+  .sheet{padding:1.4em 1.2em}
+  .p-head{grid-template-columns:1fr; gap:1.6em}
+  .p-key{min-width:0}
+  .p-key .row{grid-template-columns:7.4em 1fr}
+  .p-foot{grid-template-columns:1fr; gap:2em}
+}
+@media print{
+  @page{size:A2 landscape; margin:11mm}
+  .p-scroll{overflow:visible}
+  nav.toc,.hint,header.masthead{display:none!important}
+  body{background:#fff}
+  /* 13,2 pt ist ausgemessen: A2 quer bietet nach Rändern 572×398 mm, das Blatt braucht damit
+     362 mm — 36 mm Luft. Die chinesische Fassung verträgt 14,5 pt; der deutsche Text ist
+     schlicht länger und würde bei derselben Größe auf Seite zwei rutschen. */
+  .sheet{font-size:13.2pt; max-width:none; margin:0; padding:0; border:0; border-radius:0; background:#fff}
+  .sheet,.p-head,.p-foot,table.poster{break-inside:avoid}
+  table.poster{font-size:.82em}
+}
+</style>
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/poster.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wandposter · Atlas der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/poster.html">
+</head>
+<body>
+<header class="masthead">
+  <div class="page-frame">
+    <p class="eyebrow">Wandposter · Anhang</p>
+    <h1>Wandposter</h1>
+    <p class="sub">Der ganze Atlas auf ein Blatt gepresst, zum Aufhängen neben dem Schreibtisch. Es erklärt nichts — das Erklären steht im Haupttext. Es tut nur eines: dafür sorgen, dass der ganze Kontinent jeden Tag im Augenwinkel liegt.</p>
+  </div>
+</header>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html" aria-current="page">Wandposter</a></li>
+      <li class="lang"><a href="../poster.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hint">
+  <b>So wird gedruckt:</b> <kbd>Strg</kbd>+<kbd>P</kbd> (auf dem Mac <kbd>⌘</kbd>+<kbd>P</kbd>), Papier auf <b>A2 quer</b>, und <b>Hintergrundgrafiken einschalten</b> — sonst fehlen die Farben der drei Höhenstufen und die Tabelle wird weiß.<br>
+  Das Layout ist auf A2 ausgemessen: Fließtext rund 8,6 pt, aus einem Meter Abstand an der Wand gut lesbar. <b>Kleineres Papier heißt skalieren</b> — auf A3 «An Seite anpassen» wählen, dann schrumpft die Schrift auf etwa 6 pt; von Nahem lesbar, also eher für den Schreibtisch als für die Wand. A4 gehört nicht an die Wand, höchstens in den Ordner.<br>
+  Unten siehst du genau das, was aus dem Drucker kommt. Im Dunkelmodus wird trotzdem schwarz auf weiß gedruckt, es geht also keine Tinte verloren.
+</div>
+<p class="public-download"><strong>A2-Einzelseite:</strong> <a href="../downloads/math-atlas-a2-de.pdf">Deutsches PDF</a> · <a href="../downloads/math-atlas-a2-zh.pdf">中文版 PDF</a></p>
+
+<div class="sheet">
+  <div class="p-head">
+    <div>
+      <p class="kicker">Ein Atlas der Mathematik</p>
+      <h1>Landkarte der Mathematik</h1>
+      <p class="tag">Waagerecht liegen die <b>sieben Stränge</b> — sieben verschiedene Fragen, die die Mathematik stellt. Senkrecht stehen die <b>drei Höhenstufen</b> — drei Höhen auf demselben Weg, eingeteilt nach dem nötigen Vorwissen, nicht nach Klassenstufe. Darunter liegt Strang 0: Er beantwortet keine Frage, er legt fest, was überhaupt als Antwort zählt.</p>
+    </div>
+    <div class="p-key">
+      <div class="row"><b class="k1">Talboden</b><p>Kein Vorwissen nötig. Wer rechnen kann und Buchstaben für Zahlen akzeptiert, kommt hier heute schon durch.</p></div>
+      <div class="row"><b class="k2">Hangweg</b><p>Gleichungen lösen, Funktionen und Koordinaten kennen. Fast das gesamte Gewicht der Oberstufe liegt auf dieser Stufe.</p></div>
+      <div class="row"><b class="k3">Gipfel &amp; Fernsicht</b><p>Die Aussicht ab der Uni und weiter. Nur zur Orientierung — es reicht zu wissen, dass es das gibt.</p></div>
+    </div>
+  </div>
+
+  <div class="p-scroll">
+  <table class="poster">
+    <thead>
+      <tr>
+        <th class="s">Strang ↓ 　Höhe →</th>
+        <th style="width:25%">Talboden<span>Kein Vorwissen nötig</span></th>
+        <th style="width:38%">Hangweg<span>Algebra und Funktionen nötig</span></th>
+        <th style="width:26%">Gipfel &amp; Fernsicht<span>Ab der Uni · nur Aussicht</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="s">1 · Zahlen<em>Zahlbereiche</em></th>
+        <td class="c1">Natürliche Zahlen und Stellenwertsystem · die vielen Bedeutungen der Grundrechenarten · negative Zahlen · Brüche und Dezimalzahlen · Primzahlen und Teilbarkeit</td>
+        <td class="c2">Irrationale Zahlen und Zahlengerade · Potenz, Wurzel, Logarithmus als Dreigespann · Zehnerpotenzen und Fehler · komplexe Zahlen (optional) · erster Blick auf Folgen</td>
+        <td class="c3">Abzählbar und überabzählbar · strenge Konstruktion der reellen Zahlen · algebraische und transzendente Zahlen · Zahlentheorie und RSA · p-adische Zahlen</td>
+      </tr>
+      <tr>
+        <th class="s">2 · Algebra<em>Struktur</em></th>
+        <td class="c1">Buchstaben statt Zahlen · Terme vereinfachen und zusammenfassen · lineare Gleichungen · binomische Formeln · Ungleichungen</td>
+        <td class="c2">Quadratische Gleichungen und Diskriminante · Faktorisieren · Polynome und Nullstellen · lineare Gleichungssysteme und Gauß-Verfahren · Einstieg in Matrizen</td>
+        <td class="c3">Gruppen, Ringe, Körper · Galois-Theorie (warum es für Grad fünf keine Formel gibt) · Lineare Algebra I/II · abstrakte Algebra</td>
+      </tr>
+      <tr>
+        <th class="s">3 · Form &amp; Raum<em>Geometrie</em></th>
+        <td class="c1">Winkel und Parallelen · Dreieckskonstruktion und Kongruenz · Grundgrößen am Kreis · Flächen und Volumina · Symmetrie und Abbildungen</td>
+        <td class="c2">Die Pythagoras-Familie · Ähnlichkeit und Strahlensätze · Trigonometrie und Einheitskreis · Sinus- und Kosinussatz · Vektoren, Geraden und Ebenen, Skalar- und Kreuzprodukt</td>
+        <td class="c3">Nichteuklidische Geometrie · Topologie und Eulerscher Polyedersatz · Differentialgeometrie · projektive Geometrie · Fraktale und Dimension</td>
+      </tr>
+      <tr>
+        <th class="s">4 · Funktionen<em>Analysis</em></th>
+        <td class="c1">Proportional und antiproportional · Koordinatensystem · lineare Funktionen und Steigung · von der Tabelle zum Graphen</td>
+        <td class="c2">Der Funktionen-Zoo (Potenz, Exponential, Logarithmus, Trigonometrie, gebrochenrational) · Verschieben und Strecken als Familienregel · Grenzwert-Intuition · Ableitung und Kurvendiskussion · Integral und Hauptsatz · Wachstums- und Zerfallsmodelle</td>
+        <td class="c3">ε-δ-Strenge · mehrdimensionale Analysis · Reihen und Taylorentwicklung · Fourier-Analysis · Funktionentheorie · Differentialgleichungen</td>
+      </tr>
+      <tr>
+        <th class="s">5 · Stochastik<em>Zufall &amp; Daten</em></th>
+        <td class="c1">Mittelwert, Median, Streuung · relative Häufigkeit · Baumdiagramm und Pfadregeln · einfache Laplace-Experimente</td>
+        <td class="c2">Kombinatorik und Binomialkoeffizienten · bedingte Wahrscheinlichkeit und Bayes · Zufallsvariable, Erwartungswert, Varianz · Binomial- und Normalverteilung · Hypothesentest und die beiden Fehlerarten</td>
+        <td class="c3">Gesetz der großen Zahlen und zentraler Grenzwertsatz · stochastische Prozesse · Bayes-Statistik · statistisches Lernen und maschinelles Lernen</td>
+      </tr>
+      <tr>
+        <th class="s">6 · Diskretes<em>Algorithmen</em></th>
+        <td class="c1">Folgen und Muster · wahr oder falsch entscheiden · Dual- und andere Stellenwertsysteme · einfaches Abzählen</td>
+        <td class="c2">Rekursion und vollständige Induktion · Einstieg in die Graphentheorie (Königsberger Brücken, kürzeste Wege) · Schubfachprinzip · numerische Verfahren (Newton, numerische Integration) · Gefühl für Schrittzahlen</td>
+        <td class="c3">Komplexität und P gegen NP · Kryptographie · Codierung und Fehlerkorrektur · kombinatorische Optimierung · Berechenbarkeitstheorie</td>
+      </tr>
+      <tr>
+        <th class="s">7 · Modellieren<em>Anwendung</em></th>
+        <td class="c1">Prozent und Zinsen · Einheiten und Größen · Größenordnungen abschätzen · Maßstab</td>
+        <td class="c2">Der Modellierungskreislauf (Wirklichkeit → Modell → Lösung → Rückübersetzung → Prüfung) · Zinseszins und exponentielles Wachstum · Mathematik in der Physik · wie Diagramme täuschen</td>
+        <td class="c3">Operations Research und Optimierung · Finanzmathematik · Data Science · Modellierungswettbewerbe</td>
+      </tr>
+      <tr class="bed">
+        <th class="s">0 · Sprache<em>durchgehend</em></th>
+        <td>Mengen und Elemente · ist ein Satz wahr oder falsch · «für alle» und «es existiert» · «genau dann, wenn» · ein Gegenbeispiel finden</td>
+        <td>Was Definition, Axiom und Satz jeweils tun · direkter Beweis · Widerspruchsbeweis · vollständige Induktion · hinreichend und notwendig · Kontraposition</td>
+        <td>Mathematische Logik · Mengenlehre und Auswahlaxiom · Gödels Unvollständigkeitssätze · computergestützte Beweise (Lean, Coq)</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="p-foot">
+    <div>
+      <h2>Wer bei wem Werkzeug borgt</h2>
+      <svg viewBox="0 0 1000 300" role="img" aria-label="Die wichtigsten Abhängigkeiten zwischen den sieben Strängen: Zahlen liefern Werkzeug an Algebra und Geometrie, über das Koordinatensystem fließen beide in die Analysis zusammen, von dort weiter in Stochastik und Modellieren; die Sprache der Mathematik trägt als Fundament alle sieben">
+        <defs>
+          <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <rect x="20" y="248" width="960" height="42" rx="4" class="svg-face" stroke-dasharray="5 4"/>
+        <text x="500" y="266" text-anchor="middle" class="svg-t">0 · Sprache und Beweis</text>
+        <text x="500" y="283" text-anchor="middle" class="svg-ts">Definition · Axiom · Satz · Widerspruch · Induktion — darauf stehen alle sieben</text>
+
+        <rect x="20" y="98" width="160" height="62" rx="4" class="f1"/>
+        <text x="100" y="124" text-anchor="middle" class="svg-t tx1">1 · Zahlen</text>
+        <text x="100" y="144" text-anchor="middle" class="svg-ts tx1">ℕ ℤ ℚ ℝ ℂ</text>
+
+        <rect x="255" y="18" width="160" height="62" rx="4" class="f1"/>
+        <text x="335" y="44" text-anchor="middle" class="svg-t tx1">2 · Algebra</text>
+        <text x="335" y="64" text-anchor="middle" class="svg-ts tx1">das x herausholen</text>
+
+        <rect x="255" y="178" width="160" height="62" rx="4" class="f1"/>
+        <text x="335" y="204" text-anchor="middle" class="svg-t tx1">3 · Form &amp; Raum</text>
+        <text x="335" y="224" text-anchor="middle" class="svg-ts tx1">Figur und Maß</text>
+
+        <rect x="490" y="98" width="170" height="62" rx="4" class="f2"/>
+        <text x="575" y="124" text-anchor="middle" class="svg-t tx2">4 · Funktionen</text>
+        <text x="575" y="144" text-anchor="middle" class="svg-ts tx2">Schwergewicht</text>
+
+        <rect x="740" y="18" width="170" height="62" rx="4" class="f2"/>
+        <text x="825" y="44" text-anchor="middle" class="svg-t tx2">5 · Stochastik</text>
+        <text x="825" y="64" text-anchor="middle" class="svg-ts tx2">das Ungewisse</text>
+
+        <rect x="740" y="178" width="170" height="62" rx="4" class="f2"/>
+        <text x="825" y="204" text-anchor="middle" class="svg-t tx2">7 · Modellieren</text>
+        <text x="825" y="224" text-anchor="middle" class="svg-ts tx2">die Wirklichkeit</text>
+
+        <rect x="490" y="14" width="170" height="26" rx="4" class="f3"/>
+        <text x="575" y="31" text-anchor="middle" class="svg-ts tx3">6 · Diskretes</text>
+
+        <path d="M 180 116 L 249 52" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 180 146 L 249 206" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 415 58 L 484 112" class="svg-l" marker-end="url(#pa)"/>
+        <text x="420" y="96" class="svg-tm txm">die Brücke</text>
+        <path d="M 415 202 L 484 148" class="svg-l" marker-end="url(#pa)"/>
+        <text x="420" y="186" class="svg-tm txm">Koordinaten</text>
+        <path d="M 660 116 L 734 58" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 660 146 L 734 202" class="svg-l" marker-end="url(#pa)"/>
+        <path d="M 575 94 L 575 44" class="svg-l-soft" stroke-dasharray="4 4" marker-end="url(#pa)"/>
+        <path d="M 500 244 L 500 166" class="svg-l-soft" stroke-dasharray="4 4"/>
+        <path d="M 100 244 L 100 164" class="svg-l-soft" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+    <div>
+      <h2>Vier Linien, die durch alles hindurchlaufen</h2>
+      <ul class="threads">
+        <li><b>Dieselbe Maschine, fünfmal eingebaut</b><span>Subtraktion kehrt Addition um, Division die Multiplikation, Wurzel und Logarithmus das Potenzieren, Integrieren das Ableiten, Statistik die Wahrscheinlichkeit. Jedes Mal wird eine bekannte Operation rückwärts gefragt — und jedes Mal fällt dabei etwas Neues heraus.</span></li>
+        <li><b>Vorwärts leicht, rückwärts schwer</b><span>Zwei große Primzahlen multiplizieren dauert eine Sekunde, das Produkt zurückzerlegen Jahrtausende — auf dieser Asymmetrie beruht die Verschlüsselung des ganzen Netzes. Ableiten folgt festen Regeln, Integrieren lebt vom Raten.</span></li>
+        <li><b>Die tiefsten Sätze sagen «geht nicht»</b><span>√2 lässt sich nicht als Bruch schreiben, für Grad fünf gibt es keine Lösungsformel, der Winkel lässt sich mit Zirkel und Lineal nicht dritteln, und Gödel zeigt: Manche wahren Aussagen sind unbeweisbar. Die härtesten Ergebnisse ziehen Grenzen, statt Gebiet zu gewinnen.</span></li>
+        <li><b>P(A|B) ist nicht P(B|A)</b><span>Dieser Fehler zieht sich quer durch Strang 5, Strang 7 und Strang 0: Ein positiver Test heißt nicht, dass man krank ist; zum Modell passende Daten heißen nicht, dass das Modell stimmt. Die beiden Richtungen zu verwechseln ist der teuerste Mathematikfehler der wirklichen Welt.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="p-sign">
+    <span>Sieben Stränge · drei Höhenstufen · 114 Themen</span>
+    <span>Haupttext, Werkzeugkasten, Labor und Fortschritt im vollständigen Atlas</span>
+    <span>Ein Atlas der Mathematik · Deutsche Fassung / 中文版</span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 2 · Algebra und Struktur · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-2-algebra.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 2 · Algebra und Struktur · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-2-algebra.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html" aria-current="page">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-2-algebra.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 2</h1>
+
+<section id="s2">
+  <h2 class="sec"><span class="num">Strang 2</span>Algebra und Struktur</h2>
+  <p class="sec-lead">Die Algebra begann als bloßes Handwerk: <strong>wie hole ich das x heraus?</strong> Doch unterwegs merkten die Mathematiker, dass nicht der Wert von x das Entscheidende ist, sondern <strong>die Rechengesetze selbst</strong>. So wurde aus der «Technik des Gleichungslösens» die «Wissenschaft von den Strukturen» — und von diesem Rollenwechsel handelt dieser Strang.</p>
+
+  <p>Der entscheidende Moment hängt an einer sehr konkreten Frage: <strong>Gibt es für Gleichungen fünften Grades eine Lösungsformel?</strong></p>
+
+  <p>Lineare Gleichungen sind mit Umstellen erledigt. Für quadratische gibt es eine Lösungsformel, die schon die Babylonier vor viertausend Jahren kannten. Die Formeln für Grad drei und vier haben sich die italienischen Rechenmeister des 16. Jahrhunderts unter erbittertem Streit erkämpft (und dabei nebenbei die komplexen Zahlen erzwungen, siehe Strang 1, Karte 1.9). Nach dieser Logik müsste die Formel für Grad fünf einfach nur noch länger und hässlicher sein.</p>
+
+  <p>Sie ist es nicht: <strong>Es gibt sie nicht.</strong> Und zwar nicht, weil niemand schlau genug gewesen wäre — sondern weil jemand bewiesen hat, dass sie <em>unmöglich</em> ist.</p>
+
+  <figure>
+    <svg viewBox="0 0 700 290" role="img" aria-label="Die vier Stufen der Lösbarkeit: lineare Gleichungen durch Umstellen, quadratische mit Formel, dritten und vierten Grades mit sehr komplizierten Formeln, ab dem fünften Grad gibt es beweisbar keine.">
+      <defs>
+        <marker id="b0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="30" y="210" width="150" height="50" rx="4" class="f1"/>
+      <text x="105" y="232" text-anchor="middle" class="svg-t tx1">Grad 1</text>
+      <text x="105" y="250" text-anchor="middle" class="svg-ts tx1">nur umstellen</text>
+
+      <rect x="196" y="158" width="150" height="102" rx="4" class="f1"/>
+      <text x="271" y="180" text-anchor="middle" class="svg-t tx1">Grad 2</text>
+      <text x="271" y="198" text-anchor="middle" class="svg-ts tx1">quadratische Ergänzung</text>
+      <text x="271" y="216" text-anchor="middle" class="svg-ts tx1">→ Lösungsformel</text>
+      <text x="271" y="240" text-anchor="middle" class="svg-ts tx1">Babylon, um 2000 v. Chr.</text>
+
+      <rect x="362" y="106" width="150" height="154" rx="4" class="f2"/>
+      <text x="437" y="128" text-anchor="middle" class="svg-t tx2">Grad 3 und 4</text>
+      <text x="437" y="146" text-anchor="middle" class="svg-ts tx2">Formel gibt es,</text>
+      <text x="437" y="164" text-anchor="middle" class="svg-ts tx2">aber sehr kompliziert</text>
+      <text x="437" y="188" text-anchor="middle" class="svg-ts tx2">Italien, 16. Jahrhundert</text>
+
+      <rect x="528" y="30" width="142" height="230" rx="4" class="fm"/>
+      <text x="599" y="54" text-anchor="middle" class="svg-t txm">Ab Grad 5</text>
+      <text x="599" y="76" text-anchor="middle" class="svg-ts txm">keine Lösungsformel</text>
+      <text x="599" y="98" text-anchor="middle" class="svg-t txm">unmöglich</text>
+      <text x="599" y="124" text-anchor="middle" class="svg-ts txm">nicht «nicht gefunden»,</text>
+      <text x="599" y="142" text-anchor="middle" class="svg-ts txm">sondern bewiesen</text>
+      <text x="599" y="168" text-anchor="middle" class="svg-ts txm">Abel 1824</text>
+      <text x="599" y="186" text-anchor="middle" class="svg-ts txm">Galois 1832</text>
+
+      <path d="M 186 235 L 192 235" class="svg-l" marker-end="url(#b0)"/>
+      <path d="M 352 209 L 358 209" class="svg-l" marker-end="url(#b0)"/>
+      <path d="M 518 183 L 524 183" class="svg-l" marker-end="url(#b0)"/>
+
+      <text x="350" y="284" text-anchor="middle" class="svg-tm">Immer schwerer — bis eine Stufe nicht «schwerer», sondern gar nicht vorhanden ist</text>
+    </svg>
+    <figcaption><b>Diese Wand ist der Wendepunkt des ganzen Strangs.</b> Um zu klären, <em>warum</em> es unmöglich ist, musste Galois die <b>Symmetrien</b> zwischen den Lösungen untersuchen — der Gegenstand wechselte von «Zahlen» zu «Strukturen». Von da an war die Algebra eine andere Wissenschaft. Es ist dieselbe Art von Tiefe wie bei Gödel in Strang 0: <b>Die großartigsten Ergebnisse der Mathematik sind oft Beweise dafür, dass etwas nicht geht.</b></figcaption>
+  </figure>
+
+  <p>Die folgenden neun Karten: die ersten sechs sind das Handwerk des Gleichungslösens, das in den nächsten Jahren täglich gebraucht wird; die letzten drei bewegen sich schon auf die Struktur zu.</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Buchstaben statt Zahlen · der erste Schritt der Algebra</h3>
+      <p class="de">Variable · Term</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ein Buchstabe steht für eine Zahl — für eine, die man noch nicht kennt, oder für eine, die sich ändert. Mit dieser einen Bewegung wurde aus «eine Aufgabe rechnen» plötzlich «eine ganze Sorte Aufgaben rechnen».</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Bevor Buchstaben in die Mathematik kamen, musste jede Aufgabe von vorn erzählt werden. «Ich habe einen Haufen Äpfel, nehme drei weg, es bleiben fünf — wie viele waren es?» Wer eine allgemeine Regel aussprechen wollte, konnte nur Beispiel um Beispiel aufzählen.</p>
+        <p>Mit Buchstaben sagt die eine Zeile <span class="m">(a+b)² = a² + 2ab + b²</span> auf einen Schlag <em>unendlich viele</em> Rechnungen. Das ist das lohnendste Geschäft der Mathematikgeschichte.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Eine Unterscheidung, die kaum jemand ausspricht: Buchstaben haben drei Rollen</span>
+        <p>Derselbe Buchstabe bedeutet in drei Situationen etwas völlig Verschiedenes. Wer die drei nicht trennt, hat beim Rechnen oft das Gefühl, «dieses x scheint ein anderes zu sein als das eben» — und das ist tatsächlich so.</p>
+        <div class="demo">
+          <p><strong>Erstens: die Unbekannte.</strong> Das x in <span class="m">x² = 4</span>. Es hat einen festen Wert, wir kennen ihn nur noch nicht; nach dem Lösen steht er fest. <em>Es wartet darauf, gefangen zu werden.</em></p>
+          <p><strong>Zweitens: die Variable.</strong> Das x in <span class="m">f(x) = x²</span>. Es wartet auf gar nichts, es <em>durchläuft alle Werte</em> und liefert zu jedem ein Ergebnis. Das ist der Hauptdarsteller von Strang 4.</p>
+          <p><strong>Drittens: der Parameter.</strong> Die a, b, c in <span class="m">ax² + bx + c = 0</span>. In einer konkreten Aufgabe sind sie fest, als Buchstabe geschrieben stehen sie für «irgendeine Koeffizientenwahl». <em>Sie bedeuten «ein beliebiges».</em></p>
+        </div>
+        <p>Die Lösungsformel ist gerade deshalb so mächtig, weil sie alle drei Rollen gleichzeitig benutzt: <em>eine mit Parametern (a, b, c) formulierte Antwort über die Unbekannte (x), die für alle Fälle gilt.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Grundrechenarten und Umkehroperation (Strang 1, 1.3) · die Erfindung der Zeichen (Strang 0, 0.8)</div>
+          <div><span class="lbl">Wohin</span>Dieser ganze Strang · Funktionen (Strang 4) · Formeln und Modellieren (Strang 7) · überall dort, wo mit Zeichen eine allgemeine Regel ausgedrückt wird</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Was heißt «gleichartige Glieder»?</strong> <span class="m">3a</span> und <span class="m">5a</span> lassen sich zu <span class="m">8a</span> zusammenfassen, <span class="m">3a</span> und <span class="m">5a²</span> nicht. Der Grund ist schlicht: <span class="m">a</span> und <span class="m">a²</span> sind zwei verschiedene Dinge, so wie 3 Äpfel plus 5 Orangen keine 8 Irgendwas ergeben.</p>
+          <p>Das Kriterium lautet: <em>Der Buchstabenteil muss vollständig übereinstimmen</em> — dieselben Buchstaben mit denselben Exponenten. <span class="m">2xy</span> und <span class="m">5yx</span> sind gleichartig (Multiplikation ist kommutativ), <span class="m">2xy</span> und <span class="m">5x²y</span> nicht.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Variable</b> variable</span>
+          <span><b>Unbekannte</b> unknown</span>
+          <span><b>Term</b> expression</span>
+          <span><b>Koeffizient</b> coefficient</span>
+          <span><b>gleichartige Glieder</b> like terms</span>
+          <span><b>Platzhalter</b> placeholder</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">Beachte den Unterschied zwischen <span class="m-up m">Term</span> (ein Ausdruck wie <span class="m">3x+2</span>) und <span class="m-up m">Gleichung</span> (eine Behauptung wie <span class="m">3x+2=0</span>): Ein Term hat keinen Wahrheitswert, eine Gleichung schon (zurück zu Strang 0, 0.2). Das Deutsche trennt hier sauber — im Chinesischen heißt beides oft «Ausdruck» und ist dadurch unschärfer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Terme umformen · das Distributivgesetz ist der einzige Motor</h3>
+      <p class="de">Termumformung · binomische Formeln</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ausmultiplizieren, zusammenfassen, ausklammern — das ganze Handwerk der Algebrastunde benutzt im Grunde ein einziges Gesetz: <span class="m">a(b+c) = ab + ac</span>.</p>
+
+      <div class="field">
+        <span class="lbl">Ein Gesetz, zwei Richtungen</span>
+        <p>Von links nach rechts gelesen ist das Distributivgesetz das <strong>Ausmultiplizieren</strong>: die Klammer wird aufgelöst. Von rechts nach links gelesen ist es das <strong>Ausklammern</strong>: die Klammer wird herausgezogen.</p>
+        <p>Die beiden sehen entgegengesetzt aus, sind aber zweimal dasselbe Gesetz. Und die ganze Kunst des algebraischen Rechnens besteht letztlich darin, <em>in jedem Moment zu entscheiden, in welche Richtung man gehen soll</em> — zum Ausrechnen multipliziert man aus, zum Gleichungslösen klammert man aus (siehe 2.6).</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Die drei binomischen Formeln</span>
+        <p>Die folgenden drei heißen in deutschen Lehrbüchern <span class="m-up m">binomische Formeln</span> und sind mit 1, 2, 3 durchnummeriert; sie werden im Unterricht immer wieder namentlich aufgerufen. Neu ist daran nichts — alle drei sind zweimal angewandtes Distributivgesetz. Aber weil sie so oft vorkommen, lohnt es sich, sie auf einen Blick zu erkennen:</p>
+        <div class="demo">
+          <p class="calc">① &nbsp;(a + b)² = a² + 2ab + b²<br>② &nbsp;(a − b)² = a² − 2ab + b²<br>③ &nbsp;(a + b)(a − b) = a² − b²</p>
+          <p>Besonders die dritte ist wertvoll, weil sie eine Differenz von Quadraten in ein Produkt verwandelt — und genau in diese Richtung will man beim Faktorisieren.</p>
+        </div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 330" role="img" aria-label="Ein Quadrat mit Seitenlänge a plus b zerfällt in vier Teile: a zum Quadrat, zwei Rechtecke a mal b und b zum Quadrat.">
+          <rect x="230" y="40" width="150" height="150" class="f1"/>
+          <text x="305" y="120" text-anchor="middle" class="svg-t tx1">a²</text>
+
+          <rect x="380" y="40" width="90" height="150" class="f2"/>
+          <text x="425" y="120" text-anchor="middle" class="svg-t tx2">ab</text>
+
+          <rect x="230" y="190" width="150" height="90" class="f2"/>
+          <text x="305" y="240" text-anchor="middle" class="svg-t tx2">ab</text>
+
+          <rect x="380" y="190" width="90" height="90" class="fm"/>
+          <text x="425" y="240" text-anchor="middle" class="svg-t txm">b²</text>
+
+          <line x1="230" y1="24" x2="380" y2="24" class="svg-l"/>
+          <text x="305" y="18" text-anchor="middle" class="svg-tm">a</text>
+          <line x1="380" y1="24" x2="470" y2="24" class="svg-l"/>
+          <text x="425" y="18" text-anchor="middle" class="svg-tm">b</text>
+
+          <line x1="214" y1="40" x2="214" y2="190" class="svg-l"/>
+          <text x="206" y="118" text-anchor="end" class="svg-tm">a</text>
+          <line x1="214" y1="190" x2="214" y2="280" class="svg-l"/>
+          <text x="206" y="238" text-anchor="end" class="svg-tm">b</text>
+
+          <text x="350" y="308" text-anchor="middle" class="svg-t">Ganze Fläche = (a + b)²　　Summe der vier Teile = a² + 2ab + b²</text>
+        </svg>
+        <figcaption><b>Das ist kein Merktrick, das ist der Beweis.</b> Dieselbe Fläche auf zwei Arten berechnet muss dasselbe ergeben — genau Griff 8 aus dem Werkzeugkasten, «zähle zweimal». Die beiden <span class="svg-tm">ab</span> in der Mitte sind <b>zwei</b> Rechtecke, und daher kommt die 2 in <span class="svg-tm">2ab</span>. Wer <span class="svg-tm">(a+b)²</span> als <span class="svg-tm">a²+b²</span> schreibt, wirft die beiden Rechtecke aus diesem Bild einfach weg.</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Buchstabenrechnung (2.1) · Distributivgesetz (Strang 1, 1.3) · Flächeninhalt (Strang 3)</div>
+          <div><span class="lbl">Wohin</span>Faktorisieren (2.6) · quadratische Ergänzung und Lösungsformel (2.5) · Multiplikation von Polynomen · binomischer Lehrsatz und Pascalsches Dreieck (Strang 5 und 6)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Der häufigste Algebrafehler der Welt</span>
+          <p><span class="m">(a + b)² ≠ a² + b²</span></p>
+          <p>Dieser Fehler passiert jedes Jahr in jedem Klassenzimmer jedes Landes und verdient deshalb einen eigenen Absatz. Zur selben Familie gehören: <span class="m">√(a+b) ≠ √a + √b</span>, <span class="m">1/(a+b) ≠ 1/a + 1/b</span>, <span class="m">log(a+b) ≠ log a + log b</span> (schon in Strang 1, 1.8 erwähnt).</p>
+          <p>Ihr gemeinsamer Kern: <strong>Eine Operation, die mit der Multiplikation gut auskommt, wird gewaltsam auf die Addition angewandt.</strong> Quadrieren, Wurzelziehen, Kehrwert bilden und Logarithmieren gehen alle glatt durch ein Produkt hindurch — durch eine Summe aber nicht. Wer sich diesen einen Satz merkt, umgeht vier Fallen gleichzeitig.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Termumformung</b> rearranging expressions</span>
+          <span><b>ausmultiplizieren</b> expand</span>
+          <span><b>ausklammern</b> factor out</span>
+          <span><b>zusammenfassen</b> collect terms</span>
+          <span><b>binomische Formeln</b> binomial formulas</span>
+          <span><b>Distributivgesetz</b> distributive law</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Gleichungen · das Waagenbild und seine Grenze</h3>
+      <p class="de">Gleichung · Äquivalenzumformung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Gleichung ist eine Behauptung: <em>diese beiden Terme sind gleich.</em> Lösen heißt, sie Schritt für Schritt so umzuschreiben, dass am Ende «x = irgendeine Zahl» dasteht — ohne dabei ihren Wahrheitswert zu verändern.</p>
+
+      <div class="field">
+        <span class="lbl">Das Waagenbild und wie weit es trägt</span>
+        <p>Jede Lehrkraft erklärt die Waage: Legt man auf beiden Seiten dasselbe Gewicht dazu, bleibt sie im Gleichgewicht; nimmt man auf beiden Seiten dasselbe weg, ebenfalls. Das Bild ist gut, deckt aber nur Addition und Subtraktion ab.</p>
+        <p>Die eigentliche Regel lautet: <strong>Sicher sind nur umkehrbare Operationen.</strong> Lässt sich ein Umformungsschritt wieder rückgängig machen, ändert er die Lösungsmenge nicht; lässt er sich nicht zurücknehmen, kann etwas passieren. Genau das ist der Unterschied zwischen <span class="m">⟺</span> und <span class="m">⟹</span> aus Strang 0, Karte 0.4 — hier hat er ganz praktische Folgen.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Welche Umformungen sicher sind und welche nicht</span>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:42%">Dieser Schritt</th><th style="width:16%">Pfeil</th><th style="width:42%">Was passieren kann</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Auf beiden Seiten dieselbe Zahl addieren oder subtrahieren</td><td class="cheap"><b>⟺</b></td><td class="cheap">Völlig sicher, Lösungsmenge unverändert</td></tr>
+            <tr><td>Mit derselben Zahl ≠ 0 multiplizieren oder dividieren</td><td class="cheap"><b>⟺</b></td><td class="cheap">Sicher. Auf «≠ 0» achten</td></tr>
+            <tr><td>Durch einen Term mit <em>x</em> dividieren</td><td class="dear"><b>⟸ heikel</b></td><td class="dear">Kann eine <b>Lösung verschlucken</b> — der Fall, dass dieser Term 0 ist, wird stillschweigend ausgeschlossen</td></tr>
+            <tr><td>Beide Seiten quadrieren</td><td class="dear"><b>⟹ heikel</b></td><td class="dear">Kann <b>Scheinlösungen erzeugen</b> — das Quadrieren frisst das Vorzeichen</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="demo">
+          <p><strong>Beispiel für eine verschluckte Lösung:</strong> Löse <span class="m">x² = 3x</span>.</p>
+          <p>Dividiert man beide Seiten durch x, bekommt man <span class="m">x = 3</span> — aber <span class="m">x = 0</span> ist ebenfalls eine Lösung! Im Moment des Dividierens hat man stillschweigend <span class="m">x ≠ 0</span> vorausgesetzt.</p>
+          <p>Richtig ist: umstellen und ausklammern. <span class="m">x² − 3x = 0</span>, also <span class="m">x(x−3) = 0</span> — beide Lösungen sind da.</p>
+          <p><strong>Beispiel für eine Scheinlösung:</strong> Löse <span class="m">√(x+2) = x</span>. Quadrieren ergibt <span class="m">x+2 = x²</span> mit den Lösungen <span class="m">x = 2</span> und <span class="m">x = −1</span>. Setzt man <span class="m">x = −1</span> in die Ausgangsgleichung ein, steht dort <span class="m">√1 = −1</span> — falsch. Diese Lösung wurde vom Quadrieren aus dem Nichts erzeugt.</p>
+        </div>
+        <p>Deshalb ist <strong>die Probe in der ursprünglichen Gleichung kein von der Lehrkraft verlangtes Ritual, sondern mathematisch notwendig</strong> — sobald im Lösungsweg auch nur einmal ein einseitiger Pfeil vorkam.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Implikation und Äquivalenz (Strang 0, 0.4) · Umkehroperation (Strang 1, 1.3) · Termumformung (2.2)</div>
+          <div><span class="lbl">Wohin</span>Alle Lösungsverfahren (2.4 bis 2.8) · Ungleichungen · Nullstellen von Funktionen (Strang 4)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Bei der Probe unbedingt in die <strong>ursprüngliche Gleichung</strong> einsetzen, nicht in irgendeine deiner umgeformten Zwischenzeilen. Denn wenn der Fehler im Umformen steckt, «bestätigt» das Einsetzen in die umgeformte Zeile bereitwillig — es prüft dann deinen Fehler, nicht die Aufgabe.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Gleichung</b> equation</span>
+          <span><b>Äquivalenzumformung</b> equivalent transformation</span>
+          <span><b>Lösungsmenge</b> solution set</span>
+          <span><b>Probe</b> check</span>
+          <span><b>Scheinlösung</b> extraneous solution</span>
+          <span><b>Definitionsbereich</b> domain</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Lineare Gleichungen und Ungleichungen · nur eine neue Regel</h3>
+      <p class="de">lineare Gleichung · Ungleichung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Lineare Gleichungen sind die gutmütigste Sorte: umstellen, zusammenfassen, durch den Koeffizienten teilen — drei Schritte, fertig. Ungleichungen löst man fast genauso, es kommt nur eine einzige Regel dazu. Die vergisst man allerdings besonders gern.</p>
+
+      <div class="field">
+        <span class="lbl">Diese eine neue Regel</span>
+        <div class="demo">
+          <p>Schau dir diese offensichtlich wahre Aussage an: <span class="m">2 &lt; 5</span>.</p>
+          <p>Multipliziere beide Seiten mit <span class="m">−1</span>: links wird <span class="m">−2</span>, rechts wird <span class="m">−5</span>. Aber <span class="m">−2 &gt; −5</span> — die Größenbeziehung hat sich <strong>umgedreht</strong>.</p>
+          <p class="calc">Beim Multiplizieren oder Dividieren mit einer negativen Zahl<br>muss das Ungleichheitszeichen umgedreht werden</p>
+          <p>Warum? Weil die Multiplikation mit <span class="m">−1</span> die ganze Zahlengerade an der 0 spiegelt. Was vorher links lag, liegt danach rechts — natürlich wechselt dann auch, wer größer ist.</p>
+        </div>
+        <p>Diese Regel muss man nicht auswendig lernen: <em>Es genügt, sich einmal das Bild der gespiegelten Zahlengeraden vorzustellen, dann vergisst man sie nie wieder.</em> Und es erklärt auch, warum Gleichungen dieses Problem nicht haben — bei Gleichheit sind beide Seiten gleich groß, ob gespiegelt oder nicht.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Wie man die Lösungsmenge aufschreibt</span>
+        <p>Die Antwort einer Gleichung sind meist einzelne Zahlen, die einer Ungleichung meist ein ganzes Stück. Alle drei Schreibweisen sollte man erkennen:</p>
+        <div class="demo">
+          <p class="calc">als Ungleichung:　x ≥ 2<br>als Menge:　　　　L = { x ∈ ℝ | x ≥ 2 }<br>als Intervall:　　[2, ∞)</p>
+          <p>Die eckige Klammer bedeutet, dass der Randpunkt <em>dazugehört</em>, die runde, dass er es nicht tut. Auf der Unendlichkeitsseite steht immer eine runde Klammer, denn ∞ ist keine Zahl und lässt sich nicht erreichen (zurück zu Strang 1, 1.10).</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Äquivalenzumformung (2.3) · negative Zahlen und Zahlengerade (Strang 1, 1.4) · Mengenschreibweise (Strang 0, 0.1)</div>
+          <div><span class="lbl">Wohin</span>Lineare Funktionen und Steigung (Strang 4) · lineare Optimierung (Strang 7) · Bestimmung von Definitionsbereichen · Betragsungleichungen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Beim Dividieren durch einen Koeffizienten, der einen <strong>Buchstaben</strong> enthält, ist eine Fallunterscheidung zwingend — du weißt ja nicht, ob er positiv, negativ oder gleich 0 ist. Bei <span class="m">ax &gt; 1</span> sehen die Antworten für <span class="m">a &gt; 0</span>, <span class="m">a &lt; 0</span> und <span class="m">a = 0</span> völlig verschieden aus. Das ist der erste praktische Einsatz der Fallunterscheidung aus Strang 0, Karte 0.6.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>lineare Gleichung</b> linear equation</span>
+          <span><b>Ungleichung</b> inequality</span>
+          <span><b>Intervall</b> interval</span>
+          <span><b>umstellen</b> rearrange</span>
+          <span><b>Fallunterscheidung</b> case analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Quadratische Gleichungen · die Formel ist nur eine einzige Idee</h3>
+      <p class="de">quadratische Gleichung · quadratische Ergänzung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Lösungsformel sollte keine auswendig gelernte Zeichenkette sein. <strong>Sie ist einfach die quadratische Ergänzung, einmal durchgeführt</strong> — wer die verstanden hat, kann die Formel notfalls an Ort und Stelle herleiten.</p>
+
+      <div class="field">
+        <span class="lbl">Wo die Schwierigkeit liegt</span>
+        <p><span class="m">x² = 9</span> ist leicht: Wurzel ziehen, fertig. <span class="m">(x+3)² = 9</span> ist auch leicht: wieder Wurzel ziehen.</p>
+        <p>Schwierig ist <span class="m">x² + 6x = 7</span> — denn hier kommt x <em>zweimal</em> vor, und man kann es nicht in einem Zug herausziehen.</p>
+        <p>Daraus entsteht die eine Idee: <strong>Lässt sich die linke Seite zu einem vollständigen Quadrat ergänzen?</strong> Wenn ja, fällt der Fall auf den leichten Fall von oben zurück. Auf Deutsch heißt das <span class="m-up m">quadratische Ergänzung</span> — und der Name sagt wörtlich, was passiert: Es wird tatsächlich ein Stück <em>ergänzt</em>.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="Geometrische Deutung der quadratischen Ergänzung: das Rechteck p mal x wird halbiert und an zwei Seiten des Quadrats angelegt, die fehlende Ecke ist p halbe zum Quadrat.">
+          <defs>
+            <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="40" y="60" width="110" height="110" class="f1"/>
+          <text x="95" y="120" text-anchor="middle" class="svg-t tx1">x²</text>
+          <rect x="158" y="60" width="60" height="110" class="f2"/>
+          <text x="188" y="120" text-anchor="middle" class="svg-t tx2">px</text>
+          <text x="129" y="196" text-anchor="middle" class="svg-tm">x² + px</text>
+
+          <path d="M 244 115 L 296 115" class="svg-l" marker-end="url(#b1)"/>
+          <text x="270" y="104" text-anchor="middle" class="svg-tm">halbieren</text>
+          <text x="270" y="136" text-anchor="middle" class="svg-tm">anlegen</text>
+
+          <rect x="330" y="60" width="110" height="110" class="f1"/>
+          <text x="385" y="120" text-anchor="middle" class="svg-t tx1">x²</text>
+          <rect x="440" y="60" width="30" height="110" class="f2"/>
+          <rect x="330" y="170" width="110" height="30" class="f2"/>
+          <rect x="440" y="170" width="30" height="30" class="fm" stroke-dasharray="4 3" stroke-width="1.5"/>
+
+          <line x1="330" y1="44" x2="440" y2="44" class="svg-l"/>
+          <text x="385" y="38" text-anchor="middle" class="svg-tm">x</text>
+          <line x1="440" y1="44" x2="470" y2="44" class="svg-l"/>
+          <text x="455" y="38" text-anchor="middle" class="svg-tm">p/2</text>
+
+          <text x="400" y="226" text-anchor="middle" class="svg-tm">Seitenlänge x + p/2</text>
+          <text x="522" y="190" class="svg-tm txm">Diese Ecke fehlt</text>
+          <text x="522" y="208" class="svg-tm txm">und ist genau (p/2)²</text>
+
+          <text x="350" y="262" text-anchor="middle" class="svg-t">x² + px = (x + p/2)² − (p/2)²</text>
+        </svg>
+        <figcaption><b>Der Name «quadratische Ergänzung» meint genau die fehlende Ecke im Bild.</b> Zerschneide das Rechteck <span class="svg-tm">px</span> in zwei Streifen und lege sie rechts und unten an das Quadrat — dann fehlt nur noch das kleine Eck rechts unten, und dessen Fläche ist genau <span class="svg-tm">(p/2)²</span>. Ergänzt man es zum vollen Quadrat und zieht das Ergänzte wieder ab, stimmt die Gleichung.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Die Formel einmal herleiten</span>
+        <div class="proof">
+          <span class="lbl">Aus x² + px + q = 0 die Lösungsformel gewinnen</span>
+          <p>Umstellen: <span class="m">x² + px = −q</span></p>
+          <p>Auf beiden Seiten <span class="m">(p/2)²</span> ergänzen, damit links ein volles Quadrat entsteht:</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">x² + px + (p/2)² = (p/2)² − q</p>
+          <p>Links steht nun genau <span class="m">(x + p/2)²</span>:</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">(x + p/2)² = (p/2)² − q</p>
+          <p>Jetzt kommt x nur noch einmal vor, also Wurzel ziehen (mit beiden Vorzeichen!):</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">x + p/2 = ± √( (p/2)² − q )</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">x = − p/2 ± √( (p/2)² − q )</p>
+          <p>Das ist die Lösungsformel. ∎</p>
+        </div>
+        <p>Schreibt man die Gleichung in der Form <span class="m">ax² + bx + c = 0</span>, liefert dieselbe Herleitung die andere geläufige Schreibweise <span class="m">x = (−b ± √(b²−4ac)) / 2a</span>. Beide Formeln sind dasselbe — teilt man die zweite durch a, sodass der Leitkoeffizient 1 wird, landet man wieder bei der ersten. <strong>Welche im Unterricht verwendet wird, ist gleichgültig; wichtig ist, dass du weißt, woher sie kommt.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Unter der Wurzel entscheidet sich alles</span>
+        <p>Der Ausdruck unter der Wurzel heißt <strong>Diskriminante</strong>, kurz <span class="m">D</span>. Sie allein bestimmt, wie viele Lösungen es gibt — und das hat eine sehr anschauliche geometrische Bedeutung: es ist die Lage der Parabel zur x-Achse.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 230" role="img" aria-label="Die drei Fälle der Diskriminante: größer null schneidet die Parabel die x-Achse zweimal, gleich null berührt sie, kleiner null trifft sie nicht.">
+          <line x1="40" y1="140" x2="210" y2="140" class="svg-l-soft"/>
+          <path d="M 55 55 Q 125 290 195 55" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="76" cy="140" r="4" class="f1" stroke-width="2"/>
+          <circle cx="174" cy="140" r="4" class="f1" stroke-width="2"/>
+          <text x="125" y="186" text-anchor="middle" class="svg-t tx1">D &gt; 0</text>
+          <text x="125" y="206" text-anchor="middle" class="svg-ts tx1">zweimal durch · 2 Lösungen</text>
+
+          <line x1="265" y1="140" x2="435" y2="140" class="svg-l-soft"/>
+          <path d="M 280 55 Q 350 225 420 55" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="350" cy="140" r="4" class="f2" stroke-width="2"/>
+          <text x="350" y="186" text-anchor="middle" class="svg-t tx2">D = 0</text>
+          <text x="350" y="206" text-anchor="middle" class="svg-ts tx2">berührt · 1 Lösung</text>
+
+          <line x1="490" y1="140" x2="660" y2="140" class="svg-l-soft"/>
+          <path d="M 505 45 Q 575 165 645 45" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <text x="575" y="186" text-anchor="middle" class="svg-t txm">D &lt; 0</text>
+          <text x="575" y="206" text-anchor="middle" class="svg-ts txm">erreicht sie nicht · keine reelle</text>
+        </svg>
+        <figcaption><b>Die Diskriminante ist keine Regel zum Auswendiglernen, sie ist schlicht «kommt die Parabel bis zur x-Achse hinunter».</b> Der dritte Fall hat im Reellen keine Lösung, im Komplexen aber zwei (Strang 1, Karte 1.9) — dass die Parabel die reelle Achse nicht trifft, heißt nicht, dass die Gleichung keine Wurzeln hat, sondern nur, dass sie in die Zahlenebene ausgewichen sind.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Zugabe: der heimliche Zusammenhang zwischen Koeffizienten und Lösungen</span>
+        <div class="demo">
+          <p>Addiert und multipliziert man die beiden Lösungen, stehen plötzlich die Koeffizienten da:</p>
+          <p class="calc">x₁ + x₂ = −p　　　x₁ · x₂ = q</p>
+          <p>Das ist der <strong>Satz von Vieta</strong>. Sein praktischer Wert ist das Raten im Kopf: Bei <span class="m">x² − 7x + 12 = 0</span> genügt die Frage «welche zwei Zahlen ergeben addiert 7 und multipliziert 12?» — 3 und 4, Antwort in einer Sekunde, ganz ohne Formel.</p>
+          <p>Sein theoretischer Wert ist größer: <em>Er zeigt zum ersten Mal, dass zwischen den Koeffizienten einer Gleichung und ihren Lösungen ein fester Zusammenhang besteht.</em> Verfolgt man diese Spur konsequent weiter, landet man bei der Galois-Theorie — also am Gipfel dieses Strangs.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Binomische Formeln (2.2) · Wurzelziehen (Strang 1, 1.7) · Äquivalenzumformung (2.3)</div>
+          <div><span class="lbl">Wohin</span>Parabel und Scheitelpunktform (Strang 4) · Extremwertaufgaben (Strang 4) · Faktorisieren (2.6) · komplexe Zahlen (Strang 1, 1.9) · Galois-Theorie (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Vor dem Anwenden der Formel muss die Gleichung in die <strong>Normalform</strong> gebracht werden (rechts eine 0, nach Graden sortiert). Aus <span class="m">x² + 3x = 10</span> darf man nicht <span class="m">q = 10</span> ablesen, sondern muss erst zu <span class="m">x² + 3x − 10 = 0</span> umstellen — dann ist <span class="m">q = −10</span>. Wer diesen Schritt auslässt, rechnet alles Weitere falsch.</p>
+          <p>Und: Beim Wurzelziehen <strong>gehört immer ein ± dazu</strong>. Die negative Lösung zu verlieren ist der häufigste Punktverlust bei quadratischen Gleichungen überhaupt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>quadratische Gleichung</b> quadratic equation</span>
+          <span><b>quadratische Ergänzung</b> completing the square</span>
+          <span><b>Diskriminante</b> discriminant</span>
+          <span><b>Normalform</b> standard form</span>
+          <span><b>Scheitelpunktform</b> vertex form</span>
+          <span><b>Satz von Vieta</b> Vieta's formulas</span>
+          <span><b>Lösungsformel</b> quadratic formula</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Faktorisieren · aus einer Summe ein Produkt machen</h3>
+      <p class="de">Faktorisieren · Nullproduktsatz</p>
+    </div>
+    <div class="body">
+      <p class="lead">Der ganze Sinn des Faktorisierens steckt in einer fast selbstverständlichen Eigenschaft: <strong>Ist ein Produkt gleich 0, dann muss einer der Faktoren 0 sein.</strong> Das ist die einzige allgemeine Waffe gegen Gleichungen höheren Grades.</p>
+
+      <div class="field">
+        <span class="lbl">Warum es unbedingt ein Produkt sein muss</span>
+        <p>Vor <span class="m">x³ − 6x² + 11x − 6 = 0</span> steht man mit einem Haufen Plus und Minus hilflos da — denn «mehrere Dinge addiert ergeben 0» sagt gar nichts, dafür gibt es unendlich viele Möglichkeiten.</p>
+        <p>Schreibt man dasselbe aber als <span class="m">(x−1)(x−2)(x−3) = 0</span>, liegt die Antwort sofort offen: Einer der drei Faktoren muss 0 sein, also <span class="m">x = 1, 2, 3</span>.</p>
+        <p><strong>Addition versteckt Information, Multiplikation legt sie offen.</strong> Deshalb wird in der Algebra so viel Mühe darauf verwendet, Ausdrücke in Produktform zu bringen.</p>
+        <p>Nebenbei: Das ist <em>derselbe Gedanke auf anderer Bühne</em> wie die Primfaktorzerlegung aus Strang 1, Karte 1.6 — ein kompliziertes Objekt in ein Produkt unzerlegbarer Bausteine auflösen. Ganze Zahlen zerfallen in Primzahlen, Polynome in Linearfaktoren, und die beiden Sätze sehen fast gleich aus.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Vier gebräuchliche Handgriffe</span>
+        <div class="demo">
+          <p><strong>Erstens: gemeinsamen Faktor ausklammern.</strong> <span class="m">6x² + 9x = 3x(2x + 3)</span>. Immer zuerst danach schauen.</p>
+          <p><strong>Zweitens: binomische Formeln rückwärts.</strong> <span class="m">x² − 16 = (x+4)(x−4)</span>, <span class="m">x² + 6x + 9 = (x+3)²</span>. Erkennen genügt (2.2).</p>
+          <p><strong>Drittens: zwei Zahlen raten.</strong> <span class="m">x² + px + q</span> in <span class="m">(x+m)(x+n)</span> zerlegen, wobei <span class="m">m+n = p</span> und <span class="m">mn = q</span> — also Vieta rückwärts angewandt.</p>
+          <p><strong>Viertens: eine Lösung raten und dann dividieren.</strong> Das Mittel gegen Grad drei und höher, siehe unten.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der Faktorsatz: eine Nullstelle gefunden heißt ein Faktor abgeschält</span>
+        <div class="proof">
+          <span class="lbl">Faktorsatz · Linearfaktor</span>
+          <p>Ist <span class="m">x = a</span> eine Nullstelle des Polynoms <span class="m">P(x)</span> (also <span class="m">P(a) = 0</span>), dann ist <span class="m">(x − a)</span> ein Faktor von <span class="m">P(x)</span>.</p>
+          <p>Anwendung: Erst eine Nullstelle <em>raten</em> (meist unter den Teilern des konstanten Glieds, also ±1, ±2, ±3), dann per Polynomdivision <span class="m">(x−a)</span> herausteilen — der Grad sinkt um eins. Aus drei wird zwei, und für Grad zwei gibt es die Lösungsformel.</p>
+          <p>Beispiel <span class="m">x³ − 6x² + 11x − 6</span>: Probiere <span class="m">x = 1</span>, das gibt <span class="m">1 − 6 + 11 − 6 = 0</span>, Treffer. Division durch <span class="m">(x−1)</span> ergibt <span class="m">x² − 5x + 6</span>, und das zerfällt in <span class="m">(x−2)(x−3)</span>. Alle drei Nullstellen sind da.</p>
+        </div>
+        <p>Diese Schleife «eine raten, um einen Grad senken» ist das Standardvorgehen für Gleichungen ab Grad drei in der Schule. Sie verrät nebenbei etwas: <em>Jeder gesenkte Grad macht die Sache spürbar leichter</em> — und genau das ist der Hintergrund der Wand bei Grad fünf.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Binomische Formeln (2.2) · Satz von Vieta (2.5) · der Gedanke der Primfaktorzerlegung (Strang 1, 1.6)</div>
+          <div><span class="lbl">Wohin</span>Polynome und Nullstellen (2.7) · Schnittpunkte des Graphen mit der x-Achse (Strang 4) · Kürzen von Bruchtermen · Kürzen bei Grenzwerten (Strang 4)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Der Nullproduktsatz gilt nur für die 0.</strong> Aus <span class="m">(x−1)(x−2) = 0</span> folgt <span class="m">x=1</span> oder <span class="m">x=2</span>; aus <span class="m">(x−1)(x−2) = 6</span> folgt <em>nicht</em> <span class="m">x−1=6</span> oder <span class="m">x−2=6</span> — denn 6 lässt sich auf unendlich viele Arten als Produkt schreiben. In solchen Fällen brav ausmultiplizieren, umstellen und auf «rechts steht 0» bringen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>faktorisieren</b> factorise</span>
+          <span><b>Nullproduktsatz</b> zero product property</span>
+          <span><b>Linearfaktor</b> linear factor</span>
+          <span><b>Polynomdivision</b> polynomial division</span>
+          <span><b>Nullstelle</b> root / zero</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Polynome · der Grad bestimmt fast alles</h3>
+      <p class="de">Polynom · Fundamentalsatz der Algebra</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ein Polynom ist ein Ausdruck, der nur aus Plus, Minus, Mal und ganzzahligen Potenzen gebaut ist. Sein <strong>Grad</strong> — der höchste vorkommende Exponent — legt fast sein gesamtes Verhalten fest.</p>
+
+      <div class="field">
+        <span class="lbl">Was der Grad verrät</span>
+        <div class="demo">
+          <p class="calc">Grad 1:　Gerade, höchstens 1 Nullstelle<br>Grad 2:　Parabel, höchstens 2 Nullstellen<br>Grad 3:　höchstens 3 Nullstellen, mindestens 1 ist sicher<br>Grad n:　höchstens n Nullstellen</p>
+          <p>Dass ein Polynom dritten Grades «mindestens eine reelle Nullstelle haben muss», hat einen sehr schlichten Grund: <span class="m">x³</span> ist für große x sehr groß positiv und für kleine x sehr groß negativ, und der Graph lässt sich in einem Zug durchzeichnen — irgendwo dazwischen muss er die 0 durchqueren. Diese Anschauung wird in Strang 4 zu einem richtigen Satz (dem Zwischenwertsatz).</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der Fundamentalsatz der Algebra</span>
+        <p>Erweitert man den Bereich der Nullstellen auf die komplexen Zahlen, wird aus «höchstens n» ein «<strong>genau n</strong>» (Mehrfachheiten mitgezählt). Das ist der <strong>Fundamentalsatz der Algebra</strong>, dem wir in Strang 1, Karte 1.9 schon einmal begegnet sind — dort aus der Sicht des Zahlenerfindens, hier aus der Sicht des Gleichungslösens.</p>
+        <p>Mit anderen Worten: <em>Solange man komplexe Zahlen zulässt, ist jede Polynomgleichung lösbar.</em> Das ist die Abnahmebescheinigung für das Löcherstopfen.</p>
+        <p>Aber Vorsicht vor einem Missverständnis: <strong>«Eine Lösung existiert» und «man kann sie hinschreiben» sind zweierlei.</strong> Der Fundamentalsatz garantiert, dass eine Gleichung fünften Grades fünf komplexe Lösungen hat; Galois hat bewiesen, dass man sie nicht mit Grundrechenarten und Wurzeln <em>aufschreiben</em> kann. Existent, aber nicht darstellbar. In der Lücke zwischen diesen beiden Aussagen liegt die gesamte Aussicht am Gipfel dieses Strangs.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Faktorisieren (2.6) · komplexe Zahlen (Strang 1, 1.9) · Potenzen (Strang 1, 1.8)</div>
+          <div><span class="lbl">Wohin</span>Ganzrationale Funktionen und Kurvendiskussion (Strang 4) · Taylorentwicklung: jede Funktion durch Polynome annähern (Gipfel von Strang 4) · Galois-Theorie (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Polynom</b> polynomial</span>
+          <span><b>Grad</b> degree</span>
+          <span><b>ganzrationale Funktion</b> polynomial function</span>
+          <span><b>Nullstelle</b> root</span>
+          <span><b>Vielfachheit</b> multiplicity</span>
+          <span><b>Fundamentalsatz der Algebra</b> fundamental theorem of algebra</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Gleichungssysteme · wenn eine Unbekannte nicht reicht</h3>
+      <p class="de">lineares Gleichungssystem</p>
+    </div>
+    <div class="body">
+      <p class="lead">Zwei Unbekannte brauchen zwei Gleichungen. Und sämtliche Lösungsverfahren tun im Kern dasselbe: <strong>eine Unbekannte loswerden.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Drei Verfahren, ein Ziel</span>
+        <div class="demo">
+          <p><strong>Einsetzungsverfahren</strong>: Aus einer Gleichung y herauslösen und in die andere einsetzen. Gut, wenn eine Unbekannte den Koeffizienten 1 hat.</p>
+          <p><strong>Additionsverfahren</strong>: Die beiden Gleichungen so addieren oder subtrahieren, dass sich eine Unbekannte weghebt. Gut, wenn die Koeffizienten passend stehen.</p>
+          <p><strong>Grafisch</strong>: Beide Geraden zeichnen, der Schnittpunkt ist die Lösung. Ungenau, aber man <em>sieht</em>, was eine Lösung überhaupt bedeutet.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Das geometrische Bild: warum es «keine» und «unendlich viele» Lösungen gibt</span>
+        <p>Zwei lineare Gleichungen mit zwei Unbekannten sind zwei Geraden in der Ebene. Das System zu lösen heißt, den Schnittpunkt zu finden. Und zwei Geraden können in der Ebene nur auf drei Arten zueinander liegen — was genau den drei Lösungsfällen entspricht:</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="Die drei Fälle eines linearen Gleichungssystems: sich schneidende Geraden ergeben genau eine Lösung, parallele keine, zusammenfallende unendlich viele.">
+          <rect x="40" y="30" width="170" height="120" rx="3" class="svg-face"/>
+          <line x1="52" y1="42" x2="198" y2="138" class="svg-l"/>
+          <line x1="52" y1="132" x2="198" y2="48" class="svg-l"/>
+          <circle cx="125" cy="90" r="4.5" class="fm" stroke-width="2"/>
+          <text x="125" y="176" text-anchor="middle" class="svg-t tx1">schneiden sich</text>
+          <text x="125" y="196" text-anchor="middle" class="svg-ts tx1">genau eine Lösung</text>
+
+          <rect x="265" y="30" width="170" height="120" rx="3" class="svg-face"/>
+          <line x1="277" y1="118" x2="423" y2="46" class="svg-l"/>
+          <line x1="277" y1="140" x2="423" y2="68" class="svg-l"/>
+          <text x="350" y="176" text-anchor="middle" class="svg-t tx2">parallel</text>
+          <text x="350" y="196" text-anchor="middle" class="svg-ts tx2">keine Lösung</text>
+
+          <rect x="490" y="30" width="170" height="120" rx="3" class="svg-face"/>
+          <line x1="502" y1="130" x2="648" y2="50" class="svg-l" stroke-width="3.5"/>
+          <text x="575" y="176" text-anchor="middle" class="svg-t tx3">fallen zusammen</text>
+          <text x="575" y="196" text-anchor="middle" class="svg-ts tx3">unendlich viele</text>
+        </svg>
+        <figcaption><b>Wenn beim Rechnen «0 = 5» herauskommt, hast du dich nicht verrechnet — das System hat wirklich keine Lösung, die Geraden sind parallel.</b> Und «0 = 0» ist auch kein vergebliches Rechnen: Beide Gleichungen sagen dann dasselbe, die Geraden fallen zusammen, es gibt unendlich viele Lösungen. Schüler halten diese beiden Ergebnisse oft für Fehler, dabei <b>sind sie die Antwort</b>.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Gauß-Verfahren: aus Handwerk wird Ablauf</span>
+        <p>Bei vielen Unbekannten ist es nicht mehr realistisch, per Augenmaß zu entscheiden, welche man als Nächstes eliminiert. Das <strong>Gauß-Verfahren</strong> macht daraus einen stur schematischen Ablauf: Mit der ersten Gleichung die erste Unbekannte aus allen folgenden entfernen, mit der zweiten die zweite aus allen weiteren, bis eine Stufenform dasteht — und dann von unten nach oben zurück einsetzen.</p>
+        <p>Die Bedeutung dieses Ablaufs reicht weit über Schulaufgaben hinaus: <em>Er braucht keine Eingebung, nur mechanische Schritte, und lässt sich deshalb einem Computer übergeben.</em> Von der Wettervorhersage bis zur Bauteilsimulation läuft heute überall seine Nachkommenschaft. Das ist der erste Handschlag zwischen Algebra und Strang 6.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Lineare Gleichungen (2.4) · Äquivalenzumformung (2.3) · Koordinatensystem und Geraden (Strang 3 und 4)</div>
+          <div><span class="lbl">Wohin</span>Matrizen (2.9) · Schnittgeraden von Ebenen (Strang 3) · lineare Optimierung (Strang 7) · numerische lineare Algebra (Strang 6)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Beim Additionsverfahren muss die <strong>ganze Gleichung</strong> multipliziert werden, nicht nur einzelne Glieder. Aus <span class="m">2x + 3y = 7</span> wird beim Multiplizieren mit 3 die Gleichung <span class="m">6x + 9y = 21</span> — die 7 auf der rechten Seite gehört mit dazu. Sie zu vergessen ist der häufigste Fehler bei dieser Aufgabensorte.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>lineares Gleichungssystem (LGS)</b> system of linear equations</span>
+          <span><b>Einsetzungsverfahren</b> substitution</span>
+          <span><b>Additionsverfahren</b> elimination</span>
+          <span><b>Gleichsetzungsverfahren</b> equating method</span>
+          <span><b>Gauß-Verfahren</b> Gaussian elimination</span>
+          <span><b>eindeutig lösbar</b> uniquely solvable</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg → Gipfel</span></span>
+      <h3>Matrizen · ein ganzes Gleichungssystem als ein Ding</h3>
+      <p class="de">Matrix</p>
+    </div>
+    <div class="body">
+      <p class="lead">Beim Lösen eines Gleichungssystems sind die Namen der Unbekannten eigentlich nutzlos — in Bewegung sind nur die Koeffizienten. Ordnet man sie in einer Tabelle an, schrumpft das ganze System zu einem einzigen Objekt.</p>
+
+      <div class="field">
+        <span class="lbl">Vom Gleichungssystem zur Matrix</span>
+        <div class="demo">
+          <p class="calc">2x + 3y = 7<br>4x − &nbsp;y = 1</p>
+          <p>Die Buchstaben x und y laufen bloß mit; nennt man sie u und v, ändert sich nichts. Nützlich ist allein:</p>
+          <p class="calc" style="font-family:var(--f-mono);font-size:1rem">　┌ 2 &nbsp;&nbsp;3 │ 7 ┐<br>　└ 4 &nbsp;−1 │ 1 ┘</p>
+          <p>Diese Tabelle ist die <strong>Matrix</strong>. Jeder Schritt des Gauß-Verfahrens (Zeilen tauschen, eine Zeile mit einer Zahl multiplizieren, von einer Zeile ein Vielfaches einer anderen abziehen) wird darin zu einer sehr sauberen Zeilenoperation.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Was eine Matrix wirklich ist: eine Handlung</span>
+        <p>Ursprünglich war die Matrix nur eine Buchhaltungstabelle, doch schnell zeigte sich, dass sie etwas anderes ist: <strong>Eine Matrix beschreibt eine Umformung des Raums</strong> — Drehen, Strecken, Projizieren, Spiegeln. Und zwei Matrizen zu multiplizieren bedeutet: «erst diese Umformung, dann jene».</p>
+        <p>Aus dieser Sicht wird etwas Merkwürdiges völlig selbstverständlich:</p>
+        <div class="demo">
+          <p class="calc">A · B　ist im Allgemeinen　≠　B · A</p>
+          <p>Die Matrizenmultiplikation ist <strong>nicht kommutativ</strong>. Für jemanden, der nur Zahlen kennt, klingt das wie Ketzerei — <span class="m">3×5</span> und <span class="m">5×3</span> waren doch immer gleich.</p>
+          <p>Als Handlungen gelesen ist es dagegen ganz natürlich: Erst einen Schritt vorwärts, dann rechts abbiegen — oder erst rechts abbiegen, dann einen Schritt vorwärts. Du stehst an völlig verschiedenen Stellen. <em>Bei Handlungen kommt es selbstverständlich auf die Reihenfolge an.</em></p>
+        </div>
+        <p>Das ist der wichtigste Perspektivwechsel dieses Strangs. <strong>Vorher hieß «Multiplikation»: Zahl mal Zahl, und sie war immer vertauschbar. Danach heißt sie: zwei Operationen hintereinanderhängen, und Vertauschbarkeit ist nur noch ein Sonderfall.</strong> Die Algebra handelt von da an nicht mehr von Zahlen, sondern von <em>Rechenoperationen</em> — mit diesem Schritt steht man auf dem Gipfel.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Gleichungssysteme und Gauß-Verfahren (2.8) · Koordinatensystem (Strang 3)</div>
+          <div><span class="lbl">Wohin</span>Vektoren und lineare Abbildungen (Strang 3) · Lineare Algebra I/II (Uni) · Computergrafik · die Rechenoperationen in neuronalen Netzen (Gipfel von Strang 5) · Gruppentheorie (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Wer an Zahlen gewöhnt ist, hält reflexhaft <span class="m">AB</span> und <span class="m">BA</span> für dasselbe oder glaubt, es gelte <span class="m">(A+B)² = A² + 2AB + B²</span>. Letzteres ist falsch — ausmultipliziert ergibt sich <span class="m">A² + AB + BA + B²</span>, und <span class="m">AB</span> und <span class="m">BA</span> lassen sich nicht zusammenfassen. <strong>Die binomische Formel aus 2.2 setzt voraus, dass die Multiplikation kommutativ ist.</strong> Fällt die Voraussetzung, fällt die Formel.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Matrix</b> matrix</span>
+          <span><b>Koeffizientenmatrix</b> coefficient matrix</span>
+          <span><b>Zeile / Spalte</b> row / column</span>
+          <span><b>Einheitsmatrix</b> identity matrix</span>
+          <span><b>inverse Matrix</b> inverse matrix</span>
+          <span><b>lineare Abbildung</b> linear map</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista2">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Der Gipfel dieses Strangs erzählt eine der bewegendsten Geschichten der Mathematik — und ist der Ort, an dem das Wort «Algebra» seine Bedeutung endgültig gewechselt hat. Auch hier: <strong>nichts davon musst du verstehen.</strong></p>
+
+  <div class="vista">
+    <h4>Ein Zwanzigjähriger und eine Wand</h4>
+    <p>Die Formeln für Grad drei und vier lagen im 16. Jahrhundert vor. Danach suchten fast dreihundert Jahre lang die besten Köpfe Europas nach der Formel für Grad fünf — alle vergeblich.</p>
+    <p>1824 bewies der Norweger <strong>Abel</strong>, dass es sie nicht gibt. Was aber wirklich erklärt <em>warum</em>, stammt vom Franzosen <strong>Galois</strong>. Seine Idee ist erstaunlich schön:</p>
+    <p><em>Nicht auf die Lösungen selbst starren, sondern auf die «Symmetrien» zwischen ihnen.</em> Wenn man die Lösungen untereinander vertauscht — welche Vertauschungen lassen alle Beziehungen der Gleichung unverändert? Diese «strukturerhaltenden Vertauschungen» bilden zusammen ein eigenes Gebilde, das man heute <strong>Gruppe</strong> nennt. Galois bewies: <strong>Ob eine Gleichung durch eine Formel lösbar ist, hängt vollständig davon ab, wie diese Gruppe gebaut ist.</strong> Und bei Grad fünf ist sie strukturell einfach nicht danach gebaut.</p>
+    <p>Galois starb mit zwanzig Jahren in einem Duell. In der Nacht davor brachte er hastig seine Notizen zu Papier und schrieb an den Rand immer wieder «ich habe keine Zeit mehr». Diese gekritzelten Seiten haben die moderne Algebra begründet.</p>
+
+    <h4>Gruppe, Ring, Körper: die Gesetze selbst herauslösen</h4>
+    <p>Nach Galois wurde den Mathematikern klar: Statt «Zahlen» zu untersuchen, lohnt es sich, «die Gesetze des Rechnens» zu untersuchen. Löst man diese Gesetze heraus und gibt ihnen Namen, entstehen die folgenden drei Dinge — die er längst gesehen hat, nur ohne ihre Namen zu kennen:</p>
+    <p><strong>Gruppe</strong>: eine Menge mit einer Verknüpfung, dazu Assoziativität, ein neutrales Element und zu jedem Element ein Inverses. Die ganzen Zahlen mit der Addition bilden eine Gruppe. <em>Auch alle Drehungen eines Zauberwürfels bilden unter «nacheinander ausführen» eine Gruppe.</em> Jede Symmetrie ist eine Gruppe.</p>
+    <p><strong>Ring</strong>: mit zwei Verknüpfungen (wie Plus und Mal). ℤ ist ein Ring, Polynome bilden ebenfalls einen — und genau deshalb sehen das Faktorisieren aus 2.6 und die Primfaktorzerlegung aus Strang 1, 1.6 einander so ähnlich: <em>Es ist derselbe Satz über derselben Struktur.</em></p>
+    <p><strong>Körper</strong>: ein Ring, in dem man auch dividieren kann. ℚ, ℝ und ℂ sind Körper, ℤ nicht (3 geteilt durch 2 fällt aus den ganzen Zahlen heraus). Die fünf Erweiterungen aus Strang 1 waren, modern gesprochen, das schrittweise Bauen immer besserer Körper.</p>
+    <p>Die Kraft der abstrakten Algebra liegt darin: <strong>einmal beweisen, überall anwenden.</strong> Ein Satz über Gruppen gilt für ganze Zahlen, für den Zauberwürfel, für die Symmetrien eines Kristalls und für Verschlüsselungsverfahren — weil er über die Struktur spricht, nicht über die konkreten Dinge.</p>
+
+    <h4>Lineare Algebra: das Ende der Matrizenspur</h4>
+    <p>Die Koeffiziententabelle aus 2.9 führt nach oben zur <strong>linearen Algebra</strong>, die weltweit in fast jedem technischen Studiengang im ersten Jahr steht. Sie untersucht Vektorräume und lineare Abbildungen, und sie ist deshalb allgegenwärtig, weil <em>fast alles linear wird, sobald man ein Problem lokal genug betrachtet</em>.</p>
+    <p>Die Bildverarbeitung in seinem Handy, das Ranking einer Suchmaschine, jeder Trainingsschritt eines maschinellen Lernverfahrens — darunter laufen überall Matrizenrechnungen in großem Maßstab. <strong>Die Technik, die diese Generation täglich benutzt, hat ihr Fundament in diesem Kapitel.</strong></p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Lineare Algebra I / II</strong> — die ausgewachsene Fassung von 2.8 und 2.9, Pflicht im ersten Jahr</li>
+      <li><strong>Algebra</strong> — Gruppen, Ringe, Körper und der vollständige Beweis der Galois-Theorie</li>
+      <li><strong>Zahlentheorie</strong> — schließt an den Gipfel von Strang 1 an, in moderner Form voller algebraischer Strukturen</li>
+      <li><strong>Kryptographie</strong> — Algebra über endlichen Körpern, sie trägt heute das gesamte Internet</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss2">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Diese Begriffe gehören zu den im Unterricht am häufigsten gehörten — besonders <span class="m-up m">ausklammern</span>, <span class="m-up m">binomische Formeln</span> und <span class="m-up m">quadratische Ergänzung</span>.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">Variable / Unbekannte</td><td class="en">variable / unknown</td><td>变量 / 未知数</td></tr>
+      <tr><td class="de">Term</td><td class="en">expression</td><td>代数式</td></tr>
+      <tr><td class="de">Koeffizient</td><td class="en">coefficient</td><td>系数</td></tr>
+      <tr><td class="de">gleichartige Glieder</td><td class="en">like terms</td><td>同类项</td></tr>
+      <tr><td class="de">Termumformung</td><td class="en">rearranging expressions</td><td>式子变形</td></tr>
+      <tr><td class="de">ausmultiplizieren</td><td class="en">expand</td><td>展开</td></tr>
+      <tr><td class="de">ausklammern</td><td class="en">factor out</td><td>提公因式</td></tr>
+      <tr><td class="de">zusammenfassen</td><td class="en">collect terms</td><td>合并</td></tr>
+      <tr><td class="de">binomische Formeln</td><td class="en">binomial formulas</td><td>二项公式</td></tr>
+      <tr><td class="de">Distributivgesetz</td><td class="en">distributive law</td><td>分配律</td></tr>
+      <tr><td class="de">Gleichung</td><td class="en">equation</td><td>方程</td></tr>
+      <tr><td class="de">Äquivalenzumformung</td><td class="en">equivalent transformation</td><td>等价变形</td></tr>
+      <tr><td class="de">Lösungsmenge / Probe</td><td class="en">solution set / check</td><td>解集 / 检验</td></tr>
+      <tr><td class="de">Scheinlösung</td><td class="en">extraneous solution</td><td>假根</td></tr>
+      <tr><td class="de">Ungleichung / Intervall</td><td class="en">inequality / interval</td><td>不等式 / 区间</td></tr>
+      <tr><td class="de">quadratische Gleichung</td><td class="en">quadratic equation</td><td>二次方程</td></tr>
+      <tr><td class="de">quadratische Ergänzung</td><td class="en">completing the square</td><td>配方法</td></tr>
+      <tr><td class="de">Diskriminante</td><td class="en">discriminant</td><td>判别式</td></tr>
+      <tr><td class="de">Normalform / Scheitelpunktform</td><td class="en">standard / vertex form</td><td>标准形式 / 顶点式</td></tr>
+      <tr><td class="de">Satz von Vieta</td><td class="en">Vieta's formulas</td><td>韦达定理</td></tr>
+      <tr><td class="de">faktorisieren</td><td class="en">factorise</td><td>因式分解</td></tr>
+      <tr><td class="de">Nullproduktsatz</td><td class="en">zero product property</td><td>零积法则</td></tr>
+      <tr><td class="de">Linearfaktor</td><td class="en">linear factor</td><td>一次因式</td></tr>
+      <tr><td class="de">Polynomdivision</td><td class="en">polynomial division</td><td>多项式除法</td></tr>
+      <tr><td class="de">Polynom / Grad</td><td class="en">polynomial / degree</td><td>多项式 / 次数</td></tr>
+      <tr><td class="de">Nullstelle / Vielfachheit</td><td class="en">root / multiplicity</td><td>零点 / 重数</td></tr>
+      <tr><td class="de">Fundamentalsatz der Algebra</td><td class="en">fundamental theorem of algebra</td><td>代数基本定理</td></tr>
+      <tr><td class="de">lineares Gleichungssystem (LGS)</td><td class="en">system of linear equations</td><td>线性方程组</td></tr>
+      <tr><td class="de">Einsetzungs- / Additionsverfahren</td><td class="en">substitution / elimination</td><td>代入法 / 加减消元法</td></tr>
+      <tr><td class="de">Gauß-Verfahren</td><td class="en">Gaussian elimination</td><td>高斯消元法</td></tr>
+      <tr><td class="de">Matrix / Zeile / Spalte</td><td class="en">matrix / row / column</td><td>矩阵 / 行 / 列</td></tr>
+      <tr><td class="de">lineare Abbildung</td><td class="en">linear map</td><td>线性映射</td></tr>
+      <tr><td class="de">Gruppe / Ring / Körper</td><td class="en">group / ring / field</td><td>群 / 环 / 域</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs2">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>Das x in <span class="m">x² = 4</span>, das x in <span class="m">f(x) = x²</span> und das a in <span class="m">ax² + bx + c</span> — worin unterscheiden sich diese drei Rollen?</li>
+    <li>Benutzen Ausmultiplizieren und Ausklammern dasselbe Gesetz? Wenn ja, welches?</li>
+    <li>Warum ist <span class="m">(a+b)²</span> nicht <span class="m">a² + b²</span>? Erklär es anhand des Quadratbildes. Ist <span class="m">√(a+b) ≠ √a + √b</span> derselbe Fehlertyp?</li>
+    <li>Quadrieren erzeugt Scheinlösungen, Dividieren durch einen Term mit x verschluckt Lösungen. Welchem Pfeil aus Strang 0 entspricht jeweils was?</li>
+    <li>Woher kommt die Lösungsformel? Könntest du sie neu herleiten, wenn du sie vergessen hast?</li>
+    <li>Wie sehen die drei Fälle der Diskriminante im Graphen aus? Hat die Gleichung bei <span class="m">D &lt; 0</span> wirklich «keine Lösung»?</li>
+    <li>Warum muss man Gleichungen höheren Grades zuerst faktorisieren? Was sagt «Produkt gleich 0» mehr als «Summe gleich 0»?</li>
+    <li>Was ist geometrisch passiert, wenn beim Gleichungssystem «0 = 5» herauskommt? Und bei «0 = 0»?</li>
+    <li>Warum ist die Matrizenmultiplikation nicht kommutativ? Was ergibt <span class="m">(A+B)²</span> ausmultipliziert, wenn <span class="m">AB ≠ BA</span>?</li>
+    <li>Ist «keine Lösungsformel für Grad fünf» dasselbe wie «keine Lösungen»? Was sagt der Fundamentalsatz der Algebra dazu?</li>
+    <li>Warum sehen das Faktorisieren aus diesem Kapitel und die Primfaktorzerlegung aus Strang 1 einander so ähnlich?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strang-1-zahlen.html"><span class="dir">Vorige Seite</span><span class="t">Strang 1 · Zahlen und Zahlbereiche</span></a>
+  <a class="next" href="strang-3-geometrie.html"><span class="dir">Nächste Seite</span><span class="t">Strang 3 · Form und Raum</span></a>
+</div>
+
+</main>
+</body>
+</html>

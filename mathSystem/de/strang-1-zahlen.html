@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 1 · Zahlen und Zahlbereiche · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-1-zahlen.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 1 · Zahlen und Zahlbereiche · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-1-zahlen.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html" aria-current="page">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-1-numbers.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 1</h1>
+
+<section id="s1">
+  <h2 class="sec"><span class="num">Strang 1</span>Zahlen und Zahlbereiche</h2>
+  <p class="sec-lead">Dieser ganze Strang erzählt nur eine einzige Sache, und die fünfmal hintereinander: <strong>Eine Rechnung ging nicht mehr weiter, also erfand man neue Zahlen, damit sie weitergeht.</strong> Jedes Mal wurde die Welt der Zahlen eine Nummer größer.</p>
+
+  <p>Es ist der am leichtesten zu lesende der sieben Stränge, weil er eine ausgesprochen saubere Handlung hat. In der Geschichte der Mathematik ist man tatsächlich fünfmal gegen eine Wand gelaufen, und jedes Mal nach demselben Muster: Irgendeine Rechenart kam auf halbem Weg nicht weiter, man weigerte sich zunächst, das hinzunehmen, stritt ein paar Jahrzehnte oder Jahrhunderte darüber — und gab schließlich nach, indem man eine neue Sorte Zahl erfand, das Loch damit stopfte und anschließend nachsah, ob die alten Regeln noch funktionieren.</p>
+
+  <p>Die fünf Wände heißen: <span class="m">Subtraktion</span>, <span class="m">Division</span>, <span class="m">Wurzelziehen</span>, <span class="m-up m">Wurzel aus einer negativen Zahl</span> — und dazwischen die feinste von allen, <span class="m">Grenzwertbildung</span>. Wer diese Zeitleiste versteht, hat das halbe Kapitel schon.</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 1000 300" role="img" aria-label="Die fünf Zahlbereiche ineinander verschachtelt: die natürlichen Zahlen liegen in den ganzen, diese in den rationalen, diese in den reellen, diese in den komplexen; jede Erweiterung wurde von einer bestimmten Rechenoperation erzwungen.">
+      <rect x="30" y="40" width="940" height="200" rx="6" class="f3"/>
+      <text x="52" y="66" class="svg-tm tx3">ℂ komplex</text>
+
+      <rect x="120" y="76" width="820" height="132" rx="5" class="f2"/>
+      <text x="142" y="100" class="svg-tm tx2">ℝ reell</text>
+
+      <rect x="222" y="110" width="700" height="66" rx="5" class="f1"/>
+      <text x="244" y="132" class="svg-tm tx1">ℚ rational</text>
+
+      <rect x="330" y="122" width="570" height="42" rx="4" class="svg-face"/>
+      <text x="350" y="140" class="svg-tm">ℤ ganz</text>
+
+      <rect x="430" y="130" width="450" height="26" rx="3" class="svg-face"/>
+      <text x="450" y="147" class="svg-tm">ℕ natürlich</text>
+
+      <text x="700" y="147" text-anchor="middle" class="svg-ts">0 1 2 3 …</text>
+
+      <line x1="430" y1="164" x2="430" y2="268" class="svg-l-soft"/>
+      <text x="430" y="284" text-anchor="middle" class="svg-tm">Subtraktion 3−5</text>
+      <line x1="330" y1="164" x2="330" y2="248" class="svg-l-soft"/>
+      <text x="330" y="264" text-anchor="middle" class="svg-tm">Division 3÷4</text>
+      <line x1="222" y1="176" x2="222" y2="228" class="svg-l-soft"/>
+      <text x="222" y="244" text-anchor="middle" class="svg-tm">Wurzel √2</text>
+      <line x1="120" y1="208" x2="120" y2="264" class="svg-l-soft"/>
+      <text x="120" y="280" text-anchor="middle" class="svg-tm">√−1</text>
+      <text x="120" y="296" text-anchor="middle" class="svg-tm">die letzte</text>
+    </svg>
+    <figcaption><b>Die Zahlbereiche sind ineinandergeschachtelt, nicht nebeneinandergestellt.</b> Jede Schicht umschließt die vorige vollständig — negative Zahlen haben die natürlichen nicht abgeschafft, Brüche nicht die ganzen. An jeder Grenze steht die Rechnung, die die Menschen damals in die nächste Schicht getrieben hat. Bei ℂ hört es auf, weil es keine Polynomgleichung mehr gibt, die nicht lösbar wäre — das nennt man <b>algebraisch abgeschlossen</b>.</figcaption>
+  </figure>
+
+  <figure>
+    <svg viewBox="0 0 700 300" role="img" aria-label="Der Vierschritt jeder Zahlbereichserweiterung: eine Rechnung geht nicht auf, man erfindet ein Zeichen, prüft ob die alten Gesetze noch gelten, und erhält einen größeren Zahlbereich.">
+      <defs>
+        <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="240" y="20" width="220" height="56" rx="4" class="fm"/>
+      <text x="350" y="44" text-anchor="middle" class="svg-t txm">① Eine Rechnung geht nicht</text>
+      <text x="350" y="63" text-anchor="middle" class="svg-ts txm">3 − 5 hat in ℕ keine Lösung</text>
+
+      <rect x="470" y="120" width="210" height="56" rx="4" class="svg-face"/>
+      <text x="575" y="144" text-anchor="middle" class="svg-t">② Ein Zeichen erfinden</text>
+      <text x="575" y="163" text-anchor="middle" class="svg-ts">nennen wir es eben −2</text>
+
+      <rect x="240" y="220" width="220" height="56" rx="4" class="svg-face"/>
+      <text x="350" y="244" text-anchor="middle" class="svg-t">③ Gelten die alten Gesetze?</text>
+      <text x="350" y="263" text-anchor="middle" class="svg-ts">Distributivgesetz noch gültig?</text>
+
+      <rect x="20" y="120" width="210" height="56" rx="4" class="f1"/>
+      <text x="125" y="144" text-anchor="middle" class="svg-t tx1">④ Größerer Zahlbereich</text>
+      <text x="125" y="163" text-anchor="middle" class="svg-ts tx1">aus ℕ ist ℤ geworden</text>
+
+      <path d="M 462 58 Q 540 70 566 116" class="svg-l" marker-end="url(#ah2)"/>
+      <path d="M 566 180 Q 540 226 462 244" class="svg-l" marker-end="url(#ah2)"/>
+      <path d="M 238 250 Q 160 226 134 180" class="svg-l" marker-end="url(#ah2)"/>
+      <path d="M 134 116 Q 160 70 238 56" class="svg-l" marker-end="url(#ah2)"/>
+    </svg>
+    <figcaption><b>Erst Schritt drei ist Mathematik, die ersten beiden sind bloße Willkür.</b> Jeder kann ein Zeichen hinschreiben und behaupten, das sei nun das Ergebnis von 3 minus 5. Die eigentliche Arbeit steckt in Schritt drei: nachprüfen, ob Kommutativ-, Assoziativ- und Distributivgesetz für die neuen Zahlen weiterhin gelten. Erst wenn alle alten Regeln überleben, wird die neue Zahl akzeptiert — und genau das ist auch der wahre Grund, warum «minus mal minus gleich plus» gelten <b>muss</b>, siehe <span class="svg-tm">1.4</span>.</figcaption>
+  </figure>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Natürliche Zahlen ℕ · alles beginnt mit Zählen</h3>
+      <p class="de">natürliche Zahlen · natural numbers</p>
+    </div>
+    <div class="body">
+      <p class="lead">Natürliche Zahlen sind die Sorte, mit der man «wie viele?» beantwortet: 0, 1, 2, 3 — immer weiter, ohne Ende.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Gezählt wurde früher als geschrieben. Bevor Menschen schreiben konnten, ritzten sie schon Kerben in Knochen, um festzuhalten, wie viele Schafe sie besaßen. Interessant daran: <em>Die frühesten Formen des Zählens brauchten gar keine Zahlwörter.</em> Ein Hirte warf für jedes hinausgelassene Schaf einen Stein in einen Topf und nahm abends für jedes zurückkehrende einen heraus — war der Topf leer, war die Herde vollständig. Er musste nie wissen, wie viele Schafe er hatte, nur dass Schafe und Steine sich paarweise zuordnen ließen.</p>
+        <p>Diese Idee der <strong>Eins-zu-eins-Zuordnung</strong> wirkt grob, ist aber einer der tiefsten Gedanken der ganzen Mathematik. Über zweitausend Jahre später hat Cantor genau damit bewiesen, dass es <em>verschieden große Unendlichkeiten</em> gibt — die Aussicht am Ende dieses Kapitels.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel</span>
+        <div class="demo">
+          <p>Ohne zu zählen entscheiden, welche Reihe mehr enthält:</p>
+          <p class="calc">● ● ● ● ● ● ●<br>▲ ▲ ▲ ▲ ▲ ▲</p>
+          <p>Immer eines mit einem durchstreichen; die Reihe, in der etwas übrig bleibt, ist die größere. Das ist die Methode des Hirten — und die Urform dessen, was man heute Mächtigkeit nennt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Kein Vorwissen nötig. Hier beginnt der ganze Berg.</div>
+          <div><span class="lbl">Wohin</span>Alles Übrige. Stellenwertsystem, Grundrechenarten, Primzahlen, die Größe des Unendlichen — alles wächst hier heraus.</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Gehört die 0 zu den natürlichen Zahlen?</strong> In deutschen Schulbüchern gehört sie üblicherweise dazu; wenn man es betonen will, schreibt man <span class="m">ℕ₀</span>, und für «ohne Null» <span class="m">ℕ*</span> oder <span class="m">ℕ⁺</span>. In vielen englischsprachigen Büchern gehört die 0 dagegen nicht dazu.</p>
+          <p>Das ist keine Frage von richtig oder falsch, sondern eine <strong>Verabredung</strong>. In der Mathematik gibt es eine ganze Reihe solcher Dinge: Sie wurden ausgehandelt, nicht entdeckt. Zu unterscheiden, was Verabredung ist und was Satz, ist der erste Schritt zum Lesen von Mathematik.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>natürliche Zahlen</b> natural numbers</span>
+          <span><b>Zahl</b> number</span>
+          <span><b>Ziffer</b> digit</span>
+          <span><b>Menge</b> set</span>
+          <span><b>Element</b> element</span>
+          <span><b>Mächtigkeit</b> cardinality</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">Zahl</span> und <span class="m-up m">Ziffer</span> nie verwechseln: Eine Ziffer ist ein Schriftzeichen (die zehn Zeichen 0 bis 9), eine Zahl ist die Größe, die damit dargestellt wird. «2024 ist eine vierstellige Zahl aus vier Ziffern.» Im Chinesischen deckt ein Wort beide Bedeutungen ab und ist dadurch unschärfer — das Deutsche trennt hier sauber.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Stellenwertsystem · warum zehn Zeichen genügen</h3>
+      <p class="de">Stellenwertsystem · place-value system</p>
+    </div>
+    <div class="body">
+      <p class="lead">Dasselbe Zeichen bedeutet an verschiedenen Stellen verschieden viel. Eine <span class="m">2</span> an der Einerstelle ist zwei, an der Hunderterstelle zweihundert.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Römische Zahlen sehen eindrucksvoll aus, aber man kann mit ihnen schlicht nicht rechnen. Versuch einmal, eine Multiplikation römisch auszuführen: Wie viel ist <span class="m-up m">MCMXLIV × III</span>? Die Römer konnten es tatsächlich nicht; sie rechneten auf einem Rechenbrett und übersetzten das Ergebnis anschließend zurück.</p>
+        <p>Das Stellenwertsystem hat das ein für alle Mal gelöst. Sein Kern ist aber nicht «zehn Zeichen», sondern <strong>die Erfindung der Null</strong>. Die Null bedeutet hier nicht «nichts», sondern «an dieser Stelle steht nichts, aber die Stelle existiert». Ohne sie ließen sich <span class="m">205</span> und <span class="m">25</span> nicht unterscheiden. Der Gedanke reifte in Indien, kam über die arabische Welt nach Europa — und Europa brauchte rund vierhundert Jahre, um ihn anzunehmen.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel</span>
+        <div class="demo">
+          <p class="calc">2024 = 2×1000 + 0×100 + 2×10 + 4×1</p>
+          <p>Ersetzt man die 10 durch eine 2, ergibt dieselbe Methode das Dualsystem. Computer benutzen es, weil eine Schaltung nur zwei Zustände sicher unterscheiden kann: Strom an und Strom aus.</p>
+          <p class="calc">1101₂ = 1×8 + 1×4 + 0×2 + 1×1 = 13</p>
+          <p>Ersetzt man sie durch 60, erhält man das Sechzigersystem der Babylonier. Warum hat eine Stunde 60 Minuten und ein Vollkreis 360 Grad? Das ist ihr Erbe.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Natürliche Zahlen (1.1). Erst muss es «wie viele» geben, bevor man es aufschreiben kann.</div>
+          <div><span class="lbl">Wohin</span>Brüche und Dezimalzahlen (1.5) · Zehnerpotenzen · Dualsystem und Information (Strang 6) · die Schreibweise von Polynomen (Strang 2 — im Grunde dieselbe Struktur)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Die deutschen Zahlwörter sind <strong>verdreht</strong>: <span class="m-up m">einundzwanzig</span> heißt wörtlich «eins und zwanzig», geschrieben wird aber <span class="m">21</span>. Beim Diktat hört man zuerst die Einerstelle und muss im Kopf umdrehen. Bei Zahlendiktaten und im Kopfrechnen führt das tatsächlich zu Fehlern — und Deutsch ist damit unter den europäischen Sprachen ziemlich allein.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Stellenwertsystem</b> place-value system</span>
+          <span><b>Zehnersystem</b> decimal system</span>
+          <span><b>Dualsystem</b> binary system</span>
+          <span><b>Stelle</b> digit position</span>
+          <span><b>Einer / Zehner / Hunderter</b> ones / tens / hundreds</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Die vier Grundrechenarten · und der Motor namens Umkehroperation</h3>
+      <p class="de">Grundrechenarten · Umkehroperation</p>
+    </div>
+    <div class="body">
+      <p class="lead">Es gibt nur vier Zeichen, aber hinter jedem stecken mehrere ganz verschiedene Situationen der Wirklichkeit. Genau daran liegt es zur Hälfte, dass Textaufgaben schwer sind.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Zuerst eine Tatsache gegen die Intuition: <strong>Subtraktion hat drei Bedeutungen</strong>, nicht eine.</p>
+        <p>«Ich hatte 7 Euro und habe 3 ausgegeben» — das ist <em>Wegnehmen</em>. «Der große Bruder ist 7, der kleine 3, wie groß ist der Abstand?» — das ist <em>Vergleichen</em>, weggenommen wird gar nichts. «Ich habe 3 Euro, brauche aber 7 — wie viel fehlt?» — das ist <em>Ergänzen</em>, und die Richtung ist sogar umgekehrt. Drei Situationen, dieselbe Rechnung <span class="m">7 − 3</span>. Wenn Kinder bei Textaufgaben hängen, können sie meistens sehr wohl subtrahieren — sie haben nur nicht erkannt, dass hier subtrahiert wird.</p>
+        <p>Bei der Multiplikation genauso: wiederholtes Addieren (3 Reihen zu je 4), Fläche (3 Meter mal 4 Meter), Skalierung (der Preis verdreifacht sich). Und bei der Division: gleichmäßiges Verteilen (12 Stück auf 4 Personen), Aufteilen (wie viele 4-Meter-Stücke aus 12 Metern), Verhältnis (12 zu 4).</p>
+        <p>Aber das Eigentliche dieser Karte ist etwas anderes.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der Motor des ganzen Strangs: die Umkehroperation</span>
+        <div class="demo">
+          <p>Die Addition fragt: <em>Wie viel ist 3 plus 4?</em>　Die Subtraktion fragt: <em>Was plus 4 ergibt 7?</em></p>
+          <p>Die Multiplikation fragt: <em>Wie viel ist 3 mal 4?</em>　Die Division fragt: <em>Was mal 4 ergibt 12?</em></p>
+          <p>Zu jeder Rechenart gehört eine, die «rückwärts fragt» — die Umkehroperation. Und <strong>alle fünf Wände dieses Kapitels werden von Umkehroperationen aufgestellt</strong>: Vorwärts geht immer etwas, erst das Rückwärtsfragen kann ohne Antwort bleiben.</p>
+        </div>
+        <p>Merk dir diesen einen Satz, dann sind die nächsten fünf Karten nur Variationen derselben Geschichte: <em>Vorwärts kein Problem, rückwärts kommt man nicht durch, also baut man den Weg breiter.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Natürliche Zahlen (1.1) · Stellenwertsystem (1.2)</div>
+          <div><span class="lbl">Wohin</span>Negative Zahlen (1.4) · Brüche (1.5) · Potenz, Wurzel, Logarithmus (1.8) · sämtliche Lösungstechniken für Gleichungen (Strang 2) · Funktion und Umkehrfunktion (Strang 4)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Rechenreihenfolge</strong>: <span class="m">8 − 3 + 2</span> ergibt <span class="m">7</span>, nicht <span class="m">3</span>. Gleichrangiges wird von links nach rechts abgearbeitet. Die deutsche Merkregel <span class="m-up m">Punktrechnung vor Strichrechnung</span> ist dabei besonders gut, weil sie direkt auf die Form der Zeichen zeigt: · und : sind Punkte, + und − sind Striche.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Grundrechenarten</b> basic operations</span>
+          <span><b>Summand / Summe</b> addend / sum</span>
+          <span><b>Faktor / Produkt</b> factor / product</span>
+          <span><b>Dividend / Divisor / Quotient</b> dividend / divisor / quotient</span>
+          <span><b>Umkehroperation</b> inverse operation</span>
+          <span><b>Punkt vor Strich</b> order of operations</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Ganze Zahlen ℤ · die erste Wand, aufgestellt von der Subtraktion</h3>
+      <p class="de">ganze Zahlen · negative Zahlen</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">3 − 5</span> hat in den natürlichen Zahlen keine Lösung. Also erfand man <span class="m">−2</span> und verlängerte die Zahlengerade nach links.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>In China wurde mit negativen Zahlen schon vor zweitausend Jahren Buch geführt, und auch die indischen Mathematiker benutzten sie für Schulden. Europäische Mathematiker nannten sie dagegen noch im 17. Jahrhundert «widersinnige Zahlen»; Pascal selbst erklärte öffentlich, «0 minus 4» sei blanker Unsinn.</p>
+        <p>Warum dieser Widerstand? Weil eine Zahl für sie zwingend «die Anzahl von irgendetwas» sein musste — und man kann nun einmal nicht −2 Schafe besitzen. Überzeugt hat am Ende kein philosophisches Argument, sondern schlichte Nützlichkeit: Temperatur, Höhe unter dem Meeresspiegel, Kontostand, Koordinaten — überall muss man nach unten, nach links, ins Negative zählen können.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel: warum minus mal minus plus ergibt</span>
+        <div class="demo">
+          <p>Erste Erklärung (anschaulich): Das Minuszeichen bedeutet «umdrehen». <span class="m">−(−3)</span> heißt «das Umgedrehte vom Umgedrehten» — zweimal gedreht ist wieder vorne.</p>
+          <p>Zweite Erklärung (der eigentliche Grund): Wir wollen, dass das Distributivgesetz <span class="m">a(b+c) = ab + ac</span> auch für die neuen Zahlen gilt. Rechnen wir also nach:</p>
+          <p class="calc">(−1) × [ 3 + (−3) ] = (−1) × 0 = 0</p>
+          <p class="calc">nach dem Distributivgesetz: (−1)×3 + (−1)×(−3) = 0</p>
+          <p class="calc">also: −3 + (−1)×(−3) = 0</p>
+          <p>Was zu <span class="m">−3</span> addiert 0 ergibt, kann nur <span class="m">+3</span> sein. Damit <em>muss</em> <span class="m">(−1)×(−3) = +3</span> gelten — eine andere Möglichkeit gibt es nicht.</p>
+        </div>
+        <p>Das ist Schritt drei aus dem Kreislaufbild. <strong>«Minus mal minus gleich plus» ist keine Lehrerregel, sondern die einzige Möglichkeit, die von den alten Gesetzen übrig gelassen wird.</strong> Hier siehst du zum ersten Mal, wie «die alten Regeln erhalten» rückwärts bestimmt, was das Neue sein muss — dieser Gedanke kommt in diesem Heft noch unzählige Male vor, etwa bei <span class="m">a⁰ = 1</span> in 1.8.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Subtraktion und Umkehroperation (1.3)</div>
+          <div><span class="lbl">Wohin</span>Koordinatensystem mit negativen Koordinaten (Strang 3) · Richtung von Vektoren (Strang 3) · negative Steigung linearer Funktionen (Strang 4) · komplexe Zahlen (1.9) · Temperatur und Höhe als reale Größen (Strang 7)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">−3²</span> und <span class="m">(−3)²</span> sind nicht dasselbe. Ersteres heißt «3 zum Quadrat, davon das Negative» und ergibt <span class="m">−9</span>; Letzteres heißt «minus 3 zum Quadrat» und ergibt <span class="m">+9</span>. Grund: Potenzieren kommt vor dem Vorzeichen. Diese Falle reicht bis in die Oberstufe, und auf dem Taschenrechner tippt man sie sich noch leichter ein.</p>
+          <p>Und noch eine: Der <span class="m-up m">Betrag</span> ist nicht «das Minuszeichen weglassen», sondern «wie weit von 0 entfernt». Deshalb ist <span class="m">|−7| = 7</span> — aber <span class="m">|x|</span> darf man bei einem Buchstaben nicht einfach auflösen, da braucht es eine Fallunterscheidung.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>ganze Zahlen</b> integers</span>
+          <span><b>negative Zahl</b> negative number</span>
+          <span><b>Vorzeichen</b> sign</span>
+          <span><b>Betrag</b> absolute value</span>
+          <span><b>Zahlengerade</b> number line</span>
+          <span><b>Gegenzahl</b> additive inverse</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.5 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Rationale Zahlen ℚ · die Wand der Division</h3>
+      <p class="de">rationale Zahlen · Bruch</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">3 ÷ 4</span> hat in den ganzen Zahlen keine Lösung. Also erfand man <span class="m">3/4</span> und füllte die Lücken zwischen den ganzen Zahlen auf.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Brüche wurden <em>viel</em> früher akzeptiert als negative Zahlen, weil sie etwas Greifbares hinter sich haben: Dreiviertel eines Kuchens kann man sehen und anfassen, minus drei Kuchen nicht. Die Ägypter rechneten schon vor viertausend Jahren mit Brüchen, die Babylonier trieben Sechzigerbrüche zu erstaunlicher Perfektion.</p>
+        <p>Das Wort <span class="m-up m">rational</span> hat nichts mit Vernunft zu tun; es kommt von <em>ratio</em> und heißt <strong>Verhältnis</strong>. Eine rationale Zahl ist eine, die sich als Verhältnis zweier ganzer Zahlen schreiben lässt. Wenn man das einmal weiß, ist «irrational» auch nicht mehr «unvernünftig», sondern schlicht «nicht als Verhältnis schreibbar».</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel: warum man beim Addieren erweitern muss, beim Multiplizieren nicht</span>
+        <div class="demo">
+          <p>Multiplikation: <span class="m">½ × ⅓</span>. Zeichne ein Quadrat, halbiere es waagerecht, dritteln es senkrecht. Das überlappende Stück ist die Antwort: <span class="m">1/6</span>. Zähler mal Zähler, Nenner mal Nenner — die beiden Richtungen stören einander nicht.</p>
+          <p class="calc">½ × ⅓ = (1×1)/(2×3) = 1/6</p>
+          <p>Addition: <span class="m">½ + ⅓</span>. Jetzt sollen zwei Stücke zusammengelegt werden, aber eines ist «ein Halbes» und eines «ein Drittel» — verschiedene Einheiten, das geht nicht direkt. Erst müssen beide in Sechstel umgerechnet werden:</p>
+          <p class="calc">½ + ⅓ = 3/6 + 2/6 = 5/6</p>
+          <p>Erweitern ist keine Vorschrift, sondern <strong>Einheitenumrechnung</strong> — genau wie man 3 Meter und 20 Zentimeter nicht einfach zu 23 addieren darf.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Und noch eins: Ist 0,999… gleich 1?</span>
+        <div class="demo">
+          <p>Setze <span class="m">x = 0,999…</span>, dann ist <span class="m">10x = 9,999…</span>. Subtrahiere:</p>
+          <p class="calc">10x − x = 9,999… − 0,999… = 9<br>9x = 9, also x = 1</p>
+          <p>Sie sind tatsächlich gleich — zwei Schreibweisen derselben Zahl. Niemand glaubt das beim ersten Hören, und genau der Punkt, an dem man stutzt, ist einer der tiefsten der Mathematik: <strong>Was heißt eigentlich «unendlich viele Ziffern»?</strong> Um das sauber zu sagen, braucht man den Grenzwert — der wartet am Hangweg von Strang 4. Diese Aufgabe ist die erste Tür dorthin, und es lohnt sich, hier hängen zu bleiben und nachzudenken.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Division und Umkehroperation (1.3) · ganze Zahlen (1.4) · Stellenwertsystem, auf Dezimalzahlen erweitert (1.2)</div>
+          <div><span class="lbl">Wohin</span>Verhältnis und Prozent (Strang 7) · Steigung (Strang 4) · eine Wahrscheinlichkeit ist ein Bruch (Strang 5) · Grenzwert (Strang 4) · reelle Zahlen (1.7)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Warum darf der Nenner nicht 0 sein?</strong> Nicht, weil es «verboten» wäre. <span class="m">6 ÷ 0</span> fragt «was mal 0 ergibt 6?» — und weil jede Zahl mal 0 gleich 0 ist, gibt es schlicht keine Antwort. Noch schlimmer <span class="m">0 ÷ 0</span>: Da fragt man «was mal 0 ergibt 0?», und die Antwort ist <em>jede Zahl</em> — zu viele Antworten sind so gut wie keine. Durch 0 zu teilen ergibt also nicht «unendlich», sondern ist <strong>nicht definiert</strong>.</p>
+          <p>Und: Nicht jede Dezimalzahl ist ein Bruch. <span class="m">0,25</span> ist einer (endlich), <span class="m">0,333…</span> auch (periodisch) — aber <span class="m">0,1010010001…</span>, das weder abbricht noch periodisch wird, ist keiner. Damit sind wir schon im Gebiet der nächsten Karte.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>rationale Zahlen</b> rational numbers</span>
+          <span><b>Bruch</b> fraction</span>
+          <span><b>Zähler / Nenner</b> numerator / denominator</span>
+          <span><b>kürzen / erweitern</b> reduce / expand</span>
+          <span><b>Hauptnenner</b> common denominator</span>
+          <span><b>Dezimalzahl</b> decimal</span>
+          <span><b>periodisch</b> repeating</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.6 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Primzahlen · die Atome der Zahlen</h3>
+      <p class="de">Primzahlen · Primfaktorzerlegung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Primzahl ist nur durch 1 und sich selbst teilbar. Und jede ganze Zahl zerfällt auf genau eine Weise in ein Produkt von Primzahlen — so wie jeder Stoff auf genau eine Weise aus Atomen besteht.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Diese Karte ist anders als die davor und danach: Sie stopft kein Loch, sondern <strong>macht eine Struktur sichtbar</strong>. Die anderen Karten fragen «was fehlt auf der Zahlengeraden noch», diese fragt «wie sind die vorhandenen Zahlen innen zusammengebaut».</p>
+        <p>Die Antwort ist ungewöhnlich schön. <span class="m">60 = 2 × 2 × 3 × 5</span> — und egal, wo du mit dem Zerlegen anfängst, am Ende stehen genau diese Primzahlen in genau dieser Anzahl da, keine mehr und keine weniger. Das ist der <strong>Fundamentalsatz der Arithmetik</strong>, und das Wort «Fundamental» ist keine Höflichkeit: Er ist tatsächlich das Fundament der gesamten Zahlentheorie.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel</span>
+        <div class="demo">
+          <p>Zerlege 60, egal von welcher Seite:</p>
+          <p class="calc">60 = 6 × 10 = (2×3) × (2×5) = 2²·3·5<br>60 = 4 × 15 = (2×2) × (3×5) = 2²·3·5</p>
+          <p>Ist erst zerlegt, werden viele Fragen plötzlich einfach. Etwa das kleinste gemeinsame Vielfache fürs Erweitern: Zerlege <span class="m">12 = 2²·3</span> und <span class="m">18 = 2·3²</span>; für jede Primzahl den <em>höheren</em> Exponenten nehmen gibt <span class="m-up m">kgV</span>, den <em>niedrigeren</em> gibt <span class="m-up m">ggT</span>:</p>
+          <p class="calc">ggT(12,18) = 2·3 = 6　　kgV(12,18) = 2²·3² = 36</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der erste vollständige Beweis dieses Hefts: es gibt unendlich viele Primzahlen</span>
+        <div class="proof">
+          <span class="lbl">Euklid · um 300 v. Chr. · Widerspruchsbeweis</span>
+          <p>Angenommen, es gäbe nur endlich viele Primzahlen. Dann kann man sie alle aufschreiben: <span class="m">p₁, p₂, …, pₙ</span>.</p>
+          <p>Bilde nun eine neue Zahl: <em>multipliziere sie alle miteinander und addiere 1</em>.</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.1rem">N = p₁ · p₂ · … · pₙ + 1</p>
+          <p>Teilt man dieses <span class="m">N</span> durch irgendeine Primzahl der Liste, bleibt Rest 1 — keine einzige aus der Liste teilt es also.</p>
+          <p>Andererseits ist jede ganze Zahl größer als 1 entweder selbst prim oder durch eine Primzahl teilbar. Also ist <span class="m">N</span> entweder selbst eine neue Primzahl oder hat einen Primfaktor, der nicht auf der Liste steht — in beiden Fällen war die Liste unvollständig.</p>
+          <p>Wir hatten aber gesagt, es seien <em>alle</em>. Widerspruch. Die Annahme «endlich viele Primzahlen» ist also falsch, es muss unendlich viele geben. ∎</p>
+        </div>
+        <p>Diesen Beweis sollte man zweimal langsam lesen. Er benutzt nichts als Multiplikation und Addition, ein Zwölfjähriger versteht ihn vollständig — und trotzdem beweist er etwas über das <em>Unendliche</em>. Du kannst mir unendlich viele Primzahlen nicht einzeln vorzählen, aber du kannst beweisen, dass niemand jemals fertig würde. <strong>Das ist die Macht des Beweises: Er lässt dich Dinge wissen, die du nie zu Ende ansehen kannst.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Teilbarkeit und Division (1.3) · ganze Zahlen (1.4)</div>
+          <div><span class="lbl">Wohin</span>Kürzen und Erweitern (1.5) · der Beweis zur Irrationalität (1.7) · Kongruenzen und Modulo-Rechnung (Strang 6) · RSA-Verschlüsselung (Strang 6) · Faktorisieren von Polynomen (Strang 2 — derselbe Gedanke auf anderer Bühne)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Die 1 ist keine Primzahl.</strong> Nicht weil sie «zu klein» wäre, sondern weil die eindeutige Zerlegung sonst kaputtginge: <span class="m">6 = 2·3 = 1·2·3 = 1·1·2·3 = …</span>, unendlich viele Schreibweisen. Die 1 auszuschließen dient allein dazu, das Wort «eindeutig» zu retten. Wieder eine Entscheidung, die getroffen wurde, um alte Regeln zu erhalten.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Primzahl</b> prime number</span>
+          <span><b>Teiler</b> divisor</span>
+          <span><b>teilbar</b> divisible</span>
+          <span><b>Vielfaches</b> multiple</span>
+          <span><b>Primfaktorzerlegung</b> prime factorisation</span>
+          <span><b>ggT</b> greatest common divisor</span>
+          <span><b>kgV</b> least common multiple</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">ggT</span> steht für «größter gemeinsamer Teiler», <span class="m-up m">kgV</span> für «kleinstes gemeinsames Vielfaches». Beide Abkürzungen tauchen in deutschen Lehrbüchern ständig auf.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Reelle Zahlen ℝ · die Wand, die √2 aufgestellt hat</h3>
+      <p class="de">irrationale Zahlen · reelle Zahlen</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Diagonale eines Quadrats lässt sich zeichnen, ihre Länge aber als kein einziger Bruch schreiben. Auf der Zahlengeraden waren noch Löcher — und zwar mehr Löcher als Besetztes.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Das ist die dramatischste Wand der ganzen Mathematikgeschichte. Die Pythagoreer glaubten «alles ist Zahl», und mit Zahl meinten sie ganze Zahlen und deren Verhältnisse. Ihr gesamtes Weltbild stand auf dieser Überzeugung.</p>
+        <p>Dann hat ihr eigener Satz sie verraten. Ein Quadrat mit Seitenlänge 1 hat nach Pythagoras die Diagonale <span class="m">√2</span>. Diese Strecke <em>ist da</em>, man kann sie mit dem Lineal abmessen — und sie ist <em>kein Bruch</em>. Der Legende nach wurde Hippasos, der das entdeckte, ins Meer geworfen; ob es stimmt, ist unklar, aber dass die Legende existiert, sagt genug über die Erschütterung.</p>
+        <p>Beachte, dass diese Wand anders gebaut ist als die vorigen. Vorher lautete es «eine Rechnung hat keine Antwort»; hier lautet es «eine <strong>sichtbare Länge</strong> hat keinen Namen». Die Geometrie hat die Algebra in die Enge getrieben — das ist das wichtigste Gespräch zwischen Strang 3 und Strang 1.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="Die Diagonale des Einheitsquadrats hat die Länge Wurzel zwei; mit dem Zirkel auf die Zahlengerade übertragen liegt sie zwischen 1 und 2 bei etwa 1,414.">
+          <line x1="40" y1="200" x2="660" y2="200" class="svg-l"/>
+          <line x1="100" y1="194" x2="100" y2="206" class="svg-l"/>
+          <text x="100" y="224" text-anchor="middle" class="svg-tm">0</text>
+          <line x1="220" y1="194" x2="220" y2="206" class="svg-l"/>
+          <text x="220" y="224" text-anchor="middle" class="svg-tm">1</text>
+          <line x1="340" y1="194" x2="340" y2="206" class="svg-l"/>
+          <text x="340" y="224" text-anchor="middle" class="svg-tm">2</text>
+          <line x1="460" y1="194" x2="460" y2="206" class="svg-l"/>
+          <text x="460" y="224" text-anchor="middle" class="svg-tm">3</text>
+          <line x1="580" y1="194" x2="580" y2="206" class="svg-l"/>
+          <text x="580" y="224" text-anchor="middle" class="svg-tm">4</text>
+
+          <rect x="100" y="80" width="120" height="120" class="f2"/>
+          <line x1="100" y1="200" x2="220" y2="80" class="svg-l" stroke-width="2"/>
+          <text x="146" y="128" class="svg-ts tx2">√2</text>
+          <text x="160" y="216" text-anchor="middle" class="svg-tm tx2">1</text>
+          <text x="86" y="145" text-anchor="end" class="svg-tm tx2">1</text>
+
+          <path d="M 220 80 A 169.7 169.7 0 0 1 269.7 200" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="269.7" cy="200" r="4" class="fm" stroke-width="2"/>
+          <text x="278" y="176" class="svg-tm txm">√2 ≈ 1,4142…</text>
+          <text x="278" y="160" class="svg-tm txm">liegt hier, ist aber kein Bruch</text>
+        </svg>
+        <figcaption><b>Diese Strecke lässt sich zeichnen, aber nicht aufschreiben.</b> Stich den Zirkel in die Ecke, nimm die Diagonale als Radius, schlag einen Bogen — wo er die Zahlengerade trifft, liegt √2. Die Zahl hat einen völlig bestimmten Ort, du kannst mit dem Finger draufzeigen. Sie lässt sich nur eben durch kein <span class="svg-tm">a/b</span> ausdrücken.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Beweis: √2 ist kein Bruch</span>
+        <div class="proof">
+          <span class="lbl">Widerspruchsbeweis · benutzt die Primfaktorzerlegung aus 1.6</span>
+          <p>Angenommen <span class="m">√2 = a/b</span>, und der Bruch sei bereits vollständig gekürzt, das heißt <span class="m">a</span> und <span class="m">b</span> haben keinen gemeinsamen Teiler.</p>
+          <p>Quadriere beide Seiten: <span class="m">2 = a²/b²</span>, also <span class="m">a² = 2b²</span>.</p>
+          <p>Damit ist <span class="m">a²</span> gerade. Da das Quadrat einer ungeraden Zahl stets ungerade ist, muss <span class="m">a</span> selbst gerade sein, also <span class="m">a = 2k</span>.</p>
+          <p>Einsetzen: <span class="m">(2k)² = 2b²</span>, also <span class="m">4k² = 2b²</span>, gekürzt <span class="m">b² = 2k²</span>.</p>
+          <p>Also ist auch <span class="m">b</span> gerade. Dann haben <span class="m">a</span> und <span class="m">b</span> aber beide den Teiler 2 — im Widerspruch dazu, dass der Bruch gekürzt war.</p>
+          <p>Damit war <span class="m">√2 = a/b</span> von Anfang an unmöglich. ∎</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Die Zahlengerade nach dem Auffüllen</span>
+        <p>Stopft man alle Löcher dieser Art, erhält man die <strong>reellen Zahlen</strong> ℝ. Ihre entscheidende Eigenschaft heißt <em>Vollständigkeit</em>: Es gibt keine Lücke mehr, wo du auch hinzeigst, dort sitzt eine Zahl. Das klingt wie eine Selbstverständlichkeit, ist aber das Fundament, auf dem die gesamte Analysis steht — Grenzwerte haben nur deshalb «etwas, wohin sie streben können», weil die Zahlengerade nicht leckt.</p>
+        <p>Nebenbei: <span class="m">√2</span> wurde vom <em>Wurzelziehen</em> erzwungen, <span class="m">π</span> und <span class="m">e</span> dagegen nicht — sie erfüllen überhaupt keine Polynomgleichung mit ganzzahligen Koeffizienten und wurden von der viel schärferen Grenzwertbildung hervorgetrieben. Dieser Unterschied führt zum zweiten Abschnitt der Aussicht in 1.10.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Satz des Pythagoras (Strang 3) · Primfaktorzerlegung (1.6) · rationale Zahlen (1.5) · Widerspruchsbeweis (Strang 0)</div>
+          <div><span class="lbl">Wohin</span>Grenzwert und Stetigkeit (Strang 4) · die gesamte Infinitesimalrechnung (Strang 4) · Näherung und Fehler (Strang 7) · strenge Konstruktion der reellen Zahlen (Analysis I)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>«Irrational» heißt nicht «unvernünftig».</strong> Es heißt «nicht als Verhältnis (ratio) darstellbar» und hat mit Vernunft nichts zu tun. Im Chinesischen ist die Übersetzung sogar irreführend — das deutsche Wort trägt die richtige Herkunft wenigstens noch im Stamm.</p>
+          <p>Außerdem: <span class="m">√9 = 3</span> ist rational. Wurzelziehen erzeugt nicht automatisch etwas Irrationales, sondern nur, wenn es nicht aufgeht.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>irrationale Zahlen</b> irrational numbers</span>
+          <span><b>reelle Zahlen</b> real numbers</span>
+          <span><b>Wurzel</b> root</span>
+          <span><b>Quadratwurzel</b> square root</span>
+          <span><b>Radikand</b> radicand</span>
+          <span><b>Widerspruchsbeweis</b> proof by contradiction</span>
+          <span><b>Vollständigkeit</b> completeness</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Potenz, Wurzel, Logarithmus · eine Rechnung, zwei Umkehrungen</h3>
+      <p class="de">Potenz · Wurzel · Logarithmus</p>
+    </div>
+    <div class="body">
+      <p class="lead">In <span class="m">2³ = 8</span> stecken drei Zahlen. Verdecke jeweils eine davon und frage nach ihr — schon hast du drei Rechenarten: Potenzieren, Wurzelziehen, Logarithmieren. Es sind drei Richtungen derselben Sache.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Zurück zum Motor aus 1.3: Zu jeder Rechenart gehört eine Umkehrung. Zur Addition gehört die Subtraktion, zur Multiplikation die Division — jeweils <em>eine</em>, weil beide kommutativ sind: <span class="m">3+4</span> ist dasselbe wie <span class="m">4+3</span>, also gibt es nur eine Art, rückwärts zu fragen.</p>
+        <p>Das Potenzieren ist aber <strong>nicht kommutativ</strong>: <span class="m">2³ = 8</span>, aber <span class="m">3² = 9</span>. Basis und Exponent haben völlig verschiedene Rollen. Deshalb gibt es <em>zwei</em> Arten, rückwärts zu fragen, und damit zwei Umkehroperationen. Das ist die gesamte Herkunft dieser drei Geschwister.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 312" role="img" aria-label="Die drei Fragerichtungen an der Gleichung zwei hoch drei gleich acht: nach dem Ergebnis fragen ergibt die Potenz, nach der Basis die Wurzel, nach dem Exponenten den Logarithmus.">
+          <defs>
+            <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <text x="350" y="46" text-anchor="middle" class="svg-t" style="font-size:22px">2³ = 8</text>
+          <text x="350" y="70" text-anchor="middle" class="svg-tm">Basis · Exponent · Ergebnis</text>
+
+          <rect x="40" y="110" width="190" height="110" rx="4" class="f2"/>
+          <text x="135" y="140" text-anchor="middle" class="svg-t tx2">Ergebnis → Potenz</text>
+          <text x="135" y="167" text-anchor="middle" class="svg-ts tx2">Basis 2 und Exponent 3</text>
+          <text x="135" y="196" text-anchor="middle" class="svg-t tx2">2³ = ?</text>
+
+          <rect x="255" y="110" width="190" height="110" rx="4" class="f1"/>
+          <text x="350" y="140" text-anchor="middle" class="svg-t tx1">Basis → Wurzel</text>
+          <text x="350" y="167" text-anchor="middle" class="svg-ts tx1">Exponent 3 und Ergebnis 8</text>
+          <text x="350" y="196" text-anchor="middle" class="svg-t tx1">∛8 = ?</text>
+
+          <rect x="470" y="110" width="190" height="110" rx="4" class="f3"/>
+          <text x="565" y="140" text-anchor="middle" class="svg-t tx3">Exponent → Logarithmus</text>
+          <text x="565" y="167" text-anchor="middle" class="svg-ts tx3">Basis 2 und Ergebnis 8</text>
+          <text x="565" y="196" text-anchor="middle" class="svg-t tx3">log₂8 = ?</text>
+
+          <path d="M 350 82 L 135 106" class="svg-l-soft" marker-end="url(#ah3)"/>
+          <path d="M 350 82 L 350 106" class="svg-l-soft" marker-end="url(#ah3)"/>
+          <path d="M 350 82 L 565 106" class="svg-l-soft" marker-end="url(#ah3)"/>
+
+          <text x="350" y="252" text-anchor="middle" class="svg-ts">Die drei Antworten sind 8, 2 und 3 — eine Gleichung, drei Lesarten</text>
+          <text x="350" y="278" text-anchor="middle" class="svg-tm">Addition und Multiplikation sind kommutativ — daher je eine Umkehrung</text>
+          <text x="350" y="296" text-anchor="middle" class="svg-tm">Potenzieren ist es nicht — daher zwei</text>
+        </svg>
+        <figcaption><b>Der Logarithmus ist nichts Neues, er ist bloß «rückwärts nach dem Exponenten gefragt».</b> Dass so viele Angst vor ihm haben, liegt meist daran, dass er als isoliertes neues Zeichen eingeführt wird. Zurück in diesem Dreieck ist er einfach ein Drittel des Bildes.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Ein kleines Beispiel: warum a⁰ = 1</span>
+        <div class="demo">
+          <p>Wieder dasselbe Muster «alte Gesetze erhalten». Wir wollen, dass <span class="m">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</span> immer gilt. Setze <span class="m">m = n</span>:</p>
+          <p class="calc">a³ ÷ a³ = a³⁻³ = a⁰</p>
+          <p>Links steht aber offensichtlich «eine Zahl geteilt durch sich selbst», also 1. Damit kann <span class="m">a⁰</span> nur 1 sein.</p>
+          <p>Mit derselben Methode bekommt man <span class="m">a⁻¹ = 1/a</span> und <span class="m">a^{1/2} = √a</span>. Keine davon ist eine neue Vorschrift; alle sind die einzige Antwort, die die Potenzgesetze übrig lassen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Was der Logarithmus in der Wirklichkeit tut</span>
+        <p>Seine Fähigkeit besteht darin, <strong>aus «Vielfachem» einen «Abstand» zu machen</strong>. Ein Erdbeben der Stärke 7 ist nicht 7/6 mal so stark wie eines der Stärke 6, sondern setzt zehnmal so viel Energie frei; genauso funktionieren Dezibel, pH-Wert und die Größenklassen der Sterne. Unsere Sinne arbeiten selbst logarithmisch — verzehnfacht man die Schallenergie, hören wir nur «etwas lauter». Die logarithmische Skala ist also keine Marotte der Mathematiker, sie liegt näher an unserer tatsächlichen Wahrnehmung.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Multiplikation und Umkehroperation (1.3) · irrationale Zahlen (1.7, denn <span class="m">a^{1/2}</span> führt aus den rationalen Zahlen heraus)</div>
+          <div><span class="lbl">Wohin</span>Exponential- und Logarithmusfunktion (Strang 4) · Exponentialgleichungen · Zinseszins und Bevölkerungswachstum (Strang 7) · Halbwertszeit und radioaktiver Zerfall · <span class="m">e</span> und der natürliche Logarithmus (Strang 4)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">log(a+b)</span> ist <strong>nicht</strong> <span class="m">log a + log b</span>. Das Logarithmengesetz macht aus <em>Multiplikation</em> Addition: <span class="m">log(ab) = log a + log b</span>. Das ist einer der häufigsten Fehler überhaupt und kostet jedes Jahr in jeder Klausur Punkte.</p>
+          <p>Zur Schreibweise: <span class="m-up m">ln</span> ist der natürliche Logarithmus (Basis <span class="m">e</span>), <span class="m-up m">lg</span> der dekadische (Basis 10), <span class="m-up m">ld</span> oder <span class="m-up m">log₂</span> der binäre. Deutsche Bücher schreiben für Basis 10 meist <span class="m-up m">lg</span>, englischsprachige oft einfach <span class="m-up m">log</span> — beim Lesen fremder Literatur darauf achten.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Potenz</b> power</span>
+          <span><b>Basis</b> base</span>
+          <span><b>Exponent</b> exponent</span>
+          <span><b>Wurzel</b> root</span>
+          <span><b>Logarithmus</b> logarithm</span>
+          <span><b>Potenzgesetze</b> laws of exponents</span>
+          <span><b>ln</b> natural logarithm</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg · in der Schule meist nicht geprüft</span></span>
+      <h3>Komplexe Zahlen ℂ · die letzte Wand</h3>
+      <p class="de">komplexe Zahlen · imaginäre Einheit</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">x² = −1</span> hat in den reellen Zahlen keine Lösung. Also erfand man <span class="m">i</span> und legte fest: <span class="m">i² = −1</span>. Aus der Zahlengeraden wurde eine Zahlenebene.</p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Hier liegt ein Missverständnis, das fast alle haben: <strong>Die komplexen Zahlen wurden nicht erfunden, um quadratische Gleichungen zu lösen.</strong> Wenn <span class="m">x² + 1 = 0</span> keine Lösung hat, hätte ein Mathematiker des 16. Jahrhunderts nur mit den Schultern gezuckt: «Dann gibt es eben keine, die Parabel schneidet die x-Achse halt nicht.» Völlig in Ordnung, niemand brauchte dafür neue Zahlen.</p>
+        <p>Erzwungen wurden sie von der <em>kubischen</em> Gleichung. Cardanos Lösungsformel für Grad drei hat eine unangenehme Eigenschaft: Selbst wenn alle drei Lösungen am Ende reell sind, <strong>muss</strong> die Rechnung unterwegs durch die Wurzel aus einer negativen Zahl. Du weißt, dass das Ergebnis reell ist, und kommst trotzdem nicht daran vorbei. Da hilft kein Schulterzucken mehr. Zweihundert Jahre lang benutzten Mathematiker diese Zahlen mit zugehaltener Nase und nannten sie «imaginär», eingebildet — und dieser abwertende Name ist bis heute geblieben.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="Die Gaußsche Zahlenebene: die Multiplikation mit i dreht den Punkt 1 um neunzig Grad auf i und noch einmal auf minus eins.">
+          <defs>
+            <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="180" y1="160" x2="520" y2="160" class="svg-l" marker-end="url(#ah4)"/>
+          <line x1="350" y1="270" x2="350" y2="40" class="svg-l" marker-end="url(#ah4)"/>
+          <text x="528" y="164" class="svg-tm">Re</text>
+          <text x="358" y="42" class="svg-tm">Im</text>
+
+          <circle cx="430" cy="160" r="4.5" class="f2" stroke-width="2"/>
+          <text x="430" y="184" text-anchor="middle" class="svg-tm tx2">1</text>
+          <circle cx="350" cy="80" r="4.5" class="f2" stroke-width="2"/>
+          <text x="336" y="76" text-anchor="end" class="svg-tm tx2">i</text>
+          <circle cx="270" cy="160" r="4.5" class="f2" stroke-width="2"/>
+          <text x="270" y="184" text-anchor="middle" class="svg-tm tx2">−1</text>
+          <circle cx="350" cy="240" r="4.5" class="f2" stroke-width="2"/>
+          <text x="336" y="248" text-anchor="end" class="svg-tm tx2">−i</text>
+
+          <path d="M 420 130 A 80 80 0 0 0 378 90" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah4)"/>
+          <text x="416" y="106" class="svg-tm txm">× i</text>
+          <path d="M 322 90 A 80 80 0 0 0 280 130" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah4)"/>
+          <text x="272" y="106" text-anchor="end" class="svg-tm txm">× i</text>
+
+          <circle cx="450" cy="100" r="4.5" class="fm" stroke-width="2"/>
+          <text x="460" y="96" class="svg-tm txm">3 + 2i</text>
+          <line x1="350" y1="160" x2="450" y2="100" class="svg-l-soft" stroke-dasharray="3 3"/>
+        </svg>
+        <figcaption><b>Mit i multiplizieren heißt: um 90 Grad gegen den Uhrzeigersinn drehen.</b> Von 1 aus einmal mit i multipliziert landet man bei i, noch einmal bei −1 — zwei Vierteldrehungen sind eine halbe, also ein Vorzeichenwechsel. Damit ist <span class="svg-tm">i² = −1</span> im Bild schlicht offensichtlich. Komplexe Zahlen sind keine «unechten» Zahlen, sie sind <b>Zahlen mit Richtung</b>, und genau deshalb tauchen sie in Elektrotechnik, Signalverarbeitung und Quantenmechanik überall auf.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Das Ende der Geschichte: warum nach ℂ Schluss ist</span>
+        <p>Das ist der schönste Abschluss dieses Strangs. Der <strong>Fundamentalsatz der Algebra</strong> besagt: Jede Polynomgleichung vom Grad <span class="m">n</span> hat im Komplexen <em>genau</em> <span class="m">n</span> Lösungen (Mehrfachheiten mitgezählt).</p>
+        <p>Das heißt: Du kannst keine Polynomgleichung mehr konstruieren, die «nicht weitergeht». Jede vorige Wand entstand daraus, dass irgendein Ausdruck keine Lösung hatte — jetzt haben alle Polynomgleichungen eine. Das Löcherstopfen ist mit ℂ abgeschlossen. Man nennt diese Eigenschaft <strong>algebraisch abgeschlossen</strong>.</p>
+        <p>— Wenn man in eine andere Richtung fragt («wohin läuft eigentlich der Grenzwert?», «wie gibt man dem unendlich Kleinen einen ordentlichen Status?»), gibt es natürlich weitere Geschichten. Aber das sind keine Geschichten mehr über das Erfinden neuer Zahlen; das ist Strang 4.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Negative Zahlen (1.4) · Wurzeln (1.7) · quadratische Gleichungen und Diskriminante (Strang 2) · Koordinatenebene (Strang 3)</div>
+          <div><span class="lbl">Wohin</span>Fundamentalsatz der Algebra · Drehungen und Vektoren (Strang 3) · Wechselstrom und Impedanz · Fourier-Transformation · Funktionentheorie (Uni) · Quantenmechanik</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Zur Prüfung</span>
+          <p>In der Schule werden komplexe Zahlen in der Regel <strong>nicht verlangt</strong>, die meisten Abschlussprüfungen fragen sie nicht ab. Diese Karte muss man also nicht lernen; einmal lesen und wissen, dass es so etwas gibt, genügt.</p>
+          <p>Aber man sollte wissen: Im ersten Semester eines naturwissenschaftlich-technischen Studiums tauchen sie schon in den ersten Wochen auf — und werden dort als bekannt vorausgesetzt. Dann kommt man hierher zurück.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>komplexe Zahlen</b> complex numbers</span>
+          <span><b>imaginäre Einheit</b> imaginary unit</span>
+          <span><b>Realteil</b> real part</span>
+          <span><b>Imaginärteil</b> imaginary part</span>
+          <span><b>Gaußsche Zahlenebene</b> complex plane</span>
+          <span><b>Betrag</b> modulus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista1">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Die folgenden vier Abschnitte <strong>musst du nicht verstehen</strong>. Sie stehen hier allein dafür, dass du weißt: Der Weg geht weiter, und die Dinge dort oben haben Namen. Wenn dir einer davon irgendwo begegnet, wirst du denken «ach, das ist der Gipfel vom Zahlenstrang».</p>
+
+  <div class="vista">
+    <h4>Unendlich gibt es in verschiedenen Größen</h4>
+    <p>Brüche scheinen viel zahlreicher als ganze Zahlen — allein zwischen 0 und 1 liegen unendlich viele. Trotzdem hat Cantor 1874 bewiesen: <strong>Es gibt genauso viele rationale wie natürliche Zahlen.</strong> Wirklich genauso viele, man kann sie paarweise zuordnen — wie die Steine und die Schafe des Hirten. Diese Sorte Unendlichkeit heißt «abzählbar».</p>
+    <p>Dann bewies er etwas noch Erstaunlicheres: <strong>Die reellen Zahlen sind mehr</strong>, und zwar so viel mehr, dass keine Zuordnung möglich ist. Sein Verfahren, das Diagonalargument, kommt mit Grundschulrechnen aus, aber sein Ergebnis lautet: Es gibt nicht nur eine Unendlichkeit, sondern verschieden große. Das war eines der erschütterndsten Resultate des 19. Jahrhunderts; viele Mathematiker weigerten sich, es anzuerkennen, und Cantor wurde sein Leben lang dafür angefeindet.</p>
+
+    <h4>π und e sind eine andere Gattung</h4>
+    <p><span class="m">√2</span> ist zwar kein Bruch, aber immerhin Lösung der Gleichung <span class="m">x² − 2 = 0</span>; solche Zahlen heißen <strong>algebraisch</strong>. <span class="m">π</span> und <span class="m">e</span> dagegen erfüllen überhaupt keine Polynomgleichung mit ganzzahligen Koeffizienten — sie heißen <strong>transzendent</strong>, weil sie über das hinausgehen, was die Algebra fassen kann.</p>
+    <p>Daraus folgt etwas Verblüffendes: Die antike Quadratur des Kreises (mit Zirkel und Lineal ein Quadrat mit dem Flächeninhalt eines gegebenen Kreises konstruieren) ist <strong>für immer unmöglich</strong>. Nicht, weil niemand schlau genug war — die Mathematik hat bewiesen, dass es sie nicht gibt. 1882 zeigte Lindemann die Transzendenz von π, und ein zweitausend Jahre altes Problem war geschlossen.</p>
+
+    <h4>Er benutzt jeden Tag Primzahlen</h4>
+    <p>Zwei große Primzahlen zu multiplizieren dauert Millisekunden. Umgekehrt von einer mehrere hundert Stellen langen Zahl herauszufinden, welche zwei Primzahlen sie ergeben, würde selbst mit den besten heutigen Verfahren Jahrmillionen dauern. <strong>Die RSA-Verschlüsselung</strong> steht genau auf dieser Asymmetrie: Hinter dem kleinen Schloss in der Adresszeile seines Browsers steckt die Primfaktorzerlegung aus Karte 1.6.</p>
+    <p>Nebenbei heißt das auch: Sollte je jemand ein schnelles Zerlegungsverfahren finden (Quantencomputer könnten das können), müsste die Verschlüsselung der ganzen Welt neu geschrieben werden. Zahlentheorie galt einmal als der «nutzloseste» Zweig der Mathematik — Hardy war noch stolz darauf. Heute trägt sie das gesamte Internet.</p>
+
+    <h4>Es gibt auch andere Arten, Löcher zu stopfen</h4>
+    <p>Der Weg von ℚ zu ℝ beruht darauf, «jeder Folge, die konvergieren sollte, auch einen Grenzwert zu geben». Aber «nah beieinander» lässt sich auch anders definieren: Erklärt man zwei Zahlen für nah, wenn ihre Differenz durch eine hohe Potenz von <span class="m">p</span> teilbar ist, und stopft dann dieselben Löcher, erhält man einen völlig anderen Zahlbereich — die <strong>p-adischen Zahlen</strong>. Sie sind in der modernen Zahlentheorie außerordentlich wichtig und gehörten zum Werkzeug im Beweis der Fermatschen Vermutung.</p>
+    <p>Das heißt: Das Schachtelbild vom Anfang ist nicht der einzige Weg. Die Mathematik verzweigt sich weit mehr, als die Schule vermuten lässt.</p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Analysis I</strong> — das erste Kapitel behandelt, was die reellen Zahlen eigentlich sind, und stopft das Loch aus 1.7 in aller Strenge</li>
+      <li><strong>Zahlentheorie</strong> — die ausgewachsene Fassung von Karte 1.6</li>
+      <li><strong>Algebra</strong> — warum ℂ algebraisch abgeschlossen ist und warum es für Grad fünf keine Lösungsformel gibt</li>
+      <li><strong>Mengenlehre</strong> — Cantors Unendlichkeiten und die Schwierigkeiten, die daraus folgten</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss1">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Die chinesische Spalte dient dem Abgleich mit der chinesischen Fassung.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">natürliche Zahlen ℕ</td><td class="en">natural numbers</td><td>自然数</td></tr>
+      <tr><td class="de">ganze Zahlen ℤ</td><td class="en">integers</td><td>整数</td></tr>
+      <tr><td class="de">rationale Zahlen ℚ</td><td class="en">rational numbers</td><td>有理数</td></tr>
+      <tr><td class="de">irrationale Zahlen</td><td class="en">irrational numbers</td><td>无理数</td></tr>
+      <tr><td class="de">reelle Zahlen ℝ</td><td class="en">real numbers</td><td>实数</td></tr>
+      <tr><td class="de">komplexe Zahlen ℂ</td><td class="en">complex numbers</td><td>复数</td></tr>
+      <tr><td class="de">Zahl / Ziffer</td><td class="en">number / digit</td><td>数 / 数字符号</td></tr>
+      <tr><td class="de">Zahlengerade</td><td class="en">number line</td><td>数轴</td></tr>
+      <tr><td class="de">Stellenwertsystem</td><td class="en">place-value system</td><td>位值制</td></tr>
+      <tr><td class="de">Vorzeichen / Betrag</td><td class="en">sign / absolute value</td><td>正负号 / 绝对值</td></tr>
+      <tr><td class="de">Gegenzahl</td><td class="en">additive inverse</td><td>相反数</td></tr>
+      <tr><td class="de">Bruch / Zähler / Nenner</td><td class="en">fraction / numerator / denominator</td><td>分数 / 分子 / 分母</td></tr>
+      <tr><td class="de">kürzen / erweitern</td><td class="en">reduce / expand</td><td>约分 / 扩分</td></tr>
+      <tr><td class="de">Hauptnenner</td><td class="en">common denominator</td><td>公分母</td></tr>
+      <tr><td class="de">Dezimalzahl / periodisch</td><td class="en">decimal / repeating</td><td>小数 / 循环的</td></tr>
+      <tr><td class="de">Primzahl</td><td class="en">prime number</td><td>素数</td></tr>
+      <tr><td class="de">Teiler / Vielfaches</td><td class="en">divisor / multiple</td><td>因数 / 倍数</td></tr>
+      <tr><td class="de">Primfaktorzerlegung</td><td class="en">prime factorisation</td><td>素因数分解</td></tr>
+      <tr><td class="de">ggT / kgV</td><td class="en">gcd / lcm</td><td>最大公因数 / 最小公倍数</td></tr>
+      <tr><td class="de">Potenz / Basis / Exponent</td><td class="en">power / base / exponent</td><td>幂 / 底数 / 指数</td></tr>
+      <tr><td class="de">Quadratwurzel / Radikand</td><td class="en">square root / radicand</td><td>平方根 / 被开方数</td></tr>
+      <tr><td class="de">Logarithmus / ln</td><td class="en">logarithm / natural log</td><td>对数 / 自然对数</td></tr>
+      <tr><td class="de">imaginäre Einheit</td><td class="en">imaginary unit</td><td>虚数单位</td></tr>
+      <tr><td class="de">Gaußsche Zahlenebene</td><td class="en">complex plane</td><td>复平面</td></tr>
+      <tr><td class="de">Grundrechenarten</td><td class="en">basic operations</td><td>四则运算</td></tr>
+      <tr><td class="de">Umkehroperation</td><td class="en">inverse operation</td><td>逆运算</td></tr>
+      <tr><td class="de">Punkt vor Strich</td><td class="en">order of operations</td><td>先乘除后加减</td></tr>
+      <tr><td class="de">Widerspruchsbeweis</td><td class="en">proof by contradiction</td><td>反证法</td></tr>
+      <tr><td class="de">Vollständigkeit</td><td class="en">completeness</td><td>完备性</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs1">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>Wie oft wurden die Zahlbereiche erweitert? Welche Rechenart hat jeweils die Wand aufgestellt? Ordne Rechenart und Zahlbereich einander zu.</li>
+    <li>Was ginge kaputt, wenn wir festlegen würden, minus mal minus ergebe minus? Welches alte Gesetz genau?</li>
+    <li><span class="m">√2</span> lässt sich mit dem Zirkel auf die Zahlengerade übertragen — warum sagt man trotzdem, sie sei «kein Bruch»? Was genau wird da verneint?</li>
+    <li>Warum ist die 1 keine Primzahl? Welchen Satz rettet diese Entscheidung?</li>
+    <li>Addition und Multiplikation haben je eine Umkehroperation, das Potenzieren zwei. Warum?</li>
+    <li>Warum muss nach den komplexen Zahlen keine neue Zahlensorte mehr erfunden werden? Was garantiert das Wort «algebraisch abgeschlossen»?</li>
+    <li>Euklid beweist die Unendlichkeit der Primzahlen durch Widerspruch. Sag mit eigenen Worten: Warum zählt ein Widerspruchsbeweis überhaupt?</li>
+    <li>Welche Karte dieses Kapitels braucht zwingend ein Ergebnis aus Strang 3 (Geometrie)? Welches?</li>
+    <li>Was ist größer, <span class="m">0,999…</span> oder <span class="m">1</span>? Falls du meinst, sie seien verschieden — welche Zahl liegt dann dazwischen?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strang-0-sprache.html"><span class="dir">Vorige Seite</span><span class="t">Strang 0 · Sprache und Beweis</span></a>
+  <a class="next" href="strang-2-algebra.html"><span class="dir">Nächste Seite</span><span class="t">Strang 2 · Algebra und Struktur</span></a>
+</div>
+
+</main>
+</body>
+</html>

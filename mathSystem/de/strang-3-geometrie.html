@@ -1,0 +1,864 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 3 · Form und Raum · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-3-geometrie.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 3 · Form und Raum · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-3-geometrie.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html" aria-current="page">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-3-geometry.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 3</h1>
+
+<section id="s3">
+  <h2 class="sec"><span class="num">Strang 3</span>Form und Raum</h2>
+  <p class="sec-lead">Das Wort Geometrie heißt wörtlich «Erdmessung». Sie begann als praktisches Handwerk: Der Nil überschwemmte jedes Jahr die Felder und spülte die Grenzen weg, also musste jemand das Land neu vermessen. Doch sie wurde schnell zu etwas anderem — <strong>zur Wissenschaft davon, was an einer Form unverändert bleibt.</strong></p>
+
+  <p>Zwei Fäden laufen durch diesen Strang, und es lohnt sich, sie vorher zu trennen.</p>
+
+  <p><strong>Erstens: Was heißt «unverändert»?</strong> Zwei Figuren, die vollkommen übereinstimmen, heißen <em>kongruent</em> — man kann sie aufeinanderlegen. Gleiche Form bei verschiedener Größe heißt <em>ähnlich</em> — die Verhältnisse bleiben. Später lässt sich sogar «ähnlich» noch lockern: In der Topologie sind Donut und Kaffeetasse dasselbe Ding, weil die Anzahl der Löcher gleich bleibt. Jede Lockerung gibt der Geometrie ein neues Gesicht.</p>
+
+  <p><strong>Zweitens: Wie rechnet man aus dem Messbaren das Unerreichbare aus?</strong> Wie hoch ist der Baum, wie breit der Fluss, wie groß die Erde, wie weit die Sterne — nichts davon lässt sich mit dem Maßband erreichen. Der gesamte praktische Wert der Geometrie besteht darin, ein Verfahren zu liefern, mit dem man aus dem, was man messen kann, auf das schließt, woran man nicht herankommt.</p>
+
+  <p>Beide Fäden treffen sich an derselben Stelle: bei der <strong>Ähnlichkeit</strong>. Sie ist der eigentliche Dreh- und Angelpunkt dieses Strangs — denn nur weil «gleiche Form gleiche Verhältnisse bedeutet», funktionieren die Winkelfunktionen und ist Messen überhaupt möglich. In der Schule wird das meist in einem Nebensatz abgehandelt.</p>
+
+  <p>Und noch ein Wendepunkt sei vorweg genannt: das <strong>Koordinatensystem</strong>. Nachdem Descartes die «Form» in «Zahl» übersetzt hatte, ließen sich Geometrieaufgaben ausrechnen und Algebraterme zeichnen. Das ist der wichtigste Pfeil auf der Landkarte. Nach diesem Schritt fließen Algebra und Geometrie in der Analysis zusammen — also in Strang 4.</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Winkel und Parallelen · die ersten Regeln der Geometrie</h3>
+      <p class="de">Winkel · Parallelen</p>
+    </div>
+    <div class="body">
+      <p class="lead">Zwei sich schneidende Geraden erzeugen Winkel. Und sobald der Begriff «parallel» dazukommt, entstehen schlagartig feste Beziehungen zwischen Winkeln — hier beginnt die Beweiskette der Geometrie.</p>
+
+      <div class="field">
+        <span class="lbl">Zuerst eine Kleinigkeit: warum der Vollkreis 360 Grad hat</span>
+        <p>Die Zahl 360 ist nicht vom Himmel gefallen, sie stammt aus dem Sechzigersystem der Babylonier (kurz erwähnt in Strang 1, 1.2). Sie hat eine ausgezeichnete Eigenschaft: <strong>Sie ist durch alle Zahlen von 1 bis 10 außer der 7 teilbar.</strong> Man kann den Kreis also in 2, 3, 4, 5, 6, 8, 9, 10 oder 12 gleiche Teile zerlegen, ohne je auf Brüche zu stoßen. Für eine Kultur ohne Dezimalzahlen war das ungeheuer praktisch.</p>
+        <p>Nebenbei: Diese Verabredung ist nicht die einzige. Am Hangweg begegnet dir das <strong>Bogenmaß</strong>, bei dem der Winkel über die Länge des zugehörigen Kreisbogens gemessen wird — ein Vollkreis ist dann <span class="m">2π</span>. Das wirkt zunächst unbequem, aber in der Differentialrechnung ist es das einzige Maß, bei dem die Ableitung von <span class="m">sin</span> sauber <span class="m">cos</span> ergibt. <em>Andere Schreibweise, schönere Formeln</em> — die alte Weisheit aus Strang 0, 0.8.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Sobald Parallelen da sind, hängen Winkel zusammen</span>
+        <p>Werden zwei Parallelen von einer dritten Geraden geschnitten, entstehen acht Winkel — aber nur zwei verschiedene Größen. Die deutschen Namen für die Lagebeziehungen werden im Unterricht direkt aufgerufen:</p>
+        <div class="demo">
+          <p><strong>Scheitelwinkel</strong>　die beiden über Kreuz liegenden Winkel; sie sind gleich groß.</p>
+          <p><strong>Stufenwinkel</strong>　die Winkel «auf derselben Stufe»; gleich groß.</p>
+          <p><strong>Wechselwinkel</strong>　über Kreuz auf verschiedenen Seiten; gleich groß.</p>
+          <p><strong>Nebenwinkel</strong>　die benachbarten; zusammen 180°.</p>
+        </div>
+        <p>An diesen Namen sieht man gut, wie hilfreich die deutsche Wortbildung ist: <span class="m-up m">Stufe</span> ist eine Treppenstufe, <span class="m-up m">Wechsel</span> ist der Seitenwechsel — die Wörter beschreiben die Lage selbst.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der erste richtige Beweis: Die Winkelsumme im Dreieck ist 180°</span>
+        <p>Diesen Satz kennt man aus der Grundschule, aber um ihn wirklich zu beweisen, braucht man Parallelen. Der Beweis ist so schön, dass ein einziges Bild genügt:</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="Beweis der Winkelsumme im Dreieck: durch die Spitze wird eine Parallele zur Grundseite gelegt, die beiden Basiswinkel wandern als Wechselwinkel nach oben und ergänzen sich mit dem Spitzenwinkel zu einer Geraden.">
+          <line x1="180" y1="80" x2="520" y2="80" class="svg-l" stroke-dasharray="6 4"/>
+          <text x="536" y="84" class="svg-tm">Parallele zur Basis</text>
+
+          <line x1="180" y1="230" x2="530" y2="230" class="svg-l"/>
+          <line x1="350" y1="80" x2="180" y2="230" class="svg-l"/>
+          <line x1="350" y1="80" x2="530" y2="230" class="svg-l"/>
+
+          <circle cx="350" cy="80" r="3.5" class="fm" stroke-width="2"/>
+          <circle cx="180" cy="230" r="3.5" class="fm" stroke-width="2"/>
+          <circle cx="530" cy="230" r="3.5" class="fm" stroke-width="2"/>
+
+          <text x="204" y="222" class="svg-t tx1">α</text>
+          <text x="500" y="222" class="svg-t tx2">β</text>
+          <text x="344" y="112" class="svg-t tx3">γ</text>
+
+          <text x="306" y="98" class="svg-t tx1">α</text>
+          <text x="382" y="98" class="svg-t tx2">β</text>
+
+          <path d="M 300 74 A 52 52 0 0 1 316 96" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+          <path d="M 400 74 A 52 52 0 0 0 384 96" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <text x="350" y="272" text-anchor="middle" class="svg-t">Oben ergeben α + γ + β zusammen eine Gerade</text>
+          <text x="350" y="292" text-anchor="middle" class="svg-tm">also ist die Winkelsumme im Dreieck 180°</text>
+        </svg>
+        <figcaption><b>Die beiden Basiswinkel werden nach oben «getragen».</b> Legt man durch die Spitze eine Parallele zur Grundseite, ist das linke α ein Wechselwinkel zum Basiswinkel α und damit gleich groß; für β gilt dasselbe. Die drei Winkel liegen an der Spitze lückenlos nebeneinander und füllen genau eine Gerade. <b>Dieser Beweis hängt an den Parallelen — und damit an Euklids fünftem Postulat</b> (Strang 0, 0.5). Auf der Kugel lässt sich keine solche Parallele zeichnen, und die Winkelsumme ist dort größer als 180°.</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Kein Vorwissen nötig. Hier beginnt die Geometrie.</div>
+          <div><span class="lbl">Wohin</span>Kongruenzsätze (3.2) · Ähnlichkeit (3.3) · Winkelsumme im Vieleck · Trigonometrie (3.6) · nichteuklidische Geometrie (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Stufen- und Wechselwinkel sind nur dann gleich, <strong>wenn die beiden Geraden parallel sind</strong>. Ohne Parallelität besteht überhaupt keine Beziehung. Prüfe bei Aufgaben immer, ob die Parallelität wirklich gegeben ist — viele Fallen sitzen genau hier: Die Zeichnung <em>sieht</em> parallel aus, aber der Aufgabentext sagt es nicht. <em>Eine Zeichnung hilft beim Denken; Daten liest man nicht aus ihr ab.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Winkel</b> angle</span>
+          <span><b>Scheitelwinkel</b> vertical angles</span>
+          <span><b>Nebenwinkel</b> adjacent angles</span>
+          <span><b>Stufenwinkel</b> corresponding angles</span>
+          <span><b>Wechselwinkel</b> alternate angles</span>
+          <span><b>Innenwinkelsumme</b> angle sum</span>
+          <span><b>Bogenmaß</b> radian measure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Kongruenz · wann zwei Figuren «gleich» sind</h3>
+      <p class="de">Kongruenz · Kongruenzsätze</p>
+    </div>
+    <div class="body">
+      <p class="lead">Zwei Figuren, die sich durch Verschieben zur Deckung bringen lassen, heißen kongruent. Die interessante Frage ist: <strong>Wie wenige Angaben braucht man mindestens, um ein Dreieck festzulegen?</strong></p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Ein Dreieck hat sechs Bestimmungsstücke: drei Seiten und drei Winkel. Man braucht aber nicht alle sechs. Stehen die drei Seiten fest, lässt sich das Dreieck nicht mehr verformen — und das ist keine mathematische Spielerei, sondern die physikalische Tatsache, dass <strong>ein Dreieck starr ist</strong>.</p>
+        <p>Ein Viereck ist es nicht: Nagelt man vier Stäbe zu einem Quadrat zusammen, lässt es sich zur Raute drücken. Ein Dreieck lässt sich nicht drücken. Deshalb bestehen vom Eiffelturm über Fahrradrahmen bis zum Dachstuhl alle Konstruktionen, die sich nicht verformen dürfen, aus Dreiecken. <em>Die Kongruenzsätze sagen im Kern genau, unter welchen Bedingungen eine Form endgültig festgenagelt ist.</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Vier Sätze — und die deutsche Schreibweise ist besonders klug</span>
+        <p>Mit <span class="m-up m">S</span> für Seite und <span class="m-up m">W</span> für Winkel ergeben sich vier:</p>
+        <div class="demo">
+          <p><strong>SSS</strong>　drei Seiten stimmen überein.</p>
+          <p><strong>SWS</strong>　zwei Seiten und der von ihnen <em>eingeschlossene</em> Winkel. Der Winkel muss in der Mitte stehen.</p>
+          <p><strong>WSW</strong>　zwei Winkel und die von ihnen <em>eingeschlossene</em> Seite. (Da die Winkelsumme 180° beträgt, ist der dritte Winkel automatisch bestimmt — deshalb fällt WWS mit unter diesen Satz.)</p>
+          <p><strong>SsW</strong>　zwei Seiten und der Winkel, der der <em>längeren</em> von beiden gegenüberliegt.</p>
+        </div>
+        <p>Beim letzten lohnt es sich hinzuschauen: <strong>Das kleine s ist mit Absicht klein geschrieben.</strong> Es steht für die kürzere Seite, und die Regel verlangt, dass der gegebene Winkel dem <em>großen S</em> gegenüberliegt — also der längeren Seite.</p>
+        <p>Warum so pingelig? Weil das Dreieck <strong>nicht eindeutig</strong> ist, wenn der Winkel der kürzeren Seite gegenüberliegt: Dieselben Angaben lassen dann zwei verschiedene Dreiecke zu, ein spitzwinkliges und ein stumpfwinkliges. Das ist eine der klassischen Fallen der Geometrie — und die deutsche Groß-Klein-Schreibung hat die Lösung gleich in den Namen hineingeschrieben. Englische Lehrbücher schreiben SSA und sagen dann «dieser Fall gilt nicht», erklären aber nicht, wann er doch gilt.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Winkel und Parallelen (3.1) · Winkelsumme</div>
+          <div><span class="lbl">Wohin</span>Ähnlichkeitssätze (3.3 — dieselben Sätze mit «gleich» durch «im Verhältnis» ersetzt) · alle geometrischen Beweisaufgaben · Konstruktion mit Zirkel und Lineal · Abbildungen und Symmetrie (3.9)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Bei SWS muss der Winkel der eingeschlossene sein.</strong> «Zwei Seiten und ein Winkel» reicht nicht, man muss sagen, wo der Winkel liegt. <span class="m">a</span>, <span class="m">b</span> und der eingeschlossene Winkel <span class="m">γ</span> legen das Dreieck fest; <span class="m">a</span>, <span class="m">b</span> und der <span class="m">a</span> gegenüberliegende Winkel <span class="m">α</span> fallen unter die SsW-Regel.</p>
+          <p>Und: Beim Aufschreiben einer Kongruenz muss die <strong>Reihenfolge der Eckpunkte passen</strong>. <span class="m">△ABC ≅ △DEF</span> bedeutet A↔D, B↔E, C↔F. Wer die Reihenfolge durcheinanderbringt, leitet daraus lauter falsche Zuordnungen ab — und das kostet beim Korrigieren tatsächlich Punkte.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Kongruenz · kongruent ≅</b> congruence</span>
+          <span><b>Kongruenzsätze</b> congruence criteria</span>
+          <span><b>Seite / Winkel</b> side / angle</span>
+          <span><b>Dreieckskonstruktion</b> triangle construction</span>
+          <span><b>eindeutig</b> uniquely determined</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Ähnlichkeit · der eigentliche Angelpunkt dieses Strangs</h3>
+      <p class="de">Ähnlichkeit · Strahlensätze</p>
+    </div>
+    <div class="body">
+      <p class="lead">Gleiche Form bei möglicherweise verschiedener Größe heißt ähnlich. Der Begriff wirkt schwächer als Kongruenz und ist doch weit nützlicher — <strong>weil in der Welt sehr wenig wirklich gleich ist, aber sehr vieles im gleichen Verhältnis steht.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Wofür es gebraucht wird</span>
+        <p>Die Ähnlichkeit beantwortet den zweiten Faden dieses Strangs: <em>Wie rechnet man aus dem Messbaren das Unerreichbare aus?</em></p>
+        <p>Um die Höhe eines Baums zu erfahren, muss niemand hinaufklettern. Man steckt einen Meterstab in den Boden und misst den Schatten des Stabs und den Schatten des Baums. Weil die Sonnenstrahlen parallel einfallen, stimmen alle entsprechenden Winkel überein — Stab, Schatten und Strahl bilden ein Dreieck, das dem aus Baum, Schatten und Strahl <strong>ähnlich</strong> ist. Also:</p>
+        <div class="demo">
+          <p class="calc">Baumhöhe ÷ Baumschatten = Stabhöhe ÷ Stabschatten</p>
+          <p>Drei der vier Größen sind messbar, die vierte ergibt sich. <em>Das ist der älteste praktische Nutzen der Geometrie.</em></p>
+        </div>
+        <p>Um 240 v. Chr. hat Eratosthenes mit demselben Gedanken den <strong>Erdumfang</strong> bestimmt. Er wusste, dass zur Sommersonnenwende die Sonne in Syene (dem heutigen Assuan) mittags senkrecht in einen Brunnen scheint, während am selben Tag in Alexandria der Schatten eines Obelisken einem Winkel von etwa 7,2° entspricht — also genau einem Fünfzigstel des Vollkreises. Die beiden Orte liegen rund 5000 Stadien auseinander, der Erdumfang beträgt somit etwa 250 000 Stadien. In heutige Einheiten umgerechnet liegt der Fehler bei wenigen Prozent. <strong>Er hat Ägypten nie verlassen und trotzdem die Erde vermessen.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Die Strahlensätze</span>
+        <p>Deutsche Lehrbücher fassen den häufigsten Ähnlichkeitsfall zu den Strahlensätzen zusammen, die im Unterricht ständig aufgerufen werden. Sie besagen: Zwei von einem Punkt ausgehende Strahlen, die von zwei Parallelen geschnitten werden, teilen die Strecken im gleichen Verhältnis.</p>
+        <p>Im Grunde ist das nur eine andere Formulierung ähnlicher Dreiecke — aber weil die Figur festliegt und die Anwendung schnell geht, lohnt es sich, sie als eigenes Bild zu kennen. Entfernungsmessung, Höhenbestimmung, Zeichnungen skalieren, Maßstäbe auf Landkarten: dahinter steckt immer sie.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Eine Folgerung gegen die Intuition: doppelt so groß heißt achtfaches Gewicht</span>
+        <p>Das ist vielleicht das Nützlichste und zugleich am häufigsten Übersehene dieses Kapitels. Vergrößert man eine Figur um den Faktor <span class="m">k</span>:</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 340" role="img" aria-label="Quadrat-Kubik-Gesetz: verdoppelt sich die Länge, so vervierfacht sich die Fläche und verachtfacht sich das Volumen.">
+          <text x="40" y="66" class="svg-tm">Länge</text>
+          <line x1="150" y1="60" x2="190" y2="60" class="svg-l" stroke-width="2.5"/>
+          <line x1="300" y1="60" x2="380" y2="60" class="svg-l" stroke-width="2.5"/>
+          <text x="560" y="66" class="svg-t tx1">× 2</text>
+
+          <text x="40" y="136" class="svg-tm">Fläche</text>
+          <rect x="150" y="110" width="40" height="40" class="f1"/>
+          <rect x="300" y="110" width="80" height="80" class="f1"/>
+          <line x1="340" y1="110" x2="340" y2="190" class="svg-l-soft"/>
+          <line x1="300" y1="150" x2="380" y2="150" class="svg-l-soft"/>
+          <text x="560" y="156" class="svg-t tx2">× 4</text>
+          <text x="404" y="156" class="svg-tm">4 Teile</text>
+
+          <text x="40" y="246" class="svg-tm">Volumen</text>
+          <rect x="150" y="232" width="26" height="26" class="f2"/>
+          <rect x="300" y="216" width="26" height="26" class="f2"/>
+          <rect x="332" y="216" width="26" height="26" class="f2"/>
+          <rect x="364" y="216" width="26" height="26" class="f2"/>
+          <rect x="396" y="216" width="26" height="26" class="f2"/>
+          <rect x="300" y="248" width="26" height="26" class="f2"/>
+          <rect x="332" y="248" width="26" height="26" class="f2"/>
+          <rect x="364" y="248" width="26" height="26" class="f2"/>
+          <rect x="396" y="248" width="26" height="26" class="f2"/>
+          <text x="560" y="252" class="svg-t txm">× 8</text>
+          <text x="440" y="252" class="svg-tm">8 Teile</text>
+
+          <line x1="40" y1="296" x2="660" y2="296" class="svg-l-soft"/>
+          <text x="40" y="322" class="svg-t">Länge nach k, Fläche nach k², Volumen und Gewicht nach k³</text>
+        </svg>
+        <figcaption><b>Dieses Gesetz heißt Quadrat-Kubik-Gesetz, und es regiert die Formen der wirklichen Welt.</b> Vergrößerte man eine Ameise auf Elefantengröße, stiege ihr Gewicht um das Hunderttausendfache, der Querschnitt ihrer Beine aber nur um das Tausendfache — die Beine brächen auf der Stelle. Deshalb müssen Elefantenbeine dick und gerade sein, während Ameisenbeine dünn wie Haare sein dürfen. Aus demselben Grund überleben kleine Tiere Stürze (viel Oberfläche im Verhältnis, genug Luftwiderstand) und große nicht; und ein doppelt so großer Kuchen braucht die achtfache Menge Teig, aber nur die vierfache Glasur.</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Kongruenz (3.2) · Verhältnisse und Brüche (Strang 1, 1.5) · Winkel an Parallelen (3.1)</div>
+          <div><span class="lbl">Wohin</span><strong>Trigonometrie (3.6) — sie steht vollständig auf der Ähnlichkeit</strong> · π ist für alle Kreise gleich (3.5) · Maßstab und Karten (Strang 7) · Größenordnungen abschätzen (Strang 7)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>«Die Fläche verdoppelt sich auch» ist falsch.</strong> Das ist der verbreitetste geometrische Intuitionsfehler überhaupt und gehört zur selben Krankheitsfamilie wie <span class="m">(a+b)² ≠ a²+b²</span> aus Strang 2, 2.2: <em>eine lineare Intuition auf etwas Nichtlineares angewandt.</em></p>
+          <p>Und zur Schreibweise: Ähnlichkeit wird mit der Tilde geschrieben, <span class="m">△ABC ∼ △DEF</span>, Kongruenz mit <span class="m">≅</span>. Die beiden Zeichen nicht verwechseln.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Ähnlichkeit · ähnlich ∼</b> similarity</span>
+          <span><b>Strahlensatz</b> intercept theorem</span>
+          <span><b>Streckfaktor</b> scale factor</span>
+          <span><b>Maßstab</b> scale</span>
+          <span><b>Verhältnis</b> ratio</span>
+          <span><b>zentrische Streckung</b> dilation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Satz des Pythagoras · ein Satz und sein ganzes Universum</h3>
+      <p class="de">Satz des Pythagoras</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">a² + b² = c²</span>. Das ist vermutlich die berühmteste Formel der Welt, und die Berühmtheit hat einen guten Grund: <strong>Sie ist die Definition dessen, was «Abstand» heißt.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Ein Beweis ganz ohne Rechnen</span>
+        <p>Es gibt Hunderte Beweise für diesen Satz. Der folgende ist der schönste, weil er kein einziges Rechenzeichen braucht — man muss nur zwei Bilder ansehen und erkennen: «gleich große Quadrate, minus gleich viele gleiche Dreiecke, also muss der Rest gleich groß sein».</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 330" role="img" aria-label="Flächenbeweis des Satzes von Pythagoras: zwei gleich große Quadrate mit jeweils vier gleichen rechtwinkligen Dreiecken, links bleibt ein Quadrat c hoch zwei, rechts bleiben a hoch zwei und b hoch zwei.">
+          <rect x="60" y="60" width="200" height="200" class="svg-face"/>
+          <path d="M 180 60 L 260 180 L 140 260 L 60 140 Z" class="f2"/>
+          <text x="160" y="166" text-anchor="middle" class="svg-t tx2">c²</text>
+          <line x1="60" y1="60" x2="180" y2="60" class="svg-l"/>
+          <text x="120" y="52" text-anchor="middle" class="svg-tm">a</text>
+          <line x1="180" y1="60" x2="260" y2="60" class="svg-l"/>
+          <text x="220" y="52" text-anchor="middle" class="svg-tm">b</text>
+          <text x="160" y="288" text-anchor="middle" class="svg-tm">4 Dreiecke + ein schräges Quadrat</text>
+
+          <rect x="440" y="60" width="200" height="200" class="svg-face"/>
+          <rect x="440" y="60" width="120" height="120" class="f1"/>
+          <text x="500" y="126" text-anchor="middle" class="svg-t tx1">a²</text>
+          <rect x="560" y="180" width="80" height="80" class="fm"/>
+          <text x="600" y="226" text-anchor="middle" class="svg-t txm">b²</text>
+          <line x1="560" y1="60" x2="640" y2="180" class="svg-l"/>
+          <line x1="440" y1="180" x2="560" y2="260" class="svg-l"/>
+          <line x1="560" y1="60" x2="560" y2="260" class="svg-l-soft"/>
+          <line x1="440" y1="180" x2="640" y2="180" class="svg-l-soft"/>
+          <text x="540" y="288" text-anchor="middle" class="svg-tm">dieselben 4 Dreiecke + zwei gerade Quadrate</text>
+
+          <text x="350" y="160" text-anchor="middle" class="svg-t">=</text>
+          <text x="350" y="322" text-anchor="middle" class="svg-t">Gleich große Quadrate, gleich viele Dreiecke abgezogen　⟹　c² = a² + b²</text>
+        </svg>
+        <figcaption><b>Das ist Griff 8 aus dem Werkzeugkasten, «zähle zweimal», auf einer anderen Bühne.</b> Beide großen Quadrate haben die Seitenlänge <span class="svg-tm">a+b</span> und enthalten vier identische rechtwinklige Dreiecke, nur anders angeordnet. Die freibleibende Fläche muss also gleich groß sein — links ein schräges Quadrat mit Seite c, rechts ein a² und ein b². <b>Der ganze Beweis kommt ohne eine einzige Gleichung aus.</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Seine drei Identitäten</span>
+        <div class="demo">
+          <p><strong>Erstens: die dritte Seite berechnen.</strong> Die direkteste Anwendung und die häufigste in Klausuren.</p>
+          <p><strong>Zweitens: rechte Winkel erkennen.</strong> Die Umkehrung gilt ebenfalls: Ist <span class="m">a²+b²=c²</span>, dann <em>muss</em> das Dreieck rechtwinklig sein. Die alten Ägypter spannten ein Seil mit zwölf gleich weit entfernten Knoten zu einem 3-4-5-Dreieck und hatten damit einen exakten rechten Winkel — denn <span class="m">9+16=25</span>. Auf Baustellen wird dieser Trick bis heute benutzt.</p>
+          <p><strong>Drittens: Abstand definieren.</strong> Der Abstand zweier Punkte <span class="m">(x₁,y₁)</span> und <span class="m">(x₂,y₂)</span> in der Ebene ist:</p>
+          <p class="calc">d = √( (x₂−x₁)² + (y₂−y₁)² )</p>
+          <p>Das ist der Satz des Pythagoras, mit der waagerechten und der senkrechten Differenz als Katheten. <em>Jedes Mal, wenn dir irgendwo eine Summe von Quadraten unter einer Wurzel begegnet — im Koordinatensystem, im Raum, bei der Länge eines Vektors, bei der Standardabweichung in der Statistik, beim Fehlermaß im maschinellen Lernen — steckt darunter dieser eine Satz.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Flächeninhalt (3.1) · Kongruenz (3.2) · Wurzelziehen (Strang 1, 1.7)</div>
+          <div><span class="lbl">Wohin</span><strong>√2 ist irrational (Strang 1, 1.7) — diese Krise hat dieser Satz ausgelöst</strong> · Abstandsformel und Koordinatengeometrie (3.7) · Einheitskreis und sin²+cos²=1 (3.6) · Kosinussatz (3.6) · Länge eines Vektors (3.8) · Standardabweichung (Strang 5)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">c</span> ist <strong>immer die Hypotenuse</strong>, also die dem rechten Winkel gegenüberliegende, längste Seite. Heißen die Seiten in der Aufgabe nicht a, b, c, darf man die Formel nicht mechanisch anwenden — erst den rechten Winkel suchen, und die ihm gegenüberliegende Seite ist das c. Besonders oft geht das schief, wenn die Figur gedreht ist oder andere Buchstaben trägt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Satz des Pythagoras</b> Pythagorean theorem</span>
+          <span><b>Hypotenuse</b> hypotenuse</span>
+          <span><b>Kathete</b> leg</span>
+          <span><b>rechtwinkliges Dreieck</b> right triangle</span>
+          <span><b>Kathetensatz</b> leg theorem</span>
+          <span><b>Höhensatz</b> altitude theorem</span>
+          <span><b>Umkehrung</b> converse</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.5 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Der Kreis · die vollkommenste und lästigste Form</h3>
+      <p class="de">Kreis · Kreiszahl π</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Definition des Kreises ist denkbar einfach: <strong>alle Punkte mit gleichem Abstand zu einem festen Punkt.</strong> Und ausgerechnet daraus entstand die berühmteste Konstante der Mathematik und ein zweitausend Jahre ungelöstes Problem.</p>
+
+      <div class="field">
+        <span class="lbl">Eine Figur durch eine Menge definieren</span>
+        <p>«Alle Punkte mit gleichem Abstand zu einem festen Punkt» — beachte die Form dieses Satzes. Er beschreibt kein Zeichenverfahren, sondern <strong>grenzt mit einer Bedingung eine Menge von Punkten ein</strong>. Das ist die Mengensprache aus Strang 0, 0.1, zum ersten Mal auf Geometrie angewandt:</p>
+        <p class="calc">Kreis = { P | Abstand(P, M) = r }</p>
+        <p>Diese Sichtweise wird am Hangweg außerordentlich wichtig: Ellipse, Parabel und Hyperbel werden alle nach demselben Satzmuster definiert, nur mit anderer Bedingung. Und im Koordinatensystem (3.7) werden aus diesen Bedingungen direkt Gleichungen.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Warum π für alle Kreise gleich ist</span>
+        <p>Dass Umfang geteilt durch Durchmesser immer dieselbe Zahl ergibt, braucht eigentlich eine Begründung — und die Begründung ist genau der Angelpunkt der vorigen Karte: <strong>Alle Kreise sind einander ähnlich.</strong> Vergrößert man einen Kreis um den Faktor <span class="m">k</span>, entsteht wieder ein Kreis, Umfang und Durchmesser wachsen beide um <span class="m">k</span>, das Verhältnis bleibt.</p>
+        <p><span class="m">π</span> ist also keine Eigenschaft «eines Kreises», sondern eine Eigenschaft <em>«der Form Kreis»</em>. Das ist derselbe Gedanke, der in 3.6 dafür sorgt, dass die Winkelfunktionen nur vom Winkel abhängen und nicht von der Größe des Dreiecks — er taucht hier nur zum ersten Mal auf.</p>
+        <p>Nebenbei: <span class="m">π</span> ist transzendent (Strang 1, 1.10), und damit ist eines der drei klassischen Probleme der Antike, die <strong>Quadratur des Kreises</strong>, endgültig unmöglich — nicht weil niemand schlau genug war, sondern weil die Mathematik bewiesen hat, dass es sie nicht gibt. <em>Wieder ein «es geht nicht».</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Satz des Thales: über dem Halbkreis ist alles rechtwinklig</span>
+        <div class="demo">
+          <p>Nimm einen beliebigen Punkt auf dem Kreis und verbinde ihn mit den beiden Endpunkten eines Durchmessers — der Winkel dort ist <strong>immer ein rechter</strong>, ganz gleich, welchen Punkt du wählst.</p>
+          <p>Das ist ein Sonderfall des Umfangswinkelsatzes und praktisch sehr nützlich: Wer prüfen will, ob ein Winkel ein rechter ist, oder wer einen rechten Winkel konstruieren will, zeichnet einen Kreis. In Tischlerei und technischem Zeichnen wird das viel benutzt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Mengensprache (Strang 0, 0.1) · Ähnlichkeit (3.3) · Abstand (3.4)</div>
+          <div><span class="lbl">Wohin</span>Einheitskreis und Trigonometrie (3.6) · Kreisgleichung (3.7) · Kegelschnitte · Bogenmaß · Transzendenz von π (Strang 1, 1.10) · periodische Vorgänge (Strang 4)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Umfang <span class="m">U = 2πr</span> und Fläche <span class="m">A = πr²</span> werden ständig verwechselt. Es gibt einen zuverlässigen Test: <strong>Schau auf die Einheit.</strong> Der Umfang ist eine Länge, r darf also nur in erster Potenz vorkommen; die Fläche wird in Quadrateinheiten gemessen, r muss also quadriert sein. <em>Das ist der Maßstab «Einheiten prüfen» aus Strang 7, hier zum ersten Mal in der Geometrie angewandt.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Kreis</b> circle</span>
+          <span><b>Radius / Durchmesser</b> radius / diameter</span>
+          <span><b>Umfang</b> circumference</span>
+          <span><b>Flächeninhalt</b> area</span>
+          <span><b>Kreiszahl π</b> pi</span>
+          <span><b>Satz des Thales</b> Thales' theorem</span>
+          <span><b>Umfangswinkelsatz</b> inscribed angle theorem</span>
+          <span><b>Sehne / Tangente</b> chord / tangent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Trigonometrie · aus einem Winkel eine Zahl machen</h3>
+      <p class="de">Trigonometrie · Sinus, Kosinus, Tangens</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Winkelfunktionen werden oft als drei neue Zeichen aus dem Nichts eingeführt. In Wahrheit sind sie <strong>eine unmittelbare Folgerung aus der Ähnlichkeit</strong> — wer diese Kette einmal gesehen hat, dem ist an der ganzen Trigonometrie nichts mehr geheimnisvoll.</p>
+
+      <div class="field">
+        <span class="lbl">Die Kette, die in der Schule oft übersprungen wird</span>
+        <p>Nimm einen spitzen Winkel <span class="m">α</span> und zeichne ein rechtwinkliges Dreieck, das ihn enthält. Zeichne ein zweites, größeres, das ihn ebenfalls enthält. Diese beiden Dreiecke sind <strong>zwangsläufig ähnlich</strong> — sie haben beide einen rechten Winkel, beide den Winkel <span class="m">α</span>, und der dritte ergibt sich aus der Winkelsumme von selbst (3.1).</p>
+        <p>Ähnlich heißt: entsprechende Seiten stehen im gleichen Verhältnis (3.3). Also gilt: <strong>Das Verhältnis «Gegenkathete durch Hypotenuse» ist in allen rechtwinkligen Dreiecken mit dem Winkel α exakt dasselbe, völlig unabhängig davon, wie groß das Dreieck ist.</strong></p>
+        <p>Weil es also nur von <span class="m">α</span> abhängt, kann man ihm einen Namen geben und es als Funktion von <span class="m">α</span> schreiben — und das ist <span class="m">sin α</span>.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 316" role="img" aria-label="Drei verschieden große rechtwinklige Dreiecke mit demselben spitzen Winkel sind ähnlich, daher ist das Verhältnis von Gegenkathete zu Hypotenuse in allen dreien gleich.">
+          <line x1="80" y1="230" x2="620" y2="230" class="svg-l"/>
+          <line x1="80" y1="230" x2="580" y2="105" class="svg-l"/>
+
+          <line x1="200" y1="230" x2="200" y2="200" class="f1" stroke="currentColor" stroke-width="2"/>
+          <line x1="360" y1="230" x2="360" y2="160" class="svg-l" stroke-width="2"/>
+          <line x1="520" y1="230" x2="520" y2="120" class="svg-l" stroke-width="2"/>
+
+          <circle cx="200" cy="200" r="3.5" class="f1" stroke-width="2"/>
+          <circle cx="360" cy="160" r="3.5" class="f2" stroke-width="2"/>
+          <circle cx="520" cy="120" r="3.5" class="fm" stroke-width="2"/>
+
+          <path d="M 122 230 A 42 42 0 0 0 120 219" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="104" y="216" class="svg-t">α</text>
+
+          <text x="200" y="252" text-anchor="middle" class="svg-tm tx1">klein</text>
+          <text x="360" y="252" text-anchor="middle" class="svg-tm tx2">mittel</text>
+          <text x="520" y="252" text-anchor="middle" class="svg-tm txm">groß</text>
+
+          <line x1="80" y1="266" x2="660" y2="266" class="svg-l-soft"/>
+          <text x="80" y="284" class="svg-t">Verschieden groß, gleiche Form — also ist Gegenkathete ÷ Hypotenuse dreimal gleich</text>
+          <text x="80" y="304" class="svg-t">Diese Zahl heißt sin α</text>
+        </svg>
+        <figcaption><b>Die Winkelfunktionen existieren nur dank der Ähnlichkeit.</b> Würde sich das Verhältnis mit der Größe des Dreiecks ändern, ließe sich einem Winkel überhaupt keine Zahl zuordnen — und es gäbe keine Trigonometrie. Die drei Verhältnisse tragen eigene Namen: Gegenkathete durch Hypotenuse ist <span class="svg-tm">sin</span>, Ankathete durch Hypotenuse ist <span class="svg-tm">cos</span>, Gegenkathete durch Ankathete ist <span class="svg-tm">tan</span>.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Der Einheitskreis: die Winkelfunktionen aus dem Dreieck befreien</span>
+        <p>Die Definition am rechtwinkligen Dreieck hat einen Haken: Der Winkel muss kleiner als 90° sein, sonst gibt es kein solches Dreieck. Winkel in der Wirklichkeit drehen sich aber über eine ganze Umdrehung hinaus, oft über viele (man denke an Räder, Pendel, Wechselstrom).</p>
+        <p>Die Lösung ist überraschend elegant: <strong>Zeichne einen Kreis mit Radius 1 und lass den Winkel von der positiven Achse aus umlaufen. Die x-Koordinate des erreichten Punktes ist der Kosinus, die y-Koordinate der Sinus.</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 330" role="img" aria-label="Einheitskreis: der Punkt zum Winkel theta hat die Koordinaten Kosinus theta und Sinus theta, zusammen mit dem Radius eins bilden sie ein rechtwinkliges Dreieck.">
+          <line x1="200" y1="180" x2="510" y2="180" class="svg-l-soft"/>
+          <line x1="355" y1="55" x2="355" y2="300" class="svg-l-soft"/>
+          <circle cx="355" cy="180" r="110" fill="none" stroke="currentColor" stroke-width="1.5"/>
+
+          <line x1="355" y1="180" x2="418" y2="90" class="svg-l" stroke-width="2"/>
+          <line x1="418" y1="90" x2="418" y2="180" class="f2" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="355" y1="180" x2="418" y2="180" class="f1" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="418" cy="90" r="4" class="fm" stroke-width="2"/>
+
+          <path d="M 385 180 A 30 30 0 0 0 376 159" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="368" y="166" class="svg-t">θ</text>
+
+          <text x="386" y="200" text-anchor="middle" class="svg-t tx1">cos θ</text>
+          <text x="432" y="140" class="svg-t tx2">sin θ</text>
+          <text x="368" y="122" class="svg-tm">1</text>
+          <text x="430" y="82" class="svg-tm txm">(cos θ, sin θ)</text>
+
+          <line x1="200" y1="284" x2="660" y2="284" class="svg-l-soft"/>
+          <text x="200" y="304" class="svg-t">Die Hypotenuse ist immer 1 — Pythagoras liefert direkt　sin²θ + cos²θ = 1</text>
+        </svg>
+        <figcaption><b>Die meistgebrauchte trigonometrische Identität ist schlicht der Satz des Pythagoras am Einheitskreis.</b> Man muss sie nicht auswendig lernen, sie lässt sich an diesem Bild jederzeit neu ablesen. Und weil sich der Winkel nun über 90°, 180°, 360° und mehrere Umdrehungen hinaus drehen darf, werden <span class="svg-tm">sin</span> und <span class="svg-tm">cos</span> zu <b>periodischen Funktionen</b> — und beschreiben damit alles, was hin und her schwingt: Schall, Licht, Wechselstrom, Gezeiten, Herzschlag. Das ist eine breite Tür zu Strang 4.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Zwei Sätze für beliebige Dreiecke</span>
+        <div class="demo">
+          <p><strong>Sinussatz</strong>　<span class="m">a / sin α = b / sin β = c / sin γ</span></p>
+          <p><strong>Kosinussatz</strong>　<span class="m">c² = a² + b² − 2ab·cos γ</span></p>
+          <p>Sieh dir den zweiten genau an: Für <span class="m">γ = 90°</span> ist <span class="m">cos 90° = 0</span>, der letzte Term verschwindet vollständig, und übrig bleibt <span class="m">c² = a² + b²</span>.</p>
+          <p><strong>Der Kosinussatz ist also die verallgemeinerte Fassung des Satzes von Pythagoras</strong>, und <span class="m">−2ab·cos γ</span> ist der Korrekturterm für «dieser Winkel ist kein rechter». Je weiter der Winkel von 90° abweicht, desto größer die Korrektur. So gelesen sind es nicht zwei Formeln zum Auswendiglernen, sondern zwei Fassungen eines Satzes.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span><strong>Ähnlichkeit (3.3) — ohne sie gibt es keine Trigonometrie</strong> · Winkelsumme (3.1) · Satz des Pythagoras (3.4) · Kreis (3.5)</div>
+          <div><span class="lbl">Wohin</span>Graphen und Periode der Winkelfunktionen (Strang 4) · Fourier-Analysis (Gipfel von Strang 4) · Skalarprodukt (3.8) · Vermessung und Navigation (Strang 7) · Wellen und Schwingungen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Der Winkelmodus des Taschenrechners.</strong> Vor dem Rechnen prüfen, ob er auf <span class="m-up m">DEG</span> (Grad) oder <span class="m-up m">RAD</span> (Bogenmaß) steht. Steht er falsch, ist das Ergebnis völlig daneben, sieht aber ganz normal aus — die heimtückischste Fehlerquelle bei Trigonometrieaufgaben, weil <em>kein Fehler gemeldet wird</em>.</p>
+          <p><strong>Die Mehrdeutigkeit beim Sinussatz.</strong> Sucht man mit ihm einen Winkel, kann der Sinus für einen spitzen und einen stumpfen Winkel denselben Wert haben (etwa <span class="m">sin 30° = sin 150°</span>), es gibt also möglicherweise zwei Lösungen. Das ist <em>dieselbe Sache mit einem anderen Gesicht</em> wie die SsW-Mehrdeutigkeit aus 3.2 — beide kommen daher, dass zwei Seiten und ein nicht eingeschlossener Winkel das Dreieck nicht eindeutig festlegen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Trigonometrie</b> trigonometry</span>
+          <span><b>Sinus / Kosinus / Tangens</b> sine / cosine / tangent</span>
+          <span><b>Gegenkathete</b> opposite side</span>
+          <span><b>Ankathete</b> adjacent side</span>
+          <span><b>Einheitskreis</b> unit circle</span>
+          <span><b>Sinussatz / Kosinussatz</b> law of sines / cosines</span>
+          <span><b>Bogenmaß</b> radian measure</span>
+          <span><b>periodisch</b> periodic</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">Gegenkathete</span> und <span class="m-up m">Ankathete</span> sind besonders freundliche Wörter: <em>gegen</em> heißt «gegenüberliegend», <em>an</em> heißt «anliegend» — die Bezeichnung sagt selbst, wo die Seite liegt. Im Englischen und Chinesischen muss man sich das erst merken.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Das Koordinatensystem · Descartes' Brücke</h3>
+      <p class="de">Koordinatensystem · analytische Geometrie</p>
+    </div>
+    <div class="body">
+      <p class="lead">Legt man zwei Zahlengeraden über die Ebene, bekommt jeder Punkt ein Zahlenpaar. Damit wird aus «Form» plötzlich «Zahl», und <strong>Geometrieaufgaben lassen sich ausrechnen.</strong> Das ist der wichtigste Pfeil auf der ganzen Landkarte.</p>
+
+      <div class="field">
+        <span class="lbl">Warum dieser Schritt so groß ist</span>
+        <p>Vor Descartes waren Geometrie und Algebra zwei Fächer, die einander kaum begegneten. Die Geometrie arbeitete mit Zeichnung, Zirkel und Anschauung; die Algebra mit Zeichen, Umformung und Auflösung. Jede hatte ihre eigenen Aufgaben und ihre eigenen Methoden.</p>
+        <p>Das Koordinatensystem verbindet beide — und zwar <strong>in beide Richtungen</strong>:</p>
+        <div class="demo">
+          <p><strong>Form → Zahl:</strong> Eine Gerade wird zu <span class="m">y = mx + b</span>, ein Kreis zu <span class="m">(x−a)² + (y−b)² = r²</span>. Was vorher Zeichnung und Schlussfolgerung verlangte, ist jetzt eine Gleichung. Schnittpunkt zweier Geraden? Ein Gleichungssystem lösen (Strang 2, 2.8).</p>
+          <p><strong>Zahl → Form:</strong> Umgekehrt bekommt ein abstrakter Term plötzlich ein Aussehen. <span class="m">y = x²</span> ist nicht mehr nur eine Zeichenkette, sondern eine Parabel. Wie viele Lösungen eine Gleichung hat, ist ablesbar daran, wie oft die Kurve die x-Achse trifft (das Diskriminantenbild aus Strang 2, 2.5).</p>
+        </div>
+        <p><em>Beide Seiten werden dadurch erheblich leichter.</em> Genau deshalb gibt es später das Wort «analytische Geometrie» — Geometrie mit den Mitteln der Algebra.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der unmittelbarste Gewinn: die Abstandsformel</span>
+        <div class="demo">
+          <p class="calc">d = √( (x₂−x₁)² + (y₂−y₁)² )</p>
+          <p>Das ist der Satz des Pythagoras (3.4): waagerechte und senkrechte Differenz sind die Katheten, der Abstand ist die Hypotenuse.</p>
+          <p>Im Raum gilt dasselbe, nur mit einem Summanden mehr: <span class="m">d = √(Δx² + Δy² + Δz²)</span>. Und dieser Ausdruck lässt sich beliebig weiterführen — vier Dimensionen, hundert, zehntausend. <strong>Sobald «Abstand» als Formel geschrieben ist, ist er nicht mehr an einen Raum gebunden, den wir uns vorstellen können.</strong> Der «Abstand» zweier Datenpunkte im maschinellen Lernen ist genau diese Formel in einigen hundert Dimensionen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Satz des Pythagoras (3.4) · Zahlengerade und negative Zahlen (Strang 1, 1.4) · geordnete Paare · Gleichungen (Strang 2, 2.3)</div>
+          <div><span class="lbl">Wohin</span><strong>Funktionen und Graphen (Strang 4) — direkt flussabwärts von dieser Brücke</strong> · Vektoren (3.8) · Kegelschnitte · die gesamte Infinitesimalrechnung · Computergrafik · hochdimensionale Räume und Daten (Gipfel von Strang 5)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Koordinaten schreibt man <span class="m">(x, y)</span>, die <strong>Abszisse steht immer vorn</strong>. Wer sie vertauscht, landet mit der ganzen Aufgabe an einer anderen Stelle. Im Deutschen heißen sie <span class="m-up m">Abszisse</span> und <span class="m-up m">Ordinate</span>, im Alltag sagt man aber meist einfach <span class="m-up m">x-Wert</span> und <span class="m-up m">y-Wert</span>.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Koordinatensystem</b> coordinate system</span>
+          <span><b>kartesisch</b> Cartesian</span>
+          <span><b>Ursprung</b> origin</span>
+          <span><b>Achse</b> axis</span>
+          <span><b>Abszisse / Ordinate</b> abscissa / ordinate</span>
+          <span><b>analytische Geometrie</b> analytic geometry</span>
+          <span><b>Abstand</b> distance</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Vektoren · Größen mit Richtung</h3>
+      <p class="de">Vektor · Skalarprodukt</p>
+    </div>
+    <div class="body">
+      <p class="lead">Manche Größen sind ohne Richtung nicht zu gebrauchen. «5 Kilometer gelaufen» und «5 Kilometer nach Nordosten gelaufen» sind zweierlei. <strong>Ein Vektor ist «Größe plus Richtung» in einem Paket</strong> — und mit ihm lässt sich rechnen.</p>
+
+      <div class="field">
+        <span class="lbl">Das Entscheidende: Ein Vektor ist kein Punkt</span>
+        <p>Hier hängen die meisten Anfänger. <strong>Ein Vektor beschreibt eine Verschiebung, keine Position.</strong> Die Anweisung «3 nach rechts, 2 nach oben» ist dieselbe Anweisung, egal wo man startet — also sind alle Pfeile in der Ebene mit gleicher Länge und gleicher Richtung <em>ein und derselbe Vektor</em>.</p>
+        <p>Damit erklärt sich auch, warum Vektoren «Spitze an Fuß» addiert werden: Erst die eine Verschiebung ausführen, dann vom Endpunkt aus die zweite — zusammen ergibt sich ihre Summe. <em>Vektoraddition ist «Handlung nach Handlung»</em> — dasselbe Prinzip wie bei der Matrizenmultiplikation in Strang 2, 2.9.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Das Skalarprodukt: eine Multiplikation, zwei Verwendungen</span>
+        <p>Zwei Vektoren lassen sich multiplizieren, und heraus kommt ausgerechnet eine gewöhnliche Zahl (ein Skalar, daher der Name):</p>
+        <p class="calc">a⃗ · b⃗ = |a⃗| · |b⃗| · cos θ</p>
+        <p>Die Formel sieht merkwürdig aus, ihre geometrische Bedeutung ist aber sehr schlicht: <strong>Sie misst, wie viel von b in die Richtung von a zeigt.</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 280" role="img" aria-label="Geometrische Bedeutung des Skalarprodukts: im allgemeinen Fall hat b eine Projektion auf a, bei Rechtwinkligkeit schrumpft die Projektion auf null.">
+          <defs>
+            <marker id="c0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="60" y1="200" x2="290" y2="200" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="296" y="205" class="svg-t tx1">a</text>
+          <line x1="60" y1="200" x2="200" y2="80" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="206" y="78" class="svg-t tx2">b</text>
+          <line x1="200" y1="80" x2="200" y2="200" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="60" y1="212" x2="200" y2="212" class="fm" stroke="currentColor" stroke-width="3"/>
+          <text x="130" y="234" text-anchor="middle" class="svg-tm txm">Anteil von b entlang a</text>
+          <path d="M 98 200 A 38 38 0 0 0 92 184" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="84" y="188" class="svg-t">θ</text>
+          <text x="175" y="262" text-anchor="middle" class="svg-t">allgemein: Anteil ungleich null</text>
+
+          <line x1="420" y1="200" x2="650" y2="200" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="656" y="205" class="svg-t tx1">a</text>
+          <line x1="420" y1="200" x2="420" y2="80" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="404" y="78" class="svg-t tx2">b</text>
+          <rect x="420" y="186" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="420" cy="212" r="4" class="fm" stroke-width="2"/>
+          <text x="470" y="234" class="svg-tm txm">Anteil schrumpft auf einen Punkt</text>
+          <text x="535" y="262" text-anchor="middle" class="svg-t">rechtwinklig: a⃗ · b⃗ = 0</text>
+        </svg>
+        <figcaption><b>Skalarprodukt gleich null heißt: die beiden stehen senkrecht aufeinander.</b> Das ist seine meistgenutzte Rolle — Rechtwinkligkeit prüfen, Winkel bestimmen, Abstände berechnen. Auch die physikalische Arbeit ist ein Skalarprodukt: Nur der Anteil der Kraft in Bewegungsrichtung verrichtet Arbeit, der senkrechte Anteil ist vergebliche Mühe. <b>Wer einen Wassereimer waagerecht durch die Gegend trägt, verrichtet an ihm keinerlei Arbeit gegen die Schwerkraft</b> — Kraft nach unten, Weg nach vorn, Skalarprodukt null.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Vektoren machen aus Geometrie Rechnen</span>
+        <div class="demo">
+          <p>Mit Vektoren lassen sich Geraden und Ebenen im Raum knapp aufschreiben:</p>
+          <p class="calc">Gerade:　g: x⃗ = p⃗ + t · u⃗<br>Ebene:　　E: x⃗ = p⃗ + s · u⃗ + t · v⃗</p>
+          <p>Das liest sich ganz wörtlich: <em>Starte im Punkt p und gehe t Schritte in Richtung u.</em> Bei der Ebene geht man in zwei Richtungen ein Stück.</p>
+          <p>Damit werden Fragen wie «schneiden sich diese beiden Geraden», «wie weit ist der Punkt von der Ebene entfernt», «welchen Winkel schließen die Ebenen ein» — ursprünglich schwer vorstellbare Raumprobleme — allesamt zu Gleichungen und Skalarprodukten. <strong>Man muss sich dreidimensionale Figuren nicht mehr im Kopf drehen, man muss nur rechnen können.</strong> Das ist die Kraft der Koordinatenbrücke (3.7), fortgesetzt im Raum.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Koordinatensystem (3.7) · Satz des Pythagoras (3.4, die Länge eines Vektors ist er) · Winkelfunktionen (3.6, das cos im Skalarprodukt) · Gleichungssysteme (Strang 2, 2.8)</div>
+          <div><span class="lbl">Wohin</span>Matrizen und lineare Abbildungen (Strang 2, 2.9) · Lineare Algebra (Uni) · Kräfte, Geschwindigkeiten und Felder in der Physik · Computergrafik · hochdimensionale Daten (Strang 5)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Vektor und Punkt nicht vermischen.</strong> Deutsche Lehrbücher trennen das sauber: Ein <span class="m-up m">Ortsvektor</span> zeigt vom Ursprung auf einen Punkt und <em>vertritt</em> diesen Punkt; ein gewöhnlicher Vektor steht für eine Verschiebung. In der Geradengleichung <span class="m">x⃗ = p⃗ + t·u⃗</span> ist <span class="m">p⃗</span> ein Ortsvektor («wo fange ich an») und <span class="m">u⃗</span> ein Richtungsvektor («wohin gehe ich») — beide tragen denselben Pfeil und haben völlig verschiedene Rollen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Vektor</b> vector</span>
+          <span><b>Ortsvektor</b> position vector</span>
+          <span><b>Richtungsvektor</b> direction vector</span>
+          <span><b>Betrag</b> magnitude</span>
+          <span><b>Skalarprodukt</b> dot product</span>
+          <span><b>Kreuzprodukt</b> cross product</span>
+          <span><b>Gerade / Ebene</b> line / plane</span>
+          <span><b>orthogonal</b> orthogonal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Abbildungen und Symmetrie · was bleibt, wenn man bewegt</h3>
+      <p class="de">Abbildung · Symmetrie</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Figur verschieben, drehen, spiegeln, strecken — solche Handlungen heißen <strong>Abbildungen</strong>. Und die Frage «was bleibt danach unverändert» ist genau die Frage, mit der dieser Strang begonnen hat.</p>
+
+      <div class="field">
+        <span class="lbl">Vier Grundabbildungen und was sie jeweils retten</span>
+        <div class="demo">
+          <p><strong>Verschiebung</strong>　alles wandert ein Stück. Längen, Winkel und Richtungen bleiben.</p>
+          <p><strong>Drehung</strong>　um einen Punkt gedreht. Längen und Winkel bleiben, Richtungen ändern sich.</p>
+          <p><strong>Spiegelung</strong>　wie im Spiegel. Längen und Winkel bleiben, aber links und rechts sind vertauscht.</p>
+          <p><strong>Zentrische Streckung</strong>　vergrößern oder verkleinern. Winkel bleiben, Längen ändern sich im festen Verhältnis — <em>das ist die Ähnlichkeit aus 3.3.</em></p>
+        </div>
+        <p>Die ersten drei erhalten die Länge, das Ergebnis ist also <strong>kongruent</strong> zum Original; die vierte erhält nur die Winkel, das Ergebnis ist <strong>ähnlich</strong>. <em>Der Unterschied zwischen «kongruent» und «ähnlich» ist in dieser Sprache schlicht der Unterschied, welche Handlungen erlaubt sind.</em> Das ist ein Aufstieg in der Sichtweise: von «zwei ruhende Figuren vergleichen» zu «eine Menge von Handlungen untersuchen».</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Symmetrie ist in Wahrheit eine Liste von Handlungen</span>
+        <p>Zu sagen, eine Figur sei «symmetrisch», heißt genau: <strong>Es gibt Abbildungen, nach deren Ausführung die Figur genauso aussieht wie vorher.</strong></p>
+        <p>Ein Quadrat hat acht solche Handlungen: Drehung um 0°, 90°, 180°, 270° und die Spiegelungen an vier Achsen. Ein gleichseitiges Dreieck hat sechs. Ein Kreis hat unendlich viele. <em>Aus dem vagen Satz «wie symmetrisch ist das» wird damit die zählbare Frage «wie viele Einträge hat die Liste».</em></p>
+        <p>Und diese Handlungen bilden zusammen genau das, was am Gipfel von Strang 2 <strong>Gruppe</strong> hieß: Zwei Handlungen hintereinander ergeben wieder eine aus der Liste, jede lässt sich rückgängig machen, und «nichts tun» zählt auch als Handlung. <strong>Symmetrie ist Gruppe, Gruppe ist Symmetrie.</strong> Das ist der zweite Handschlag zwischen Geometrie und Algebra am Gipfel — Galois hat das Problem der Gleichung fünften Grades mit genau demselben Gedanken gelöst, nur waren seine «Figuren» die Lösungen einer Gleichung.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Kongruenz (3.2) · Ähnlichkeit (3.3) · Koordinatensystem (3.7) · Vektoren (3.8)</div>
+          <div><span class="lbl">Wohin</span>Abbildungen als Matrizen (Strang 2, 2.9) · Gruppentheorie (Gipfel von Strang 2) · Kristallstrukturen und Chemie · Computergrafik und Animation · Parkettierungen und Muster</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Abbildung</b> transformation</span>
+          <span><b>Verschiebung</b> translation</span>
+          <span><b>Drehung</b> rotation</span>
+          <span><b>Spiegelung</b> reflection</span>
+          <span><b>Symmetrie</b> symmetry</span>
+          <span><b>Symmetrieachse</b> axis of symmetry</span>
+          <span><b>deckungsgleich</b> congruent by superposition</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista3">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Am Gipfel der Geometrie ist besonders viel los, denn sobald man die Frage «was zählt als unverändert» lockert, taucht jedes Mal ein ganzer neuer Kontinent auf. Auch hier: <strong>nichts davon musst du verstehen.</strong></p>
+
+  <div class="vista">
+    <h4>Parallelen kann es auch mehrere geben — oder gar keine</h4>
+    <p>Strang 0, 0.5 hat die Geschichte des fünften Postulats erzählt: Zweitausend Jahre lang konnte es niemand beweisen, bis jemand annahm, es sei <em>falsch</em> — und statt eines Widerspruchs wuchsen daraus zwei in sich stimmige neue Geometrien.</p>
+    <p>In der <strong>sphärischen Geometrie</strong> sind «Geraden» Großkreise (etwa die Längenkreise der Erde). Je zwei Großkreise schneiden sich, es gibt also <em>überhaupt keine Parallelen</em>, und die Winkelsumme im Dreieck ist größer als 180°. In der <strong>hyperbolischen Geometrie</strong> ist es umgekehrt: Durch einen Punkt lassen sich unendlich viele Parallelen legen, und die Winkelsumme ist kleiner als 180°.</p>
+    <p>Das ist keine Spielerei. Nach Einsteins allgemeiner Relativitätstheorie krümmt Masse die Raumzeit — die Geometrie des Universums ist <em>von vornherein nicht</em> die euklidische. GPS-Satelliten müssen ihre Zeitmessung entsprechend korrigieren, sonst würde die Ortsbestimmung täglich um mehrere Kilometer abdriften. <strong>Die Navigation in seinem Handy benutzt in jeder Sekunde nichteuklidische Geometrie.</strong></p>
+
+    <h4>Gummigeometrie: Donut und Kaffeetasse sind dasselbe</h4>
+    <p>Lockert man «unverändert» bis zum Äußersten — Dehnen und Verbiegen erlaubt, nur Zerreißen und Verkleben nicht — dann sind ein Donut und eine Tasse mit Henkel dasselbe Ding (beide haben genau ein Loch), eine Kugel dagegen etwas anderes. Diese Wissenschaft heißt <strong>Topologie</strong>.</p>
+    <p>Sie hat ein wunderschönes Ergebnis, das schon in der Schule verständlich ist — den <strong>Eulerschen Polyedersatz</strong>: Bei jedem konvexen Polyeder ist die Anzahl der Ecken minus der Kanten plus der Flächen immer 2.</p>
+    <p class="calc">E − K + F = 2</p>
+    <p>Würfel: 8 − 12 + 6 = 2. Tetraeder: 4 − 6 + 4 = 2. Fußball: 60 − 90 + 32 = 2. <em>So verschieden die Formen, diese Zahl rührt sich nicht.</em> Solche «egal wie man knetet unveränderlichen» Größen heißen topologische Invarianten — Griff 7 aus dem Werkzeugkasten auf der höchsten Ebene.</p>
+
+    <h4>Dimensionen müssen nicht ganzzahlig sein</h4>
+    <p>Eine Linie ist eindimensional, eine Fläche zweidimensional, ein Körper dreidimensional — so weit sind alle einverstanden. Aber <strong>Fraktale</strong> haben gebrochene Dimensionen.</p>
+    <p>Eine Küstenlinie ist das Standardbeispiel: Misst du sie mit einem Kilometermaß, bekommst du eine Länge; nimmst du ein Metermaß, erfasst du mehr Windungen und die Länge wächst; mit einem Zentimetermaß wächst sie weiter. <em>Die Länge einer Küste hängt davon ab, wie fein dein Maßstab ist, eine feste Antwort gibt es nicht.</em> Sie nimmt mehr Platz ein als eine Linie und füllt doch keine Fläche — ihre Dimension liegt bei etwa 1,25.</p>
+    <p>Schneeflocken, Blitze, Blutgefäße, Astverzweigungen, Wolkenränder haben alle diese Gestalt. <strong>Die Natur zeichnet selten gerade Linien.</strong></p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Lineare Algebra</strong> — die ausgewachsene Fassung der Vektoren aus 3.8, dieselbe Vorlesung wie zu Strang 2, 2.9</li>
+      <li><strong>Analytische Geometrie</strong> — Geometrie in Koordinaten, der Zusammenfluss von 3.7 und 3.8</li>
+      <li><strong>Differentialgeometrie</strong> — wie man in gekrümmten Räumen misst; die Sprache der allgemeinen Relativitätstheorie</li>
+      <li><strong>Topologie</strong> — Gummigeometrie, eine der zentralen Sprachen der modernen Mathematik</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss3">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Die Geometrie hat das dichteste Fachvokabular, und viele Wörter erklären sich durch ihre Bildung selbst (<span class="m-up m">Gegenkathete</span>, <span class="m-up m">Stufenwinkel</span>). Die chinesische Spalte dient dem Abgleich mit der chinesischen Fassung.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">Winkel</td><td class="en">angle</td><td>角</td></tr>
+      <tr><td class="de">Scheitelwinkel / Nebenwinkel</td><td class="en">vertical / adjacent angles</td><td>对顶角 / 邻补角</td></tr>
+      <tr><td class="de">Stufenwinkel / Wechselwinkel</td><td class="en">corresponding / alternate angles</td><td>同位角 / 内错角</td></tr>
+      <tr><td class="de">Innenwinkelsumme</td><td class="en">angle sum</td><td>内角和</td></tr>
+      <tr><td class="de">parallel / senkrecht</td><td class="en">parallel / perpendicular</td><td>平行 / 垂直</td></tr>
+      <tr><td class="de">Kongruenz · kongruent ≅</td><td class="en">congruence · congruent</td><td>全等</td></tr>
+      <tr><td class="de">Kongruenzsätze (SSS, SWS, WSW, SsW)</td><td class="en">congruence criteria</td><td>全等判定定理</td></tr>
+      <tr><td class="de">Ähnlichkeit · ähnlich ∼</td><td class="en">similarity · similar</td><td>相似</td></tr>
+      <tr><td class="de">Strahlensatz</td><td class="en">intercept theorem</td><td>射线定理</td></tr>
+      <tr><td class="de">Streckfaktor / Maßstab</td><td class="en">scale factor / scale</td><td>缩放系数 / 比例尺</td></tr>
+      <tr><td class="de">zentrische Streckung</td><td class="en">dilation</td><td>位似变换</td></tr>
+      <tr><td class="de">Satz des Pythagoras</td><td class="en">Pythagorean theorem</td><td>勾股定理</td></tr>
+      <tr><td class="de">Hypotenuse / Kathete</td><td class="en">hypotenuse / leg</td><td>斜边 / 直角边</td></tr>
+      <tr><td class="de">Kreis / Radius / Durchmesser</td><td class="en">circle / radius / diameter</td><td>圆 / 半径 / 直径</td></tr>
+      <tr><td class="de">Umfang / Flächeninhalt</td><td class="en">perimeter / area</td><td>周长 / 面积</td></tr>
+      <tr><td class="de">Kreiszahl π</td><td class="en">pi</td><td>圆周率</td></tr>
+      <tr><td class="de">Satz des Thales</td><td class="en">Thales' theorem</td><td>泰勒斯定理</td></tr>
+      <tr><td class="de">Sehne / Tangente</td><td class="en">chord / tangent</td><td>弦 / 切线</td></tr>
+      <tr><td class="de">Trigonometrie</td><td class="en">trigonometry</td><td>三角学</td></tr>
+      <tr><td class="de">Sinus / Kosinus / Tangens</td><td class="en">sine / cosine / tangent</td><td>正弦 / 余弦 / 正切</td></tr>
+      <tr><td class="de">Gegenkathete / Ankathete</td><td class="en">opposite / adjacent side</td><td>对边 / 邻边</td></tr>
+      <tr><td class="de">Einheitskreis</td><td class="en">unit circle</td><td>单位圆</td></tr>
+      <tr><td class="de">Sinussatz / Kosinussatz</td><td class="en">law of sines / cosines</td><td>正弦定理 / 余弦定理</td></tr>
+      <tr><td class="de">Bogenmaß</td><td class="en">radian measure</td><td>弧度制</td></tr>
+      <tr><td class="de">Koordinatensystem / Ursprung</td><td class="en">coordinate system / origin</td><td>坐标系 / 原点</td></tr>
+      <tr><td class="de">Abszisse / Ordinate</td><td class="en">abscissa / ordinate</td><td>横坐标 / 纵坐标</td></tr>
+      <tr><td class="de">analytische Geometrie</td><td class="en">analytic geometry</td><td>解析几何</td></tr>
+      <tr><td class="de">Abstand</td><td class="en">distance</td><td>距离</td></tr>
+      <tr><td class="de">Vektor / Ortsvektor / Richtungsvektor</td><td class="en">vector / position / direction vector</td><td>向量 / 位置向量 / 方向向量</td></tr>
+      <tr><td class="de">Skalarprodukt / Kreuzprodukt</td><td class="en">dot / cross product</td><td>点积 / 叉积</td></tr>
+      <tr><td class="de">Gerade / Ebene / orthogonal</td><td class="en">line / plane / orthogonal</td><td>直线 / 平面 / 正交的</td></tr>
+      <tr><td class="de">Abbildung</td><td class="en">transformation</td><td>变换 / 映射</td></tr>
+      <tr><td class="de">Verschiebung / Drehung / Spiegelung</td><td class="en">translation / rotation / reflection</td><td>平移 / 旋转 / 反射</td></tr>
+      <tr><td class="de">Symmetrie / Symmetrieachse</td><td class="en">symmetry / axis of symmetry</td><td>对称 / 对称轴</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs3">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>Der Beweis für die Winkelsumme 180° — welche Voraussetzung braucht er? Wann gilt sie nicht?</li>
+    <li>Warum legen drei Seiten ein Dreieck fest, vier Seiten aber kein Viereck? Was hat das mit Brücken und Türmen zu tun?</li>
+    <li>Was bedeutet das kleine s in SsW? Was ginge schief, wenn man SSW schriebe?</li>
+    <li>Ließen sich die Winkelfunktionen ohne den Begriff der Ähnlichkeit überhaupt definieren? Warum?</li>
+    <li>Wie viel Material braucht ein doppelt so großes Modell? Warum müssen Elefantenbeine so dick sein?</li>
+    <li>Dass π für alle Kreise gleich ist — braucht das eine Begründung? Welche?</li>
+    <li>Der Satz des Pythagoras, die Abstandsformel im Koordinatensystem und <span class="m">sin²θ + cos²θ = 1</span> — sind das drei Dinge oder eines?</li>
+    <li>Was tut der Term <span class="m">−2ab·cos γ</span> im Kosinussatz? Wo bleibt er bei <span class="m">γ = 90°</span>?</li>
+    <li>Warum ist das Koordinatensystem der wichtigste Pfeil auf der Landkarte? Welche zwei Stränge verbindet es?</li>
+    <li>Was bedeutet es geometrisch, wenn das Skalarprodukt null ist? Warum verrichtet die Schwerkraft keine Arbeit, wenn man einen Eimer waagerecht trägt?</li>
+    <li>Wie lässt sich der Unterschied zwischen «kongruent» und «ähnlich» in der Sprache der Abbildungen ausdrücken?</li>
+    <li>Wie viele Einträge hat die Handlungsliste eines Quadrats? Warum sagt man, Symmetrie sei eine Gruppe?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strang-2-algebra.html"><span class="dir">Vorige Seite</span><span class="t">Strang 2 · Algebra und Struktur</span></a>
+  <a class="next" href="strang-4-analysis.html"><span class="dir">Nächste Seite</span><span class="t">Strang 4 · Funktionen und Veränderung</span></a>
+</div>
+
+</main>
+</body>
+</html>

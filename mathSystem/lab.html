@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>实验室 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/lab.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="实验室 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/lab.html">
+</head>
+<body>
+<header class="masthead">
+  <div class="page-frame">
+    <p class="eyebrow">Labor · 附页</p>
+    <h1>实验室</h1>
+    <p class="sub">正文里的图是死的，一张图只能画一个瞬间。这一页的七张图是活的：拖动滑块，它就动给你看。数学里最难用文字说清的几件事，恰好都是「动起来才明白」的事。</p>
+    <div class="meta">
+      <span>七个小实验</span>
+      <span>拖动滑块 · 立刻重画</span>
+      <span>不联网 · 不上传 · 全在你的浏览器里跑</span>
+    </div>
+  </div>
+</header>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html" aria-current="page">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/labor.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section id="how">
+  <h2 class="sec"><span class="num">§ 实验室</span>为什么要有这一页</h2>
+  <p class="sec-lead">书上讲导数的时候，永远只能画三张图：割线、更近的割线、切线。中间那个连续变化的过程，读者得自己在脑子里补。这一页就是把那个过程真的放出来。</p>
+
+  <p>七个实验都不需要你会编程，也不需要联网。每个实验下面都有一段<strong>「看什么」</strong>——那才是重点。滑块只是手段，真正要看的是<em>某个量在变的时候，另一个量跟着怎么变</em>。</p>
+
+  <p>建议的用法：<strong>不要按顺序刷一遍。</strong>学到哪条主线，回来玩对应的那一两个。实验 04 那个割线滑成切线的，值得在正式学导数之前先玩十分钟——先有了直觉，公式再来解释直觉，比反过来容易得多。</p>
+
+  <div class="nojs"><b>这一页需要浏览器执行 JavaScript。</b>如果你看见这行字，说明脚本没跑起来：可能是浏览器禁用了 JS，也可能是文件没跟 <code>assets/lab.js</code> 放在一起。其余页面都是纯静态的，不受影响。</div>
+</section>
+
+<hr>
+
+<div class="lab" data-widget="line">
+  <div class="lab-head">
+    <span class="lab-no">实验 01</span>
+    <h3>斜率到底是什么</h3>
+    <span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span>
+  </div>
+  <p class="lab-note"><b>看什么：</b>把 m 从 0.5 慢慢拖到 3，绿色虚线台阶始终是「右走 1 格」，但竖着那一段越来越高。<b>斜率不是「这条线看着有多斜」这种感觉，它是一个准确的数：右走一格，上下走几格。</b>再把 m 拖成负的，台阶立刻朝下走。<br>然后只动 b：整条线上下平移，方向一点没变——这就是「截距不影响斜率」这句话的图像版本。最后注意零点那一格：m 一旦是 0，线变水平，零点直接消失，因为水平线要么压根不碰 x 轴，要么整条压在上面。</p>
+</div>
+
+<div class="lab" data-widget="parabola">
+  <div class="lab-head">
+    <span class="lab-no">实验 02</span>
+    <h3>抛物线的三个把手</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span>
+  </div>
+  <p class="lab-note"><b>看什么：</b>a 管开口——正的朝上，负的朝下，绝对值越大越瘦。d 管左右，e 管上下。三个把手互不干扰，这就是「平移伸缩的家族规律」。<br>重点在读数那两行：<b>顶点式和展开式永远是同一条曲线的两种写法。</b>顶点式一眼看得出顶点在 (d, e)，展开式一眼看不出来。<em>配方法这一整套技术，干的就是把第二行变回第一行这一件事</em>，没有别的目的。<br>还有个漂亮的地方：判别式 D 化简之后正好等于 <span class="m">−4ae</span>。所以「有没有零点」只取决于 a 和 e 是不是一正一负——顶点在 x 轴的哪一边、开口朝哪边，就这两件事，跟 d 完全无关。你可以拖着 d 满屏跑，零点的<em>个数</em>永远不变。</p>
+</div>
+
+<div class="lab" data-widget="circle">
+  <div class="lab-head">
+    <span class="lab-no">实验 03</span>
+    <h3>单位圆怎么变成正弦波</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span>
+  </div>
+  <p class="lab-note"><b>看什么：</b>θ 拖过 90°、180°、270°，盯住三件事：蓝色那段（cos）什么时候变成负的，绿色那段（sin）什么时候变成负的，右边的曲线什么时候穿过零。<br><b>sin 和 cos 不是查表查出来的两个怪数，它们就是圆上一个点的高度和横坐标。</b>右边那条波浪线，是把「高度」沿着「转过的角度」摊开画出来的结果——<em>正弦波是圆滚出来的</em>。想明白这一句，三角函数就从「一堆要背的公式」变成了「一件看得见的事」。<br>最后把 θ 拖到 90° 附近，盯着 tan：cos 一到 0，tan 就炸了。原因不神秘，tan = sin/cos，分母没了而已。</p>
+</div>
+
+<div class="lab" data-widget="tangent">
+  <div class="lab-head">
+    <span class="lab-no">实验 04</span>
+    <h3>割线怎么滑成切线</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 · 微积分的门槛</span>
+  </div>
+  <p class="lab-note"><b>看什么：</b>这是整本册子里最该亲手拖一遍的一个，建议在学校正式讲导数之前先玩十分钟。<br>h = 2 的时候，红线明显是穿过两个点的<em>割线</em>；把 h 一路拖到 0.001，红线几乎完全压在绿虚线上，而「差商」那个数字，一位一位地锁死到导数上。<b>导数不是天上掉下来的新公式，它是「两点之间的平均变化率」在两点靠拢时剩下来的那个东西。</b><br>特别注意：<b>h 永远不等于 0。</b>滑块最小只到 0.001，因为 h 真等于 0 的话分母就没了，整个式子失去意义。极限说的正是这件事——<em>不问「h 等于 0 时是多少」，只问「h 越来越小的时候，这个数奔着谁去」</em>。这个区别是微积分全部严谨性的起点。<br>换个函数再看一遍：x³/8 在 x₀ = 0 处导数为 0，但它不是最高点也不是最低点——这是个有名的坑，正文主线四里专门讲过。</p>
+</div>
+
+<div class="lab" data-widget="riemann">
+  <div class="lab-head">
+    <span class="lab-no">实验 05</span>
+    <h3>长方形怎么填满曲线下的面积</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span>
+  </div>
+  <p class="lab-note"><b>看什么：</b>n = 1 的时候误差大得可笑，n = 6 已经有个样子，n = 40 误差通常只剩千分之几。<b>「无穷多个无穷小的长方形」这句话听着玄，其实就是这个滑块一直往右拖。</b><br>切换「左端点／右端点」：对递增的函数，左端点取高永远偏小、右端点取高永远偏大，<em>真值被稳稳夹在两者中间</em>。这不是巧合，这就是黎曼积分的定义方式——用下和与上和从两边逼近，两边碰头的那个数才叫积分。<br>再切到「中点」：同样的 n，精度直接好一个数量级。原因很朴素，每个小格里高估的部分和低估的部分自己抵消掉了。<em>这就是数值积分里「中点法则」为什么值钱。</em></p>
+</div>
+
+<div class="lab" data-widget="binomial">
+  <div class="lab-head">
+    <span class="lab-no">实验 06</span>
+    <h3>二项分布怎么长成正态曲线</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span>
+  </div>
+  <p class="lab-note"><b>看什么：</b>先让 p = 0.5，把 n 从 1 拖到 50，看形状怎么从两根柱子长成一口钟。绿色虚线是正态曲线：n 小的时候它和柱子对不上，n 一大就贴住了。<b>这是中心极限定理的第一次露面——它说的是「加起来的东西够多，长相就由不得你了」。</b><br>再把 p 拖到 0.1：n 小的时候分布明显偏斜，柱子都挤在左边；但 n 拖大之后，它<em>又慢慢对称起来了</em>。这说明正态那口钟不是靠对称的原料才做得出来的。<br>最后盯住「μ ± σ 覆盖了」那一格，一边拖 n 一边拖 p：这个数几乎总在 68% 上下打转。<em>标准差不是一个随便定义的量，它是「一口钟有多宽」的天然尺子。</em></p>
+</div>
+
+<div class="lab" data-widget="monte">
+  <div class="lab-head">
+    <span class="lab-no">实验 07</span>
+    <h3>用随机点数出 π</h3>
+    <span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚能玩 · 山腰看懂</span>
+  </div>
+  <p class="lab-note"><b>玩法：</b>往正方形里随机撒点。圆的面积是 <span class="m">πr²</span>，正方形是 <span class="m">4r²</span>，所以落在圆内的点占比应该是 <span class="m">π/4</span>。把这个比例乘 4，就得到 π 的一个估计。<br><b>看什么：</b>连按几次「撒 1000 个」，盯住右边那条估计值曲线，看它怎么剧烈抖动、然后慢慢收进绿线附近。两件事值得注意：<b>一，误差不是稳步下降的</b>，它会来回蹦，只是蹦的幅度越来越小；<b>二，想多要一位准确数字，点数大概得乘 100 倍。</b><br>这就是大数定律的脾气——<em>它保证你最终会到，但从不保证快。</em>顺便，这也解释了为什么真要算 π 没人用这个办法：它慢得离谱。它值钱的地方在别处——当一个积分的维数高到没法用长方形去填的时候，随机撒点反而是唯一还能用的招。金融和物理里的蒙特卡洛方法，就是这个玩具的成年版。</p>
+</div>
+
+<hr>
+
+<section id="ending">
+  <h2 class="sec"><span class="num">收尾</span>这七个实验想说的其实是一件事</h2>
+  <p class="sec-lead">数学里最难讲清楚的概念，几乎都是关于「变化」的：极限、导数、收敛、逼近。它们难讲，不是因为深，是因为纸是静止的。</p>
+
+  <p>你回头看这七个实验，会发现它们的结构惊人地一致：<strong>都是「让一个量一直变下去，看另一个量稳定到哪儿」</strong>。h 越来越小，差商稳到导数；n 越来越大，长方形和稳到积分；n 越来越大，二项分布稳到正态；点越撒越多，比例稳到 π/4。</p>
+
+  <p>这个「一直变下去，看它稳到哪儿」的动作，有个名字，叫<strong>极限</strong>。它是分析学唯一的核心动作，也是十七世纪之后整个数学最重要的一件新工具。中学不会用 ε-δ 那套严格语言讲它，但你在这一页里已经把它玩过四遍了。</p>
+
+  <p>所以真正的收获不是「我会拖滑块了」，而是：<em>下次在书上碰到一个陌生的极限式子，你知道它在描述一个什么样的动作。</em></p>
+
+  <div class="pagenav">
+    <a href="exam-perspective.html"><span class="dir">上一页</span><span class="t">可选附页 · 考试视角</span></a>
+    <a class="next" href="progress.html"><span class="dir">下一页</span><span class="t">附页 · 进度表</span></a>
+  </div>
+</section>
+</main>
+<script src="assets/lab.js"></script>
+</body>
+</html>

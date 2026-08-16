@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线三 · 形与空间 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-3-geometry.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线三 · 形与空间 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-3-geometry.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html" aria-current="page">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-3-geometrie.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线三</h1>
+
+<section id="s3">
+  <h2 class="sec"><span class="num">主线 三</span>形与空间</h2>
+  <p class="sec-lead">几何这个词的字面意思是「测地」。它一开始就是一门实用手艺：尼罗河每年泛滥冲掉田埂，得有人重新把地量回来。可它很快变成了别的东西——<strong>一门研究「形状里什么东西不会变」的学问。</strong></p>
+
+  <p>这条主线有两条线索缠在一起，值得先说清楚。</p>
+
+  <p><strong>第一条：什么是「不变的」。</strong>两个图形完全一样，叫<em>全等</em>——移过去能重合。形状一样但大小不同，叫<em>相似</em>——比例不变。再往后，你会发现连「相似」都可以放宽：拓扑学里，甜甜圈和咖啡杯算同一个东西，因为洞的个数不变。每放宽一次，几何就换一副面孔。</p>
+
+  <p><strong>第二条：怎么用量得到的，算出量不到的。</strong>树有多高、河有多宽、地球有多大、星星有多远——这些都没法直接拿尺子去量。几何的全部实用价值，就是给出一套办法，让人用手边能量的东西推出够不着的东西。</p>
+
+  <p>这两条线索在同一个地方汇合，那就是<strong>相似</strong>。它是这条主线真正的枢纽：正因为「形状相同则比例相同」，三角函数才成立，测量才可能。而这一点学校常常一笔带过。</p>
+
+  <p>还有一个转折点必须提前点名：<strong>坐标系</strong>。笛卡尔把「形」翻译成了「数」之后，几何题可以用算的，代数式也可以画出来看。全景图上那条最重要的箭头就是它。这一步之后，代数和几何合流成了分析——也就是主线四。</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>角与平行线 · 几何的第一批规则</h3>
+      <p class="de">Winkel · Parallelen</p>
+    </div>
+    <div class="body">
+      <p class="lead">两条直线相交，就产生了角。而一旦有了「平行」这个概念，角与角之间立刻冒出一堆固定关系——几何的推理链条就是从这儿开始的。</p>
+
+      <div class="field">
+        <span class="lbl">先说一件小事：为什么一圈是 360 度</span>
+        <p>360 这个数字不是天上掉的，它来自巴比伦人的六十进制（主线一 1.2 提过一次）。360 有个极好的性质：<strong>它能被 1 到 10 里除了 7 以外的所有数整除</strong>，所以把圆切成 2、3、4、5、6、8、9、10、12 等份都不会出现分数。对一个没有小数、只有分数的文明来说，这太方便了。</p>
+        <p>顺便说：这个约定并不是唯一的。到了山腰，你会遇到<strong>弧度制</strong>（Bogenmaß）——用「这段弧有多长」来量角，一圈就是 <span class="m">2π</span>。那个制度看起来别扭，但在微积分里，只有它能让 <span class="m">sin</span> 的导数干干净净地等于 <span class="m">cos</span>。<em>换个记法，公式就变漂亮</em>，这是主线零 0.8 说过的老道理。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">平行线一来，角就开始联动</span>
+        <p>两条平行线被第三条线截断，产生八个角，但它们只有两种大小。德语课本给这些位置关系起了专门的名字，考试和课堂上会直接点名叫：</p>
+        <div class="demo">
+          <p><strong>Scheitelwinkel</strong>（对顶角）　交叉的两个角，相等。</p>
+          <p><strong>Stufenwinkel</strong>（同位角）　「同一级台阶上」的两个角，相等。</p>
+          <p><strong>Wechselwinkel</strong>（内错角）　一左一右交错的两个角，相等。</p>
+          <p><strong>Nebenwinkel</strong>（邻补角）　挨着的两个角，加起来 180°。</p>
+        </div>
+        <p>这几个词值得直接背德语，因为中文译名和德语的构词逻辑不一样，脑子里两套并存反而慢。<span class="m-up m">Stufe</span> 是台阶，<span class="m-up m">Wechsel</span> 是交换，名字本身就在描述位置。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">第一个像样的证明：三角形内角和是 180°</span>
+        <p>这个结论小学就听过，但真正证明它需要平行线。证法漂亮到只用一张图：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="三角形内角和的证明图：过顶点作底边的平行线，两个底角以内错角的身份搬到顶点处，与顶角合成一条直线。">
+          <line x1="180" y1="80" x2="520" y2="80" class="svg-l" stroke-dasharray="6 4"/>
+          <text x="536" y="84" class="svg-tm">过顶点作底边的平行线</text>
+
+          <line x1="180" y1="230" x2="530" y2="230" class="svg-l"/>
+          <line x1="350" y1="80" x2="180" y2="230" class="svg-l"/>
+          <line x1="350" y1="80" x2="530" y2="230" class="svg-l"/>
+
+          <circle cx="350" cy="80" r="3.5" class="fm" stroke-width="2"/>
+          <circle cx="180" cy="230" r="3.5" class="fm" stroke-width="2"/>
+          <circle cx="530" cy="230" r="3.5" class="fm" stroke-width="2"/>
+
+          <text x="204" y="222" class="svg-t tx1">α</text>
+          <text x="500" y="222" class="svg-t tx2">β</text>
+          <text x="344" y="112" class="svg-t tx3">γ</text>
+
+          <text x="306" y="98" class="svg-t tx1">α</text>
+          <text x="382" y="98" class="svg-t tx2">β</text>
+
+          <path d="M 300 74 A 52 52 0 0 1 316 96" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+          <path d="M 400 74 A 52 52 0 0 0 384 96" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3"/>
+
+          <text x="350" y="272" text-anchor="middle" class="svg-t">顶点处的三个角 α + γ + β 拼成一条直线</text>
+          <text x="350" y="292" text-anchor="middle" class="svg-tm">所以三角形的内角和 = 180°</text>
+        </svg>
+        <figcaption><b>两个底角是被「搬」上去的。</b>过顶点作一条平行于底边的线，左边那个 α 和底角 α 是内错角，所以相等；右边的 β 同理。于是三个角在顶点处首尾相接，正好铺满一条直线。<b>而这条证明依赖平行线——也就依赖欧几里得第五公设</b>（主线零 0.5）。在球面上作不出这样的平行线，三角形内角和就大于 180° 了。</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>没有前置知识。这是几何的起点。</div>
+          <div><span class="lbl">下游</span>全等判定（3.2）· 相似（3.3）· 多边形内角和 · 三角学（3.6）· 非欧几何（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>同位角、内错角相等，<strong>前提是那两条线平行</strong>。不平行就什么关系也没有。做题时先确认平行条件是否给了——很多题的陷阱就藏在这儿：图看起来平行，但题目没说。<em>图是用来帮你想的，不是用来读数据的。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Winkel</b> 角</span>
+          <span><b>Scheitelwinkel</b> 对顶角</span>
+          <span><b>Nebenwinkel</b> 邻补角</span>
+          <span><b>Stufenwinkel</b> 同位角</span>
+          <span><b>Wechselwinkel</b> 内错角</span>
+          <span><b>Innenwinkelsumme</b> 内角和</span>
+          <span><b>Bogenmaß</b> 弧度制</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>全等 · 什么时候两个图形算「一样」</h3>
+      <p class="de">Kongruenz · Kongruenzsätze</p>
+    </div>
+    <div class="body">
+      <p class="lead">两个图形能挪过去完全重合，就叫全等。有意思的问题是：<strong>最少要知道几个数据，才能确定一个三角形？</strong></p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>三角形有六个数据：三条边、三个角。但你不需要知道全部六个。三条边定下来，这个三角形就再也不能变形了——这不是数学游戏，这是<strong>三角形是刚性的</strong>这个物理事实。</p>
+        <p>四边形不是：拿四根小棍钉成一个正方形，它能被推成菱形。三角形推不动。所以从埃菲尔铁塔到自行车车架到房屋屋架，凡是要「不许变形」的地方，全都是三角形。<em>全等判定定理，本质上是在说清楚「什么条件下形状被彻底定死」。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">四条判定，德语记法特别聪明</span>
+        <p>德语用 <span class="m-up m">S</span> = Seite（边）、<span class="m-up m">W</span> = Winkel（角），拼出四条：</p>
+        <div class="demo">
+          <p><strong>SSS</strong>　三条边对应相等。</p>
+          <p><strong>SWS</strong>　两条边和它们<em>夹着</em>的那个角。注意角必须在中间。</p>
+          <p><strong>WSW</strong>　两个角和它们<em>夹着</em>的那条边。（有了内角和 180°，第三个角自动确定，所以 WWS 其实也归到这一条。）</p>
+          <p><strong>SsW</strong>　两条边和其中<em>较长</em>那条边所对的角。</p>
+        </div>
+        <p>最后这一条要盯着看：<strong>那个小写的 s 是有意写小的。</strong>它表示「较短的那条边」，规则要求已知角对着的是<em>大写 S</em>——也就是较长的那条。</p>
+        <p>为什么非要这么讲究？因为如果角对着的是较短的边，三角形<strong>不唯一</strong>——同样的数据能画出两个不一样的三角形（一个锐角一个钝角）。这是几何里最经典的一个陷阱，而德语的大小写记法直接把答案写进了名字里。英语教材写 SSA 然后说「这条不成立」，反而没说清楚什么时候成立。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>角与平行线（3.1）· 内角和</div>
+          <div><span class="lbl">下游</span>相似判定（3.3，把「相等」换成「成比例」就是）· 一切几何证明题 · 尺规作图 · 变换与对称（3.9）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>SWS 里的角必须是夹角。</strong>「两条边和一个角」不够，得说清楚那个角在哪。<span class="m">a</span>、<span class="m">b</span> 和它们的夹角 <span class="m">γ</span> 能定死三角形；<span class="m">a</span>、<span class="m">b</span> 和 <span class="m">a</span> 对着的角 <span class="m">α</span> 就要看 SsW 那条规则了。</p>
+          <p>另外：写全等式时<strong>顶点顺序要对应</strong>。写 <span class="m">△ABC ≅ △DEF</span>，意思是 A 对 D、B 对 E、C 对 F。顺序写乱了，后面推出来的对应边角全是错的。这是判卷时真的会扣分的地方。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Kongruenz</b> 全等</span>
+          <span><b>kongruent ≅</b> 全等的</span>
+          <span><b>Kongruenzsätze</b> 全等判定定理</span>
+          <span><b>Seite / Winkel</b> 边 / 角</span>
+          <span><b>Dreieckskonstruktion</b> 三角形作图</span>
+          <span><b>eindeutig</b> 唯一确定的</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>相似 · 这条主线真正的枢纽</h3>
+      <p class="de">Ähnlichkeit · Strahlensätze</p>
+    </div>
+    <div class="body">
+      <p class="lead">形状一样、大小可以不同，叫相似。这个概念看着比全等弱，实际上有用得多——<strong>因为世界上真正相等的东西很少，成比例的东西到处都是。</strong></p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>相似回答了这条主线的第二个问题：<em>怎么用量得到的，算出量不到的。</em></p>
+        <p>想知道一棵树多高，不用爬上去。找根一米长的棍子插在地上，量棍子的影子和树的影子。棍子、影子和阳光组成的三角形，跟树、树影和阳光组成的三角形是<strong>相似</strong>的——因为阳光平行，对应角都相等。于是：</p>
+        <div class="demo">
+          <p class="calc">树高 ÷ 树影长 = 棍高 ÷ 棍影长</p>
+          <p>四个数里三个能量到，第四个就算出来了。<em>这就是几何最古老的实用价值。</em></p>
+        </div>
+        <p>公元前 240 年左右，埃拉托色尼用同一个思路量出了<strong>整个地球的周长</strong>。他知道夏至正午阳光在赛伊尼（今阿斯旺）能直射井底，而在同一天的亚历山大港，方尖碑的影子对应约 7.2°——正好是一圈的 1/50。两地相距约 5000 斯塔德，所以地球周长约 25 万斯塔德。换算成今天的单位，误差在百分之几以内。<strong>他没离开过埃及，就量出了地球。</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">射线定理（Strahlensätze）</span>
+        <p>德国课本把「相似」的常用情形单独提炼成了射线定理，会被反复点名。它说的是：两条从同一点出发的射线，被两条平行线截断时，各段长度成比例。</p>
+        <p>它其实就是相似三角形的另一种说法，但因为图形固定、用起来快，值得单独认脸。测距、测高、缩放图纸、地图比例尺，背后全是它。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个反直觉的推论：放大两倍，重量变八倍</span>
+        <p>这可能是这一章最有用、也最容易被忽略的一件事。图形放大 <span class="m">k</span> 倍时：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 340" role="img" aria-label="平方立方定律示意：边长放大两倍时，面积变成四倍，体积变成八倍。">
+          <text x="40" y="66" class="svg-tm">边长</text>
+          <line x1="150" y1="60" x2="190" y2="60" class="svg-l" stroke-width="2.5"/>
+          <line x1="300" y1="60" x2="380" y2="60" class="svg-l" stroke-width="2.5"/>
+          <text x="560" y="66" class="svg-t tx1">× 2</text>
+
+          <text x="40" y="136" class="svg-tm">面积</text>
+          <rect x="150" y="110" width="40" height="40" class="f1"/>
+          <rect x="300" y="110" width="80" height="80" class="f1"/>
+          <line x1="340" y1="110" x2="340" y2="190" class="svg-l-soft"/>
+          <line x1="300" y1="150" x2="380" y2="150" class="svg-l-soft"/>
+          <text x="560" y="156" class="svg-t tx2">× 4</text>
+          <text x="404" y="156" class="svg-tm">4 小块</text>
+
+          <text x="40" y="246" class="svg-tm">体积</text>
+          <rect x="150" y="232" width="26" height="26" class="f2"/>
+          <rect x="300" y="216" width="26" height="26" class="f2"/>
+          <rect x="332" y="216" width="26" height="26" class="f2"/>
+          <rect x="364" y="216" width="26" height="26" class="f2"/>
+          <rect x="396" y="216" width="26" height="26" class="f2"/>
+          <rect x="300" y="248" width="26" height="26" class="f2"/>
+          <rect x="332" y="248" width="26" height="26" class="f2"/>
+          <rect x="364" y="248" width="26" height="26" class="f2"/>
+          <rect x="396" y="248" width="26" height="26" class="f2"/>
+          <text x="560" y="252" class="svg-t txm">× 8</text>
+          <text x="440" y="252" class="svg-tm">8 小块</text>
+
+          <line x1="40" y1="296" x2="660" y2="296" class="svg-l-soft"/>
+          <text x="40" y="322" class="svg-t">长度按 k，面积按 k²，体积（也就是重量）按 k³</text>
+        </svg>
+        <figcaption><b>这条规律叫平方立方定律，它统治着现实世界的形状。</b>把一只蚂蚁放大到大象那么大，它的重量涨了几十万倍，腿的横截面积却只涨了几千倍——腿会当场压断。所以大象的腿必须又粗又直，而蚂蚁可以细得像头发。同样的道理：小动物摔不死（表面积相对大，空气阻力够），大动物摔一下就完；蛋糕做大一倍要多买八倍材料，但只多包四倍的糖霜。</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>全等（3.2）· 比例与分数（主线一 1.5）· 平行线与角（3.1）</div>
+          <div><span class="lbl">下游</span><strong>三角函数（3.6）——它整个建立在相似之上</strong> · π 对所有圆相同（3.5）· 比例尺与地图（主线七）· 量纲分析与量级估算（主线七）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>「面积也放大两倍」是错的。</strong>这是全世界最普遍的几何直觉错误，和主线二 2.2 那个 <span class="m">(a+b)² ≠ a²+b²</span> 是同一个家族的毛病：<em>把线性的直觉套在非线性的东西上。</em></p>
+          <p>另外注意相似的写法：<span class="m">△ABC ∼ △DEF</span> 用波浪线，全等用 <span class="m">≅</span>。两个符号别混。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Ähnlichkeit</b> 相似</span>
+          <span><b>ähnlich ∼</b> 相似的</span>
+          <span><b>Strahlensatz</b> 射线定理</span>
+          <span><b>Streckfaktor</b> 缩放系数</span>
+          <span><b>Maßstab</b> 比例尺</span>
+          <span><b>Verhältnis</b> 比</span>
+          <span><b>zentrische Streckung</b> 位似变换</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>勾股定理 · 一个定理和它的整个宇宙</h3>
+      <p class="de">Satz des Pythagoras</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">a² + b² = c²</span>。这大概是全世界最有名的公式，而它有名是有道理的：<strong>它是「距离」这个概念的定义。</strong></p>
+
+      <div class="field">
+        <span class="lbl">一个不用算的证明</span>
+        <p>勾股定理有几百种证明。下面这种最好看，因为它一个字都不用算——只需要盯着两张图，看出「同样大的正方形，扣掉同样的四个三角形，剩下的必然一样大」。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 330" role="img" aria-label="勾股定理的面积重排证明：两个同样大的正方形，各自放入四个相同的直角三角形，一边剩下 c 的平方，另一边剩下 a 的平方加 b 的平方。">
+          <rect x="60" y="60" width="200" height="200" class="svg-face"/>
+          <path d="M 180 60 L 260 180 L 140 260 L 60 140 Z" class="f2"/>
+          <text x="160" y="166" text-anchor="middle" class="svg-t tx2">c²</text>
+          <line x1="60" y1="60" x2="180" y2="60" class="svg-l"/>
+          <text x="120" y="52" text-anchor="middle" class="svg-tm">a</text>
+          <line x1="180" y1="60" x2="260" y2="60" class="svg-l"/>
+          <text x="220" y="52" text-anchor="middle" class="svg-tm">b</text>
+          <text x="160" y="288" text-anchor="middle" class="svg-tm">四个三角形 + 一个斜正方形</text>
+
+          <rect x="440" y="60" width="200" height="200" class="svg-face"/>
+          <rect x="440" y="60" width="120" height="120" class="f1"/>
+          <text x="500" y="126" text-anchor="middle" class="svg-t tx1">a²</text>
+          <rect x="560" y="180" width="80" height="80" class="fm"/>
+          <text x="600" y="226" text-anchor="middle" class="svg-t txm">b²</text>
+          <line x1="560" y1="60" x2="640" y2="180" class="svg-l"/>
+          <line x1="440" y1="180" x2="560" y2="260" class="svg-l"/>
+          <line x1="560" y1="60" x2="560" y2="260" class="svg-l-soft"/>
+          <line x1="440" y1="180" x2="640" y2="180" class="svg-l-soft"/>
+          <text x="540" y="288" text-anchor="middle" class="svg-tm">同样四个三角形 + 两个正正方形</text>
+
+          <text x="350" y="160" text-anchor="middle" class="svg-t">=</text>
+          <text x="350" y="322" text-anchor="middle" class="svg-t">大正方形一样大，扣掉的三角形一样多　⟹　c² = a² + b²</text>
+        </svg>
+        <figcaption><b>这就是工具箱里的招数八「数两次」，换了个舞台。</b>两个大正方形边长都是 <span class="svg-tm">a+b</span>，各自装进四个一模一样的直角三角形，只是摆法不同。剩下的空白面积必然相等——左边是一个边长为 c 的斜正方形，右边是一个 a² 加一个 b²。<b>整个证明不需要写一个算式。</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">它的三个身份</span>
+        <div class="demo">
+          <p><strong>一、算第三条边。</strong>这是最直接的用法，也是考试里最常见的。</p>
+          <p><strong>二、判断直角。</strong>逆定理也成立：如果 <span class="m">a²+b²=c²</span>，那这个三角形<em>必定</em>是直角三角形。古埃及人拉一根打了 12 个等距结的绳子，围成 3-4-5 的三角形，就得到一个精确的直角——因为 <span class="m">9+16=25</span>。今天工地上放线还在用同一招。</p>
+          <p><strong>三、定义距离。</strong>坐标平面上两点 <span class="m">(x₁,y₁)</span> 和 <span class="m">(x₂,y₂)</span> 的距离是：</p>
+          <p class="calc">d = √( (x₂−x₁)² + (y₂−y₁)² )</p>
+          <p>这就是勾股定理，横竖两段是两条直角边。<em>你在坐标系里、在三维空间里、在向量长度里、在统计的「标准差」里、在机器学习的「误差」里，看到的每一个平方和开根号，追到底都是这一条。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>面积（3.1）· 全等（3.2）· 开方（主线一 1.7）</div>
+          <div><span class="lbl">下游</span><strong>√2 是无理数（主线一 1.7）——那场危机就是这条定理引爆的</strong> · 距离公式与坐标几何（3.7）· 单位圆与 sin²+cos²=1（3.6）· 余弦定理（3.6）· 向量的长度（3.8）· 标准差（主线五）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><span class="m">c</span> <strong>永远是斜边</strong>（Hypotenuse），也就是直角对面那条最长的边。题目里的边如果不叫 a、b、c，千万别机械套公式——先找出直角在哪儿，直角对面那条才是 c。这个错误在图形旋转过、或者字母换了名字的题里特别高发。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Satz des Pythagoras</b> 勾股定理</span>
+          <span><b>Hypotenuse</b> 斜边</span>
+          <span><b>Kathete</b> 直角边</span>
+          <span><b>rechtwinkliges Dreieck</b> 直角三角形</span>
+          <span><b>Kathetensatz</b> 射影定理</span>
+          <span><b>Höhensatz</b> 高的定理</span>
+          <span><b>Umkehrung</b> 逆定理</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.5 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>圆 · 最完美也最麻烦的形状</h3>
+      <p class="de">Kreis · Kreiszahl π</p>
+    </div>
+    <div class="body">
+      <p class="lead">圆的定义简单到极致：<strong>到定点距离相等的所有点</strong>。可就是这么个东西，带来了数学史上最著名的一个常数，和一个两千年没解开的难题。</p>
+
+      <div class="field">
+        <span class="lbl">用集合定义图形</span>
+        <p>「到定点距离相等的所有点」——注意这句话的形式。它不是在描述一个画法，而是在<strong>用一个条件圈出一堆点</strong>。这正是主线零 0.1 讲的集合语言第一次用在几何上：</p>
+        <p class="calc">圆 = { P | 距离(P, M) = r }</p>
+        <p>这个视角在山腰会变得极其重要：椭圆、抛物线、双曲线全都用同样的句式定义，只是条件换一换。而到了坐标系里（3.7），这些条件直接变成方程。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">π 为什么对所有圆都一样</span>
+        <p>周长除以直径，永远得到同一个数——这件事其实需要理由，而理由正是上一张卡片的枢纽：<strong>所有的圆彼此相似。</strong>把一个圆放大 <span class="m">k</span> 倍，就得到另一个圆，周长和直径同步放大 <span class="m">k</span> 倍，比值当然不变。</p>
+        <p>所以 <span class="m">π</span> 不是「圆的一个属性」，而是<em>「圆这种形状」的属性</em>。这跟 3.6 里三角函数只取决于角、不取决于三角形大小，是同一个道理的两次出现。</p>
+        <p>顺便：<span class="m">π</span> 是超越数（主线一 1.10），这直接判了古希腊三大难题之一「化圆为方」的死刑——不是没人聪明到想出办法，是数学证明了它不存在。<em>又一次「证明做不到」。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">泰勒斯定理：半圆上都是直角</span>
+        <div class="demo">
+          <p>在圆上任取一点，和直径的两个端点连起来，那个角<strong>永远是直角</strong>——不管你取的点在哪儿。</p>
+          <p>这是圆周角定理的特例，实用价值很高：想判断某个角是不是直角，或者想构造直角，画个圆就行。木工和制图里用得很多。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>集合语言（主线零 0.1）· 相似（3.3）· 距离（3.4）</div>
+          <div><span class="lbl">下游</span>单位圆与三角函数（3.6）· 圆的方程（3.7）· 圆锥曲线 · 弧度制 · π 的超越性（主线一 1.10）· 周期现象（主线四）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>周长公式 <span class="m">U = 2πr</span> 和面积公式 <span class="m">A = πr²</span> 老是记混。有个可靠的辨认法：<strong>看单位。</strong>周长是长度，公式里 r 只能出现一次方；面积是平方单位，r 必须是平方。<em>这就是主线七里「用单位检查答案」那把尺子，在几何里的第一次应用。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Kreis</b> 圆</span>
+          <span><b>Radius</b> 半径</span>
+          <span><b>Durchmesser</b> 直径</span>
+          <span><b>Umfang</b> 周长</span>
+          <span><b>Flächeninhalt</b> 面积</span>
+          <span><b>Kreiszahl π</b> 圆周率</span>
+          <span><b>Satz des Thales</b> 泰勒斯定理</span>
+          <span><b>Umfangswinkelsatz</b> 圆周角定理</span>
+          <span><b>Sehne / Tangente</b> 弦 / 切线</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>三角学 · 把角变成一个数</h3>
+      <p class="de">Trigonometrie · Sinus, Kosinus, Tangens</p>
+    </div>
+    <div class="body">
+      <p class="lead">三角函数常常被当成三个要背的新符号突然塞过来。其实它只是<strong>相似定理的一个直接推论</strong>——搞懂这条因果链，整个三角学就不神秘了。</p>
+
+      <div class="field">
+        <span class="lbl">这条因果链，学校常常跳过</span>
+        <p>拿一个锐角 <span class="m">α</span>，画一个含这个角的直角三角形。再画一个更大的、还是含这个角的直角三角形。这两个三角形<strong>必定相似</strong>——因为它们都有一个直角、都有 <span class="m">α</span>，第三个角靠内角和自动相等（3.1）。</p>
+        <p>相似意味着对应边成比例（3.3）。所以：<strong>「对边 ÷ 斜边」这个比值，在所有含 α 的直角三角形里都一模一样，跟三角形多大完全无关。</strong></p>
+        <p>既然它只取决于 <span class="m">α</span>，那就可以给它起个名字，写成 <span class="m">α</span> 的函数——这就是 <span class="m">sin α</span>。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="三个大小不同但共用同一个锐角的直角三角形，它们相似，所以对边除以斜边的比值完全相同。">
+          <line x1="80" y1="230" x2="620" y2="230" class="svg-l"/>
+          <line x1="80" y1="230" x2="580" y2="105" class="svg-l"/>
+
+          <line x1="200" y1="230" x2="200" y2="200" class="f1" stroke="currentColor" stroke-width="2"/>
+          <line x1="360" y1="230" x2="360" y2="160" class="svg-l" stroke-width="2"/>
+          <line x1="520" y1="230" x2="520" y2="120" class="svg-l" stroke-width="2"/>
+
+          <circle cx="200" cy="200" r="3.5" class="f1" stroke-width="2"/>
+          <circle cx="360" cy="160" r="3.5" class="f2" stroke-width="2"/>
+          <circle cx="520" cy="120" r="3.5" class="fm" stroke-width="2"/>
+
+          <path d="M 122 230 A 42 42 0 0 0 120 219" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="104" y="216" class="svg-t">α</text>
+
+          <text x="200" y="252" text-anchor="middle" class="svg-tm tx1">小</text>
+          <text x="360" y="252" text-anchor="middle" class="svg-tm tx2">中</text>
+          <text x="520" y="252" text-anchor="middle" class="svg-tm txm">大</text>
+
+          <line x1="80" y1="278" x2="660" y2="278" class="svg-l-soft"/>
+          <text x="80" y="296" class="svg-t">三个三角形大小不同、形状完全相同，所以 对边 ÷ 斜边 三个都相等 —— 这个数就叫 sin α</text>
+        </svg>
+        <figcaption><b>三角函数之所以存在，全靠相似。</b>如果比值会随三角形大小变化，那「给角配一个数」这件事根本做不成，也就没有三角学了。三个比值分别有名字：对边÷斜边是 <span class="svg-tm">sin</span>，邻边÷斜边是 <span class="svg-tm">cos</span>，对边÷邻边是 <span class="svg-tm">tan</span>。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">单位圆：把三角函数从三角形里放出来</span>
+        <p>直角三角形里的定义有个硬伤：角必须小于 90°，不然画不出直角三角形。可现实里的角度会转过一整圈，甚至转很多圈（想想车轮、钟摆、交流电）。</p>
+        <p>解决办法漂亮得出奇：<strong>画一个半径为 1 的圆，让角从正半轴开始转。转到的那个点，它的横坐标就是 cos，纵坐标就是 sin。</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 330" role="img" aria-label="单位圆：半径为一的圆上，转过角度西塔的点，横坐标是余弦，纵坐标是正弦，构成一个直角三角形。">
+          <line x1="200" y1="180" x2="510" y2="180" class="svg-l-soft"/>
+          <line x1="355" y1="55" x2="355" y2="300" class="svg-l-soft"/>
+          <circle cx="355" cy="180" r="110" fill="none" stroke="currentColor" stroke-width="1.5"/>
+
+          <line x1="355" y1="180" x2="418" y2="90" class="svg-l" stroke-width="2"/>
+          <line x1="418" y1="90" x2="418" y2="180" class="f2" stroke="currentColor" stroke-width="2.5"/>
+          <line x1="355" y1="180" x2="418" y2="180" class="f1" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="418" cy="90" r="4" class="fm" stroke-width="2"/>
+
+          <path d="M 385 180 A 30 30 0 0 0 376 159" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="368" y="166" class="svg-t">θ</text>
+
+          <text x="386" y="200" text-anchor="middle" class="svg-t tx1">cos θ</text>
+          <text x="432" y="140" class="svg-t tx2">sin θ</text>
+          <text x="368" y="122" class="svg-tm">1</text>
+          <text x="430" y="82" class="svg-tm txm">(cos θ, sin θ)</text>
+
+          <line x1="200" y1="284" x2="660" y2="284" class="svg-l-soft"/>
+          <text x="200" y="304" class="svg-t">这个直角三角形的斜边永远是 1，所以勾股定理直接给出　sin²θ + cos²θ = 1</text>
+        </svg>
+        <figcaption><b>那条最常用的三角恒等式，其实就是单位圆上的勾股定理。</b>它不需要单独记，看着这张图就能重新写出来。而且角一旦可以转过 90°、180°、360° 甚至更多圈，<span class="svg-tm">sin</span> 和 <span class="svg-tm">cos</span> 就变成了<b>周期函数</b>——描述一切来回摆动的东西：声波、光波、交流电、潮汐、心跳。这是通往主线四的一道大门。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">两条定理，把三角学推广到任意三角形</span>
+        <div class="demo">
+          <p><strong>正弦定理</strong>（Sinussatz）　<span class="m">a / sin α = b / sin β = c / sin γ</span></p>
+          <p><strong>余弦定理</strong>（Kosinussatz）　<span class="m">c² = a² + b² − 2ab·cos γ</span></p>
+          <p>盯着第二条看：当 <span class="m">γ = 90°</span> 时，<span class="m">cos 90° = 0</span>，最后一项整个消失，式子变回 <span class="m">c² = a² + b²</span>。</p>
+          <p><strong>余弦定理就是勾股定理的推广版</strong>，那个 <span class="m">−2ab·cos γ</span> 是「这个角不是直角」的修正项。角越偏离 90°，修正得越多。这样一看，就不是两条要分别背的公式，而是一条定理的两个版本。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span><strong>相似（3.3）——没有它就没有三角学</strong> · 内角和（3.1）· 勾股定理（3.4）· 圆（3.5）</div>
+          <div><span class="lbl">下游</span>三角函数的图像与周期（主线四）· 傅里叶分析（主线四山顶）· 向量的点积（3.8）· 测量与导航（主线七）· 波与振动</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>计算器的角度模式。</strong>算之前先确认它在 <span class="m-up m">DEG</span>（度）还是 <span class="m-up m">RAD</span>（弧度）。模式不对，答案会离谱但看起来很正常——这是三角题最阴险的一种错，因为它不报错。</p>
+          <p><strong>正弦定理的歧义。</strong>用它求角时，<span class="m">sin</span> 在锐角和钝角处取值可能相同（比如 <span class="m">sin 30° = sin 150°</span>），所以可能有两个答案。这跟 3.2 里 SsW 的歧义是<em>同一件事的两个面孔</em>——都源于「已知两边和一个非夹角，三角形可能不唯一」。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Trigonometrie</b> 三角学</span>
+          <span><b>Sinus / Kosinus / Tangens</b> 正弦/余弦/正切</span>
+          <span><b>Gegenkathete</b> 对边</span>
+          <span><b>Ankathete</b> 邻边</span>
+          <span><b>Einheitskreis</b> 单位圆</span>
+          <span><b>Sinussatz</b> 正弦定理</span>
+          <span><b>Kosinussatz</b> 余弦定理</span>
+          <span><b>Bogenmaß</b> 弧度制</span>
+          <span><b>periodisch</b> 周期的</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">德语的 <span class="m-up m">Gegenkathete</span>（对边，字面「对着的直角边」）和 <span class="m-up m">Ankathete</span>（邻边，字面「靠着的直角边」）比中文的「对边邻边」更好认——<span class="m-up m">gegen</span> 是「对着」，<span class="m-up m">an</span> 是「贴着」，词本身就在指位置。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>坐标系 · 笛卡尔那座桥</h3>
+      <p class="de">Koordinatensystem · analytische Geometrie</p>
+    </div>
+    <div class="body">
+      <p class="lead">给平面铺上两条数轴，每个点就有了一对数。这一下，<strong>「形」变成了「数」，几何题从此可以用算的。</strong>这是全景图上最重要的一条箭头。</p>
+
+      <div class="field">
+        <span class="lbl">这一步为什么这么大</span>
+        <p>在笛卡尔之前，几何和代数是两门几乎不来往的学问。几何靠图和尺规，讲究直觉和构造；代数靠符号和运算，讲究变形和求解。各有各的题，各有各的方法。</p>
+        <p>坐标系一铺，两边直接接通了，而且是<strong>双向的</strong>：</p>
+        <div class="demo">
+          <p><strong>形 → 数：</strong>一条直线变成 <span class="m">y = mx + b</span>，一个圆变成 <span class="m">(x−a)² + (y−b)² = r²</span>。原来要靠画图和推理的问题，现在解个方程就行。求两条直线的交点？解方程组（主线二 2.8）。</p>
+          <p><strong>数 → 形：</strong>反过来，一个抽象的代数式突然有了长相。<span class="m">y = x²</span> 不再只是一串符号，它是一条抛物线。方程有几个解，就是曲线和 x 轴交几次（主线二 2.5 那张判别式图）。</p>
+        </div>
+        <p><em>两边都因此变得容易得多。</em>这就是为什么后来会有「解析几何」这个词——用代数的手段做几何。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">最直接的收获：距离公式</span>
+        <div class="demo">
+          <p class="calc">d = √( (x₂−x₁)² + (y₂−y₁)² )</p>
+          <p>它就是勾股定理（3.4）：横向差和纵向差是两条直角边，距离是斜边。</p>
+          <p>三维空间里也一样，只是多加一项：<span class="m">d = √(Δx² + Δy² + Δz²)</span>。而这个式子可以一直往上加项——四维、一百维、一万维。<strong>「距离」这个概念一旦写成公式，就不再受限于我们能想象的空间了。</strong>机器学习里两个数据点的「距离」，就是几百维空间里的这个式子。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>勾股定理（3.4）· 数轴与负数（主线一 1.4）· 有序数对 · 方程（主线二 2.3）</div>
+          <div><span class="lbl">下游</span><strong>函数与图像（主线四）——这条桥的正下游</strong> · 向量（3.8）· 圆锥曲线 · 微积分的全部 · 计算机图形学 · 高维空间与数据（主线五山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>坐标写成 <span class="m">(x, y)</span>，<strong>横坐标永远在前</strong>。写反了整道题就跑到别的地方去了。德语里 <span class="m-up m">Abszisse</span> 是横坐标、<span class="m-up m">Ordinate</span> 是纵坐标，但日常更多直接说 <span class="m-up m">x-Wert</span> 和 <span class="m-up m">y-Wert</span>。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Koordinatensystem</b> 坐标系</span>
+          <span><b>kartesisch</b> 笛卡尔的</span>
+          <span><b>Ursprung</b> 原点</span>
+          <span><b>Achse</b> 坐标轴</span>
+          <span><b>Abszisse / Ordinate</b> 横 / 纵坐标</span>
+          <span><b>analytische Geometrie</b> 解析几何</span>
+          <span><b>Abstand</b> 距离</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>向量 · 带方向的量</h3>
+      <p class="de">Vektor · Skalarprodukt</p>
+    </div>
+    <div class="body">
+      <p class="lead">有些量光有大小不够用。「走了 5 公里」和「往东北走了 5 公里」是两回事。<strong>向量就是「大小 + 方向」打包成的一个东西</strong>，而且它可以做运算。</p>
+
+      <div class="field">
+        <span class="lbl">最关键的一点：向量不是点</span>
+        <p>这是入门时最容易卡住的地方。<strong>向量描述的是一次「位移」，不是一个「位置」。</strong>「向右 3 格、向上 2 格」这个指令，从哪儿出发都是同一个指令——所以平面上所有长度相同、方向相同的箭头，都是<em>同一个向量</em>。</p>
+        <p>这也解释了向量加法为什么是「首尾相接」：先执行第一个位移，再从终点执行第二个，合起来的效果就是它们的和。<em>向量加法就是「动作接着动作」</em>——跟主线二 2.9 里矩阵乘法的道理一模一样。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">点积：一个乘法，两种用途</span>
+        <p>两个向量能相乘，而且结果居然是个普通的数（所以叫「数量积」）：</p>
+        <p class="calc">a⃗ · b⃗ = |a⃗| · |b⃗| · cos θ</p>
+        <p>这个式子长得怪，但它的几何含义非常朴素：<strong>它在测量「b 有多少分量是沿着 a 的方向的」。</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 280" role="img" aria-label="点积的几何意义：一般情况下 b 在 a 方向上有投影，垂直时投影为零所以点积为零。">
+          <defs>
+            <marker id="c0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="60" y1="200" x2="290" y2="200" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="296" y="205" class="svg-t tx1">a</text>
+          <line x1="60" y1="200" x2="200" y2="80" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="206" y="78" class="svg-t tx2">b</text>
+          <line x1="200" y1="80" x2="200" y2="200" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="60" y1="212" x2="200" y2="212" class="fm" stroke="currentColor" stroke-width="3"/>
+          <text x="130" y="234" text-anchor="middle" class="svg-tm txm">b 沿着 a 的那部分</text>
+          <path d="M 98 200 A 38 38 0 0 0 92 184" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <text x="84" y="188" class="svg-t">θ</text>
+          <text x="175" y="262" text-anchor="middle" class="svg-t">一般情况：投影不为零</text>
+
+          <line x1="420" y1="200" x2="650" y2="200" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="656" y="205" class="svg-t tx1">a</text>
+          <line x1="420" y1="200" x2="420" y2="80" class="svg-l" stroke-width="2" marker-end="url(#c0)"/>
+          <text x="404" y="78" class="svg-t tx2">b</text>
+          <rect x="420" y="186" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <circle cx="420" cy="212" r="4" class="fm" stroke-width="2"/>
+          <text x="470" y="234" class="svg-tm txm">投影缩成一个点，长度为 0</text>
+          <text x="535" y="262" text-anchor="middle" class="svg-t">垂直时：a⃗ · b⃗ = 0</text>
+        </svg>
+        <figcaption><b>点积等于零，就是「互相垂直」。</b>这是它最常用的身份——判垂直、求夹角、算距离，全靠这一条。物理里的「功」也是点积：只有沿着运动方向的那部分力才做功，垂直的那部分白使劲。<b>提着一桶水水平走一段路，重力对水一点功都没做</b>，因为力向下、位移向前，点积为零。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">向量让几何题变成算术题</span>
+        <div class="demo">
+          <p>有了向量，空间里的直线和平面都能写成简洁的式子：</p>
+          <p class="calc">直线：　g: x⃗ = p⃗ + t · u⃗<br>平面：　E: x⃗ = p⃗ + s · u⃗ + t · v⃗</p>
+          <p>读法很直白：<em>从某个点 p 出发，沿着方向 u 走 t 步。</em>平面就是沿着两个方向各走一段。</p>
+          <p>于是「两条直线相不相交」「点到平面多远」「两个平面夹角多大」这类原本很难想象的空间问题，全都变成了解方程和算点积——<strong>不需要在脑子里把三维图形转来转去，只要会算。</strong>这正是坐标系那座桥（3.7）的威力在三维空间的延续。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>坐标系（3.7）· 勾股定理（3.4，向量长度就是它）· 三角函数（3.6，点积里的 cos）· 方程组（主线二 2.8）</div>
+          <div><span class="lbl">下游</span>矩阵与线性映射（主线二 2.9）· 线性代数（大学）· 物理里的力、速度、场 · 计算机图形学 · 高维数据（主线五）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>别把向量和点混着用。</strong>德语课本区分得很清楚：<span class="m-up m">Ortsvektor</span>（位置向量）是从原点指向某个点的箭头，用来<em>代表</em>那个点；一般的向量则代表位移。写直线方程 <span class="m">x⃗ = p⃗ + t·u⃗</span> 时，<span class="m">p⃗</span> 是位置向量（「从哪儿开始」），<span class="m">u⃗</span> 是方向向量（「朝哪儿走」）——两个 <span class="m">⃗</span> 长得一样，身份完全不同。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Vektor</b> 向量</span>
+          <span><b>Ortsvektor</b> 位置向量</span>
+          <span><b>Richtungsvektor</b> 方向向量</span>
+          <span><b>Betrag</b> 长度 / 模</span>
+          <span><b>Skalarprodukt</b> 点积</span>
+          <span><b>Kreuzprodukt</b> 叉积</span>
+          <span><b>Gerade / Ebene</b> 直线 / 平面</span>
+          <span><b>orthogonal</b> 正交的</span>
+          <span><b>Abstand</b> 距离</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">3.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>变换与对称 · 动起来之后什么没变</h3>
+      <p class="de">Abbildung · Symmetrie</p>
+    </div>
+    <div class="body">
+      <p class="lead">把图形平移、旋转、翻转、缩放——这些动作叫<strong>变换</strong>。而「变换之后哪些东西没变」，正是这条主线一开始问的那个问题。</p>
+
+      <div class="field">
+        <span class="lbl">四种基本变换，以及它们保住了什么</span>
+        <div class="demo">
+          <p><strong>平移</strong>（Verschiebung）　整体挪一段。长度、角度、方向全不变。</p>
+          <p><strong>旋转</strong>（Drehung）　绕一点转。长度、角度不变，方向变了。</p>
+          <p><strong>反射</strong>（Spiegelung）　照镜子。长度、角度不变，但左右手互换了。</p>
+          <p><strong>缩放</strong>（zentrische Streckung）　放大缩小。角度不变，长度按比例变——<em>这就是相似（3.3）。</em></p>
+        </div>
+        <p>前三种保住了长度，所以变出来的图形和原来<strong>全等</strong>；第四种只保住了角度，所以只<strong>相似</strong>。<em>「全等」和「相似」的区别，用变换的语言说，就是「允许用哪些动作」的区别。</em>这是一个视角的升级：从「比较两个静止的图形」变成了「研究一组动作」。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">对称，其实是在说一个图形的「动作清单」</span>
+        <p>说一个图形「对称」，准确的意思是：<strong>存在某些变换，做完之后图形看起来和原来一模一样。</strong></p>
+        <p>正方形有八个这样的动作：转 0°、90°、180°、270°，加上四条对称轴的反射。等边三角形有六个。圆有无穷多个。<em>「有多对称」这句模糊的话，一下就变成了「清单上有几个动作」这个能数的量。</em></p>
+        <p>而这些动作合起来，正好构成主线二山顶讲的那个<strong>群</strong>：两个动作接起来还是清单上的动作，每个动作都能撤销，什么都不做也算一个动作。<strong>对称就是群，群就是对称。</strong>这是几何和代数在山顶上的又一次握手——伽罗瓦当年正是靠「根的重排构成群」解决了五次方程，用的是同一个思想。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>全等（3.2）· 相似（3.3）· 坐标系（3.7）· 向量（3.8）</div>
+          <div><span class="lbl">下游</span>矩阵表示变换（主线二 2.9）· 群论（主线二山顶）· 晶体结构与化学 · 计算机图形学与动画 · 密铺与图案</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Abbildung</b> 变换 / 映射</span>
+          <span><b>Verschiebung</b> 平移</span>
+          <span><b>Drehung</b> 旋转</span>
+          <span><b>Spiegelung</b> 反射</span>
+          <span><b>Symmetrie</b> 对称</span>
+          <span><b>Symmetrieachse</b> 对称轴</span>
+          <span><b>deckungsgleich</b> 可重合的</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista3">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>几何的山顶特别热闹，因为「什么算不变」这个问题一放宽，就冒出一整片新大陆。同样<strong>不要求懂</strong>。</p>
+
+  <div class="vista">
+    <h4>平行线可以不只一条，也可以一条都没有</h4>
+    <p>主线零 0.5 讲过第五公设的故事：两千年里没人能证明它，最后有人假设它是<em>错的</em>，结果没撞出矛盾，反而长出了两套自洽的新几何。</p>
+    <p><strong>球面几何</strong>里，「直线」是大圆（比如地球上的经线）。任何两条大圆都会相交，所以<em>平行线一条都没有</em>，三角形内角和大于 180°。<strong>双曲几何</strong>里正相反，过一点能画出无穷多条平行线，三角形内角和小于 180°。</p>
+    <p>这不是数学家的自娱自乐。爱因斯坦的广义相对论说，质量会让时空弯曲——所以宇宙的几何<em>本来就不是</em>欧几里得的。GPS 卫星必须按弯曲时空修正时间，不然定位每天会漂出好几公里。<strong>他手机里的导航，每一秒都在用非欧几何。</strong></p>
+
+    <h4>橡皮几何：甜甜圈和咖啡杯是同一个东西</h4>
+    <p>把「不变」放宽到极致：允许随便拉伸、扭曲，只要不撕开、不粘合。这样看，甜甜圈和带把手的咖啡杯是同一个东西（都只有一个洞），而球和它们不同。这门学问叫<strong>拓扑学</strong>。</p>
+    <p>它有个中学就能懂的漂亮结论——<strong>欧拉公式</strong>：任何一个凸多面体，顶点数减棱数加面数永远等于 2。</p>
+    <p class="calc">V − E + F = 2</p>
+    <p>正方体：8 − 12 + 6 = 2。四面体：4 − 6 + 4 = 2。足球：60 − 90 + 32 = 2。<em>形状差这么多，这个数纹丝不动。</em>这类「怎么揉都不变的量」叫拓扑不变量，正是工具箱招数七「找不变量」在最高层次上的样子。</p>
+
+    <h4>维数可以不是整数</h4>
+    <p>线是一维，面是二维，体是三维——这个大家都接受。但<strong>分形</strong>的维数是分数。</p>
+    <p>海岸线就是个例子：你用一公里的尺子量，得到一个长度；换成一米的尺子，会量出更多的弯弯曲曲，长度变长；换成一厘米，还会更长。<em>海岸线的长度取决于尺子有多细，没有确定答案。</em>它比一条线「占地方」，又没到填满一个面——它的维数大概是 1.25 左右。</p>
+    <p>雪花、闪电、血管、树杈、云的边缘，全是这种形状。<strong>大自然很少画直线。</strong></p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Lineare Algebra</strong>——3.8 的向量正式展开，和主线二 2.9 是同一门课</li>
+      <li><strong>Analytische Geometrie</strong>——坐标下的几何，3.7 和 3.8 的合流</li>
+      <li><strong>Differentialgeometrie</strong>（微分几何）——弯曲的空间怎么量，广义相对论的语言</li>
+      <li><strong>Topologie</strong>（拓扑学）——橡皮几何，现代数学最核心的语言之一</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss3">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead">几何是德语数学词汇最密集的一章，而且很多词构词本身就在解释含义（<span class="m-up m">Gegenkathete</span>「对着的直角边」、<span class="m-up m">Stufenwinkel</span>「台阶角」）。这一列值得多花点时间。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>角</td><td class="de">Winkel</td><td class="en">angle</td></tr>
+      <tr><td>对顶角 / 邻补角</td><td class="de">Scheitelwinkel / Nebenwinkel</td><td class="en">vertical / adjacent angles</td></tr>
+      <tr><td>同位角 / 内错角</td><td class="de">Stufenwinkel / Wechselwinkel</td><td class="en">corresponding / alternate angles</td></tr>
+      <tr><td>内角和</td><td class="de">Innenwinkelsumme</td><td class="en">sum of interior angles</td></tr>
+      <tr><td>平行 / 垂直</td><td class="de">parallel / senkrecht</td><td class="en">parallel / perpendicular</td></tr>
+      <tr><td>全等</td><td class="de">Kongruenz · kongruent ≅</td><td class="en">congruence · congruent</td></tr>
+      <tr><td>全等判定定理</td><td class="de">Kongruenzsätze (SSS, SWS, WSW, SsW)</td><td class="en">congruence criteria</td></tr>
+      <tr><td>边 / 角</td><td class="de">Seite / Winkel</td><td class="en">side / angle</td></tr>
+      <tr><td>相似</td><td class="de">Ähnlichkeit · ähnlich ∼</td><td class="en">similarity · similar</td></tr>
+      <tr><td>射线定理</td><td class="de">Strahlensatz</td><td class="en">intercept theorem</td></tr>
+      <tr><td>缩放系数 / 比例尺</td><td class="de">Streckfaktor / Maßstab</td><td class="en">scale factor / scale</td></tr>
+      <tr><td>位似变换</td><td class="de">zentrische Streckung</td><td class="en">dilation</td></tr>
+      <tr><td>勾股定理</td><td class="de">Satz des Pythagoras</td><td class="en">Pythagorean theorem</td></tr>
+      <tr><td>斜边 / 直角边</td><td class="de">Hypotenuse / Kathete</td><td class="en">hypotenuse / leg</td></tr>
+      <tr><td>圆 / 半径 / 直径</td><td class="de">Kreis / Radius / Durchmesser</td><td class="en">circle / radius / diameter</td></tr>
+      <tr><td>周长 / 面积</td><td class="de">Umfang / Flächeninhalt</td><td class="en">perimeter / area</td></tr>
+      <tr><td>圆周率</td><td class="de">Kreiszahl π</td><td class="en">pi</td></tr>
+      <tr><td>泰勒斯定理</td><td class="de">Satz des Thales</td><td class="en">Thales' theorem</td></tr>
+      <tr><td>弦 / 切线</td><td class="de">Sehne / Tangente</td><td class="en">chord / tangent</td></tr>
+      <tr><td>三角学</td><td class="de">Trigonometrie</td><td class="en">trigonometry</td></tr>
+      <tr><td>正弦 / 余弦 / 正切</td><td class="de">Sinus / Kosinus / Tangens</td><td class="en">sine / cosine / tangent</td></tr>
+      <tr><td>对边 / 邻边</td><td class="de">Gegenkathete / Ankathete</td><td class="en">opposite / adjacent side</td></tr>
+      <tr><td>单位圆</td><td class="de">Einheitskreis</td><td class="en">unit circle</td></tr>
+      <tr><td>正弦定理 / 余弦定理</td><td class="de">Sinussatz / Kosinussatz</td><td class="en">law of sines / cosines</td></tr>
+      <tr><td>弧度制</td><td class="de">Bogenmaß</td><td class="en">radian measure</td></tr>
+      <tr><td>坐标系 / 原点</td><td class="de">Koordinatensystem / Ursprung</td><td class="en">coordinate system / origin</td></tr>
+      <tr><td>横坐标 / 纵坐标</td><td class="de">Abszisse / Ordinate</td><td class="en">abscissa / ordinate</td></tr>
+      <tr><td>解析几何</td><td class="de">analytische Geometrie</td><td class="en">analytic geometry</td></tr>
+      <tr><td>距离</td><td class="de">Abstand</td><td class="en">distance</td></tr>
+      <tr><td>向量</td><td class="de">Vektor</td><td class="en">vector</td></tr>
+      <tr><td>位置向量 / 方向向量</td><td class="de">Ortsvektor / Richtungsvektor</td><td class="en">position / direction vector</td></tr>
+      <tr><td>点积 / 叉积</td><td class="de">Skalarprodukt / Kreuzprodukt</td><td class="en">dot / cross product</td></tr>
+      <tr><td>直线 / 平面</td><td class="de">Gerade / Ebene</td><td class="en">line / plane</td></tr>
+      <tr><td>正交的</td><td class="de">orthogonal</td><td class="en">orthogonal</td></tr>
+      <tr><td>变换 / 映射</td><td class="de">Abbildung</td><td class="en">transformation / map</td></tr>
+      <tr><td>平移 / 旋转 / 反射</td><td class="de">Verschiebung / Drehung / Spiegelung</td><td class="en">translation / rotation / reflection</td></tr>
+      <tr><td>对称 / 对称轴</td><td class="de">Symmetrie / Symmetrieachse</td><td class="en">symmetry / axis of symmetry</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs3">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">一道也不用算。答得上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li>三角形内角和是 180°，这个证明用到了什么前提？在什么情况下它会不成立？</li>
+    <li>为什么三条边就能定死一个三角形，而四条边定不死一个四边形？这件事和桥梁、铁塔有什么关系？</li>
+    <li>德语的 SsW 里那个小写的 s 是什么意思？如果写成 SSW 会出什么问题？</li>
+    <li>如果没有「相似」这个概念，三角函数还能不能被定义出来？为什么？</li>
+    <li>一个模型放大两倍，需要多买多少材料？为什么大象的腿必须那么粗？</li>
+    <li>π 对所有圆都一样，这件事需要理由吗？理由是什么？</li>
+    <li>勾股定理、坐标平面上的距离公式、<span class="m">sin²θ + cos²θ = 1</span>，这三个式子是三件事还是一件事？</li>
+    <li>余弦定理里那个 <span class="m">−2ab·cos γ</span> 在干什么？当 <span class="m">γ = 90°</span> 时它去哪儿了？</li>
+    <li>坐标系为什么是全景图上最重要的一条箭头？它让哪两条主线接上了头？</li>
+    <li>两个向量的点积等于 0，几何上意味着什么？为什么提着水桶水平走路，重力不做功？</li>
+    <li>「全等」和「相似」的区别，用变换的语言怎么说？</li>
+    <li>正方形的对称「动作清单」上有几个动作？为什么说对称就是群？</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strand-2-algebra.html"><span class="dir">上一页</span><span class="t">主线二 · 代数与结构</span></a>
+  <a class="next" href="strand-4-analysis.html"><span class="dir">下一页</span><span class="t">主线四 · 函数与变化</span></a>
+</div>
+
+</main>
+</body>
+</html>

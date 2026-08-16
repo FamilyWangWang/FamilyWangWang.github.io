@@ -1,0 +1,905 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线四 · 函数与变化 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-4-analysis.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线四 · 函数与变化 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-4-analysis.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html" aria-current="page">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-4-analysis.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线四</h1>
+
+<section id="s4">
+  <h2 class="sec"><span class="num">主线 四</span>函数与变化</h2>
+  <p class="sec-lead">前面三条主线处理的都是<strong>不动的东西</strong>：数是死的，图形摆在那儿不变，方程解出来就固定了。这一条第一次去处理<strong>正在变的东西</strong>——而这需要一整套新工具。</p>
+
+  <p>整条主线只回答三个问题，而且是层层递进的三个：</p>
+
+  <ul class="plain">
+    <li><strong>一样东西变了，另一样怎么跟着变？</strong>　→　这就是<em>函数</em></li>
+    <li><strong>它变得有多快？</strong>　→　这就是<em>导数</em></li>
+    <li><strong>它一共变了多少？</strong>　→　这就是<em>积分</em></li>
+  </ul>
+
+  <p>然后是这条主线最漂亮的一击，也是整本册子里最出人意料的结论之一：<strong>后两个问题互为逆运算。</strong>「变得多快」和「一共变了多少」，一个说的是切线的陡峭程度，一个说的是曲线下面的面积，看起来八竿子打不着——可它们是同一件事的正反两面。这就是<strong>微积分基本定理</strong>。</p>
+
+  <p>说到「逆运算」，请留意：这是这台引擎在本书里的<strong>第四次</strong>出现。主线一 1.3 说加法的逆是减法、乘法的逆是除法；1.8 说乘方有两个逆（根与对数）；现在是求导与积分。<em>每一次，人类都是先学会正着走，很久以后才搞清楚怎么倒着走。</em></p>
+
+  <p>还有一件事要先说：这条主线是中学数学里分量最重的一块，考试比重最高，也是所有理工科专业大学第一年的必修内容。它的地基是主线三那座桥——<strong>没有坐标系，就没有函数图像，也就没有这一整条主线。</strong></p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>函数 · 一台有规矩的机器</h3>
+      <p class="de">Funktion · Zuordnung</p>
+    </div>
+    <div class="body">
+      <p class="lead">函数是一台机器：<strong>放一个东西进去，出来一个东西。</strong>规矩只有一条——同样的输入，必须永远给出同样的输出，而且只给一个。</p>
+
+      <div class="field">
+        <span class="lbl">定义里最容易被跳过的那个词</span>
+        <p>课本上的定义通常是：「每个 x 恰好对应一个 y」。大部分人读到「对应」就过去了，其实关键在<strong>「恰好一个」</strong>（德语 <span class="m-up m">eindeutig</span>）。</p>
+        <p>「一个人对应他的生日」是函数——每个人恰好一个生日。「一个生日对应过生日的人」<em>不是</em>函数——同一天有很多人过生日。方向反过来，是不是函数就变了。</p>
+        <p>这条规矩在图像上有个一眼就能看出来的判据：<strong>任何一条竖线，最多只能和图像交一次。</strong>圆就不是函数的图像，因为一条竖线能穿过它两次。这个小测试考试里很有用。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">同一个函数的四张面孔</span>
+        <div class="demo">
+          <p><strong>一句话</strong>：「每公斤苹果 3 欧元，买多少斤花多少钱」</p>
+          <p><strong>表格</strong>：1 → 3，　2 → 6，　3 → 9 …</p>
+          <p><strong>公式</strong>：<span class="m">f(x) = 3x</span></p>
+          <p><strong>图像</strong>：一条过原点的直线</p>
+          <p>四张面孔说的是同一件事，但各有各的长处：公式能算，图像能看趋势，表格能查具体值，句子能连回现实。<em>做题卡住的时候，换一张面孔看，常常就通了</em>——这正是工具箱里的招数一和招数九。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">定义域：机器能吃什么</span>
+        <p>不是什么都能塞进去。<span class="m">f(x) = 1/x</span> 吃不了 0（主线一 1.5 讲过为什么），<span class="m">f(x) = √x</span> 吃不了负数（在实数范围内），<span class="m">f(x) = log x</span> 只吃正数。能吃的那堆东西叫<strong>定义域</strong>，吐出来的那堆叫<strong>值域</strong>。</p>
+        <p>注意这两个词的形式：它们都是<em>集合</em>（主线零 0.1）。函数的完整身份其实是「定义域 + 值域 + 对应规则」三件套，只写个公式是简写。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>坐标系（主线三 3.7）· 变量与参数的区分（主线二 2.1）· 集合（主线零 0.1）</div>
+          <div><span class="lbl">下游</span>整条主线 · 概率里的随机变量（主线五）· 数列就是定义域为 ℕ 的函数（主线六）· 建模（主线七）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><span class="m">f</span> 和 <span class="m">f(x)</span> 不是一回事。<span class="m">f</span> 是那台机器本身，<span class="m">f(x)</span> 是它吃了 x 之后吐出来的那个<em>值</em>。日常说话时混用没关系，但在「求 <span class="m">f</span> 的导数」和「求 <span class="m">f(x)</span> 的值」这类地方，区别是实打实的。</p>
+          <p>另外：<span class="m">f(x)</span> <strong>不是</strong> f 乘以 x。这是个真的会绊倒人的记号巧合。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Funktion</b> 函数</span>
+          <span><b>Zuordnung</b> 对应</span>
+          <span><b>eindeutig</b> 唯一的</span>
+          <span><b>Definitionsbereich</b> 定义域</span>
+          <span><b>Wertebereich</b> 值域</span>
+          <span><b>Funktionswert</b> 函数值</span>
+          <span><b>Graph</b> 图像</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>一次函数 · 「变化率」第一次露面</h3>
+      <p class="de">lineare Funktion · Steigung</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">y = mx + b</span>。这是最简单的函数，但里面那个 <span class="m">m</span> 极其重要——<strong>它是整条主线的种子，最后会长成导数。</strong></p>
+
+      <div class="field">
+        <span class="lbl">斜率到底在说什么</span>
+        <p><span class="m">m</span> 叫斜率，但「斜」只是它的外表。它真正的含义是：<strong>x 每增加 1，y 增加多少。</strong>换句话说，它是<em>变化的速度</em>。</p>
+        <p class="calc">m = Δy / Δx　　（纵向变化 ÷ 横向变化）</p>
+        <p>把这个式子记牢，因为后面它会原封不动地出现在导数的定义里。<strong>导数无非就是：当 Δx 小到不能再小的时候，这个比值变成了什么。</strong>整条主线的核心技术，此刻已经在你手上了，只差一个「变小」的动作。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">为什么直线这么重要</span>
+        <p>现实里几乎没有真正的直线关系——温度不会永远匀速上升，人口不会永远匀速增长。但直线有一个无可替代的好处：<strong>只要放得足够近，任何光滑的曲线看起来都是直的。</strong></p>
+        <p>把地球放大到脚下这一小块，它看起来是平的。把任何一条曲线放大到某一点附近，它看起来就是一条直线——而那条直线的斜率，就是这一点的导数。<em>整个微积分建立在这个念头上：复杂的东西，局部看都是简单的。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>函数（4.1）· 一次方程（主线二 2.4）· 比例（主线一 1.5）· 坐标系（主线三 3.7）</div>
+          <div><span class="lbl">下游</span><strong>导数（4.6）——它就是「无限小范围内的斜率」</strong> · 线性回归（主线五）· 泰勒展开的第一项（山顶）· 一切「用直线近似曲线」的技术</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>算斜率时 <strong>Δy 在上、Δx 在下</strong>，写反了整个符号和大小都错。一个可靠的记法：斜率的单位是「y 的单位除以 x 的单位」——比如路程对时间的斜率是「米/秒」，也就是速度。<em>单位对了，分子分母就不会放反</em>（这是主线七那把「检查单位」的尺子）。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>lineare Funktion</b> 一次函数</span>
+          <span><b>Steigung</b> 斜率</span>
+          <span><b>y-Achsenabschnitt</b> y 轴截距</span>
+          <span><b>Steigungsdreieck</b> 斜率三角形</span>
+          <span><b>proportional</b> 成正比的</span>
+          <span><b>Änderungsrate</b> 变化率</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.3 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>函数动物园 · 认脸，以及谁跑得快</h3>
+      <p class="de">Funktionsklassen</p>
+    </div>
+    <div class="body">
+      <p class="lead">往后几年会陆续见到七八种函数。与其一种一种背性质，不如先认清一件事：<strong>它们的区别主要在「增长得有多凶」。</strong></p>
+
+      <div class="field">
+        <span class="lbl">动物园名录</span>
+        <div class="demo">
+          <p><strong>一次</strong> <span class="m">mx+b</span>　直线。匀速增长。</p>
+          <p><strong>二次</strong> <span class="m">x²</span>　抛物线。加速增长，有一个最高点或最低点。</p>
+          <p><strong>多项式</strong> <span class="m">x³−2x+1</span>　次数决定最多几个拐弯（主线二 2.7）。</p>
+          <p><strong>有理式</strong> <span class="m">1/x</span>　有分母，所以有「不能去的地方」，图像上出现渐近线。</p>
+          <p><strong>指数</strong> <span class="m">2ˣ</span>、<span class="m">eˣ</span>　每走一步乘一个固定倍数。增长快得离谱。</p>
+          <p><strong>对数</strong> <span class="m">ln x</span>　指数的逆（主线一 1.8）。增长慢得离谱。</p>
+          <p><strong>三角</strong> <span class="m">sin x</span>、<span class="m">cos x</span>　周期性，来回摆动（主线三 3.6）。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一场必须亲眼看一次的赛跑</span>
+        <p>指数函数最终一定会赢过任何多项式——不是「快一点」，是快到不成比例。这件事光看公式没有感觉，看图才有：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 320" role="img" aria-label="三种增长方式的对比：线性、二次、指数在同一坐标系里，指数曲线很快冲出图外。">
+          <line x1="80" y1="260" x2="560" y2="260" class="svg-l"/>
+          <line x1="80" y1="260" x2="80" y2="50" class="svg-l"/>
+
+          <line x1="80" y1="260" x2="540" y2="100" class="svg-l" stroke-width="2"/>
+          <text x="548" y="104" class="svg-t tx1">线性 8x</text>
+
+          <path d="M 80 260 Q 310 260 540 60" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="548" y="64" class="svg-t tx2">二次 x²</text>
+
+          <polyline points="80,258 126,256 172,252 218,244 264,228 310,196 356,132 385,60" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="392" y="76" class="svg-t txm">指数 2ˣ</text>
+
+          <text x="70" y="266" text-anchor="end" class="svg-tm">0</text>
+          <text x="300" y="284" text-anchor="middle" class="svg-tm">x 越来越大 →</text>
+
+          <line x1="80" y1="300" x2="660" y2="300" class="svg-l-soft"/>
+          <text x="80" y="316" class="svg-t">x = 10 时：线性 80，二次 100，指数 1024。x = 20 时：160、400、一百多万。</text>
+        </svg>
+        <figcaption><b>指数增长在小范围内看着很温和，然后突然就失控了。</b>一张纸对折 42 次，厚度就够到月球——每次只是乘 2，可 2⁴² 已经是四万多亿。这也是为什么复利这么厉害、传染病早期这么容易被低估、以及为什么「翻倍时间」比「增长了多少」更能说明问题。<b>人的直觉是线性的，而世界上很多东西是指数的</b>，这中间的落差每年都在让人吃亏。</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>幂、根、对数（主线一 1.8）· 二次方程与抛物线（主线二 2.5）· 三角函数（主线三 3.6）· 多项式（主线二 2.7）</div>
+          <div><span class="lbl">下游</span>函数家族的变换（4.4）· 增长模型（4.10）· 复利与人口（主线七）· 算法复杂度（主线六）· 半衰期与放射性衰变</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><span class="m">x²</span> 和 <span class="m">2ˣ</span> 长得像，完全是两回事。<strong>幂函数是「底数在变」，指数函数是「指数在变」。</strong><span class="m">x²</span> 在 x=10 时是 100，<span class="m">2ˣ</span> 是 1024；到 x=100 时一个是一万，另一个是三十位数。看到字母在哪个位置上，先分清楚再动手。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>ganzrationale Funktion</b> 多项式函数</span>
+          <span><b>gebrochenrationale Funktion</b> 有理函数</span>
+          <span><b>Exponentialfunktion</b> 指数函数</span>
+          <span><b>Logarithmusfunktion</b> 对数函数</span>
+          <span><b>Potenzfunktion</b> 幂函数</span>
+          <span><b>Asymptote</b> 渐近线</span>
+          <span><b>Wachstum</b> 增长</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>函数的家族 · 一个公式管一整族曲线</h3>
+      <p class="de">Verschiebung · Streckung</p>
+    </div>
+    <div class="body">
+      <p class="lead">学会 <span class="m">a·f(b(x−c)) + d</span> 这一条规律，一个函数立刻变成一整个家族。而其中最让人卡住的一点是：<strong>括号里面的操作，方向是反着的。</strong></p>
+
+      <div class="field">
+        <span class="lbl">内外有别</span>
+        <div class="demo">
+          <p><strong>括号外面动 → 纵向，而且符合直觉</strong><br>
+          <span class="m">f(x) + d</span>　整条曲线上移 d（d 为正）<br>
+          <span class="m">a · f(x)</span>　纵向拉伸 a 倍（a 为负还会上下翻转）</p>
+          <p><strong>括号里面动 → 横向，而且反着来</strong><br>
+          <span class="m">f(x − c)</span>　整条曲线<em>右</em>移 c<br>
+          <span class="m">f(b · x)</span>　横向压缩 b 倍（b 越大压得越扁）</p>
+        </div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="左图显示括号外加常数使曲线上移，右图显示括号内减常数使曲线右移。">
+          <line x1="70" y1="210" x2="310" y2="210" class="svg-l-soft"/>
+          <line x1="190" y1="240" x2="190" y2="60" class="svg-l-soft"/>
+          <path d="M 130 150 Q 190 270 250 150" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <path d="M 130 100 Q 190 220 250 100" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M 202 200 L 202 168" class="svg-l" stroke-width="1.4"/>
+          <path d="M 198 172 L 202 164 L 206 172 Z" fill="currentColor"/>
+          <text x="212" y="188" class="svg-tm tx1">上移</text>
+          <text x="190" y="266" text-anchor="middle" class="svg-t tx1">f(x) + 2</text>
+          <text x="190" y="286" text-anchor="middle" class="svg-tm">括号外 · 纵向 · 符合直觉</text>
+
+          <line x1="390" y1="210" x2="670" y2="210" class="svg-l-soft"/>
+          <line x1="450" y1="240" x2="450" y2="60" class="svg-l-soft"/>
+          <path d="M 390 130 Q 450 250 510 130" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="5 4"/>
+          <path d="M 450 130 Q 510 250 570 130" fill="none" stroke="currentColor" stroke-width="2.4"/>
+          <path d="M 462 178 L 498 178" class="svg-l" stroke-width="1.4"/>
+          <path d="M 494 174 L 502 178 L 494 182 Z" fill="currentColor"/>
+          <text x="466" y="168" class="svg-tm tx2">右移</text>
+          <text x="530" y="266" text-anchor="middle" class="svg-t tx2">f(x − 2)</text>
+          <text x="530" y="286" text-anchor="middle" class="svg-tm">括号内 · 横向 · 方向反着</text>
+        </svg>
+        <figcaption><b>为什么减号是右移？</b>因为括号里的东西必须回到原来的值，函数才会给出原来的结果。原来 x = 0 时得到某个值；现在写成 f(x−2)，要让括号里还是 0，x 就必须走到 2。<b>整条曲线于是被「拖」到了右边。</b>换句话说：括号里的操作是作用在<b>输入</b>上的，而要抵消它，输入就得反向补偿。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">这一招的实际价值</span>
+        <p>它把「记住每一种函数的图像」变成了「记住少数几个基本形状，然后会搬会拉」。抛物线的顶点式 <span class="m">y = a(x−d)² + e</span> 就是这条规律的直接产物——顶点在 <span class="m">(d, e)</span>，一眼就能读出来，不用配方（主线二 2.5）。</p>
+        <p>三角函数也一样：<span class="m">y = A·sin(ω(x−φ)) + c</span> 里的四个参数分别管振幅、频率、相位、平移。<em>物理里描述一个波，用的就是这四个数。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>函数动物园（4.3）· 顶点式（主线二 2.5）· 变换与对称（主线三 3.9）</div>
+          <div><span class="lbl">下游</span>曲线讨论（4.7）· 波的描述 · 傅里叶分析（山顶）· 数据的标准化（主线五）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><span class="m">f(2x)</span> 是横向<strong>压缩</strong>一半，不是拉伸——同样是「里面反着来」。想不清楚的时候有个万能办法：<em>找一个具体的点跟着走。</em>原来 <span class="m">x=4</span> 处有个特征点，现在要让 <span class="m">2x=4</span>，得 <span class="m">x=2</span>，点跑到 2 去了，离原点更近，所以是压缩。<strong>不要背结论，跟着一个点走一遍。</strong></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Verschiebung</b> 平移</span>
+          <span><b>Streckung / Stauchung</b> 拉伸 / 压缩</span>
+          <span><b>Spiegelung</b> 翻转</span>
+          <span><b>Parameter</b> 参数</span>
+          <span><b>Amplitude</b> 振幅</span>
+          <span><b>Periode</b> 周期</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>极限 · 把「无限接近」变成能算的东西</h3>
+      <p class="de">Grenzwert · Stetigkeit</p>
+    </div>
+    <div class="body">
+      <p class="lead">「越来越接近某个数，但可能永远到不了」——这句话听起来像哲学，可数学把它变成了一个能计算的东西。<strong>整个微积分都架在这一招上。</strong></p>
+
+      <div class="field">
+        <span class="lbl">一个两千年的老问题</span>
+        <p>芝诺说：你永远追不上乌龟。因为你要先跑到它现在的位置，可那时它又前进了一点；你再跑到那儿，它又前进了一点点……无穷多个步骤，怎么可能在有限时间内做完？</p>
+        <p>这个悖论的解法就是极限：<strong>无穷多个越来越小的东西加起来，总和可以是有限的。</strong></p>
+        <div class="demo">
+          <p class="calc">½ + ¼ + ⅛ + 1/16 + … = 1</p>
+          <p>每一项都是前一项的一半，加了无穷多项，和恰好是 1，不多不少。你走完的路程是有限的，所以能在有限时间内追上乌龟。</p>
+        </div>
+        <p>主线一 1.5 那个 <span class="m">0.999… = 1</span> 的问题，答案也在这里。<span class="m">0.999…</span> 不是「一个逼近 1 的过程」，它<em>就是</em>那个极限值，而那个极限值等于 1。<strong>当时那道题埋下的伏笔，到这里才真正兑现。</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">它凭什么成立：实数不漏</span>
+        <p>极限能存在，靠的是主线一 1.7 那句看起来像废话的话：<strong>实数轴没有缝隙。</strong>一串数越挤越紧的时候，它们必须挤向<em>某个真实存在的数</em>。</p>
+        <p>如果只有有理数，这就不一定了：<span class="m">1, 1.4, 1.41, 1.414, …</span> 明明越挤越紧，可它们挤向的 <span class="m">√2</span> 不在有理数里，等于挤向一个洞。<em>把洞补上，极限才有地方可去</em>——这就是当年补洞工程的回报，一直等到现在才领取。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">连续：能一笔画完</span>
+        <p>一个函数如果在某点「没有断开、没有跳跃、没有窟窿」，就叫在那点<strong>连续</strong>。直观判据是：图像能一笔画下来，不用抬笔。</p>
+        <p>连续函数有个很有用的性质（<strong>介值定理</strong>）：如果它在一头是负的、另一头是正的，中间必定<em>穿过</em>零。主线二 2.7 说「三次方程必定至少有一个实根」，理由就是这条——图像从左下角上到右上角，连着的，就非得穿过 x 轴不可。<em>那时候只能靠直觉，现在它有名字了。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>实数的完备性（主线一 1.7）· 0.999…（主线一 1.5）· 数列（主线六）</div>
+          <div><span class="lbl">下游</span><strong>导数（4.6）和积分（4.8）——两个都是极限</strong> · 介值定理 · 级数（山顶）· 数值方法（主线六）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>「极限是 3」<strong>不等于</strong>「函数值等于 3」。函数在那一点可能根本没有定义，也可能定义成了别的值，但极限照样存在——极限问的是「周围在往哪儿去」，不是「这一点是什么」。</p>
+          <p>这个区别听着抠字眼，可导数的整个定义就建立在它上面：那个式子在 <span class="m">Δx = 0</span> 处是 <span class="m">0/0</span>，根本没有定义，我们要的正是它<em>周围</em>的走向。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Grenzwert</b> 极限</span>
+          <span><b>Folge</b> 数列</span>
+          <span><b>konvergent / divergent</b> 收敛 / 发散</span>
+          <span><b>stetig</b> 连续的</span>
+          <span><b>Stetigkeit</b> 连续性</span>
+          <span><b>Zwischenwertsatz</b> 介值定理</span>
+          <span><b>Unendlichkeit ∞</b> 无穷</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>导数 · 此时此刻变得多快</h3>
+      <p class="de">Ableitung · Differentialquotient</p>
+    </div>
+    <div class="body">
+      <p class="lead">「这段路平均时速 60」谁都会算。可「<strong>此时此刻</strong>的速度是多少」——在一个没有长度的瞬间里，怎么谈速度？导数就是回答这个问题的。</p>
+
+      <div class="field">
+        <span class="lbl">从两点之间，到一点上</span>
+        <p>4.2 说过斜率是 <span class="m">Δy/Δx</span>，但那需要<em>两个点</em>。想知道某一个点上的陡峭程度，就把第二个点一步步挪过来：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 340" role="img" aria-label="割线趋近切线：从固定点 P 向曲线上三个越来越近的点作割线，它们越来越接近 P 点的切线。">
+          <path d="M 100 280 Q 360 280 620 111" fill="none" stroke="currentColor" stroke-width="2"/>
+
+          <line x1="200" y1="274" x2="560" y2="148" class="svg-l-soft"/>
+          <line x1="200" y1="274" x2="420" y2="216" class="svg-l-soft"/>
+          <line x1="200" y1="274" x2="300" y2="255" class="svg-l-soft"/>
+          <line x1="110" y1="285" x2="470" y2="240" class="svg-l" stroke-width="2.4"/>
+
+          <circle cx="200" cy="274" r="5" class="fm" stroke-width="2"/>
+          <circle cx="560" cy="148" r="4" class="f2" stroke-width="2"/>
+          <circle cx="420" cy="216" r="4" class="f2" stroke-width="2"/>
+          <circle cx="300" cy="255" r="4" class="f2" stroke-width="2"/>
+
+          <text x="192" y="296" text-anchor="end" class="svg-t txm">P</text>
+          <text x="568" y="144" class="svg-t tx2">Q₁</text>
+          <text x="428" y="212" class="svg-t tx2">Q₂</text>
+          <text x="308" y="250" class="svg-t tx2">Q₃</text>
+          <text x="478" y="244" class="svg-t tx1">切线</text>
+
+          <text x="350" y="196" text-anchor="middle" class="svg-tm">割线</text>
+
+          <line x1="100" y1="312" x2="660" y2="312" class="svg-l-soft"/>
+          <text x="100" y="330" class="svg-t">Q 越靠近 P，割线就越贴近切线。割线斜率 Δy/Δx 的极限，就是 P 点的导数。</text>
+        </svg>
+        <figcaption><b>这就是导数的全部定义，一张图说完。</b>两点之间的斜率叫<b>差商</b>（Differenzenquotient），它是能直接算的；让两点靠到无限近，差商的极限叫<b>微商</b>（Differentialquotient），也就是导数。注意 <span class="svg-tm">Δx</span> 不能真的等于 0——那样式子变成 0/0——我们要的是它<b>趋近</b> 0 时的走向，这正是 4.5 那张卡片里强调的区别。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">同一个东西，三种读法</span>
+        <div class="demo">
+          <p><strong>几何上</strong>：曲线在这一点的切线斜率。陡就是导数大。</p>
+          <p><strong>物理上</strong>：位置对时间求导得速度，速度再求导得加速度。<em>牛顿发明微积分，就是为了写下运动定律。</em></p>
+          <p><strong>日常上</strong>：任何「每单位……变化多少」都是导数。边际成本、人口增长率、药物在血液里的浓度变化、股价的涨跌速度。</p>
+        </div>
+        <p>记号有两套：<span class="m">f′(x)</span> 是拉格朗日的，简洁；<span class="m">dy/dx</span> 是莱布尼茨的，长得像分数。主线零 0.8 说过，正是因为莱布尼茨的记号<em>看起来像分数</em>，链式法则写出来才那么自然——好记号会替你思考。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>斜率（4.2）· 极限（4.5）· 切线（主线三 3.5）· 函数（4.1）</div>
+          <div><span class="lbl">下游</span>曲线讨论与最优化（4.7）· <strong>积分（4.8）——它的逆运算</strong> · 微分方程（4.10）· 物理的全部 · 机器学习的梯度下降</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>不是所有函数在所有点都可导。</strong><span class="m">|x|</span> 在 0 处有个尖角，从左边看斜率是 −1，从右边看是 +1，两边不一致，所以那儿没有切线，也就没有导数。<em>连续只保证「不断开」，不保证「不打折」。</em>可导比连续要求更高。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Ableitung</b> 导数</span>
+          <span><b>ableiten</b> 求导</span>
+          <span><b>Differenzenquotient</b> 差商</span>
+          <span><b>Differentialquotient</b> 微商</span>
+          <span><b>Sekante / Tangente</b> 割线 / 切线</span>
+          <span><b>momentane Änderungsrate</b> 瞬时变化率</span>
+          <span><b>Kettenregel</b> 链式法则</span>
+          <span><b>Produktregel</b> 乘积法则</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>曲线讨论 · 用导数把一条曲线读出来</h3>
+      <p class="de">Kurvendiskussion · Extremwertaufgaben</p>
+    </div>
+    <div class="body">
+      <p class="lead">给你一个公式，不画图，说出它长什么样——哪里升哪里降、最高点在哪、什么时候拐弯。这套流程在德国课本里叫 <span class="m-up m">Kurvendiskussion</span>，是分值最重的题型之一。</p>
+
+      <div class="field">
+        <span class="lbl">三条曲线一起看</span>
+        <p>方法的核心是：<strong>把 f、f′、f″ 的图像上下对齐，关键位置竖着连成线。</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 370" role="img" aria-label="函数、一阶导数、二阶导数三条曲线上下对齐，极值点处一阶导数为零，拐点处二阶导数为零。">
+          <line x1="225" y1="15" x2="225" y2="335" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="350" y1="15" x2="350" y2="335" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="475" y1="15" x2="475" y2="335" class="svg-l-soft" stroke-dasharray="4 4"/>
+
+          <line x1="95" y1="70" x2="620" y2="70" class="svg-l-soft"/>
+          <polyline points="100,120 131,73 162,42 194,25 225,20 256,24 287,36 319,52 350,70 381,88 412,104 444,116 475,120 506,115 537,98 569,67 600,20" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <circle cx="225" cy="20" r="4.5" class="f1" stroke-width="2"/>
+          <circle cx="350" cy="70" r="4.5" class="f3" stroke-width="2"/>
+          <circle cx="475" cy="120" r="4.5" class="f1" stroke-width="2"/>
+          <text x="60" y="76" class="svg-t">f</text>
+          <text x="225" y="12" text-anchor="middle" class="svg-tm tx1">极大</text>
+          <text x="350" y="12" text-anchor="middle" class="svg-tm tx3">拐点</text>
+          <text x="475" y="140" text-anchor="middle" class="svg-tm tx1">极小</text>
+
+          <line x1="95" y1="190" x2="620" y2="190" class="svg-l-soft"/>
+          <polyline points="100,118 131,141 162,160 194,177 225,190 256,201 287,208 319,213 350,214 381,213 412,208 444,201 475,190 506,177 537,160 569,141 600,118" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <circle cx="225" cy="190" r="4.5" class="f1" stroke-width="2"/>
+          <circle cx="475" cy="190" r="4.5" class="f1" stroke-width="2"/>
+          <text x="56" y="196" class="svg-t">f′</text>
+          <text x="640" y="196" text-anchor="end" class="svg-tm tx1">f′ = 0</text>
+
+          <line x1="95" y1="280" x2="620" y2="280" class="svg-l-soft"/>
+          <line x1="100" y1="328" x2="600" y2="232" class="svg-l" stroke-width="2.2"/>
+          <circle cx="350" cy="280" r="4.5" class="f3" stroke-width="2"/>
+          <text x="54" y="286" class="svg-t">f″</text>
+          <text x="640" y="286" text-anchor="end" class="svg-tm tx3">f″ = 0</text>
+
+          <line x1="60" y1="348" x2="660" y2="348" class="svg-l-soft"/>
+          <text x="60" y="366" class="svg-t">f′ 穿过 0 的地方，f 有极值；f″ 穿过 0 的地方，f 改变弯曲方向</text>
+        </svg>
+        <figcaption><b>竖着看，一切都对上了。</b>f 到达山顶或谷底的瞬间，切线是水平的，所以 f′ 正好等于 0。而 f″ 描述的是「弯曲方向」：f″ 为正时曲线像个碗（往上兜），为负时像个盖（往下扣），穿过 0 的那一点就是<b>拐点</b>——曲线从兜着变成扣着的地方。<b>注意 f′ = 0 只是极值的必要条件</b>，不是充分条件：<span class="svg-tm">y = x³</span> 在 0 处 f′ 也是 0，但那儿既不是山顶也不是谷底，只是走平了一下又继续上升。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">它真正的用处：找「最好」的那个</span>
+        <p>曲线讨论听起来像是为了应付考试，但它背后是一类极其实用的问题：<strong>怎样最省、怎样最大、怎样最快。</strong></p>
+        <div class="demo">
+          <p>一块铁皮做罐头盒，要装下固定的体积，怎么设计最省材料？</p>
+          <p>把「用掉的材料面积」写成半径的函数，求导，令导数为 0——得到的那个半径就是最省的方案。（答案很漂亮：<em>高等于直径</em>时最省。虽然现实里的罐头很少这么做，因为还要考虑运输和货架。）</p>
+        </div>
+        <p>德语叫 <span class="m-up m">Extremwertaufgaben</span>（极值问题）。工程设计、经济决策、物流路线，凡是「要最优」的地方，用的都是这一招：<em>把目标写成函数，然后让导数等于零。</em>今天训练一个神经网络，本质上也是在做同一件事，只不过变量有几十亿个。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>导数（4.6）· 函数家族（4.4）· 因式分解求零点（主线二 2.6）</div>
+          <div><span class="lbl">下游</span>最优化与运筹学（主线七）· 梯度下降与机器学习（主线五山顶）· 物理里的最小作用量原理</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>别忘了检查边界。</strong>求一个区间上的最大值，除了看 <span class="m">f′ = 0</span> 的那些点，还必须比较<em>区间两个端点</em>的值——最大值完全可能出现在边界上，而那里导数根本不为 0。这是极值题最高频的失分点。</p>
+          <p>还有：现实问题里要检查答案有没有意义。算出半径是负数，或者算出要用 −3 块铁皮，那是数学解但不是现实解，得舍掉。<em>这一步属于主线七的建模循环。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Kurvendiskussion</b> 曲线讨论</span>
+          <span><b>Extremstelle</b> 极值点</span>
+          <span><b>Hochpunkt / Tiefpunkt</b> 极大 / 极小点</span>
+          <span><b>Wendepunkt</b> 拐点</span>
+          <span><b>Monotonie</b> 单调性</span>
+          <span><b>Krümmung</b> 弯曲 / 曲率</span>
+          <span><b>Extremwertaufgabe</b> 极值应用题</span>
+          <span><b>notwendig / hinreichend</b> 必要 / 充分</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>积分 · 一共变了多少</h3>
+      <p class="de">Integral · Riemannsumme</p>
+    </div>
+    <div class="body">
+      <p class="lead">导数问「此刻多快」，积分问反过来的问题：<strong>一路下来一共积攒了多少。</strong>而它在图上的样子，是曲线下面那块面积。</p>
+
+      <div class="field">
+        <span class="lbl">怎么算一块弯边的面积</span>
+        <p>长方形的面积谁都会算，可曲线下面那块怎么办？办法笨得可爱，但完全管用：<strong>切成一条一条的长方形，加起来；然后切得更细，再加一遍；一直细下去。</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 305" role="img" aria-label="黎曼和：用四个宽长方形近似曲线下的面积误差明显，用十个窄长方形误差就小得多。">
+          <rect x="60" y="195" width="65" height="35" class="f2"/>
+          <rect x="125" y="178" width="65" height="52" class="f2"/>
+          <rect x="190" y="152" width="65" height="78" class="f2"/>
+          <rect x="255" y="115" width="65" height="115" class="f2"/>
+          <path d="M 60 195 Q 190 175 320 70" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="60" y1="230" x2="320" y2="230" class="svg-l"/>
+          <text x="190" y="262" text-anchor="middle" class="svg-t tx2">4 条 · 误差看得见</text>
+
+          <rect x="400" y="195" width="26" height="35" class="f1"/>
+          <rect x="426" y="190" width="26" height="40" class="f1"/>
+          <rect x="452" y="184" width="26" height="46" class="f1"/>
+          <rect x="478" y="175" width="26" height="55" class="f1"/>
+          <rect x="504" y="165" width="26" height="65" class="f1"/>
+          <rect x="530" y="154" width="26" height="76" class="f1"/>
+          <rect x="556" y="140" width="26" height="90" class="f1"/>
+          <rect x="582" y="125" width="26" height="105" class="f1"/>
+          <rect x="608" y="109" width="26" height="121" class="f1"/>
+          <rect x="634" y="90" width="26" height="140" class="f1"/>
+          <path d="M 400 195 Q 530 175 660 70" fill="none" stroke="currentColor" stroke-width="2"/>
+          <line x1="400" y1="230" x2="660" y2="230" class="svg-l"/>
+          <text x="530" y="262" text-anchor="middle" class="svg-t tx1">10 条 · 误差小多了</text>
+
+          <line x1="60" y1="282" x2="660" y2="282" class="svg-l-soft"/>
+          <text x="60" y="300" class="svg-t">条数趋于无穷、每条宽度趋于 0 时，误差趋于 0 —— 那个极限就是积分</text>
+        </svg>
+        <figcaption><b>积分和导数一样，本质上是一个极限。</b>这种长方形求和叫<b>黎曼和</b>。注意这里又用到了 4.5 那件工具：一个「永远算不完」的无穷过程，被极限变成了一个确定的数。<b>记号 ∫ 是拉长的字母 s，来自拉丁文 summa（和）</b>——它字面上就在提醒你，积分就是求和（主线零 0.8）。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">它不只是面积</span>
+        <p>「曲线下的面积」只是积分的<em>长相</em>，不是它的含义。含义要看纵轴代表什么：</p>
+        <div class="demo">
+          <p>纵轴是<strong>速度</strong>，横轴是<strong>时间</strong> → 面积就是<strong>走过的路程</strong></p>
+          <p>纵轴是<strong>功率</strong>，横轴是<strong>时间</strong> → 面积就是<strong>耗掉的电能</strong></p>
+          <p>纵轴是<strong>流速</strong>，横轴是<strong>时间</strong> → 面积就是<strong>流过的水量</strong></p>
+          <p>纵轴是<strong>概率密度</strong>，横轴是<strong>取值</strong> → 面积就是<strong>概率</strong>（主线五会用到）</p>
+        </div>
+        <p><em>凡是「把一个不断变化的量累积起来」，都是积分。</em>这句话比「求面积」有用得多。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>极限（4.5）· 面积（主线三 3.1）· 求和（主线六）· 函数（4.1）</div>
+          <div><span class="lbl">下游</span><strong>微积分基本定理（4.9）</strong> · 体积与弧长 · 概率密度与正态分布（主线五）· 物理里的功、能、质心 · 数值积分（主线六）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>x 轴下方的面积算负的。</strong>所以如果一条曲线一半在上一半在下，定积分算出来可能是 0——那不代表「没有面积」，而是正负抵消了。想求<em>实际的</em>面积，得先找出零点，分段算，再取绝对值相加。</p>
+          <p>这不是数学在找茬。速度为负表示往回走，那段路程当然要从总位移里减掉。<em>符号带着物理意义。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Integral</b> 积分</span>
+          <span><b>integrieren</b> 积分（动词）</span>
+          <span><b>Stammfunktion</b> 原函数</span>
+          <span><b>bestimmtes Integral</b> 定积分</span>
+          <span><b>unbestimmtes Integral</b> 不定积分</span>
+          <span><b>Riemannsumme</b> 黎曼和</span>
+          <span><b>Integrationsgrenzen</b> 积分限</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 · 本章顶点</span></span>
+      <h3>微积分基本定理 · 两个问题原来是同一个</h3>
+      <p class="de">Hauptsatz der Differential- und Integralrechnung</p>
+    </div>
+    <div class="body">
+      <p class="lead">切线的斜率，和曲线下的面积。这两件事看起来毫无关系——<strong>可它们是互为逆运算的。</strong>这是数学史上最令人意外的发现之一，也是这条主线的全部意义所在。</p>
+
+      <div class="field">
+        <span class="lbl">为什么这件事出人意料</span>
+        <p>把两个问题并排放一下：</p>
+        <div class="demo">
+          <p><strong>导数问的是：</strong>在<em>这一个点</em>上，曲线有多陡？这是个纯粹局部的问题，只看那一点附近发生了什么。</p>
+          <p><strong>积分问的是：</strong>从 a 到 b <em>这一整段</em>，曲线下面积攒了多少？这是个整体的问题，要把一大片区域全都考虑进来。</p>
+        </div>
+        <p>一个只看一个点，一个要看一整片；一个关于斜率，一个关于面积。凭什么它们是一回事？</p>
+        <p>牛顿和莱布尼茨各自独立发现了这件事，而这正是「发明了微积分」这句话的真正含义——<em>不是发明了求导，也不是发明了求面积（这两样古希腊人就在做了），而是发现了它们之间的这座桥。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一张图看懂为什么</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 310" role="img" aria-label="面积函数的直觉：已积累的面积再往右挪一小步，多出来的窄条面积约等于当前高度乘以步长，所以面积函数的导数就是原函数。">
+          <path d="M 100 250 L 100 200 L 150 195 L 200 189 L 250 182 L 300 173 L 350 163 L 400 151 L 420 146 L 420 250 Z" class="f1"/>
+          <path d="M 420 250 L 420 146 L 450 138 L 450 250 Z" class="fm"/>
+          <polyline points="100,200 150,195 200,189 250,182 300,173 350,163 400,151 420,146 450,138 500,123 550,107 600,90" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="80" y1="250" x2="620" y2="250" class="svg-l"/>
+
+          <line x1="100" y1="250" x2="100" y2="196" class="svg-l-soft"/>
+          <line x1="420" y1="250" x2="420" y2="142" class="svg-l-soft"/>
+          <line x1="450" y1="250" x2="450" y2="134" class="svg-l-soft"/>
+
+          <text x="100" y="270" text-anchor="middle" class="svg-tm">a</text>
+          <text x="414" y="270" text-anchor="end" class="svg-tm">x</text>
+          <text x="458" y="270" class="svg-tm">x + dx</text>
+
+          <text x="255" y="225" text-anchor="middle" class="svg-t tx1">已积累的面积 A(x)</text>
+          <text x="470" y="160" class="svg-t txm">多出来的窄条</text>
+          <text x="470" y="180" class="svg-tm txm">≈ 高度 f(x) × 宽度 dx</text>
+
+          <line x1="80" y1="286" x2="660" y2="286" class="svg-l-soft"/>
+          <text x="80" y="304" class="svg-t">面积增长的速度 = 当前的高度　⟹　A′(x) = f(x)</text>
+        </svg>
+        <figcaption><b>把右边界往右挪一丁点，面积多出来的正好是一个细长条。</b>这个条子的宽度是 <span class="svg-tm">dx</span>，高度约等于 <span class="svg-tm">f(x)</span>，所以多出来的面积约是 <span class="svg-tm">f(x)·dx</span>。也就是说，<b>面积函数 A 的增长速度，正好等于当时的高度 f</b>。「增长速度」就是导数，于是 <span class="svg-tm">A′ = f</span>——求面积和求导数，一个是另一个的逆。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">它带来的实际后果</span>
+        <p>这条定理把积分从「切成无穷多条再加起来」这种绝望的活儿，变成了一件轻松的事：<strong>想求 f 的积分，只要找一个函数 F，它的导数正好是 f，然后算 F 在两个端点的差就行。</strong></p>
+        <p class="calc">∫ₐᵇ f(x) dx = F(b) − F(a)</p>
+        <p>那个 F 叫<strong>原函数</strong>（Stammfunktion）。找原函数就是「倒着求导」——所以求导法则背熟了，积分也就会了一大半。<em>这就是逆运算的老规矩：正着走的技术，倒过来用。</em></p>
+        <p>不过要诚实地说一句：<strong>倒着走通常比正着走难得多。</strong>任何初等函数都能求导，但很多初等函数根本没有初等的原函数——<span class="m">e^(−x²)</span> 就是最著名的例子，而它偏偏是正态分布的核心（主线五）。这时候只能靠数值方法去算（主线六）。<em>这个「正着容易倒着难」的现象，主线一 1.6 也见过：两个大素数相乘很容易，把乘积分解回去难到能拿来做密码。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>导数（4.6）· 积分（4.8）· 极限（4.5）· 逆运算的思路（主线一 1.3）</div>
+          <div><span class="lbl">下游</span>微分方程（4.10）· 物理定律的表达 · 概率密度（主线五）· 大学 Analysis I</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Hauptsatz</b> 基本定理</span>
+          <span><b>Stammfunktion</b> 原函数</span>
+          <span><b>aufleiten</b> 求原函数（口语）</span>
+          <span><b>Integrationskonstante</b> 积分常数</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">求原函数时别忘了那个 <span class="m">+ C</span>：常数求导后变成 0，所以原函数不唯一，差一个常数的都算。<em>这也是逆运算不唯一的一个例子</em>——正着走丢掉的信息，倒着走补不回来。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">4.10 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 → 山顶</span></span>
+      <h3>微分方程 · 世界的语法</h3>
+      <p class="de">Differentialgleichung · Wachstumsmodelle</p>
+    </div>
+    <div class="body">
+      <p class="lead">大自然很少直接告诉你「某个量是多少」。它告诉你的往往是<strong>「这个量变化得有多快，取决于什么」</strong>。把这句话写成式子，就是微分方程。</p>
+
+      <div class="field">
+        <span class="lbl">最简单也最重要的一个</span>
+        <div class="demo">
+          <p class="calc">y′ = k · y</p>
+          <p>读出来是：<em>「一样东西增长的速度，跟它当前的数量成正比。」</em></p>
+          <p>细菌越多，分裂出的新细菌越多；钱越多，利息越多；放射性物质越多，每秒衰变的原子越多（这时 k 是负的）。</p>
+          <p>这个方程的解是<strong>指数函数</strong> <span class="m">y = y₀·e^(kt)</span>。<em>这就是为什么指数增长在自然界到处都是</em>——它不是某种巧合，它是「增长率正比于现有量」这句话的唯一答案。4.3 那场赛跑里跑赢的那条曲线，来历就在这儿。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">但没有东西能永远指数增长</span>
+        <p>细菌会吃光养料，人口会挤满土地。所以现实里更常用的是<strong>有限增长</strong>和<strong>逻辑斯蒂增长</strong>：</p>
+        <div class="demo">
+          <p class="calc">y′ = k · (S − y)　　　有限增长</p>
+          <p>离上限 S 还差得远时长得快，越接近上限长得越慢。<em>一杯热水的冷却、手机充电的最后 20%、学一门新技能的进步曲线</em>，都是这个形状。</p>
+          <p class="calc">y′ = k · y · (S − y)　　逻辑斯蒂增长</p>
+          <p>开头像指数（y 小，但增长按比例），中间最快，后面像有限增长慢慢压平，整体是个 S 形。<em>传染病的传播曲线就是它</em>——这也是为什么疫情早期的数字总是被低估，因为那一段确实是指数的。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">为什么说它是「世界的语法」</span>
+        <p>牛顿第二定律 <span class="m">F = ma</span>，其中 a 是位置的二阶导数——它是一个微分方程。麦克斯韦方程组描述电磁，是微分方程。热传导、流体、波动、量子力学的薛定谔方程、金融里的期权定价，全是微分方程。</p>
+        <p><strong>近代科学之所以能预测未来，靠的就是这一套：先写下变化的规律，再解出未来的状态。</strong>牛顿发明微积分不是为了做题，是为了写下天体运动的规律然后算出行星会跑到哪儿去——而他算对了。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>导数（4.6）· 微积分基本定理（4.9）· 指数与对数（主线一 1.8）</div>
+          <div><span class="lbl">下游</span>物理与工程的全部 · 建模（主线七）· 数值解法（主线六）· 混沌与动力系统（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Differentialgleichung</b> 微分方程</span>
+          <span><b>exponentielles Wachstum</b> 指数增长</span>
+          <span><b>beschränktes Wachstum</b> 有限增长</span>
+          <span><b>logistisches Wachstum</b> 逻辑斯蒂增长</span>
+          <span><b>Zerfall</b> 衰变</span>
+          <span><b>Halbwertszeit</b> 半衰期</span>
+          <span><b>Sättigungsgrenze</b> 饱和上限</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista4">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>这条主线的山顶是现代数学最大的一片高原，几乎所有理工科都要从这儿路过。同样<strong>不要求懂</strong>。</p>
+
+  <div class="vista">
+    <h4>把「无限接近」说得滴水不漏</h4>
+    <p>牛顿和莱布尼茨用微积分算出了无数正确结果，可他们说不清「无穷小」到底是什么。哲学家贝克莱嘲讽说，那是「已死量的幽灵」——一会儿当它不是零（可以做分母），一会儿又当它是零（可以扔掉），这不是耍赖吗？</p>
+    <p>这个批评是对的，而且尖锐。数学家花了<strong>一百五十年</strong>才补上这个洞：柯西和魏尔斯特拉斯发明了 <span class="m">ε-δ</span> 语言，把「无限接近」翻译成了一句完全没有含糊余地的话——<em>「不管你要多接近，我都能给出一个足够小的范围做到」</em>。</p>
+    <p>那句话里套着好几个「对所有」和「存在」，顺序还不能换（主线零 0.3 那个坑）。<strong>大学 Analysis I 的第一个月，基本就是在跟这一句话搏斗。</strong></p>
+
+    <h4>把任何函数拆成多项式：泰勒展开</h4>
+    <p>多项式最好算，可 <span class="m">sin x</span>、<span class="m">eˣ</span>、<span class="m">ln x</span> 都不是多项式。<strong>泰勒展开</strong>说：没关系，可以用无穷多项的多项式把它们表示出来。</p>
+    <p class="calc">eˣ = 1 + x + x²/2 + x³/6 + x⁴/24 + …</p>
+    <p>计算器按下 <span class="m-up m">sin</span> 键时，里面算的就是这种展开的前几项。<em>4.2 说「放得足够近，曲线都是直的」——泰勒展开是这句话的完整版：取一项是常数，取两项是切线，取三项是抛物线，取得越多贴得越紧。</em></p>
+    <p>它还有个副产品，是很多人心中最美的公式：把 <span class="m">eˣ</span>、<span class="m">sin</span>、<span class="m">cos</span> 的展开摆在一起，会发现 <span class="m">e^(iπ) + 1 = 0</span>。<strong>五个最重要的常数，一个式子，什么多余的都没有。</strong>而它成立的前提，是主线一那个被逼出来的虚数单位 i。</p>
+
+    <h4>把任何波拆成正弦波：傅里叶</h4>
+    <p>泰勒用多项式当零件，<strong>傅里叶</strong>用正弦波当零件：任何周期信号，都能拆成一堆不同频率的正弦波之和。</p>
+    <p>这件事的实用价值大到难以形容。<em>MP3 压缩</em>是把声音拆成频率，扔掉人耳听不见的那些；<em>JPEG</em> 对图像做同样的事；<em>降噪耳机</em>要先把噪音分解出来才能反相抵消；医院的 <em>核磁共振成像</em>，本质上就是一次巨大的傅里叶变换。<strong>他每天用的设备里，一半在跑傅里叶。</strong></p>
+
+    <h4>确定的方程，也可能算不出未来</h4>
+    <p>微分方程能预测行星轨道，那是不是什么都能预测？<strong>不是。</strong>洛伦兹研究天气模型时发现：有些方程虽然完全确定、没有一点随机成分，但初始条件差万分之一，结果就会天差地别。</p>
+    <p>这就是<strong>混沌</strong>，通俗说法叫「蝴蝶效应」。它意味着天气预报有一个原理上的极限——不是仪器不够好，是这类系统本身就不允许长期预测。<em>确定性和可预测性，原来是两回事。</em>这跟主线零里哥德尔的结论气质相同：都是在划出一条「原理上做不到」的界线。</p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Analysis I / II</strong>——ε-δ、级数、多元微积分。所有理工科第一年必修</li>
+      <li><strong>Höhere Mathematik I–III</strong>——工程和物理专业的版本，内容相近节奏更快</li>
+      <li><strong>Differentialgleichungen</strong>——4.10 的正式展开</li>
+      <li><strong>Funktionalanalysis</strong>（泛函分析）——把函数本身当成「点」来研究的空间</li>
+      <li><strong>Numerik</strong>（数值分析）——算不出解析解时怎么办，和主线六接上</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss4">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead">这一章的词是中学后半程出现频率最高的一批。<span class="m-up m">Kurvendiskussion</span>、<span class="m-up m">Stammfunktion</span>、<span class="m-up m">Extremwertaufgabe</span> 几个几乎每节课都会听到。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>函数 / 对应</td><td class="de">Funktion / Zuordnung</td><td class="en">function / mapping</td></tr>
+      <tr><td>唯一的</td><td class="de">eindeutig</td><td class="en">unique</td></tr>
+      <tr><td>定义域 / 值域</td><td class="de">Definitionsbereich / Wertebereich</td><td class="en">domain / range</td></tr>
+      <tr><td>函数值 / 图像</td><td class="de">Funktionswert / Graph</td><td class="en">function value / graph</td></tr>
+      <tr><td>一次函数</td><td class="de">lineare Funktion</td><td class="en">linear function</td></tr>
+      <tr><td>斜率</td><td class="de">Steigung</td><td class="en">slope</td></tr>
+      <tr><td>y 轴截距</td><td class="de">y-Achsenabschnitt</td><td class="en">y-intercept</td></tr>
+      <tr><td>变化率</td><td class="de">Änderungsrate</td><td class="en">rate of change</td></tr>
+      <tr><td>多项式函数</td><td class="de">ganzrationale Funktion</td><td class="en">polynomial function</td></tr>
+      <tr><td>有理函数</td><td class="de">gebrochenrationale Funktion</td><td class="en">rational function</td></tr>
+      <tr><td>指数函数 / 对数函数</td><td class="de">Exponential- / Logarithmusfunktion</td><td class="en">exponential / log function</td></tr>
+      <tr><td>渐近线</td><td class="de">Asymptote</td><td class="en">asymptote</td></tr>
+      <tr><td>平移 / 拉伸 / 压缩</td><td class="de">Verschiebung / Streckung / Stauchung</td><td class="en">shift / stretch / compression</td></tr>
+      <tr><td>振幅 / 周期</td><td class="de">Amplitude / Periode</td><td class="en">amplitude / period</td></tr>
+      <tr><td>极限</td><td class="de">Grenzwert</td><td class="en">limit</td></tr>
+      <tr><td>收敛 / 发散</td><td class="de">konvergent / divergent</td><td class="en">convergent / divergent</td></tr>
+      <tr><td>连续 / 连续性</td><td class="de">stetig / Stetigkeit</td><td class="en">continuous / continuity</td></tr>
+      <tr><td>介值定理</td><td class="de">Zwischenwertsatz</td><td class="en">intermediate value theorem</td></tr>
+      <tr><td>导数 / 求导</td><td class="de">Ableitung / ableiten</td><td class="en">derivative / differentiate</td></tr>
+      <tr><td>差商 / 微商</td><td class="de">Differenzen- / Differentialquotient</td><td class="en">difference / differential quotient</td></tr>
+      <tr><td>割线 / 切线</td><td class="de">Sekante / Tangente</td><td class="en">secant / tangent</td></tr>
+      <tr><td>链式法则 / 乘积法则</td><td class="de">Kettenregel / Produktregel</td><td class="en">chain / product rule</td></tr>
+      <tr><td>曲线讨论</td><td class="de">Kurvendiskussion</td><td class="en">curve sketching</td></tr>
+      <tr><td>极值点</td><td class="de">Extremstelle</td><td class="en">extremum</td></tr>
+      <tr><td>极大点 / 极小点</td><td class="de">Hochpunkt / Tiefpunkt</td><td class="en">maximum / minimum</td></tr>
+      <tr><td>拐点</td><td class="de">Wendepunkt</td><td class="en">inflection point</td></tr>
+      <tr><td>单调性 / 曲率</td><td class="de">Monotonie / Krümmung</td><td class="en">monotonicity / curvature</td></tr>
+      <tr><td>极值应用题</td><td class="de">Extremwertaufgabe</td><td class="en">optimisation problem</td></tr>
+      <tr><td>积分 / 积分（动词）</td><td class="de">Integral / integrieren</td><td class="en">integral / integrate</td></tr>
+      <tr><td>原函数</td><td class="de">Stammfunktion</td><td class="en">antiderivative</td></tr>
+      <tr><td>定积分 / 不定积分</td><td class="de">bestimmtes / unbestimmtes Integral</td><td class="en">definite / indefinite integral</td></tr>
+      <tr><td>黎曼和 / 积分限</td><td class="de">Riemannsumme / Integrationsgrenzen</td><td class="en">Riemann sum / limits</td></tr>
+      <tr><td>微积分基本定理</td><td class="de">Hauptsatz</td><td class="en">fundamental theorem of calculus</td></tr>
+      <tr><td>微分方程</td><td class="de">Differentialgleichung</td><td class="en">differential equation</td></tr>
+      <tr><td>指数 / 有限 / 逻辑斯蒂增长</td><td class="de">exponentielles / beschränktes / logistisches Wachstum</td><td class="en">exponential / bounded / logistic growth</td></tr>
+      <tr><td>衰变 / 半衰期</td><td class="de">Zerfall / Halbwertszeit</td><td class="en">decay / half-life</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs4">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">一道也不用算。答得上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li>函数定义里「恰好一个」这四个字如果去掉，会出什么问题？怎么用一条竖线检查一张图是不是函数？</li>
+    <li>一次函数里的斜率 <span class="m">m</span>，和导数是什么关系？为什么说它是整条主线的种子？</li>
+    <li>为什么「放得足够近，任何光滑曲线都是直的」这句话是整个微积分的地基？</li>
+    <li><span class="m">x²</span> 和 <span class="m">2ˣ</span> 有什么根本区别？为什么说人的直觉是线性的、而世界很多东西是指数的？</li>
+    <li>为什么 <span class="m">f(x−2)</span> 是<em>右</em>移而不是左移？用「跟着一个点走」的办法说一遍。</li>
+    <li>极限凭什么能存在？它依赖主线一里的哪个性质？如果只有有理数会怎样？</li>
+    <li>「极限是 3」和「函数值是 3」有什么不同？为什么导数的定义必须用前者？</li>
+    <li>导数在几何上、物理上、日常语言里，分别是什么？</li>
+    <li><span class="m">f′ = 0</span> 是极值的必要条件还是充分条件？举一个反例。</li>
+    <li>积分的「面积」解释为什么不够用？速度—时间图里的面积是什么？</li>
+    <li>求导和求面积，凭什么会是互为逆运算的？用那张「多出来的窄条」的图说一遍。</li>
+    <li>为什么求导比求原函数容易得多？这个「正着容易倒着难」，在主线一哪里也出现过？</li>
+    <li>为什么指数函数在自然界到处都是？它是哪个微分方程的解？</li>
+    <li>这一章是「逆运算」这台引擎第几次出现？前几次分别是什么？</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strand-3-geometry.html"><span class="dir">上一页</span><span class="t">主线三 · 形与空间</span></a>
+  <a class="next" href="strand-5-stochastics.html"><span class="dir">下一页</span><span class="t">主线五 · 概率与统计</span></a>
+</div>
+
+</main>
+</body>
+</html>

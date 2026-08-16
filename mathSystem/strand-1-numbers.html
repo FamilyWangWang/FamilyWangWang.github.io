@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线一 · 数与数系 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-1-numbers.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线一 · 数与数系 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-1-numbers.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html" aria-current="page">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-1-zahlen.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线一</h1>
+<section id="s1">
+  <h2 class="sec"><span class="num">主线 一</span>数与数系</h2>
+  <p class="sec-lead">这一整条主线只讲一件事，而且这件事重复了五遍：<strong>有一个算式算不下去了，于是人们造了新的数，让它算得下去。</strong>每造一次，数的世界就大一圈。</p>
+
+  <p>这是七条主线里最好读的一条，因为它有一个非常干净的剧情。数学史上真正发生过五次「撞墙」，每一次都是同一个套路：某个运算做到一半没法做了，人们先是拒绝承认，吵上几十年甚至几百年，最后妥协——发明一种新的数把洞补上，然后回头检查老规矩还灵不灵。</p>
+
+  <p>五次撞墙分别是：<span class="m">减法</span>、<span class="m">除法</span>、<span class="m">开方</span>、<span class="m-up m">开负数的方</span>，还有中间那次最微妙的<span class="m">取极限</span>。看懂这条时间线，这一章就懂了一大半。</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 1000 300" role="img" aria-label="数系的五层嵌套结构图：自然数包含在整数中，整数包含在有理数中，有理数包含在实数中，实数包含在复数中，每一层扩张由一个具体的运算触发。">
+      <rect x="30" y="40" width="940" height="200" rx="6" class="f3"/>
+      <text x="52" y="66" class="svg-tm tx3">ℂ 复数</text>
+
+      <rect x="120" y="76" width="820" height="132" rx="5" class="f2"/>
+      <text x="142" y="100" class="svg-tm tx2">ℝ 实数</text>
+
+      <rect x="222" y="110" width="700" height="66" rx="5" class="f1"/>
+      <text x="244" y="132" class="svg-tm tx1">ℚ 有理数</text>
+
+      <rect x="330" y="122" width="570" height="42" rx="4" class="svg-face"/>
+      <text x="350" y="140" class="svg-tm">ℤ 整数</text>
+
+      <rect x="430" y="130" width="450" height="26" rx="3" class="svg-face"/>
+      <text x="450" y="147" class="svg-tm">ℕ 自然数</text>
+
+      <text x="700" y="147" text-anchor="middle" class="svg-ts">0 1 2 3 …</text>
+
+      <line x1="430" y1="164" x2="430" y2="268" class="svg-l-soft"/>
+      <text x="430" y="284" text-anchor="middle" class="svg-tm">减法撞墙 3−5</text>
+      <line x1="330" y1="164" x2="330" y2="248" class="svg-l-soft"/>
+      <text x="330" y="264" text-anchor="middle" class="svg-tm">除法撞墙 3÷4</text>
+      <line x1="222" y1="176" x2="222" y2="228" class="svg-l-soft"/>
+      <text x="222" y="244" text-anchor="middle" class="svg-tm">开方撞墙 √2</text>
+      <line x1="120" y1="208" x2="120" y2="264" class="svg-l-soft"/>
+      <text x="120" y="280" text-anchor="middle" class="svg-tm">√−1 撞墙</text>
+      <text x="120" y="296" text-anchor="middle" class="svg-tm">最后一次</text>
+    </svg>
+    <figcaption><b>数系是套娃，不是并列。</b>每一层都完整地包住上一层——负数没有取消自然数，分数也没有取消整数。每一道边界上写的，就是当年把人逼出这一层的那个算式。到了 ℂ 就停了，因为再也没有算不下去的多项式方程了，这叫代数闭。</figcaption>
+  </figure>
+
+  <figure>
+    <svg viewBox="0 0 700 300" role="img" aria-label="数系扩张的四步循环图：遇到算不下去的式子，造一个新符号，检查老规矩是否还成立，得到新数系，然后又遇到新的算不下去的式子。">
+      <defs>
+        <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="240" y="20" width="220" height="56" rx="4" class="fm"/>
+      <text x="350" y="44" text-anchor="middle" class="svg-t txm">① 有个式子算不下去</text>
+      <text x="350" y="63" text-anchor="middle" class="svg-ts txm">3 − 5 在自然数里没有答案</text>
+
+      <rect x="470" y="120" width="210" height="56" rx="4" class="svg-face"/>
+      <text x="575" y="144" text-anchor="middle" class="svg-t">② 硬造一个新符号</text>
+      <text x="575" y="163" text-anchor="middle" class="svg-ts">就叫它 −2 吧</text>
+
+      <rect x="240" y="220" width="220" height="56" rx="4" class="svg-face"/>
+      <text x="350" y="244" text-anchor="middle" class="svg-t">③ 检查老规矩还灵吗</text>
+      <text x="350" y="263" text-anchor="middle" class="svg-ts">分配律还成立吗？</text>
+
+      <rect x="20" y="120" width="210" height="56" rx="4" class="f1"/>
+      <text x="125" y="144" text-anchor="middle" class="svg-t tx1">④ 得到更大的数系</text>
+      <text x="125" y="163" text-anchor="middle" class="svg-ts tx1">ℕ 长成了 ℤ</text>
+
+      <path d="M 462 58 Q 540 70 566 116" class="svg-l" marker-end="url(#ah2)"/>
+      <path d="M 566 180 Q 540 226 462 244" class="svg-l" marker-end="url(#ah2)"/>
+      <path d="M 238 250 Q 160 226 134 180" class="svg-l" marker-end="url(#ah2)"/>
+      <path d="M 134 116 Q 160 70 238 56" class="svg-l" marker-end="url(#ah2)"/>
+    </svg>
+    <figcaption><b>第三步才是数学，前两步只是任性。</b>任何人都可以随口造个符号说「这就是 3 减 5 的答案」。真正的工作是第三步：检查加法交换律、乘法分配律这些老规矩在新数上还成不成立。老规矩全都保住了，新数才被接受——这也是「负负得正」为什么必须等于正的真正原因，见 <span class="svg-tm">1.4</span>。</figcaption>
+  </figure>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>自然数 ℕ · 一切从数数开始</h3>
+      <p class="de">natürliche Zahlen · natural numbers</p>
+    </div>
+    <div class="body">
+      <p class="lead">自然数就是用来回答「有几个」的那种数：0、1、2、3、一直下去，没有尽头。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>数数比写字还早。人类会写字之前，就已经在骨头上刻痕来记「我有几只羊」了。有意思的是，最早的记数根本不需要会数数——牧羊人每放出一只羊就往罐子里丢一颗石子，晚上每回来一只羊就取出一颗，罐子空了就说明羊齐了。他不需要知道自己有几只羊，只需要知道羊和石子能一一配对。</p>
+        <p>这个「一一配对」的想法看着土，其实是整个数学里最深的想法之一。两千多年后，康托尔就是靠它证明了「无穷也分大小」——那是这一章最后的风景。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子</span>
+        <div class="demo">
+          <p>不数数，判断下面两排哪排多：</p>
+          <p class="calc">● ● ● ● ● ● ●<br>▲ ▲ ▲ ▲ ▲ ▲</p>
+          <p>一个一个划掉配对，最后剩下的那排就多。这就是牧羊人的办法，也是「基数」这个概念的原始形态。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>不需要任何前置知识。这是整座山的起点。</div>
+          <div><span class="lbl">下游</span>其余全部。位值制、四则运算、素数、无穷的大小，全都从这里长出来。</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>0 到底算不算自然数？</strong>德国学校里 ℕ 通常<em>包含</em> 0，需要强调时写成 <span class="m">ℕ₀</span>，不含 0 的写成 <span class="m">ℕ*</span> 或 <span class="m">ℕ⁺</span>。但很多英美教材里 ℕ 不含 0。</p>
+          <p>这不是「谁对谁错」的问题，是<strong>约定</strong>。数学里有一大批这样的东西：它们是人商量出来的，不是发现出来的。分清「这是约定」和「这是定理」，是读懂数学的第一步。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>natürliche Zahlen</b> 自然数</span>
+          <span><b>Zahl</b> 数</span>
+          <span><b>Ziffer</b> 数字符号</span>
+          <span><b>Menge</b> 集合</span>
+          <span><b>Element</b> 元素</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">Zahl</span> 和 <span class="m-up m">Ziffer</span> 千万别混：<span class="m-up m">Ziffer</span> 是符号（0 到 9 这十个字符），<span class="m-up m">Zahl</span> 是这些符号表示的量。「2024 是一个四位的 Zahl，由四个 Ziffern 组成。」中文的「数字」两个意思都占，反而不如德语清楚。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>位值制 · 为什么十个符号就够用了</h3>
+      <p class="de">Stellenwertsystem · place-value system</p>
+    </div>
+    <div class="body">
+      <p class="lead">同一个符号写在不同位置，代表的大小不一样。<span class="m">2</span> 写在个位是二，写在百位就是两百。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>罗马数字看着挺帅，但根本没法算。你可以试试用罗马数字做乘法：<span class="m-up m">MCMXLIV × III</span> 等于多少？罗马人真的算不了，他们得用算板（一种算盘）算完再翻译回来。</p>
+        <p>位值制把这件事彻底解决了。它的关键不是「用十个符号」，而是<strong>发明了 0</strong>。0 在这里的意思不是「什么都没有」，而是「这一位是空的，但它占着位子」。没有 0，你没法区分 <span class="m">205</span> 和 <span class="m">25</span>。这个想法在印度成型，经阿拉伯传到欧洲，欧洲人接受它用了差不多四百年。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子</span>
+        <div class="demo">
+          <p class="calc">2024 = 2×1000 + 0×100 + 2×10 + 4×1</p>
+          <p>把 10 换成 2，同一套办法就是二进制。计算机用的就是它，因为电路只分得清「通电」和「不通电」两种状态：</p>
+          <p class="calc">1101₂ = 1×8 + 1×4 + 0×2 + 1×1 = 13</p>
+          <p>换成 60 就是巴比伦人用的六十进制。为什么一小时是 60 分钟、一圈是 360 度？就是他们留下的。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>自然数（1.1）。得先有「几个」这个概念，才谈得上怎么写下来。</div>
+          <div><span class="lbl">下游</span>小数与分数（1.5）· 科学记数法 · 二进制与信息（主线六）· 多项式的写法（主线二，其实是同一个结构）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>德语里数字的读法是<strong>反着的</strong>：<span class="m-up m">einundzwanzig</span> 字面是「一和二十」，但写成 <span class="m">21</span>。听写数字时先听到的是个位，得在脑子里倒一下。这在考试里真的会出错，尤其是听力或口算场合。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Stellenwertsystem</b> 位值制</span>
+          <span><b>Zehnersystem</b> 十进制</span>
+          <span><b>Dualsystem</b> 二进制</span>
+          <span><b>Stelle</b> 数位</span>
+          <span><b>Einer / Zehner / Hunderter</b> 个/十/百位</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>四则运算 · 以及「逆运算」这台引擎</h3>
+      <p class="de">Grundrechenarten · Umkehroperation</p>
+    </div>
+    <div class="body">
+      <p class="lead">加减乘除只有四个符号，但每个符号背后都藏着好几种完全不同的现实场景。应用题难，一大半难在这儿。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>先说个反直觉的事实：<strong>减法有三种意思</strong>，而不是一种。</p>
+        <p>「我有 7 块钱，花了 3 块」——这是<em>拿走</em>。「哥哥 7 岁，弟弟 3 岁，差几岁」——这是<em>比较</em>，什么都没被拿走。「我有 3 块，买东西要 7 块，还差多少」——这是<em>补足</em>，方向甚至是反的。三种场景，同一个算式 <span class="m">7 − 3</span>。孩子做应用题卡住，往往不是不会减，是没认出这是减法。</p>
+        <p>乘法同理：重复相加（3 排 × 每排 4 个）、面积（3 米 × 4 米）、缩放（价格涨到 3 倍）。除法也一样：均分（12 个分给 4 人）、包含（12 米能截出几段 4 米）、比（12 比 4）。</p>
+        <p>但这张卡片真正要留下的不是这些，而是下面这个词。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">整条主线的引擎：逆运算</span>
+        <div class="demo">
+          <p>加法问：<em>3 加 4 是多少？</em>　　减法问：<em>几加 4 等于 7？</em></p>
+          <p>乘法问：<em>3 乘 4 是多少？</em>　　除法问：<em>几乘 4 等于 12？</em></p>
+          <p>每个运算都配一个「倒着问」的运算，这就是逆运算。而<strong>这一整章的五次撞墙，全都是逆运算撞的</strong>——正着算永远算得出来，倒着问才会没答案。</p>
+        </div>
+        <p>记住这一句，后面五张卡片就都是同一个故事的变奏：<em>正着走没问题，倒着走走不通，于是把路修宽。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>自然数（1.1）· 位值制（1.2）</div>
+          <div><span class="lbl">下游</span>负数（1.4）· 分数（1.5）· 幂根对数（1.8）· 解方程的全部技术（主线二）· 函数与反函数（主线四）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>运算顺序</strong>：先乘除后加减，括号最优先，同级从左到右。<span class="m">8 − 3 + 2</span> 等于 <span class="m">7</span> 不是 <span class="m">3</span>。德语的口诀是 <span class="m-up m">Punktrechnung vor Strichrechnung</span>（点运算先于横运算——因为 · 和 : 是点，+ 和 − 是横）。这个口诀比中文的「先乘除后加减」好记，因为它直接看符号形状。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Grundrechenarten</b> 四则运算</span>
+          <span><b>Summand / Summe</b> 加数/和</span>
+          <span><b>Faktor / Produkt</b> 因数/积</span>
+          <span><b>Dividend / Divisor / Quotient</b> 被除数/除数/商</span>
+          <span><b>Umkehroperation</b> 逆运算</span>
+          <span><b>Punkt vor Strich</b> 先乘除后加减</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>整数 ℤ · 减法撞的第一堵墙</h3>
+      <p class="de">ganze Zahlen · negative Zahlen</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">3 − 5</span> 在自然数里没有答案。于是人们造了 <span class="m">−2</span>，把数轴往左边接了出去。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>中国人在《九章算术》里用负数记账已经两千年了（红筹为正，黑筹为负——顺便一提，现在的「赤字」是反过来的）。印度人也早就用它表示债务。但欧洲数学家一直到十七世纪还在管负数叫「荒谬的数」，帕斯卡本人就公开说「0 减 4 完全是胡说」。</p>
+        <p>为什么欧洲人这么抗拒？因为他们心里的数必须是「某种东西的数量」，而你没法拥有 −2 只羊。真正说服所有人的，不是哲学论证，而是它太好用了：温度、海拔、账目、坐标，全都需要往下、往左、往负的方向数。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子：负负为什么得正</span>
+        <div class="demo">
+          <p>第一种说法（直觉版）：负号的意思是「反过来」。<span class="m">−(−3)</span> 就是「反过来的反过来」，转两次就转回去了。</p>
+          <p>第二种说法（真正的理由）：我们希望分配律 <span class="m">a(b+c) = ab + ac</span> 在新数上继续成立。那就来算一下：</p>
+          <p class="calc">(−1) × [ 3 + (−3) ] = (−1) × 0 = 0</p>
+          <p class="calc">按分配律拆开：(−1)×3 + (−1)×(−3) = 0</p>
+          <p class="calc">也就是：−3 + (−1)×(−3) = 0</p>
+          <p>能让 <span class="m">−3</span> 加上去得 0 的，只有 <span class="m">+3</span>。所以 <span class="m">(−1)×(−3)</span> 必须等于 <span class="m">+3</span>，别无选择。</p>
+        </div>
+        <p>这就是那张循环图里的第三步。<strong>负负得正不是老师规定的，是被老规矩逼出来的唯一可能。</strong>这是整本册子里第一次看到「保住旧规矩，反过来决定新东西是什么」——这个思路后面还会出现无数次，比如 <span class="m">a⁰ = 1</span>（见 1.8）。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>减法与逆运算（1.3）</div>
+          <div><span class="lbl">下游</span>坐标系与负坐标（主线三）· 向量的方向（主线三）· 一次函数的负斜率（主线四）· 复数（1.9）· 温度与海拔这类现实量（主线七）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><span class="m">−3²</span> 和 <span class="m">(−3)²</span> 不是一回事。前者是「3 的平方，再取负」，等于 <span class="m">−9</span>；后者是「负 3 的平方」，等于 <span class="m">+9</span>。因为乘方比取负先算。这个坑一直坑到高中，计算器上按错更是家常便饭。</p>
+          <p>另一个：<span class="m-up m">Betrag</span>（绝对值）不是「去掉负号」，而是「离 0 有多远」。所以 <span class="m">|−7| = 7</span>，而 <span class="m">|x|</span> 在 x 是字母时不能直接去号——得分情况讨论。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>ganze Zahlen</b> 整数</span>
+          <span><b>negative Zahl</b> 负数</span>
+          <span><b>Vorzeichen</b> 正负号</span>
+          <span><b>Betrag</b> 绝对值</span>
+          <span><b>Zahlengerade</b> 数轴</span>
+          <span><b>Gegenzahl</b> 相反数</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.5 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>有理数 ℚ · 除法撞的墙</h3>
+      <p class="de">rationale Zahlen · Bruch</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">3 ÷ 4</span> 在整数里没有答案。于是人们造了 <span class="m">3/4</span>，把数轴上整数之间的空隙填了进去。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>分数比负数<em>早</em>被接受得多，因为它有实物撑腰——四分之三个饼是看得见摸得着的，而负三个饼不是。埃及人四千年前就在用分数，古巴比伦人更是把六十进制的分数用得出神入化。</p>
+        <p><span class="m-up m">rational</span> 这个词跟「理性」没关系，它来自 <span class="m-up m">ratio</span>，意思是<strong>比</strong>。有理数就是「能写成两个整数之比的数」。中文译成「有理数」其实是个历史误译，但已经改不回来了。知道这一点，后面「无理数」就不再是「不讲道理的数」，而是「写不成比的数」——意思一下就清楚了。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子：为什么加法要通分，乘法不用</span>
+        <div class="demo">
+          <p>乘法：<span class="m">½ × ⅓</span>。画一个正方形，横着切一半，竖着切三份。交叠的那一小块就是答案：<span class="m">1/6</span>。分子分母各乘各的，因为两个方向互不干扰。</p>
+          <p class="calc">½ × ⅓ = (1×1)/(2×3) = 1/6</p>
+          <p>加法：<span class="m">½ + ⅓</span>。这回要把两块拼起来，但一块是「二分之一」，一块是「三分之一」，单位不一样，拼不了。得先都换成六分之几：</p>
+          <p class="calc">½ + ⅓ = 3/6 + 2/6 = 5/6</p>
+          <p>通分不是规定，是<strong>换单位</strong>。就像 3 米加 20 厘米不能直接得 23，得先统一单位。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">还有一个：0.999… 到底等不等于 1</span>
+        <div class="demo">
+          <p>设 <span class="m">x = 0.999…</span>，那么 <span class="m">10x = 9.999…</span>。两式相减：</p>
+          <p class="calc">10x − x = 9.999… − 0.999… = 9<br>9x = 9，所以 x = 1</p>
+          <p>它们真的相等，是同一个数的两种写法。这个结论所有人第一次听都不服气，而不服气的地方恰恰是数学里最深的地方之一：<strong>「无限个数字」到底是什么意思？</strong>要把这件事说清楚，需要「极限」，那是主线四山腰上的事。这道题是通往极限的第一扇门，值得在这儿卡住想一想。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>除法与逆运算（1.3）· 整数（1.4）· 位值制推广到小数（1.2）</div>
+          <div><span class="lbl">下游</span>比例与百分比（主线七）· 斜率（主线四）· 概率就是一个分数（主线五）· 极限（主线四）· 实数（1.7）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>分母为什么不能是 0？</strong>不是「规定不许」。<span class="m">6 ÷ 0</span> 问的是「几乘 0 等于 6」，而任何数乘 0 都是 0，所以根本没有答案。更糟的是 <span class="m">0 ÷ 0</span>：问「几乘 0 等于 0」，答案是<em>所有数</em>——太多也等于没有。所以除以 0 不是「等于无穷」，是<strong>没有定义</strong>。</p>
+          <p>另一个：并不是所有小数都是分数。<span class="m">0.25</span> 是（有限），<span class="m">0.333…</span> 也是（循环），但 <span class="m">0.1010010001…</span> 这种既不终止也不循环的就不是——那已经是下一张卡片的地盘了。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>rationale Zahlen</b> 有理数</span>
+          <span><b>Bruch</b> 分数</span>
+          <span><b>Zähler</b> 分子</span>
+          <span><b>Nenner</b> 分母</span>
+          <span><b>kürzen</b> 约分</span>
+          <span><b>erweitern</b> 扩分</span>
+          <span><b>Hauptnenner</b> 公分母</span>
+          <span><b>Dezimalzahl</b> 小数</span>
+          <span><b>periodisch</b> 循环的</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.6 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>素数 · 数的原子</h3>
+      <p class="de">Primzahlen · Primfaktorzerlegung</p>
+    </div>
+    <div class="body">
+      <p class="lead">素数是只能被 1 和自己整除的数。每一个整数都能唯一地拆成素数的乘积——就像每种物质都能唯一地拆成原子。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>这张卡片跟前后几张不一样：它不是为了补洞，而是为了<strong>看清结构</strong>。前面几张问「数轴上还缺什么」，这一张问「已有的这些数，内部是怎么搭起来的」。</p>
+        <p>答案漂亮得出奇。<span class="m">60 = 2 × 2 × 3 × 5</span>，而且不管你从哪儿开始拆，最后拿到的一定是这几个素数、这么多个，一个不多一个不少。这叫<strong>算术基本定理</strong>——「基本」两个字不是客气话，它真的是整个数论的地基。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子</span>
+        <div class="demo">
+          <p>拆 60，随便从哪儿下手，结果都一样：</p>
+          <p class="calc">60 = 6 × 10 = (2×3) × (2×5) = 2²·3·5<br>60 = 4 × 15 = (2×2) × (3×5) = 2²·3·5</p>
+          <p>拆完之后，很多问题会突然变简单。比如通分要用的最小公倍数：把 <span class="m">12 = 2²·3</span> 和 <span class="m">18 = 2·3²</span> 拆开，每个素数取<em>较高</em>的次数就是 <span class="m-up m">kgV</span>，取<em>较低</em>的就是 <span class="m-up m">ggT</span>：</p>
+          <p class="calc">ggT(12,18) = 2·3 = 6　　kgV(12,18) = 2²·3² = 36</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">全书第一个完整证明：素数有无穷多个</span>
+        <div class="proof">
+          <span class="lbl">欧几里得 · 约公元前 300 年 · 反证法</span>
+          <p>假设素数只有有限个，就把它们全列出来：<span class="m">p₁, p₂, …, pₙ</span>。</p>
+          <p>现在造一个新数：把它们<em>全部乘起来，再加 1</em>。</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.1rem">N = p₁ · p₂ · … · pₙ + 1</p>
+          <p>这个 <span class="m">N</span> 除以名单上任何一个素数，都会余 1，所以名单上没有一个能整除它。</p>
+          <p>可是每个大于 1 的整数要么本身是素数，要么能被某个素数整除。于是 <span class="m">N</span> 要么自己就是个新素数，要么有个名单外的素因数——两种情况都说明名单漏了人。</p>
+          <p>可我们一开始说那是<em>全部</em>素数。矛盾。所以「素数有限」这个假设是错的，素数必然有无穷多个。∎</p>
+        </div>
+        <p>这个证明值得慢慢读两遍。它只用到乘法和加法，一个十二岁的人完全读得懂，但它证明的是一件关于<em>无穷</em>的事——你没法把无穷多个素数一个个数出来给我看，但你可以证明谁也数不完。<strong>这就是证明的威力：它让你知道一些你永远看不完的事。</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>整除与除法（1.3）· 整数（1.4）</div>
+          <div><span class="lbl">下游</span>约分通分（1.5）· 无理数的证明（1.7）· 同余与模运算（主线六）· RSA 加密（主线六山顶）· 多项式的因式分解（主线二，同一个思路换个舞台）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>1 不是素数。</strong>不是因为它「太小」，而是因为如果把 1 算进去，唯一分解就毁了：<span class="m">6 = 2·3 = 1·2·3 = 1·1·2·3 = …</span>，写法无穷多种。把 1 排除在外，是为了保住「唯一」这两个字。又一个「为了保住老规矩而做的选择」。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Primzahl</b> 素数</span>
+          <span><b>Teiler</b> 因数</span>
+          <span><b>teilbar</b> 可整除的</span>
+          <span><b>Vielfaches</b> 倍数</span>
+          <span><b>Primfaktorzerlegung</b> 素因数分解</span>
+          <span><b>ggT</b> 最大公因数</span>
+          <span><b>kgV</b> 最小公倍数</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">ggT</span> = größter gemeinsamer Teiler，<span class="m-up m">kgV</span> = kleinstes gemeinsames Vielfaches。这两个缩写在德国课本里天天出现，值得直接背下来。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>实数 ℝ · √2 撞的墙</h3>
+      <p class="de">irrationale Zahlen · reelle Zahlen</p>
+    </div>
+    <div class="body">
+      <p class="lead">正方形对角线的长度明明画得出来，却写不成任何分数。数轴上原来还有洞，而且洞比填着的地方还多。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>这是数学史上最戏剧性的一次撞墙。毕达哥拉斯学派相信「万物皆数」，而他们说的数就是整数和整数之比。整个世界观建立在这个信念上。</p>
+        <p>然后他们自己的定理背叛了他们。边长为 1 的正方形，对角线按勾股定理是 <span class="m">√2</span>。这条线就在那儿，用尺子量得到，可它<em>不是任何分数</em>。传说发现这件事的希帕索斯被扔进了海里——真假难考，但这个传说本身说明了当时的震动有多大。</p>
+        <p>注意这次撞墙的性质跟前几次不同。前几次是「某个算式没答案」，这次是「某个<strong>看得见的长度</strong>没有名字」。几何直接把代数逼到了墙角——这是主线三和主线一之间最重要的一次对话。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="单位正方形的对角线长度为根号二，用圆规把这个长度转到数轴上，落在1和2之间约1.414的位置。">
+          <line x1="40" y1="200" x2="660" y2="200" class="svg-l"/>
+          <line x1="100" y1="194" x2="100" y2="206" class="svg-l"/>
+          <text x="100" y="224" text-anchor="middle" class="svg-tm">0</text>
+          <line x1="220" y1="194" x2="220" y2="206" class="svg-l"/>
+          <text x="220" y="224" text-anchor="middle" class="svg-tm">1</text>
+          <line x1="340" y1="194" x2="340" y2="206" class="svg-l"/>
+          <text x="340" y="224" text-anchor="middle" class="svg-tm">2</text>
+          <line x1="460" y1="194" x2="460" y2="206" class="svg-l"/>
+          <text x="460" y="224" text-anchor="middle" class="svg-tm">3</text>
+          <line x1="580" y1="194" x2="580" y2="206" class="svg-l"/>
+          <text x="580" y="224" text-anchor="middle" class="svg-tm">4</text>
+
+          <rect x="100" y="80" width="120" height="120" class="f2"/>
+          <line x1="100" y1="200" x2="220" y2="80" class="svg-l" stroke-width="2"/>
+          <text x="146" y="128" class="svg-ts tx2">√2</text>
+          <text x="160" y="216" text-anchor="middle" class="svg-tm tx2">1</text>
+          <text x="86" y="145" text-anchor="end" class="svg-tm tx2">1</text>
+
+          <path d="M 220 80 A 169.7 169.7 0 0 1 269.7 200" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+          <circle cx="269.7" cy="200" r="4" class="fm" stroke-width="2"/>
+          <text x="272" y="176" class="svg-tm txm">√2 ≈ 1,4142…</text>
+          <text x="272" y="160" class="svg-tm txm">它在这儿，但它不是分数</text>
+        </svg>
+        <figcaption><b>这条线画得出来，却写不下来。</b>拿圆规以顶点为心、以对角线为半径画弧，落到数轴上的那一点就是 √2。它有确切的位置，你可以指着它。它只是没法写成任何 <span class="svg-tm">a/b</span>。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">证明：√2 写不成分数</span>
+        <div class="proof">
+          <span class="lbl">反证法 · 用到 1.6 的素因数分解</span>
+          <p>假设 <span class="m">√2 = a/b</span>，而且这个分数已经约到最简，也就是 <span class="m">a</span> 和 <span class="m">b</span> 没有公因数。</p>
+          <p>两边平方：<span class="m">2 = a²/b²</span>，也就是 <span class="m">a² = 2b²</span>。</p>
+          <p>所以 <span class="m">a²</span> 是偶数。而奇数的平方一定是奇数，所以 <span class="m">a</span> 本身必须是偶数，写成 <span class="m">a = 2k</span>。</p>
+          <p>代回去：<span class="m">(2k)² = 2b²</span>，即 <span class="m">4k² = 2b²</span>，约掉得 <span class="m">b² = 2k²</span>。</p>
+          <p>所以 <span class="m">b</span> 也是偶数。可是 <span class="m">a</span> 和 <span class="m">b</span> 都是偶数，就都有公因数 2——这跟「已经约到最简」矛盾了。</p>
+          <p>所以 <span class="m">√2 = a/b</span> 这件事从一开始就不可能。∎</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">补完之后的数轴</span>
+        <p>把所有这类「填不满的洞」都补上，得到的就是<strong>实数</strong> ℝ。实数轴的关键性质叫<em>完备性</em>：它没有任何缝隙，你在上面随便指一点，那儿一定有个数。这句话听起来像废话，但它其实是整个微积分能成立的地基——极限之所以「有地方可去」，就是因为实数轴不漏。</p>
+        <p>另外注意：<span class="m">√2</span> 是被<em>开方</em>逼出来的，但 <span class="m">π</span> 和 <span class="m">e</span> 不是——它们不满足任何整系数方程，是被「取极限」这条更狠的路逼出来的。这条区别通向 1.10 的第二段风景。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>勾股定理（主线三）· 素因数分解（1.6）· 有理数（1.5）· 反证法（主线零）</div>
+          <div><span class="lbl">下游</span>极限与连续（主线四）· 微积分的全部（主线四）· 无理数的近似与误差（主线七）· 实数的严格构造（大学 Analysis I）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>「无理数」不是「不讲道理的数」。</strong><span class="m-up m">irrational</span> 的意思是「不能写成比（ratio）」。跟理性、道理毫无关系。这个中文译名坑了不知道多少人。</p>
+          <p>还有：<span class="m">√9 = 3</span> 是有理数。开方不一定产生无理数，只有开不尽的时候才会。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>irrationale Zahlen</b> 无理数</span>
+          <span><b>reelle Zahlen</b> 实数</span>
+          <span><b>Wurzel</b> 根</span>
+          <span><b>Quadratwurzel</b> 平方根</span>
+          <span><b>Radikand</b> 被开方数</span>
+          <span><b>Widerspruchsbeweis</b> 反证法</span>
+          <span><b>Vollständigkeit</b> 完备性</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>幂、根、对数 · 一个运算，两个逆</h3>
+      <p class="de">Potenz · Wurzel · Logarithmus</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">2³ = 8</span> 这个式子里有三个数。挡住其中任意一个去求它，就得到三种运算——幂、根、对数。它们是同一件事的三个方向。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>回到 1.3 的引擎：每个运算配一个逆运算。加法的逆是减法，乘法的逆是除法——各一个，因为加法和乘法都满足交换律，<span class="m">3+4</span> 和 <span class="m">4+3</span> 一样，所以倒着问只有一种问法。</p>
+        <p>但乘方<strong>不满足交换律</strong>：<span class="m">2³ = 8</span> 而 <span class="m">3² = 9</span>。底数和指数地位完全不同。所以倒着问有<em>两种</em>问法，于是有两个逆运算。这是幂、根、对数这三兄弟的全部来历。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="幂、根、对数的三角关系图：底数2、指数3、结果8三个量，遮住任意一个就得到一种运算。">
+          <defs>
+            <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <text x="350" y="46" text-anchor="middle" class="svg-t" style="font-size:22px">2³ = 8</text>
+          <text x="350" y="70" text-anchor="middle" class="svg-tm">底数 · 指数 · 结果</text>
+
+          <rect x="40" y="110" width="190" height="110" rx="4" class="f2"/>
+          <text x="135" y="140" text-anchor="middle" class="svg-t tx2">求结果 → 乘方</text>
+          <text x="135" y="167" text-anchor="middle" class="svg-ts tx2">已知底数 2 和指数 3</text>
+          <text x="135" y="196" text-anchor="middle" class="svg-t tx2">2³ = ?</text>
+
+          <rect x="255" y="110" width="190" height="110" rx="4" class="f1"/>
+          <text x="350" y="140" text-anchor="middle" class="svg-t tx1">求底数 → 开根</text>
+          <text x="350" y="167" text-anchor="middle" class="svg-ts tx1">已知指数 3 和结果 8</text>
+          <text x="350" y="196" text-anchor="middle" class="svg-t tx1">∛8 = ?</text>
+
+          <rect x="470" y="110" width="190" height="110" rx="4" class="f3"/>
+          <text x="565" y="140" text-anchor="middle" class="svg-t tx3">求指数 → 取对数</text>
+          <text x="565" y="167" text-anchor="middle" class="svg-ts tx3">已知底数 2 和结果 8</text>
+          <text x="565" y="196" text-anchor="middle" class="svg-t tx3">log₂8 = ?</text>
+
+          <path d="M 350 82 L 135 106" class="svg-l-soft" marker-end="url(#ah3)"/>
+          <path d="M 350 82 L 350 106" class="svg-l-soft" marker-end="url(#ah3)"/>
+          <path d="M 350 82 L 565 106" class="svg-l-soft" marker-end="url(#ah3)"/>
+
+          <text x="350" y="256" text-anchor="middle" class="svg-ts">三个答案分别是 8、2、3 —— 同一个式子，三种读法</text>
+          <text x="350" y="280" text-anchor="middle" class="svg-tm">加法和乘法各只有一个逆，因为它们可交换；乘方不可交换，所以有两个</text>
+        </svg>
+        <figcaption><b>对数不是新东西，只是「倒着问指数」。</b>学生怕对数，多半是因为它被当成一个孤立的新符号引进来。放回这张三角图里，它就只是三分之一而已。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">一个小例子：为什么 a⁰ = 1</span>
+        <div class="demo">
+          <p>又是「保住老规矩」那一套。我们希望 <span class="m">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</span> 永远成立。那就令 <span class="m">m = n</span>：</p>
+          <p class="calc">a³ ÷ a³ = a³⁻³ = a⁰</p>
+          <p>可左边明明是「一个数除以它自己」，等于 1。所以 <span class="m">a⁰</span> 只能是 1。</p>
+          <p>同一套办法还能定出 <span class="m">a⁻¹ = 1/a</span> 和 <span class="m">a^{1/2} = √a</span>。这些都不是新规定，全是被指数律逼出来的唯一答案。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">对数在现实里干什么</span>
+        <p>对数的本事是<strong>把「倍数」变成「距离」</strong>。地震 7 级不是 6 级的 7/6 倍，而是 10 倍能量；音量的分贝、酸碱的 pH、星星的星等，全是对数刻度。人的感官本身就是对数式的——声音强度翻十倍，我们只觉得「响了一点」。所以对数刻度不是数学家的怪癖，它更贴近我们真实的感受方式。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>乘法与逆运算（1.3）· 无理数（1.7，因为 <span class="m">a^{1/2}</span> 会跑出有理数）</div>
+          <div><span class="lbl">下游</span>指数函数与对数函数（主线四）· 解指数方程 · 复利与人口增长（主线七）· 半衰期与放射性衰变 · <span class="m">e</span> 和自然对数（主线四山腰）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><span class="m">log(a+b)</span> <strong>不等于</strong> <span class="m">log a + log b</span>。对数的运算律是把<em>乘法</em>变加法：<span class="m">log(ab) = log a + log b</span>。这是最高频的错误之一，考试里年年有人栽。</p>
+          <p>德语里 <span class="m-up m">ln</span> 是自然对数（底数 <span class="m">e</span>），<span class="m-up m">lg</span> 是常用对数（底数 10），<span class="m-up m">ld</span> 或 <span class="m-up m">log₂</span> 是二进对数。德国课本用 <span class="m-up m">lg</span> 表示以 10 为底，而英美常写 <span class="m-up m">log</span>——看外文资料时留意。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Potenz</b> 幂</span>
+          <span><b>Basis</b> 底数</span>
+          <span><b>Exponent</b> 指数</span>
+          <span><b>Wurzel</b> 根</span>
+          <span><b>Logarithmus</b> 对数</span>
+          <span><b>Potenzgesetze</b> 指数律</span>
+          <span><b>ln</b> 自然对数</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">1.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 · 中学一般不考</span></span>
+      <h3>复数 ℂ · 最后一堵墙</h3>
+      <p class="de">komplexe Zahlen · imaginäre Einheit</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">x² = −1</span> 在实数里没有答案。于是人们造了 <span class="m">i</span>，规定 <span class="m">i² = −1</span>。数轴从此变成了平面。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>这里有个几乎人人搞错的地方：<strong>复数不是为了解二次方程发明的。</strong>如果 <span class="m">x² + 1 = 0</span> 无解，十六世纪的数学家会耸耸肩说「那就是无解，抛物线跟 x 轴不相交而已」——完全说得通，没人需要新数。</p>
+        <p>真正逼出复数的是<em>三次</em>方程。卡尔达诺的三次方程求根公式有个尴尬的性质：哪怕最终的三个根全是实数，中间的计算步骤也<strong>必须</strong>路过负数的平方根。你明知道答案是实数，却绕不开虚数这条路。这就没法耸肩了。数学家们捏着鼻子用了两百年，一边用一边叫它「虚的」（imaginär）——这个带贬义的名字就这么留到了今天。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="复平面示意图：横轴为实轴，纵轴为虚轴，点1乘以i后旋转90度到达i的位置，再乘以i到达负1。">
+          <defs>
+            <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="180" y1="160" x2="520" y2="160" class="svg-l" marker-end="url(#ah4)"/>
+          <line x1="350" y1="270" x2="350" y2="40" class="svg-l" marker-end="url(#ah4)"/>
+          <text x="528" y="164" class="svg-tm">实轴 Re</text>
+          <text x="358" y="42" class="svg-tm">虚轴 Im</text>
+
+          <circle cx="430" cy="160" r="4.5" class="f2" stroke-width="2"/>
+          <text x="430" y="184" text-anchor="middle" class="svg-tm tx2">1</text>
+          <circle cx="350" cy="80" r="4.5" class="f2" stroke-width="2"/>
+          <text x="336" y="76" text-anchor="end" class="svg-tm tx2">i</text>
+          <circle cx="270" cy="160" r="4.5" class="f2" stroke-width="2"/>
+          <text x="270" y="184" text-anchor="middle" class="svg-tm tx2">−1</text>
+          <circle cx="350" cy="240" r="4.5" class="f2" stroke-width="2"/>
+          <text x="336" y="248" text-anchor="end" class="svg-tm tx2">−i</text>
+
+          <path d="M 420 130 A 80 80 0 0 0 378 90" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah4)"/>
+          <text x="416" y="106" class="svg-tm txm">× i</text>
+          <path d="M 322 90 A 80 80 0 0 0 280 130" fill="none" stroke="currentColor" stroke-width="1.6" marker-end="url(#ah4)"/>
+          <text x="272" y="106" text-anchor="end" class="svg-tm txm">× i</text>
+
+          <circle cx="450" cy="100" r="4.5" class="fm" stroke-width="2"/>
+          <text x="460" y="96" class="svg-tm txm">3 + 2i</text>
+          <line x1="350" y1="160" x2="450" y2="100" class="svg-l-soft" stroke-dasharray="3 3"/>
+        </svg>
+        <figcaption><b>乘以 i 就是逆时针转 90 度。</b>从 1 出发，乘一次 i 到 i，再乘一次到 −1——转两个 90 度正好是 180 度，也就是变号。所以 <span class="svg-tm">i² = −1</span> 在图上是显然的。复数不是「假的数」，它是<b>带方向的数</b>，正因如此它在电学、信号处理、量子力学里到处都是。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">故事讲完了：为什么造完 ℂ 就不用再造了</span>
+        <p>这是整条主线最漂亮的收尾。<strong>代数基本定理</strong>说：任何 <span class="m">n</span> 次多项式方程，在复数范围内<em>恰好</em>有 <span class="m">n</span> 个根（重根按重数算）。</p>
+        <p>意思是：你再也造不出一个「算不下去」的多项式方程了。前面每一次撞墙都是因为某个式子解不出，而现在，所有多项式方程都解得出。补洞工程到 ℂ 为止，完工。这个性质叫<strong>代数闭</strong>。</p>
+        <p>——当然，如果换个方向问（比如「取极限跑到哪儿去了」「怎么给无穷小一个正式身份」），还会有别的故事。但那已经不是「造新数」的故事了，那是主线四。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>负数（1.4）· 开方（1.7）· 二次方程与判别式（主线二）· 坐标平面（主线三）</div>
+          <div><span class="lbl">下游</span>代数基本定理 · 旋转与向量（主线三）· 交流电与阻抗 · 傅里叶变换 · 复分析（大学）· 量子力学</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">关于考试</span>
+          <p>中学阶段一般<strong>不要求</strong>复数，绝大多数升学考试不考它。所以这张卡片不用背，读一遍、知道有这么回事就够了。</p>
+          <p>但要知道：大学理工科第一学期，复数在头几周就会出现，而且默认你已经会了。到时候回来翻这一页。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>komplexe Zahlen</b> 复数</span>
+          <span><b>imaginäre Einheit</b> 虚数单位</span>
+          <span><b>Realteil</b> 实部</span>
+          <span><b>Imaginärteil</b> 虚部</span>
+          <span><b>Gaußsche Zahlenebene</b> 复平面</span>
+          <span><b>Betrag</b> 模</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista1">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>下面这四段<strong>不要求懂</strong>。它们在这儿的唯一目的，是让你知道这条路继续往上走还有东西，以及那些东西叫什么名字。哪天在别处听到这些词，你会想起「哦，这是数与数系那条线的山顶」。</p>
+
+  <div class="vista">
+    <h4>无穷也分大小</h4>
+    <p>分数看着比整数多得多——光是 0 和 1 之间就有无穷多个分数。可康托尔在 1874 年证明了：<strong>有理数和自然数一样多</strong>。真的一样多，可以一一配对，就像牧羊人的石子和羊。这类无穷叫「可数的」。</p>
+    <p>然后他证明了更惊人的一件事：<strong>实数比它们都多</strong>，而且多得没法配对。他的办法叫对角线论证，只用到小学算术，但结论是：无穷不止一种，无穷之间还有大小。这是十九世纪最震撼的数学成果之一，当时不少数学家拒绝接受，康托尔本人一生备受攻击。</p>
+
+    <h4>π 和 e 是另一个物种</h4>
+    <p><span class="m">√2</span> 虽然不是分数，但它至少是方程 <span class="m">x² − 2 = 0</span> 的根，这类数叫<strong>代数数</strong>。而 <span class="m">π</span> 和 <span class="m">e</span> 不满足任何整系数多项式方程，它们叫<strong>超越数</strong>——「超越」了代数所能抓住的范围。</p>
+    <p>这件事有个惊人的推论：古希腊三大难题之一的「化圆为方」（只用尺规作出与给定圆等面积的正方形）<strong>永远不可能</strong>。不是没人聪明到想出办法，是数学证明了它不存在。1882 年林德曼证出 π 的超越性，两千年的悬案就此关闭。</p>
+
+    <h4>他每天都在用素数</h4>
+    <p>把两个大素数相乘很容易，几毫秒的事。可反过来，给你一个几百位的大数，让你找出它是哪两个素数相乘——目前全世界最好的算法也要算上千万年。<strong>RSA 加密</strong>就架在这个不对称上：他浏览器地址栏那把小锁，背后就是 1.6 那张卡片里的素因数分解。</p>
+    <p>顺便说，这也意味着：如果哪天有人找到了快速分解大数的办法（量子计算机可能可以），全世界的加密体系要重写一遍。数论曾经是「最没用」的数学分支，哈代还专门为此骄傲过；现在它撑着整个互联网。</p>
+
+    <h4>还有别的补洞方式</h4>
+    <p>从 ℚ 补到 ℝ，靠的是「让所有该收敛的序列都有极限」。但「靠近」这件事可以有别的定义方式：如果把「两个数接近」定义成「它们的差能被 <span class="m">p</span> 的高次幂整除」，同样补一次洞，得到的是完全不同的数系——<strong>p-进数</strong>。它在现代数论里极其重要，也是费马大定理证明中用到的工具之一。</p>
+    <p>这说明前面那张套娃图并不是唯一的路。数学的分岔比学校让人以为的多得多。</p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Analysis I</strong>——第一章就是「实数到底是什么」，把 1.7 那个洞严格补一遍</li>
+      <li><strong>Zahlentheorie</strong>（数论）——1.6 那张卡片的正式展开</li>
+      <li><strong>Algebra</strong>——为什么 ℂ 是代数闭的，为什么五次方程没有求根公式</li>
+      <li><strong>Mengenlehre</strong>（集合论）——康托尔的无穷，以及它引出的那些麻烦</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss1">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead">他在学校听到的是这些词。中文只是理解的拐杖，考试和课堂上真正要用的是右边这一列。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>自然数</td><td class="de">natürliche Zahlen ℕ</td><td class="en">natural numbers</td></tr>
+      <tr><td>整数</td><td class="de">ganze Zahlen ℤ</td><td class="en">integers</td></tr>
+      <tr><td>有理数</td><td class="de">rationale Zahlen ℚ</td><td class="en">rational numbers</td></tr>
+      <tr><td>无理数</td><td class="de">irrationale Zahlen</td><td class="en">irrational numbers</td></tr>
+      <tr><td>实数</td><td class="de">reelle Zahlen ℝ</td><td class="en">real numbers</td></tr>
+      <tr><td>复数</td><td class="de">komplexe Zahlen ℂ</td><td class="en">complex numbers</td></tr>
+      <tr><td>数 / 数字符号</td><td class="de">Zahl / Ziffer</td><td class="en">number / digit</td></tr>
+      <tr><td>数轴</td><td class="de">Zahlengerade</td><td class="en">number line</td></tr>
+      <tr><td>位值制</td><td class="de">Stellenwertsystem</td><td class="en">place-value system</td></tr>
+      <tr><td>正负号 / 绝对值</td><td class="de">Vorzeichen / Betrag</td><td class="en">sign / absolute value</td></tr>
+      <tr><td>相反数</td><td class="de">Gegenzahl</td><td class="en">opposite / additive inverse</td></tr>
+      <tr><td>分数 / 分子 / 分母</td><td class="de">Bruch / Zähler / Nenner</td><td class="en">fraction / numerator / denominator</td></tr>
+      <tr><td>约分 / 扩分</td><td class="de">kürzen / erweitern</td><td class="en">reduce / expand</td></tr>
+      <tr><td>公分母</td><td class="de">Hauptnenner</td><td class="en">common denominator</td></tr>
+      <tr><td>小数 / 循环的</td><td class="de">Dezimalzahl / periodisch</td><td class="en">decimal / repeating</td></tr>
+      <tr><td>素数</td><td class="de">Primzahl</td><td class="en">prime number</td></tr>
+      <tr><td>因数 / 倍数</td><td class="de">Teiler / Vielfaches</td><td class="en">divisor / multiple</td></tr>
+      <tr><td>素因数分解</td><td class="de">Primfaktorzerlegung</td><td class="en">prime factorisation</td></tr>
+      <tr><td>最大公因数</td><td class="de">ggT (größter gemeinsamer Teiler)</td><td class="en">gcd</td></tr>
+      <tr><td>最小公倍数</td><td class="de">kgV (kleinstes gemeinsames Vielfaches)</td><td class="en">lcm</td></tr>
+      <tr><td>幂 / 底数 / 指数</td><td class="de">Potenz / Basis / Exponent</td><td class="en">power / base / exponent</td></tr>
+      <tr><td>平方根 / 被开方数</td><td class="de">Quadratwurzel / Radikand</td><td class="en">square root / radicand</td></tr>
+      <tr><td>对数 / 自然对数</td><td class="de">Logarithmus / ln</td><td class="en">logarithm / natural log</td></tr>
+      <tr><td>虚数单位 / 复平面</td><td class="de">imaginäre Einheit / Gaußsche Zahlenebene</td><td class="en">imaginary unit / complex plane</td></tr>
+      <tr><td>四则运算</td><td class="de">Grundrechenarten</td><td class="en">basic operations</td></tr>
+      <tr><td>逆运算</td><td class="de">Umkehroperation</td><td class="en">inverse operation</td></tr>
+      <tr><td>先乘除后加减</td><td class="de">Punkt vor Strich</td><td class="en">order of operations</td></tr>
+      <tr><td>反证法</td><td class="de">Widerspruchsbeweis</td><td class="en">proof by contradiction</td></tr>
+      <tr><td>完备性</td><td class="de">Vollständigkeit</td><td class="en">completeness</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs1">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">这些不是习题，一道也不用算。它们检查的是「这一章的东西在你脑子里连上了没有」。能用自己的话答上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li>数系一共扩张了几次？每一次是哪个运算撞的墙？把运算和数系一一对上。</li>
+    <li>「负负得正」如果我们偏要规定它等于负，会有什么坏事发生？具体哪一条老规矩会碎掉？</li>
+    <li><span class="m">√2</span> 明明能用圆规画到数轴上，为什么还说它「不是分数」？这里的「不是」到底在否定什么？</li>
+    <li>1 为什么不算素数？这个决定是为了保住哪句话？</li>
+    <li>加法和乘法各只有一个逆运算，乘方却有两个。为什么？</li>
+    <li>造完复数之后，为什么就不用再造新的数了？「代数闭」这三个字在保证什么？</li>
+    <li>欧几里得证明素数无穷，用的是反证法。用你自己的话说一遍：反证法为什么算数？</li>
+    <li>这一章里，哪一张卡片必须借用主线三（几何）的结论才讲得通？借的是哪一条？</li>
+    <li><span class="m">0.999…</span> 和 <span class="m">1</span>，哪个大？如果你觉得不一样大，那它们中间那个数是多少？</li>
+  </ol>
+</section>
+<div class="pagenav">
+  <a href="strand-0-language.html"><span class="dir">上一页</span><span class="t">主线零 · 数学的语言与证明</span></a>
+  <a class="next" href="strand-2-algebra.html"><span class="dir">下一页</span><span class="t">主线二 · 代数与结构</span></a>
+</div>
+</main>
+</body>
+</html>

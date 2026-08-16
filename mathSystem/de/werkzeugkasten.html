@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Werkzeugkasten · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/werkzeugkasten.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Werkzeugkasten · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/werkzeugkasten.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html" aria-current="page">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../toolbox.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Werkzeugkasten</h1>
+
+<section id="toolbox">
+  <h2 class="sec"><span class="num">§ 2</span>Werkzeugkasten</h2>
+  <p class="sec-lead">Die ersten beiden Abschnitte waren die Karte. Dieser hier ist die Gangart. Die Karte sagt dir, wohin es geht; hier geht es um zwei andere Dinge: was du tust, wenn du unterwegs feststeckst, und wie das Gelernte im Kopf bleibt.</p>
+
+  <p>Dieser Abschnitt hat <strong>keine Höhenstufen</strong>. Methodik hängt nicht davon ab, wie weit du bist — von heute bis zur Uni ist es dieselbe. Und es ist der Teil des Hefts, der am schnellsten wirkt: <em>bei den Hausaufgaben heute Abend schon.</em></p>
+
+  <h3 class="sub">Erste Hälfte · Aufgaben lösen: was tun, wenn du feststeckst</h3>
+
+  <p>Das Wichtigste zuerst: <strong>Feststecken ist der Normalzustand, kein Alarmzeichen.</strong></p>
+  <p>Das klingt nach Trost, ist aber eine sachliche Beschreibung. Berufsmathematiker verbringen über neunzig Prozent ihrer Zeit im Steckenbleiben und weniger als zehn Prozent im flüssigen Vorankommen. Der einzige Unterschied ist, dass sie «ich hänge fest» nicht als «ich kann das nicht» lesen, sondern als «jetzt beginnt die eigentliche Arbeit».</p>
+  <p>Wirklich schiefgeht es erst, wenn man beim Feststecken <em>gar nichts tut</em> — zehn Minuten auf die Aufgabe starren und dann aufgeben oder die Lösung abschreiben. Der ganze folgende Abschnitt handelt davon, welche Handgriffe man in genau diesem Moment zur Verfügung hat.</p>
+
+  <h4 class="min">Vier Schritte als Gerüst</h4>
+  <p>Dieses Gerüst stammt aus einem schmalen Buch des Mathematikers George Pólya von 1945, «Schule des Denkens». Achtzig Jahre später hat niemand eine bessere Fassung vorgelegt. Es ist einfach genug zum Auswendiglernen:</p>
+
+  <figure>
+    <svg viewBox="0 0 700 230" role="img" aria-label="Pólyas vier Schritte: Aufgabe verstehen, Plan machen, Plan ausführen, Rückschau halten — mit einem Pfeil von der Rückschau zurück zum Verstehen.">
+      <defs>
+        <marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="30" y="50" width="145" height="82" rx="4" class="f1"/>
+      <text x="102" y="80" text-anchor="middle" class="svg-t tx1">① Verstehen</text>
+      <text x="102" y="102" text-anchor="middle" class="svg-ts tx1">Was ist gesucht?</text>
+      <text x="102" y="120" text-anchor="middle" class="svg-ts tx1">Reichen die Angaben?</text>
+
+      <rect x="205" y="50" width="145" height="82" rx="4" class="f1"/>
+      <text x="277" y="80" text-anchor="middle" class="svg-t tx1">② Plan machen</text>
+      <text x="277" y="102" text-anchor="middle" class="svg-ts tx1">Kenne ich Ähnliches?</text>
+      <text x="277" y="120" text-anchor="middle" class="svg-ts tx1">Welcher Griff passt?</text>
+
+      <rect x="380" y="50" width="145" height="82" rx="4" class="f1"/>
+      <text x="452" y="80" text-anchor="middle" class="svg-t tx1">③ Ausführen</text>
+      <text x="452" y="102" text-anchor="middle" class="svg-ts tx1">Schritt für Schritt</text>
+      <text x="452" y="120" text-anchor="middle" class="svg-ts tx1">Stimmt dieser Schritt?</text>
+
+      <rect x="555" y="50" width="115" height="82" rx="4" class="fm"/>
+      <text x="612" y="80" text-anchor="middle" class="svg-t txm">④ Rückschau</text>
+      <text x="612" y="102" text-anchor="middle" class="svg-ts txm">Plausibel?</text>
+      <text x="612" y="120" text-anchor="middle" class="svg-ts txm">Ging es anders?</text>
+
+      <path d="M 175 91 L 201 91" class="svg-l" marker-end="url(#ah5)"/>
+      <path d="M 350 91 L 376 91" class="svg-l" marker-end="url(#ah5)"/>
+      <path d="M 525 91 L 551 91" class="svg-l" marker-end="url(#ah5)"/>
+
+      <path d="M 612 136 L 612 175 L 102 175 L 102 136" class="svg-l" stroke-dasharray="4 4" marker-end="url(#ah5)"/>
+      <text x="357" y="196" text-anchor="middle" class="svg-tm txm">Beim nächsten Mal startest du hier — Schritt vier ist der einzige, der dich stärker macht</text>
+    </svg>
+    <figcaption><b>Schritt vier überspringen fast alle, und er ist der einzige, der wirklich etwas aufbaut.</b> Wer nach der richtigen Lösung sofort weiterblättert, fängt bei jeder Aufgabe wieder bei null an. Zwei Minuten für die Frage «woran hing es hier eigentlich, und wann kann ich das wieder gebrauchen?» machen aus einer Aufgabe erst deinen Besitz.</figcaption>
+  </figure>
+
+  <h4 class="min">Neun Griffe, jeder mit Namen</h4>
+  <p>Die folgenden neun Griffe sind das, wonach du in Schritt zwei tatsächlich greifen kannst. Dass sie Namen haben, ist wichtig: <em>abrufen kann man nur, was im Kopf einen Namen hat.</em> Wenn du feststeckst, geh die neun Namen einmal von oben nach unten durch und schau, welcher andockt.</p>
+
+  <div class="moves">
+    <div class="move">
+      <span class="when">Beziehungen im Kopf zu unübersichtlich</span>
+      <h5>1 · Zeichne es</h5>
+      <p>Was sich zeichnen lässt, wird gezeichnet: Zahlengerade, Streckenbild, Tabelle, Baumdiagramm, Kästchen. <em>Die Augen halten fünf Dinge gleichzeitig fest, der Kopf höchstens zwei oder drei.</em> Zeichnen ist keine Verschönerung, es verlagert die Last vom Kopf aufs Papier.</p>
+    </div>
+    <div class="move">
+      <span class="when">Ein n kommt vor, oder erschreckend große Zahlen</span>
+      <h5>2 · Erst kleine Zahlen</h5>
+      <p>Gefragt sind 100? Mach erst 2, 3, 4. Gefragt sind n Geraden? Zeichne erst eine, dann zwei. <em>Das Muster steckt in den kleinen Fällen; der große Fall ist nur die Vergrößerung.</em> In Vorführung zwei spielt dieser Griff die Hauptrolle.</p>
+    </div>
+    <div class="move">
+      <span class="when">Du bist dir nicht sicher, ob die Aussage stimmt</span>
+      <h5>3 · Sonderfälle und Extreme</h5>
+      <p>Treibe eine Größe ins Maximum, ins Minimum, auf 0, auf 1 — und schau, was passiert. <em>Ein einziges Gegenbeispiel kippt eine Vermutung, und Gegenbeispiele sind oft viel leichter zu finden als Beweise.</em> Erst widerlegen versuchen, dann beweisen.</p>
+    </div>
+    <div class="move">
+      <span class="when">Du weißt, wohin, aber nicht, wo anfangen</span>
+      <h5>4 · Rückwärts gehen</h5>
+      <p>Geh von der gewünschten Behauptung aus und frage: «Was müsste gelten, damit das folgt?» — so lange zurück, bis du bei den Voraussetzungen bist. <em>Die Hälfte aller Geometriebeweise wird so gefunden</em> und danach beim Aufschreiben wieder umgedreht.</p>
+    </div>
+    <div class="move">
+      <span class="when">Überhaupt keine Idee</span>
+      <h5>5 · Löse etwas Leichteres</h5>
+      <p>Mach die Aufgabe kleiner: eine Bedingung weglassen, eine Dimension weniger, ganze Zahlen statt Brüche. <em>Wer die einfache Fassung gelöst hat, sieht oft, wo die Tür zur schweren ist.</em> Und selbst wenn nicht — du bist immerhin in Bewegung.</p>
+    </div>
+    <div class="move">
+      <span class="when">Eine Größe ist unbekannt</span>
+      <h5>6 · Gib ihm einen Namen</h5>
+      <p>Was du nicht weißt, heißt <span class="m">x</span>. Der Schritt wirkt banal, ist aber die größte Erfindung der Algebra: <em>du kannst mit etwas rechnen, ohne zu wissen, wie groß es ist.</em> Danach übersetzt du jeden Satz der Aufgabe in einen Term mit x.</p>
+    </div>
+    <div class="move">
+      <span class="when">Du sollst zeigen, dass etwas unmöglich ist</span>
+      <h5>7 · Suche eine Invariante</h5>
+      <p>Finde eine Größe, die sich bei keiner erlaubten Operation ändert. Wenn Start und Ziel darin verschieden sind, kommt man nie an. <em>Das ist die schärfste Waffe für «geht nicht»</em> — Vorführung drei steht komplett auf diesem Griff.</p>
+    </div>
+    <div class="move">
+      <span class="when">Zwei Ausdrücke sollen gleich sein</span>
+      <h5>8 · Zähle zweimal</h5>
+      <p>Zähle dieselbe Menge auf zwei verschiedene Arten: die Ergebnisse müssen übereinstimmen — und du hast eine Gleichung geschenkt bekommen. <em>Die Hälfte aller schönen kombinatorischen Identitäten entsteht so</em>, ganz ohne Rechnung.</p>
+    </div>
+    <div class="move">
+      <span class="when">Nach dem Lesen sagt dir die Aufgabe nichts</span>
+      <h5>9 · Sag es anders</h5>
+      <p>Buch zu, und erzähl die Aufgabe in eigenen Worten, so als spräche jemand zu, der sie nicht kennt. <em>Wer das nicht kann, hat sie nicht verstanden — und alles Rechnen davor ist verloren.</em> Viele Aufgaben lösen sich schon beim Nacherzählen.</p>
+    </div>
+  </div>
+
+  <h4 class="min">Festgefahren? Geh diesem Bild nach</h4>
+  <p>Diese Seite wird vermutlich die abgegriffenste des ganzen Hefts. Im Moment des Feststeckens nicht in Panik geraten, sondern von oben nach unten durchgehen:</p>
+
+  <figure>
+    <svg viewBox="0 0 700 400" role="img" aria-label="Entscheidungsbaum beim Feststecken: Erst prüfen, ob die Aufgabe verstanden ist, dann ob der erste Schritt klar ist, dann Umwege probieren, und erst nach zwanzig Minuten um Hilfe fragen.">
+      <defs>
+        <marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="255" y="20" width="190" height="42" rx="4" class="fm"/>
+      <text x="350" y="46" text-anchor="middle" class="svg-t txm">Ich hänge fest</text>
+
+      <line x1="350" y1="62" x2="350" y2="88" class="svg-l"/>
+
+      <rect x="215" y="88" width="270" height="40" rx="4" class="svg-face"/>
+      <text x="350" y="113" text-anchor="middle" class="svg-t">Kann ich sie nacherzählen?</text>
+
+      <path d="M 215 108 L 150 108 L 150 162" class="svg-l" marker-end="url(#ah6)"/>
+      <text x="146" y="134" text-anchor="end" class="svg-tm">nein</text>
+      <rect x="30" y="162" width="240" height="56" rx="4" class="f1"/>
+      <text x="150" y="186" text-anchor="middle" class="svg-t tx1">Neu lesen · erzählen · zeichnen</text>
+      <text x="150" y="206" text-anchor="middle" class="svg-ts tx1">Griff 9 und Griff 1</text>
+
+      <line x1="350" y1="128" x2="350" y2="152" class="svg-l"/>
+      <text x="362" y="145" class="svg-tm">ja</text>
+
+      <rect x="215" y="152" width="270" height="40" rx="4" class="svg-face"/>
+      <text x="350" y="177" text-anchor="middle" class="svg-t">Weiß ich den ersten Schritt?</text>
+
+      <path d="M 485 172 L 550 172 L 550 226" class="svg-l" marker-end="url(#ah6)"/>
+      <text x="554" y="198" class="svg-tm">nein</text>
+      <rect x="430" y="226" width="240" height="56" rx="4" class="f1"/>
+      <text x="550" y="250" text-anchor="middle" class="svg-t tx1">Kleine Fälle probieren</text>
+      <text x="550" y="270" text-anchor="middle" class="svg-ts tx1">Griff 2 und Griff 5</text>
+
+      <line x1="350" y1="192" x2="350" y2="216" class="svg-l"/>
+      <text x="362" y="209" class="svg-tm">ja</text>
+
+      <rect x="215" y="216" width="270" height="40" rx="4" class="svg-face"/>
+      <text x="350" y="241" text-anchor="middle" class="svg-t">Angefangen, dann Sackgasse</text>
+
+      <path d="M 215 236 L 150 236 L 150 290" class="svg-l" marker-end="url(#ah6)"/>
+      <rect x="30" y="290" width="240" height="56" rx="4" class="f1"/>
+      <text x="150" y="314" text-anchor="middle" class="svg-t tx1">Rückwärts · Invariante</text>
+      <text x="150" y="334" text-anchor="middle" class="svg-ts tx1">Griff 4, 7 und 3</text>
+
+      <line x1="350" y1="256" x2="350" y2="300" class="svg-l"/>
+
+      <rect x="290" y="300" width="380" height="76" rx="4" class="f2"/>
+      <text x="480" y="326" text-anchor="middle" class="svg-t tx2">Alle neun durch und wirklich 20 Minuten gehangen</text>
+      <text x="480" y="348" text-anchor="middle" class="svg-ts tx2">Jetzt erst fragen — und zwar nach einem Tipp,</text>
+      <text x="480" y="366" text-anchor="middle" class="svg-ts tx2">nicht nach der Lösung</text>
+    </svg>
+    <figcaption><b>Die zwanzig Minuten sind nicht willkürlich gewählt.</b> Das Gehirn braucht Zeit, um eine fremde Struktur zu verarbeiten, und die Zeit im Feststecken ist selbst schon Lernen — du markierst dabei jede Sackgasse dieser Aufgabe und läufst nächstes Mal nicht wieder hinein. Wer zu früh fragt, spart genau die wertvollste Zeit weg.</figcaption>
+  </figure>
+
+  <h4 class="min">Nach dem Rechnen: vier Maßstäbe</h4>
+  <p>Ein Ergebnis zu haben heißt nicht, fertig zu sein. Die folgenden vier Prüfungen kosten zusammen unter einer Minute und fangen die große Mehrheit der billigen Fehler ab:</p>
+  <ul class="plain">
+    <li><strong>Stimmt die Größenordnung?</strong> Ein Mensch von 2000 Metern Höhe, 0,7 Kinder in einer Klasse, eine Wahrscheinlichkeit von 1,4 — dann brauchst du gar nicht weiterzuprüfen. Dieser Test ist der schnellste, also zuerst.</li>
+    <li><strong>Stimmt die Einheit?</strong> Bei einer Fläche muss die Einheit quadratisch sein, bei einer Geschwindigkeit «Länge durch Zeit». Falsche Einheit heißt: irgendwo wurde mal und geteilt vertauscht.</li>
+    <li><strong>Setz einen Sonderfall ein.</strong> Wenn du eine Formel mit n hergeleitet hast, setz <span class="m">n = 1</span> oder <span class="m">n = 2</span> ein und vergleiche mit dem, was du von Hand ausrechnest. Formelfehler fallen dabei fast immer auf.</li>
+    <li><strong>Rechne rückwärts.</strong> Wenn <span class="m">x = 3</span> herauskommt, setz die 3 in die <em>ursprüngliche</em> Gleichung ein — nicht in eine deiner umgeformten Zwischenzeilen, sonst findest du Fehler im Umformen nie.</li>
+  </ul>
+
+  <h4 class="min">Drei Vorführungen</h4>
+  <p>Eine Liste von Griffen zu lesen bringt niemandem etwas; man muss sie im Einsatz sehen. Die folgenden drei Aufgaben werden immer schwerer, und ich schreibe jedes Zögern und jeden Irrweg mit auf — <em>denn so sieht echtes Lösen aus. Die glatte Darstellung im Schulbuch ist das aufgeräumte Ergebnis, nicht der Denkvorgang.</em></p>
+
+  <div class="run">
+    <div class="q">
+      <span class="id">Vorführung 1 · schon jetzt lösbar</span>
+      <p>Wie viele Quadrate lassen sich auf einem 8×8-Schachbrett insgesamt finden?</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">① Verstehen</div>
+        <div class="c">
+          <p>Erst klären: Gefragt sind <em>alle</em> Quadrate, nicht nur die kleinen Felder. Zählen 2×2-Quadrate mit? Ja. Zählt das ganze Brett als 8×8-Quadrat mit? Auch.</p>
+          <p>Die Antwort ist also sicher größer als 64. Das hat zehn Sekunden gekostet — aber ohne diesen Schritt ist alles Weitere umsonst.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">② Plan<br>Griff 2</div>
+        <div class="c">
+          <p>Bei 8×8 direkt zu zählen wird chaotisch. <strong>Erst kleine Zahlen:</strong> fang bei 1×1 an.</p>
+          <p>1×1-Brett: 1 Quadrat.<br>2×2-Brett: 4 kleine plus 1 großes, also 5.<br>3×3-Brett: 9 kleine + 4 mittlere + 1 großes = 14.</p>
+          <p>Die Folge lautet 1, 5, 14 — also <span class="m">1</span>, <span class="m">1+4</span>, <span class="m">1+4+9</span>. Das sind aufaddierte Quadratzahlen.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">③ Ausführen</div>
+        <div class="c">
+          <p>Ein Muster zu sehen genügt aber nicht, man muss wissen <em>warum</em>. Zähle auf dem 3×3-Brett die 2×2-Quadrate: Wo kann ihre linke obere Ecke liegen? Nur im linken oberen 2×2-Bereich, also an <span class="m">2×2 = 4</span> Stellen.</p>
+          <p>Allgemein: Auf einem <span class="m">n×n</span>-Brett hat ein <span class="m">k×k</span>-Quadrat für seine linke obere Ecke <span class="m">(n−k+1)</span> Zeilen und ebenso viele Spalten zur Auswahl, also <span class="m">(n−k+1)²</span> Möglichkeiten.</p>
+          <div class="demo"><p class="calc">1×1: 8² = 64 Stück<br>2×2: 7² = 49 Stück<br>… und so weiter bis …<br>8×8: 1² = 1 Stück</p>
+          <p class="calc">Insgesamt = 1² + 2² + … + 8² = 204</p></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">④ Rückschau</div>
+        <div class="c">
+          <p>Dritter Maßstab zur Probe: Formel auf <span class="m">n = 2</span> angewendet ergibt <span class="m">1² + 2² = 5</span> — genau das, was wir vorhin von Hand gezählt haben. Passt.</p>
+          <p><strong>Was hat diese Aufgabe wirklich beigebracht?</strong> Nicht die Zahl 204, sondern <em>die Umdeutung «wo darf die linke obere Ecke liegen»</em> — aus «Quadrate zählen» wurde «Positionen zählen». Wenn sich etwas nicht zählen lässt, zähl etwas anderes: dieser Gedanke kommt immer wieder.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="run">
+    <div class="q">
+      <span class="id">Vorführung 2 · man muss kurz nachdenken</span>
+      <p>In wie viele Teile zerlegen <span class="m">n</span> Geraden die Ebene höchstens?</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">① Verstehen<br>Griff 9</div>
+        <div class="c">
+          <p>Das Wort «höchstens» ist der Schlüssel: die Lage der Geraden spielt also eine Rolle. Welche Lage bringt die meisten Teile? Intuitiv: keine zwei parallel (Parallelen sparen einen Schnittpunkt) und keine drei durch einen Punkt (das verschenkt Schnittpunkte). Merken — wir brauchen das gleich.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">② Plan<br>Griff 2</div>
+        <div class="c">
+          <p><strong>Kleine Fälle</strong>, und zwar mit Stift.</p>
+        </div>
+      </div>
+    </div>
+    <figure style="margin:0 1.5rem 1.4rem">
+      <svg viewBox="0 0 700 190" role="img" aria-label="Null bis drei Geraden zerlegen die Ebene in eins, zwei, vier und sieben Gebiete.">
+        <rect x="30" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <text x="100" y="164" text-anchor="middle" class="svg-tm">0 Geraden → 1 Teil</text>
+
+        <rect x="205" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <line x1="205" y1="85" x2="345" y2="85" class="svg-l"/>
+        <text x="275" y="164" text-anchor="middle" class="svg-tm">1 → 2 Teile</text>
+
+        <rect x="380" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <line x1="380" y1="85" x2="520" y2="85" class="svg-l"/>
+        <line x1="450" y1="30" x2="450" y2="140" class="svg-l"/>
+        <text x="450" y="164" text-anchor="middle" class="svg-tm">2 → 4 Teile</text>
+
+        <rect x="555" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <line x1="555" y1="70" x2="695" y2="70" class="svg-l"/>
+        <line x1="600" y1="30" x2="660" y2="140" class="svg-l"/>
+        <line x1="660" y1="30" x2="600" y2="140" class="svg-l"/>
+        <text x="625" y="164" text-anchor="middle" class="svg-tm">3 → 7 Teile</text>
+      </svg>
+    </figure>
+    <div class="steps" style="padding-top:0">
+      <div class="step">
+        <div class="n">③ Ausführen</div>
+        <div class="c">
+          <p>Die Folge ist <span class="m">1, 2, 4, 7</span>, die Differenzen sind <span class="m">1, 2, 3</span>. Vermutung: Die <span class="m">n</span>-te Gerade bringt <span class="m">n</span> Teile dazu.</p>
+          <p>Eine Vermutung ist aber noch kein Wissen. <strong>Warum genau n?</strong> Das ist das Herz dieser Aufgabe.</p>
+          <p>Zeichnen macht es klar: Die neue <span class="m">n</span>-te Gerade schneidet jede der <span class="m">n−1</span> alten genau einmal (dafür war die Bemerkung «nicht parallel, nicht drei durch einen Punkt» da). Sie trägt also <span class="m">n−1</span> Schnittpunkte, und diese zerlegen sie in <span class="m">n</span> Abschnitte. Jeder Abschnitt schneidet ein altes Gebiet mittendurch und macht zwei daraus — genau <span class="m">n</span> zusätzliche Teile.</p>
+          <div class="demo"><p class="calc">Teile = 1 + (1 + 2 + 3 + … + n)</p>
+          <p>In der Klammer steht die Summe von 1 bis n, also <span class="m">n(n+1)/2</span>. Damit:</p>
+          <p class="calc">höchstens &nbsp; 1 + n(n+1)/2 &nbsp; Teile</p></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">④ Rückschau</div>
+        <div class="c">
+          <p>Probe: <span class="m">n = 3</span> ergibt <span class="m">1 + 6 = 7</span>, wie gezeichnet. <span class="m">n = 0</span> ergibt 1, stimmt auch.</p>
+          <p><strong>Was hat diese Aufgabe beigebracht?</strong> Drei Dinge. Erstens <em>Rekursion</em> — nicht den n-ten Schritt frontal ausrechnen, sondern klären, was von Schritt n−1 zu Schritt n dazukommt. Zweitens: Ein Muster zu erkennen ist nur die halbe Miete; die wertvollere Hälfte ist zu sagen <em>warum</em>. Drittens: Beachte am Ende das <span class="m">n(n+1)/2</span> — dieselbe Summenformel wie in Vorführung eins. Wenn dasselbe Werkzeug in zwei völlig verschiedenen Aufgaben auftaucht, ist genau das gemeint, wenn hier von «System» die Rede ist.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="run">
+    <div class="q">
+      <span class="id">Vorführung 3 · sieht unmöglich aus, bis man den Blick wechselt</span>
+      <p>Von einem 8×8-Schachbrett werden die beiden <em>gegenüberliegenden</em> Eckfelder entfernt; 62 Felder bleiben. Lässt sich das mit 31 Dominosteinen der Größe 1×2 lückenlos auslegen? (Keine Überlappung, nichts über den Rand, waagerecht und senkrecht erlaubt.)</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">① Verstehen</div>
+        <div class="c">
+          <p>62 Felder, 31 Steine, jeder deckt 2 Felder — die Anzahl passt exakt. Der Weg «es sind zu wenige Felder» ist damit versperrt: Wenn es nicht geht, muss der Grund ein anderer sein.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">② Erster Versuch<br>(ein Umweg)</div>
+        <div class="c">
+          <p>Erst mal brav auslegen. Nach ein paar Minuten bleiben jedes Mal zwei nicht benachbarte Felder übrig.</p>
+          <p>Sieben, acht Versuche scheitern — und langsam kommt der Verdacht: <strong>Geht das vielleicht grundsätzlich nicht?</strong></p>
+          <p>Dieser Gedankenwechsel ist entscheidend. <em>«Es geht» zeigt man mit einem einzigen Beispiel; «es geht nicht» verlangt, alle Möglichkeiten auszuschließen — dafür braucht man völlig andere Waffen.</em> Jetzt ist der Moment für Griff 7.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">③ Griff 7<br>Invariante</div>
+        <div class="c">
+          <p>Gesucht ist etwas, das sich «egal wie man legt» nicht ändert. Das Schachbrett ist von Natur aus gefärbt, also nutzen wir das:</p>
+          <p><strong>Entscheidende Beobachtung: Ein 1×2-Stein deckt immer genau ein dunkles und ein helles Feld</strong>, ob waagerecht oder senkrecht. Benachbarte Felder haben zwangsläufig verschiedene Farben — das steckt in der Definition des Schachbretts, dem entkommt man nicht.</p>
+          <p>31 Steine decken also zwangsläufig 31 dunkle und 31 helle Felder. Das ist die Invariante.</p>
+        </div>
+      </div>
+    </div>
+    <figure style="margin:0 1.5rem 1.4rem">
+      <svg viewBox="0 0 700 250" role="img" aria-label="Das Schachbrett ohne zwei gegenüberliegende gleichfarbige Ecken: dreißig dunkle und zweiunddreißig helle Felder bleiben, die Zahlen passen nicht zusammen.">
+        <rect x="40" y="20" width="208" height="208" class="svg-face"/>
+        <rect x="40" y="20" width="26" height="26" class="f2"/><rect x="92" y="20" width="26" height="26" class="f2"/><rect x="144" y="20" width="26" height="26" class="f2"/><rect x="196" y="20" width="26" height="26" class="f2"/>
+        <rect x="66" y="46" width="26" height="26" class="f2"/><rect x="118" y="46" width="26" height="26" class="f2"/><rect x="170" y="46" width="26" height="26" class="f2"/><rect x="222" y="46" width="26" height="26" class="f2"/>
+        <rect x="40" y="72" width="26" height="26" class="f2"/><rect x="92" y="72" width="26" height="26" class="f2"/><rect x="144" y="72" width="26" height="26" class="f2"/><rect x="196" y="72" width="26" height="26" class="f2"/>
+        <rect x="66" y="98" width="26" height="26" class="f2"/><rect x="118" y="98" width="26" height="26" class="f2"/><rect x="170" y="98" width="26" height="26" class="f2"/><rect x="222" y="98" width="26" height="26" class="f2"/>
+        <rect x="40" y="124" width="26" height="26" class="f2"/><rect x="92" y="124" width="26" height="26" class="f2"/><rect x="144" y="124" width="26" height="26" class="f2"/><rect x="196" y="124" width="26" height="26" class="f2"/>
+        <rect x="66" y="150" width="26" height="26" class="f2"/><rect x="118" y="150" width="26" height="26" class="f2"/><rect x="170" y="150" width="26" height="26" class="f2"/><rect x="222" y="150" width="26" height="26" class="f2"/>
+        <rect x="40" y="176" width="26" height="26" class="f2"/><rect x="92" y="176" width="26" height="26" class="f2"/><rect x="144" y="176" width="26" height="26" class="f2"/><rect x="196" y="176" width="26" height="26" class="f2"/>
+        <rect x="66" y="202" width="26" height="26" class="f2"/><rect x="118" y="202" width="26" height="26" class="f2"/><rect x="170" y="202" width="26" height="26" class="f2"/><rect x="222" y="202" width="26" height="26" class="f2"/>
+
+        <rect x="40" y="20" width="26" height="26" class="fm" stroke-width="2"/>
+        <line x1="42" y1="22" x2="64" y2="44" class="svg-l" stroke="currentColor"/>
+        <line x1="64" y1="22" x2="42" y2="44" class="svg-l" stroke="currentColor"/>
+        <rect x="222" y="202" width="26" height="26" class="fm" stroke-width="2"/>
+        <line x1="224" y1="204" x2="246" y2="226" class="svg-l" stroke="currentColor"/>
+        <line x1="246" y1="204" x2="224" y2="226" class="svg-l" stroke="currentColor"/>
+
+        <text x="290" y="52" class="svg-t">Die zwei entfernten Ecken</text>
+        <text x="290" y="74" class="svg-ts">haben immer dieselbe Farbe</text>
+
+        <rect x="290" y="100" width="26" height="26" class="f2"/>
+        <text x="326" y="118" class="svg-t">dunkel: 32 − 2 = 30 Felder</text>
+        <rect x="290" y="140" width="26" height="26" class="svg-face"/>
+        <text x="326" y="158" class="svg-t">hell: 32 Felder</text>
+
+        <line x1="290" y1="184" x2="660" y2="184" class="svg-l-soft"/>
+        <text x="290" y="208" class="svg-t txm">31 Steine bräuchten 31 dunkle + 31 helle</text>
+        <text x="290" y="228" class="svg-t txm">vorhanden sind 30 + 32 — geht nicht auf</text>
+      </svg>
+    </figure>
+    <div class="steps" style="padding-top:0">
+      <div class="step">
+        <div class="n">④ Zuziehen</div>
+        <div class="c">
+          <p>Die beiden gegenüberliegenden Ecken haben auf dem Schachbrett <strong>dieselbe Farbe</strong> (man schaue sich a1 und h8 auf einem echten Brett an). Sie zu entfernen heißt: zwei gleichfarbige Felder auf einen Schlag weg.</p>
+          <p>Von den 62 übrigen Feldern hat also eine Farbe 30 Stück, die andere 32.</p>
+          <p>31 Steine bräuchten aber 31 und 31. <strong>30 ≠ 31. Also unmöglich.</strong> Nicht, weil wir zu dumm sind, sondern weil es die Lösung schlicht nicht gibt. ∎</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">⑤ Rückschau</div>
+        <div class="c">
+          <p>Im Rückblick steckt die ganze Schwierigkeit in dem einen Einfall, <em>zu färben</em>. Farbe kommt im Aufgabentext mit keinem Wort vor. Der Lösende hat dem Bild von sich aus eine Informationsschicht hinzugefügt — und die war zufällig invariant.</p>
+          <p><strong>Was hat diese Aufgabe beigebracht?</strong> Drei Dinge. Erstens: <em>«zeigen, dass es geht» und «zeigen, dass es nicht geht» sind zwei ganz verschiedene Aufträge</em>, und für den zweiten braucht man fast immer eine Invariante. Zweitens: <em>Man darf einer Aufgabe Struktur hinzufügen, die sie selbst nicht mitbringt</em> — färben, nummerieren, gruppieren, Reste betrachten. Drittens und am wichtigsten: <em>Viele gescheiterte Versuche sind selbst eine Information.</em> Sie sind das Signal, die Waffe zu wechseln, nicht der Beweis, dass du zu langsam bist.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub" id="toolbox-learn">Zweite Hälfte · Lernen: Mathematik wird gestapelt</h3>
+
+  <p>Die erste Hälfte handelte davon, was man mit <em>dieser einen</em> Aufgabe macht. Diese Hälfte handelt davon, wie das Gelernte nicht wieder wegläuft. Beides ist wichtig, aber über die zweite Hälfte spricht kaum jemand ernsthaft.</p>
+
+  <div class="rule-box">Mathematik unterscheidet sich strukturell von Fächern wie Geschichte oder Biologie: <strong>sie wird gestapelt, nicht ausgebreitet.</strong> Wer ein Kapitel Geschichte verpasst, kann dem nächsten trotzdem folgen. In Mathematik nicht — wer Brüche nicht verstanden hat, für den ist Steigung leer; wer Steigung nicht hat, für den hat die Ableitung keinen Boden. <strong>Mathematische Schulden werden mit Zinsen zurückgefordert.</strong></div>
+
+  <p>Aus diesem Unterschied folgt alles Weitere. Weil gestapelt wird, ist «wo ist etwas eingestürzt» viel wichtiger als «wie viel habe ich durchgenommen»; und weil gestapelt wird, lohnt sich das Reparieren eines Fundamentsteins oft mehr als drei weitere Stockwerke.</p>
+
+  <h4 class="min">Der billigste Griff: Buch zu</h4>
+  <p>Wenn von diesem ganzen Abschnitt nur ein Satz bleiben soll, dann dieser: <strong>Verstanden haben heißt nicht können.</strong></p>
+  <p>Ein Beispiel im aufgeschlagenen Buch durchgehen und bei jedem Schritt nicken — das heißt <em>passives Wiederlesen</em>. Es fühlt sich flüssig an und erzeugt den Eindruck, man könne es. Aber die Flüssigkeit kommt vom <em>Buch</em>, nicht von dir. Es gibt nur eine echte Probe: <strong>Buch zu, weißes Blatt, alles noch einmal selbst.</strong></p>
+  <p>In der Psychologie heißt das <em>aktives Abrufen</em>, und Jahrzehnte von Experimenten zeigen dasselbe: Es schlägt wiederholtes Lesen deutlich. Nebenbei hat es einen zweiten Vorteil — du merkst sofort, an welchem Schritt es hakt, statt diffus zu glauben, «im Großen und Ganzen kann ich das».</p>
+  <p>Der einzige Nachteil ist, dass es sich <em>unangenehm</em> anfühlt. In dem Moment, in dem das Buch zugeht, wird es spürbar anstrengend, während Wiederlesen angenehm ist. Genau diese Anstrengung ist das Zeichen, dass Lernen stattfindet — bei der angenehmen Sorte Wiederholung passiert im Wesentlichen nichts.</p>
+
+  <h4 class="min">Nach ein paar Tagen noch einmal</h4>
+  <p>Was du heute gelernt hast, beginnt nach wenigen Tagen auszulaufen, wenn du es nie wieder anfasst. Holst du es dagegen genau dann noch einmal hervor, <em>wenn du es fast vergessen hättest</em>, hält es deutlich länger; beim übernächsten Mal noch länger. Das nennt man verteiltes Wiederholen.</p>
+  <p>Praktisch braucht das nichts Kompliziertes: <strong>am selben Tag, nach zwei bis drei Tagen und nach einer Woche</strong> jeweils fünf Minuten aus dem Gedächtnis rekonstruieren — das bringt mehr als drei Stunden am Abend vor der Klausur. Entscheidend ist, dass alle drei Male «Buch zu und erinnern» sind und nicht «Buch auf und noch mal lesen».</p>
+
+  <h4 class="min">Nicht zwanzig gleiche Aufgaben hintereinander</h4>
+  <p>Zwanzig Aufgaben desselben Typs am Stück fühlen sich großartig an — immer schneller, immer flüssiger. Nur ist diese Flüssigkeit falsch: Ab der zweiten Aufgabe entscheidest du gar nicht mehr, welches Verfahren dran ist, weil es ja dasselbe wie eben ist. Und in der Klausur ist genau <em>diese Entscheidung</em> der schwerste Schritt.</p>
+  <p>Aufgaben verschiedener Typen <strong>gemischt</strong> zu rechnen ist spürbar langsamer, fehleranfälliger und fühlt sich schlechter an — und führt danach zu deutlich besseren Klausurergebnissen. Dieser Kontrast ist in der Lernforschung oft genug aufgetaucht, um unbequem verlässlich zu sein.</p>
+  <p>Praktische Fassung: Nach den Hausaufgaben eines Typs nimm ein paar Tage später <em>fünf zufällige Aufgaben aus früheren Kapiteln</em> und rechne sie gemischt. Fünf reichen.</p>
+
+  <h4 class="min">Fehler: erst diagnostizieren, dann behandeln</h4>
+  <p>«Führ ein Fehlerheft» hat fast jeder schon gehört, und die meisten Fehlerhefte nützen nichts — weil sie alle Fehler als eine einzige Krankheit behandeln. <strong>Es gibt mindestens drei völlig verschiedene Ursachen, und ihre Behandlungen sind nicht austauschbar.</strong> Die richtige Lösung abzuschreiben hilft nur bei einer davon.</p>
+
+  <figure>
+    <svg viewBox="0 0 700 300" role="img" aria-label="Fehlerdiagnose: eine falsch gelöste Aufgabe zerfällt in drei Ursachen — Verfahren unbekannt, Verfahren richtig aber verrechnet, oder Aufgabe falsch gelesen — mit je eigener Behandlung.">
+      <defs>
+        <marker id="ah7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="255" y="20" width="190" height="42" rx="4" class="fm"/>
+      <text x="350" y="46" text-anchor="middle" class="svg-t txm">Eine falsche Aufgabe</text>
+
+      <path d="M 300 62 L 140 62 L 140 96" class="svg-l" marker-end="url(#ah7)"/>
+      <path d="M 350 62 L 350 96" class="svg-l" marker-end="url(#ah7)"/>
+      <path d="M 400 62 L 560 62 L 560 96" class="svg-l" marker-end="url(#ah7)"/>
+
+      <rect x="30" y="96" width="220" height="54" rx="4" class="f2"/>
+      <text x="140" y="119" text-anchor="middle" class="svg-t tx2">Verfahren unbekannt</text>
+      <text x="140" y="139" text-anchor="middle" class="svg-ts tx2">Wissenslücke</text>
+
+      <rect x="255" y="96" width="190" height="54" rx="4" class="f2"/>
+      <text x="350" y="119" text-anchor="middle" class="svg-t tx2">richtig, aber verrechnet</text>
+      <text x="350" y="139" text-anchor="middle" class="svg-ts tx2">Ausführung</text>
+
+      <rect x="450" y="96" width="220" height="54" rx="4" class="f2"/>
+      <text x="560" y="119" text-anchor="middle" class="svg-t tx2">Aufgabe falsch gelesen</text>
+      <text x="560" y="139" text-anchor="middle" class="svg-ts tx2">Lesen</text>
+
+      <line x1="140" y1="150" x2="140" y2="176" class="svg-l"/>
+      <line x1="350" y1="150" x2="350" y2="176" class="svg-l"/>
+      <line x1="560" y1="150" x2="560" y2="176" class="svg-l"/>
+
+      <rect x="30" y="176" width="220" height="90" rx="4" class="f1"/>
+      <text x="140" y="200" text-anchor="middle" class="svg-t tx1">Zurück und Lücke füllen</text>
+      <text x="140" y="222" text-anchor="middle" class="svg-ts tx1">bis zur wirklich fehlenden Schicht</text>
+      <text x="140" y="240" text-anchor="middle" class="svg-ts tx1">Abschreiben hilft hier gar nicht</text>
+
+      <rect x="255" y="176" width="190" height="90" rx="4" class="f1"/>
+      <text x="350" y="200" text-anchor="middle" class="svg-t tx1">Langsamer schreiben</text>
+      <text x="350" y="222" text-anchor="middle" class="svg-ts tx1">jeder Schritt eine Zeile</text>
+      <text x="350" y="240" text-anchor="middle" class="svg-ts tx1">nicht im Kopf überspringen</text>
+
+      <rect x="450" y="176" width="220" height="90" rx="4" class="f1"/>
+      <text x="560" y="200" text-anchor="middle" class="svg-t tx1">Erst nacherzählen</text>
+      <text x="560" y="222" text-anchor="middle" class="svg-ts tx1">Angaben einzeln einkreisen</text>
+      <text x="560" y="240" text-anchor="middle" class="svg-ts tx1">am leichtesten abzustellen</text>
+
+      <text x="350" y="290" text-anchor="middle" class="svg-tm">Eine Aufgabe, drei Ursachen, drei Behandlungen — ohne Diagnose behandelt man nichts</text>
+    </svg>
+    <figcaption><b>«Ich war unaufmerksam» ist keine Diagnose, sondern eine Ausrede.</b> Wer das sagt, hat nicht vor, etwas zu ändern. Nützlich wird es erst, wenn man unterscheidet: Vorzeichen falsch abgeschrieben, Rechenreihenfolge verwechselt, oder im Kopf zu viele Schritte auf einmal. Jede dieser Ursachen hat eine konkrete, übbare Gegenmaßnahme — «nächstes Mal sorgfältiger» hat keine.</figcaption>
+  </figure>
+
+  <h4 class="min">Wie man ein Mathebuch liest</h4>
+  <p>Ein Mathebuch liest man nicht wie einen Roman. Eine Romanseite dauert vielleicht drei Minuten; <strong>für eine Seite Mathematik eine Stunde zu brauchen ist normal</strong> und kein Zeichen von Langsamkeit. Konkret:</p>
+  <ul class="plain">
+    <li><strong>Ein Stift muss in der Hand sein.</strong> Mathematik ohne Stift zu lesen ist ungefähr so wirksam wie eine Fremdsprache ohne Mund zu lernen: sieht aus wie Lernen, ist aber keines.</li>
+    <li><strong>Bei einem Satz erst das Buch zumachen und selbst versuchen.</strong> Auch zwei Minuten vergeblich sind es wert — danach weißt du, wo die Schwierigkeit liegt, und der Beweis im Buch verwandelt sich von einer Schrittfolge in ein «ach, <em>so</em> kommt man da vorbei».</li>
+    <li><strong>Bei einem Beispiel die Zahlen kleiner machen und selbst rechnen.</strong> Das Buch nimmt <span class="m">n = 100</span>, du nimmst <span class="m">n = 3</span> und rechnest von Hand.</li>
+    <li><strong>Bei «offensichtlich» oder «man sieht leicht» anhalten.</strong> Diese Wendungen zeigen an, dass der Autor Schritte weggelassen hat — und weggelassen wird meistens genau das Entscheidende. Ergänze sie oder markiere die Stelle für später.</li>
+    <li><strong>Nach jedem Abschnitt das Buch zumachen und sagen, worum es ging.</strong> Wer das nicht kann, ist nicht fertig und geht zurück.</li>
+  </ul>
+
+  <h4 class="min">Wann darf man die Lösung anschauen</h4>
+  <p>In die Lösung zu schauen ist nicht peinlich — zu <em>früh</em> hineinzuschauen ist es. Das Kriterium ist einfach: <strong>Hast du wirklich festgehangen und alle neun Griffe durchprobiert?</strong> Wenn ja, ist Nachschauen effizientes Lernen. Wenn nein, kaufst du dir mit deiner Zeit die Illusion, es zu können.</p>
+  <p>Und noch wichtiger: <strong>Nach dem Nachschauen kommt zwingend noch ein Schritt</strong>, sonst war alles davor umsonst. Lösung zu, mindestens eine halbe Stunde warten — besser bis zum nächsten Tag — und dann vom leeren Blatt aus alles selbst noch einmal.</p>
+  <p>Denn «eine fremde Lösung verstehen» und «selbst auf eine Lösung kommen» sind im Gehirn zwei verschiedene Dinge. Wer nur Ersteres tut, steht beim nächsten Mal wieder davor. Ohne diesen Schritt heißt Nachschauen tatsächlich Abschreiben.</p>
+
+  <h4 class="min">Taschenrechner, CAS und KI</h4>
+  <p>Dieser Abschnitt steht in keinem anderen Buch, weil er zu neu ist. Aber er ist vermutlich die größte neue Variable beim Mathematiklernen dieser Generation und deshalb eine klare Ansage wert.</p>
+  <p>Zuerst die zugrunde liegende Logik: <strong>Mathematische Fähigkeit wächst in der Strecke «feststecken – ringen – selbst wieder herauskommen», nicht in dem Moment, in dem man die richtige Lösung sieht.</strong> Jedes Werkzeug, das dich diese Strecke überspringen lässt, schwächt dich; jedes, das dein Ringen wirksamer macht, hilft dir. Für Taschenrechner, CAS und KI gilt dasselbe Kriterium.</p>
+
+  <div class="split">
+    <div class="good">
+      <h5>So benutzt, beschleunigt es dich</h5>
+      <ul>
+        <li>«Ich hänge an diesem Schritt fest. <strong>Sag mir nicht die Lösung</strong>, gib mir nur einen Tipp.»</li>
+        <li>«Ich habe so gedacht (Gedankengang aufschreiben) — hat das eine Lücke?» Lass es den Gutachter spielen, nicht den Autor.</li>
+        <li>«Wofür wurde dieser Begriff ursprünglich erfunden?» Nach dem Motiv fragen — genau das, was Schulbüchern am meisten fehlt und was KI am besten kann.</li>
+        <li>«Gib mir drei Aufgaben desselben Typs mit anderer Verpackung.» Als Aufgabengenerator.</li>
+        <li>«Das habe ich nicht verstanden — erklär es auf eine völlig andere Weise.»</li>
+        <li>«Hat mein Beweis eine Lücke?» Lass es stochern.</li>
+        <li>CAS oder Rechner zum <strong>Nachprüfen</strong> dessen, was du von Hand gerechnet hast, oder für lange numerische Rechnungen ohne Denkgehalt.</li>
+      </ul>
+    </div>
+    <div class="bad">
+      <h5>So benutzt, schadet es dir</h5>
+      <ul>
+        <li>Aufgabe abfotografieren, Lösung abschreiben. Der direkteste Fall und der unstrittigste.</li>
+        <li>Fragen, bevor die zwanzig Minuten wirklich um sind.</li>
+        <li>Nach dem Fragen nicht zumachen und neu rechnen — zwischen «verstanden» und «kann ich» liegt ein ganzer Fluss.</li>
+        <li>Die <strong>ganzen Hausaufgaben</strong> machen lassen. Der Zweck der Hausaufgabe war nie das abgegebene Blatt, sondern das, was beim Schreiben in deinem Kopf passiert.</li>
+        <li>Alles Handwerkliche ans CAS abgeben — Faktorisieren, Hauptnenner, Ableiten. Wer diese Grundgriffe nicht flüssig hat, dem fehlt später bei komplexen Aufgaben der Kopf für alles andere.</li>
+        <li>Jedem Schritt glauben, ohne ihn selbst nachzuvollziehen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule-box">Der letzte Punkt verdient eine eigene Zeile: <strong>KI sagt Falsches im Tonfall größter Sicherheit, in Mathematik ganz besonders.</strong> Wenn sie sich verrechnet, sieht das exakt so aus wie richtig — kein Zögern, kein Hinweis, gleich hübsch formatiert. Alles, was sie an Argumentation liefert, musst du selbst nachprüfen können.</div>
+
+  <p>Und das ist umgekehrt eine gute Nachricht: <em>«Fremde Argumentation auf Lücken prüfen» ist selbst eine erstklassige mathematische Fähigkeit</em>, und sie war früher schwer zu üben — wo hätte man denn stapelweise fehlerhafte Beweise herbekommen sollen? Jetzt gibt es sie. Behandle KI als einen Mitschüler mit enormem Wissen, der gelegentlich selbstbewusst Unsinn erzählt; deine Aufgabe ist, ihn zu verstehen <em>und</em> seine Fehler zu erwischen. So benutzt, ist sie der beste Trainingspartner, den du haben kannst.</p>
+
+  <div class="rule-box">In einem Satz: <strong>Lass Werkzeuge dich weiter denken, nicht statt dir.</strong></div>
+</section>
+
+<div class="pagenav">
+  <a href="index.html"><span class="dir">Vorige Seite</span><span class="t">§ 1 · Die Landkarte</span></a>
+  <a class="next" href="strang-0-sprache.html"><span class="dir">Nächste Seite</span><span class="t">Strang 0 · Sprache und Beweis</span></a>
+</div>
+
+</main>
+</body>
+</html>

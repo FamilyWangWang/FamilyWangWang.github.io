@@ -1,0 +1,23 @@
+{
+  "project": "mathSystem",
+  "format": "A2 landscape",
+  "poster_source_sha256": "c07a4effa276b98147f99eb7b56e32f00ad7875e71fc42248723548ab5d47744",
+  "source_content_sha256": "17a9c4f56f226b6492d58a11acb4e7afb408087acaa692e878f2146c020dfabb",
+  "generated_at": "2026-08-16T22:35:33+02:00",
+  "files": [
+    {
+      "file": "math-atlas-a2-zh.pdf",
+      "language": "zh-Hans",
+      "pages": 1,
+      "width_points": 1685.0399,
+      "height_points": 1191.12
+    },
+    {
+      "file": "math-atlas-a2-de.pdf",
+      "language": "de",
+      "pages": 1,
+      "width_points": 1685.0399,
+      "height_points": 1191.12
+    }
+  ]
+}

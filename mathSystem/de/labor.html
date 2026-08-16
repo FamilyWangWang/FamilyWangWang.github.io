@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Labor · Atlas der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/labor.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Labor · Atlas der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/labor.html">
+</head>
+<body>
+<header class="masthead">
+  <div class="page-frame">
+    <p class="eyebrow">Labor · Anhang</p>
+    <h1>Labor</h1>
+    <p class="sub">Die Bilder im Haupttext stehen still — ein Bild kann immer nur einen Augenblick zeigen. Die sieben Bilder auf dieser Seite leben: Zieh am Regler, und sie machen es dir vor. Die paar Dinge, die sich in Mathematik am schlechtesten in Worte fassen lassen, sind genau die, die man erst versteht, wenn sie sich bewegen.</p>
+    <div class="meta">
+      <span>Sieben kleine Experimente</span>
+      <span>Regler ziehen · sofort neu gezeichnet</span>
+      <span>Ohne Netz · nichts wird hochgeladen</span>
+    </div>
+  </div>
+</header>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html" aria-current="page">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../lab.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section id="how">
+  <h2 class="sec"><span class="num">§ Labor</span>Wozu diese Seite gut ist</h2>
+  <p class="sec-lead">Wenn ein Buch die Ableitung erklärt, kann es immer nur drei Bilder zeichnen: eine Sekante, eine nähere Sekante, die Tangente. Den stetigen Übergang dazwischen muss sich die Leserin selbst im Kopf ergänzen. Diese Seite lässt ihn wirklich ablaufen.</p>
+
+  <p>Für keines der sieben Experimente musst du programmieren können, und ans Netz muss auch nichts. Unter jedem steht ein Abschnitt <strong>«Was du beobachten sollst»</strong> — <em>darauf</em> kommt es an. Die Regler sind nur das Mittel; worum es wirklich geht, ist die Frage: <em>Wenn sich eine Größe ändert, wie ändert sich die andere mit?</em></p>
+
+  <p>Ein Vorschlag zum Gebrauch: <strong>Arbeite die Seite nicht der Reihe nach durch.</strong> Komm zurück, wenn du gerade an einem Strang lernst, und spiel die ein oder zwei passenden Experimente. Nummer 04, die Sekante, die in die Tangente kippt, ist zehn Minuten wert, <em>bevor</em> die Ableitung in der Schule drankommt — erst die Anschauung, dann die Formel, die sie erklärt. Andersherum ist es viel mühsamer.</p>
+
+  <div class="nojs"><b>Diese Seite braucht JavaScript.</b> Wenn du diese Zeile siehst, läuft das Skript nicht: entweder ist JavaScript im Browser abgeschaltet, oder die Datei liegt nicht neben <code>assets/lab.js</code>. Alle anderen Seiten sind rein statisch und davon nicht betroffen.</div>
+</section>
+
+<hr>
+
+<div class="lab" data-widget="line">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 01</span>
+    <h3>Was Steigung wirklich bedeutet</h3>
+    <span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span>
+  </div>
+  <p class="lab-note"><b>Was du beobachten sollst:</b> Zieh m langsam von 0,5 auf 3. Die grün gestrichelte Treppe macht immer denselben Schritt nach rechts — genau eine Einheit — aber die senkrechte Stufe wird immer höher. <b>Steigung ist kein Gefühl dafür, «wie schräg die Gerade aussieht». Sie ist eine exakte Zahl: einen Schritt nach rechts, wie viele nach oben.</b> Zieh m ins Negative, und die Treppe läuft sofort abwärts.<br>Bewege danach nur b: Die ganze Gerade verschiebt sich, ihre Richtung ändert sich kein bisschen — das ist der Satz «der Achsenabschnitt hat nichts mit der Steigung zu tun» als Bild.<br>Achte zuletzt auf die Nullstelle. Sobald m = 0 wird, liegt die Gerade waagerecht und die Nullstelle verschwindet: Eine waagerechte Gerade trifft die x-Achse entweder gar nicht oder gleich überall.</p>
+</div>
+
+<div class="lab" data-widget="parabola">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 02</span>
+    <h3>Die drei Griffe an der Parabel</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span>
+  </div>
+  <p class="lab-note"><b>Was du beobachten sollst:</b> a steuert die Öffnung — positiv nach oben, negativ nach unten, größerer Betrag heißt schmaler. d verschiebt nach rechts, e nach oben. Die drei Griffe stören einander nicht; genau das ist die «Familienregel des Verschiebens und Streckens».<br>Der Kern steht in den beiden Zeilen der Anzeige: <b>Scheitelform und Normalform sind immer dieselbe Kurve, nur anders aufgeschrieben.</b> An der Scheitelform liest man den Scheitel sofort bei (d, e) ab, an der Normalform überhaupt nicht. <em>Die gesamte quadratische Ergänzung hat genau einen Zweck: die zweite Zeile zurück in die erste zu verwandeln.</em><br>Und ein schönes Detail: Ausgerechnet ergibt die Diskriminante genau <span class="m">−4ae</span>. Ob es Nullstellen gibt, hängt also allein davon ab, ob a und e verschiedene Vorzeichen haben — auf welcher Seite der x-Achse der Scheitel sitzt und wohin die Parabel geöffnet ist. Mit d hat das nichts zu tun: Zieh d quer über den Bildschirm, die <em>Anzahl</em> der Nullstellen ändert sich nie.</p>
+</div>
+
+<div class="lab" data-widget="circle">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 03</span>
+    <h3>Wie aus dem Einheitskreis eine Sinuskurve wird</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span>
+  </div>
+  <p class="lab-note"><b>Was du beobachten sollst:</b> Zieh θ über 90°, 180° und 270° und achte auf drei Dinge — wann die blaue Strecke (cos) negativ wird, wann die grüne Strecke (sin) negativ wird, und wann die Kurve rechts durch null läuft.<br><b>Sinus und Kosinus sind keine zwei rätselhaften Zahlen aus einer Tabelle. Sie sind die Höhe und die Seitwärtslage eines Punktes auf dem Kreis.</b> Die Wellenlinie rechts entsteht, indem man diese Höhe über dem gedrehten Winkel aufträgt — <em>die Sinuskurve ist ein abgerollter Kreis</em>. Wer diesen einen Satz verstanden hat, für den wird Trigonometrie vom Formelhaufen zu einer sichtbaren Sache.<br>Zieh zum Schluss θ in die Nähe von 90° und schau auf tan: Sobald cos null wird, explodiert der Tangens. Nichts Geheimnisvolles daran — tan = sin/cos, und der Nenner ist weg.</p>
+</div>
+
+<div class="lab" data-widget="tangent">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 04</span>
+    <h3>Wie die Sekante in die Tangente kippt</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg · Schwelle zur Analysis</span>
+  </div>
+  <p class="lab-note"><b>Was du beobachten sollst:</b> Das ist das Experiment, das man in diesem ganzen Atlas am ehesten einmal selbst durchziehen sollte — am besten zehn Minuten lang, <em>bevor</em> die Ableitung in der Schule drankommt.<br>Bei h = 2 ist die rote Gerade deutlich eine <em>Sekante</em> durch zwei Punkte. Zieh h bis auf 0,001 herunter: Die rote Gerade liegt fast genau auf der grün gestrichelten, und die Zahl beim Differenzenquotienten rastet Stelle für Stelle auf der Ableitung ein. <b>Die Ableitung ist keine neue Formel, die vom Himmel fällt. Sie ist das, was von der «mittleren Änderungsrate zwischen zwei Punkten» übrig bleibt, wenn die beiden Punkte zusammenrücken.</b><br>Besonders wichtig: <b>h wird nie null.</b> Der Regler geht nur bis 0,001, denn bei h = 0 wäre der Nenner weg und der ganze Ausdruck sinnlos. Genau davon handelt der Grenzwert — <em>er fragt nicht «was ist bei h = 0», sondern «worauf läuft die Zahl zu, wenn h immer kleiner wird»</em>. Dieser Unterschied ist der Ausgangspunkt für die gesamte Strenge der Analysis.<br>Wechsle danach die Funktion: x³/8 hat bei x₀ = 0 die Ableitung null, ist dort aber weder Hoch- noch Tiefpunkt — eine berühmte Stolperfalle, die in Strang 4 eigens behandelt wird.</p>
+</div>
+
+<div class="lab" data-widget="riemann">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 05</span>
+    <h3>Wie Rechtecke die Fläche unter einer Kurve auffüllen</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span>
+  </div>
+  <p class="lab-note"><b>Was du beobachten sollst:</b> Bei n = 1 ist der Fehler lachhaft groß, bei n = 6 sieht es schon vernünftig aus, bei n = 40 bleiben meist ein paar Tausendstel übrig. <b>«Unendlich viele unendlich schmale Rechtecke» klingt mysteriös, ist aber genau das: diesen Regler immer weiter nach rechts ziehen.</b><br>Schalte zwischen linkem und rechtem Rand um: Bei einer steigenden Funktion ist der linke Rand immer zu klein und der rechte immer zu groß — <em>der wahre Wert sitzt sauber dazwischen eingeklemmt</em>. Das ist kein Zufall, das ist die Definition des Riemann-Integrals: Unter- und Obersumme nähern sich von beiden Seiten, und die Zahl, bei der sie sich treffen, heißt Integral.<br>Schalte dann auf «Mitte»: Bei gleichem n ist die Genauigkeit gleich um eine Größenordnung besser. Der Grund ist schlicht — in jedem Streifen heben sich Zuviel und Zuwenig gegenseitig auf. <em>Deshalb ist die Mittelpunktsregel in der Numerik so viel wert.</em></p>
+</div>
+
+<div class="lab" data-widget="binomial">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 06</span>
+    <h3>Wie aus der Binomialverteilung eine Glocke wird</h3>
+    <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span>
+  </div>
+  <p class="lab-note"><b>Was du beobachten sollst:</b> Setz zuerst p = 0,5 und zieh n von 1 auf 50. Sieh zu, wie aus zwei Stäben eine Glocke wird. Die grün gestrichelte Linie ist die Normalverteilung: Bei kleinem n passt sie überhaupt nicht auf die Stäbe, bei großem n liegt sie satt darauf. <b>Das ist der erste Auftritt des zentralen Grenzwertsatzes — er sagt: Wird genug zusammengezählt, hat man über die Form nichts mehr zu bestimmen.</b><br>Zieh dann p auf 0,1: Bei kleinem n ist die Verteilung deutlich schief, alle Stäbe drängen sich links. Aber mit wachsendem n wird sie <em>wieder symmetrisch</em>. Die Glocke braucht also gar keine symmetrische Zutat.<br>Achte zum Schluss auf das Feld «μ ± σ deckt ab» und verstell dabei n und p: Der Wert pendelt fast immer um 68 %. <em>Die Standardabweichung ist keine willkürlich gewählte Größe — sie ist das natürliche Maß dafür, wie breit eine Glocke ist.</em></p>
+</div>
+
+<div class="lab" data-widget="monte">
+  <div class="lab-head">
+    <span class="lab-no">Experiment 07</span>
+    <h3>π mit Zufallspunkten auszählen</h3>
+    <span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden zum Spielen · Hangweg zum Verstehen</span>
+  </div>
+  <p class="lab-note"><b>So geht's:</b> Streu zufällige Punkte ins Quadrat. Der Kreis hat den Flächeninhalt <span class="m">πr²</span>, das Quadrat <span class="m">4r²</span>; der Anteil im Kreis sollte also <span class="m">π/4</span> sein. Diesen Anteil mal vier — fertig ist eine Schätzung für π.<br><b>Was du beobachten sollst:</b> Drück mehrmals auf «1000 Punkte» und verfolge die Schätzkurve rechts, wie sie heftig zappelt und sich dann langsam an die grüne Linie heranarbeitet. Zwei Dinge lohnen die Aufmerksamkeit: <b>Erstens fällt der Fehler nicht gleichmäßig</b>, er springt hin und her, nur mit immer kleinerem Ausschlag. <b>Zweitens braucht man für eine weitere sichere Stelle ungefähr hundertmal so viele Punkte.</b><br>Das ist das Temperament des Gesetzes der großen Zahlen — <em>es garantiert, dass du ankommst, aber nie, dass es schnell geht.</em> Nebenbei erklärt das auch, warum niemand π wirklich so berechnet: Es ist absurd langsam. Wertvoll ist das Verfahren woanders — wenn ein Integral so viele Dimensionen hat, dass keine Rechtecke mehr hineinpassen, ist zufälliges Streuen der einzige Griff, der noch funktioniert. Die Monte-Carlo-Methoden in Finanzmathematik und Physik sind die erwachsene Fassung dieses Spielzeugs.</p>
+</div>
+
+<hr>
+
+<section id="ending">
+  <h2 class="sec"><span class="num">Schluss</span>Worum es bei allen sieben Experimenten geht</h2>
+  <p class="sec-lead">Die Begriffe, die sich in Mathematik am schwersten erklären lassen, handeln fast alle von Veränderung: Grenzwert, Ableitung, Konvergenz, Näherung. Schwer erklärbar sind sie nicht, weil sie tief wären, sondern weil Papier stillsteht.</p>
+
+  <p>Wenn du auf die sieben Experimente zurückblickst, fällt auf, wie ähnlich sie gebaut sind: <strong>Immer wird eine Größe immer weiter getrieben, und man schaut, wo sich eine andere einpendelt.</strong> h wird immer kleiner, der Differenzenquotient pendelt sich auf der Ableitung ein. n wird immer größer, die Rechtecksumme pendelt sich auf dem Integral ein. n wird immer größer, die Binomialverteilung pendelt sich auf der Glocke ein. Immer mehr Punkte, und der Anteil pendelt sich auf π/4 ein.</p>
+
+  <p>Diese Bewegung — «immer weiter treiben und schauen, wo es sich einpendelt» — hat einen Namen: <strong>Grenzwert</strong>. Sie ist die einzige Kernbewegung der Analysis und zugleich das wichtigste neue Werkzeug, das die Mathematik seit dem 17. Jahrhundert bekommen hat. In der Schule wird sie nicht mit der strengen ε-δ-Sprache eingeführt, aber auf dieser Seite hast du sie schon viermal in der Hand gehabt.</p>
+
+  <p>Der eigentliche Gewinn ist deshalb nicht «ich kann jetzt Regler ziehen», sondern: <em>Wenn dir das nächste Mal im Buch ein fremder Grenzwertausdruck begegnet, weißt du, welche Bewegung er beschreibt.</em></p>
+
+  <div class="pagenav">
+    <a href="pruefungsperspektive.html"><span class="dir">vorige Seite</span><span class="t">Anhang · Prüfungsperspektive</span></a>
+    <a class="next" href="fortschritt.html"><span class="dir">nächste Seite</span><span class="t">Anhang · Fortschritt</span></a>
+  </div>
+</section>
+</main>
+<script src="../assets/lab.js"></script>
+</body>
+</html>

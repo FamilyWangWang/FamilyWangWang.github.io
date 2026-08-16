@@ -1,0 +1,855 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线二 · 代数与结构 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-2-algebra.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线二 · 代数与结构 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-2-algebra.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html" aria-current="page">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-2-algebra.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线二</h1>
+
+<section id="s2">
+  <h2 class="sec"><span class="num">主线 二</span>代数与结构</h2>
+  <p class="sec-lead">代数一开始只是一门手艺：<strong>怎么把 x 解出来。</strong>可是走着走着，数学家发现真正要紧的不是 x 等于几，而是<strong>那些运算规律本身</strong>。于是代数从「解方程的技术」变成了「研究结构的学问」——这条主线讲的就是这次身份转变。</p>
+
+  <p>转变的关键时刻，发生在一个很具体的问题上：<strong>五次方程有没有求根公式？</strong></p>
+
+  <p>一次方程移项就解决。二次方程有求根公式，巴比伦人四千年前就会了。三次和四次方程的公式，十六世纪的意大利人吵得头破血流才算出来（顺带逼出了复数，见主线一 1.9）。照这个势头，五次方程的公式应该也只是更长更难看而已。</p>
+
+  <p>结果是：<strong>它不存在。</strong>不是没人聪明到找出来，是有人证明了它<em>不可能</em>存在。</p>
+
+  <figure>
+    <svg viewBox="0 0 700 290" role="img" aria-label="方程求解难度的四级阶梯：一次方程移项即可，二次方程有求根公式，三四次方程公式极复杂，五次及以上被证明不存在求根公式。">
+      <defs>
+        <marker id="b0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="30" y="210" width="150" height="50" rx="4" class="f1"/>
+      <text x="105" y="232" text-anchor="middle" class="svg-t tx1">一次方程</text>
+      <text x="105" y="250" text-anchor="middle" class="svg-ts tx1">移项就完了</text>
+
+      <rect x="196" y="158" width="150" height="102" rx="4" class="f1"/>
+      <text x="271" y="180" text-anchor="middle" class="svg-t tx1">二次方程</text>
+      <text x="271" y="198" text-anchor="middle" class="svg-ts tx1">配方法 → 求根公式</text>
+      <text x="271" y="216" text-anchor="middle" class="svg-ts tx1">巴比伦人已经会</text>
+      <text x="271" y="240" text-anchor="middle" class="svg-ts tx1">约公元前 2000 年</text>
+
+      <rect x="362" y="106" width="150" height="154" rx="4" class="f2"/>
+      <text x="437" y="128" text-anchor="middle" class="svg-t tx2">三次 · 四次方程</text>
+      <text x="437" y="146" text-anchor="middle" class="svg-ts tx2">公式存在，但极复杂</text>
+      <text x="437" y="164" text-anchor="middle" class="svg-ts tx2">算的路上被迫路过虚数</text>
+      <text x="437" y="188" text-anchor="middle" class="svg-ts tx2">十六世纪 意大利</text>
+
+      <rect x="528" y="30" width="142" height="230" rx="4" class="fm"/>
+      <text x="599" y="54" text-anchor="middle" class="svg-t txm">五次及以上</text>
+      <text x="599" y="74" text-anchor="middle" class="svg-ts txm">求根公式</text>
+      <text x="599" y="92" text-anchor="middle" class="svg-t txm">不存在</text>
+      <text x="599" y="118" text-anchor="middle" class="svg-ts txm">不是找不到</text>
+      <text x="599" y="136" text-anchor="middle" class="svg-ts txm">是被证明了不可能</text>
+      <text x="599" y="162" text-anchor="middle" class="svg-ts txm">阿贝尔 1824</text>
+      <text x="599" y="180" text-anchor="middle" class="svg-ts txm">伽罗瓦 1832</text>
+
+      <path d="M 186 235 L 192 235" class="svg-l" marker-end="url(#b0)"/>
+      <path d="M 352 209 L 358 209" class="svg-l" marker-end="url(#b0)"/>
+      <path d="M 518 183 L 524 183" class="svg-l" marker-end="url(#b0)"/>
+
+      <text x="350" y="284" text-anchor="middle" class="svg-tm">越往右越难，直到某一格不是「更难」，而是「根本没有」</text>
+    </svg>
+    <figcaption><b>这堵墙是整条主线的转折点。</b>为了搞清楚「为什么不可能」，伽罗瓦不得不去研究方程的根之间的<b>对称性</b>——研究的对象从「数」变成了「结构」。代数从此成了另一门学问。这跟主线零里哥德尔证明「有些真话证不出来」是同一种深刻：<b>数学里最了不起的结论，常常是证明某件事做不到。</b></figcaption>
+  </figure>
+
+  <p>下面九张卡片，前六张是解方程的手艺（他现在和往后几年要天天用的），后三张开始往结构上走。</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>字母代替数 · 代数的第一步</h3>
+      <p class="de">Variable · Term</p>
+    </div>
+    <div class="body">
+      <p class="lead">用一个字母代表一个数——可能是还不知道的，也可能是会变的。就这一下，数学从「算一道题」变成了「算一类题」。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>在字母进入数学之前，每一道题都得从头讲一遍。「有一堆苹果，拿走三个还剩五个，原来有几个」——想说清楚一般规律，只能一个例子一个例子地举。</p>
+        <p>有了字母，<span class="m">(a+b)² = a² + 2ab + b²</span> 这一行字，一口气说完了<em>无穷多个</em>算式。这是数学史上最划算的一笔买卖。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个几乎没人明说的区分：字母有三种用法</span>
+        <p>同样是字母，在三种场合里含义完全不同。分不清这三种，做题时会经常觉得「这个 x 好像跟刚才那个 x 不是一回事」——因为它确实不是。</p>
+        <div class="demo">
+          <p><strong>一、未知数</strong>　<span class="m">x² = 4</span> 里的 x。它有确定的值，只是我们还不知道，解出来就固定了。<em>它在等着被抓住。</em></p>
+          <p><strong>二、变量</strong>　<span class="m">f(x) = x²</span> 里的 x。它不等着被抓住，它<em>跑遍所有值</em>，每取一个值就给出一个结果。这是主线四的主角。</p>
+          <p><strong>三、参数</strong>　<span class="m">ax² + bx + c = 0</span> 里的 a、b、c。它们在一道具体的题里是固定的，但写成字母是为了表示「随便哪一组系数都行」。<em>它们代表「任意一个」。</em></p>
+        </div>
+        <p>求根公式之所以厉害，正是因为它同时用到了三种：<em>用参数（a,b,c）表达的、关于未知数（x）的、对所有情况都成立的答案。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>四则运算与逆运算（主线一 1.3）· 记号的发明（主线零 0.8）</div>
+          <div><span class="lbl">下游</span>整条主线 · 函数（主线四）· 公式与建模（主线七）· 一切用符号表达一般规律的地方</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>什么叫「同类项」？</strong><span class="m">3a</span> 和 <span class="m">5a</span> 能合并成 <span class="m">8a</span>，但 <span class="m">3a</span> 和 <span class="m">5a²</span> 不能。理由很朴素：<span class="m">a</span> 和 <span class="m">a²</span> 是两种不同的东西，就像 3 个苹果加 5 个橘子，合不成 8 个什么。</p>
+          <p>判断标准是：<em>字母部分完全一样</em>（同样的字母、同样的次数），才是同类项。<span class="m">2xy</span> 和 <span class="m">5yx</span> 是同类项（乘法可交换），<span class="m">2xy</span> 和 <span class="m">5x²y</span> 不是。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Variable</b> 变量</span>
+          <span><b>Unbekannte</b> 未知数</span>
+          <span><b>Term</b> 代数式</span>
+          <span><b>Koeffizient</b> 系数</span>
+          <span><b>gleichartige Glieder</b> 同类项</span>
+          <span><b>Platzhalter</b> 占位符</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">注意 <span class="m-up m">Term</span>（代数式，如 <span class="m">3x+2</span>）和 <span class="m-up m">Gleichung</span>（方程，如 <span class="m">3x+2=0</span>）的区别：Term 只是一个式子，没有真假；Gleichung 是一个断言，有真假（回到主线零 0.2）。德语课本对这两个词分得很清楚，中文常常都叫「式子」，反而含糊。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>式子的变形 · 分配律是唯一的引擎</h3>
+      <p class="de">Termumformung · binomische Formeln</p>
+    </div>
+    <div class="body">
+      <p class="lead">展开、合并、提公因式——代数课上那些手上功夫，翻来覆去只用到一条规律：<span class="m">a(b+c) = ab + ac</span>。</p>
+
+      <div class="field">
+        <span class="lbl">一条规律，两个方向</span>
+        <p>分配律从左往右读，是<strong>展开</strong>（ausmultiplizieren）：把括号拆开。从右往左读，是<strong>提公因式</strong>（ausklammern）：把括号提出来。</p>
+        <p>这两件事看着相反，其实是同一条规律的两次使用。而整个代数运算的技巧，说到底就是<em>判断此刻该往哪个方向走</em>——要算数值就展开，要解方程就提公因式（见 2.6）。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">三条二项公式</span>
+        <p>下面三条在德国课本里叫 <span class="m-up m">binomische Formeln</span>，编号是 1、2、3，会被反复点名。它们不是新规律，全都是分配律算两遍的结果——但因为用得太频繁，值得直接认脸：</p>
+        <div class="demo">
+          <p class="calc">① &nbsp;(a + b)² = a² + 2ab + b²<br>② &nbsp;(a − b)² = a² − 2ab + b²<br>③ &nbsp;(a + b)(a − b) = a² − b²</p>
+          <p>第三条尤其好用，因为它把「平方差」变成了乘积——这正是因式分解要的方向。</p>
+        </div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 330" role="img" aria-label="边长为 a 加 b 的正方形被分成四块：左上角是 a 的平方，右上和左下是两个 a 乘 b 的长方形，右下是 b 的平方。">
+          <rect x="230" y="40" width="150" height="150" class="f1"/>
+          <text x="305" y="120" text-anchor="middle" class="svg-t tx1">a²</text>
+
+          <rect x="380" y="40" width="90" height="150" class="f2"/>
+          <text x="425" y="120" text-anchor="middle" class="svg-t tx2">ab</text>
+
+          <rect x="230" y="190" width="150" height="90" class="f2"/>
+          <text x="305" y="240" text-anchor="middle" class="svg-t tx2">ab</text>
+
+          <rect x="380" y="190" width="90" height="90" class="fm"/>
+          <text x="425" y="240" text-anchor="middle" class="svg-t txm">b²</text>
+
+          <line x1="230" y1="24" x2="380" y2="24" class="svg-l"/>
+          <text x="305" y="18" text-anchor="middle" class="svg-tm">a</text>
+          <line x1="380" y1="24" x2="470" y2="24" class="svg-l"/>
+          <text x="425" y="18" text-anchor="middle" class="svg-tm">b</text>
+
+          <line x1="214" y1="40" x2="214" y2="190" class="svg-l"/>
+          <text x="206" y="118" text-anchor="end" class="svg-tm">a</text>
+          <line x1="214" y1="190" x2="214" y2="280" class="svg-l"/>
+          <text x="206" y="238" text-anchor="end" class="svg-tm">b</text>
+
+          <text x="350" y="308" text-anchor="middle" class="svg-t">整块的面积 = (a + b)²　　四小块之和 = a² + 2ab + b²</text>
+        </svg>
+        <figcaption><b>这不是记忆技巧，这就是证明。</b>同一块面积用两种方法算，结果必然相等——这正是工具箱里的招数八「数两次」。中间那两块 <span class="svg-tm">ab</span> 是<b>两块</b>，这就是 <span class="svg-tm">2ab</span> 那个 2 的来历。谁把 <span class="svg-tm">(a+b)²</span> 写成 <span class="svg-tm">a²+b²</span>，等于是把这张图里的两个长方形整个丢掉了。</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>字母代数（2.1）· 分配律（主线一 1.3）· 面积（主线三）</div>
+          <div><span class="lbl">下游</span>因式分解（2.6）· 配方法与求根公式（2.5）· 多项式乘法 · 二项式定理与帕斯卡三角（主线五、主线六）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">全世界最普遍的代数错误</span>
+          <p><span class="m">(a + b)² ≠ a² + b²</span></p>
+          <p>这个错误每年在每个国家的每间教室里都会发生，值得专门点名。同一族的还有：<span class="m">√(a+b) ≠ √a + √b</span>，<span class="m">1/(a+b) ≠ 1/a + 1/b</span>，<span class="m">log(a+b) ≠ log a + log b</span>（主线一 1.8 提过）。</p>
+          <p>它们的共同点是：<strong>把一个「对乘法友好」的运算，硬套在加法上。</strong>平方、开方、取倒数、取对数，全都能顺畅地穿过乘法，但穿不过加法。记住这一条，四个坑一起躲开。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Termumformung</b> 式子变形</span>
+          <span><b>ausmultiplizieren</b> 展开</span>
+          <span><b>ausklammern</b> 提公因式</span>
+          <span><b>zusammenfassen</b> 合并</span>
+          <span><b>binomische Formeln</b> 二项公式</span>
+          <span><b>Distributivgesetz</b> 分配律</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>方程 · 天平比喻，以及它的极限</h3>
+      <p class="de">Gleichung · Äquivalenzumformung</p>
+    </div>
+    <div class="body">
+      <p class="lead">方程是一句断言：<em>这两个式子相等。</em>解方程，就是在保持这句话真假不变的前提下，一步步把它改写成「x = 某个数」。</p>
+
+      <div class="field">
+        <span class="lbl">天平比喻，以及它管到哪儿为止</span>
+        <p>老师都会讲天平：两边同时加同样的重量，天平还是平的；两边同时减，还是平的。这个比喻很好，但它只管住了加减。</p>
+        <p>真正的规则是：<strong>只有「可逆」的操作才安全。</strong>一步变形如果能原样撤销，它就不会改变解集；如果撤不回来，就可能出事。这正是主线零 0.4 讲的 <span class="m">⟺</span> 和 <span class="m">⟹</span> 的区别，现在它有了非常实际的后果。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">哪些变形安全，哪些不安全</span>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:42%">这一步操作</th><th style="width:16%">箭头</th><th style="width:42%">会出什么事</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>两边加或减同一个数</td><td class="cheap"><b>⟺</b></td><td class="cheap">完全安全，解集不变</td></tr>
+            <tr><td>两边乘或除同一个<em>非零</em>数</td><td class="cheap"><b>⟺</b></td><td class="cheap">安全。注意「非零」两个字</td></tr>
+            <tr><td>两边除以一个<em>含 x</em> 的式子</td><td class="dear"><b>⟸ 危险</b></td><td class="dear">可能<b>丢根</b>——那个式子等于 0 的情况被你偷偷排除了</td></tr>
+            <tr><td>两边同时平方</td><td class="dear"><b>⟹ 危险</b></td><td class="dear">可能<b>多出假根</b>——平方把负号吃掉了</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="demo">
+          <p><strong>丢根的例子：</strong>解 <span class="m">x² = 3x</span>。</p>
+          <p>如果两边除以 x，得 <span class="m">x = 3</span>——但 <span class="m">x = 0</span> 其实也是解！你在除的那一刻，默默假定了 <span class="m">x ≠ 0</span>。</p>
+          <p>正确做法是移项后提公因式：<span class="m">x² − 3x = 0</span>，即 <span class="m">x(x−3) = 0</span>，两个解都在。</p>
+          <p><strong>多根的例子：</strong>解 <span class="m">√(x+2) = x</span>。两边平方得 <span class="m">x+2 = x²</span>，解出 <span class="m">x = 2</span> 和 <span class="m">x = −1</span>。但 <span class="m">x = −1</span> 代回原式是 <span class="m">√1 = −1</span>，不成立。它是平方这一步凭空造出来的。</p>
+        </div>
+        <p>所以<strong>代回原方程检验（Probe）不是老师要求的仪式，是数学上真的必要的一步</strong>——只要你的解法里出现过一次单向箭头。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>蕴含与等价（主线零 0.4）· 逆运算（主线一 1.3）· 式子变形（2.2）</div>
+          <div><span class="lbl">下游</span>各种方程的解法（2.4–2.8）· 不等式 · 函数的零点（主线四）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>检验的时候，一定要代回<strong>原方程</strong>，不是代回你化简到一半的某一步。因为如果错误出在化简过程里，代回化简后的式子会「验」得非常顺利——它验的是你的错误，不是原题。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Gleichung</b> 方程</span>
+          <span><b>Äquivalenzumformung</b> 等价变形</span>
+          <span><b>Lösungsmenge</b> 解集</span>
+          <span><b>Probe</b> 检验</span>
+          <span><b>Scheinlösung</b> 假根</span>
+          <span><b>Definitionsbereich</b> 定义域</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>一次方程与不等式 · 只有一条新规则</h3>
+      <p class="de">lineare Gleichung · Ungleichung</p>
+    </div>
+    <div class="body">
+      <p class="lead">一次方程是最听话的一类：移项、合并、除掉系数，三步到底。不等式的解法几乎一模一样，只多一条规则——但那一条特别容易忘。</p>
+
+      <div class="field">
+        <span class="lbl">那条新规则</span>
+        <div class="demo">
+          <p>看这个显然成立的式子：<span class="m">2 &lt; 5</span>。</p>
+          <p>两边同乘 <span class="m">−1</span>：左边变 <span class="m">−2</span>，右边变 <span class="m">−5</span>。可是 <span class="m">−2 &gt; −5</span>——大小关系<strong>翻过来了</strong>。</p>
+          <p class="calc">乘以（或除以）负数时，不等号必须变向</p>
+          <p>为什么？因为乘 <span class="m">−1</span> 就是把整根数轴以 0 为中心翻个面。原来在左边的跑到右边去了，「谁更大」当然要跟着换。</p>
+        </div>
+        <p>这条规则不用死记：<em>只要想一下数轴翻面的画面，就永远不会忘。</em>而它也解释了为什么等式没有这个麻烦——等号两边一样大，翻不翻面都一样大。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">解集怎么写</span>
+        <p>方程的答案通常是几个数，不等式的答案通常是一整段。三种写法都要认得：</p>
+        <div class="demo">
+          <p class="calc">不等式写法：　x ≥ 2<br>集合写法：　　L = { x ∈ ℝ | x ≥ 2 }<br>区间写法：　　[2, ∞)</p>
+          <p>方括号表示端点<em>包含</em>在内，圆括号表示<em>不包含</em>。无穷那一头永远用圆括号，因为 ∞ 不是一个数，够不着（回到主线一 1.10）。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>等价变形（2.3）· 负数与数轴（主线一 1.4）· 集合写法（主线零 0.1）</div>
+          <div><span class="lbl">下游</span>一次函数与斜率（主线四）· 线性规划（主线七）· 定义域的讨论 · 绝对值不等式</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>除以一个<strong>含字母</strong>的系数时，必须分情况讨论——因为你不知道它是正是负，甚至不知道它是不是 0。解 <span class="m">ax &gt; 1</span> 时，<span class="m">a &gt; 0</span>、<span class="m">a &lt; 0</span>、<span class="m">a = 0</span> 三种情况的答案完全不同。这正是工具箱里的招数「分情况讨论」（主线零 0.6）第一次派上实际用场。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>lineare Gleichung</b> 一次方程</span>
+          <span><b>Ungleichung</b> 不等式</span>
+          <span><b>Intervall</b> 区间</span>
+          <span><b>umstellen</b> 移项</span>
+          <span><b>Fallunterscheidung</b> 分情况讨论</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>二次方程 · 求根公式其实只有一个想法</h3>
+      <p class="de">quadratische Gleichung · quadratische Ergänzung</p>
+    </div>
+    <div class="body">
+      <p class="lead">求根公式不该是背下来的一串字符。<strong>它就是「配方法」做一遍的结果</strong>——你只要懂了配方法，公式忘了都能当场推出来。</p>
+
+      <div class="field">
+        <span class="lbl">难在哪里</span>
+        <p><span class="m">x² = 9</span> 很好解，开方就行。<span class="m">(x+3)² = 9</span> 也很好解，还是开方。</p>
+        <p>难的是 <span class="m">x² + 6x = 7</span> ——因为 x 出现了<em>两次</em>，没法一口气开方拿掉。</p>
+        <p>于是有了那个唯一的想法：<strong>能不能把左边凑成一个完整的平方？</strong>凑成了，就退化成上面那种好解的情况。这个动作德语叫 <span class="m-up m">quadratische Ergänzung</span>，字面就是「二次的补全」，而中文叫「配方」——两个名字说的是同一件事，而且都很形象，因为它真的是在<em>补一块</em>。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="配方法的几何解释：x 的平方加 p 倍 x，把长方形切成两半贴到正方形的两边，缺的那个角正好是 p 除以 2 的平方。">
+          <defs>
+            <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="40" y="60" width="110" height="110" class="f1"/>
+          <text x="95" y="120" text-anchor="middle" class="svg-t tx1">x²</text>
+          <rect x="158" y="60" width="60" height="110" class="f2"/>
+          <text x="188" y="120" text-anchor="middle" class="svg-t tx2">px</text>
+          <text x="129" y="196" text-anchor="middle" class="svg-tm">x² + px</text>
+
+          <path d="M 244 115 L 296 115" class="svg-l" marker-end="url(#b1)"/>
+          <text x="270" y="104" text-anchor="middle" class="svg-tm">切一半</text>
+          <text x="270" y="136" text-anchor="middle" class="svg-tm">贴两边</text>
+
+          <rect x="330" y="60" width="110" height="110" class="f1"/>
+          <text x="385" y="120" text-anchor="middle" class="svg-t tx1">x²</text>
+          <rect x="440" y="60" width="30" height="110" class="f2"/>
+          <rect x="330" y="170" width="110" height="30" class="f2"/>
+          <rect x="440" y="170" width="30" height="30" class="fm" stroke-dasharray="4 3" stroke-width="1.5"/>
+
+          <line x1="330" y1="44" x2="440" y2="44" class="svg-l"/>
+          <text x="385" y="38" text-anchor="middle" class="svg-tm">x</text>
+          <line x1="440" y1="44" x2="470" y2="44" class="svg-l"/>
+          <text x="455" y="38" text-anchor="middle" class="svg-tm">p/2</text>
+
+          <text x="400" y="226" text-anchor="middle" class="svg-tm">大正方形边长 x + p/2</text>
+          <text x="522" y="190" class="svg-tm txm">缺的这一角</text>
+          <text x="522" y="208" class="svg-tm txm">正好是 (p/2)²</text>
+
+          <text x="350" y="262" text-anchor="middle" class="svg-t">x² + px = (x + p/2)² − (p/2)²</text>
+        </svg>
+        <figcaption><b>「配方」和「完成平方」这两个名字，说的就是图上那个缺角。</b>把 <span class="svg-tm">px</span> 这个长方形切成两条，贴在正方形的右边和下边，就差右下角一小块补不齐——那一小块的面积正好是 <span class="svg-tm">(p/2)²</span>。补上它凑成完整正方形，再把多补的减掉，等式就成立了。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">把公式推一遍</span>
+        <div class="proof">
+          <span class="lbl">从 x² + px + q = 0 推出求根公式</span>
+          <p>移项：<span class="m">x² + px = −q</span></p>
+          <p>两边补上 <span class="m">(p/2)²</span>，让左边凑成完整平方：</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">x² + px + (p/2)² = (p/2)² − q</p>
+          <p>左边正是 <span class="m">(x + p/2)²</span>：</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">(x + p/2)² = (p/2)² − q</p>
+          <p>现在 x 只出现一次了，可以开方（注意正负两个根）：</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">x + p/2 = ± √( (p/2)² − q )</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">x = − p/2 ± √( (p/2)² − q )</p>
+          <p>这就是求根公式。∎</p>
+        </div>
+        <p>如果方程写成 <span class="m">ax² + bx + c = 0</span> 的形式，同一套推导会给出另一个常见写法 <span class="m">x = (−b ± √(b²−4ac)) / 2a</span>。两个公式是同一件事——把第二个除以 a 化成首项系数为 1，就回到第一个。<strong>课本用哪一种都行，重要的是你知道它们从哪来。</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">根号里那一块决定一切</span>
+        <p>公式里根号下面的东西叫<strong>判别式</strong>（Diskriminante），记作 <span class="m">D</span>。它一个人决定了方程有几个解，而且这件事有非常直观的几何含义——就是抛物线和 x 轴的位置关系：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 230" role="img" aria-label="判别式的三种情况：大于零时抛物线与 x 轴交于两点，等于零时相切于一点，小于零时不相交。">
+          <line x1="40" y1="140" x2="210" y2="140" class="svg-l-soft"/>
+          <path d="M 55 55 Q 125 290 195 55" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="76" cy="140" r="4" class="f1" stroke-width="2"/>
+          <circle cx="174" cy="140" r="4" class="f1" stroke-width="2"/>
+          <text x="125" y="186" text-anchor="middle" class="svg-t tx1">D &gt; 0</text>
+          <text x="125" y="206" text-anchor="middle" class="svg-ts tx1">穿过两次 · 两个解</text>
+
+          <line x1="265" y1="140" x2="435" y2="140" class="svg-l-soft"/>
+          <path d="M 280 55 Q 350 225 420 55" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <circle cx="350" cy="140" r="4" class="f2" stroke-width="2"/>
+          <text x="350" y="186" text-anchor="middle" class="svg-t tx2">D = 0</text>
+          <text x="350" y="206" text-anchor="middle" class="svg-ts tx2">正好碰到 · 一个解</text>
+
+          <line x1="490" y1="140" x2="660" y2="140" class="svg-l-soft"/>
+          <path d="M 505 45 Q 575 165 645 45" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <text x="575" y="186" text-anchor="middle" class="svg-t txm">D &lt; 0</text>
+          <text x="575" y="206" text-anchor="middle" class="svg-ts txm">够不着 · 没有实数解</text>
+        </svg>
+        <figcaption><b>判别式不是一个要背的规则，它就是「抛物线够不够得着 x 轴」。</b>第三种情况在实数里无解，但在复数里有两个解（主线一 1.9）——抛物线没碰到实轴，不代表方程没根，只代表根跑到复平面上去了。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">附赠：系数和根的秘密关系</span>
+        <div class="demo">
+          <p>把两个根加起来、乘起来，会发现它们直接就是系数：</p>
+          <p class="calc">x₁ + x₂ = −p　　　x₁ · x₂ = q</p>
+          <p>这叫<strong>韦达定理</strong>。它的实用价值是心算凑根：解 <span class="m">x² − 7x + 12 = 0</span>，只要想「哪两个数加起来是 7、乘起来是 12」——3 和 4，一秒出答案，不用套公式。</p>
+          <p>它的理论价值更大：<em>它第一次揭示了「方程的系数」和「方程的根」之间有确定的对应关系。</em>顺着这条线索一路追问下去，最后追到的就是伽罗瓦理论——也就是这条主线的山顶。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>二项公式（2.2）· 开方（主线一 1.7）· 等价变形（2.3）</div>
+          <div><span class="lbl">下游</span>抛物线与顶点式（主线四）· 极值问题（主线四）· 因式分解（2.6）· 复数（主线一 1.9）· 伽罗瓦理论（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>用求根公式前，必须先把方程<strong>整理成标准形式</strong>（右边等于 0，且按次数排好）。<span class="m">x² + 3x = 10</span> 不能直接读出 <span class="m">q = 10</span>，要先移项成 <span class="m">x² + 3x − 10 = 0</span>，此时 <span class="m">q = −10</span>。这一步漏掉，后面全错。</p>
+          <p>还有：开方那一步<strong>必须带 ±</strong>。丢掉负根是二次方程题最高频的失分点。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>quadratische Gleichung</b> 二次方程</span>
+          <span><b>quadratische Ergänzung</b> 配方法</span>
+          <span><b>Diskriminante</b> 判别式</span>
+          <span><b>Normalform</b> 标准形式</span>
+          <span><b>Scheitelpunktform</b> 顶点式</span>
+          <span><b>Satz von Vieta</b> 韦达定理</span>
+          <span><b>Lösungsformel</b> 求根公式</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>因式分解 · 把加法变成乘法</h3>
+      <p class="de">Faktorisieren · Nullproduktsatz</p>
+    </div>
+    <div class="body">
+      <p class="lead">因式分解的全部意义，在于一条几乎显然的性质：<strong>几个数相乘等于 0，那其中必有一个是 0。</strong>这是解高次方程唯一的通用武器。</p>
+
+      <div class="field">
+        <span class="lbl">为什么非要变成乘积</span>
+        <p>面对 <span class="m">x³ − 6x² + 11x − 6 = 0</span>，一堆加加减减，完全无从下手——因为「几个东西加起来等于 0」什么信息也给不了你，可能性无穷多。</p>
+        <p>但如果能写成 <span class="m">(x−1)(x−2)(x−3) = 0</span>，答案立刻全出来了：三个因子里必有一个是 0，所以 <span class="m">x = 1, 2, 3</span>。</p>
+        <p><strong>加法藏信息，乘法露信息。</strong>这就是为什么代数里花那么大力气把式子往乘积上凑。</p>
+        <p>顺便注意：这跟主线一 1.6 的素因数分解是<em>同一个思路换了个舞台</em>——把一个复杂对象拆成不可再拆的零件之积。整数拆成素数，多项式拆成一次因式。两边的定理长得几乎一样。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">四种常用手法</span>
+        <div class="demo">
+          <p><strong>一、提公因式</strong>　<span class="m">6x² + 9x = 3x(2x + 3)</span>。永远先看这一步。</p>
+          <p><strong>二、二项公式倒着用</strong>　<span class="m">x² − 16 = (x+4)(x−4)</span>，<span class="m">x² + 6x + 9 = (x+3)²</span>。认脸就行（2.2）。</p>
+          <p><strong>三、凑两个数</strong>　把 <span class="m">x² + px + q</span> 拆成 <span class="m">(x+m)(x+n)</span>，需要 <span class="m">m+n = p</span> 且 <span class="m">mn = q</span>——正是韦达定理反过来用。</p>
+          <p><strong>四、先猜一个根，再做除法</strong>　这是对付三次以上方程的办法，见下。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">因式定理：找到一个根，就摘下一个因子</span>
+        <div class="proof">
+          <span class="lbl">因式定理 · Linearfaktor</span>
+          <p>如果 <span class="m">x = a</span> 是多项式 <span class="m">P(x)</span> 的一个根（也就是 <span class="m">P(a) = 0</span>），那么 <span class="m">(x − a)</span> 一定是 <span class="m">P(x)</span> 的一个因子。</p>
+          <p>用法：先<em>试</em>出一个根（通常从常数项的因数里猜，比如 ±1、±2、±3），然后用多项式除法把 <span class="m">(x−a)</span> 除掉，次数就降了一级。三次降成二次，二次就有求根公式了。</p>
+          <p>以 <span class="m">x³ − 6x² + 11x − 6</span> 为例：试 <span class="m">x = 1</span>，得 <span class="m">1 − 6 + 11 − 6 = 0</span>，中了。于是除以 <span class="m">(x−1)</span> 得 <span class="m">x² − 5x + 6</span>，再分解成 <span class="m">(x−2)(x−3)</span>。三个根到手。</p>
+        </div>
+        <p>这个「猜一个、降一级」的循环，是中学阶段解三次以上方程的标准路数。它也悄悄告诉你一件事：<em>次数每降一级就轻松一大截</em>——而这正是五次方程那堵墙的背景。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>二项公式（2.2）· 韦达定理（2.5）· 素因数分解的思路（主线一 1.6）</div>
+          <div><span class="lbl">下游</span>多项式与零点（2.7）· 函数图像与 x 轴交点（主线四）· 分式的化简 · 极限里的约分（主线四）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>零积法则只对 0 成立。</strong><span class="m">(x−1)(x−2) = 0</span> 能推出 <span class="m">x=1</span> 或 <span class="m">x=2</span>；但 <span class="m">(x−1)(x−2) = 6</span> <em>不能</em>推出 <span class="m">x−1=6</span> 或 <span class="m">x−2=6</span>——因为 6 可以拆成无穷多对数相乘。碰到这种，老老实实展开、移项、化成右边等于 0 再说。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>faktorisieren</b> 因式分解</span>
+          <span><b>Nullproduktsatz</b> 零积法则</span>
+          <span><b>Linearfaktor</b> 一次因式</span>
+          <span><b>Polynomdivision</b> 多项式除法</span>
+          <span><b>Nullstelle</b> 零点 / 根</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>多项式 · 次数决定一切</h3>
+      <p class="de">Polynom · Fundamentalsatz der Algebra</p>
+    </div>
+    <div class="body">
+      <p class="lead">多项式就是「只用加减乘和正整数次幂搭出来的式子」。它的<strong>次数</strong>——最高那一项的指数——几乎决定了它的一切脾气。</p>
+
+      <div class="field">
+        <span class="lbl">次数说明什么</span>
+        <div class="demo">
+          <p class="calc">次数 1：　直线，最多 1 个零点<br>次数 2：　抛物线，最多 2 个零点<br>次数 3：　最多 3 个零点，必定至少有 1 个<br>次数 n：　最多 n 个零点</p>
+          <p>三次多项式「必定至少有一个实根」这件事有个很朴素的理由：<span class="m">x³</span> 在 x 很大时是正的很大，x 很小时是负的很小，而它的图像画得出来、连得上——中间必然穿过 0 一次。这个直觉在主线四会变成一条正式的定理（介值定理）。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">代数基本定理</span>
+        <p>把根的范围放宽到复数，「最多 n 个」就升级成了「<strong>恰好 n 个</strong>」（重根按重数算）。这就是<strong>代数基本定理</strong>，主线一 1.9 已经从「造数」的角度见过它一次，现在从「解方程」的角度再见一次。</p>
+        <p>换句话说：<em>只要允许用复数，任何多项式方程都解得出来。</em>这是补洞工程完工的证书。</p>
+        <p>但要小心一个误会：<strong>「解一定存在」和「能用公式写出来」是两回事。</strong>代数基本定理保证五次方程有五个复数根；伽罗瓦证明的是你没法用加减乘除和开方把它们<em>写出来</em>。存在，但写不出。这两件事之间的缝隙，就是这条主线山顶的全部风景。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>因式分解（2.6）· 复数（主线一 1.9）· 幂（主线一 1.8）</div>
+          <div><span class="lbl">下游</span>多项式函数与曲线讨论（主线四）· 泰勒展开：用多项式逼近任何函数（主线四山顶）· 伽罗瓦理论（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Polynom</b> 多项式</span>
+          <span><b>Grad</b> 次数</span>
+          <span><b>ganzrationale Funktion</b> 多项式函数</span>
+          <span><b>Nullstelle</b> 零点</span>
+          <span><b>Vielfachheit</b> 重数</span>
+          <span><b>Fundamentalsatz der Algebra</b> 代数基本定理</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>方程组 · 一个未知数不够用的时候</h3>
+      <p class="de">lineares Gleichungssystem</p>
+    </div>
+    <div class="body">
+      <p class="lead">两个未知数，就需要两个方程。而解方程组的一切方法，本质上都在做同一件事：<strong>想办法把未知数消掉一个。</strong></p>
+
+      <div class="field">
+        <span class="lbl">三种解法，一个目的</span>
+        <div class="demo">
+          <p><strong>代入法</strong>（Einsetzungsverfahren）：从一个方程里把 y 解出来，塞进另一个。适合某个未知数系数是 1 的时候。</p>
+          <p><strong>加减消元法</strong>（Additionsverfahren）：把两个方程相加或相减，让某个未知数正好抵消。适合系数配得整齐的时候。</p>
+          <p><strong>图解法</strong>：画出两条直线，交点就是解。不精确，但它能让你<em>看见</em>解是什么意思。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">几何图像：为什么会「无解」和「无穷多解」</span>
+        <p>两个二元一次方程，就是平面上两条直线。解方程组 = 找交点。而两条直线在平面上只有三种相处方式，正好对应三种解的情况：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="二元一次方程组的三种情况：两条直线相交于一点为唯一解，平行为无解，重合为无穷多解。">
+          <rect x="40" y="30" width="170" height="120" rx="3" class="svg-face"/>
+          <line x1="52" y1="42" x2="198" y2="138" class="svg-l"/>
+          <line x1="52" y1="132" x2="198" y2="48" class="svg-l"/>
+          <circle cx="125" cy="90" r="4.5" class="fm" stroke-width="2"/>
+          <text x="125" y="176" text-anchor="middle" class="svg-t tx1">相交</text>
+          <text x="125" y="196" text-anchor="middle" class="svg-ts tx1">唯一解</text>
+
+          <rect x="265" y="30" width="170" height="120" rx="3" class="svg-face"/>
+          <line x1="277" y1="118" x2="423" y2="46" class="svg-l"/>
+          <line x1="277" y1="140" x2="423" y2="68" class="svg-l"/>
+          <text x="350" y="176" text-anchor="middle" class="svg-t tx2">平行</text>
+          <text x="350" y="196" text-anchor="middle" class="svg-ts tx2">无解</text>
+
+          <rect x="490" y="30" width="170" height="120" rx="3" class="svg-face"/>
+          <line x1="502" y1="130" x2="648" y2="50" class="svg-l" stroke-width="3.5"/>
+          <text x="575" y="176" text-anchor="middle" class="svg-t tx3">重合</text>
+          <text x="575" y="196" text-anchor="middle" class="svg-ts tx3">无穷多解</text>
+        </svg>
+        <figcaption><b>算到「0 = 5」不是你算错了，是这个方程组真的无解——两条直线平行。</b>算到「0 = 0」也不是白算，是两个方程说的其实是同一句话，直线重合，解有无穷多个。这两种结果学生常以为是错误，其实它们是答案。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">高斯消元：把手艺变成流程</span>
+        <p>未知数一多，靠眼力挑「该消哪个」就不现实了。<strong>高斯消元法</strong>把这件事变成了一套死板的流程：用第一个方程消掉后面所有方程里的第一个未知数，再用第二个方程消掉后面的第二个未知数，一路做成阶梯形，然后从最后一个方程往回代。</p>
+        <p>这套流程的意义超出了做题：<em>它不需要灵感，纯靠机械步骤，所以可以交给计算机</em>。今天从天气预报到工程仿真，背后跑的都是它的后代。这是代数和主线六「算法」的第一次握手。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>一次方程（2.4）· 等价变形（2.3）· 坐标系与直线（主线三、主线四）</div>
+          <div><span class="lbl">下游</span>矩阵（2.9）· 向量与平面的交线（主线三）· 线性规划（主线七）· 数值线性代数（主线六）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>加减消元时，两个方程要<strong>整条乘</strong>，不能只乘其中几项。把 <span class="m">2x + 3y = 7</span> 乘以 3，是 <span class="m">6x + 9y = 21</span>——右边那个 7 也要乘。漏掉右边是这一类题最常见的错。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>lineares Gleichungssystem (LGS)</b> 线性方程组</span>
+          <span><b>Einsetzungsverfahren</b> 代入法</span>
+          <span><b>Additionsverfahren</b> 加减消元法</span>
+          <span><b>Gleichsetzungsverfahren</b> 等量代换法</span>
+          <span><b>Gauß-Verfahren</b> 高斯消元法</span>
+          <span><b>eindeutig lösbar</b> 有唯一解</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">2.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 → 山顶</span></span>
+      <h3>矩阵 · 把一整个方程组当成一个东西</h3>
+      <p class="de">Matrix</p>
+    </div>
+    <div class="body">
+      <p class="lead">解方程组的时候，未知数的名字其实没用——真正在动的只有那些系数。把系数排成一张表，方程组就浓缩成了一个对象。</p>
+
+      <div class="field">
+        <span class="lbl">从方程组到矩阵</span>
+        <div class="demo">
+          <p class="calc">2x + 3y = 7<br>4x − &nbsp;y = 1</p>
+          <p>x 和 y 这两个字母纯属陪跑，换成 u 和 v 结果一模一样。有用的只有：</p>
+          <p class="calc" style="font-family:var(--f-mono);font-size:1rem">　┌ 2 &nbsp;&nbsp;3 │ 7 ┐<br>　└ 4 &nbsp;−1 │ 1 ┘</p>
+          <p>这张表就是<strong>矩阵</strong>。高斯消元的每一步（交换两行、某行乘一个数、某行减去另一行的倍数），在矩阵上都是很干净的行操作。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">矩阵真正的身份：它是一个「动作」</span>
+        <p>矩阵最初只是记账用的表格，但很快人们发现它是别的东西：<strong>一个矩阵描述的是对空间的一次变换</strong>——旋转、拉伸、投影、翻转。而两个矩阵相乘，意思是「先做这个变换，再做那个变换」。</p>
+        <p>一旦这么看，一件怪事就变得理所当然了：</p>
+        <div class="demo">
+          <p class="calc">A · B　通常 ≠　B · A</p>
+          <p>矩阵乘法<strong>不满足交换律</strong>。这在只见过数的人看来简直是异端——毕竟 <span class="m">3×5</span> 和 <span class="m">5×3</span> 从来都一样。</p>
+          <p>但换成「动作」就完全自然了：先向前走一步再右转，和先右转再向前走一步，你会站在完全不同的地方。<em>动作的顺序当然要紧。</em></p>
+        </div>
+        <p>这是这条主线上最重要的一次观念转折。<strong>在此之前，「乘法」意味着数与数相乘，而且总能交换；在此之后，「乘法」变成了「把两个操作接起来」，交换律只是某些情况下的巧合。</strong>代数从此不再是关于数的学问，而是关于<em>运算</em>的学问——这一步迈出去，就到山顶了。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>方程组与高斯消元（2.8）· 坐标系（主线三）</div>
+          <div><span class="lbl">下游</span>向量与线性映射（主线三）· 线性代数 I/II（大学）· 计算机图形学 · 神经网络里的运算（主线五山顶）· 群论（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>写惯了数的人会习惯性地把 <span class="m">AB</span> 和 <span class="m">BA</span> 当成一回事，或者以为 <span class="m">(A+B)² = A² + 2AB + B²</span>。后者是错的——展开应该是 <span class="m">A² + AB + BA + B²</span>，而 <span class="m">AB</span> 和 <span class="m">BA</span> 合并不了。<strong>2.2 那条二项公式，前提是乘法可交换。</strong>前提没了，公式就没了。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Matrix</b> 矩阵</span>
+          <span><b>Koeffizientenmatrix</b> 系数矩阵</span>
+          <span><b>Zeile / Spalte</b> 行 / 列</span>
+          <span><b>Einheitsmatrix</b> 单位矩阵</span>
+          <span><b>inverse Matrix</b> 逆矩阵</span>
+          <span><b>lineare Abbildung</b> 线性映射</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista2">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>这条主线的山顶，是数学史上最动人的一段故事，也是「代数」这个词彻底改变含义的地方。同样<strong>不要求懂</strong>。</p>
+
+  <div class="vista">
+    <h4>一个二十岁的人和一堵墙</h4>
+    <p>三次、四次方程的公式在十六世纪就有了。之后近三百年，全欧洲最好的头脑都在找五次方程的公式，全部失败。</p>
+    <p>1824 年，挪威人<strong>阿贝尔</strong>证明了它不存在。但真正说清楚<em>为什么</em>的是法国人<strong>伽罗瓦</strong>。他的想法惊人地漂亮：</p>
+    <p><em>不要盯着根本身，去看那些根之间的「对称性」。</em>如果把这些根打乱重排，哪些排法会让方程的所有关系保持不变？这些「保持不变的重排」自己构成了一个结构——今天叫<strong>群</strong>。伽罗瓦证明：<strong>方程能不能用公式解出来，完全取决于这个群的结构长什么样。</strong>而五次方程的群，结构上就是不行。</p>
+    <p>伽罗瓦二十岁死于一场决斗。决斗前夜他熬夜整理手稿，在页边反复写着「我没有时间了」。那些潦草的纸页开创了现代代数。</p>
+
+    <h4>群、环、域：把规律本身抽出来</h4>
+    <p>伽罗瓦之后，数学家意识到：与其研究「数」，不如研究「运算的规律」。把规律抽出来单独命名，就有了这三样东西——他其实早就见过它们，只是没听过名字：</p>
+    <p><strong>群</strong>：一套东西加一种运算，满足结合律、有单位元、每个元素有逆元。整数在加法下是群。<em>魔方的所有转法在「接着转」这个运算下也是群。</em>一切对称都是群。</p>
+    <p><strong>环</strong>：有两种运算（像加和乘）。整数 ℤ 是环，多项式也是环——这就是为什么 2.6 的因式分解和主线一 1.6 的素因数分解长得那么像：<em>它们是同一种结构上的同一个定理。</em></p>
+    <p><strong>域</strong>：环再加上「除得动」。ℚ、ℝ、ℂ 都是域，ℤ 不是（3 除以 2 跑出整数了）。主线一那五次扩张，用今天的话说就是在一步步造出更好的域。</p>
+    <p>抽象代数的威力在于：<strong>证一次，到处能用。</strong>关于群的定理，对整数成立，对魔方成立，对晶体的对称成立，对密码算法也成立——因为它证的是结构，不是具体的东西。</p>
+
+    <h4>线性代数：矩阵那条线的尽头</h4>
+    <p>2.9 那张系数表，往上走就是<strong>线性代数</strong>，几乎是全世界理工科第一年的必修课。它研究向量空间和线性映射，而它之所以无处不在，是因为<em>一旦问题被局部化、简化，几乎所有东西都是线性的</em>。</p>
+    <p>今天你手机里的图像处理、搜索引擎的排序、机器学习的每一次训练，底下跑的都是大规模的矩阵运算。<strong>他这一代人天天在用的技术，地基就是这一章。</strong></p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Lineare Algebra I / II</strong>——2.8 和 2.9 的正式展开，理工科第一年必修</li>
+      <li><strong>Algebra</strong>——群、环、域，以及伽罗瓦理论的完整证明</li>
+      <li><strong>Zahlentheorie</strong>——和主线一山顶接上，现代版本大量使用代数结构</li>
+      <li><strong>Kryptographie</strong>（密码学）——有限域上的代数，撑着今天的整个互联网</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss2">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead">这一章的词是德语数学课上出现频率最高的一批，尤其 <span class="m-up m">ausklammern</span>、<span class="m-up m">binomische Formeln</span>、<span class="m-up m">quadratische Ergänzung</span> 这几个，几乎每节课都会听到。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>变量 / 未知数</td><td class="de">Variable / Unbekannte</td><td class="en">variable / unknown</td></tr>
+      <tr><td>代数式</td><td class="de">Term</td><td class="en">expression</td></tr>
+      <tr><td>系数</td><td class="de">Koeffizient</td><td class="en">coefficient</td></tr>
+      <tr><td>同类项</td><td class="de">gleichartige Glieder</td><td class="en">like terms</td></tr>
+      <tr><td>式子变形</td><td class="de">Termumformung</td><td class="en">rearranging expressions</td></tr>
+      <tr><td>展开</td><td class="de">ausmultiplizieren</td><td class="en">expand</td></tr>
+      <tr><td>提公因式</td><td class="de">ausklammern</td><td class="en">factor out</td></tr>
+      <tr><td>合并</td><td class="de">zusammenfassen</td><td class="en">collect terms</td></tr>
+      <tr><td>二项公式</td><td class="de">binomische Formeln</td><td class="en">binomial formulas</td></tr>
+      <tr><td>分配律</td><td class="de">Distributivgesetz</td><td class="en">distributive law</td></tr>
+      <tr><td>方程</td><td class="de">Gleichung</td><td class="en">equation</td></tr>
+      <tr><td>等价变形</td><td class="de">Äquivalenzumformung</td><td class="en">equivalent transformation</td></tr>
+      <tr><td>解集</td><td class="de">Lösungsmenge</td><td class="en">solution set</td></tr>
+      <tr><td>检验</td><td class="de">Probe</td><td class="en">check</td></tr>
+      <tr><td>假根</td><td class="de">Scheinlösung</td><td class="en">extraneous solution</td></tr>
+      <tr><td>不等式</td><td class="de">Ungleichung</td><td class="en">inequality</td></tr>
+      <tr><td>区间</td><td class="de">Intervall</td><td class="en">interval</td></tr>
+      <tr><td>二次方程</td><td class="de">quadratische Gleichung</td><td class="en">quadratic equation</td></tr>
+      <tr><td>配方法</td><td class="de">quadratische Ergänzung</td><td class="en">completing the square</td></tr>
+      <tr><td>判别式</td><td class="de">Diskriminante</td><td class="en">discriminant</td></tr>
+      <tr><td>顶点式</td><td class="de">Scheitelpunktform</td><td class="en">vertex form</td></tr>
+      <tr><td>韦达定理</td><td class="de">Satz von Vieta</td><td class="en">Vieta's formulas</td></tr>
+      <tr><td>因式分解</td><td class="de">faktorisieren</td><td class="en">factorise</td></tr>
+      <tr><td>零积法则</td><td class="de">Nullproduktsatz</td><td class="en">zero product property</td></tr>
+      <tr><td>一次因式</td><td class="de">Linearfaktor</td><td class="en">linear factor</td></tr>
+      <tr><td>多项式除法</td><td class="de">Polynomdivision</td><td class="en">polynomial division</td></tr>
+      <tr><td>多项式 / 次数</td><td class="de">Polynom / Grad</td><td class="en">polynomial / degree</td></tr>
+      <tr><td>零点 / 重数</td><td class="de">Nullstelle / Vielfachheit</td><td class="en">root / multiplicity</td></tr>
+      <tr><td>代数基本定理</td><td class="de">Fundamentalsatz der Algebra</td><td class="en">fundamental theorem of algebra</td></tr>
+      <tr><td>线性方程组</td><td class="de">lineares Gleichungssystem (LGS)</td><td class="en">system of linear equations</td></tr>
+      <tr><td>代入法 / 加减消元法</td><td class="de">Einsetzungs- / Additionsverfahren</td><td class="en">substitution / elimination</td></tr>
+      <tr><td>高斯消元法</td><td class="de">Gauß-Verfahren</td><td class="en">Gaussian elimination</td></tr>
+      <tr><td>矩阵 / 行 / 列</td><td class="de">Matrix / Zeile / Spalte</td><td class="en">matrix / row / column</td></tr>
+      <tr><td>线性映射</td><td class="de">lineare Abbildung</td><td class="en">linear map</td></tr>
+      <tr><td>群 / 环 / 域</td><td class="de">Gruppe / Ring / Körper</td><td class="en">group / ring / field</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs2">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">一道也不用算。答得上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li><span class="m">x² = 4</span> 里的 x、<span class="m">f(x) = x²</span> 里的 x、<span class="m">ax² + bx + c</span> 里的 a，三个字母的身份有什么不同？</li>
+    <li>展开和提公因式，用的是同一条规律吗？如果是，那是哪一条？</li>
+    <li>为什么 <span class="m">(a+b)²</span> 不等于 <span class="m">a² + b²</span>？用那张正方形的图说一遍。它和 <span class="m">√(a+b) ≠ √a + √b</span> 是同一种毛病吗？</li>
+    <li>解方程时两边平方会多出假根，两边除以含 x 的式子会丢根。这两件事分别对应主线零里的哪个箭头？</li>
+    <li>求根公式是从哪里来的？如果你把它忘了，能不能当场重新推一遍？</li>
+    <li>判别式 <span class="m">D</span> 的三种情况，在图像上分别是什么样子？<span class="m">D &lt; 0</span> 时方程真的「没有解」吗？</li>
+    <li>为什么解高次方程一定要先因式分解？「乘积等于 0」比「和等于 0」多告诉了你什么？</li>
+    <li>方程组算出「0 = 5」和算出「0 = 0」，几何上分别发生了什么？</li>
+    <li>矩阵乘法为什么不能交换？如果 <span class="m">AB ≠ BA</span>，二项公式 <span class="m">(A+B)²</span> 展开后是什么？</li>
+    <li>五次方程「没有求根公式」，和「没有根」是一回事吗？代数基本定理在这里说了什么？</li>
+    <li>这一章的因式分解，和主线一里的素因数分解，为什么长得那么像？</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strand-1-numbers.html"><span class="dir">上一页</span><span class="t">主线一 · 数与数系</span></a>
+  <a class="next" href="strand-3-geometry.html"><span class="dir">下一页</span><span class="t">主线三 · 形与空间</span></a>
+</div>
+
+</main>
+</body>
+</html>

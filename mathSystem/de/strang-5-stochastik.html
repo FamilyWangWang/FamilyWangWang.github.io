@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 5 · Stochastik · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-5-stochastik.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 5 · Stochastik · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-5-stochastik.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html" aria-current="page">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-5-stochastics.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 5</h1>
+
+<section id="s5">
+  <h2 class="sec"><span class="num">Strang 5</span>Stochastik</h2>
+  <p class="sec-lead">Dieser Strang handelt von dem, was <strong>man nicht sicher sagen kann</strong>. Und sein eigentliches Kunststück besteht darin, das Unsichere trotzdem <em>präzise</em> auszudrücken — Unsicherheit ist nicht dasselbe wie Vagheit, sie lässt sich beziffern.</p>
+
+  <p>Vorher muss aber eines klargestellt werden, denn im Deutschen laufen beide Hälften unter dem gemeinsamen Namen <span class="m-up m">Stochastik</span> und werden dadurch leicht verwechselt. Es sind <strong>zwei Wissenschaften mit entgegengesetzter Richtung</strong>:</p>
+
+  <ul class="plain">
+    <li><strong>Wahrscheinlichkeitsrechnung</strong> — die Regel ist bekannt, gefragt ist das Ergebnis. «Dieser Würfel ist fair, wie wahrscheinlich sind zwei Sechsen?» <em>Vom Modell zu den Daten, vorwärts.</em></li>
+    <li><strong>Statistik</strong> — die Daten sind bekannt, gefragt ist die Regel. «Ich habe hundertmal gewürfelt und dreißig Sechsen bekommen — ist der Würfel fair?» <em>Von den Daten zum Modell, rückwärts.</em></li>
+  </ul>
+
+  <p>Erkannt? <strong>Sie sind Umkehrungen voneinander.</strong> Das ist der <strong>fünfte</strong> Auftritt dieses Motors in diesem Heft (Strang 1, 1.3: plus und minus, mal und geteilt; 1.8: Potenz gegen Wurzel und Logarithmus; Strang 4, 4.9: Ableiten und Integrieren). Und die alte Regel gilt auch hier ohne Ausnahme: <strong>Rückwärts ist erheblich schwerer.</strong></p>
+
+  <p>Woran liegt das? Vorwärts ist die Antwort eindeutig und bestimmt; rückwärts ist sie <em>nicht eindeutig</em> und kann nur zusammen mit einer Angabe darüber geliefert werden, wie sicher man ist. «Der Würfel könnte gezinkt sein, aber ich kann Zufall nicht ganz ausschließen» — das klingt nach Herumdrucksen und ist doch die ehrlichste und stärkste Antwort, die die Statistik geben kann. <strong>Dass Statistik sich so glitschig anfühlt, liegt genau daran, dass sie eine Umkehroperation ist.</strong></p>
+
+  <p>Und die Brücke, die beide Richtungen offiziell verbindet, heißt <strong>Satz von Bayes</strong> (5.5). Er ist wörtlich die Formel dafür, den Pfeil einer bedingten Wahrscheinlichkeit umzudrehen — und die Seite dieses Kapitels, die dreimal zu lesen sich am meisten lohnt.</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Daten beschreiben · erst einmal sehen, was man hat</h3>
+      <p class="de">Mittelwert · Median · Streuung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ein Haufen Zahlen liegt vor dir. Der erste Schritt ist nicht das Rechnen mit Wahrscheinlichkeiten, sondern das <strong>Zusammendrücken auf ein paar handliche Größen</strong>. Und Zusammendrücken heißt zwangsläufig Informationsverlust — entscheidend ist zu wissen, was verlorengeht.</p>
+
+      <div class="field">
+        <span class="lbl">Drei «Mitten» mit drei Temperamenten</span>
+        <div class="demo">
+          <p><strong>Mittelwert</strong>　alles addieren, durch die Anzahl teilen. Wird von Ausreißern <em>mitgezogen</em>.</p>
+          <p><strong>Median</strong>　der Größe nach aufstellen, der in der Mitte. Ausreißer können ihn nicht bewegen, so extrem sie auch sind.</p>
+          <p><strong>Modalwert</strong>　der häufigste Wert. Der einzige, der auch bei nichtnumerischen Daten funktioniert («die beliebteste Farbe»).</p>
+        </div>
+        <p>Das sind nicht drei Rechenwege für dasselbe, sondern drei verschiedene Fragen. Wer sie verwechselt, macht sich lächerlich — oder wird damit hereingelegt.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="Rechtsschiefe Verteilung: der Median liegt nahe beim Gipfel, der Mittelwert wird vom langen rechten Ausläufer nach rechts gezogen.">
+          <rect x="90" y="230" width="30" height="20" class="f2"/>
+          <rect x="122" y="170" width="30" height="80" class="f2"/>
+          <rect x="154" y="110" width="30" height="140" class="f2"/>
+          <rect x="186" y="130" width="30" height="120" class="f2"/>
+          <rect x="218" y="160" width="30" height="90" class="f2"/>
+          <rect x="250" y="185" width="30" height="65" class="f2"/>
+          <rect x="282" y="200" width="30" height="50" class="f2"/>
+          <rect x="314" y="210" width="30" height="40" class="f2"/>
+          <rect x="346" y="215" width="30" height="35" class="f2"/>
+          <rect x="378" y="218" width="30" height="32" class="f2"/>
+          <rect x="410" y="220" width="30" height="30" class="f2"/>
+          <rect x="442" y="222" width="30" height="28" class="f2"/>
+          <rect x="474" y="223" width="30" height="27" class="f2"/>
+          <rect x="506" y="224" width="30" height="26" class="f2"/>
+          <rect x="538" y="225" width="30" height="25" class="f2"/>
+          <rect x="570" y="226" width="30" height="24" class="f2"/>
+          <line x1="80" y1="250" x2="620" y2="250" class="svg-l"/>
+
+          <line x1="236" y1="75" x2="236" y2="258" class="svg-l" stroke-width="2"/>
+          <line x1="284" y1="75" x2="284" y2="258" class="svg-l" stroke-width="2" stroke-dasharray="5 4"/>
+          <text x="232" y="66" text-anchor="end" class="svg-t tx1">Median</text>
+          <text x="288" y="66" class="svg-t txm">Mittelwert</text>
+
+          <text x="600" y="212" class="svg-tm">Ausläufer</text>
+          <line x1="80" y1="278" x2="660" y2="278" class="svg-l-soft"/>
+          <text x="80" y="296" class="svg-t">Wenige sehr große Werte ziehen den Mittelwert nach rechts; der Median rührt sich nicht</text>
+        </svg>
+        <figcaption><b>Deshalb fühlt sich das Wort «Durchschnittseinkommen» für viele wie ein Schlag ins Gesicht an.</b> Einkommen sind typisch rechtsschief verteilt: Die meisten drängen sich links, wenige sehr hohe ziehen einen langen Ausläufer nach rechts. Der Mittelwert liegt dann deutlich über dem, was die meisten tatsächlich verdienen, und erst der Median beschreibt die Lage «des Menschen in der Mitte». <b>Wenn irgendwo «durchschnittlich» steht, frag zuerst: Ist diese Verteilung symmetrisch?</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Nur die Mitte anzugeben reicht nicht</span>
+        <p>Zwei Klassen haben beide den Notendurchschnitt 75. In der einen liegen alle zwischen 70 und 80, in der anderen die Hälfte bei 95 und die Hälfte bei 55. <strong>Gleicher Mittelwert, völlig verschiedene Lage.</strong> Also braucht man auch ein Maß dafür, wie weit gestreut wird:</p>
+        <div class="demo">
+          <p><strong>Spannweite</strong>　größter minus kleinster Wert. Einfach, sieht aber nur die zwei äußersten Punkte.</p>
+          <p><strong>Quartile und Boxplot</strong>　die Daten in vier Teile schneiden und einen Kasten zeichnen. Man sieht Mitte, Streuung und Ausreißer auf einen Blick, viel schneller als aus einer Zahlenkolonne.</p>
+          <p><strong>Standardabweichung</strong>　«wie weit im Mittel von der Mitte entfernt». Sie ist der universelle Maßstab für alles Folgende in diesem Kapitel.</p>
+        </div>
+        <p>Beachte nebenbei die Rechenvorschrift der Standardabweichung: erst jede Abweichung bilden, <em>quadrieren</em>, mitteln, dann <em>Wurzel ziehen</em>. Warum quadrieren und wieder Wurzel ziehen, statt gleich den Betrag zu nehmen? Weil das Quadrat mathematisch bequemer ist (differenzierbar, siehe Strang 4) — und weil diese Gestalt «Quadratsumme unter der Wurzel» genau der <strong>Satz des Pythagoras</strong> aus Strang 3, 3.4 ist. <em>Die Standardabweichung ist im Kern eine Strecke in einem hochdimensionalen Raum.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Brüche und Verhältnisse (Strang 1, 1.5) · Satz des Pythagoras (Strang 3, 3.4) · Koordinaten und Diagramme (Strang 3, 3.7)</div>
+          <div><span class="lbl">Wohin</span>Erwartungswert und Varianz (5.6) · Normalverteilung (5.8) · Hypothesentest (5.9) · Diagrammfallen (5.10 und Strang 7)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Wenn irgendwo ein «Durchschnitt» auftaucht, frag dich drei Dinge: <strong>Wer wurde erfasst? Ist die Verteilung symmetrisch? Wie groß ist die Streuung?</strong> Wird nur ein Mittelwert genannt und keines dieser drei, ist das meist keine Nachlässigkeit, sondern Absicht. Das ist die praktischste Lebensfertigkeit dieses Kapitels.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Mittelwert</b> mean</span>
+          <span><b>Median</b> median</span>
+          <span><b>Modalwert</b> mode</span>
+          <span><b>Spannweite</b> range</span>
+          <span><b>Quartil</b> quartile</span>
+          <span><b>Boxplot</b> box plot</span>
+          <span><b>Standardabweichung</b> standard deviation</span>
+          <span><b>Streuung</b> spread</span>
+          <span><b>Häufigkeit</b> frequency</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Abzählen · das Fundament der Wahrscheinlichkeit</h3>
+      <p class="de">Zählprinzip · Kombinatorik</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die klassische Wahrscheinlichkeit ist «günstige Fälle durch alle Fälle». Das klingt einfach — schwer ist nie die Division, schwer ist es, <strong>die beiden Zahlen richtig abzuzählen</strong>.</p>
+
+      <div class="field">
+        <span class="lbl">Der Ausgangspunkt von allem: das Zählprinzip</span>
+        <p>Wird eine Handlung in Schritte zerlegt und hat der erste Schritt <span class="m">a</span> Möglichkeiten und der zweite <span class="m">b</span>, dann gibt es insgesamt <span class="m">a × b</span>. Nur diese eine Regel, immer wieder angewandt.</p>
+        <p>Ein vierstelliger Zahlencode: pro Stelle 10 Möglichkeiten, vier Schritte → <span class="m">10⁴ = 10000</span>. Deshalb wird ein Code mit jeder zusätzlichen Stelle zehnmal schwerer zu knacken — <em>wieder exponentielles Wachstum</em> (Strang 4, 4.3).</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Zwei Fragen entscheiden, welche Formel gilt</span>
+        <p>Kombinatorikaufgaben bereiten fast immer deshalb Kopfzerbrechen, weil man einen Stapel Formeln kennt und nicht weiß, wann welche dran ist. Dabei genügen zwei Fragen an sich selbst:</p>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:22%"></th><th style="width:39%">Reihenfolge <b>zählt</b><br><span style="font-size:12px">ABC und CBA sind zwei Fälle</span></th><th style="width:39%">Reihenfolge <b>zählt nicht</b><br><span style="font-size:12px">ABC und CBA sind ein Fall</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>mit Zurücklegen</b><br><span style="font-size:12.5px;color:var(--ink-2)">gezogenes kommt zurück</span></td>
+              <td class="cheap"><b>nᵏ</b><br>Zahlenschloss, k-mal würfeln</td>
+              <td>selten, in der Schule kaum geprüft</td>
+            </tr>
+            <tr>
+              <td><b>ohne Zurücklegen</b><br><span style="font-size:12.5px;color:var(--ink-2)">gezogenes bleibt draußen</span></td>
+              <td class="cheap"><b>n!/(n−k)!</b><br>Platzierungen, verschiedene Preise</td>
+              <td class="dear"><b>C(n,k) = n!/(k!(n−k)!)</b><br>Lotto, Karten geben, Delegierte wählen</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Für die erste Spalte hat das Deutsche wunderbar direkte Ausdrücke: <span class="m-up m">mit Zurücklegen</span> und <span class="m-up m">ohne Zurücklegen</span>. <strong>Schreib dir bei einer Aufgabe zuerst die beiden Antworten auf den Schmierzettel — «zählt die Reihenfolge? darf sich etwas wiederholen?» — dann springt die Formel von selbst heraus.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der Binomialkoeffizient: eine Zahl, drei Identitäten</span>
+        <p><span class="m">C(n,k)</span> (deutsch gesprochen «n über k») ist «die Anzahl der Möglichkeiten, aus n Dingen k auszuwählen». Gleichzeitig ist sie aber noch anderes:</p>
+        <div class="demo">
+          <p>Sie ist eine Zahl im <strong>Pascalschen Dreieck</strong> — jede Zahl ist die Summe der beiden über ihr.</p>
+          <p>Sie ist der <strong>Koeffizient</strong> in der Entwicklung von <span class="m">(a+b)ⁿ</span>. Die 2 in <span class="m">(a+b)² = a² + 2ab + b²</span> ist <span class="m">C(2,1)</span> (Strang 2, 2.2).</p>
+          <p>Sie ist der vordere Teil der Formel für die <strong>Binomialverteilung</strong> (5.7).</p>
+          <p><em>Dass dieselbe Zahl an drei völlig verschiedenen Stellen auftaucht, ist kein Zufall.</em> «Aus n Versuchen auswählen, welche k erfolgreich sind» und «beim Ausmultiplizieren auswählen, aus welchen Klammern das a kommt» ist von vornherein dieselbe Abzählaufgabe.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Multiplikation und Potenz (Strang 1, 1.3 und 1.8) · binomische Formeln (Strang 2, 2.2)</div>
+          <div><span class="lbl">Wohin</span>Klassische Wahrscheinlichkeit (5.3) · Binomialverteilung (5.7) · Pascalsches Dreieck und Folgen (Strang 6) · Komplexität von Algorithmen (Strang 6) · Passwortstärke (Strang 6)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Aufgaben mit «mindestens einer» sollte man fast immer <strong>rückwärts</strong> rechnen: erst die Wahrscheinlichkeit für «kein einziger» bestimmen und von 1 abziehen. Vorwärts müsste man «genau einer, genau zwei, …» einzeln aufsummieren, rückwärts gibt es nur einen Fall.</p>
+          <p><em>Das ist Griff 4 aus dem Werkzeugkasten, «rückwärts gehen», in der Wahrscheinlichkeitsrechnung</em> — es lohnt sich, das zum Reflex zu machen.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Zählprinzip</b> counting principle</span>
+          <span><b>Kombinatorik</b> combinatorics</span>
+          <span><b>Permutation / Kombination</b> permutation / combination</span>
+          <span><b>Binomialkoeffizient</b> binomial coefficient</span>
+          <span><b>Fakultät n!</b> factorial</span>
+          <span><b>mit / ohne Zurücklegen</b> with / without replacement</span>
+          <span><b>Pascalsches Dreieck</b> Pascal's triangle</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Wahrscheinlichkeit · aus «möglich» eine Zahl machen</h3>
+      <p class="de">Wahrscheinlichkeit · Laplace-Experiment</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Wahrscheinlichkeit ist eine Zahl zwischen 0 und 1. <strong>0 heißt unmöglich, 1 heißt sicher, dazwischen heißt «so wahrscheinlich».</strong> Was «so wahrscheinlich» genau bedeutet, lässt sich allerdings auf zwei verschiedene Arten beantworten — und beide sind richtig.</p>
+
+      <div class="field">
+        <span class="lbl">Zwei Deutungen</span>
+        <div class="demo">
+          <p><strong>Klassisch</strong> (Laplace): Sind alle Ausgänge gleich möglich, ist die Wahrscheinlichkeit die Anzahl der günstigen geteilt durch die aller Fälle. Der Würfel hat sechs gleichberechtigte Seiten, also ist die Wahrscheinlichkeit für eine Sechs 1/6. <em>Voraussetzung ist die Gleichmöglichkeit — und die braucht oft selbst eine Begründung.</em></p>
+          <p><strong>Häufigkeitsdeutung</strong>: Nach sehr vielen Wiederholungen pendelt sich der Anteil eines Ergebnisses auf einen Wert ein, und dieser Wert ist die Wahrscheinlichkeit. Bei zehntausend Würfen liegt der Anteil der Sechsen nahe bei 1/6. <em>Diese Deutung braucht keine Gleichmöglichkeit, dafür aber Wiederholbarkeit.</em></p>
+        </div>
+        <p>Beim Würfel liefern beide dasselbe. Für «morgen regnet es mit 30 Prozent» taugt aber weder die erste (die Ausgänge sind nicht gleich möglich) noch die zweite (morgen gibt es nur einmal, nichts wiederholt sich). Dafür gibt es eine dritte Deutung — <em>Wahrscheinlichkeit ist der Grad meiner Überzeugung</em> — das ist die Position der Bayesianer, siehe Gipfel.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Auch die Wahrscheinlichkeit ist axiomatisch aufgebaut</span>
+        <p>Um der philosophischen Frage «was ist Wahrscheinlichkeit eigentlich» auszuweichen, hat Kolmogorow 1933 genau das getan, was Strang 0, 0.5 beschreibt: <strong>Nicht fragen, was es ist, sondern festlegen, was es erfüllen muss.</strong> Drei Axiome:</p>
+        <div class="demo">
+          <p>① Keine Wahrscheinlichkeit ist kleiner als 0.<br>② Das sichere Ereignis hat die Wahrscheinlichkeit 1.<br>③ Bei unvereinbaren Ereignissen dürfen die Wahrscheinlichkeiten addiert werden.</p>
+          <p>Aus diesen dreien wächst die gesamte Wahrscheinlichkeitstheorie. <em>Wieder das Muster «anderer Ausgangspunkt, andere Wissenschaft».</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Baumdiagramm und die beiden Pfadregeln</span>
+        <p>Bei mehrstufigen Zufallsversuchen ist das Baumdiagramm die sicherste Methode. Die beiden Regeln lassen sich in einem Satz merken:</p>
+        <div class="demo">
+          <p><strong>Entlang eines Pfades → multiplizieren</strong> (Produktregel). Zweimal hintereinander Erfolg: Wahrscheinlichkeiten mal.</p>
+          <p><strong>Mehrere Pfade führen zum Ziel → addieren</strong> (Summenregel). Drei verschiedene Wege ans Ziel: die drei Pfadwahrscheinlichkeiten addieren.</p>
+          <p>Kurzfassung: <em>«und» heißt mal, «oder» heißt plus.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Abzählen (5.2) · Brüche (Strang 1, 1.5) · Mengen (Strang 0, 0.1) · Axiomatik (Strang 0, 0.5)</div>
+          <div><span class="lbl">Wohin</span>Bedingte Wahrscheinlichkeit (5.4) · Zufallsvariable (5.6) · alles Weitere</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Der Spielerfehlschluss.</strong> Nach fünfmal Kopf hintereinander ist die Wahrscheinlichkeit für Zahl beim sechsten Wurf <em>immer noch</em> 1/2. Die Münze hat kein Gedächtnis und findet nicht, «jetzt wäre mal Zahl dran».</p>
+          <p>Aber die Umkehrung stimmt auch nicht: Nach <em>zwanzigmal</em> Kopf ist die vernünftige Reaktion nicht «jetzt kommt Zahl», sondern <strong>«mit dieser Münze stimmt etwas nicht»</strong> — und Achtung, das ist keine Frage der Wahrscheinlichkeit mehr, sondern der Statistik (5.9). <em>Dasselbe Phänomen, vorwärts und rückwärts betrachtet, gehört zu zwei verschiedenen Wissenschaften.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Wahrscheinlichkeit</b> probability</span>
+          <span><b>Zufallsexperiment</b> random experiment</span>
+          <span><b>Laplace-Experiment</b> equiprobable experiment</span>
+          <span><b>Ergebnis / Ereignis</b> outcome / event</span>
+          <span><b>Ergebnismenge Ω</b> sample space</span>
+          <span><b>Baumdiagramm</b> tree diagram</span>
+          <span><b>Pfadregeln</b> path rules</span>
+          <span><b>Gegenereignis</b> complementary event</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Bedingte Wahrscheinlichkeit und Unabhängigkeit · zwei oft verwechselte Wörter</h3>
+      <p class="de">bedingte Wahrscheinlichkeit · Unabhängigkeit</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">P(A|B)</span> liest sich «die Wahrscheinlichkeit von A, wenn B bereits eingetreten ist». <strong>Sobald neue Information hereinkommt, muss die Wahrscheinlichkeit angepasst werden.</strong> Das ist die letzte Stufe vor Bayes.</p>
+
+      <div class="field">
+        <span class="lbl">Was die bedingte Wahrscheinlichkeit tut</span>
+        <p>Sie <strong>verkleinert den betrachteten Bereich</strong>. Vorher rechnete man den Anteil innerhalb aller Möglichkeiten aus, jetzt nur noch innerhalb des Ausschnitts «B ist eingetreten».</p>
+        <div class="demo">
+          <p>Wahrscheinlichkeit, aus einem Kartenspiel ein Herz zu ziehen: 13/52 = 1/4.</p>
+          <p>Wahrscheinlichkeit, dass es ein Herz ist, wenn bekannt ist, dass die Karte rot ist: 13/26 = 1/2.</p>
+          <p><em>Die Karten haben sich nicht verändert, verändert hat sich, was du weißt.</em> Eine Wahrscheinlichkeit beschreibt nie nur die Welt, sondern immer auch deinen Informationsstand.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Unabhängig ist nicht dasselbe wie unvereinbar</span>
+        <p>Die beiden Wörter klingen ähnlich, bedeuten fast das Gegenteil, und praktisch jeder hat sie schon einmal vertauscht.</p>
+        <div class="demo">
+          <p><strong>Unvereinbar</strong>: <em>können nicht gleichzeitig eintreten</em>. Bei einem Würfelwurf sind «eine 3» und «eine 5» unvereinbar.</p>
+          <p><strong>Unabhängig</strong>: <em>das Eintreten des einen ändert die Wahrscheinlichkeit des anderen nicht</em>. Bei zwei Würfen sind «beim ersten eine 3» und «beim zweiten eine 5» unabhängig.</p>
+          <p>Der springende Punkt: <strong>Unvereinbare Ereignisse sind gerade extrem <em>abhängig</em></strong> — sobald du weißt, dass eine 3 fiel, weißt du sofort, dass keine 5 fiel; die Information ist maximal.</p>
+        </div>
+        <p>Auch gerechnet wird verschieden: bei Unvereinbarkeit wird <strong>addiert</strong> (<span class="m">P(A oder B) = P(A)+P(B)</span>), bei Unabhängigkeit <strong>multipliziert</strong> (<span class="m">P(A und B) = P(A)·P(B)</span>). Verwechseln heißt komplett falsch rechnen.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Wahrscheinlichkeit und Pfadregeln (5.3) · Schnitt und Vereinigung von Mengen (Strang 0, 0.1)</div>
+          <div><span class="lbl">Wohin</span><strong>Satz von Bayes (5.5)</strong> · die Unabhängigkeitsannahme der Binomialverteilung (5.7) · Korrelation und Kausalität (5.10)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><span class="m">P(A|B)</span> und <span class="m">P(B|A)</span> sind <strong>völlig verschiedene Dinge</strong>, und das menschliche Gehirn hält sie von Natur aus für dasselbe.</p>
+          <p>«Wenn es regnet, ist die Straße nass» hat eine Wahrscheinlichkeit nahe 1; «wenn die Straße nass ist, hat es geregnet» eine deutlich kleinere (Sprengwagen, Rohrbruch, Autowäsche). Das ist <em>dieselbe Verwechslung wie <span class="m">A⟹B ≠ B⟹A</span></em> aus Strang 0, 0.4, nur in Wahrscheinlichkeitssprache.</p>
+          <p>Die nächste Karte handelt komplett davon — und die Folgen sind schwerwiegender, als man erwarten würde.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>bedingte Wahrscheinlichkeit</b> conditional probability</span>
+          <span><b>unabhängig</b> independent</span>
+          <span><b>unvereinbar</b> mutually exclusive</span>
+          <span><b>Schnittmenge</b> intersection</span>
+          <span><b>Vierfeldertafel</b> two-way table</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg · die Seite, die dreimal zu lesen sich lohnt</span></span>
+      <h3>Bayes · den Pfeil umdrehen</h3>
+      <p class="de">Satz von Bayes</p>
+    </div>
+    <div class="body">
+      <p class="lead">Von der Ursache aufs Ergebnis schließen ist leicht. <strong>Vom Ergebnis auf die Ursache zurückzuschließen ist schwer — und die Intuition liegt hier gewaltig daneben.</strong> Der Satz von Bayes ist die Formel, die den Pfeil umdreht, und damit der offenste Auftritt der Umkehrnatur dieses Strangs.</p>
+
+      <div class="field">
+        <span class="lbl">Zuerst ein Beispiel, das alle überrascht</span>
+        <div class="demo">
+          <p>Es gibt eine Krankheit, an der von 1000 Menschen einer erkrankt ist.</p>
+          <p>Es gibt einen Test mit <strong>99 Prozent Genauigkeit</strong>: Von den Kranken werden 99 Prozent positiv getestet, von den Gesunden 99 Prozent negativ.</p>
+          <p><strong>Du machst den Test, das Ergebnis ist positiv. Wie wahrscheinlich bist du wirklich krank?</strong></p>
+          <p>Rate zuerst selbst eine Zahl, bevor du weiterliest. Die meisten — <em>einschließlich der meisten Ärztinnen und Ärzte</em> — tippen auf 99 oder 95 Prozent.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ohne Formel, mit echten Menschen abgezählt</span>
+        <p>Die Formel direkt einzusetzen führt leicht zu Rechenfehlern und noch leichter zu gar keinem Gefühl. Also anders: <strong>Stell dir vor, 100 000 Menschen machen diesen Test, und zähl sie einzeln durch.</strong></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 340" role="img" aria-label="Verzweigungsbaum für hunderttausend Getestete: von hundert Kranken sind neunundneunzig positiv, von 99900 Gesunden sind 999 falsch positiv, unter allen 1098 Positiven sind nur 99 wirklich krank.">
+          <defs>
+            <marker id="e0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="285" y="14" width="130" height="38" rx="4" class="svg-face"/>
+          <text x="350" y="38" text-anchor="middle" class="svg-t">100 000</text>
+
+          <line x1="330" y1="52" x2="180" y2="92" class="svg-l" marker-end="url(#e0)"/>
+          <line x1="370" y1="52" x2="520" y2="92" class="svg-l" marker-end="url(#e0)"/>
+          <text x="228" y="68" class="svg-tm">0,1 %</text>
+          <text x="452" y="68" class="svg-tm">99,9 %</text>
+
+          <rect x="105" y="94" width="150" height="42" rx="4" class="fm"/>
+          <text x="180" y="120" text-anchor="middle" class="svg-t txm">krank: 100</text>
+
+          <rect x="445" y="94" width="150" height="42" rx="4" class="svg-face"/>
+          <text x="520" y="120" text-anchor="middle" class="svg-t">gesund: 99 900</text>
+
+          <line x1="155" y1="136" x2="105" y2="182" class="svg-l" marker-end="url(#e0)"/>
+          <line x1="205" y1="136" x2="255" y2="182" class="svg-l" marker-end="url(#e0)"/>
+          <line x1="495" y1="136" x2="445" y2="182" class="svg-l" marker-end="url(#e0)"/>
+          <line x1="545" y1="136" x2="595" y2="182" class="svg-l" marker-end="url(#e0)"/>
+
+          <rect x="30" y="184" width="140" height="56" rx="4" class="f1"/>
+          <text x="100" y="206" text-anchor="middle" class="svg-t tx1">positiv: 99</text>
+          <text x="100" y="226" text-anchor="middle" class="svg-ts tx1">wirklich krank</text>
+
+          <rect x="188" y="184" width="120" height="56" rx="4" class="svg-face"/>
+          <text x="248" y="206" text-anchor="middle" class="svg-ts">negativ: 1</text>
+          <text x="248" y="226" text-anchor="middle" class="svg-ts">übersehen</text>
+
+          <rect x="380" y="184" width="140" height="56" rx="4" class="fm"/>
+          <text x="450" y="206" text-anchor="middle" class="svg-t txm">positiv: 999</text>
+          <text x="450" y="226" text-anchor="middle" class="svg-ts txm">falscher Alarm</text>
+
+          <rect x="538" y="184" width="132" height="56" rx="4" class="svg-face"/>
+          <text x="604" y="206" text-anchor="middle" class="svg-ts">negativ: 98 901</text>
+          <text x="604" y="226" text-anchor="middle" class="svg-ts">korrekt entwarnt</text>
+
+          <rect x="30" y="264" width="640" height="60" rx="4" class="f2"/>
+          <text x="350" y="288" text-anchor="middle" class="svg-t tx2">Positiv sind 99 + 999 = 1098 Menschen, davon sind nur 99 wirklich krank</text>
+          <text x="350" y="312" text-anchor="middle" class="svg-t tx2">99 ÷ 1098 ≈ 9 %</text>
+        </svg>
+        <figcaption><b>Die Antwort ist 9 Prozent, nicht 99.</b> Der Grund ist im Bild sofort zu sehen: Es gibt einfach viel zu viele Gesunde. Selbst wenn nur ein Prozent von ihnen falsch eingestuft wird, übertrifft diese absolute Zahl (999) die Gesamtzahl der Kranken (100) bei weitem. <b>«99 Prozent genau» spricht von P(positiv | krank), wissen willst du aber P(krank | positiv) — andere Pfeilrichtung, Faktor zehn Unterschied.</b> Das ist die Stolperfalle der vorigen Karte, in ihrer teuersten Auszahlung.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Warum die Intuition versagt: die Seltenheit wird vergessen</span>
+        <p>Der Fehler heißt <strong>Vernachlässigung der Grundrate</strong>. Wer «99 Prozent genau» hört, hängt an dieser Zahl fest und vergisst die andere völlig: <em>Diese Krankheit haben von vornherein nur ein Promille der Menschen.</em></p>
+        <p>Dieses Promille ist die <strong>A-priori-Wahrscheinlichkeit</strong> — wie wahrscheinlich es war, dass du krank bist, <em>bevor</em> der Test gemacht wurde. Das Testergebnis liefert keine Antwort aus dem Nichts, es <em>korrigiert</em> diese Ausgangslage. Der Test hat 0,1 Prozent auf 9 Prozent angehoben — eine Steigerung um das Neunzigfache, also durchaus eine wertvolle Information, aber weit entfernt von einer Diagnose.</p>
+        <p><strong>Das ist der Kern des bayesianischen Denkens: Neue Belege ersetzen deine bisherige Einschätzung nicht, sie korrigieren sie.</strong> Je niedriger der Ausgangswert, desto begrenzter, wohin dieselbe Evidenz dich schieben kann.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Wie die Formel aussieht</span>
+        <div class="demo">
+          <p class="calc">P(A|B) = P(B|A) · P(A) ÷ P(B)</p>
+          <p>Gelesen: <em>«Um den Pfeil von B|A auf A|B umzudrehen, multipliziere mit der ursprünglichen Wahrscheinlichkeit von A und teile durch die Gesamtwahrscheinlichkeit von B.»</em></p>
+          <p>Jenes <span class="m">P(A)</span> ist die A-priori-Wahrscheinlichkeit, also genau die vernachlässigte Grundrate. <strong>Sie steht buchstäblich in der Formel — und das menschliche Gehirn überspringt sie trotzdem.</strong></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Wo er überall auftaucht</span>
+        <ul class="plain">
+          <li><strong>Medizin</strong> — warum von flächendeckenden Reihenuntersuchungen bei Niedrigrisikogruppen abgeraten wird: Die falsch Positiven überschwemmen die echten, und der Preis sind massenhaft unnötige Ängste und Folgeuntersuchungen.</li>
+          <li><strong>Gericht</strong> — «die Wahrscheinlichkeit einer DNA-Übereinstimmung liegt bei eins zu einer Million» heißt nicht «die Wahrscheinlichkeit, dass diese Person unschuldig ist, liegt bei eins zu einer Million». Diese Verwechslung hat einen eigenen Namen, den «Trugschluss des Anklägers», und hat tatsächlich zu Fehlurteilen geführt.</li>
+          <li><strong>Spamfilter</strong> — das erste wirksame Verfahren hieß «naiver Bayes-Klassifikator» und beruht genau auf dieser Formel.</li>
+          <li><strong>Alltagsurteile</strong> — bei einer erstaunlichen Behauptung zuerst fragen: <em>«Wie wahrscheinlich war so etwas von vornherein?»</em> Was von Haus aus extrem unwahrscheinlich ist, braucht extrem starke Belege.</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Bedingte Wahrscheinlichkeit (5.4) · Baumdiagramm (5.3) · <span class="m">A⟹B ≠ B⟹A</span> (Strang 0, 0.4)</div>
+          <div><span class="lbl">Wohin</span>Deutung von Hypothesentests (5.9) · Bayes-Statistik (Gipfel) · Klassifikatoren im maschinellen Lernen · jede Situation, in der Überzeugungen an Belegen angepasst werden</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Satz von Bayes</b> Bayes' theorem</span>
+          <span><b>Grundrate</b> base rate</span>
+          <span><b>a-priori-Wahrscheinlichkeit</b> prior probability</span>
+          <span><b>falsch positiv / negativ</b> false positive / negative</span>
+          <span><b>Sensitivität</b> sensitivity</span>
+          <span><b>Spezifität</b> specificity</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Zufallsvariable und Erwartungswert · den Zufall in ein Objekt packen</h3>
+      <p class="de">Zufallsvariable · Erwartungswert</p>
+    </div>
+    <div class="body">
+      <p class="lead">«Zwei Würfel werfen» liefert einen Haufen Fälle, mit denen sich schlecht rechnen lässt. Ordnet man jedem Ausgang eine Zahl zu (etwa die Augensumme), wird der Zufall zu etwas, mit dem man rechnen kann.</p>
+
+      <div class="field">
+        <span class="lbl">In Wahrheit ist es eine Funktion</span>
+        <p>Der Name «Zufallsvariable» ist unglücklich gewählt — <strong>sie ist weder zufällig noch eine Variable, sie ist eine Funktion</strong> (Strang 4, 4.1): Eingabe ist ein Ausgang des Zufallsversuchs, Ausgabe eine Zahl.</p>
+        <p>Zufällig ist, <em>welcher</em> Ausgang eintritt; die Zuordnung selbst ist vollkommen festgelegt. Wer das einmal durchschaut hat, sieht Erwartungswert und Varianz nur noch als Rechnen mit einer Funktion.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der Erwartungswert: der Durchschnitt auf lange Sicht</span>
+        <div class="demo">
+          <p>Ein Würfel hat den Erwartungswert <span class="m">(1+2+3+4+5+6)/6 = 3,5</span>.</p>
+          <p>Beachte: Eine 3,5 lässt sich <strong>überhaupt nicht würfeln</strong>. Der Erwartungswert sagt nicht, «was du bekommen wirst», sondern «was du im Mittel pro Wurf bekommst, wenn du sehr oft wirfst».</p>
+        </div>
+        <p>Dieser Unterschied ist im Alltag viel wert. Ein Lottoschein hat einen <em>negativen</em> Erwartungswert (sonst würde der Anbieter draufzahlen), eine Runde Roulette ebenso. <strong>Ein Casino muss nicht betrügen, es muss dich nur oft genug spielen lassen — mit steigender Anzahl nähert sich das tatsächliche Ergebnis dem Erwartungswert an</strong> (das ist das Gesetz der großen Zahlen aus 5.8).</p>
+        <p>Umgekehrt macht eine Versicherung dasselbe im Spiegel: Für dich persönlich ist der Erwartungswert einer Versicherung negativ — aber du kaufst keinen Erwartungswert, sondern tauschst <em>einen unwahrscheinlichen großen Verlust gegen eine sichere kleine Zahlung</em>. <strong>Gleicher Erwartungswert, anderes Risiko — das ist der Existenzgrund von Versicherungen.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Die Varianz: wie verlässlich das Ergebnis ist</span>
+        <p>Zwei Spiele haben beide den Erwartungswert 0; im einen gewinnt oder verliert man je einen Euro, im anderen je tausend. Der Erwartungswert sieht keinen Unterschied, die <strong>Varianz</strong> schon. Sie misst, wie weit die Ergebnisse typischerweise vom Erwartungswert entfernt liegen; ihre Wurzel ist die Standardabweichung — dasselbe Maß wie in 5.1.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Funktion (Strang 4, 4.1) · Wahrscheinlichkeit (5.3) · Mittelwert und Standardabweichung (5.1)</div>
+          <div><span class="lbl">Wohin</span>Binomialverteilung (5.7) · Normalverteilung (5.8) · Risiko und Versicherung (Strang 7) · Entscheidungstheorie</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Ein höherer Erwartungswert bedeutet <strong>nicht</strong> automatisch die bessere Wahl. Eine Option, die zu 99 Prozent nichts einbringt und zu 1 Prozent sehr viel, kann einen hohen Erwartungswert haben — wenn du aber nur einen einzigen Versuch hast, sagt der Erwartungswert wenig. <em>Die Zahl, die die Mathematik liefert, kann dir das Werturteil nicht abnehmen</em> — ein Punkt, der im Modellierungskreislauf von Strang 7 wiederkehrt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Zufallsvariable</b> random variable</span>
+          <span><b>Erwartungswert E(X)</b> expected value</span>
+          <span><b>Varianz</b> variance</span>
+          <span><b>Standardabweichung σ</b> standard deviation</span>
+          <span><b>Wahrscheinlichkeitsverteilung</b> probability distribution</span>
+          <span><b>fair</b> fair (Erwartungswert null)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Binomialverteilung · dasselbe n-mal wiederholt</h3>
+      <p class="de">Binomialverteilung · Bernoulli-Kette</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ein Versuch wird n-mal unabhängig wiederholt, jedes Mal mit derselben Erfolgswahrscheinlichkeit p — gefragt ist die Wahrscheinlichkeit für «genau k Erfolge». Erstaunlich viele wirkliche Situationen fallen unter dieses Modell.</p>
+
+      <div class="field">
+        <span class="lbl">Woher die Formel kommt</span>
+        <div class="demo">
+          <p class="calc">P(genau k Erfolge) = C(n,k) · pᵏ · (1−p)ⁿ⁻ᵏ</p>
+          <p>Drei Bausteine, jeder gut verständlich:</p>
+          <p><span class="m">pᵏ</span>　　　k Erfolge, jeder mit Wahrscheinlichkeit p, unabhängig also multipliziert.<br>
+          <span class="m">(1−p)ⁿ⁻ᵏ</span>　die übrigen n−k Misserfolge, ebenso.<br>
+          <span class="m">C(n,k)</span>　　<em>welche</em> k der Versuche das sein dürfen — das ist der Binomialkoeffizient aus 5.2.</p>
+          <p>Die ersten beiden Bausteine sind die Pfadregeln (5.3), der dritte ist Abzählen (5.2). <strong>Nichts an dieser Formel ist neu.</strong></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Vor dem Anwenden drei Voraussetzungen prüfen</span>
+        <p>Die Binomialverteilung ist bequem, verlangt aber drei Bedingungen; deutsche Lehrbücher nennen das eine <span class="m-up m">Bernoulli-Kette</span>:</p>
+        <div class="demo">
+          <p>① Jeder Versuch hat nur <strong>zwei</strong> Ausgänge (Erfolg / Misserfolg).<br>② Die Wahrscheinlichkeit p bleibt <strong>gleich</strong>.<br>③ Die Versuche sind <strong>unabhängig</strong>.</p>
+          <p>Die dritte fällt am leichtesten unbemerkt weg. Zieht man aus einem Kartenspiel <em>ohne Zurücklegen</em>, beeinflussen die früheren Züge die späteren Wahrscheinlichkeiten — dann liegt keine Binomialverteilung vor. <em>Dass die Frage «mit oder ohne Zurücklegen» sowohl in 5.2 als auch hier auftaucht, ist kein Zufall.</em></p>
+        </div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 260" role="img" aria-label="Mit wachsendem n nähert sich die Binomialverteilung der Glockenform: bei fünf nur sechs Balken, bei zwölf schon glockenförmig, bei vierundzwanzig fast eine Normalverteilung.">
+          <rect x="50" y="173" width="22" height="7" class="f2"/>
+          <rect x="74" y="145" width="22" height="35" class="f2"/>
+          <rect x="98" y="110" width="22" height="70" class="f2"/>
+          <rect x="122" y="110" width="22" height="70" class="f2"/>
+          <rect x="146" y="145" width="22" height="35" class="f2"/>
+          <rect x="170" y="173" width="22" height="7" class="f2"/>
+          <line x1="45" y1="180" x2="197" y2="180" class="svg-l"/>
+          <text x="121" y="204" text-anchor="middle" class="svg-t tx2">n = 5</text>
+
+          <rect x="250" y="179" width="12" height="1" class="f2"/>
+          <rect x="263" y="179" width="12" height="1" class="f2"/>
+          <rect x="276" y="175" width="12" height="5" class="f2"/>
+          <rect x="289" y="163" width="12" height="17" class="f2"/>
+          <rect x="302" y="142" width="12" height="38" class="f2"/>
+          <rect x="315" y="120" width="12" height="60" class="f2"/>
+          <rect x="328" y="110" width="12" height="70" class="f2"/>
+          <rect x="341" y="120" width="12" height="60" class="f2"/>
+          <rect x="354" y="142" width="12" height="38" class="f2"/>
+          <rect x="367" y="163" width="12" height="17" class="f2"/>
+          <rect x="380" y="175" width="12" height="5" class="f2"/>
+          <rect x="393" y="179" width="12" height="1" class="f2"/>
+          <rect x="406" y="179" width="12" height="1" class="f2"/>
+          <line x1="245" y1="180" x2="423" y2="180" class="svg-l"/>
+          <text x="334" y="204" text-anchor="middle" class="svg-t tx2">n = 12</text>
+
+          <rect x="470" y="179" width="10" height="1" class="f1"/>
+          <rect x="481" y="177" width="10" height="3" class="f1"/>
+          <rect x="492" y="174" width="10" height="6" class="f1"/>
+          <rect x="503" y="168" width="10" height="12" class="f1"/>
+          <rect x="514" y="158" width="10" height="22" class="f1"/>
+          <rect x="525" y="144" width="10" height="36" class="f1"/>
+          <rect x="536" y="128" width="10" height="52" class="f1"/>
+          <rect x="547" y="115" width="10" height="65" class="f1"/>
+          <rect x="558" y="110" width="10" height="70" class="f1"/>
+          <rect x="569" y="115" width="10" height="65" class="f1"/>
+          <rect x="580" y="128" width="10" height="52" class="f1"/>
+          <rect x="591" y="144" width="10" height="36" class="f1"/>
+          <rect x="602" y="158" width="10" height="22" class="f1"/>
+          <rect x="613" y="168" width="10" height="12" class="f1"/>
+          <rect x="624" y="174" width="10" height="6" class="f1"/>
+          <rect x="635" y="177" width="10" height="3" class="f1"/>
+          <rect x="646" y="179" width="10" height="1" class="f1"/>
+          <line x1="465" y1="180" x2="661" y2="180" class="svg-l"/>
+          <text x="563" y="204" text-anchor="middle" class="svg-t tx1">n = 24</text>
+
+          <line x1="45" y1="228" x2="660" y2="228" class="svg-l-soft"/>
+          <text x="45" y="246" class="svg-t">Je größer n, desto näher die Glockenform — kein Zufall, siehe nächste Karte</text>
+        </svg>
+        <figcaption><b>Immer mehr, immer flachere Balken, und der Umriss wird immer glatter.</b> Ab einem gewissen n ist das sehr praktisch: Man kann direkt mit der Normalverteilung annähern und muss die astronomisch großen Binomialkoeffizienten gar nicht ausrechnen. Der Grund dahinter ist der wichtigste Satz der ganzen Statistik.</figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Binomialkoeffizient (5.2) · Unabhängigkeit (5.4) · Pfadregeln (5.3) · Erwartungswert (5.6)</div>
+          <div><span class="lbl">Wohin</span>Normalverteilungsnäherung (5.8) · Hypothesentest (5.9) · Qualitätskontrolle und Stichproben · Fehlerspanne von Umfragen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Binomialverteilung</b> binomial distribution</span>
+          <span><b>Bernoulli-Kette</b> Bernoulli trials</span>
+          <span><b>Trefferwahrscheinlichkeit</b> success probability</span>
+          <span><b>kumuliert</b> cumulative</span>
+          <span><b>Stichprobe</b> sample</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Normalverteilung · warum die Glockenkurve überall auftaucht</h3>
+      <p class="de">Normalverteilung · zentraler Grenzwertsatz</p>
+    </div>
+    <div class="body">
+      <p class="lead">Körpergrößen, Messfehler, Prüfungsergebnisse, Werkstückmaße — lauter Dinge ohne Zusammenhang zeigen dieselbe Glockenkurve. <strong>Das ist kein Zufall, dafür gibt es einen Satz.</strong></p>
+
+      <figure>
+        <svg viewBox="0 0 700 320" role="img" aria-label="Glockenkurve der Normalverteilung mit den Bereichen von plus minus einer, zwei und drei Standardabweichungen, die 68, 95 und 99,7 Prozent umfassen.">
+          <path d="M 270 230 L 270 139 L 310 98 L 350 80 L 390 98 L 430 139 L 430 230 Z" class="f1"/>
+          <polyline points="110,228 150,223 190,210 230,181 270,139 310,98 350,80 390,98 430,139 470,181 510,210 550,223 590,228" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="90" y1="230" x2="620" y2="230" class="svg-l"/>
+
+          <line x1="110" y1="230" x2="110" y2="228" class="svg-l-soft"/>
+          <line x1="190" y1="230" x2="190" y2="210" class="svg-l-soft"/>
+          <line x1="270" y1="230" x2="270" y2="139" class="svg-l-soft"/>
+          <line x1="350" y1="230" x2="350" y2="80" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <line x1="430" y1="230" x2="430" y2="139" class="svg-l-soft"/>
+          <line x1="510" y1="230" x2="510" y2="210" class="svg-l-soft"/>
+          <line x1="590" y1="230" x2="590" y2="228" class="svg-l-soft"/>
+
+          <text x="110" y="248" text-anchor="middle" class="svg-tm">−3σ</text>
+          <text x="190" y="248" text-anchor="middle" class="svg-tm">−2σ</text>
+          <text x="270" y="248" text-anchor="middle" class="svg-tm">−1σ</text>
+          <text x="350" y="248" text-anchor="middle" class="svg-tm">μ</text>
+          <text x="430" y="248" text-anchor="middle" class="svg-tm">+1σ</text>
+          <text x="510" y="248" text-anchor="middle" class="svg-tm">+2σ</text>
+          <text x="590" y="248" text-anchor="middle" class="svg-tm">+3σ</text>
+
+          <line x1="270" y1="266" x2="430" y2="266" class="svg-l"/>
+          <text x="440" y="270" class="svg-t tx1">68 %</text>
+          <line x1="190" y1="286" x2="510" y2="286" class="svg-l"/>
+          <text x="520" y="290" class="svg-t tx2">95 %</text>
+          <line x1="110" y1="306" x2="590" y2="306" class="svg-l"/>
+          <text x="600" y="310" class="svg-t tx3">99,7 %</text>
+        </svg>
+        <figcaption><b>68 – 95 – 99,7 lohnt sich direkt auswendig.</b> Innerhalb einer Standardabweichung vom Mittelwert liegen rund 68 Prozent, innerhalb zweier rund 95, innerhalb dreier rund 99,7. «Mehr als drei Sigma abweichend» ist also etwas ziemlich Seltenes — etwa einmal in 370 Fällen. <b>Der berühmte Six-Sigma-Standard der Industrie verlangt, dass Fehler jenseits von sechs Standardabweichungen liegen, also im Bereich weniger pro Million.</b> Nebenbei: Die Fläche unter der Kurve <em>ist</em> die Wahrscheinlichkeit — genau das, was Strang 4, 4.8 mit «die Bedeutung des Integrals hängt an der senkrechten Achse» meinte.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Der zentrale Grenzwertsatz: der wichtigste Satz dieses Strangs</span>
+        <p><strong>Überlagern sich viele voneinander unabhängige zufällige Einflüsse, so nähert sich die Verteilung ihrer Summe der Normalverteilung — ganz gleich, wie die einzelnen Einflüsse selbst verteilt sind.</strong></p>
+        <p>Die Tragweite dieses Satzes lässt sich kaum überschätzen. Er erklärt, warum die Glockenkurve in Natur und Gesellschaft überall auftaucht:</p>
+        <div class="demo">
+          <p>Die Körpergröße eines Menschen hängt von einigen hundert Genen ab, dazu von Ernährung, Schlaf, Bewegung, Krankheiten — jeder Faktor schiebt ein wenig, und die Summe ist normalverteilt.</p>
+          <p>Der Fehler einer physikalischen Messung kommt von Temperatur, Erschütterung, Ablesen, Gerät, Luftzug und Dutzenden weiterer kleiner Störungen — auch normalverteilt.</p>
+          <p>Die Normalverteilung ist also keine «Lieblingsform der Natur», sondern <em>der Fingerabdruck, den das Aufaddieren vieler kleiner Beiträge hinterlässt</em>. Wo immer diese Struktur vorliegt, taucht die Glocke auf.</p>
+        </div>
+        <p>Eine unmittelbare Folge davon: <strong>Deshalb funktionieren Stichproben.</strong> Befragt man aus hundert Millionen Menschen zufällig tausend, ist die Abweichung des Ergebnisses vom wahren Wert normalverteilt und die Fehlerspanne berechenbar. Das «± 3 Prozent» hinter jeder Umfrage kommt aus diesem Satz.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Das Gesetz der großen Zahlen: nicht verwechseln</span>
+        <p>Ein zweiter Satz, der oft mit dem zentralen Grenzwertsatz vermischt wird: <strong>Bei genügend vielen Wiederholungen nähert sich der tatsächliche Mittelwert dem Erwartungswert an.</strong> Das ist das Prinzip, nach dem das Casino in 5.6 sicher gewinnt, und der Grund, warum die Häufigkeitsdeutung aus 5.3 überhaupt trägt.</p>
+        <p>Der Unterschied: <em>Das Gesetz der großen Zahlen sagt, wohin der Mittelwert läuft; der zentrale Grenzwertsatz sagt, welche Form sein Zittern hat.</em> Eines betrifft die Lage, das andere die Streuung.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Binomialverteilung (5.7) · Standardabweichung (5.1 und 5.6) · Integral und Fläche (Strang 4, 4.8) · Grenzwert (Strang 4, 4.5)</div>
+          <div><span class="lbl">Wohin</span>Hypothesentest (5.9) · Konfidenzintervalle · Stichprobenerhebungen · Qualitätskontrolle · statistisches Lernen (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p><strong>Nicht alles ist normalverteilt.</strong> Einkommen sind es nicht (rechtsschief, siehe 5.1), Städtegrößen nicht, und heftige Kursausschläge erst recht nicht — Finanzkrisen haben wiederholt gezeigt, dass extreme Ereignisse an echten Märkten <em>weit häufiger</em> vorkommen, als die Normalverteilung vorhersagt. Extremrisiken mit einem Normalverteilungsmodell zu schätzen, wurde nach 2008 als einer der technischen Gründe der Krise immer wieder benannt.</p>
+          <p>Das Kriterium steht im Satz selbst: <strong>Normalverteilt wird es nur, wenn sich viele unabhängige kleine Beiträge <em>addieren</em>.</strong> Verstärken sich die Faktoren gegenseitig (Panik steckt an) oder multiplizieren sie sich statt zu addieren (Zinseszins), sieht die Form völlig anders aus.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Normalverteilung</b> normal distribution</span>
+          <span><b>Gaußsche Glockenkurve</b> Gaussian bell curve</span>
+          <span><b>Dichtefunktion</b> density function</span>
+          <span><b>zentraler Grenzwertsatz</b> central limit theorem</span>
+          <span><b>Gesetz der großen Zahlen</b> law of large numbers</span>
+          <span><b>Erwartungswert μ</b> mean</span>
+          <span><b>Sigmaregeln</b> sigma rules</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Hypothesentest · das offizielle Verfahren für den Rückweg</h3>
+      <p class="de">Hypothesentest · Fehler 1. und 2. Art</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ist der beobachtete Unterschied echt oder Zufall? Der Hypothesentest ist das Standardverfahren für diese Frage — <strong>und seine Logik ist der Widerspruchsbeweis in einer Wahrscheinlichkeitsfassung.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Das logische Gerüst</span>
+        <p>Erinnere dich an den Widerspruchsbeweis aus Strang 0, 0.6: Man nimmt an, die Behauptung sei falsch, leitet einen Widerspruch her, und damit ist die Annahme erledigt. Der Hypothesentest tut dasselbe, nur wird aus «Widerspruch» ein «zu unwahrscheinlich»:</p>
+        <div class="demo">
+          <p>① Zuerst annehmen, dass <em>nichts Besonderes</em> passiert ist — das ist die <strong>Nullhypothese</strong>. Zum Beispiel «diese Münze ist fair».</p>
+          <p>② Unter dieser Annahme ausrechnen, wie wahrscheinlich das beobachtete Ergebnis oder ein noch extremeres ist.</p>
+          <p>③ Ist diese Wahrscheinlichkeit unter einer Schwelle (etwa 5 Prozent), sagt man: <em>Entweder ist etwas sehr Seltenes passiert, oder die Nullhypothese ist falsch.</em> Man entscheidet sich für das Zweite und <strong>verwirft</strong> die Nullhypothese.</p>
+        </div>
+        <p>Beachte die Formulierung im dritten Schritt. Der Widerspruchsbeweis kann schließen «die Annahme ist mit Sicherheit falsch»; der Hypothesentest kann nur schließen «sie sieht nicht danach aus, richtig zu sein». <strong>Das ist der Preis der Umkehroperation: Sicherheit wird gegen Wahrscheinlichkeit eingetauscht.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Zwei Fehlerarten mit ganz verschiedenen Kosten</span>
+        <p>Weil das Ergebnis eine Wahrscheinlichkeit trägt, wird es zwangsläufig manchmal falsch sein. Und falsch sein kann man in zwei Richtungen; deutsche Lehrbücher nummerieren sie schlicht durch:</p>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:26%"></th><th style="width:37%">Nullhypothese ist in Wahrheit <b>wahr</b><br><span style="font-size:12px">es ist wirklich nichts</span></th><th style="width:37%">Nullhypothese ist in Wahrheit <b>falsch</b><br><span style="font-size:12px">es ist wirklich etwas</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Du verwirfst sie</b><br><span style="font-size:12.5px;color:var(--ink-2)">meldest «etwas ist»</span></td>
+              <td class="dear"><b>Fehler 1. Art</b><br>falscher Alarm<br>Wahrscheinlichkeit ist das Signifikanzniveau α</td>
+              <td class="cheap">richtig</td>
+            </tr>
+            <tr>
+              <td><b>Du behältst sie</b><br><span style="font-size:12.5px;color:var(--ink-2)">meldest «nichts ist»</span></td>
+              <td class="cheap">richtig</td>
+              <td class="dear"><b>Fehler 2. Art</b><br>übersehen<br>Wahrscheinlichkeit heißt β</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Entscheidend ist: <strong>Man kann nicht beide Fehler gleichzeitig minimieren; drückt man den einen herunter, steigt der andere.</strong> Setzt man die Schwelle sehr streng (es wird selten Alarm ausgelöst), gibt es weniger Fehlalarme, aber mehr Übersehenes — und umgekehrt.</p>
+        <p>Deshalb ist «wie streng soll die Schwelle sein» keine mathematische, sondern eine <em>Kostenfrage</em>: Bei einer Krebsvorsorge nimmt man lieber Fehlalarme in Kauf, als Fälle zu übersehen (Fehler 2. Art klein halten); vor Gericht lässt man lieber Schuldige laufen, als Unschuldige zu verurteilen («im Zweifel für den Angeklagten» setzt genau die Unschuld als Nullhypothese und drückt den Fehler 1. Art extrem herunter). <strong>Die Mathematik kann beide Fehlerwahrscheinlichkeiten ausrechnen, aber welche Seite man schont, müssen Menschen entscheiden.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Das verbreitetste statistische Missverständnis der Welt</span>
+          <p>«Der p-Wert ist 0,03» heißt <strong>nicht</strong> «die Wahrscheinlichkeit, dass die Nullhypothese wahr ist, beträgt 3 Prozent».</p>
+          <p>Er heißt: <em>«Wäre die Nullhypothese wahr, läge die Wahrscheinlichkeit für so extreme Daten bei 3 Prozent»</em> — das ist also wieder ein <span class="m">P(Daten | Hypothese)</span>, während man <span class="m">P(Hypothese | Daten)</span> wissen will. <strong>Um den Pfeil umzudrehen, bräuchte man zusätzlich die A-priori-Wahrscheinlichkeit, also Karte 5.5.</strong></p>
+          <p>Das ist der dritte Auftritt der Stolperfalle aus 5.4 (der erste war in der Logik, der zweite beim medizinischen Test). In der realen Forschung hat sie großflächig Schaden angerichtet — dass sich viele «signifikante» Befunde später nicht reproduzieren lassen, geht wesentlich auf dieses Missverständnis zurück. <em>Dasselbe Denkleck verfolgt uns durch drei Stränge.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Binomialverteilung (5.7) · Normalverteilung (5.8) · Widerspruchsbeweis (Strang 0, 0.6) · bedingte Wahrscheinlichkeit (5.4) · Bayes (5.5)</div>
+          <div><span class="lbl">Wohin</span>Konfidenzintervalle · Versuchsplanung · klinische Studien und Arzneimittelzulassung · Qualitätskontrolle · Bayes-Statistik (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Hypothesentest</b> hypothesis test</span>
+          <span><b>Nullhypothese H₀</b> null hypothesis</span>
+          <span><b>Alternativhypothese H₁</b> alternative hypothesis</span>
+          <span><b>Signifikanzniveau α</b> significance level</span>
+          <span><b>Fehler 1. Art</b> type I error</span>
+          <span><b>Fehler 2. Art</b> type II error</span>
+          <span><b>Ablehnungsbereich</b> rejection region</span>
+          <span><b>Stichprobenumfang</b> sample size</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">5.10 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Korrelation ist keine Kausalität · der wichtigste Satz zum Mitnehmen</h3>
+      <p class="de">Korrelation ≠ Kausalität</p>
+    </div>
+    <div class="body">
+      <p class="lead">Wenn sich zwei Dinge gemeinsam verändern, heißt das <strong>Korrelation</strong>. Wenn eines das andere <em>bewirkt</em>, heißt das <strong>Kausalität</strong>. <strong>Aus den Daten allein lassen sich die beiden nie unterscheiden.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Ein Datensatz, mindestens vier Erklärungen</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 275" role="img" aria-label="Drei mögliche Erklärungen für eine beobachtete Korrelation zwischen A und B: A verursacht B, B verursacht A, oder ein dritter Faktor C verursacht beide.">
+          <defs>
+            <marker id="e1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <text x="350" y="14" text-anchor="middle" class="svg-tm">Daten zeigen: A und B verändern sich gemeinsam</text>
+          <rect x="230" y="22" width="80" height="38" rx="4" class="f2"/>
+          <text x="270" y="46" text-anchor="middle" class="svg-t tx2">A</text>
+          <rect x="390" y="22" width="80" height="38" rx="4" class="f2"/>
+          <text x="430" y="46" text-anchor="middle" class="svg-t tx2">B</text>
+          <line x1="312" y1="41" x2="388" y2="41" class="svg-l" stroke-dasharray="5 4"/>
+
+          <line x1="30" y1="84" x2="670" y2="84" class="svg-l-soft"/>
+
+          <rect x="40" y="112" width="60" height="34" rx="4" class="svg-face"/>
+          <text x="70" y="134" text-anchor="middle" class="svg-t">A</text>
+          <rect x="160" y="112" width="60" height="34" rx="4" class="svg-face"/>
+          <text x="190" y="134" text-anchor="middle" class="svg-t">B</text>
+          <line x1="104" y1="129" x2="156" y2="129" class="svg-l" marker-end="url(#e1)"/>
+          <text x="130" y="232" text-anchor="middle" class="svg-t tx1">A bewirkt B</text>
+
+          <rect x="260" y="112" width="60" height="34" rx="4" class="svg-face"/>
+          <text x="290" y="134" text-anchor="middle" class="svg-t">A</text>
+          <rect x="380" y="112" width="60" height="34" rx="4" class="svg-face"/>
+          <text x="410" y="134" text-anchor="middle" class="svg-t">B</text>
+          <line x1="376" y1="129" x2="324" y2="129" class="svg-l" marker-end="url(#e1)"/>
+          <text x="350" y="232" text-anchor="middle" class="svg-t tx2">B bewirkt A</text>
+
+          <rect x="545" y="104" width="60" height="34" rx="4" class="fm"/>
+          <text x="575" y="126" text-anchor="middle" class="svg-t txm">C</text>
+          <rect x="480" y="176" width="60" height="34" rx="4" class="svg-face"/>
+          <text x="510" y="198" text-anchor="middle" class="svg-t">A</text>
+          <rect x="610" y="176" width="60" height="34" rx="4" class="svg-face"/>
+          <text x="640" y="198" text-anchor="middle" class="svg-t">B</text>
+          <line x1="558" y1="142" x2="518" y2="172" class="svg-l" marker-end="url(#e1)"/>
+          <line x1="592" y1="142" x2="632" y2="172" class="svg-l" marker-end="url(#e1)"/>
+          <text x="575" y="232" text-anchor="middle" class="svg-t txm">C bewirkt beide</text>
+
+          <line x1="30" y1="250" x2="670" y2="250" class="svg-l-soft"/>
+          <text x="350" y="268" text-anchor="middle" class="svg-t">Und eine vierte: purer Zufall. Aus den Daten sind alle vier ununterscheidbar.</text>
+        </svg>
+        <figcaption><b>Der dritte Fall ist der heimtückischste, weil er am ehesten nach Ursache aussieht.</b> «An Tagen mit mehr Eisverkauf ertrinken mehr Menschen» — Eis lässt niemanden ertrinken, es ist die <b>Hitze</b>, die beides gleichzeitig bewirkt. Das versteckte C heißt <b>Störvariable</b>. Praktisch jeder reale Streit über Daten dreht sich darum, ob ein C übersehen wurde.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Wie man Kausalität doch feststellt</span>
+        <p>Es gibt genau einen Weg, und er ist sehr schlicht: <strong>ein Experiment machen, und zwar mit zufälliger Zuteilung.</strong></p>
+        <p>Man teilt die Menschen zufällig in zwei Gruppen, eine bekommt das Medikament, die andere ein Scheinpräparat. Weil zufällig zugeteilt wurde, sollten sich beide Gruppen in <em>allen übrigen Merkmalen</em> (auch in denen, an die niemand gedacht hat) ähneln — unterscheidet sich das Ergebnis trotzdem, kann der Unterschied nur von der Behandlung kommen. <strong>Die Zufallszuteilung dient genau dazu, alle denkbaren C zu zerstreuen.</strong></p>
+        <p>Deshalb müssen neue Medikamente randomisierte kontrollierte Studien durchlaufen — und deshalb sind viele sozialwissenschaftliche Schlüsse so schwer abzusichern: Man kann nicht per Los bestimmen, wer studiert und wer heiratet.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Zwei weitere Fallen, die man kennen muss</span>
+        <div class="demo">
+          <p><strong>Überlebendenverzerrung</strong>　Im Zweiten Weltkrieg untersuchte man die Einschusslöcher zurückgekehrter Flugzeuge und fand die meisten an den Tragflächen; jemand schlug vor, die Tragflächen zu verstärken. Der Statistiker Wald wandte ein: <em>Verstärken müsse man gerade die Stellen ohne Löcher</em> — denn Maschinen, die dort getroffen wurden, sind gar nicht erst zurückgekommen. <strong>Deine Stichprobe ist durch irgendeinen Mechanismus gefiltert worden.</strong></p>
+          <p><strong>Simpson-Paradox</strong>　Ein Verfahren ist bei leichten Fällen besser und bei schweren Fällen ebenfalls besser — aber über beide Gruppen zusammengerechnet schlechter. Das ist kein Rechenfehler: Sind die Gruppengrößen sehr unterschiedlich, kann das Zusammenlegen die Wahrheit verdecken. <em>Getrennt betrachtet und zusammen betrachtet können zu gegenteiligen Schlüssen führen.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Beschreibende Statistik (5.1) · bedingte Wahrscheinlichkeit (5.4) · Hypothesentest (5.9)</div>
+          <div><span class="lbl">Wohin</span>Versuchsplanung · Kausalinferenz (Gipfel) · Fallen der Datenvisualisierung (Strang 7) · Grundausrüstung fürs Zeitunglesen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Korrelation</b> correlation</span>
+          <span><b>Kausalität</b> causation</span>
+          <span><b>Störvariable</b> confounder</span>
+          <span><b>randomisierte Studie</b> randomised trial</span>
+          <span><b>Kontrollgruppe</b> control group</span>
+          <span><b>Verzerrung / Bias</b> bias</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista5">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Der Gipfel dieses Strangs führt geradewegs an die belebteste Stelle unserer Zeit. Auch hier: <strong>nichts davon musst du verstehen.</strong></p>
+
+  <div class="vista">
+    <h4>Stochastische Prozesse: wie sich Zufall über die Zeit entfaltet</h4>
+    <p>Bisher ging es um «einmal» oder «n unabhängige Wiederholungen». In Wirklichkeit hängt Zufall oft <em>zusammen</em>: Der morgige Kurs hängt vom heutigen ab, das heutige Wetter beeinflusst das morgige. Die Wissenschaft dieser «Ketten voneinander abhängiger Zufälle» heißt <strong>stochastische Prozesse</strong>.</p>
+    <p>Das berühmteste Beispiel ist die <strong>Brownsche Bewegung</strong> — das unregelmäßige Zittern von Blütenstaub im Wasser. Einstein hat damit 1905 bewiesen, dass Atome wirklich existieren; gut sechzig Jahre später wurde dasselbe mathematische Modell zur Beschreibung von Aktienkursen übernommen und wuchs zur Grundlage der Bewertung von Finanzderivaten. <em>Eine botanische Beobachtung wurde zum mathematischen Fundament eines Billionenmarktes.</em></p>
+
+    <h4>Bayes-Statistik: «wie sehr ich glaube» offiziell aufschreiben</h4>
+    <p>Karte 5.3 nannte drei Deutungen der Wahrscheinlichkeit; die ersten beiden wurden in diesem Kapitel benutzt. Die dritte lautet: <strong>Wahrscheinlichkeit ist der Grad meiner Überzeugung.</strong> Darüber wurde zweihundert Jahre gestritten, und diese Position gewinnt zunehmend die Oberhand.</p>
+    <p>Das Vorgehen der Bayes-Statistik: erst die eigene Vorab-Überzeugung aufschreiben, nach dem Sehen der Daten mit der Formel aus 5.5 aktualisieren, das Ergebnis als neue Überzeugung nehmen, und so weiter. <em>Damit ist «Lernen» vollständig als Mathematik geschrieben.</em></p>
+    <p>Der Unterschied zum klassischen Vorgehen ist sehr praktisch: Klassisch kann man nur sagen «Nullhypothese verworfen oder nicht», bayesianisch kann man direkt sagen «diese Hypothese ist mit soundsoviel Wahrscheinlichkeit wahr» — also genau das <span class="m">P(Hypothese|Daten)</span>, das man von Anfang an wollte. Der Preis ist, dass man seine A-priori-Annahme <em>offenlegen</em> muss, und woher die kommen soll, ist die Frage, die diese Schule seit zweihundert Jahren begleitet.</p>
+
+    <h4>Maschinelles Lernen: das ist alles dieses Kapitel</h4>
+    <p>Was heute künstliche Intelligenz heißt, ist, wenn man die Hülle abzieht, zu einem großen Teil dieser Strang plus die Ableitungen aus Strang 4.</p>
+    <p>Ein Modell zu trainieren heißt, <strong>aus Daten auf die Regel zurückzuschließen</strong> — genau das «rückwärts», von dem dieser Strang eingangs sprach. Konkret schreibt man eine Funktion dafür, «wie stark man danebenliegt», und sucht deren Minimum mit dem Verfahren aus Strang 4, 4.7 (Gradientenabstieg). <em>Der ganze Ablauf besteht aus zwei Dingen: Wahrscheinlichkeiten und Ableitungen.</em></p>
+    <p>Und jede Stolperfalle dieses Kapitels kehrt dort wieder, mit höherem Einsatz: Steckt in den Trainingsdaten eine <strong>Überlebendenverzerrung</strong>, lernt das Modell die Verzerrung mit; <strong>Korrelation ist keine Kausalität</strong>, deshalb kann ein Modell vorhersagen, ohne zu erklären; wird die <strong>Grundrate</strong> ignoriert, produziert ein Diagnosemodell für seltene Krankheiten haufenweise falsch Positive. <strong>Karte 5.10 ist die praktischste Seite Mathematik unserer Zeit.</strong></p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Stochastik / Wahrscheinlichkeitstheorie</strong> — das Fundament dieses Kapitels, mit Maßtheorie neu gegossen</li>
+      <li><strong>Statistik</strong> — Schätzen, Testen, Regression als vollständiges System</li>
+      <li><strong>Stochastische Prozesse</strong> — für Finanzmathematik und Physik gleichermaßen</li>
+      <li><strong>Maschinelles Lernen</strong> — Wahrscheinlichkeit plus Optimierung</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss5">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Im Deutschen heißt der ganze Bereich <span class="m-up m">Stochastik</span>. <span class="m-up m">Baumdiagramm</span>, <span class="m-up m">Erwartungswert</span> und <span class="m-up m">Nullhypothese</span> gehören zu den häufigsten Unterrichtsvokabeln.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">Stochastik</td><td class="en">probability and statistics</td><td>概率统计</td></tr>
+      <tr><td class="de">Mittelwert / Median / Modalwert</td><td class="en">mean / median / mode</td><td>平均数 / 中位数 / 众数</td></tr>
+      <tr><td class="de">Spannweite / Quartil</td><td class="en">range / quartile</td><td>极差 / 四分位数</td></tr>
+      <tr><td class="de">Boxplot</td><td class="en">box plot</td><td>箱线图</td></tr>
+      <tr><td class="de">Standardabweichung / Streuung</td><td class="en">standard deviation / spread</td><td>标准差 / 离散程度</td></tr>
+      <tr><td class="de">Häufigkeit / relative Häufigkeit</td><td class="en">frequency / relative frequency</td><td>频数 / 相对频率</td></tr>
+      <tr><td class="de">Zählprinzip / Kombinatorik</td><td class="en">counting principle / combinatorics</td><td>计数原理 / 组合数学</td></tr>
+      <tr><td class="de">Permutation / Kombination</td><td class="en">permutation / combination</td><td>排列 / 组合</td></tr>
+      <tr><td class="de">Fakultät / Binomialkoeffizient</td><td class="en">factorial / binomial coefficient</td><td>阶乘 / 二项系数</td></tr>
+      <tr><td class="de">mit / ohne Zurücklegen</td><td class="en">with / without replacement</td><td>放回 / 不放回</td></tr>
+      <tr><td class="de">Pascalsches Dreieck</td><td class="en">Pascal's triangle</td><td>帕斯卡三角</td></tr>
+      <tr><td class="de">Wahrscheinlichkeit</td><td class="en">probability</td><td>概率</td></tr>
+      <tr><td class="de">Zufallsexperiment / Laplace-Experiment</td><td class="en">random / equiprobable experiment</td><td>随机试验 / 等可能试验</td></tr>
+      <tr><td class="de">Ergebnis / Ereignis / Ergebnismenge Ω</td><td class="en">outcome / event / sample space</td><td>结果 / 事件 / 样本空间</td></tr>
+      <tr><td class="de">Baumdiagramm / Pfadregeln</td><td class="en">tree diagram / path rules</td><td>树形图 / 路径法则</td></tr>
+      <tr><td class="de">Gegenereignis</td><td class="en">complementary event</td><td>对立事件</td></tr>
+      <tr><td class="de">bedingte Wahrscheinlichkeit</td><td class="en">conditional probability</td><td>条件概率</td></tr>
+      <tr><td class="de">unabhängig / unvereinbar</td><td class="en">independent / mutually exclusive</td><td>独立的 / 互斥的</td></tr>
+      <tr><td class="de">Vierfeldertafel</td><td class="en">two-way table</td><td>四格表</td></tr>
+      <tr><td class="de">Satz von Bayes</td><td class="en">Bayes' theorem</td><td>贝叶斯定理</td></tr>
+      <tr><td class="de">Grundrate / a-priori-Wahrscheinlichkeit</td><td class="en">base rate / prior</td><td>基础比率 / 先验概率</td></tr>
+      <tr><td class="de">falsch positiv / falsch negativ</td><td class="en">false positive / negative</td><td>假阳性 / 假阴性</td></tr>
+      <tr><td class="de">Sensitivität / Spezifität</td><td class="en">sensitivity / specificity</td><td>灵敏度 / 特异度</td></tr>
+      <tr><td class="de">Zufallsvariable</td><td class="en">random variable</td><td>随机变量</td></tr>
+      <tr><td class="de">Erwartungswert / Varianz</td><td class="en">expected value / variance</td><td>期望值 / 方差</td></tr>
+      <tr><td class="de">Wahrscheinlichkeitsverteilung</td><td class="en">probability distribution</td><td>概率分布</td></tr>
+      <tr><td class="de">Binomialverteilung / Bernoulli-Kette</td><td class="en">binomial distribution / Bernoulli trials</td><td>二项分布 / 伯努利试验链</td></tr>
+      <tr><td class="de">Normalverteilung</td><td class="en">normal distribution</td><td>正态分布</td></tr>
+      <tr><td class="de">Gaußsche Glockenkurve / Dichtefunktion</td><td class="en">bell curve / density function</td><td>高斯钟形曲线 / 密度函数</td></tr>
+      <tr><td class="de">zentraler Grenzwertsatz</td><td class="en">central limit theorem</td><td>中心极限定理</td></tr>
+      <tr><td class="de">Gesetz der großen Zahlen</td><td class="en">law of large numbers</td><td>大数定律</td></tr>
+      <tr><td class="de">Hypothesentest / Nullhypothese H₀</td><td class="en">hypothesis test / null hypothesis</td><td>假设检验 / 零假设</td></tr>
+      <tr><td class="de">Signifikanzniveau α</td><td class="en">significance level</td><td>显著性水平</td></tr>
+      <tr><td class="de">Fehler 1. / 2. Art</td><td class="en">type I / type II error</td><td>第一类 / 第二类错误</td></tr>
+      <tr><td class="de">Ablehnungsbereich / Stichprobenumfang</td><td class="en">rejection region / sample size</td><td>拒绝域 / 样本量</td></tr>
+      <tr><td class="de">Korrelation / Kausalität</td><td class="en">correlation / causation</td><td>相关 / 因果</td></tr>
+      <tr><td class="de">Störvariable / Kontrollgruppe</td><td class="en">confounder / control group</td><td>混杂因素 / 对照组</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs5">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>Worin unterscheiden sich die Richtungen von Wahrscheinlichkeitsrechnung und Statistik? Warum sind sie Umkehrungen voneinander? Der wievielte Auftritt dieses Motors ist das?</li>
+    <li>Warum wirkt das Wort «Durchschnittseinkommen» oft wie ein Hohn? Bei welchen Verteilungen weichen Mittelwert und Median stark voneinander ab?</li>
+    <li>Warum wird bei der Standardabweichung quadriert und wieder die Wurzel gezogen, statt den Betrag zu nehmen? An welchen Satz erinnert diese Gestalt?</li>
+    <li>Welche zwei Fragen stellt man sich zuerst bei einer Kombinatorikaufgabe?</li>
+    <li>Warum rechnet man «mindestens einer» rückwärts? Welchem Griff aus dem Werkzeugkasten entspricht das?</li>
+    <li>Worin unterscheiden sich «unabhängig» und «unvereinbar»? Warum sind unvereinbare Ereignisse gerade extrem abhängig?</li>
+    <li>Test mit 99 Prozent Genauigkeit, Ergebnis positiv — warum ist man nur zu 9 Prozent wirklich krank? Erklär es mit den 100 000 Menschen.</li>
+    <li>Wie oft taucht die Verwechslung von <span class="m">P(A|B)</span> und <span class="m">P(B|A)</span> in diesem Heft auf? Wo jeweils?</li>
+    <li>Ein Würfel mit Erwartungswert 3,5 zeigt nie 3,5 — was sagt der Erwartungswert dann? Warum muss ein Casino nicht betrügen?</li>
+    <li>Aus welchen Karten stammen die drei Bausteine der Binomialformel?</li>
+    <li>Warum begegnet einem die Glockenkurve in der Natur überall? Wann ist etwas <em>nicht</em> normalverteilt?</li>
+    <li>Was hat die Logik des Hypothesentests mit dem Widerspruchsbeweis gemeinsam, worin unterscheidet sie sich?</li>
+    <li>Was bedeutet «p-Wert = 0,03» genau? Und was bedeutet es <em>nicht</em>?</li>
+    <li>Bei «A und B sind korreliert» — welche vier Erklärungen kommen mindestens infrage? Wie stellt man Kausalität fest?</li>
+    <li>Welche Stellen eines Flugzeugs hätte man im Krieg verstärken müssen? Warum?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strang-4-analysis.html"><span class="dir">Vorige Seite</span><span class="t">Strang 4 · Funktionen und Veränderung</span></a>
+  <a class="next" href="strang-6-diskret.html"><span class="dir">Nächste Seite</span><span class="t">Strang 6 · Diskretes und Algorithmen</span></a>
+</div>
+
+</main>
+</body>
+</html>

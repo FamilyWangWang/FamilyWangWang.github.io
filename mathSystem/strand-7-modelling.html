@@ -1,0 +1,789 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线七 · 建模与应用 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-7-modelling.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线七 · 建模与应用 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-7-modelling.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html" aria-current="page">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-7-modellieren.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线七</h1>
+
+<section id="s7">
+  <h2 class="sec"><span class="num">主线 七</span>建模与应用</h2>
+  <p class="sec-lead">前面六条主线都在数学内部。这一条是<strong>出口</strong>：现实里那些乱七八糟、没有标准答案、条件还老是不全的事，怎么塞进公式里去。</p>
+
+  <p>而这条主线的第一句话，也是最要紧的一句话，是一位统计学家说的：</p>
+
+  <div class="rule-box"><strong>「所有模型都是错的，但有些是有用的。」</strong>　—— George Box</div>
+
+  <p>这句话不是自嘲，是这一整条主线的操作说明。模型不是现实，模型是<em>现实的一个刻意的简化</em>。算轨道时把行星当成一个点，算受力时假设绳子没有重量，算人口时假设每个人都一样——这些当然都不对，但正是这些「不对」让问题变得能算。</p>
+
+  <p><strong>真正会用模型的人，和不会用的人，区别不在于会不会解方程，而在于知不知道自己简化掉了什么。</strong>这一章讲的就是这件事：怎么建，以及什么时候别信。</p>
+
+  <p>还有一点值得先说：这条主线是唯一一条<em>必须走出数学</em>的。前六条的题目都有标准答案，这一条没有——因为「这个模型合不合适」不是一道数学题，是一个判断。数学能算出最优解，但「什么算最优」是人定的。<strong>这也是为什么它被放在最后。</strong></p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>建模循环 · 五步，以及那条回头的箭头</h3>
+      <p class="de">Modellierungskreislauf</p>
+    </div>
+    <div class="body">
+      <p class="lead">把现实问题变成数学答案，中间有五步。而<strong>最重要的不是这五步，是第五步之后那条回头的箭头。</strong></p>
+
+      <figure class="wide">
+        <svg viewBox="0 0 700 230" role="img" aria-label="建模循环的五个步骤：现实问题、建立模型、数学求解、翻译回现实、检验，检验不通过则回到建立模型重新来过。">
+          <defs>
+            <marker id="g0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="30" y="46" width="120" height="66" rx="4" class="svg-face"/>
+          <text x="90" y="76" text-anchor="middle" class="svg-t">① 现实问题</text>
+          <text x="90" y="96" text-anchor="middle" class="svg-ts">一摊乱七八糟的事</text>
+
+          <rect x="165" y="46" width="120" height="66" rx="4" class="fm"/>
+          <text x="225" y="76" text-anchor="middle" class="svg-t txm">② 建立模型</text>
+          <text x="225" y="96" text-anchor="middle" class="svg-ts txm">决定忽略什么</text>
+
+          <rect x="300" y="46" width="120" height="66" rx="4" class="f2"/>
+          <text x="360" y="76" text-anchor="middle" class="svg-t tx2">③ 数学求解</text>
+          <text x="360" y="96" text-anchor="middle" class="svg-ts tx2">这步最像做题</text>
+
+          <rect x="435" y="46" width="120" height="66" rx="4" class="f2"/>
+          <text x="495" y="76" text-anchor="middle" class="svg-t tx2">④ 翻回现实</text>
+          <text x="495" y="96" text-anchor="middle" class="svg-ts tx2">答案是什么意思</text>
+
+          <rect x="570" y="46" width="100" height="66" rx="4" class="f1"/>
+          <text x="620" y="76" text-anchor="middle" class="svg-t tx1">⑤ 检验</text>
+          <text x="620" y="96" text-anchor="middle" class="svg-ts tx1">合理吗</text>
+
+          <path d="M 152 79 L 161 79" class="svg-l" marker-end="url(#g0)"/>
+          <path d="M 287 79 L 296 79" class="svg-l" marker-end="url(#g0)"/>
+          <path d="M 422 79 L 431 79" class="svg-l" marker-end="url(#g0)"/>
+          <path d="M 557 79 L 566 79" class="svg-l" marker-end="url(#g0)"/>
+
+          <path d="M 620 116 L 620 160 L 225 160 L 225 118" class="svg-l" stroke-dasharray="5 4" marker-end="url(#g0)"/>
+          <text x="422" y="182" text-anchor="middle" class="svg-t txm">不合理？回去改模型 —— 这条虚线才是建模的核心</text>
+          <text x="422" y="204" text-anchor="middle" class="svg-tm">只走一遍就交卷的，通常不是建模，是套公式</text>
+        </svg>
+        <figcaption><b>学校的应用题基本只练第三步，而现实里最难的是第二步和第五步。</b>第二步要决定忽略什么——忽略得太多，模型脱离现实；忽略得太少，问题算不动。第五步要判断答案合不合理——算出人的身高 2000 米、需要 −3 个工人、概率 1.4，那不是「数学答案」，那是模型或计算出了问题。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">每一步各自会出什么错</span>
+        <ul class="plain">
+          <li><strong>① → ②　问题没读懂就开始建。</strong>这是工具箱招数九「换句话说」的地盘：先用自己的话把问题复述一遍。</li>
+          <li><strong>② 忽略错了东西。</strong>算高空跳伞忽略空气阻力，结果会离谱到荒唐——因为在那个问题里，空气阻力恰恰是主角。<em>该忽略什么，取决于你在问什么。</em></li>
+          <li><strong>③ 纯粹算错。</strong>这一步最容易，也最容易被当成全部。</li>
+          <li><strong>④ 忘了翻译回去。</strong><span class="m">x = 3.7</span> 是什么？3.7 个人？3.7 米？没有单位的数字不是答案。</li>
+          <li><strong>⑤ 不检验。</strong>这是失分和翻车最多的一步，而它通常只要三十秒。</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>波利亚四步（工具箱）· 函数（主线四 4.1）· 方程（主线二 2.3）</div>
+          <div><span class="lbl">下游</span>这一整条主线 · 物理与化学里的每一道题 · 工程 · 经济学 · 数据科学</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Modellieren</b> 建模</span>
+          <span><b>Modellierungskreislauf</b> 建模循环</span>
+          <span><b>Annahme</b> 假设</span>
+          <span><b>Vereinfachung</b> 简化</span>
+          <span><b>Validierung</b> 验证</span>
+          <span><b>Interpretation</b> 解释 / 翻译回现实</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">Modellieren</span> 是德国数学课程标准里明确列出的核心能力之一，考试里会有专门的建模题（Modellierungsaufgabe）——那种题给一段真实情境的文字，要你自己决定用什么模型。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>单位与量纲 · 最便宜的一次检查</h3>
+      <p class="de">Einheiten · Dimensionsanalyse</p>
+    </div>
+    <div class="body">
+      <p class="lead">带单位算，几乎不花时间，却能挡掉最多的错。而且单位不只能检查答案——<strong>它有时能直接推出公式该长什么样。</strong></p>
+
+      <div class="field">
+        <span class="lbl">一次两亿美元的教训</span>
+        <p>1999 年，NASA 的火星气候探测者号在接近火星时解体。事后查明原因：一个团队用的是英制单位（磅力秒），另一个团队用的是公制（牛顿秒），双方都没发现。<strong>探测器按错误的推力数据点火，飞得太低，烧毁在大气层里。</strong></p>
+        <p>1.25 亿美元的探测器，毁于一次没做的单位换算。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">单位当成代数式来算</span>
+        <div class="demo">
+          <p>单位可以像字母一样参与乘除，而且会自己约分：</p>
+          <p class="calc">米 ÷ 秒 = 米/秒　　（速度）<br>米/秒 ÷ 秒 = 米/秒²　（加速度）<br>米 × 米 = 米²　　　（面积）</p>
+          <p>所以问「面积」的题，答案单位必须是平方；问「速度」的题，必须是长度除以时间。<strong>单位不对，说明中间某一步乘除反了</strong>——这比重算一遍快得多。</p>
+        </div>
+        <p>这一招在主线四也用过一次：斜率 <span class="m">Δy/Δx</span> 的单位是「y 的单位 ÷ x 的单位」，所以只要想一下「路程对时间的斜率应该是米每秒」，就绝不会把分子分母写反。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">量纲能推出公式的形状</span>
+        <div class="demo">
+          <p>单摆的周期 <span class="m">T</span> 跟什么有关？能想到的只有：摆长 <span class="m">L</span>（米）、重力加速度 <span class="m">g</span>（米/秒²）、摆锤质量 <span class="m">m</span>（千克）。</p>
+          <p>答案的单位必须是<strong>秒</strong>。可 <span class="m">m</span> 带着千克，而其他两个量里都没有千克可以约掉——<em>所以质量根本不可能出现在公式里。</em></p>
+          <p>再看 <span class="m">L/g</span>：米 ÷（米/秒²）= 秒²。开个方就是秒。所以周期必定正比于 <span class="m">√(L/g)</span>。</p>
+          <p><strong>不用做任何实验，也不用列任何方程，光靠单位就推出了公式的骨架。</strong>（完整答案是 <span class="m">T = 2π√(L/g)</span>，那个 2π 单位分析给不出来，得靠物理。）</p>
+        </div>
+        <p>这个结论还有个反直觉的实际后果：<em>摆锤挂多重，周期都一样。</em>这正是伽利略当年在教堂里看着吊灯摆动时发现的。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>比例（主线一 1.5）· 幂与根（主线一 1.8）· 斜率的单位（主线四 4.2）</div>
+          <div><span class="lbl">下游</span>物理的全部 · 估算（7.3）· 检验答案（工具箱四把尺子）· 工程设计</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Einheit</b> 单位</span>
+          <span><b>Größe</b> 物理量</span>
+          <span><b>Umrechnung</b> 换算</span>
+          <span><b>Dimensionsanalyse</b> 量纲分析</span>
+          <span><b>SI-Einheiten</b> 国际单位制</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>数量级估算 · 猜得聪明一点</h3>
+      <p class="de">Größenordnung · Fermi-Aufgaben</p>
+    </div>
+    <div class="body">
+      <p class="lead">很多时候你不需要精确答案，只需要知道<strong>是十、是一万，还是一亿</strong>。而这种估算有一套可靠的方法，不是瞎猜。</p>
+
+      <div class="field">
+        <span class="lbl">费米问题</span>
+        <p>物理学家费米喜欢问学生一些看起来无从下手的问题，比如：<em>「柏林有多少个钢琴调音师？」</em>这类问题现在就叫费米问题，而办法是<strong>把一个猜不了的大问题，拆成几个能猜的小问题</strong>：</p>
+        <div class="demo">
+          <p>柏林约 <strong>370 万</strong>人 → 平均每户 2 人，约 <strong>185 万</strong>户</p>
+          <p>大概每 100 户有 1 架钢琴 → 约 <strong>1.8 万</strong>架</p>
+          <p>钢琴平均一年调一次 → 每年 <strong>1.8 万</strong>次调音</p>
+          <p>一个调音师一天调 4 架，一年工作 200 天 → 每人每年 <strong>800</strong> 次</p>
+          <p class="calc">18000 ÷ 800 ≈ 22 人</p>
+          <p>真实数字可能是 15，也可能是 40，但<strong>肯定不是 3，也肯定不是 3000。</strong>而这就够了。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">为什么拆开猜反而更准</span>
+        <p>这不是运气。每一步的猜测都有误差，有的偏高有的偏低，<strong>乘起来的时候误差会互相抵消一部分</strong>——你不太可能每一步都朝同一个方向错到底。</p>
+        <p>这背后其实是主线五的道理：多个独立的随机误差叠加，总误差的分布会集中在中间（中心极限定理）。<em>所以「拆成五个粗糙的估计」通常比「一口气拍一个数」准得多。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">这一招真正的用处：识别荒谬</span>
+        <p>估算最大的价值不是得到答案，是<strong>快速判断一个说法离不离谱</strong>。新闻里出现一个吓人的数字时，花三十秒拆一拆，往往就能发现它差了两三个数量级。</p>
+        <p><em>这是这本册子里防身效果最好的技能之一</em>，和主线五 5.10 那张卡片可以并排放。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>科学记数法与幂（主线一 1.8）· 单位（7.2）· 中心极限定理（主线五 5.8）</div>
+          <div><span class="lbl">下游</span>可行性判断 · 工程预估 · 面试里的经典题型 · 检验答案（工具箱第一把尺子）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Größenordnung</b> 数量级</span>
+          <span><b>Abschätzung</b> 估算</span>
+          <span><b>Überschlagsrechnung</b> 粗算</span>
+          <span><b>Zehnerpotenz</b> 十的幂</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>百分比与复利 · 最日常，也最容易算错</h3>
+      <p class="de">Prozent · Zinseszins</p>
+    </div>
+    <div class="body">
+      <p class="lead">百分比是全世界用得最多的数学，也是错得最多的数学。<strong>而错的原因几乎总是同一个：忘了问「百分之几是相对于什么」。</strong></p>
+
+      <div class="field">
+        <span class="lbl">涨 50% 再跌 50%，回不到原点</span>
+        <div class="demo">
+          <p>100 涨 50% → 150。150 跌 50% → <strong>75</strong>。</p>
+          <p>不是 100。因为那两个 50% 的<em>基数不一样</em>：第一次的 50% 是 100 的一半，第二次的 50% 是 150 的一半。</p>
+          <p>推论：<strong>跌 50% 之后，要涨 100% 才能回本。</strong>这就是为什么股市里「亏一半」比听起来严重得多。</p>
+        </div>
+        <p>德语课本把这件事拆得很清楚，用三个词区分：<span class="m-up m">Grundwert</span>（基数，那个「相对于什么」）、<span class="m-up m">Prozentwert</span>（百分比对应的实际数量）、<span class="m-up m">Prozentsatz</span>（百分率本身）。<em>百分比题做错，九成是没搞清 Grundwert 是谁。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">百分点 ≠ 百分比</span>
+        <p>失业率从 4% 涨到 6%。是涨了 <strong>2 个百分点</strong>，还是涨了 <strong>50%</strong>？</p>
+        <p>两个说法都对，但给人的感觉完全不同——而这正是新闻和广告里最常用的一种合法误导。<em>想让数字显得大就说「增长 50%」，想让它显得小就说「上升 2 个百分点」。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">复利：主线四那条指数曲线，在你的账户里</span>
+        <p>单利是每年在<em>本金</em>上算利息；复利是在<em>本金加已有利息</em>上算。差别一开始微不足道，时间一长就是天壤之别——因为复利是<strong>指数增长</strong>（主线四 4.10 那个 <span class="m">y′ = ky</span> 的解）。</p>
+        <div class="demo">
+          <p><strong>72 法则</strong>：用 72 除以年利率（百分数），大约就是本金翻倍需要的年数。</p>
+          <p class="calc">年利率 6% → 72 ÷ 6 = 12 年翻一倍<br>年利率 3% → 72 ÷ 3 = 24 年翻一倍</p>
+          <p>这个法则来自对数（主线一 1.8）：翻倍需要的年数是 <span class="m">ln2 ÷ ln(1+r)</span>，而 <span class="m">ln2 ≈ 0.693</span>，在常见利率范围内换算过来正好接近 72。<em>72 好用是因为它能被很多数整除</em>——跟主线三 3.1 里 360 度被选中的理由一模一样。</p>
+        </div>
+        <p>反过来，这也是通货膨胀和信用卡债务可怕的原因：<strong>同一条曲线，站在哪一边完全不同。</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>分数与比例（主线一 1.5）· 幂与对数（主线一 1.8）· 指数增长（主线四 4.3、4.10）</div>
+          <div><span class="lbl">下游</span>金融基础 · 通货膨胀 · 贷款与储蓄 · 增长模型（7.6）· 图表误导（7.8）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Prozent</b> 百分比</span>
+          <span><b>Grundwert</b> 基数</span>
+          <span><b>Prozentwert</b> 百分比数量</span>
+          <span><b>Prozentsatz</b> 百分率</span>
+          <span><b>Prozentpunkt</b> 百分点</span>
+          <span><b>Zinssatz</b> 利率</span>
+          <span><b>Zinseszins</b> 复利</span>
+          <span><b>Kapital</b> 本金</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>线性模型 · 最常用，也最常被用过头</h3>
+      <p class="de">lineare Regression · Extrapolation</p>
+    </div>
+    <div class="body">
+      <p class="lead">拿一条直线去贴合一堆数据点，是全世界用得最多的建模手段。<strong>它在数据范围内往往非常好用，走出范围就可能荒唐得离谱。</strong></p>
+
+      <div class="field">
+        <span class="lbl">为什么直线这么受欢迎</span>
+        <p>因为主线四 4.2 那句话：<em>放得足够近，任何光滑的东西看起来都是直的。</em>只要你关心的范围不太大，用直线近似通常够用，而且直线的数学最简单——一个斜率、一个截距，两个数说完。</p>
+        <p>找那条「最贴合」的直线，标准做法是<strong>最小二乘</strong>：让所有数据点到直线的<em>竖直距离的平方和</em>最小。为什么用平方？和主线五 5.1 标准差的理由一样——平方好求导（主线四 4.7 的极值），而且不会正负抵消。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 280" role="img" aria-label="线性拟合在有数据的区间贴合得很好，但延伸到没有数据的外推区就没有依据。">
+          <rect x="310" y="30" width="330" height="190" class="f2" opacity="0.35" stroke-dasharray="6 4"/>
+          <line x1="60" y1="220" x2="655" y2="220" class="svg-l"/>
+          <line x1="60" y1="220" x2="60" y2="30" class="svg-l"/>
+
+          <line x1="90" y1="202" x2="620" y2="40" class="svg-l" stroke-width="2"/>
+
+          <circle cx="110" cy="196" r="4" class="fm" stroke-width="2"/>
+          <circle cx="140" cy="186" r="4" class="fm" stroke-width="2"/>
+          <circle cx="165" cy="180" r="4" class="fm" stroke-width="2"/>
+          <circle cx="190" cy="168" r="4" class="fm" stroke-width="2"/>
+          <circle cx="215" cy="162" r="4" class="fm" stroke-width="2"/>
+          <circle cx="245" cy="150" r="4" class="fm" stroke-width="2"/>
+          <circle cx="275" cy="142" r="4" class="fm" stroke-width="2"/>
+          <circle cx="300" cy="132" r="4" class="fm" stroke-width="2"/>
+
+          <line x1="310" y1="30" x2="310" y2="228" class="svg-l" stroke-dasharray="4 4"/>
+          <text x="185" y="248" text-anchor="middle" class="svg-t txm">有数据的范围</text>
+          <text x="475" y="248" text-anchor="middle" class="svg-t tx2">外推区 · 全靠信仰</text>
+
+          <line x1="60" y1="262" x2="660" y2="262" class="svg-l-soft"/>
+          <text x="60" y="278" class="svg-t">直线在左边拟合得很好，不代表它在右边还成立</text>
+        </svg>
+        <figcaption><b>外推（Extrapolation）是线性模型最危险的用法。</b>马克·吐温算过一笔账：密西西比河在过去 176 年里缩短了 242 英里，照这个速度往回推，一百万年前这条河得有 130 万英里长，伸出去比地球到月球还远；再往未来推七百多年，河就只剩一英里，两座城会挤到一块儿。<b>他是在开玩笑，但这个玩笑说的是真事。</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">三个必须记住的限制</span>
+          <p><strong>一、拟合得好 ≠ 模型对。</strong>相关系数很高只说明「这条线穿过点穿得不错」，不说明背后真是线性关系，更不说明有因果（主线五 5.10）。</p>
+          <p><strong>二、外推没有依据。</strong>模型只在有数据的范围里被检验过，范围之外它只是在按惯性往前画。</p>
+          <p><strong>三、现实里的关系常常不是线性的。</strong>用直线去拟合一段指数曲线的开头，看起来会拟合得很好——然后完全低估后面的发展。<em>疫情早期的估计屡屡出错，这是原因之一。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>一次函数与斜率（主线四 4.2）· 极值与最小化（主线四 4.7）· 相关与因果（主线五 5.10）· 标准差（主线五 5.1）</div>
+          <div><span class="lbl">下游</span>增长模型（7.6）· 数据科学 · 机器学习里最基础的模型 · 趋势预测</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>lineare Regression</b> 线性回归</span>
+          <span><b>Ausgleichsgerade</b> 拟合直线</span>
+          <span><b>Methode der kleinsten Quadrate</b> 最小二乘法</span>
+          <span><b>Interpolation</b> 内插</span>
+          <span><b>Extrapolation</b> 外推</span>
+          <span><b>Korrelationskoeffizient</b> 相关系数</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>增长模型 · 挑对形状比算准数字重要</h3>
+      <p class="de">Wachstumsmodelle</p>
+    </div>
+    <div class="body">
+      <p class="lead">一件东西在增长，问题是<strong>按哪种形状增长</strong>。这个选择做错了，后面算得再精确也没意义。</p>
+
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="四种增长形状：线性匀速、指数越来越快、有限增长逼近上限、逻辑斯蒂先快后慢的 S 形。">
+          <line x1="30" y1="160" x2="170" y2="160" class="svg-l-soft"/>
+          <line x1="40" y1="155" x2="165" y2="55" class="svg-l" stroke-width="2.2"/>
+          <text x="100" y="188" text-anchor="middle" class="svg-t tx1">线性</text>
+          <text x="100" y="208" text-anchor="middle" class="svg-ts">每期加固定量</text>
+
+          <line x1="195" y1="160" x2="340" y2="160" class="svg-l-soft"/>
+          <polyline points="205,155 240,152 270,145 300,126 322,92 337,52" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <text x="268" y="188" text-anchor="middle" class="svg-t tx2">指数</text>
+          <text x="268" y="208" text-anchor="middle" class="svg-ts">每期乘固定倍</text>
+
+          <line x1="365" y1="160" x2="510" y2="160" class="svg-l-soft"/>
+          <line x1="365" y1="50" x2="510" y2="50" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <polyline points="375,155 393,108 415,80 443,64 475,56 505,52" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <text x="438" y="188" text-anchor="middle" class="svg-t tx3">有限增长</text>
+          <text x="438" y="208" text-anchor="middle" class="svg-ts">越近上限越慢</text>
+
+          <line x1="535" y1="160" x2="680" y2="160" class="svg-l-soft"/>
+          <line x1="535" y1="50" x2="680" y2="50" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <polyline points="545,155 565,152 583,143 600,122 617,90 634,68 655,56 675,52" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <text x="608" y="188" text-anchor="middle" class="svg-t txm">逻辑斯蒂</text>
+          <text x="608" y="208" text-anchor="middle" class="svg-ts">先快后慢的 S 形</text>
+
+          <line x1="30" y1="226" x2="670" y2="226" class="svg-l-soft"/>
+          <text x="30" y="244" class="svg-t">虚线是上限。现实里几乎没有东西能一直指数下去 —— 迟早会撞到某个上限</text>
+        </svg>
+        <figcaption><b>四种形状，四类现实。</b>线性：按小时计酬的工资。指数：复利、细菌繁殖、传染病早期。有限增长：热咖啡冷却、手机充到最后 20%、学一门技能的进步。逻辑斯蒂：传染病的完整曲线、新产品的普及、一片草地上的兔子数量。<b>四条曲线在最左边看起来都差不多——这正是早期判断这么难的原因。</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">怎么判断该用哪个</span>
+        <p>不要看数据长什么样就挑，要问<strong>机制是什么</strong>（主线四 4.10 那些微分方程说的就是机制）：</p>
+        <div class="demo">
+          <p>每期增加的量是<em>固定的</em>？→ 线性</p>
+          <p>每期增加的量正比于<em>当前的量</em>？→ 指数</p>
+          <p>每期增加的量正比于<em>离上限还差多少</em>？→ 有限增长</p>
+          <p>两者<em>都占</em>（初期靠现有量，后期受上限压制）？→ 逻辑斯蒂</p>
+        </div>
+        <p><strong>从机制推形状，比从数据凑形状可靠得多。</strong>因为数据总是有限的一段，而机制管的是整条曲线。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>指数与对数（主线一 1.8）· 函数动物园（主线四 4.3）· 微分方程（主线四 4.10）· 复利（7.4）</div>
+          <div><span class="lbl">下游</span>流行病学 · 生态学 · 市场预测 · 气候模型 · 资源与可持续</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Wachstumsmodell</b> 增长模型</span>
+          <span><b>lineares Wachstum</b> 线性增长</span>
+          <span><b>exponentielles Wachstum</b> 指数增长</span>
+          <span><b>beschränktes Wachstum</b> 有限增长</span>
+          <span><b>logistisches Wachstum</b> 逻辑斯蒂增长</span>
+          <span><b>Sättigungsgrenze</b> 饱和上限</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>优化 · 在做得到的范围里找最好的</h3>
+      <p class="de">Optimierung · Nebenbedingungen</p>
+    </div>
+    <div class="body">
+      <p class="lead">主线四 4.7 教过怎么求一个函数的最大最小值。现实里的优化多了一样东西，而且往往是难点所在：<strong>约束。</strong></p>
+
+      <div class="field">
+        <span class="lbl">现实版的极值问题</span>
+        <p>「怎样最省材料」不能孤零零地问，得加上「同时装得下规定的体积」。「怎样利润最大」得加上「原料只有这么多、工人只有这么些、机器一天只能开这么久」。</p>
+        <p>这些附加条件德语叫 <span class="m-up m">Nebenbedingungen</span>（附带条件）。<strong>没有约束的优化题几乎不存在</strong>——如果真没有约束，答案通常是「无限大」，那就不是一个有意义的问题。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">线性规划：一类特别常见的情形</span>
+        <div class="demo">
+          <p>当目标和约束都是线性的时候，问题有个非常漂亮的几何图像：<strong>每条约束在平面上切出一个半边，所有约束一起围出一块多边形区域，而最优解一定在这块区域的某个<em>顶点</em>上。</strong></p>
+          <p>这意味着不用搜遍整个区域，只要检查有限几个角就行。<em>又一次「把无穷多的可能压缩成有限几个」——和主线六 6.5 讲的步数问题是同一件事。</em></p>
+        </div>
+        <p>这套方法叫线性规划，是二战期间为了物资调度发展起来的，今天在航空排班、物流路线、生产计划、投资组合里到处都是。<strong>你订的每一张机票，价格背后都有一个巨大的线性规划在跑。</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">最重要的一句话</span>
+          <p><strong>数学能算出「在给定目标下的最优解」，但那个目标是人选的。</strong></p>
+          <p>让配送路线「总里程最短」和让它「司机最不累」，会得到完全不同的答案；让排班「成本最低」和让它「员工最满意」也是。<em>优化算得再好，也回答不了「该优化什么」这个问题。</em></p>
+          <p>这一点会在最后一张卡片里说到底。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>极值问题（主线四 4.7）· 不等式（主线二 2.4）· 方程组的几何（主线二 2.8）· 复杂度（主线六 6.5）</div>
+          <div><span class="lbl">下游</span>运筹学 · 供应链与物流 · 机器学习的训练过程 · 经济学 · 大学 Optimierung</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Optimierung</b> 优化</span>
+          <span><b>Zielfunktion</b> 目标函数</span>
+          <span><b>Nebenbedingung</b> 约束条件</span>
+          <span><b>lineare Optimierung</b> 线性规划</span>
+          <span><b>zulässiger Bereich</b> 可行域</span>
+          <span><b>Operations Research</b> 运筹学</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.8 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>图表怎么骗人 · 每天都用得上的防身术</h3>
+      <p class="de">irreführende Darstellung</p>
+    </div>
+    <div class="body">
+      <p class="lead">最狡猾的图表<strong>一个数字都没造假</strong>。它只是选了一种画法，让你的眼睛得出它想要的结论。</p>
+
+      <div class="field">
+        <span class="lbl">一号手法：把纵轴切掉一截</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="同一组数据两种画法：纵轴从零开始时四根柱子几乎一样高，纵轴从九十七开始时差异被放大得非常夸张。">
+          <line x1="50" y1="220" x2="320" y2="220" class="svg-l"/>
+          <line x1="50" y1="220" x2="50" y2="55" class="svg-l"/>
+          <rect x="70" y="78" width="45" height="142" class="f2"/>
+          <rect x="130" y="75" width="45" height="145" class="f2"/>
+          <rect x="190" y="74" width="45" height="146" class="f2"/>
+          <rect x="250" y="71" width="45" height="149" class="f2"/>
+          <text x="42" y="224" text-anchor="end" class="svg-tm">0</text>
+          <text x="185" y="248" text-anchor="middle" class="svg-t tx2">纵轴从 0 开始</text>
+          <text x="185" y="268" text-anchor="middle" class="svg-ts">看起来：几乎没差别</text>
+
+          <line x1="400" y1="220" x2="670" y2="220" class="svg-l"/>
+          <line x1="400" y1="220" x2="400" y2="55" class="svg-l"/>
+          <rect x="420" y="197" width="45" height="23" class="fm"/>
+          <rect x="480" y="151" width="45" height="69" class="fm"/>
+          <rect x="540" y="129" width="45" height="91" class="fm"/>
+          <rect x="600" y="83" width="45" height="137" class="fm"/>
+          <text x="392" y="224" text-anchor="end" class="svg-tm">97</text>
+          <text x="535" y="248" text-anchor="middle" class="svg-t txm">纵轴从 97 开始</text>
+          <text x="535" y="268" text-anchor="middle" class="svg-ts">看起来：暴涨</text>
+
+          <text x="350" y="40" text-anchor="middle" class="svg-t">同一组数据：98　100　101　103</text>
+        </svg>
+        <figcaption><b>两张图里的数字完全一样，柱子也都是诚实画的。</b>差别只在纵轴从哪儿开始。右边那张不算造假，但它让 5% 的差异看起来像翻了好几倍。<b>看到柱状图，第一件事是看纵轴的起点。</b>（折线图截断纵轴有时是合理的，因为折线传达的是趋势；但柱状图靠长度表示大小，截断就会直接误导。）</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">二号手法：用面积表示数值</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="用图形大小表示数值时，高度放大两倍会让面积变成四倍，眼睛读到的是面积。">
+          <rect x="120" y="150" width="50" height="50" class="f1"/>
+          <text x="145" y="222" text-anchor="middle" class="svg-t tx1">数值 = 1</text>
+
+          <rect x="350" y="100" width="100" height="100" class="fm"/>
+          <line x1="400" y1="100" x2="400" y2="200" class="svg-l-soft"/>
+          <line x1="350" y1="150" x2="450" y2="150" class="svg-l-soft"/>
+          <text x="400" y="222" text-anchor="middle" class="svg-t txm">数值 = 2</text>
+
+          <text x="500" y="130" class="svg-t">高度是两倍</text>
+          <text x="500" y="154" class="svg-t txm">但面积是四倍</text>
+          <text x="500" y="178" class="svg-tm">眼睛读的是面积</text>
+
+          <line x1="60" y1="238" x2="660" y2="238" class="svg-l-soft"/>
+          <text x="60" y="34" class="svg-t">「德国的产量是隔壁的两倍」—— 于是画一个高两倍的图标</text>
+        </svg>
+        <figcaption><b>这是主线三 3.3 那条平方立方定律被反过来利用。</b>数值只翻了一倍，但按比例放大的图形面积翻了四倍，视觉冲击也就翻了四倍。用小人、钱袋、油桶这类图标做的图表，几乎都在犯这个毛病——有些是无心，有些不是。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">其余几种，认脸就行</span>
+        <ul class="plain">
+          <li><strong>挑起点</strong>——同一组长期数据，从哪一年开始画，可以得出「一路上涨」或「持续下跌」两种相反的结论。</li>
+          <li><strong>双纵轴</strong>——两条线放一张图，各用各的刻度。只要调调刻度，任何两条线都能被弄成「高度同步」的样子。这是伪造相关性最省事的办法（主线五 5.10）。</li>
+          <li><strong>3D 饼图</strong>——透视会让前面的扇区看起来比后面的大。<em>饼图本来就不擅长比较，加了 3D 就只剩装饰功能。</em></li>
+          <li><strong>没写样本量</strong>——「80% 的用户表示满意」。多少人？五个人里四个也是 80%。</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>比例与百分比（7.4）· 平方立方定律（主线三 3.3）· 描述统计（主线五 5.1）· 相关不是因果（主线五 5.10）</div>
+          <div><span class="lbl">下游</span>读新闻、读财报、读广告 · 数据可视化设计 · 媒体素养</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Diagramm</b> 图表</span>
+          <span><b>Säulendiagramm</b> 柱状图</span>
+          <span><b>Achsenskalierung</b> 坐标轴刻度</span>
+          <span><b>irreführend</b> 误导性的</span>
+          <span><b>Manipulation</b> 操纵</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 · 全书最后一张卡片</span></span>
+      <h3>模型的边界 · 什么时候别信数学</h3>
+      <p class="de">Grenzen der Modellierung</p>
+    </div>
+    <div class="body">
+      <p class="lead">这本册子讲了七条主线的威力。最后一张卡片讲它的<strong>边界</strong>——因为知道一个工具在哪儿失效，和知道它怎么用，是同一件事的两半。</p>
+
+      <div class="field">
+        <span class="lbl">一、模型不是现实</span>
+        <p>回到开头那句话：<em>所有模型都是错的，但有些是有用的。</em></p>
+        <p>问题从来不是「这个模型对不对」（它一定不对），而是<strong>「它错的地方，会不会影响我现在关心的事」</strong>。把地球当成球算航线，没问题；当成球算山峰高度，就荒唐了。<em>同一个模型，换个问题就从好用变成误导。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">二、能算的东西，不等于重要的东西</span>
+        <p>模型只能处理能量化的部分，于是量化不了的部分容易被<em>当成不存在</em>。</p>
+        <p>用 GDP 衡量国家，用分数衡量学生，用点击量衡量内容，用产出衡量员工——这些指标都能算，所以都好用；但它们各自漏掉的东西（环境代价、好奇心、真实价值、同事之间的帮助）恰恰常常更要紧。<strong>危险不在于用指标，在于忘了指标只是影子。</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">三、古德哈特定律</span>
+        <div class="demo">
+          <p><strong>「一个指标一旦成为目标，它就不再是一个好指标。」</strong></p>
+          <p>因为人会去优化被考核的那个数，而不是那个数原本代表的东西。用「代码行数」考核程序员，就会得到又长又啰嗦的代码；用「破案率」考核警察，就会有该立的案不立；用「考试分数」衡量教育，学校就会开始教怎么考试。</p>
+          <p><em>被测量这件事本身，会改变被测量的对象。</em>这是模型和现实之间一个绕不开的反馈回路，而它在建模循环那张图上是画不出来的。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">四、数学不做价值判断</span>
+        <p>这是最后、也最要紧的一条。</p>
+        <p>主线五 5.9 说过，两类错误的门槛怎么定，是代价问题不是数学问题。7.7 说过，优化算得再好也回答不了「该优化什么」。<strong>数学能告诉你「如果你要 A，那就该这么做」，但它永远不会告诉你「你应该要 A」。</strong></p>
+        <p>算法可以算出最赚钱的定价、最高效的排班、最能留住人的推荐流。至于该不该那样定价、那样排班、那样推荐——<em>那不在数学的管辖范围内，从来都不在。</em></p>
+        <p>这不是数学的缺陷。这是它的性质：它是一件极其锋利的工具，而工具不替人做决定。<strong>正因为它这么锋利，用它的人才更需要清楚自己在往哪儿使劲。</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>建模循环（7.1）· 优化（7.7）· 两类错误（主线五 5.9）· 相关不是因果（主线五 5.10）· 期望值不做价值判断（主线五 5.6）</div>
+          <div><span class="lbl">下游</span>科学哲学 · 算法伦理 · 公共政策 · 以及此后你读到的每一个「数据显示……」</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Modellgrenzen</b> 模型的边界</span>
+          <span><b>Annahme</b> 假设</span>
+          <span><b>Gültigkeitsbereich</b> 适用范围</span>
+          <span><b>Indikator</b> 指标</span>
+          <span><b>Zielkonflikt</b> 目标冲突</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista7">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>这条主线的山顶不是更高深的数学，而是<strong>数学被用在哪些地方</strong>。同样<strong>不要求懂</strong>。</p>
+
+  <div class="vista">
+    <h4>运筹学：让世界转起来的隐形数学</h4>
+    <p>7.7 那套优化方法长大之后叫<strong>运筹学</strong>（Operations Research）。它决定了集装箱怎么装船、快递怎么分拣、电网怎么调度、医院怎么排手术、航空公司怎么安排机组人员在哪个城市过夜。</p>
+    <p><em>这门学问几乎完全不为公众所知，却每天在替几十亿人省下时间和资源。</em>它是那种「做得好没人注意，做得差全世界都堵住」的数学。</p>
+
+    <h4>数理金融：把不确定性定价</h4>
+    <p>主线五山顶提过的布朗运动，被搬进金融之后长成了整个衍生品市场的数学基础。<strong>Black-Scholes 公式</strong>——一个偏微分方程——让「一份未来的权利现在值多少钱」有了答案。</p>
+    <p>但它也是 7.9 那张卡片最贵的案例：<em>这些模型假设价格波动是正态的，而真实市场的极端事件远比正态分布预测的频繁</em>（主线五 5.8 提过）。2008 年的危机里，「模型说这几乎不可能发生」是一句被反复听到的话。<strong>模型没有骗人，是用模型的人忘了它的适用范围。</strong></p>
+
+    <h4>数据科学与机器学习：这本册子的合流处</h4>
+    <p>如果要找一个地方，让这七条主线同时用上，那就是今天的机器学习：</p>
+    <p><strong>主线二</strong>的矩阵是它的运算单位，<strong>主线三</strong>的高维距离是它衡量相似的方式，<strong>主线四</strong>的导数是它学习的机制（梯度下降），<strong>主线五</strong>是它的整个理论框架，<strong>主线六</strong>决定它跑不跑得动，<strong>主线七</strong>决定它该不该被这么用。</p>
+    <p><em>而主线零那句「什么样的回答才算数」，在这里变成了最难的问题</em>——一个模型给出了答案，我们凭什么相信它？</p>
+
+    <h4>气候与流行病：模型进入公共生活</h4>
+    <p>过去几十年里发生了一件新鲜事：<strong>数学模型开始直接参与公共决策</strong>，而且是在证据还不完整的时候。气候模型、传染病模型都是如此。</p>
+    <p>这带来一个 7.1 那张循环图上没有的困难：<em>决策不能等到模型被完全验证</em>——等验证完了，该做的事早就来不及了。于是「在不确定中如何行动」成了一个必须回答的问题，而它同时是数学问题、也是政治问题。</p>
+    <p>这大概是这一代人最需要具备的一种能力：<strong>既看得懂模型说了什么，也知道它没说什么。</strong>这本册子如果只留下一样东西，希望是这个。</p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Modellierung und Simulation</strong>——建模与仿真，几乎每个理工科都有</li>
+      <li><strong>Operations Research / Optimierung</strong>——运筹学与优化</li>
+      <li><strong>Finanzmathematik</strong>——数理金融</li>
+      <li><strong>Data Science / Statistik</strong>——数据科学，和主线五接上</li>
+      <li><strong>Wissenschaftliches Rechnen</strong>——科学计算，和主线六接上</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss7">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead"><span class="m-up m">Modellieren</span> 是德国数学课程标准里的核心能力之一，考试里有专门的建模题。这一列的词在应用题里出现频率很高。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>建模</td><td class="de">Modellieren</td><td class="en">modelling</td></tr>
+      <tr><td>建模循环</td><td class="de">Modellierungskreislauf</td><td class="en">modelling cycle</td></tr>
+      <tr><td>假设 / 简化</td><td class="de">Annahme / Vereinfachung</td><td class="en">assumption / simplification</td></tr>
+      <tr><td>验证 / 解释</td><td class="de">Validierung / Interpretation</td><td class="en">validation / interpretation</td></tr>
+      <tr><td>单位 / 物理量</td><td class="de">Einheit / Größe</td><td class="en">unit / quantity</td></tr>
+      <tr><td>换算 / 量纲分析</td><td class="de">Umrechnung / Dimensionsanalyse</td><td class="en">conversion / dimensional analysis</td></tr>
+      <tr><td>数量级 / 估算</td><td class="de">Größenordnung / Abschätzung</td><td class="en">order of magnitude / estimation</td></tr>
+      <tr><td>粗算</td><td class="de">Überschlagsrechnung</td><td class="en">rough calculation</td></tr>
+      <tr><td>百分比 / 百分点</td><td class="de">Prozent / Prozentpunkt</td><td class="en">percent / percentage point</td></tr>
+      <tr><td>基数 / 百分率</td><td class="de">Grundwert / Prozentsatz</td><td class="en">base value / rate</td></tr>
+      <tr><td>利率 / 复利 / 本金</td><td class="de">Zinssatz / Zinseszins / Kapital</td><td class="en">interest rate / compound interest / principal</td></tr>
+      <tr><td>线性回归 / 拟合直线</td><td class="de">lineare Regression / Ausgleichsgerade</td><td class="en">linear regression / line of best fit</td></tr>
+      <tr><td>最小二乘法</td><td class="de">Methode der kleinsten Quadrate</td><td class="en">least squares</td></tr>
+      <tr><td>内插 / 外推</td><td class="de">Interpolation / Extrapolation</td><td class="en">interpolation / extrapolation</td></tr>
+      <tr><td>相关系数</td><td class="de">Korrelationskoeffizient</td><td class="en">correlation coefficient</td></tr>
+      <tr><td>增长模型</td><td class="de">Wachstumsmodell</td><td class="en">growth model</td></tr>
+      <tr><td>线性 / 指数增长</td><td class="de">lineares / exponentielles Wachstum</td><td class="en">linear / exponential growth</td></tr>
+      <tr><td>有限 / 逻辑斯蒂增长</td><td class="de">beschränktes / logistisches Wachstum</td><td class="en">bounded / logistic growth</td></tr>
+      <tr><td>饱和上限</td><td class="de">Sättigungsgrenze</td><td class="en">saturation limit</td></tr>
+      <tr><td>优化 / 目标函数</td><td class="de">Optimierung / Zielfunktion</td><td class="en">optimisation / objective function</td></tr>
+      <tr><td>约束条件 / 可行域</td><td class="de">Nebenbedingung / zulässiger Bereich</td><td class="en">constraint / feasible region</td></tr>
+      <tr><td>线性规划 / 运筹学</td><td class="de">lineare Optimierung / Operations Research</td><td class="en">linear programming / OR</td></tr>
+      <tr><td>图表 / 柱状图</td><td class="de">Diagramm / Säulendiagramm</td><td class="en">chart / bar chart</td></tr>
+      <tr><td>坐标轴刻度</td><td class="de">Achsenskalierung</td><td class="en">axis scaling</td></tr>
+      <tr><td>误导性的</td><td class="de">irreführend</td><td class="en">misleading</td></tr>
+      <tr><td>适用范围 / 指标</td><td class="de">Gültigkeitsbereich / Indikator</td><td class="en">domain of validity / indicator</td></tr>
+      <tr><td>目标冲突</td><td class="de">Zielkonflikt</td><td class="en">conflicting objectives</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs7">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">一道也不用算。答得上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li>「所有模型都是错的，但有些是有用的」——这句话该怎么用？判断一个模型好不好，正确的问法是什么？</li>
+    <li>建模循环五步里，学校主要练哪一步？现实里最难的是哪两步？</li>
+    <li>火星探测者号是怎么毁掉的？这个错误本来只需要花多少时间就能挡住？</li>
+    <li>不做实验、不列方程，怎么光靠单位就知道单摆周期与摆锤质量无关？</li>
+    <li>柏林有多少钢琴调音师？为什么「拆成五个粗糙的估计」比「一口气拍一个数」更准？</li>
+    <li>涨 50% 再跌 50% 为什么回不到原点？跌一半之后要涨多少才能回本？</li>
+    <li>「失业率从 4% 涨到 6%」有几种说法？哪种听起来更严重？</li>
+    <li>72 法则从哪儿来？为什么用 72 而不是 69 或 70？</li>
+    <li>线性模型最危险的用法是什么？马克·吐温那个密西西比河的玩笑在说什么？</li>
+    <li>判断该用哪种增长模型，该看数据的形状还是看机制？为什么？</li>
+    <li>看到一张柱状图，第一件该检查的事是什么？为什么折线图截断纵轴有时反而合理？</li>
+    <li>用图标大小表示数值时会出什么问题？这和主线三的哪条规律有关？</li>
+    <li>古德哈特定律说了什么？举一个你身边的例子。</li>
+    <li>数学能回答「怎样最优」，为什么它回答不了「该优化什么」？这句话在这本册子里还出现在哪两处？</li>
+  </ol>
+</section>
+
+<section id="ending">
+  <h2 class="sec"><span class="num">全书完</span>七条主线走完之后</h2>
+
+  <p class="sec-lead">你现在走完了整张版图的山脚和山腰。最后花两分钟，看一眼那些<strong>反复出现的东西</strong>——它们才是「体系」这两个字真正的意思。</p>
+
+  <h3 class="sub">四条贯穿全书的暗线</h3>
+
+  <ul class="plain">
+    <li><strong>逆运算这台引擎，出现了五次。</strong>加↔减、乘↔除（主线一 1.3），幂↔根与对数（1.8），求导↔积分（主线四 4.9），概率↔统计（主线五）。而且每一次，倒着走都比正着走难——难到有时候根本走不通，于是就有了主线六 6.9 的密码学。</li>
+    <li><strong>「正着容易倒着难」养活了整个互联网。</strong>大素数相乘 vs 分解（主线一 1.6），求导 vs 求原函数（主线四 4.9），加密 vs 破解（主线六 6.9）。同一个现象，三副面孔。</li>
+    <li><strong>数学最深刻的结论，常常是「做不到」。</strong>伽罗瓦证明五次方程没有求根公式（主线二），哥德尔证明有些真话证不出来（主线零），图灵证明有些问题机器算不完（主线六），林德曼证明化圆为方不可能（主线一）。<em>划出边界本身就是巨大的进步。</em></li>
+    <li><strong>P(A|B) 和 P(B|A) 的混淆，追着我们跑了三条主线。</strong>逻辑里的「下雨则地湿 ≠ 地湿则下雨」（主线零 0.4），医学检测里的 9% 而不是 99%（主线五 5.5），科研里的 p 值误读（主线五 5.9）。<em>同一个思维漏洞，代价一次比一次大。</em></li>
+  </ul>
+
+  <h3 class="sub">接下来怎么用这本册子</h3>
+
+  <ul class="plain">
+    <li><strong>别指望读一遍就完。</strong>它是设计成每年回来一次的：今年只读山脚，明年再解锁山腰，等到大学门口再回头看山顶那几段——那时候那些名词会突然变得有意思。</li>
+    <li><strong>课堂上学到新东西时，回来找它在哪条主线上。</strong>知道一个知识点接在谁后面、通向谁，比多做十道题有用。每张卡片的「上游与下游」那一格就是为这个准备的。</li>
+    <li><strong>卡住的时候翻工具箱。</strong>那九招和那张「卡住了怎么办」的决策树，是使用频率最高的两页。</li>
+    <li><strong>每章末尾的体系性问题，隔一段时间自问一遍。</strong>答不上来的那几条，就是该回去重读的地方。</li>
+  </ul>
+
+  <p style="margin-top:2rem">学校会按年级把这些东西切成小块，一年一年发给你。这本册子的全部用处，就是让你在拿到每一小块的时候，知道它是从哪块大陆上切下来的。</p>
+</section>
+
+<div class="pagenav">
+  <a href="strand-6-discrete.html"><span class="dir">上一页</span><span class="t">主线六 · 离散与算法</span></a>
+  <a class="next" href="exam-perspective.html"><span class="dir">下一页</span><span class="t">可选附页 · 考试视角</span></a>
+</div>
+
+</main>
+</body>
+</html>

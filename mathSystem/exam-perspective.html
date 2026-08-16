@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>附页 · 考试视角 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/exam-perspective.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="附页 · 考试视角 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/exam-perspective.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html" aria-current="page">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/pruefungsperspektive.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">附页</h1>
+
+<section id="why">
+  <h2 class="sec"><span class="num">可选附页</span>考试视角</h2>
+  <p class="sec-lead">这本册子的正文里，一个字都没提过考试。那是故意的——<strong>知识体系不该被考纲牵着走</strong>，而且考纲每几年就改一次，写进去只会让整本册子过时得更快。</p>
+
+  <p>但考试是真实存在的，而且确实有一些<em>跟数学本身无关、纯属应试技术</em>的东西是有用的。这一页把它们单独放在这里：<strong>要用就翻，不用就当它不存在。</strong>以后要改，也只改这一页。</p>
+
+  <p>另外说明一句：下面写的都是<strong>各国中学数学考试的普遍规律</strong>，不针对任何一个具体的考试制度。具体的题型格式、允许用什么计算器、哪些内容在考纲内——这些必须去查<em>他自己学校当年的官方说明</em>，任何第三方资料都可能过期。</p>
+</section>
+
+<hr>
+
+<section id="weight">
+  <h2 class="sec"><span class="num">一</span>分量地图 · 力气该往哪儿使</h2>
+  <p class="sec-lead">中学后半程的数学，分值分布相当不均。知道哪几块最重，比平均用力有效得多。</p>
+
+  <figure>
+    <svg viewBox="0 0 700 300" role="img" aria-label="中学后半程数学的分量分布：函数与分析占最大一块，解析几何与向量、概率统计各占一块，基础代数与几何是不单独计分的地基。">
+      <rect x="60" y="50" width="330" height="52" rx="4" class="fm"/>
+      <text x="80" y="72" class="svg-t txm">主线四 · 函数与变化</text>
+      <text x="80" y="92" class="svg-ts txm">导数 · 曲线讨论 · 积分 · 增长模型</text>
+      <text x="400" y="82" class="svg-t txm">最大的一块</text>
+
+      <rect x="60" y="112" width="185" height="52" rx="4" class="f2"/>
+      <text x="80" y="134" class="svg-t tx2">主线三 · 向量与解析几何</text>
+      <text x="80" y="154" class="svg-ts tx2">直线 · 平面 · 距离 · 夹角</text>
+
+      <rect x="60" y="174" width="185" height="52" rx="4" class="f2"/>
+      <text x="80" y="196" class="svg-t tx2">主线五 · 概率与统计</text>
+      <text x="80" y="216" class="svg-ts tx2">分布 · 条件概率 · 检验</text>
+
+      <rect x="60" y="240" width="530" height="34" rx="4" class="svg-face" stroke-dasharray="5 4"/>
+      <text x="80" y="262" class="svg-t">主线零 · 一 · 二 · 三的山脚层 —— 不单独考，但每道题都在用</text>
+
+      <line x1="60" y1="36" x2="590" y2="36" class="svg-l-soft"/>
+      <text x="60" y="28" class="svg-tm">← 大致的分值比重 →</text>
+    </svg>
+    <figcaption><b>这张图的重点不是上面三块，是最下面那条虚线。</b>代数变形、解方程、勾股、三角、比例——这些本身几乎不单独出题，但上面每一道大题里都要用到它们。<b>丢分最多的地方，往往不是「这一章没学会」，而是「上面的会了，底下的那步算错了」。</b>所以复习时把地基那条虚线也算成一块，而不是只盯着分值最高的那块。</figcaption>
+  </figure>
+
+  <div class="rule-box">一个实用的判断：<strong>如果一道大题你「思路全对但答案错了」，问题几乎总在地基层</strong>——符号、运算顺序、代数变形、正负号。这类错误不靠复习那一章能修好，得靠 <a href="toolbox.html#toolbox-learn">工具箱里的错题分诊</a>。</div>
+</section>
+
+<hr>
+
+<section id="traps">
+  <h2 class="sec"><span class="num">二</span>丢分处总索引</h2>
+  <p class="sec-lead">下面这份清单，是把七条主线里每一张「常见的坑」全部抽出来排在一起的结果。<strong>这大概是这一页最有用的部分</strong>——考前扫一遍，比重做十道题快得多。每条后面的编号可以跳回原卡片看细节。</p>
+
+  <h3 class="sub">主线零 · 语言与证明</h3>
+  <ul class="plain">
+    <li><strong>∈ 和 ⊂ 别混。</strong><span class="m">3 ∈ A</span> 对，<span class="m">3 ⊂ A</span> 错。<a href="strand-0-language.html#s0">0.1</a></li>
+    <li><strong>否定「所有」得到的是「存在一个不」</strong>，不是「所有都不」。写反证法第一步时最容易栽。<a href="strand-0-language.html#s0">0.3</a></li>
+    <li><strong>量词顺序不能换。</strong>「每人都有妈妈」≠「有个人是所有人的妈妈」。<a href="strand-0-language.html#s0">0.3</a></li>
+    <li><strong>举例子不是证明。</strong>验证一百个数也证不了「所有」；但证「存在」时举一个例子就是完整证明。<a href="strand-0-language.html#s0">0.6</a></li>
+    <li><strong>归纳法的起点不能省。</strong>只证传递规则、忘了第一块，整个证明无效。<a href="strand-0-language.html#s0">0.7</a></li>
+  </ul>
+
+  <h3 class="sub">主线一 · 数与数系</h3>
+  <ul class="plain">
+    <li><strong><span class="m">−3²</span> 和 <span class="m">(−3)²</span> 不一样</strong>（−9 和 +9）。乘方比取负先算。计算器上按错更常见。<a href="strand-1-numbers.html#s1">1.4</a></li>
+    <li><strong>绝对值不是「去掉负号」</strong>，是「离 0 多远」。带字母时必须分情况讨论。<a href="strand-1-numbers.html#s1">1.4</a></li>
+    <li><strong>分母不能为 0</strong>——是没有定义，不是等于无穷。求定义域时别漏。<a href="strand-1-numbers.html#s1">1.5</a></li>
+    <li><strong>运算顺序</strong>：<span class="m">8 − 3 + 2 = 7</span>，不是 3。同级从左到右。<a href="strand-1-numbers.html#s1">1.3</a></li>
+    <li><strong><span class="m">log(a+b) ≠ log a + log b</span></strong>。对数把<em>乘法</em>变加法，不是加法。<a href="strand-1-numbers.html#s1">1.8</a></li>
+    <li><strong><span class="m">√9 = 3</span> 是有理数。</strong>开方不一定产生无理数。<a href="strand-1-numbers.html#s1">1.7</a></li>
+  </ul>
+
+  <h3 class="sub">主线二 · 代数与结构</h3>
+  <ul class="plain">
+    <li><strong><span class="m">(a+b)² ≠ a² + b²</span></strong>。同族的还有 <span class="m">√(a+b)</span>、<span class="m">1/(a+b)</span>、<span class="m">log(a+b)</span>。<em>这是全世界最高频的代数错误。</em><a href="strand-2-algebra.html#s2">2.2</a></li>
+    <li><strong>两边平方会造出假根，除以含 x 的式子会丢根。</strong>所以必须代回<em>原方程</em>检验——不是代回化简后的某一步。<a href="strand-2-algebra.html#s2">2.3</a></li>
+    <li><strong>用求根公式前先整理成标准形式。</strong><span class="m">x²+3x=10</span> 里的 q 是 −10 不是 10。<a href="strand-2-algebra.html#s2">2.5</a></li>
+    <li><strong>开方那一步必须带 ±。</strong>丢负根是二次方程题第一大失分点。<a href="strand-2-algebra.html#s2">2.5</a></li>
+    <li><strong>零积法则只对 0 成立。</strong><span class="m">(x−1)(x−2)=6</span> 不能拆。<a href="strand-2-algebra.html#s2">2.6</a></li>
+    <li><strong>除以含字母的系数要分情况讨论</strong>（正、负、零三种）。<a href="strand-2-algebra.html#s2">2.4</a></li>
+    <li><strong>加减消元时整条方程都要乘</strong>，右边那个常数最容易漏。<a href="strand-2-algebra.html#s2">2.8</a></li>
+  </ul>
+
+  <h3 class="sub">主线三 · 形与空间</h3>
+  <ul class="plain">
+    <li><strong>同位角、内错角相等的前提是两线平行。</strong>图看起来平行不算数，题目得给。<a href="strand-3-geometry.html#s3">3.1</a></li>
+    <li><strong>写全等式时顶点顺序要对应。</strong><span class="m">△ABC ≅ △DEF</span> 意味着 A↔D、B↔E、C↔F，写乱后面全错。<a href="strand-3-geometry.html#s3">3.2</a></li>
+    <li><strong>放大两倍，面积是四倍、体积是八倍。</strong>「面积也放大两倍」是最普遍的几何直觉错误。<a href="strand-3-geometry.html#s3">3.3</a></li>
+    <li><strong><span class="m">c</span> 永远是斜边</strong>（直角对面那条）。图形转过角度、字母换了名字时最容易套错。<a href="strand-3-geometry.html#s3">3.4</a></li>
+    <li><strong>计算器的 DEG / RAD 模式。</strong>模式不对答案会离谱，而且它<em>不会报错</em>。三角题动手前先看一眼。<a href="strand-3-geometry.html#s3">3.6</a></li>
+    <li><strong>正弦定理求角时可能有两个解</strong>（锐角和钝角）。这跟 SsW 的歧义是同一件事。<a href="strand-3-geometry.html#s3">3.6</a></li>
+    <li><strong>位置向量和方向向量身份不同。</strong>写 <span class="m">x⃗ = p⃗ + t·u⃗</span> 时别搞混谁是起点谁是方向。<a href="strand-3-geometry.html#s3">3.8</a></li>
+  </ul>
+
+  <h3 class="sub">主线四 · 函数与变化</h3>
+  <ul class="plain">
+    <li><strong>算斜率时 Δy 在上、Δx 在下。</strong>用单位检查：路程对时间的斜率单位是米/秒。<a href="strand-4-analysis.html#s4">4.2</a></li>
+    <li><strong><span class="m">f(2x)</span> 是横向压缩不是拉伸。</strong>想不清就跟着一个具体的点走一遍。<a href="strand-4-analysis.html#s4">4.4</a></li>
+    <li><strong><span class="m">f′ = 0</span> 是极值的<em>必要</em>条件，不是充分条件。</strong><span class="m">y = x³</span> 在 0 处导数为 0 但没有极值。<a href="strand-4-analysis.html#s4">4.7</a></li>
+    <li><strong>求区间上的最值别忘了检查两个端点。</strong>最大值完全可能在边界上，那里导数不为 0。<em>这是极值题第一大失分点。</em><a href="strand-4-analysis.html#s4">4.7</a></li>
+    <li><strong>x 轴下方的面积算负的。</strong>求实际面积要先找零点、分段、取绝对值。<a href="strand-4-analysis.html#s4">4.8</a></li>
+    <li><strong>求原函数别忘 <span class="m">+ C</span>。</strong><a href="strand-4-analysis.html#s4">4.9</a></li>
+    <li><strong>应用题算出的答案要检查现实意义。</strong>半径为负、需要 −3 个工人，是数学解不是现实解。<a href="strand-4-analysis.html#s4">4.7</a></li>
+  </ul>
+
+  <h3 class="sub">主线五 · 概率与统计</h3>
+  <ul class="plain">
+    <li><strong>「至少有一个」几乎永远该反着算</strong>：先求「一个都没有」，再用 1 减。<a href="strand-5-stochastics.html#s5">5.2</a></li>
+    <li><strong>「独立」和「互斥」不是一回事，而且几乎相反。</strong>互斥用加法，独立用乘法。<a href="strand-5-stochastics.html#s5">5.4</a></li>
+    <li><strong><span class="m">P(A|B)</span> 和 <span class="m">P(B|A)</span> 完全是两回事。</strong>这一个坑在这本册子里出现三次，代价一次比一次大。<a href="strand-5-stochastics.html#s5">5.4 / 5.5 / 5.9</a></li>
+    <li><strong>用二项分布前检查三个前提</strong>：只有两种结果、概率不变、各次独立。「不放回」就不独立了。<a href="strand-5-stochastics.html#s5">5.7</a></li>
+    <li><strong>p 值不是「假设为真的概率」。</strong>它是「假如零假设为真，出现这么极端数据的概率」。<a href="strand-5-stochastics.html#s5">5.9</a></li>
+    <li><strong>期望值算出来掷不出来</strong>（骰子期望 3.5）。它说的是长期平均。<a href="strand-5-stochastics.html#s5">5.6</a></li>
+  </ul>
+
+  <h3 class="sub">主线六 · 七 · 应用与计算</h3>
+  <ul class="plain">
+    <li><strong>看到几项就断定规律，是猜想不是结论。</strong><a href="strand-6-discrete.html#s6">6.1</a></li>
+    <li><strong>百分比先问「相对于什么」。</strong>涨 50% 再跌 50% 得到 75 不是 100。<a href="strand-7-modelling.html#s7">7.4</a></li>
+    <li><strong>百分点 ≠ 百分比。</strong>4% 到 6% 是涨了 2 个百分点，也是涨了 50%。<a href="strand-7-modelling.html#s7">7.4</a></li>
+    <li><strong>单位不对说明中间某步乘除反了。</strong>问面积答案必须是平方。<a href="strand-7-modelling.html#s7">7.2</a></li>
+    <li><strong>建模题算完必须翻译回现实并检验。</strong>没有单位的数字不是答案。<a href="strand-7-modelling.html#s7">7.1</a></li>
+  </ul>
+</section>
+
+<hr>
+
+<section id="prep">
+  <h2 class="sec"><span class="num">三</span>考前怎么用这本册子</h2>
+  <p class="sec-lead">这本册子不是复习资料，但它有一个复习资料给不了的用处：<strong>快速定位哪里塌了。</strong></p>
+
+  <figure>
+    <svg viewBox="0 0 700 240" role="img" aria-label="考前使用流程：先用体系性问题自查，找出答不上来的地方，回主线补地基，再做题验证，然后错题分诊。">
+      <defs>
+        <marker id="h0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="30" y="50" width="145" height="70" rx="4" class="f1"/>
+      <text x="102" y="78" text-anchor="middle" class="svg-t tx1">① 做体系性问题</text>
+      <text x="102" y="98" text-anchor="middle" class="svg-ts tx1">每章末尾那几道</text>
+
+      <rect x="200" y="50" width="145" height="70" rx="4" class="fm"/>
+      <text x="272" y="78" text-anchor="middle" class="svg-t txm">② 标出答不上来的</text>
+      <text x="272" y="98" text-anchor="middle" class="svg-ts txm">那就是塌方处</text>
+
+      <rect x="370" y="50" width="145" height="70" rx="4" class="f2"/>
+      <text x="442" y="78" text-anchor="middle" class="svg-t tx2">③ 回去读那张卡片</text>
+      <text x="442" y="98" text-anchor="middle" class="svg-ts tx2">连上下游一起读</text>
+
+      <rect x="540" y="50" width="130" height="70" rx="4" class="f2"/>
+      <text x="605" y="78" text-anchor="middle" class="svg-t tx2">④ 做几道题验证</text>
+      <text x="605" y="98" text-anchor="middle" class="svg-ts tx2">合上书自己做</text>
+
+      <path d="M 177 85 L 196 85" class="svg-l" marker-end="url(#h0)"/>
+      <path d="M 347 85 L 366 85" class="svg-l" marker-end="url(#h0)"/>
+      <path d="M 517 85 L 536 85" class="svg-l" marker-end="url(#h0)"/>
+      <path d="M 605 124 L 605 160 L 272 160 L 272 124" class="svg-l" stroke-dasharray="5 4" marker-end="url(#h0)"/>
+      <text x="438" y="180" text-anchor="middle" class="svg-t txm">还是错？回去看是哪一层塌的</text>
+
+      <line x1="30" y1="204" x2="670" y2="204" class="svg-l-soft"/>
+      <text x="30" y="224" class="svg-t">找塌方比刷题快 —— 因为塌方处每道题都会拖累你，而刷题一次只修一道</text>
+    </svg>
+    <figcaption><b>体系性问题在这里是「体检」用的，不是练习用的。</b>答不上来的那几条，指的就是知识里塌掉的位置。而因为数学是垒起来的（<a href="toolbox.html#toolbox-learn">工具箱下半</a>），塌在下面的一块会同时拖累上面所有的题——所以修地基的回报，通常比多做三十道题高得多。</figcaption>
+  </figure>
+
+  <div class="rule-box">时间紧的时候的优先顺序：<strong>先修地基（那条虚线里的东西），再修分值最重的那一块，最后才是查漏补缺。</strong>反过来做，是最常见的低效复习。</div>
+</section>
+
+<hr>
+
+<section id="room">
+  <h2 class="sec"><span class="num">四</span>考场上的操作</h2>
+  <p class="sec-lead">这一节跟数学没关系，纯粹是技术。但它每次能捡回来的分，往往比多复习一星期还多。</p>
+
+  <h3 class="sub">开头五分钟</h3>
+  <ul class="plain">
+    <li><strong>先把整份卷子翻一遍。</strong>知道有几道大题、分值怎么分布、哪道看起来最顺手。这五分钟不是浪费，是给自己一张地图。</li>
+    <li><strong>从最有把握的题开始，不必按顺序。</strong>开头顺了，后面思路会更清楚；开头卡死了，会一路慌到结束。</li>
+    <li><strong>按分值分配时间。</strong>一道 8 分的题花掉三分之一的时间，通常是判断失误——那些分再值钱，也不比另外两道 6 分的加起来多。</li>
+  </ul>
+
+  <h3 class="sub">做题时</h3>
+  <ul class="plain">
+    <li><strong>读完题先复述一遍</strong>（工具箱招数九）。读错题是三种错误里最容易改掉、也最不该犯的一种。</li>
+    <li><strong>把已知条件一条条圈出来</strong>，尤其是那种藏在句子中间的（「其中 x 为正整数」「假设两条线平行」）。出题人把条件藏起来，就是想看你读不读得出来。</li>
+    <li><strong>不会做也要把已知和思路写下来。</strong>大多数评分标准是分步给分的——写出正确的公式、正确的第一步，通常就有分。<em>空白一定是零分，写错了不一定。</em></li>
+    <li><strong>每步单独一行，别在脑子里跳步。</strong>跳步省下的三十秒，会在检查时以三分钟的代价还回来。</li>
+    <li><strong>卡住就先跳过，做个记号。</strong>坐在那儿死磕是考场上最贵的行为。（工具箱那张「卡住了怎么办」的决策树，考场版是：过一遍九招，两分钟内没头绪就走。）</li>
+  </ul>
+
+  <h3 class="sub">交卷前的四把尺子</h3>
+  <p>这是<a href="toolbox.html#toolbox">工具箱</a>里那四条，考场版：</p>
+  <ul class="plain">
+    <li><strong>量级</strong>——人高 2000 米、概率 1.4、班里 0.7 个人，不用往下查了。</li>
+    <li><strong>单位</strong>——面积要平方，速度要「长度÷时间」。</li>
+    <li><strong>特例</strong>——推出含 n 的公式，代 <span class="m">n = 1</span> 或 <span class="m">2</span> 试一下。</li>
+    <li><strong>回代</strong>——解出的根代回<em>原方程</em>。</li>
+  </ul>
+  <p>这四件事加起来不到一分钟，但它们挡掉的是那种「明明会做却拿不到分」的错误——而那类错误在总失分里的占比，通常比「真的不会」还高。</p>
+
+  <h3 class="sub">工具的使用纪律</h3>
+  <ul class="plain">
+    <li><strong>考前确认清楚这次允许用什么</strong>（哪种计算器、能不能用公式表、有没有不许用工具的部分）。这个只能查学校当年的官方说明，别问别人。</li>
+    <li><strong>平时就用考试时那台机器。</strong>考场上现学按键位置，是白送的失分。</li>
+    <li><strong>三角函数先看 DEG / RAD。</strong>再说一遍，因为它不报错。</li>
+    <li><strong>计算器算出来的也要过一遍量级。</strong>按错一个键，机器不会替你发现。</li>
+  </ul>
+</section>
+
+<hr>
+
+<section id="drills">
+  <h2 class="sec"><span class="num">五</span>关于刷题和押题</h2>
+
+  <div class="rule-box">刷题有用，但<strong>刷法比刷量重要得多</strong>。而押题基本是低效策略，理由下面说。</div>
+
+  <h3 class="sub">刷题的正确刷法</h3>
+  <ul class="plain">
+    <li><strong>别把同一类题连着做二十道。</strong>越做越顺，但那个「顺」是假的——从第二题开始你就不再判断该用什么方法了，而考试里最难的一步恰恰是判断用哪招。<strong>混着做</strong>会更慢、更容易错、感觉更差，然后在考试里表现明显更好。（<a href="toolbox.html#toolbox-learn">工具箱：交错练习</a>）</li>
+    <li><strong>做完对答案之后，必须合上书重做一遍。</strong>看懂别人的解法和自己想得出解法，在大脑里是两件事。这一步不做，对答案就等于抄答案。</li>
+    <li><strong>错题先分诊再治。</strong>「不会」「会了算错」「看错题」是三种病，要用三种完全不同的药。笼统地「下次细心点」等于没治。（<a href="toolbox.html#toolbox-learn">工具箱：错题分诊</a>）</li>
+    <li><strong>做过的真题隔两周再做一遍。</strong>第一遍测的是会不会，第二遍测的才是记不记得住。</li>
+  </ul>
+
+  <h3 class="sub">为什么押题不划算</h3>
+  <p>押题的逻辑是「猜中考什么，只准备那部分」。它在两个地方站不住：</p>
+  <ul class="plain">
+    <li><strong>命题人也知道大家在押题。</strong>越是被广泛押中的题型，越容易被换个包装。而换了包装之后，只背了套路的人就完全接不住。</li>
+    <li><strong>数学是垒起来的。</strong>就算真押中了那一章，底下的地基没修，那一章的题照样做不对——这是这本册子从头到尾在说的那件事。</li>
+  </ul>
+  <p>更划算的做法是反过来：<strong>与其猜考什么，不如确保没有塌方的地方。</strong>地基齐了，考什么都接得住；地基塌着，押中了也拿不到分。</p>
+
+  <div class="rule-box">最后一句，也是这一页唯一一句关于心态的话：<strong>考试测的是「那一天的你」，不是「你是谁」。</strong>它值得认真对待，但不值得用来定义自己。这本册子里那些让人觉得有意思的东西——补洞造出的复数、伽罗瓦二十岁写下的手稿、9% 而不是 99%、七桥问题里被扔掉的那些细节——一样都不会出现在任何一张卷子上，而它们才是数学真正的样子。</div>
+</section>
+
+<div class="pagenav">
+  <a href="strand-7-modelling.html"><span class="dir">上一页</span><span class="t">主线七 · 建模与应用</span></a>
+  <a class="next" href="index.html"><span class="dir">回到</span><span class="t">全景图与目录</span></a>
+</div>
+
+</main>
+</body>
+</html>

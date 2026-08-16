@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 7 · Modellieren und Anwenden · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-7-modellieren.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 7 · Modellieren und Anwenden · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-7-modellieren.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html" aria-current="page">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-7-modelling.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 7</h1>
+
+<section id="s7">
+  <h2 class="sec"><span class="num">Strang 7</span>Modellieren und Anwenden</h2>
+  <p class="sec-lead">Die ersten sechs Stränge bewegen sich innerhalb der Mathematik. Dieser hier ist der <strong>Ausgang</strong>: wie man das Durcheinander der Wirklichkeit — ohne feste Antworten und meist mit unvollständigen Angaben — überhaupt in eine Formel bekommt.</p>
+
+  <p>Und der erste, wichtigste Satz dieses Strangs stammt von einem Statistiker:</p>
+
+  <div class="rule-box"><strong>«Alle Modelle sind falsch, aber manche sind nützlich.»</strong>　—— George Box</div>
+
+  <p>Das ist keine Koketterie, sondern die Gebrauchsanweisung für dieses ganze Kapitel. Ein Modell ist nicht die Wirklichkeit, ein Modell ist <em>eine absichtliche Vereinfachung der Wirklichkeit</em>. Für die Bahnberechnung wird ein Planet zum Punkt, für die Kräfteberechnung wiegt das Seil nichts, für Bevölkerungsmodelle sind alle Menschen gleich — alles offensichtlich falsch, und genau dieses Falsche macht die Aufgabe erst rechenbar.</p>
+
+  <p><strong>Der Unterschied zwischen jemandem, der Modelle beherrscht, und jemandem, der es nicht tut, liegt nicht darin, ob er Gleichungen lösen kann, sondern darin, ob er weiß, was er weggelassen hat.</strong> Davon handelt dieses Kapitel: wie man baut — und wann man nicht glauben sollte.</p>
+
+  <p>Noch etwas vorweg: Dies ist der einzige Strang, der <em>aus der Mathematik heraustreten muss</em>. Die Aufgaben der ersten sechs haben richtige Antworten, dieser nicht — denn «passt dieses Modell» ist keine Rechenaufgabe, sondern ein Urteil. Die Mathematik kann die optimale Lösung ausrechnen, aber <em>was «optimal» heißen soll</em>, legen Menschen fest. <strong>Deshalb steht er am Schluss.</strong></p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Der Modellierungskreislauf · fünf Schritte und der Pfeil zurück</h3>
+      <p class="de">Modellierungskreislauf</p>
+    </div>
+    <div class="body">
+      <p class="lead">Von einem wirklichen Problem zu einer mathematischen Antwort führen fünf Schritte. Und <strong>das Wichtigste sind nicht diese fünf, sondern der Pfeil, der nach dem fünften zurückführt.</strong></p>
+
+      <figure class="wide">
+        <svg viewBox="0 0 700 230" role="img" aria-label="Die fünf Schritte des Modellierungskreislaufs: Problem, Modell bilden, mathematisch lösen, zurückübersetzen, prüfen — und bei Unstimmigkeit zurück zum Modell.">
+          <defs>
+            <marker id="g0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="30" y="46" width="120" height="66" rx="4" class="svg-face"/>
+          <text x="90" y="76" text-anchor="middle" class="svg-t">① Problem</text>
+          <text x="90" y="96" text-anchor="middle" class="svg-ts">ein Durcheinander</text>
+
+          <rect x="165" y="46" width="120" height="66" rx="4" class="fm"/>
+          <text x="225" y="76" text-anchor="middle" class="svg-t txm">② Modell bilden</text>
+          <text x="225" y="96" text-anchor="middle" class="svg-ts txm">was lasse ich weg</text>
+
+          <rect x="300" y="46" width="120" height="66" rx="4" class="f2"/>
+          <text x="360" y="76" text-anchor="middle" class="svg-t tx2">③ Lösen</text>
+          <text x="360" y="96" text-anchor="middle" class="svg-ts tx2">wie eine Übung</text>
+
+          <rect x="435" y="46" width="120" height="66" rx="4" class="f2"/>
+          <text x="495" y="76" text-anchor="middle" class="svg-t tx2">④ Zurückdeuten</text>
+          <text x="495" y="96" text-anchor="middle" class="svg-ts tx2">was heißt das</text>
+
+          <rect x="570" y="46" width="100" height="66" rx="4" class="f1"/>
+          <text x="620" y="76" text-anchor="middle" class="svg-t tx1">⑤ Prüfen</text>
+          <text x="620" y="96" text-anchor="middle" class="svg-ts tx1">plausibel?</text>
+
+          <path d="M 152 79 L 161 79" class="svg-l" marker-end="url(#g0)"/>
+          <path d="M 287 79 L 296 79" class="svg-l" marker-end="url(#g0)"/>
+          <path d="M 422 79 L 431 79" class="svg-l" marker-end="url(#g0)"/>
+          <path d="M 557 79 L 566 79" class="svg-l" marker-end="url(#g0)"/>
+
+          <path d="M 620 116 L 620 160 L 225 160 L 225 118" class="svg-l" stroke-dasharray="5 4" marker-end="url(#g0)"/>
+          <text x="422" y="182" text-anchor="middle" class="svg-t txm">Unplausibel? Modell ändern — diese gestrichelte Linie ist der Kern</text>
+          <text x="422" y="204" text-anchor="middle" class="svg-tm">Wer nur einmal durchläuft, modelliert nicht, sondern setzt in eine Formel ein</text>
+        </svg>
+        <figcaption><b>Schulaufgaben üben im Wesentlichen nur den dritten Schritt, während in der Wirklichkeit der zweite und der fünfte die schwersten sind.</b> Schritt zwei verlangt zu entscheiden, was wegfällt — zu viel weggelassen, und das Modell hat nichts mehr mit der Sache zu tun; zu wenig, und die Aufgabe wird unlösbar. Schritt fünf verlangt zu beurteilen, ob das Ergebnis plausibel ist: 2000 Meter Körpergröße, −3 Arbeiter, eine Wahrscheinlichkeit von 1,4 sind keine «mathematischen Antworten», sondern Anzeichen dafür, dass Modell oder Rechnung fehlerhaft sind.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Was in jedem Schritt schiefgehen kann</span>
+        <ul class="plain">
+          <li><strong>① → ②　Mit dem Bauen anfangen, bevor die Frage verstanden ist.</strong> Hier hilft Griff 9 aus dem Werkzeugkasten: die Aufgabe erst in eigenen Worten nacherzählen.</li>
+          <li><strong>② Das Falsche weggelassen.</strong> Wer bei einem Fallschirmsprung den Luftwiderstand streicht, bekommt ein absurdes Ergebnis — in dieser Aufgabe ist der Luftwiderstand nämlich die Hauptsache. <em>Was man weglassen darf, hängt davon ab, wonach man fragt.</em></li>
+          <li><strong>③ Schlicht verrechnet.</strong> Der einfachste Schritt, und zugleich der, den man am ehesten für das Ganze hält.</li>
+          <li><strong>④ Die Rückübersetzung vergessen.</strong> Was ist <span class="m">x = 3,7</span>? 3,7 Personen? 3,7 Meter? Eine Zahl ohne Einheit ist keine Antwort.</li>
+          <li><strong>⑤ Nicht geprüft.</strong> Der Schritt, an dem am meisten Punkte und am meisten Projekte verlorengehen — und er kostet meist dreißig Sekunden.</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Pólyas vier Schritte (Werkzeugkasten) · Funktion (Strang 4, 4.1) · Gleichung (Strang 2, 2.3)</div>
+          <div><span class="lbl">Wohin</span>Dieser ganze Strang · jede Physik- und Chemieaufgabe · Ingenieurwesen · Wirtschaftswissenschaft · Data Science</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Modellieren</b> modelling</span>
+          <span><b>Modellierungskreislauf</b> modelling cycle</span>
+          <span><b>Annahme</b> assumption</span>
+          <span><b>Vereinfachung</b> simplification</span>
+          <span><b>Validierung</b> validation</span>
+          <span><b>Interpretation</b> interpretation</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)"><span class="m-up m">Modellieren</span> ist eine der ausdrücklich genannten Kernkompetenzen in den deutschen Bildungsstandards, und in Prüfungen gibt es eigene <span class="m-up m">Modellierungsaufgaben</span> — Texte mit einer echten Situation, bei denen du selbst entscheiden musst, welches Modell passt.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Einheiten und Größen · die billigste Kontrolle überhaupt</h3>
+      <p class="de">Einheiten · Dimensionsanalyse</p>
+    </div>
+    <div class="body">
+      <p class="lead">Mit Einheiten zu rechnen kostet praktisch keine Zeit und fängt die meisten Fehler ab. Und Einheiten prüfen nicht nur das Ergebnis — <strong>manchmal verraten sie sogar, wie die Formel aussehen muss.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Eine Lektion für 125 Millionen Dollar</span>
+        <p>1999 zerbrach der NASA-Marsorbiter «Mars Climate Orbiter» beim Anflug auf den Mars. Die Untersuchung ergab: Ein Team hatte in angloamerikanischen Einheiten gerechnet (Pfund-Sekunde), das andere in metrischen (Newton-Sekunde), und niemandem war es aufgefallen. <strong>Die Sonde zündete mit falschen Schubwerten, flog zu tief und verglühte in der Atmosphäre.</strong></p>
+        <p>Eine Sonde für 125 Millionen Dollar, zerstört durch eine nicht durchgeführte Einheitenumrechnung.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Einheiten wie Buchstaben behandeln</span>
+        <div class="demo">
+          <p>Einheiten lassen sich wie Buchstaben multiplizieren und dividieren, und sie kürzen sich von selbst:</p>
+          <p class="calc">Meter ÷ Sekunde = Meter/Sekunde　　（Geschwindigkeit）<br>Meter/Sekunde ÷ Sekunde = Meter/Sekunde²　（Beschleunigung）<br>Meter × Meter = Meter²　　　（Fläche）</p>
+          <p>Bei einer Frage nach einer <em>Fläche</em> muss die Einheit also quadratisch sein, bei einer Frage nach einer <em>Geschwindigkeit</em> eine Länge geteilt durch eine Zeit. <strong>Stimmt die Einheit nicht, wurde irgendwo mal und geteilt vertauscht</strong> — das zu bemerken geht viel schneller als neu zu rechnen.</p>
+        </div>
+        <p>In Strang 4 wurde dieser Griff schon einmal benutzt: Die Einheit der Steigung <span class="m">Δy/Δx</span> ist «Einheit von y durch Einheit von x». Wer kurz daran denkt, dass die Steigung von Weg gegen Zeit in Metern pro Sekunde gemessen wird, vertauscht Zähler und Nenner nie.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Die Dimension verrät die Gestalt der Formel</span>
+        <div class="demo">
+          <p>Wovon hängt die Schwingungsdauer <span class="m">T</span> eines Fadenpendels ab? In Frage kommen nur: die Fadenlänge <span class="m">L</span> (Meter), die Fallbeschleunigung <span class="m">g</span> (Meter/Sekunde²) und die Masse <span class="m">m</span> (Kilogramm).</p>
+          <p>Die Antwort muss die Einheit <strong>Sekunde</strong> haben. Aber <span class="m">m</span> bringt Kilogramm mit, und in den beiden anderen Größen gibt es kein Kilogramm zum Wegkürzen — <em>also kann die Masse in der Formel gar nicht vorkommen.</em></p>
+          <p>Nun <span class="m">L/g</span>: Meter ÷ (Meter/Sekunde²) = Sekunde². Einmal Wurzel ziehen ergibt Sekunden. Die Schwingungsdauer muss also proportional zu <span class="m">√(L/g)</span> sein.</p>
+          <p><strong>Ohne ein einziges Experiment und ohne eine einzige Gleichung ist das Gerüst der Formel hergeleitet.</strong> (Vollständig lautet sie <span class="m">T = 2π√(L/g)</span>; das 2π liefert die Dimensionsanalyse nicht, dafür braucht es Physik.)</p>
+        </div>
+        <p>Die Folgerung ist überdies erstaunlich: <em>Wie schwer das Pendelgewicht ist, spielt für die Schwingungsdauer keine Rolle.</em> Genau das hat Galilei bemerkt, als er in der Kirche einem schwingenden Leuchter zusah.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Verhältnisse (Strang 1, 1.5) · Potenzen und Wurzeln (Strang 1, 1.8) · Einheit der Steigung (Strang 4, 4.2)</div>
+          <div><span class="lbl">Wohin</span>Die gesamte Physik · Abschätzungen (7.3) · Ergebniskontrolle (die vier Maßstäbe im Werkzeugkasten) · technische Auslegung</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Einheit</b> unit</span>
+          <span><b>Größe</b> quantity</span>
+          <span><b>Umrechnung</b> conversion</span>
+          <span><b>Dimensionsanalyse</b> dimensional analysis</span>
+          <span><b>SI-Einheiten</b> SI units</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Größenordnungen abschätzen · klüger raten</h3>
+      <p class="de">Größenordnung · Fermi-Aufgaben</p>
+    </div>
+    <div class="body">
+      <p class="lead">Oft braucht man keine genaue Antwort, sondern nur die Auskunft, ob es sich um <strong>zehn, zehntausend oder hundert Millionen</strong> handelt. Und für diese Art Schätzung gibt es ein verlässliches Verfahren — es ist kein blindes Raten.</p>
+
+      <div class="field">
+        <span class="lbl">Fermi-Aufgaben</span>
+        <p>Der Physiker Fermi stellte seinen Studierenden gern Fragen, bei denen man zunächst nicht weiß, wo anfangen, etwa: <em>«Wie viele Klavierstimmer gibt es in Berlin?»</em> Solche Fragen heißen heute Fermi-Aufgaben, und das Verfahren lautet: <strong>eine unschätzbare große Frage in mehrere schätzbare kleine zerlegen.</strong></p>
+        <div class="demo">
+          <p>Berlin hat rund <strong>3,7 Millionen</strong> Einwohner → bei durchschnittlich 2 Personen je Haushalt etwa <strong>1,85 Millionen</strong> Haushalte</p>
+          <p>Etwa jeder hundertste Haushalt hat ein Klavier → rund <strong>18 000</strong> Klaviere</p>
+          <p>Ein Klavier wird etwa einmal im Jahr gestimmt → <strong>18 000</strong> Stimmungen pro Jahr</p>
+          <p>Ein Stimmer schafft 4 Klaviere am Tag an 200 Arbeitstagen → <strong>800</strong> pro Person und Jahr</p>
+          <p class="calc">18000 ÷ 800 ≈ 22 Personen</p>
+          <p>Die wirkliche Zahl mag 15 sein oder 40, aber <strong>sicher nicht 3 und sicher nicht 3000.</strong> Und genau das reicht.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Warum zerlegtes Raten genauer ist</span>
+        <p>Das ist kein Glück. Jeder einzelne Schätzschritt hat einen Fehler, mal nach oben, mal nach unten, und <strong>beim Multiplizieren heben sich die Fehler teilweise gegenseitig auf</strong> — es ist unwahrscheinlich, dass du in jedem einzelnen Schritt in dieselbe Richtung danebenliegst.</p>
+        <p>Dahinter steckt die Einsicht aus Strang 5: Überlagern sich mehrere unabhängige zufällige Fehler, konzentriert sich der Gesamtfehler in der Mitte (zentraler Grenzwertsatz). <em>Deshalb sind «fünf grobe Schätzungen» meist erheblich genauer als «eine aus der Luft gegriffene Zahl».</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Der eigentliche Nutzen: Unsinn erkennen</span>
+        <p>Der größte Wert des Abschätzens liegt nicht im Ergebnis, sondern darin, <strong>schnell zu beurteilen, ob eine Behauptung völlig aus dem Rahmen fällt</strong>. Taucht in einer Nachricht eine erschreckende Zahl auf, genügen dreißig Sekunden Zerlegen, um oft festzustellen, dass sie um zwei oder drei Größenordnungen danebenliegt.</p>
+        <p><em>Das ist eine der wirksamsten Verteidigungsfähigkeiten dieses Hefts</em> — sie gehört neben Karte 5.10 gestellt.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Zehnerpotenzen (Strang 1, 1.8) · Einheiten (7.2) · zentraler Grenzwertsatz (Strang 5, 5.8)</div>
+          <div><span class="lbl">Wohin</span>Machbarkeitsurteile · technische Vorabschätzungen · ein klassischer Aufgabentyp in Bewerbungsgesprächen · Ergebniskontrolle (erster Maßstab im Werkzeugkasten)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Größenordnung</b> order of magnitude</span>
+          <span><b>Abschätzung</b> estimation</span>
+          <span><b>Überschlagsrechnung</b> rough calculation</span>
+          <span><b>Zehnerpotenz</b> power of ten</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.4 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Prozent und Zinseszins · am alltäglichsten und am fehleranfälligsten</h3>
+      <p class="de">Prozent · Zinseszins</p>
+    </div>
+    <div class="body">
+      <p class="lead">Prozentrechnung ist die weltweit meistbenutzte Mathematik und zugleich die, bei der am meisten falsch gemacht wird. <strong>Und die Ursache ist fast immer dieselbe: Man vergisst zu fragen, worauf sich die Prozentangabe bezieht.</strong></p>
+
+      <div class="field">
+        <span class="lbl">50 Prozent hoch und 50 Prozent runter führt nicht zurück</span>
+        <div class="demo">
+          <p>100 um 50 % erhöht → 150. 150 um 50 % gesenkt → <strong>75</strong>.</p>
+          <p>Nicht 100. Denn die beiden 50 % haben <em>verschiedene Grundwerte</em>: das erste Mal die Hälfte von 100, das zweite Mal die Hälfte von 150.</p>
+          <p>Folgerung: <strong>Nach einem Verlust von 50 % braucht es einen Gewinn von 100 %, um wieder bei null zu sein.</strong> Deshalb ist «die Hälfte verloren» an der Börse weit schlimmer, als es klingt.</p>
+        </div>
+        <p>Die deutschen Lehrbücher trennen das sehr sauber mit drei Wörtern: <span class="m-up m">Grundwert</span> (die Bezugsgröße, also das «worauf»), <span class="m-up m">Prozentwert</span> (die tatsächliche Menge) und <span class="m-up m">Prozentsatz</span> (die Prozentzahl selbst). <em>Neun von zehn Fehlern bei Prozentaufgaben entstehen dadurch, dass der Grundwert nicht klar ist.</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Prozentpunkt ist nicht Prozent</span>
+        <p>Die Arbeitslosenquote steigt von 4 % auf 6 %. Ist sie um <strong>2 Prozentpunkte</strong> gestiegen oder um <strong>50 Prozent</strong>?</p>
+        <p>Beides ist richtig, aber die beiden Formulierungen wirken völlig verschieden — und genau das ist eine der meistgenutzten legalen Irreführungen in Nachrichten und Werbung. <em>Soll die Zahl groß wirken, sagt man «Anstieg um 50 Prozent»; soll sie klein wirken, sagt man «Anstieg um 2 Prozentpunkte».</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Zinseszins: die Exponentialkurve aus Strang 4, auf deinem Konto</span>
+        <p>Beim einfachen Zins werden die Zinsen jedes Jahr auf das <em>Anfangskapital</em> berechnet, beim Zinseszins auf <em>Kapital plus bereits angefallene Zinsen</em>. Anfangs ist der Unterschied unbedeutend, über die Zeit wird er gewaltig — denn Zinseszins ist <strong>exponentielles Wachstum</strong> (die Lösung von <span class="m">y′ = ky</span> aus Strang 4, 4.10).</p>
+        <div class="demo">
+          <p><strong>72er-Regel</strong>: Teilt man 72 durch den Zinssatz in Prozent, erhält man ungefähr die Anzahl der Jahre bis zur Verdopplung.</p>
+          <p class="calc">6 % Zins → 72 ÷ 6 = 12 Jahre bis zur Verdopplung<br>3 % Zins → 72 ÷ 3 = 24 Jahre bis zur Verdopplung</p>
+          <p>Die Regel stammt vom Logarithmus (Strang 1, 1.8): Die Verdopplungszeit ist <span class="m">ln2 ÷ ln(1+r)</span>, und weil <span class="m">ln2 ≈ 0,693</span> ist, ergibt die Umrechnung im üblichen Zinsbereich ungefähr 72. <em>Dass man gerade 72 nimmt, liegt daran, dass sie durch viele Zahlen teilbar ist</em> — genau der Grund, aus dem in Strang 3, 3.1 die 360 Grad gewählt wurden.</p>
+        </div>
+        <p>Umgekehrt gelesen ist dieselbe Kurve auch der Grund, warum Inflation und Kreditkartenschulden so gefährlich sind: <strong>Dieselbe Kurve, aber es macht einen gewaltigen Unterschied, auf welcher Seite man steht.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Brüche und Verhältnisse (Strang 1, 1.5) · Potenz und Logarithmus (Strang 1, 1.8) · exponentielles Wachstum (Strang 4, 4.3 und 4.10)</div>
+          <div><span class="lbl">Wohin</span>Finanzielle Grundbildung · Inflation · Kredite und Sparen · Wachstumsmodelle (7.6) · Diagrammfallen (7.8)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Prozent</b> percent</span>
+          <span><b>Grundwert</b> base value</span>
+          <span><b>Prozentwert</b> percentage amount</span>
+          <span><b>Prozentsatz</b> percentage rate</span>
+          <span><b>Prozentpunkt</b> percentage point</span>
+          <span><b>Zinssatz / Zinseszins</b> interest rate / compound interest</span>
+          <span><b>Kapital</b> principal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Lineare Modelle · am meisten benutzt und am meisten überdehnt</h3>
+      <p class="de">lineare Regression · Extrapolation</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Gerade durch eine Punktwolke zu legen ist das weltweit meistbenutzte Modellierungsmittel. <strong>Innerhalb des Datenbereichs funktioniert es oft ausgezeichnet, außerhalb kann es grotesk falsch werden.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Warum Geraden so beliebt sind</span>
+        <p>Wegen des Satzes aus Strang 4, 4.2: <em>Nah genug betrachtet sieht alles Glatte gerade aus.</em> Solange der interessierende Bereich nicht zu groß ist, genügt die Näherung durch eine Gerade meistens — und Geraden haben die einfachste Mathematik: eine Steigung, ein Achsenabschnitt, zwei Zahlen, fertig.</p>
+        <p>Die «am besten passende» Gerade findet man üblicherweise mit der <strong>Methode der kleinsten Quadrate</strong>: Man minimiert die Summe der <em>quadrierten senkrechten Abstände</em> aller Punkte zur Geraden. Warum quadriert? Aus demselben Grund wie bei der Standardabweichung in Strang 5, 5.1 — Quadrate lassen sich gut ableiten (Extremwert, Strang 4, 4.7) und heben sich nicht gegenseitig auf.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 280" role="img" aria-label="Eine Ausgleichsgerade passt im Datenbereich gut, wird aber in den datenfreien Bereich hinein verlängert, wo nichts sie stützt.">
+          <rect x="310" y="30" width="330" height="190" class="f2" opacity="0.35" stroke-dasharray="6 4"/>
+          <line x1="60" y1="220" x2="655" y2="220" class="svg-l"/>
+          <line x1="60" y1="220" x2="60" y2="30" class="svg-l"/>
+
+          <line x1="90" y1="202" x2="620" y2="40" class="svg-l" stroke-width="2"/>
+
+          <circle cx="110" cy="196" r="4" class="fm" stroke-width="2"/>
+          <circle cx="140" cy="186" r="4" class="fm" stroke-width="2"/>
+          <circle cx="165" cy="180" r="4" class="fm" stroke-width="2"/>
+          <circle cx="190" cy="168" r="4" class="fm" stroke-width="2"/>
+          <circle cx="215" cy="162" r="4" class="fm" stroke-width="2"/>
+          <circle cx="245" cy="150" r="4" class="fm" stroke-width="2"/>
+          <circle cx="275" cy="142" r="4" class="fm" stroke-width="2"/>
+          <circle cx="300" cy="132" r="4" class="fm" stroke-width="2"/>
+
+          <line x1="310" y1="30" x2="310" y2="228" class="svg-l" stroke-dasharray="4 4"/>
+          <text x="185" y="248" text-anchor="middle" class="svg-t txm">hier gibt es Daten</text>
+          <text x="475" y="248" text-anchor="middle" class="svg-t tx2">Extrapolation · reiner Glaube</text>
+
+          <line x1="60" y1="262" x2="660" y2="262" class="svg-l-soft"/>
+          <text x="60" y="278" class="svg-t">Dass die Gerade links gut passt, heißt nicht, dass sie rechts noch gilt</text>
+        </svg>
+        <figcaption><b>Extrapolation ist die gefährlichste Verwendung eines linearen Modells.</b> Mark Twain hat das einmal vorgerechnet: Der Mississippi sei in 176 Jahren um 242 Meilen kürzer geworden; rechnet man das zurück, wäre er vor einer Million Jahren über 1,3 Millionen Meilen lang gewesen — weiter als von der Erde zum Mond. Und in gut siebenhundert Jahren wäre er nur noch eine Meile lang, sodass zwei Städte aneinanderstoßen. <b>Er hat gescherzt, aber der Scherz beschreibt etwas Reales.</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Drei Einschränkungen, die man sich merken muss</span>
+          <p><strong>Erstens: gut passend ist nicht gleich richtig.</strong> Ein hoher Korrelationskoeffizient sagt nur, dass die Gerade ordentlich durch die Punkte läuft — nicht, dass der Zusammenhang wirklich linear ist, und erst recht nicht, dass er kausal ist (Strang 5, 5.10).</p>
+          <p><strong>Zweitens: Extrapolation hat keine Grundlage.</strong> Geprüft wurde das Modell nur im Bereich der Daten; außerhalb malt es bloß aus Trägheit weiter.</p>
+          <p><strong>Drittens: Wirkliche Zusammenhänge sind oft nicht linear.</strong> Legt man eine Gerade an den Anfang einer Exponentialkurve, passt sie ausgezeichnet — und unterschätzt anschließend die Entwicklung völlig. <em>Das ist einer der Gründe, warum Frühschätzungen bei Epidemien wiederholt danebenliegen.</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Lineare Funktion und Steigung (Strang 4, 4.2) · Extremwerte und Minimieren (Strang 4, 4.7) · Korrelation und Kausalität (Strang 5, 5.10) · Standardabweichung (Strang 5, 5.1)</div>
+          <div><span class="lbl">Wohin</span>Wachstumsmodelle (7.6) · Data Science · das einfachste Modell des maschinellen Lernens · Trendprognosen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>lineare Regression</b> linear regression</span>
+          <span><b>Ausgleichsgerade</b> line of best fit</span>
+          <span><b>Methode der kleinsten Quadrate</b> least squares</span>
+          <span><b>Interpolation / Extrapolation</b> interpolation / extrapolation</span>
+          <span><b>Korrelationskoeffizient</b> correlation coefficient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Wachstumsmodelle · die Form zu treffen ist wichtiger als die Zahl</h3>
+      <p class="de">Wachstumsmodelle</p>
+    </div>
+    <div class="body">
+      <p class="lead">Etwas wächst — die Frage ist, <strong>nach welcher Form.</strong> Trifft man diese Wahl falsch, nützt auch das genaueste Rechnen danach nichts mehr.</p>
+
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="Vier Wachstumsformen: linear gleichmäßig, exponentiell immer schneller, beschränktes Wachstum gegen eine Grenze, logistisches Wachstum als S-Kurve.">
+          <line x1="30" y1="160" x2="170" y2="160" class="svg-l-soft"/>
+          <line x1="40" y1="155" x2="165" y2="55" class="svg-l" stroke-width="2.2"/>
+          <text x="100" y="188" text-anchor="middle" class="svg-t tx1">linear</text>
+          <text x="100" y="208" text-anchor="middle" class="svg-ts">feste Menge dazu</text>
+
+          <line x1="195" y1="160" x2="340" y2="160" class="svg-l-soft"/>
+          <polyline points="205,155 240,152 270,145 300,126 322,92 337,52" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <text x="268" y="188" text-anchor="middle" class="svg-t tx2">exponentiell</text>
+          <text x="268" y="208" text-anchor="middle" class="svg-ts">fester Faktor mal</text>
+
+          <line x1="365" y1="160" x2="510" y2="160" class="svg-l-soft"/>
+          <line x1="365" y1="50" x2="510" y2="50" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <polyline points="375,155 393,108 415,80 443,64 475,56 505,52" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <text x="438" y="188" text-anchor="middle" class="svg-t tx3">beschränkt</text>
+          <text x="438" y="208" text-anchor="middle" class="svg-ts">bremst vor der Grenze</text>
+
+          <line x1="535" y1="160" x2="680" y2="160" class="svg-l-soft"/>
+          <line x1="535" y1="50" x2="680" y2="50" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <polyline points="545,155 565,152 583,143 600,122 617,90 634,68 655,56 675,52" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <text x="608" y="188" text-anchor="middle" class="svg-t txm">logistisch</text>
+          <text x="608" y="208" text-anchor="middle" class="svg-ts">S-Form</text>
+
+          <line x1="30" y1="226" x2="670" y2="226" class="svg-l-soft"/>
+          <text x="30" y="244" class="svg-t">Gestrichelt ist die Obergrenze. Nichts wächst ewig exponentiell — irgendwann kommt eine Grenze.</text>
+        </svg>
+        <figcaption><b>Vier Formen, vier Sorten Wirklichkeit.</b> Linear: Stundenlohn. Exponentiell: Zinseszins, Bakterienvermehrung, Frühphase einer Epidemie. Beschränkt: das Abkühlen von Kaffee, die letzten 20 Prozent beim Laden, die Lernkurve einer Fertigkeit. Logistisch: der vollständige Verlauf einer Epidemie, die Verbreitung eines neuen Produkts, eine Kaninchenpopulation auf einer Wiese. <b>Ganz links sehen alle vier Kurven fast gleich aus — und genau deshalb ist die Beurteilung in der Frühphase so schwer.</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Wie man entscheidet, welches passt</span>
+        <p>Nicht danach schauen, wie die Daten aussehen, sondern fragen, <strong>welcher Mechanismus dahintersteckt</strong> (genau davon sprechen die Differentialgleichungen aus Strang 4, 4.10):</p>
+        <div class="demo">
+          <p>Kommt pro Zeitschritt eine <em>feste Menge</em> dazu? → linear</p>
+          <p>Ist der Zuwachs proportional zum <em>aktuellen Bestand</em>? → exponentiell</p>
+          <p>Ist der Zuwachs proportional zum <em>Abstand zur Obergrenze</em>? → beschränkt</p>
+          <p>Beides zusammen (anfangs bestandsgetrieben, später von der Grenze gebremst)? → logistisch</p>
+        </div>
+        <p><strong>Aus dem Mechanismus auf die Form zu schließen ist weit verlässlicher, als der Form die Daten anzupassen.</strong> Denn Daten sind immer nur ein begrenzter Ausschnitt, der Mechanismus aber bestimmt die ganze Kurve.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Exponential und Logarithmus (Strang 1, 1.8) · Funktionen-Zoo (Strang 4, 4.3) · Differentialgleichungen (Strang 4, 4.10) · Zinseszins (7.4)</div>
+          <div><span class="lbl">Wohin</span>Epidemiologie · Ökologie · Marktprognosen · Klimamodelle · Ressourcen und Nachhaltigkeit</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Wachstumsmodell</b> growth model</span>
+          <span><b>lineares Wachstum</b> linear growth</span>
+          <span><b>exponentielles Wachstum</b> exponential growth</span>
+          <span><b>beschränktes Wachstum</b> bounded growth</span>
+          <span><b>logistisches Wachstum</b> logistic growth</span>
+          <span><b>Sättigungsgrenze</b> saturation limit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Optimierung · das Beste im Machbaren finden</h3>
+      <p class="de">Optimierung · Nebenbedingungen</p>
+    </div>
+    <div class="body">
+      <p class="lead">Strang 4, 4.7 hat gezeigt, wie man Maximum und Minimum einer Funktion bestimmt. In der Wirklichkeit kommt eine Sache dazu, und oft liegt gerade dort die Schwierigkeit: <strong>die Nebenbedingungen.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Extremwertaufgaben in der Wirklichkeit</span>
+        <p>«Wie spare ich am meisten Material» lässt sich nicht für sich allein fragen, es muss «und fasse dabei das vorgegebene Volumen» dazukommen. «Wie erziele ich den größten Gewinn» braucht «bei nur so viel Rohstoff, so vielen Arbeitskräften und so vielen Maschinenstunden».</p>
+        <p>Diese Zusatzbedingungen heißen auf Deutsch <span class="m-up m">Nebenbedingungen</span>. <strong>Eine Optimierungsaufgabe ohne Nebenbedingungen gibt es praktisch nicht</strong> — gäbe es wirklich keine, wäre die Antwort meist «unendlich», und das ist keine sinnvolle Frage.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Lineare Optimierung: ein besonders häufiger Fall</span>
+        <div class="demo">
+          <p>Sind Zielfunktion und Nebenbedingungen alle linear, hat das Problem ein sehr hübsches geometrisches Bild: <strong>Jede Bedingung schneidet in der Ebene eine Halbebene heraus, alle zusammen umschließen ein Vieleck, und die optimale Lösung liegt zwangsläufig in einer seiner <em>Ecken</em>.</strong></p>
+          <p>Das heißt, man muss nicht den ganzen Bereich absuchen, sondern nur endlich viele Ecken prüfen. <em>Wieder «unendlich viele Möglichkeiten auf endlich viele zusammendrücken» — dieselbe Sache wie die Schrittzahlfrage aus Strang 6, 6.5.</em></p>
+        </div>
+        <p>Dieses Verfahren heißt lineare Optimierung, entstand im Zweiten Weltkrieg für die Materialdisposition und steckt heute in Flugplänen, Logistikrouten, Produktionsplanung und Portfolios. <strong>Hinter dem Preis jedes Flugtickets, das du buchst, läuft eine gewaltige lineare Optimierung.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Der wichtigste Satz</span>
+          <p><strong>Die Mathematik kann «die optimale Lösung bei gegebenem Ziel» ausrechnen — aber dieses Ziel haben Menschen gewählt.</strong></p>
+          <p>Eine Lieferroute auf «kürzeste Gesamtstrecke» zu optimieren und sie auf «geringste Belastung der Fahrenden» zu optimieren ergibt völlig verschiedene Antworten; bei Dienstplänen gilt dasselbe für «niedrigste Kosten» gegenüber «höchste Zufriedenheit». <em>So gut man auch optimiert, die Frage «was soll überhaupt optimiert werden» beantwortet das nicht.</em></p>
+          <p>Die letzte Karte dieses Kapitels führt diesen Punkt zu Ende.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Extremwertaufgaben (Strang 4, 4.7) · Ungleichungen (Strang 2, 2.4) · Geometrie der Gleichungssysteme (Strang 2, 2.8) · Komplexität (Strang 6, 6.5)</div>
+          <div><span class="lbl">Wohin</span>Operations Research · Lieferketten und Logistik · das Training von Modellen im maschinellen Lernen · Wirtschaftswissenschaft · Optimierung an der Uni</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Optimierung</b> optimisation</span>
+          <span><b>Zielfunktion</b> objective function</span>
+          <span><b>Nebenbedingung</b> constraint</span>
+          <span><b>lineare Optimierung</b> linear programming</span>
+          <span><b>zulässiger Bereich</b> feasible region</span>
+          <span><b>Operations Research</b> operations research</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.8 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Wie Diagramme täuschen · tägliche Notwehr</h3>
+      <p class="de">irreführende Darstellung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Das raffinierteste Diagramm hat <strong>keine einzige Zahl gefälscht</strong>. Es hat nur eine Darstellungsweise gewählt, bei der dein Auge die gewünschte Schlussfolgerung zieht.</p>
+
+      <div class="field">
+        <span class="lbl">Trick eins: ein Stück der senkrechten Achse abschneiden</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="Dieselben vier Werte zweimal gezeichnet: mit einer bei null beginnenden Achse wirken die Säulen fast gleich hoch, mit einer bei 97 beginnenden wirkt der Unterschied dramatisch.">
+          <line x1="50" y1="220" x2="320" y2="220" class="svg-l"/>
+          <line x1="50" y1="220" x2="50" y2="55" class="svg-l"/>
+          <rect x="70" y="78" width="45" height="142" class="f2"/>
+          <rect x="130" y="75" width="45" height="145" class="f2"/>
+          <rect x="190" y="74" width="45" height="146" class="f2"/>
+          <rect x="250" y="71" width="45" height="149" class="f2"/>
+          <text x="42" y="224" text-anchor="end" class="svg-tm">0</text>
+          <text x="185" y="248" text-anchor="middle" class="svg-t tx2">Achse ab 0</text>
+          <text x="185" y="268" text-anchor="middle" class="svg-ts">wirkt: fast kein Unterschied</text>
+
+          <line x1="400" y1="220" x2="670" y2="220" class="svg-l"/>
+          <line x1="400" y1="220" x2="400" y2="55" class="svg-l"/>
+          <rect x="420" y="197" width="45" height="23" class="fm"/>
+          <rect x="480" y="151" width="45" height="69" class="fm"/>
+          <rect x="540" y="129" width="45" height="91" class="fm"/>
+          <rect x="600" y="83" width="45" height="137" class="fm"/>
+          <text x="392" y="224" text-anchor="end" class="svg-tm">97</text>
+          <text x="535" y="248" text-anchor="middle" class="svg-t txm">Achse ab 97</text>
+          <text x="535" y="268" text-anchor="middle" class="svg-ts">wirkt: explodiert</text>
+
+          <text x="350" y="40" text-anchor="middle" class="svg-t">Dieselben Daten: 98　100　101　103</text>
+        </svg>
+        <figcaption><b>Die Zahlen in beiden Bildern sind identisch, und beide Säulensätze sind ehrlich gezeichnet.</b> Der einzige Unterschied ist, wo die senkrechte Achse beginnt. Das rechte Bild fälscht nichts — es lässt einen Unterschied von 5 Prozent aussehen wie eine Vervielfachung. <b>Bei einem Säulendiagramm schaut man als Erstes auf den Nullpunkt der Achse.</b> (Bei Liniendiagrammen ist ein abgeschnittener Nullpunkt manchmal berechtigt, weil eine Linie den Verlauf zeigt; Säulen dagegen stellen Größe durch Länge dar, und dann führt das Abschneiden unmittelbar in die Irre.)</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Trick zwei: Werte durch Flächen darstellen</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 250" role="img" aria-label="Wird ein Symbol für den doppelten Wert doppelt so hoch gezeichnet, vervierfacht sich seine Fläche, und das Auge liest die Fläche.">
+          <text x="60" y="34" class="svg-t">«Die Produktion ist doppelt so hoch» — also zeichnet man ein doppelt so hohes Symbol</text>
+          <rect x="120" y="150" width="50" height="50" class="f1"/>
+          <text x="145" y="222" text-anchor="middle" class="svg-t tx1">Wert = 1</text>
+
+          <rect x="350" y="100" width="100" height="100" class="fm"/>
+          <line x1="400" y1="100" x2="400" y2="200" class="svg-l-soft"/>
+          <line x1="350" y1="150" x2="450" y2="150" class="svg-l-soft"/>
+          <text x="400" y="222" text-anchor="middle" class="svg-t txm">Wert = 2</text>
+
+          <text x="500" y="130" class="svg-t">doppelt so hoch</text>
+          <text x="500" y="154" class="svg-t txm">vierfache Fläche</text>
+          <text x="500" y="178" class="svg-tm">das Auge liest die Fläche</text>
+
+          <line x1="60" y1="238" x2="660" y2="238" class="svg-l-soft"/>
+        </svg>
+        <figcaption><b>Das ist das Quadrat-Kubik-Gesetz aus Strang 3, 3.3, rückwärts ausgenutzt.</b> Der Wert hat sich nur verdoppelt, aber die maßstabsgetreu vergrößerte Fläche ist viermal so groß — und damit auch der optische Eindruck. Diagramme mit Männchen, Geldsäcken oder Ölfässern begehen fast immer diesen Fehler; manche unabsichtlich, manche nicht.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Die übrigen zum Wiedererkennen</span>
+        <ul class="plain">
+          <li><strong>Startpunkt wählen</strong> — Aus derselben langen Datenreihe lassen sich je nach gewähltem Anfangsjahr die entgegengesetzten Schlüsse «steigt stetig» und «fällt kontinuierlich» belegen.</li>
+          <li><strong>Zwei senkrechte Achsen</strong> — Zwei Kurven in einem Bild mit je eigener Skala. Passt man die Skalen an, lassen sich beliebige zwei Kurven «im Gleichtakt» aussehen lassen. Das ist die billigste Art, Korrelation vorzutäuschen (Strang 5, 5.10).</li>
+          <li><strong>3D-Tortendiagramme</strong> — Die Perspektive lässt vordere Segmente größer wirken als hintere. <em>Tortendiagramme taugen ohnehin schlecht zum Vergleichen, mit 3D bleibt nur noch Dekoration.</em></li>
+          <li><strong>Keine Angabe zur Stichprobengröße</strong> — «80 Prozent der Nutzer sind zufrieden.» Wie viele? Vier von fünf sind auch 80 Prozent.</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Verhältnis und Prozent (7.4) · Quadrat-Kubik-Gesetz (Strang 3, 3.3) · beschreibende Statistik (Strang 5, 5.1) · Korrelation und Kausalität (Strang 5, 5.10)</div>
+          <div><span class="lbl">Wohin</span>Nachrichten, Geschäftsberichte und Werbung lesen · Gestaltung von Datenvisualisierungen · Medienkompetenz</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Diagramm</b> chart</span>
+          <span><b>Säulendiagramm</b> bar chart</span>
+          <span><b>Achsenskalierung</b> axis scaling</span>
+          <span><b>irreführend</b> misleading</span>
+          <span><b>Manipulation</b> manipulation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">7.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg · die letzte Karte des Hefts</span></span>
+      <h3>Die Grenzen des Modells · wann man der Mathematik nicht glauben sollte</h3>
+      <p class="de">Grenzen der Modellierung</p>
+    </div>
+    <div class="body">
+      <p class="lead">Dieses Heft hat von der Macht der sieben Stränge gehandelt. Die letzte Karte handelt von ihren <strong>Grenzen</strong> — denn zu wissen, wo ein Werkzeug versagt, und zu wissen, wie man es benutzt, sind zwei Hälften derselben Sache.</p>
+
+      <div class="field">
+        <span class="lbl">Erstens: Ein Modell ist nicht die Wirklichkeit</span>
+        <p>Zurück zum Satz vom Anfang: <em>Alle Modelle sind falsch, aber manche sind nützlich.</em></p>
+        <p>Die Frage lautet also nie «ist dieses Modell richtig» (es ist mit Sicherheit falsch), sondern <strong>«betrifft das, worin es falsch ist, das, wonach ich gerade frage?»</strong> Die Erde als Kugel zu behandeln geht für Flugrouten völlig in Ordnung; für die Höhe eines Berges wäre es absurd. <em>Dasselbe Modell wird bei anderer Frage vom brauchbaren Werkzeug zur Irreführung.</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Zweitens: Was rechenbar ist, ist nicht dasselbe wie was wichtig ist</span>
+        <p>Ein Modell kann nur den quantifizierbaren Teil verarbeiten — und der nicht quantifizierbare Teil wird dadurch leicht behandelt, <em>als gäbe es ihn nicht</em>.</p>
+        <p>Ein Land am Bruttoinlandsprodukt messen, Schülerinnen und Schüler an Noten, Inhalte an Klickzahlen, Beschäftigte an ihrem Ausstoß — all diese Kennzahlen sind rechenbar und deshalb bequem; aber was jede von ihnen auslässt (ökologische Kosten, Neugier, tatsächlicher Wert, gegenseitige Hilfe unter Kolleginnen und Kollegen) ist oft das Wichtigere. <strong>Die Gefahr liegt nicht darin, Kennzahlen zu benutzen, sondern darin, zu vergessen, dass eine Kennzahl nur ein Schatten ist.</strong></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Drittens: Goodharts Gesetz</span>
+        <div class="demo">
+          <p><strong>«Sobald eine Kennzahl zum Ziel wird, taugt sie nicht mehr als Kennzahl.»</strong></p>
+          <p>Denn Menschen optimieren die Zahl, an der sie gemessen werden, und nicht das, wofür die Zahl ursprünglich stand. Misst man Programmiererinnen an Codezeilen, bekommt man langen, umständlichen Code; misst man die Polizei an der Aufklärungsquote, werden Anzeigen nicht mehr aufgenommen; misst man Bildung an Prüfungsnoten, fangen Schulen an, das Prüfungbestehen zu unterrichten.</p>
+          <p><em>Das Gemessenwerden selbst verändert das Gemessene.</em> Das ist eine Rückkopplung zwischen Modell und Wirklichkeit, die sich in das Kreislaufbild aus 7.1 gar nicht einzeichnen lässt.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Viertens: Die Mathematik fällt keine Werturteile</span>
+        <p>Der letzte und wichtigste Punkt.</p>
+        <p>Strang 5, 5.9 sagte, wo die Schwelle zwischen den beiden Fehlerarten liegt, sei eine Kostenfrage und keine Rechenfrage. 7.7 sagte, so gut man auch optimiere, die Frage «was soll optimiert werden» bleibe unbeantwortet. <strong>Die Mathematik kann dir sagen «wenn du A willst, dann tu dies» — aber sie wird dir nie sagen, dass du A wollen sollst.</strong></p>
+        <p>Ein Algorithmus kann den gewinnbringendsten Preis, den effizientesten Dienstplan und den fesselndsten Empfehlungsstrom berechnen. Ob man so bepreisen, so planen, so empfehlen <em>sollte</em> — <em>das liegt außerhalb der Zuständigkeit der Mathematik, und zwar seit jeher.</em></p>
+        <p>Das ist kein Mangel, das ist ihre Beschaffenheit: Sie ist ein außerordentlich scharfes Werkzeug, und Werkzeuge entscheiden nicht für den Menschen. <strong>Gerade weil sie so scharf ist, muss der, der sie führt, umso genauer wissen, wohin er zielt.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Modellierungskreislauf (7.1) · Optimierung (7.7) · die beiden Fehlerarten (Strang 5, 5.9) · Korrelation und Kausalität (Strang 5, 5.10) · Erwartungswert ersetzt kein Urteil (Strang 5, 5.6)</div>
+          <div><span class="lbl">Wohin</span>Wissenschaftstheorie · Algorithmenethik · öffentliche Entscheidungen · und jedes «die Daten zeigen …», das dir künftig begegnet</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Modellgrenzen</b> limits of a model</span>
+          <span><b>Annahme</b> assumption</span>
+          <span><b>Gültigkeitsbereich</b> domain of validity</span>
+          <span><b>Indikator</b> indicator</span>
+          <span><b>Zielkonflikt</b> conflicting objectives</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista7">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Der Gipfel dieses Strangs ist keine höhere Mathematik, sondern die Frage, <strong>wo Mathematik überall eingesetzt wird</strong>. Auch hier: <strong>nichts davon musst du verstehen.</strong></p>
+
+  <div class="vista">
+    <h4>Operations Research: die unsichtbare Mathematik, die die Welt am Laufen hält</h4>
+    <p>Erwachsen geworden heißt das Optimierungsverfahren aus 7.7 <strong>Operations Research</strong>. Es bestimmt, wie Container auf ein Schiff geladen, Pakete sortiert, Stromnetze geregelt, Operationssäle belegt und Flugbesatzungen über Nacht auf Städte verteilt werden.</p>
+    <p><em>Kaum jemand außerhalb kennt dieses Fach, und es spart täglich Milliarden Menschen Zeit und Ressourcen.</em> Es ist Mathematik der Sorte «fällt nicht auf, wenn sie gut gemacht ist, und legt die Welt lahm, wenn sie schlecht gemacht ist».</p>
+
+    <h4>Finanzmathematik: Unsicherheit bepreisen</h4>
+    <p>Die Brownsche Bewegung vom Gipfel von Strang 5 wurde in die Finanzwelt übertragen und wuchs dort zur mathematischen Grundlage des gesamten Derivatemarkts. Die <strong>Black-Scholes-Formel</strong> — eine partielle Differentialgleichung — gibt eine Antwort darauf, was ein zukünftiges Recht heute wert ist.</p>
+    <p>Sie ist aber auch der teuerste Anwendungsfall von Karte 7.9: <em>Diese Modelle setzen normalverteilte Kursschwankungen voraus, während extreme Ereignisse an echten Märkten weit häufiger vorkommen</em> (Strang 5, 5.8). In der Krise von 2008 war «das Modell sagt, das kann praktisch nicht passieren» ein wiederholt gehörter Satz. <strong>Nicht die Modelle haben getäuscht — die Menschen, die sie benutzten, hatten ihren Gültigkeitsbereich vergessen.</strong></p>
+
+    <h4>Data Science und maschinelles Lernen: der Zusammenfluss dieses Hefts</h4>
+    <p>Wenn man einen Ort sucht, an dem alle sieben Stränge gleichzeitig gebraucht werden, dann ist es das heutige maschinelle Lernen:</p>
+    <p>Die Matrizen aus <strong>Strang 2</strong> sind seine Recheneinheit, die hochdimensionalen Abstände aus <strong>Strang 3</strong> sein Ähnlichkeitsmaß, die Ableitungen aus <strong>Strang 4</strong> sein Lernmechanismus (Gradientenabstieg), <strong>Strang 5</strong> sein gesamter theoretischer Rahmen, <strong>Strang 6</strong> entscheidet, ob es überhaupt läuft, und <strong>Strang 7</strong> entscheidet, ob es so eingesetzt werden sollte.</p>
+    <p><em>Und die Frage aus Strang 0 — «welche Art von Antwort zählt überhaupt» — wird hier zur schwierigsten von allen</em>: Ein Modell liefert ein Ergebnis, und woher nehmen wir das Recht, ihm zu glauben?</p>
+
+    <h4>Klima und Epidemien: Modelle im öffentlichen Leben</h4>
+    <p>In den letzten Jahrzehnten ist etwas Neues geschehen: <strong>Mathematische Modelle wirken unmittelbar an öffentlichen Entscheidungen mit</strong>, und zwar zu einem Zeitpunkt, an dem die Belege noch unvollständig sind. Klimamodelle und Epidemiemodelle sind beides Beispiele.</p>
+    <p>Daraus entsteht eine Schwierigkeit, die im Kreislaufbild von 7.1 nicht vorkommt: <em>Entscheidungen können nicht warten, bis das Modell vollständig geprüft ist</em> — wenn die Prüfung fertig ist, ist die Gelegenheit vorbei. «Wie handelt man unter Unsicherheit» wird damit zu einer Frage, die beantwortet werden muss, und sie ist gleichzeitig eine mathematische und eine politische.</p>
+    <p>Das ist vermutlich die Fähigkeit, die diese Generation am dringendsten braucht: <strong>zu verstehen, was ein Modell sagt — und ebenso, was es nicht sagt.</strong> Wenn von diesem Heft nur eines bleiben soll, dann hoffentlich das.</p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Modellierung und Simulation</strong> — in fast jedem MINT-Studiengang vorhanden</li>
+      <li><strong>Operations Research / Optimierung</strong></li>
+      <li><strong>Finanzmathematik</strong></li>
+      <li><strong>Data Science / Statistik</strong> — Anschluss an Strang 5</li>
+      <li><strong>Wissenschaftliches Rechnen</strong> — Anschluss an Strang 6</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss7">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead"><span class="m-up m">Modellieren</span> ist eine Kernkompetenz der deutschen Bildungsstandards, und in Prüfungen gibt es eigene Modellierungsaufgaben. Diese Wörter kommen in Sachaufgaben häufig vor.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">Modellieren</td><td class="en">modelling</td><td>建模</td></tr>
+      <tr><td class="de">Modellierungskreislauf</td><td class="en">modelling cycle</td><td>建模循环</td></tr>
+      <tr><td class="de">Annahme / Vereinfachung</td><td class="en">assumption / simplification</td><td>假设 / 简化</td></tr>
+      <tr><td class="de">Validierung / Interpretation</td><td class="en">validation / interpretation</td><td>验证 / 解释</td></tr>
+      <tr><td class="de">Einheit / Größe</td><td class="en">unit / quantity</td><td>单位 / 物理量</td></tr>
+      <tr><td class="de">Umrechnung / Dimensionsanalyse</td><td class="en">conversion / dimensional analysis</td><td>换算 / 量纲分析</td></tr>
+      <tr><td class="de">Größenordnung / Abschätzung</td><td class="en">order of magnitude / estimation</td><td>数量级 / 估算</td></tr>
+      <tr><td class="de">Überschlagsrechnung</td><td class="en">rough calculation</td><td>粗算</td></tr>
+      <tr><td class="de">Prozent / Prozentpunkt</td><td class="en">percent / percentage point</td><td>百分比 / 百分点</td></tr>
+      <tr><td class="de">Grundwert / Prozentsatz</td><td class="en">base value / rate</td><td>基数 / 百分率</td></tr>
+      <tr><td class="de">Zinssatz / Zinseszins / Kapital</td><td class="en">interest rate / compound interest / principal</td><td>利率 / 复利 / 本金</td></tr>
+      <tr><td class="de">lineare Regression / Ausgleichsgerade</td><td class="en">linear regression / line of best fit</td><td>线性回归 / 拟合直线</td></tr>
+      <tr><td class="de">Methode der kleinsten Quadrate</td><td class="en">least squares</td><td>最小二乘法</td></tr>
+      <tr><td class="de">Interpolation / Extrapolation</td><td class="en">interpolation / extrapolation</td><td>内插 / 外推</td></tr>
+      <tr><td class="de">Korrelationskoeffizient</td><td class="en">correlation coefficient</td><td>相关系数</td></tr>
+      <tr><td class="de">Wachstumsmodell</td><td class="en">growth model</td><td>增长模型</td></tr>
+      <tr><td class="de">lineares / exponentielles Wachstum</td><td class="en">linear / exponential growth</td><td>线性 / 指数增长</td></tr>
+      <tr><td class="de">beschränktes / logistisches Wachstum</td><td class="en">bounded / logistic growth</td><td>有限 / 逻辑斯蒂增长</td></tr>
+      <tr><td class="de">Sättigungsgrenze</td><td class="en">saturation limit</td><td>饱和上限</td></tr>
+      <tr><td class="de">Optimierung / Zielfunktion</td><td class="en">optimisation / objective function</td><td>优化 / 目标函数</td></tr>
+      <tr><td class="de">Nebenbedingung / zulässiger Bereich</td><td class="en">constraint / feasible region</td><td>约束条件 / 可行域</td></tr>
+      <tr><td class="de">lineare Optimierung / Operations Research</td><td class="en">linear programming / OR</td><td>线性规划 / 运筹学</td></tr>
+      <tr><td class="de">Diagramm / Säulendiagramm</td><td class="en">chart / bar chart</td><td>图表 / 柱状图</td></tr>
+      <tr><td class="de">Achsenskalierung / irreführend</td><td class="en">axis scaling / misleading</td><td>坐标轴刻度 / 误导性的</td></tr>
+      <tr><td class="de">Gültigkeitsbereich / Indikator</td><td class="en">domain of validity / indicator</td><td>适用范围 / 指标</td></tr>
+      <tr><td class="de">Zielkonflikt</td><td class="en">conflicting objectives</td><td>目标冲突</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs7">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>«Alle Modelle sind falsch, aber manche sind nützlich» — wie benutzt man diesen Satz? Wie lautet die richtige Frage, um ein Modell zu beurteilen?</li>
+    <li>Welchen der fünf Schritte übt die Schule vor allem? Welche zwei sind in der Wirklichkeit die schwersten?</li>
+    <li>Wie ging der Marsorbiter verloren? Wie viel Zeit hätte gereicht, um diesen Fehler abzufangen?</li>
+    <li>Wie erkennt man ohne Experiment und ohne Gleichung, dass die Schwingungsdauer eines Pendels nicht von der Masse abhängt?</li>
+    <li>Wie viele Klavierstimmer gibt es in Berlin? Warum sind «fünf grobe Schätzungen» genauer als eine aus der Luft gegriffene Zahl?</li>
+    <li>Warum führt «50 Prozent hoch, 50 Prozent runter» nicht zum Ausgangswert zurück? Wie viel Gewinn braucht es nach einem halbierten Wert?</li>
+    <li>Wie viele Formulierungen gibt es für «Arbeitslosenquote von 4 % auf 6 %»? Welche klingt schlimmer?</li>
+    <li>Woher stammt die 72er-Regel? Warum 72 und nicht 69 oder 70?</li>
+    <li>Was ist die gefährlichste Verwendung eines linearen Modells? Wovon handelt Mark Twains Mississippi-Scherz?</li>
+    <li>Soll man das Wachstumsmodell nach der Form der Daten oder nach dem Mechanismus wählen? Warum?</li>
+    <li>Was prüft man bei einem Säulendiagramm zuerst? Warum darf ein Liniendiagramm die Achse manchmal doch abschneiden?</li>
+    <li>Was geht schief, wenn Werte durch Symbolgrößen dargestellt werden? Mit welcher Regel aus Strang 3 hängt das zusammen?</li>
+    <li>Was sagt Goodharts Gesetz? Nenne ein Beispiel aus deiner Umgebung.</li>
+    <li>Die Mathematik kann «wie es optimal wird» beantworten — warum nicht «was optimiert werden soll»? An welchen zwei anderen Stellen dieses Hefts steht dieser Satz noch?</li>
+  </ol>
+</section>
+
+<section id="ending">
+  <h2 class="sec"><span class="num">Schluss</span>Nach sieben Strängen</h2>
+
+  <p class="sec-lead">Du hast jetzt Talboden und Hangweg der ganzen Landkarte durchlaufen. Nimm dir zum Schluss zwei Minuten für das, was <strong>immer wiederkam</strong> — genau das ist gemeint, wenn hier von «System» die Rede ist.</p>
+
+  <h3 class="sub">Vier Linien, die durch das ganze Heft laufen</h3>
+
+  <ul class="plain">
+    <li><strong>Der Motor «Umkehroperation» tritt fünfmal auf.</strong> Plus und minus, mal und geteilt (Strang 1, 1.3), Potenz gegen Wurzel und Logarithmus (1.8), Ableiten und Integrieren (Strang 4, 4.9), Wahrscheinlichkeit und Statistik (Strang 5). Und jedes Mal ist der Rückweg schwerer als der Hinweg — manchmal so schwer, dass er praktisch nicht gangbar ist, und genau daraus lebt die Kryptographie aus Strang 6, 6.9.</li>
+    <li><strong>«Vorwärts leicht, rückwärts schwer» trägt das Internet.</strong> Große Primzahlen multiplizieren gegen zerlegen (Strang 1, 1.6), ableiten gegen Stammfunktion finden (Strang 4, 4.9), verschlüsseln gegen brechen (Strang 6, 6.9). Ein Phänomen, drei Gesichter.</li>
+    <li><strong>Die tiefsten Ergebnisse der Mathematik sind oft ein «es geht nicht».</strong> Galois: keine Lösungsformel für Grad fünf (Strang 2). Gödel: manche wahren Sätze sind unbeweisbar (Strang 0). Turing: manche Probleme rechnet keine Maschine zu Ende (Strang 6). Lindemann: die Quadratur des Kreises ist unmöglich (Strang 1). <em>Eine Grenze zu ziehen ist selbst ein gewaltiger Fortschritt.</em></li>
+    <li><strong>Die Verwechslung von P(A|B) und P(B|A) verfolgt uns durch drei Stränge.</strong> Logisch: «Regen macht die Straße nass» ist nicht «nasse Straße heißt Regen» (Strang 0, 0.4). Medizinisch: 9 Prozent statt 99 (Strang 5, 5.5). In der Forschung: das Missverständnis des p-Werts (Strang 5, 5.9). <em>Dasselbe Denkleck, jedes Mal teurer.</em></li>
+  </ul>
+
+  <h3 class="sub">Wie man dieses Heft weiter benutzt</h3>
+
+  <ul class="plain">
+    <li><strong>Nicht darauf hoffen, dass ein Durchlesen genügt.</strong> Es ist so gebaut, dass man jedes Jahr einmal wiederkommt: dieses Jahr nur der Talboden, nächstes Jahr der Hangweg, und vor der Uni noch einmal die Gipfelabschnitte — dann werden jene Wörter plötzlich interessant.</li>
+    <li><strong>Wenn im Unterricht etwas Neues kommt, such hier, auf welchem Strang es sitzt.</strong> Zu wissen, woran ein Baustein anschließt und wohin er führt, bringt mehr als zehn zusätzliche Übungsaufgaben. Genau dafür ist das Feld «Woher und Wohin» auf jeder Karte da.</li>
+    <li><strong>Wenn du feststeckst, schlag im Werkzeugkasten nach.</strong> Die neun Griffe und der Entscheidungsbaum sind die beiden meistgebrauchten Seiten.</li>
+    <li><strong>Die Systemfragen am Kapitelende von Zeit zu Zeit noch einmal beantworten.</strong> Die, bei denen es hakt, zeigen genau, wo du noch einmal lesen solltest.</li>
+  </ul>
+
+  <p style="margin-top:2rem">Die Schule wird dir all das nach Jahrgängen in kleine Stücke geschnitten überreichen, Jahr für Jahr. Der ganze Zweck dieses Hefts ist, dass du bei jedem Stück weißt, aus welchem Kontinent es geschnitten wurde.</p>
+</section>
+
+<div class="pagenav">
+  <a href="strang-6-diskret.html"><span class="dir">Vorige Seite</span><span class="t">Strang 6 · Diskretes und Algorithmen</span></a>
+  <a class="next" href="pruefungsperspektive.html"><span class="dir">Nächste Seite</span><span class="t">Anhang · Prüfungsperspektive</span></a>
+</div>
+
+</main>
+</body>
+</html>

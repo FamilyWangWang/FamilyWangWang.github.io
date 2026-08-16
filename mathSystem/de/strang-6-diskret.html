@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strang 6 · Diskretes und Algorithmen · Landkarte der Mathematik</title>
+<link rel="stylesheet" href="../assets/atlas.css">
+
+<meta name="description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/de/strang-6-diskret.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strang 6 · Diskretes und Algorithmen · Landkarte der Mathematik">
+<meta property="og:description" content="Ein interaktiver zweisprachiger Atlas der Mathematik mit Lernlabor, Fortschritt und A2-Wandposter.">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/de/strang-6-diskret.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← Dokumentzentrum</a></li>
+      <li><a href="index.html">Landkarte</a></li>
+      <li><a href="werkzeugkasten.html">Werkzeugkasten</a></li>
+      <li><a href="strang-0-sprache.html">0 · Sprache &amp; Beweis</a></li>
+      <li><a href="strang-1-zahlen.html">1 · Zahlen</a></li>
+      <li><a href="strang-2-algebra.html">2 · Algebra</a></li>
+      <li><a href="strang-3-geometrie.html">3 · Form &amp; Raum</a></li>
+      <li><a href="strang-4-analysis.html">4 · Funktionen</a></li>
+      <li><a href="strang-5-stochastik.html">5 · Stochastik</a></li>
+      <li><a href="strang-6-diskret.html" aria-current="page">6 · Diskret &amp; Algorithmen</a></li>
+      <li><a href="strang-7-modellieren.html">7 · Modellieren</a></li>
+      <li><a href="pruefungsperspektive.html">Anhang · Prüfung</a></li>
+      <li><a href="labor.html">Labor</a></li>
+      <li><a href="fortschritt.html">Fortschritt</a></li>
+      <li><a href="poster.html">Wandposter</a></li>
+      <li class="lang"><a href="../strand-6-discrete.html">中文</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">Strang 6</h1>
+
+<section id="s6">
+  <h2 class="sec"><span class="num">Strang 6</span>Diskretes und Algorithmen</h2>
+  <p class="sec-lead">Strang 4 handelt von der <strong>stetigen</strong> Welt — Kurven sind glatt und beliebig fein teilbar. Dieser hier handelt von der <strong>springenden</strong> Welt: Dinge, die man einzeln abzählt, Schritt für Schritt tut, ohne Übergang dazwischen.</p>
+
+  <p>Und er stellt immer wieder dieselbe Frage: <strong>Wenn man Schritt für Schritt vorgeht — wie viele Schritte sind das?</strong></p>
+
+  <p>Die Frage wirkt schlicht, trägt aber das gesamte Rückgrat dieses Strangs. Etwas in drei Schritten zu erledigen und etwas in drei Millionen Schritten zu erledigen ist mathematisch gleichermaßen «lösbar», in der Wirklichkeit aber der Unterschied zwischen machbar und unmöglich. <em>«Es gibt einen Weg» und «man kann sich diesen Weg leisten» sind zweierlei.</em></p>
+
+  <p>Etwas macht diesen Strang heute besonders wichtig: <strong>Ein Computer kann nur Diskretes.</strong> Er hat keine echten reellen Zahlen (nur Näherungen mit endlich vielen Stellen), keine echte Stetigkeit (nur kleine Schritte) und keine Anschauung (nur eindeutige Regeln). Alle schönen stetigen Theorien aus Strang 4 müssen erst «in Stücke geschnitten» werden, bevor eine Maschine damit rechnen kann — daher kommen die numerischen Verfahren, und das ist die Schnittstelle zwischen beiden Strängen.</p>
+
+  <p>Und am Gipfel dieses Strangs steht die <strong>dritte Wand</strong> dieses Hefts, aus derselben Familie wie die beiden vorherigen: In Strang 2 hat Galois bewiesen, dass es <em>für Grad fünf keine Lösungsformel gibt</em>; in Strang 0 hat Gödel bewiesen, dass <em>manche wahren Sätze unbeweisbar sind</em>; hier lautet sie — <strong>manche Probleme kann eine Maschine niemals zu Ende rechnen.</strong> Die tiefsten Ergebnisse der Mathematik sind wieder einmal ein «es geht nicht».</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Folgen und Rekursion · eines nach dem anderen</h3>
+      <p class="de">Folge · Rekursion</p>
+    </div>
+    <div class="body">
+      <p class="lead">Eine Folge ist eine Reihe von Zahlen in fester Ordnung. Und sie lässt sich auf zwei völlig verschiedene Arten beschreiben — <strong>dieser Gegensatz zieht sich bis in die Informatik durch.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Eine kleine Beobachtung vorweg</span>
+        <p>Eine Folge ist in Wirklichkeit einfach eine <strong>Funktion mit den natürlichen Zahlen als Definitionsbereich</strong> (Strang 4, 4.1). Eingabe 1 gibt das erste Glied, Eingabe 2 das zweite. Dass man sie «Folge» nennt und nicht «Funktion», liegt nur daran, dass ihre Eingaben springen statt stetig zu laufen. <em>Genau das ist die ganze Bedeutung des Wortes «diskret».</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Zwei Beschreibungsarten</span>
+        <div class="demo">
+          <p><strong>Explizit</strong>: das n-te Glied direkt angeben. <span class="m">aₙ = 3n + 2</span>. Du willst das 100. Glied? Einsetzen, fertig.</p>
+          <p><strong>Rekursiv</strong>: Startwert angeben und dazu, wie man vom vorigen aufs nächste kommt. <span class="m">a₁ = 5</span>, <span class="m">aₙ = aₙ₋₁ + 3</span>. Du willst das 100. Glied? Dann musst du 99 Schritte laufen.</p>
+        </div>
+        <p>Explizit sieht deutlich bequemer aus, aber die Rekursion hat etwas Unersetzliches: <strong>Viele wirkliche Vorgänge sind von Natur aus rekursiv.</strong> Die Bevölkerung dieses Jahres hängt von der des letzten ab, der Kontostand von morgen vom heutigen, die nächste Position von der jetzigen. Eine Rekursionsformel aufzuschreiben ist oft naheliegend, während die passende explizite Formel schwer zu finden ist — und manchmal gar nicht existiert.</p>
+        <p>Das bekannteste Beispiel ist die <strong>Fibonacci-Folge</strong>: <span class="m">1, 1, 2, 3, 5, 8, 13, 21, …</span>, jedes Glied die Summe der beiden davor. Die Rekursion ist in einer Zeile geschrieben, die explizite Formel dagegen erschreckend lang — und in ihr taucht ausgerechnet die irrationale Zahl <span class="m">√5</span> auf. <em>Eine Folge aus lauter ganzen Zahlen, deren Bildungsgesetz sich nur mit einer irrationalen Zahl hinschreiben lässt.</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Wie man eine Rekursionsformel beweist</span>
+        <p>Rekursion und <strong>vollständige Induktion</strong> gehören von Natur aus zusammen: Die Rekursion sagt «von Schritt n komme ich zu Schritt n+1», die Induktion sagt «wenn es sich Schritt für Schritt weitergibt und der Anfang stimmt, gilt es für alle n». <em>Die Dominoreihe aus Strang 0, 0.7 war für dieses Kapitel vorbereitet.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Funktion (Strang 4, 4.1) · vollständige Induktion (Strang 0, 0.7) · natürliche Zahlen (Strang 1, 1.1)</div>
+          <div><span class="lbl">Wohin</span>Algorithmen und Schleifen (6.4) · rekursive Verfahren · Grenzwert und Reihen (Strang 4, 4.5) · Wachstumsmodelle (Strang 7) · Differenzengleichungen</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Aus ein paar Gliedern auf das Bildungsgesetz zu schließen ist die häufigste Fehlerquelle. Ist bei <span class="m">1, 2, 4, 8, …</span> das nächste Glied sicher 16? Es könnte auch 15 sein — lautet die Regel nämlich «wie viele Gebiete entstehen, wenn man n Punkte auf einem Kreis paarweise verbindet», dann heißt die Folge <span class="m">1, 2, 4, 8, 16, 31</span>, und das sechste Glied ist plötzlich nicht 32.</p>
+          <p><em>Ein Muster zu sehen ist eine Vermutung, es zu beweisen ist Mathematik</em> (Griff 2 im Werkzeugkasten und Strang 0, 0.6). Dieses Beispiel lohnt sich zu merken, denn es kuriert zuverlässig das «ich sehe es doch, also stimmt es».</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Folge / Glied</b> sequence / term</span>
+          <span><b>explizit / rekursiv</b> explicit / recursive</span>
+          <span><b>Rekursionsformel</b> recurrence relation</span>
+          <span><b>arithmetische Folge</b> arithmetic sequence</span>
+          <span><b>geometrische Folge</b> geometric sequence</span>
+          <span><b>Fibonacci-Folge</b> Fibonacci sequence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden</span></span>
+      <h3>Dualsystem und Information · was eine Frage wert ist</h3>
+      <p class="de">Dualsystem · Bit</p>
+    </div>
+    <div class="body">
+      <p class="lead">Computer rechnen im Dualsystem, nicht weil das «mathematischer» wäre, sondern weil <strong>eine Schaltung nur zwei Dinge sicher unterscheiden kann: Strom an und Strom aus.</strong> Und aus dieser schlichten Beschränkung ist der messbare Begriff «Information» gewachsen.</p>
+
+      <div class="field">
+        <span class="lbl">Nur eine andere Basis im Stellenwertsystem</span>
+        <p>Strang 1, 1.2 sagte, der Kern des Stellenwertsystems sei «dasselbe Zeichen bedeutet an verschiedenen Stellen verschieden viel». Ersetzt man die Basis 10 durch 2, bleibt die Regel identisch, nur hat jede Stelle statt zehn nur zwei Möglichkeiten:</p>
+        <p class="calc">1101₂ = 1×8 + 1×4 + 0×2 + 1×1 = 13</p>
+        <p>Acht Dualstellen können <span class="m">2⁸ = 256</span> Zustände darstellen — das ist ein Byte. <em>Jede zusätzliche Stelle verdoppelt die Anzahl der Zustände</em>, also wieder exponentiell (Strang 4, 4.3).</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Eine Ja-Nein-Frage ist ein Bit wert</span>
+        <p>Darum geht es dieser Karte eigentlich. Denk an ein Ratespiel: Ich denke mir eine Zahl zwischen 1 und 1000, du darfst nur Ja-Nein-Fragen stellen. <strong>Wie wenige Fragen genügen?</strong></p>
+        <div class="demo">
+          <p>Der dumme Weg: «Ist es die 1? Die 2?» — im schlimmsten Fall 1000 Fragen.</p>
+          <p>Der kluge Weg: «Ist sie größer als 500?» Wie die Antwort auch ausfällt, die Hälfte der Möglichkeiten ist weg. Noch eine Frage, wieder die Hälfte.</p>
+          <p class="calc">1000 → 500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1</p>
+          <p><strong>Zehn Fragen genügen</strong>, denn <span class="m">2¹⁰ = 1024 &gt; 1000</span>.</p>
+        </div>
+        <p>Das ist die ursprüngliche Definition von «Informationsgehalt»: <em>Der Wert einer guten Frage bemisst sich daran, wie viele Möglichkeiten sie wegschneidet.</em> Und diese Bewegung «jedes Mal die Hälfte weg» ist der Hauptdarsteller dieses ganzen Kapitels — auf der nächsten Karte wird sie zum Algorithmus, auf der übernächsten zu einer eigenen Komplexitätsklasse.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Stellenwertsystem (Strang 1, 1.2) · Potenzen (Strang 1, 1.8) · Logarithmus (Strang 1, 1.8 — «wie oft fragen» heißt log₂ ausrechnen)</div>
+          <div><span class="lbl">Wohin</span>Logikgatter (6.3) · binäre Suche und O(log n) (6.5) · Informationstheorie · Datenkompression · Kryptographie (6.9)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Dualsystem</b> binary system</span>
+          <span><b>Binärzahl</b> binary number</span>
+          <span><b>Bit / Byte</b> bit / byte</span>
+          <span><b>Stelle</b> digit position</span>
+          <span><b>Informationsgehalt</b> information content</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Boolesche Algebra · auch mit wahr und falsch lässt sich rechnen</h3>
+      <p class="de">Boolesche Algebra · Wahrheitstafel</p>
+    </div>
+    <div class="body">
+      <p class="lead">Strang 0, 0.2 sagte, eine Aussage sei wahr oder falsch. Schreibt man «wahr» als 1 und «falsch» als 0, dann <strong>wird die Logik zu einer Art Algebra</strong> — und diese Algebra lässt sich unmittelbar als Schaltung bauen.</p>
+
+      <div class="field">
+        <span class="lbl">Drei Grundverknüpfungen</span>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:12%">A</th><th style="width:12%">B</th><th style="width:22%">A UND B<br><span style="font-size:12px">beide wahr</span></th><th style="width:22%">A ODER B<br><span style="font-size:12px">mindestens eines</span></th><th style="width:22%">NICHT A<br><span style="font-size:12px">umgedreht</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>wahr</td><td>wahr</td><td class="cheap">wahr</td><td class="cheap">wahr</td><td>falsch</td></tr>
+            <tr><td>wahr</td><td>falsch</td><td>falsch</td><td class="cheap">wahr</td><td>falsch</td></tr>
+            <tr><td>falsch</td><td>wahr</td><td>falsch</td><td class="cheap">wahr</td><td class="cheap">wahr</td></tr>
+            <tr><td>falsch</td><td>falsch</td><td>falsch</td><td>falsch</td><td class="cheap">wahr</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Beachte, dass das mathematische «oder» <strong>einschließend</strong> ist: «A oder B ist wahr» umfasst auch den Fall, dass beide wahr sind. Wenn man im Alltag «Tee oder Kaffee?» fragt, meint man meist ein Entweder-oder — das mathematische «oder» meint das nicht. Beim Lesen von Aufgaben führt dieser Unterschied zu Fehlern.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Von der Wahrheitstafel zur Schaltung</span>
+        <p>1937 wies der einundzwanzigjährige Shannon in seiner Masterarbeit nach: <strong>Die drei Verknüpfungen der Booleschen Algebra lassen sich eins zu eins mit Schaltern realisieren.</strong> Zwei Schalter in Reihe sind das UND (nur wenn beide geschlossen sind, fließt Strom), parallel geschaltet sind sie das ODER (es genügt einer).</p>
+        <p>Diese Arbeit gilt als eine der wichtigsten Masterarbeiten des 20. Jahrhunderts, weil sie eine abstrakte Logik mit einem Bündel Kupferdraht verbunden hat. <strong>Was heute in einem Chip auf einigen Milliarden Transistoren geschieht, ist das, was in dieser Tabelle steht.</strong> Alles, was auf seinem Handy läuft — Videos, Spiele, diese Seite — besteht ganz unten aus diesen vier Zeilen.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Aussagen und Wahrheitswerte (Strang 0, 0.2) · Verneinung und Quantoren (Strang 0, 0.3) · Schnitt und Vereinigung von Mengen (Strang 0, 0.1 — sie entsprechen einander vollständig)</div>
+          <div><span class="lbl">Wohin</span>Digitalschaltungen und Chips · Bedingungen beim Programmieren · Datenbankabfragen · das AND/OR von Suchmaschinen · mathematische Logik (Gipfel von Strang 0)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Boolesche Algebra</b> Boolean algebra</span>
+          <span><b>Wahrheitstafel</b> truth table</span>
+          <span><b>UND / ODER / NICHT</b> AND / OR / NOT</span>
+          <span><b>Logikgatter</b> logic gate</span>
+          <span><b>Schaltung</b> circuit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Algorithmen · ein Verfahren so genau sagen, dass eine Maschine es ausführt</h3>
+      <p class="de">Algorithmus</p>
+    </div>
+    <div class="body">
+      <p class="lead">Ein Algorithmus ist ein Verfahren, das <strong>hinreichend stur formuliert</strong> ist: Jeder Schritt ist eindeutig, es braucht keinerlei Urteilsvermögen, und es endet garantiert.</p>
+
+      <div class="field">
+        <span class="lbl">Drei Bedingungen</span>
+        <div class="demo">
+          <p><strong>Eindeutig</strong> — jeder Schritt ist unmissverständlich, kein «geeignet anpassen», kein «nach Gefühl».</p>
+          <p><strong>Endlich</strong> — die Anzahl der Schritte ist endlich, nichts entfaltet sich ins Unbegrenzte.</p>
+          <p><strong>Terminierend</strong> — für jede zulässige Eingabe kommt es zum Ende und dreht sich nicht auf der Stelle fest.</p>
+        </div>
+        <p>Die dritte klingt nach einer Selbstverständlichkeit und ist doch die Tür zur Wand am Gipfel dieses Strangs: <em>Für das Problem «entscheide, ob ein Programm anhält» wurde bewiesen, dass es kein Verfahren gibt, das es löst.</em> (Siehe Gipfel.)</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Ein Algorithmus, 2300 Jahre alt und immer noch im Einsatz</span>
+        <p>Der <strong>euklidische Algorithmus</strong> für den größten gemeinsamen Teiler wurde um 300 v. Chr. aufgeschrieben und ist einer der ältesten überlieferten Algorithmen der Menschheit. Er läuft bis heute in deinem Rechner:</p>
+        <div class="proof">
+          <span class="lbl">ggT(1071, 462) bestimmen</span>
+          <p>Teile die größere durch die kleinere Zahl und behalte den Rest; wiederhole mit Divisor und Rest, bis der Rest 0 ist.</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.02rem">1071 ÷ 462 = 2 Rest 147<br>462 ÷ 147 = 3 Rest 21<br>147 ÷ 21 = 7 Rest 0　　←　Stopp</p>
+          <p>Der letzte Divisor <strong>21</strong> ist der größte gemeinsame Teiler.</p>
+          <p>Warum funktioniert das? Weil jede Zahl, die 1071 und 462 gemeinsam teilt, zwangsläufig auch deren Rest 147 teilt. <em>Das Problem wird durch ein kleineres Problem derselben Art ersetzt</em> — genau Griff 5 aus dem Werkzeugkasten und der Rekursionsgedanke aus 6.1.</p>
+        </div>
+        <p>Zum Vergleich: Würde man den Weg aus Strang 1, 1.6 gehen (beide Zahlen in Primfaktoren zerlegen und vergleichen), käme man bei mehrhundertstelligen Zahlen überhaupt nicht mehr vom Fleck. <strong>Dasselbe Problem, zwei Algorithmen — und genau darin liegt der Unterschied zwischen brauchbar und unbrauchbar.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Rekursion (6.1) · Teilbarkeit und Rest (Strang 1, 1.6) · Logik (6.3)</div>
+          <div><span class="lbl">Wohin</span>Komplexität (6.5) · numerische Verfahren (6.8) · Kryptographie (6.9) · Programmieren · Berechenbarkeit (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Algorithmus</b> algorithm</span>
+          <span><b>Schleife / Verzweigung</b> loop / branch</span>
+          <span><b>terminieren</b> terminate</span>
+          <span><b>euklidischer Algorithmus</b> Euclidean algorithm</span>
+          <span><b>Rest</b> remainder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg · die praktischste Seite dieses Kapitels</span></span>
+      <h3>Gefühl für Schrittzahlen · der Unterschied zwischen einer Million und zwanzig</h3>
+      <p class="de">Komplexität · Laufzeit</p>
+    </div>
+    <div class="body">
+      <p class="lead">Zwei Algorithmen lösen dasselbe Problem, der eine braucht eine Million Schritte, der andere zwanzig. <strong>Mathematisch sind beide gleichermaßen «lösbar», in der Wirklichkeit ist einer benutzbar und der andere nicht.</strong></p>
+
+      <div class="field">
+        <span class="lbl">Woher die zwanzig kommen</span>
+        <p>Ein Wort in einem alphabetisch sortierten Wörterbuch suchen. Blättert man Seite für Seite, sind es bei einer Million Einträgen eine Million Handgriffe. So macht es aber niemand — man schlägt in der Mitte auf, schaut, ob das gesuchte Wort davor oder dahinter liegt, und sucht nur noch in dieser Hälfte weiter.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="Binäre Suche: bei jedem Schritt halbiert sich der Suchbereich, aus einer Million wird nach zwanzig Schritten ein einziger Eintrag.">
+          <text x="90" y="55" text-anchor="end" class="svg-tm">0 Schritte</text>
+          <rect x="110" y="40" width="480" height="20" class="f2"/>
+          <text x="598" y="55" class="svg-tm">1 Mio.</text>
+
+          <text x="90" y="87" text-anchor="end" class="svg-tm">1 Schritt</text>
+          <rect x="110" y="72" width="240" height="20" class="f2"/>
+          <text x="358" y="87" class="svg-tm">500 000</text>
+
+          <text x="90" y="119" text-anchor="end" class="svg-tm">2 Schritte</text>
+          <rect x="110" y="104" width="120" height="20" class="f2"/>
+          <text x="238" y="119" class="svg-tm">250 000</text>
+
+          <text x="90" y="151" text-anchor="end" class="svg-tm">3 Schritte</text>
+          <rect x="110" y="136" width="60" height="20" class="f2"/>
+          <text x="178" y="151" class="svg-tm">125 000</text>
+
+          <text x="90" y="183" text-anchor="end" class="svg-tm">4 Schritte</text>
+          <rect x="110" y="168" width="30" height="20" class="f2"/>
+          <text x="148" y="183" class="svg-tm">62 500</text>
+
+          <text x="90" y="215" text-anchor="end" class="svg-tm">5 Schritte</text>
+          <rect x="110" y="200" width="15" height="20" class="f2"/>
+          <text x="133" y="215" class="svg-tm">31 250</text>
+
+          <text x="90" y="243" text-anchor="end" class="svg-tm">…</text>
+          <rect x="110" y="232" width="6" height="16" class="fm"/>
+          <text x="124" y="245" class="svg-tm txm">Schritt 20: nur noch einer</text>
+
+          <line x1="40" y1="264" x2="660" y2="264" class="svg-l-soft"/>
+          <text x="40" y="282" class="svg-t">Einzeln durchgehen: 1 Million Schritte. Halbieren: 20 Schritte. Faktor 50 000.</text>
+        </svg>
+        <figcaption><b>Bei jeder Halbierung ist die nötige Schrittzahl log₂n.</b> Das ist das Ratespiel aus 6.2 in neuer Gestalt. <b>Beachte, was der Logarithmus aus Strang 1, 1.8 hier leistet: Er verwandelt die Frage «wie oft muss ich verdoppeln» in eine direkt ausrechenbare Zahl.</b> Die Logarithmusfunktion wächst extrem langsam — wächst die Datenmenge von einer Million auf eine Milliarde, also auf das Tausendfache, steigt die Schrittzahl bloß von 20 auf 30.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Eine Tabelle, die eine Minute Betrachtung verdient</span>
+        <p>Die folgenden Wachstumsklassen decken praktisch alle real vorkommenden Algorithmen ab. In der Tabelle stehen <em>ungefähre Schrittzahlen</em>:</p>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:17%">Wachstum</th><th style="width:13%">n = 10</th><th style="width:16%">n = 1000</th><th style="width:20%">n = 1 Mio.</th><th style="width:34%">Typisches Beispiel</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>O(1)</b><br>konstant</td><td class="cheap">1</td><td class="cheap">1</td><td class="cheap">1</td><td>direkt das k-te Element holen</td></tr>
+            <tr><td><b>O(log n)</b><br>logarithmisch</td><td class="cheap">3</td><td class="cheap">10</td><td class="cheap">20</td><td>binäre Suche, Wörterbuch</td></tr>
+            <tr><td><b>O(n)</b><br>linear</td><td class="cheap">10</td><td class="cheap">1 000</td><td>1 Million</td><td>alles einmal durchgehen</td></tr>
+            <tr><td><b>O(n log n)</b></td><td class="cheap">33</td><td>10 000</td><td>20 Millionen</td><td>gute Sortierverfahren</td></tr>
+            <tr><td><b>O(n²)</b><br>quadratisch</td><td class="cheap">100</td><td>1 Million</td><td class="dear">1 Billion</td><td>alles mit allem vergleichen</td></tr>
+            <tr><td><b>O(2ⁿ)</b><br>exponentiell</td><td>1 024</td><td class="dear">Weltalter reicht nicht</td><td class="dear">aussichtslos</td><td>alle Kombinationen durchprobieren</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>Schau auf die letzten beiden Zeilen. <span class="m">O(n²)</span> ist bei n=1000 noch erträglich, bei einer Million sind es schon eine Billion Schritte — ein gewöhnlicher Rechner arbeitet daran mehrere Stunden. Und <span class="m">O(2ⁿ)</span> übersteigt bereits bei n=100 die Zahl der Atome im Universum. <strong>Exponentiell ist nicht «etwas langsamer», sondern «wird nie fertig».</strong> Das ist die reale Folge des Wettrennens aus Strang 4, 4.3.</p>
+        <p><em>«Erst richtig, dann schnell» ist ein guter Rat — wenn du aber ein O(2ⁿ)-Verfahren gewählt hast, wird es nie richtig, weil es überhaupt nicht fertig wird.</em> Da hilft kein Optimieren des Codes, da hilft nur ein anderer Algorithmus.</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Logarithmus (Strang 1, 1.8) · exponentielles Wachstum (Strang 4, 4.3) · Algorithmen (6.4) · Abzählen (Strang 5, 5.2)</div>
+          <div><span class="lbl">Wohin</span>P gegen NP (Gipfel) · Sicherheit der Kryptographie (6.9) · Datenstrukturen · alles Programmieren</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Komplexität</b> complexity</span>
+          <span><b>Laufzeit</b> runtime</span>
+          <span><b>Landau-Symbol O</b> big-O notation</span>
+          <span><b>binäre Suche</b> binary search</span>
+          <span><b>Sortieralgorithmus</b> sorting algorithm</span>
+          <span><b>effizient</b> efficient</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Graphentheorie · nur behalten, wer mit wem verbunden ist</h3>
+      <p class="de">Graph · Knoten und Kanten</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die Graphentheorie hat ein genaues Geburtsdatum und ein konkretes Problem. Und die Art ihrer Geburt ist <strong>das klassischste Beispiel für mathematisches Modellieren überhaupt</strong>: Eine echte Landkarte wird ihrer sämtlichen Einzelheiten beraubt, bis nur noch «wer hängt mit wem zusammen» übrig bleibt.</p>
+
+      <div class="field">
+        <span class="lbl">Die sieben Brücken von Königsberg</span>
+        <p>Die Stadt Königsberg war im 18. Jahrhundert von einem Fluss in vier Teile geteilt, verbunden durch sieben Brücken. Die Einwohner hatten einen Zeitvertreib: <em>Kann man einen Rundgang machen und dabei jede Brücke genau einmal überqueren?</em> Niemand schaffte es, und niemand konnte sagen, warum nicht.</p>
+        <p>1736 löste Euler das Problem — und wichtiger als die Antwort ist die Art, wie er es tat.</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 336" role="img" aria-label="Das Königsberger Brückenproblem: links die vier Landstücke mit sieben Brücken, rechts als Graph mit vier Knoten und sieben Kanten, alle Knotengrade ungerade.">
+          <defs>
+            <marker id="f0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="50" y="40" width="260" height="40" rx="3" class="f1"/>
+          <text x="180" y="65" text-anchor="middle" class="svg-t tx1">A · Nordufer</text>
+          <rect x="50" y="200" width="260" height="40" rx="3" class="f1"/>
+          <text x="180" y="225" text-anchor="middle" class="svg-t tx1">C · Südufer</text>
+          <rect x="70" y="120" width="90" height="40" rx="3" class="f1"/>
+          <text x="115" y="145" text-anchor="middle" class="svg-t tx1">B · Insel</text>
+          <rect x="210" y="120" width="90" height="40" rx="3" class="f1"/>
+          <text x="255" y="145" text-anchor="middle" class="svg-t tx1">D</text>
+
+          <line x1="95" y1="80" x2="95" y2="120" class="svg-l" stroke-width="2.5"/>
+          <line x1="135" y1="80" x2="135" y2="120" class="svg-l" stroke-width="2.5"/>
+          <line x1="95" y1="200" x2="95" y2="160" class="svg-l" stroke-width="2.5"/>
+          <line x1="135" y1="200" x2="135" y2="160" class="svg-l" stroke-width="2.5"/>
+          <line x1="255" y1="80" x2="255" y2="120" class="svg-l" stroke-width="2.5"/>
+          <line x1="255" y1="200" x2="255" y2="160" class="svg-l" stroke-width="2.5"/>
+          <line x1="160" y1="140" x2="210" y2="140" class="svg-l" stroke-width="2.5"/>
+          <text x="180" y="272" text-anchor="middle" class="svg-t">4 Landstücke · 7 Brücken</text>
+
+          <path d="M 336 140 L 376 140" class="svg-l" marker-end="url(#f0)"/>
+          <text x="356" y="128" text-anchor="middle" class="svg-tm">abstrahieren</text>
+
+          <path d="M 530 60 Q 475 85 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M 530 60 Q 505 115 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M 530 220 Q 475 195 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M 530 220 Q 505 165 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="530" y1="60" x2="610" y2="140" class="svg-l" stroke-width="1.8"/>
+          <line x1="530" y1="220" x2="610" y2="140" class="svg-l" stroke-width="1.8"/>
+          <line x1="450" y1="140" x2="610" y2="140" class="svg-l" stroke-width="1.8"/>
+
+          <circle cx="530" cy="60" r="17" class="f2" stroke-width="2"/>
+          <text x="530" y="65" text-anchor="middle" class="svg-t tx2">A</text>
+          <circle cx="450" cy="140" r="17" class="fm" stroke-width="2"/>
+          <text x="450" y="145" text-anchor="middle" class="svg-t txm">B</text>
+          <circle cx="530" cy="220" r="17" class="f2" stroke-width="2"/>
+          <text x="530" y="225" text-anchor="middle" class="svg-t tx2">C</text>
+          <circle cx="610" cy="140" r="17" class="f2" stroke-width="2"/>
+          <text x="610" y="145" text-anchor="middle" class="svg-t tx2">D</text>
+
+          <text x="556" y="42" class="svg-tm">Grad 3</text>
+          <text x="424" y="176" text-anchor="end" class="svg-tm txm">Grad 5</text>
+          <text x="556" y="244" class="svg-tm">Grad 3</text>
+          <text x="636" y="176" class="svg-tm">Grad 3</text>
+          <text x="530" y="272" text-anchor="middle" class="svg-t">4 Knoten · 7 Kanten</text>
+
+          <line x1="40" y1="288" x2="660" y2="288" class="svg-l-soft"/>
+          <text x="40" y="306" class="svg-t">Alle vier Grade sind ungerade — ein Streckenzug verträgt höchstens zwei</text>
+          <text x="40" y="326" class="svg-t">ungerade Knoten. Also unmöglich.</text>
+        </svg>
+        <figcaption><b>Eulers eigentliche Leistung war die Einsicht, dass Brückenlänge, Inselgröße und Flusslauf völlig gleichgültig sind.</b> Zählt nur, «zwischen welchen Landstücken wie viele Brücken liegen». Sobald die Karte durch vier Punkte und sieben Linien ersetzt ist, wird das Problem analysierbar — <b>das ist die Kraft der Abstraktion und zugleich der erste Schritt des Modellierens aus Strang 7: entscheiden, was man weglässt.</b><br><br>Seine Begründung ist ebenso schlicht: Auf einem Streckenzug betritt und verlässt man jeden Knoten je einmal, verbraucht also zwei Kanten. Außer Start und Ziel muss deshalb jeder Knoten eine gerade Kantenzahl haben. In Königsberg sind alle vier ungerade — keine Lösung.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Graphen sind heute überall um dich herum</span>
+        <ul class="plain">
+          <li><strong>Navigation</strong> — Kreuzungen sind Knoten, Straßen sind Kanten, gesucht ist der kürzeste Weg. Jedes «Route starten» auf dem Handy lässt einen Graphalgorithmus laufen.</li>
+          <li><strong>Soziale Netzwerke</strong> — Menschen sind Knoten, Beziehungen sind Kanten. «Sechs Schritte Entfernung» sagt, dass der Durchmesser dieses Graphen klein ist.</li>
+          <li><strong>Das Internet</strong> — Seiten sind Knoten, Links sind Kanten. Googles frühester Ranking-Algorithmus PageRank berechnet im Kern einen Eigenvektor auf diesem riesigen Graphen (Matrizen aus Strang 2, 2.9).</li>
+          <li><strong>Stundenpläne und Einsatzpläne</strong> — verbindet man, was nicht gleichzeitig stattfinden darf, wird daraus das Färben der Knoten so, dass benachbarte verschiedene Farben tragen.</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Mengen und Relationen (Strang 0, 0.1) · Abzählen (Strang 5, 5.2) · Abstraktion und Modellieren (Strang 7, 7.1)</div>
+          <div><span class="lbl">Wohin</span>Kürzeste Wege und Flüsse in Netzwerken · Graphfärbung und Vierfarbensatz (Gipfel von Strang 0) · Matrizendarstellung (Strang 2, 2.9) · kombinatorische Optimierung · Komplexitätstheorie (Gipfel)</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Graph</b> graph</span>
+          <span><b>Knoten / Kante</b> vertex / edge</span>
+          <span><b>Grad</b> degree</span>
+          <span><b>Eulerkreis</b> Eulerian circuit</span>
+          <span><b>kürzester Weg</b> shortest path</span>
+          <span><b>zusammenhängend</b> connected</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.7 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>Talboden → Hangweg</span></span>
+      <h3>Schubfachprinzip · lächerlich einfach, unverschämt nützlich</h3>
+      <p class="de">Schubfachprinzip</p>
+    </div>
+    <div class="body">
+      <p class="lead"><strong>Fliegen n+1 Tauben in n Schläge, sitzen in mindestens einem Schlag zwei.</strong> Das ist alles — und es ist so offensichtlich, dass es keines Beweises bedarf. Trotzdem folgen daraus recht erstaunliche Dinge.</p>
+
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="Schubfachprinzip: fünf Tauben auf vier Schläge verteilt, in einem sitzen zwangsläufig zwei.">
+          <text x="350" y="36" text-anchor="middle" class="svg-t">5 Tauben, 4 Schläge</text>
+          <rect x="120" y="60" width="100" height="76" rx="4" class="fm"/>
+          <circle cx="150" cy="98" r="15" class="f2" stroke-width="2"/>
+          <circle cx="190" cy="98" r="15" class="f2" stroke-width="2"/>
+          <rect x="250" y="60" width="100" height="76" rx="4" class="svg-face"/>
+          <circle cx="300" cy="98" r="15" class="f2" stroke-width="2"/>
+          <rect x="380" y="60" width="100" height="76" rx="4" class="svg-face"/>
+          <circle cx="430" cy="98" r="15" class="f2" stroke-width="2"/>
+          <rect x="510" y="60" width="100" height="76" rx="4" class="svg-face"/>
+          <circle cx="560" cy="98" r="15" class="f2" stroke-width="2"/>
+          <text x="170" y="158" text-anchor="middle" class="svg-tm txm">hier sitzen zwei</text>
+          <line x1="60" y1="180" x2="660" y2="180" class="svg-l-soft"/>
+          <text x="60" y="200" class="svg-t">Wie du auch verteilst, irgendwo sitzen zwei — aber welcher Schlag es ist, sagt es nicht</text>
+        </svg>
+        <figcaption><b>Achte auf den zweiten Halbsatz, das ist das Interessanteste daran.</b> Das Prinzip beweist die <b>Existenz</b> und weist doch niemanden konkret aus. Das ist die typische Beweisart für Aussagen mit <span class="svg-tm">∃</span> aus Strang 0, 0.3 — <b>ein Existenzbeweis heißt nicht, dass man das Ding auch finden kann.</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Zwei Beispiele</span>
+        <div class="demo">
+          <p><strong>In Berlin gibt es mindestens zwei Menschen mit exakt gleich vielen Haaren auf dem Kopf.</strong></p>
+          <p>Ein Mensch hat grob hunderttausend Haare; selbst wenn man großzügig eine Million als Obergrenze ansetzt, gibt es nur eine Million mögliche Haarzahlen (die Schläge). Berlin hat über 3,7 Millionen Einwohner (die Tauben). Mehr Tauben als Schläge — also müssen zwei Menschen dieselbe Haarzahl haben, <em>und zwar nicht nur zwei.</em></p>
+          <p>Beachte die Natur dieses Arguments: Wir haben niemandem die Haare gezählt und wissen es trotzdem mit Sicherheit. <strong>Das ist einer der bezauberndsten Züge der Mathematik.</strong></p>
+          <p><strong>Unter beliebigen 13 Menschen haben zwei im selben Monat Geburtstag.</strong> Zwölf Monate sind die Schläge, dreizehn Menschen die Tauben.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Abzählen (Strang 5, 5.2) · Existenzquantor (Strang 0, 0.3)</div>
+          <div><span class="lbl">Wohin</span>Kombinatorik · ein Dauergast in Wettbewerbsaufgaben · Hashkollisionen (der Grund, warum sie im Rechner unvermeidlich sind) · die Grenze der Datenkompression</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Nicht mit dem Geburtstagsparadox verwechseln</span>
+          <p>Das Schubfachprinzip spricht von <em>Zwangsläufigkeit</em>: Unter 23 Menschen müssen nicht zwei am selben Tag Geburtstag haben. Das berühmte «Geburtstagsparadox» spricht dagegen von <em>Wahrscheinlichkeit</em>: Unter 23 Menschen liegt die Wahrscheinlichkeit dafür schon über 50 Prozent — das gehört zu Strang 5 und beruht darauf, dass es 253 mögliche Paare gibt.</p>
+          <p><strong>«Es muss» und «es ist sehr wahrscheinlich» sind zwei verschiedene Wege.</strong> Der erste gehört in diesen Strang, der zweite in Strang 5.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Schubfachprinzip</b> pigeonhole principle</span>
+          <span><b>Taubenschlagprinzip</b> pigeonhole principle (Variante)</span>
+          <span><b>Existenzbeweis</b> existence proof</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg</span></span>
+      <h3>Numerische Verfahren · wenn es keine exakte Lösung gibt</h3>
+      <p class="de">Numerik · Näherungsverfahren</p>
+    </div>
+    <div class="body">
+      <p class="lead">Strang 4 hat viele schöne Formeln geliefert, aber die allermeisten Gleichungen der Wirklichkeit <strong>haben überhaupt keine Formellösung</strong>. Dann lautet der Weg: keine exakte Antwort suchen, sondern eine <em>hinreichend nahe</em> — und die Maschine sich Schritt für Schritt herantasten lassen.</p>
+
+      <div class="field">
+        <span class="lbl">Das ist kein Notbehelf</span>
+        <p>Zuerst ein verbreitetes Missverständnis ausräumen: Numerik ist keine «Krücke für den Fall, dass man es nicht ausrechnen kann».</p>
+        <p>Strang 2, 2.10 sagte, für Grad fünf gebe es keine Lösungsformel; Strang 4, 4.9 sagte, <span class="m">e^(−x²)</span> habe keine elementare Stammfunktion. <strong>Diese «gibt es nicht» sind bewiesen, nicht vorläufig.</strong> Und die technischen Probleme der wirklichen Welt — Umströmung eines Flugzeugs, Wetter, Tragwerksbelastung, Proteinfaltung — fallen fast ausnahmslos in diese Kategorie. Numerik ist also kein Ersatzrad, <em>sie ist das, was das wissenschaftliche Rechnen überwiegend tatsächlich tut.</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Das Newton-Verfahren: sich an Tangenten entlangtasten</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 316" role="img" aria-label="Newton-Verfahren: von einer Schätzung rutscht man entlang der Tangente auf die x-Achse und erhält eine bessere Schätzung, nach wenigen Schritten liegt man sehr nah an der Nullstelle.">
+          <path d="M 120 234 Q 360 254 600 34" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="60" y1="230" x2="650" y2="230" class="svg-l"/>
+
+          <line x1="560" y1="70" x2="370" y2="230" class="svg-l-soft"/>
+          <line x1="370" y1="190" x2="275" y2="230" class="svg-l-soft"/>
+          <line x1="275" y1="220" x2="227" y2="230" class="svg-l-soft"/>
+
+          <line x1="370" y1="230" x2="370" y2="190" class="svg-l-soft" stroke-dasharray="3 3"/>
+          <line x1="275" y1="230" x2="275" y2="220" class="svg-l-soft" stroke-dasharray="3 3"/>
+
+          <circle cx="560" cy="70" r="4.5" class="fm" stroke-width="2"/>
+          <circle cx="370" cy="190" r="4.5" class="f2" stroke-width="2"/>
+          <circle cx="275" cy="220" r="4.5" class="f2" stroke-width="2"/>
+          <circle cx="180" cy="230" r="5" class="f1" stroke-width="2"/>
+
+          <text x="560" y="252" text-anchor="middle" class="svg-tm txm">x₀ geraten</text>
+          <text x="370" y="252" text-anchor="middle" class="svg-tm tx2">x₁</text>
+          <text x="275" y="252" text-anchor="middle" class="svg-tm tx2">x₂</text>
+          <text x="180" y="252" text-anchor="middle" class="svg-tm tx1">wahre Nullstelle</text>
+
+          <line x1="60" y1="266" x2="660" y2="266" class="svg-l-soft"/>
+          <text x="60" y="284" class="svg-t">Entlang der Tangente auf die Achse rutschen ergibt eine bessere Schätzung</text>
+          <text x="60" y="304" class="svg-t">Nach wenigen Runden ist der Fehler winzig</text>
+        </svg>
+        <figcaption><b>Das Newton-Verfahren macht aus der Ableitung von Strang 4 eine Lösungsmaschine.</b> Die Vorschrift ist ein einziger Satz: An der aktuellen Schätzung die Tangente zeichnen, schauen, wo sie die x-Achse schneidet, und das ist die nächste Schätzung. Es konvergiert außerordentlich schnell — bei jeder Iteration <b>verdoppelt</b> sich ungefähr die Zahl der korrekten Stellen. Wenn du auf dem Taschenrechner die <span class="svg-tm">√</span>-Taste drückst, läuft im Chip meist eine Variante davon.</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">Stetiges in Diskretes zerschneiden</span>
+        <p>Das allgemeine Muster der Numerik ist genau die Schnittstelle zwischen diesem Strang und Strang 4: <strong>Das Stetige in endlich viele Stücke zerschneiden.</strong></p>
+        <div class="demo">
+          <p>Ein Integral berechnen? In Rechtecke zerschneiden und addieren — <em>das ist die Riemannsumme aus Strang 4, 4.8, und die war von Anfang an ein numerisches Verfahren.</em></p>
+          <p>Eine Differentialgleichung lösen? Die Zeit in kleine Abschnitte schneiden und in jedem geradeaus laufen — das heißt Euler-Verfahren. Genau so wird das Wetter vorhergesagt: Die Atmosphäre wird in einige Millionen Kästchen zerlegt und schrittweise um einige Stunden vorgerückt.</p>
+          <p>Eine Ableitung bestimmen? Statt des Differentialquotienten den Differenzenquotienten nehmen, also nicht bis zum Grenzwert gehen, sondern bei einem sehr kleinen Δx aufhören.</p>
+        </div>
+        <p>Der Preis dafür ist der <strong>Fehler</strong>, und Fehlerkontrolle ist das Herz dieser Disziplin: Je feiner geschnitten, desto genauer, aber desto mehr Rechenaufwand. <em>Das ist die Tabelle aus 6.5 in ihrer wirklichen technischen Gestalt — zwischen Genauigkeit und Zeit muss immer gehandelt werden.</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Ableitung und Tangente (Strang 4, 4.6) · Riemannsumme (Strang 4, 4.8) · Grenzwert (Strang 4, 4.5) · Komplexität (6.5) · Rekursion (6.1)</div>
+          <div><span class="lbl">Wohin</span>Wissenschaftliches Rechnen · Wetter- und Klimamodelle · technische Simulation · Gradientenabstieg im maschinellen Lernen · Numerik an der Uni</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">Stolperfalle</span>
+          <p>Kommazahlen sind im Rechner Näherungen mit <strong>endlich vielen Stellen</strong>, deshalb ist <span class="m">0,1 + 0,2</span> in den meisten Programmiersprachen <em>nicht</em> gleich <span class="m">0,3</span> — es fehlt ein winziger Betrag. Das ist kein Fehler im Programm, sondern liegt daran, dass sich 0,1 im Dualsystem nicht exakt darstellen lässt (so wie sich 1/3 im Dezimalsystem nicht exakt darstellen lässt).</p>
+          <p>Ein einzelner solcher Fehler ist bedeutungslos, aber nach einigen Millionen Iterationen kann er sich bis zur Unkenntlichkeit aufschaukeln. <em>«Der Computer rechnet Mathematik, aber keine exakte Mathematik»</em> — das ist der Inhalt der ersten Stunde jeder Numerikvorlesung.</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Numerik</b> numerical analysis</span>
+          <span><b>Näherungsverfahren</b> approximation method</span>
+          <span><b>Newton-Verfahren</b> Newton's method</span>
+          <span><b>Iteration</b> iteration</span>
+          <span><b>Konvergenz</b> convergence</span>
+          <span><b>Rundungsfehler</b> rounding error</span>
+          <span><b>Diskretisierung</b> discretisation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>Hangweg → Gipfel</span></span>
+      <h3>Kryptographie · Primzahlen beschützen dich</h3>
+      <p class="de">Kryptographie</p>
+    </div>
+    <div class="body">
+      <p class="lead">Die moderne Kryptographie steht auf einer Erscheinung, die sich sehr schlicht anhört: <strong>Manche Dinge sind vorwärts leicht und rückwärts entsetzlich schwer.</strong> Und dieser Erscheinung bist du in diesem Heft bereits viermal begegnet.</p>
+
+      <div class="field">
+        <span class="lbl">Wieder derselbe Motor</span>
+        <p>Stell die Fälle nebeneinander, in denen «vorwärts leicht, rückwärts schwer» vorkam:</p>
+        <div class="demo">
+          <p><strong>Strang 1, 1.6</strong>　Zwei große Primzahlen multiplizieren: Millisekunden. Das Produkt wieder zerlegen: Jahrmillionen.</p>
+          <p><strong>Strang 4, 4.9</strong>　Jede elementare Funktion lässt sich ableiten. Eine Stammfunktion finden? Für viele gibt es gar keine.</p>
+          <p><strong>Strang 5</strong>　Aus dem Modell Wahrscheinlichkeiten ausrechnen: leicht. Aus Daten auf das Modell schließen: schwer, und die Antwort ist nicht eindeutig.</p>
+          <p><strong>Diese Karte</strong>　Verschlüsseln: ein Augenblick. Ohne Schlüssel entschlüsseln: länger als das Alter des Universums.</p>
+        </div>
+        <p>Solche Funktionen heißen <strong>Einwegfunktionen</strong>. <em>Die Sicherheit des gesamten Internets ruht darauf, dass gewisse Umkehroperationen zu schwer sind.</em> Der Faden, der in Strang 1 begonnen hat, wird hier endlich zu einem Gebrauch, der täglich milliardenfach stattfindet.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Öffentlicher Schlüssel: ein Schloss für alle, der Schlüssel nur für dich</span>
+        <p>Die klassische Verschlüsselung hatte ein unlösbares Problem: Wie übermittelt man dem Gegenüber sicher den Schlüssel? Ist der Kanal ohnehin unsicher, wird auch der Schlüssel abgefangen.</p>
+        <p>Der Durchbruch der 1970er Jahre heißt <strong>öffentlicher Schlüssel</strong>: Man erzeugt ein Schlüsselpaar, eines wird veröffentlicht, eines bleibt geheim. Jeder kann mit dem öffentlichen Schlüssel eine Nachricht verschließen, aber <em>nur der private kann sie öffnen</em> — nicht einmal derjenige, der sie verschlossen hat.</p>
+        <p>Als Bild: Ich verteile weltweit offene Vorhängeschlösser. Wer mir etwas schicken will, verschließt die Kiste mit einem davon. Zuschnappen lassen kann jeder, den Schlüssel habe nur ich. <strong>Das RSA-Verfahren setzt genau das mit Primzahlen um</strong>, und seine Sicherheit hängt vollständig daran, dass das Zerlegen großer Zahlen schwer ist.</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Etwas, das man wissen sollte</span>
+        <p>Dass «das Zerlegen großer Zahlen schwer ist», ist bislang <strong>nicht bewiesen</strong> — es hat nur seit Jahrzehnten niemand einen schnellen Weg gefunden. <em>Sollte jemand beweisen, dass es doch leicht ist, oder sollten Quantenrechner reif genug für den Shor-Algorithmus werden, müsste die heutige Verschlüsselung vollständig ersetzt werden.</em></p>
+        <p>Das passiert tatsächlich gerade: Die Normungsstellen für Kryptographie arbeiten weltweit an «Post-Quanten-Verfahren», um für diesen Tag gerüstet zu sein. <strong>Die Zahlentheorie galt einmal als der «nutzloseste» Zweig der Mathematik — Hardy war 1940 noch stolz darauf. Heute trägt sie das gesamte Internet.</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">Woher</span>Primzahlen und Faktorzerlegung (Strang 1, 1.6) · Kongruenzen und Reste (6.4) · Komplexität (6.5) · Potenzrechnung (Strang 1, 1.8)</div>
+          <div><span class="lbl">Wohin</span>Netzsicherheit · digitale Signaturen und Blockchain · Quantenrechner · Kryptographie an der Uni</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">Begriffe</span>
+        <div class="terms">
+          <span><b>Kryptographie</b> cryptography</span>
+          <span><b>Verschlüsselung</b> encryption</span>
+          <span><b>öffentlicher Schlüssel</b> public key</span>
+          <span><b>privater Schlüssel</b> private key</span>
+          <span><b>Einwegfunktion</b> one-way function</span>
+          <span><b>Modulo-Rechnung</b> modular arithmetic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista6">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>Gipfel &amp; Fernsicht</span></h3>
+  <p>Am Gipfel dieses Strangs steht die <strong>dritte Wand</strong> dieses Hefts. Auch hier: <strong>nichts davon musst du verstehen.</strong></p>
+
+  <div class="vista">
+    <h4>P gegen NP: die teuerste Matheaufgabe der Welt</h4>
+    <p>Es gibt eine Klasse von Problemen, bei denen sich eine Antwort leicht <em>überprüfen</em>, aber offenbar nur sehr schwer <em>finden</em> lässt. Bekommst du einen fertigen Stundenplan, prüfst du in wenigen Minuten, ob er Konflikte enthält; einen von Grund auf zu erstellen kann dagegen bis zum Sankt-Nimmerleinstag dauern.</p>
+    <p><strong>P</strong> sind die schnell lösbaren Probleme, <strong>NP</strong> die schnell überprüfbaren. Alle P-Probleme liegen offensichtlich in NP. Und umgekehrt — <em>ist alles, was sich schnell prüfen lässt, auch schnell lösbar?</em></p>
+    <p>Das ist <strong>P = NP?</strong>, eines der sieben Millennium-Probleme mit einer Million Dollar Preisgeld, seit über fünfzig Jahren ungelöst. Die allermeisten Fachleute glauben P ≠ NP (es gäbe also Probleme, die sich nur durch glückssuchendes Probieren angehen lassen), beweisen kann es niemand.</p>
+    <p>Der Einsatz ist erschreckend hoch: <em>Wäre P = NP, wäre jede heutige Verschlüsselung schlagartig wertlos</em> (Entschlüsseln ist der Musterfall von «leicht zu prüfen, schwer zu finden») — zugleich würden aber Proteinfaltung, Logistikoptimierung und Chipentwurf über Nacht lösbar. <strong>Die Sicherheit der gesamten digitalen Welt hängt an einer unbewiesenen Vermutung.</strong></p>
+
+    <h4>Die dritte Wand: manches rechnet keine Maschine zu Ende</h4>
+    <p>Karte 6.4 verlangte, dass ein Algorithmus «terminiert». Ließe sich dann ein Programm schreiben, das für beliebigen fremden Code entscheidet, ob dieser in eine Endlosschleife gerät?</p>
+    <p>1936 bewies Turing, dass das <strong>unmöglich</strong> ist. Das ist das <strong>Halteproblem</strong>, und seine Beweismethode gleicht der von Gödel in Strang 0 fast aufs Haar: <em>Man nehme an, es gäbe ein solches Programm, und konstruiere damit ein Programm, das ihm eigens widerspricht — Widerspruch.</em></p>
+    <p>Stellt man die drei Wände nebeneinander, wird eine Nebenlinie dieses Hefts sichtbar:</p>
+    <p><strong>Galois</strong> (Strang 2) — für Grad fünf gibt es keine Lösungsformel. <strong>Gödel</strong> (Strang 0) — manche wahren Sätze sind im System unbeweisbar. <strong>Turing</strong> (hier) — manche Probleme rechnet keine Maschine zu Ende.</p>
+    <p><em>Die größten Leistungen der Mathematik sind oft nicht «ich habe es geschafft», sondern «niemand kann es, und das beweise ich».</em> Und zu wissen, wo eine Grenze liegt, ist selbst ein gewaltiger Fortschritt — um seinen Satz zu beweisen, musste Turing nebenbei definieren, «was ein Computer eigentlich ist», und damit den theoretischen Bauplan aller heutigen Rechner liefern.</p>
+
+    <h4>Fehlerkorrigierende Codes: richtige Information über einen fehlerhaften Kanal</h4>
+    <p>Signale werden gestört, Speicher werden fehlerhaft. Trotzdem ist sein Telefonat klar, lässt sich eine zerkratzte Scheibe noch lesen und kommen die Bilder einer Marssonde über Hunderte Millionen Kilometer pixelgenau an. <strong>Dafür sorgen fehlerkorrigierende Codes</strong> — man fügt absichtlich Redundanz hinzu, damit der Empfänger einen Fehler nicht nur <em>bemerkt</em>, sondern das Ursprüngliche auch <em>zurückrechnen</em> kann.</p>
+    <p>Ihre mathematische Grundlage sind die Algebren über endlichen Körpern vom Gipfel von Strang 2. <em>Eine Disziplin, die am abstraktesten wirkt, ist zum Fundament dafür geworden, dass die ganze Kommunikationswelt überhaupt funktioniert.</em></p>
+
+    <h4 style="margin-bottom:.8rem">Wie dieser Weg an der Uni heißt</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Diskrete Mathematik</strong> — Graphen, Kombinatorik, Zahlentheorie; erstes Jahr Informatik</li>
+      <li><strong>Algorithmen und Datenstrukturen</strong> — die ausgewachsene Fassung von 6.4 und 6.5</li>
+      <li><strong>Berechenbarkeit und Komplexität</strong> — Halteproblem und P/NP</li>
+      <li><strong>Numerik</strong> — die Entfaltung von 6.8, Anschluss an Strang 4</li>
+      <li><strong>Kryptographie / Codierungstheorie</strong> — Verschlüsselung und Codierung</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss6">
+  <h2 class="sec"><span class="num">Anhang 1</span>Begriffe dieses Kapitels</h2>
+  <p class="sec-lead">Diese Wörter kommen im Mathematikunterricht seltener vor, sind aber im Informatikunterricht und an der Uni Grundvokabular.</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:38%">Deutsch</th><th style="width:36%">English</th><th style="width:26%">中文</th></tr></thead>
+    <tbody>
+      <tr><td class="de">diskrete Mathematik</td><td class="en">discrete mathematics</td><td>离散数学</td></tr>
+      <tr><td class="de">Folge / Glied</td><td class="en">sequence / term</td><td>数列 / 项</td></tr>
+      <tr><td class="de">explizit / rekursiv</td><td class="en">explicit / recursive</td><td>显式 / 递推</td></tr>
+      <tr><td class="de">arithmetische / geometrische Folge</td><td class="en">arithmetic / geometric sequence</td><td>等差 / 等比数列</td></tr>
+      <tr><td class="de">Fibonacci-Folge</td><td class="en">Fibonacci sequence</td><td>斐波那契数列</td></tr>
+      <tr><td class="de">Dualsystem / Binärzahl</td><td class="en">binary system / number</td><td>二进制 / 二进制数</td></tr>
+      <tr><td class="de">Bit / Byte</td><td class="en">bit / byte</td><td>比特 / 字节</td></tr>
+      <tr><td class="de">Informationsgehalt</td><td class="en">information content</td><td>信息量</td></tr>
+      <tr><td class="de">Boolesche Algebra</td><td class="en">Boolean algebra</td><td>布尔代数</td></tr>
+      <tr><td class="de">Wahrheitstafel</td><td class="en">truth table</td><td>真值表</td></tr>
+      <tr><td class="de">UND / ODER / NICHT</td><td class="en">AND / OR / NOT</td><td>与 / 或 / 非</td></tr>
+      <tr><td class="de">Logikgatter / Schaltung</td><td class="en">logic gate / circuit</td><td>逻辑门 / 电路</td></tr>
+      <tr><td class="de">Algorithmus</td><td class="en">algorithm</td><td>算法</td></tr>
+      <tr><td class="de">Schleife / Verzweigung</td><td class="en">loop / branch</td><td>循环 / 分支</td></tr>
+      <tr><td class="de">terminieren</td><td class="en">terminate</td><td>终止</td></tr>
+      <tr><td class="de">euklidischer Algorithmus</td><td class="en">Euclidean algorithm</td><td>欧几里得算法</td></tr>
+      <tr><td class="de">Rest / Modulo-Rechnung</td><td class="en">remainder / modular arithmetic</td><td>余数 / 模运算</td></tr>
+      <tr><td class="de">Komplexität / Laufzeit</td><td class="en">complexity / runtime</td><td>复杂度 / 运行时间</td></tr>
+      <tr><td class="de">Landau-Symbol O</td><td class="en">big-O notation</td><td>大 O 记号</td></tr>
+      <tr><td class="de">binäre Suche</td><td class="en">binary search</td><td>二分查找</td></tr>
+      <tr><td class="de">Sortieralgorithmus</td><td class="en">sorting algorithm</td><td>排序算法</td></tr>
+      <tr><td class="de">Graph / Knoten / Kante</td><td class="en">graph / vertex / edge</td><td>图 / 顶点 / 边</td></tr>
+      <tr><td class="de">Grad / zusammenhängend</td><td class="en">degree / connected</td><td>度数 / 连通的</td></tr>
+      <tr><td class="de">Eulerkreis / kürzester Weg</td><td class="en">Eulerian circuit / shortest path</td><td>欧拉回路 / 最短路</td></tr>
+      <tr><td class="de">Schubfachprinzip</td><td class="en">pigeonhole principle</td><td>鸽笼原理</td></tr>
+      <tr><td class="de">Existenzbeweis</td><td class="en">existence proof</td><td>存在性证明</td></tr>
+      <tr><td class="de">Numerik / Näherungsverfahren</td><td class="en">numerics / approximation</td><td>数值分析 / 近似方法</td></tr>
+      <tr><td class="de">Newton-Verfahren / Iteration</td><td class="en">Newton's method / iteration</td><td>牛顿法 / 迭代</td></tr>
+      <tr><td class="de">Konvergenz / Rundungsfehler</td><td class="en">convergence / rounding error</td><td>收敛 / 舍入误差</td></tr>
+      <tr><td class="de">Diskretisierung</td><td class="en">discretisation</td><td>离散化</td></tr>
+      <tr><td class="de">Kryptographie / Verschlüsselung</td><td class="en">cryptography / encryption</td><td>密码学 / 加密</td></tr>
+      <tr><td class="de">öffentlicher / privater Schlüssel</td><td class="en">public / private key</td><td>公钥 / 私钥</td></tr>
+      <tr><td class="de">Einwegfunktion</td><td class="en">one-way function</td><td>单向函数</td></tr>
+      <tr><td class="de">Halteproblem</td><td class="en">halting problem</td><td>停机问题</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs6">
+  <h2 class="sec"><span class="num">Anhang 2</span>Systemfragen</h2>
+  <p class="sec-lead">Nichts davon muss gerechnet werden. Wer sie beantworten kann, hat dieses Kapitel wirklich gelesen.</p>
+
+  <ol class="qs">
+    <li>In welchem Verhältnis stehen Folge und Funktion? Was bedeutet das Wort «diskret» eigentlich?</li>
+    <li>Welche Vorzüge haben explizite und rekursive Darstellung jeweils? Warum sind viele wirkliche Vorgänge von Natur aus rekursiv?</li>
+    <li>Wie wenige Ja-Nein-Fragen genügen für eine Zahl zwischen 1 und 1000? Mit welcher Funktion hängt diese Zahl zusammen?</li>
+    <li>Worin unterscheidet sich das mathematische «oder» vom umgangssprachlichen?</li>
+    <li>Welche zwei Dinge hat Shannons Masterarbeit verbunden? Warum besteht alles auf deinem Handy ganz unten aus diesen vier Zeilen?</li>
+    <li>Warum funktioniert der euklidische Algorithmus? Welchen Griff aus dem Werkzeugkasten benutzt er?</li>
+    <li>Wie groß ist der Unterschied zwischen <span class="m">O(n²)</span> und <span class="m">O(2ⁿ)</span>? Warum heißt es «exponentiell ist nicht langsamer, sondern nie fertig»?</li>
+    <li>Worin bestand Eulers eigentliche Leistung beim Brückenproblem? Was hat er weggelassen?</li>
+    <li>Warum gibt es in Berlin sicher zwei Menschen mit gleicher Haarzahl? Haben wir irgendjemandem die Haare gezählt?</li>
+    <li>Das Schubfachprinzip beweist die Existenz — kann es auch sagen, wer es ist? Zu welcher Aussagenart aus Strang 0 gehört das?</li>
+    <li>Warum ist Numerik kein Notbehelf für den Fall, dass man nicht rechnen kann?</li>
+    <li>Wo taucht «vorwärts leicht, rückwärts schwer» in diesem Heft viermal auf? Was beschützt es heute?</li>
+    <li>Was wären gute und was schlechte Folgen, wenn jemand P = NP bewiese?</li>
+    <li>Was haben die Ergebnisse von Galois, Gödel und Turing gemeinsam?</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strang-5-stochastik.html"><span class="dir">Vorige Seite</span><span class="t">Strang 5 · Stochastik</span></a>
+  <a class="next" href="strang-7-modellieren.html"><span class="dir">Nächste Seite</span><span class="t">Strang 7 · Modellieren und Anwenden</span></a>
+</div>
+
+</main>
+</body>
+</html>

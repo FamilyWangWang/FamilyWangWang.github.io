@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工具箱 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/toolbox.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="工具箱 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/toolbox.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html" aria-current="page">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/werkzeugkasten.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">工具箱</h1>
+<section id="toolbox">
+  <h2 class="sec"><span class="num">§ 2</span>工具箱</h2>
+  <p class="sec-lead">前面两节是地图，这一节是走路的姿势。地图管你去哪儿，这一节管两件事：路上卡住了怎么办，以及怎么让学过的东西真的留在脑子里。</p>
+
+  <p>这一节<strong>不分海拔</strong>。方法论不看你学到哪儿，从今天一直到大学，用的都是同一套。而且它是整本册子里见效最快的部分——今晚做作业就用得上。</p>
+
+  <h3 class="sub">上半 · 解题：卡住的时候怎么办</h3>
+
+  <p>先说一件最要紧的事：<strong>卡住是正常状态，不是出问题的信号。</strong></p>
+  <p>这句话听起来像安慰，其实是关于数学的一个事实描述。职业数学家解决一个问题，卡住的时间占九成以上，顺畅推进的时间不到一成。区别只在于，他们不把「卡住」当成「我不行」，而当成「现在进入正常工作状态了」。</p>
+  <p>真正会出问题的，是卡住之后<em>什么都不做</em>——干瞪着题目十分钟，然后放弃或者去抄答案。下面这一整节，讲的就是卡住之后手上该有哪些动作。</p>
+
+  <h4 class="min">四步骨架</h4>
+  <p>这套框架来自数学家波利亚（George Pólya）1945 年的一本小书《怎样解题》。八十年过去了，没人做出过更好的版本。它简单到可以背下来：</p>
+
+  <figure>
+    <svg viewBox="0 0 700 230" role="img" aria-label="波利亚解题四步流程图：理解题目、拟定计划、执行计划、回顾，其中回顾有一条箭头回到理解题目。">
+      <defs>
+        <marker id="ah5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="30" y="50" width="145" height="82" rx="4" class="f1"/>
+      <text x="102" y="80" text-anchor="middle" class="svg-t tx1">① 理解题目</text>
+      <text x="102" y="102" text-anchor="middle" class="svg-ts tx1">要求什么？已知什么？</text>
+      <text x="102" y="120" text-anchor="middle" class="svg-ts tx1">条件够不够？</text>
+
+      <rect x="205" y="50" width="145" height="82" rx="4" class="f1"/>
+      <text x="277" y="80" text-anchor="middle" class="svg-t tx1">② 拟定计划</text>
+      <text x="277" y="102" text-anchor="middle" class="svg-ts tx1">见过类似的题吗？</text>
+      <text x="277" y="120" text-anchor="middle" class="svg-ts tx1">该掏哪一招？</text>
+
+      <rect x="380" y="50" width="145" height="82" rx="4" class="f1"/>
+      <text x="452" y="80" text-anchor="middle" class="svg-t tx1">③ 执行计划</text>
+      <text x="452" y="102" text-anchor="middle" class="svg-ts tx1">一步一步走</text>
+      <text x="452" y="120" text-anchor="middle" class="svg-ts tx1">每步都问：这步对吗</text>
+
+      <rect x="555" y="50" width="115" height="82" rx="4" class="fm"/>
+      <text x="612" y="80" text-anchor="middle" class="svg-t txm">④ 回顾</text>
+      <text x="612" y="102" text-anchor="middle" class="svg-ts txm">答案合理吗？</text>
+      <text x="612" y="120" text-anchor="middle" class="svg-ts txm">还有别的走法吗？</text>
+
+      <path d="M 175 91 L 201 91" class="svg-l" marker-end="url(#ah5)"/>
+      <path d="M 350 91 L 376 91" class="svg-l" marker-end="url(#ah5)"/>
+      <path d="M 525 91 L 551 91" class="svg-l" marker-end="url(#ah5)"/>
+
+      <path d="M 612 136 L 612 175 L 102 175 L 102 136" class="svg-l" stroke-dasharray="4 4" marker-end="url(#ah5)"/>
+      <text x="357" y="196" text-anchor="middle" class="svg-tm txm">下次遇到同类题，你会从这里起步——第四步是唯一会让你变强的一步</text>
+    </svg>
+    <figcaption><b>第四步几乎所有人都跳过，而它是唯一真正积累能力的一步。</b>题做对了就翻篇，等于每道题都从零开始；花两分钟问一句「这题的关键是哪一下、以后什么情况还能这么干」，一道题才真的变成了你的。</figcaption>
+  </figure>
+
+  <h4 class="min">九招：每一招都有名字</h4>
+  <p>下面这九招，是第二步「拟定计划」时手上真正能掏的东西。给招数起名字很重要——脑子里有名字的东西才调得出来。卡住的时候，就从头到尾把这九个名字过一遍，看哪个能接上。</p>
+
+  <div class="moves">
+    <div class="move">
+      <span class="when">题里有关系，脑子转不过来</span>
+      <h5>一 · 画出来</h5>
+      <p>能画就画。数轴、线段图、表格、树形图、方框，都算。<em>眼睛能同时看见五样东西，脑子一次只能拿住两三样。</em>画图不是为了好看，是为了把负担从脑子挪到纸上。</p>
+    </div>
+    <div class="move">
+      <span class="when">题里有 n，或者数字大得吓人</span>
+      <h5>二 · 先试小数字</h5>
+      <p>问的是 100 个？先做 2 个、3 个、4 个。问的是 n 条直线？先画 1 条、2 条。<em>规律藏在小情况里，大情况只是把它放大。</em>这一招在下面的示范二里唱主角。</p>
+    </div>
+    <div class="move">
+      <span class="when">不确定结论对不对</span>
+      <h5>三 · 找特例和极端</h5>
+      <p>把某个量推到最大、最小、等于 0、等于 1，看会发生什么。<em>一个反例就能推翻一个猜想，而找反例往往比证明容易得多。</em>先试着推翻它，推不翻再去证。</p>
+    </div>
+    <div class="move">
+      <span class="when">知道要到哪儿，不知道从哪儿起步</span>
+      <h5>四 · 倒着走</h5>
+      <p>从想要的结论出发，问「什么东西成立的话，它就成立了」，一路往回推到已知条件。<em>几何证明题有一半是这么想出来的</em>，只是写下来的时候又倒回正着写。</p>
+    </div>
+    <div class="move">
+      <span class="when">完全没有头绪</span>
+      <h5>五 · 先解一个更容易的</h5>
+      <p>把题目改简单：少一个条件、少一个维度、换成整数、换成更小的数。<em>解出那个简单版本之后，往往能看见原题的门在哪儿。</em>就算看不见，你至少动起来了。</p>
+    </div>
+    <div class="move">
+      <span class="when">题里有个「不知道多少」的量</span>
+      <h5>六 · 给它起个名字</h5>
+      <p>不知道就设成 <span class="m">x</span>。这一步看着平淡，其实是代数最大的发明：<em>你不需要知道它是多少，就能拿它做运算。</em>设完之后，题目里的每句话都翻译成一个含 x 的式子。</p>
+    </div>
+    <div class="move">
+      <span class="when">要证明某件事「不可能」</span>
+      <h5>七 · 找不变量</h5>
+      <p>找一样东西，不管你怎么操作它都不变。如果起点和终点这样东西不一样，那就永远到不了。<em>这是证明「做不到」最锋利的武器</em>，示范三整个建立在这一招上。</p>
+    </div>
+    <div class="move">
+      <span class="when">要证两个式子相等</span>
+      <h5>八 · 数两次</h5>
+      <p>同一堆东西，用两种不同的办法去数，两个结果必然相等——于是你白得一个等式。<em>组合数学里一半的漂亮恒等式都是这么来的</em>，而且完全不需要计算。</p>
+    </div>
+    <div class="move">
+      <span class="when">读完题没有任何感觉</span>
+      <h5>九 · 换句话说</h5>
+      <p>合上书，用自己的话把题目讲一遍，像讲给一个没看过题的人听。<em>讲不出来就说明还没读懂，这时候算什么都是白算。</em>很多题在复述的过程中就自己解开了。</p>
+    </div>
+  </div>
+
+  <h4 class="min">卡住了，按这张图走</h4>
+  <p>这一页大概是整本册子里会被翻得最烂的一页。卡住的那一刻先别慌，从最上面往下走：</p>
+
+  <figure>
+    <svg viewBox="0 0 700 400" role="img" aria-label="卡住时的决策树：先问是否读懂题目，没读懂就复述和画图；读懂了没头绪就试小数字或解简化版；有方向走不通就倒着走或找不变量；全试过并超过二十分钟才去求助。">
+      <defs>
+        <marker id="ah6" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="255" y="20" width="190" height="42" rx="4" class="fm"/>
+      <text x="350" y="46" text-anchor="middle" class="svg-t txm">卡住了</text>
+
+      <line x1="350" y1="62" x2="350" y2="88" class="svg-l"/>
+
+      <rect x="215" y="88" width="270" height="40" rx="4" class="svg-face"/>
+      <text x="350" y="113" text-anchor="middle" class="svg-t">我能用自己的话复述这道题吗？</text>
+
+      <path d="M 215 108 L 150 108 L 150 162" class="svg-l" marker-end="url(#ah6)"/>
+      <text x="146" y="134" text-anchor="end" class="svg-tm">不能</text>
+      <rect x="30" y="162" width="240" height="56" rx="4" class="f1"/>
+      <text x="150" y="186" text-anchor="middle" class="svg-t tx1">回去读题 · 复述 · 画图</text>
+      <text x="150" y="206" text-anchor="middle" class="svg-ts tx1">招数 九 和 一</text>
+
+      <line x1="350" y1="128" x2="350" y2="152" class="svg-l"/>
+      <text x="362" y="145" class="svg-tm">能</text>
+
+      <rect x="215" y="152" width="270" height="40" rx="4" class="svg-face"/>
+      <text x="350" y="177" text-anchor="middle" class="svg-t">我知道第一步该动哪儿吗？</text>
+
+      <path d="M 485 172 L 550 172 L 550 226" class="svg-l" marker-end="url(#ah6)"/>
+      <text x="554" y="198" class="svg-tm">不知道</text>
+      <rect x="430" y="226" width="240" height="56" rx="4" class="f1"/>
+      <text x="550" y="250" text-anchor="middle" class="svg-t tx1">试小数字 · 解简化版</text>
+      <text x="550" y="270" text-anchor="middle" class="svg-ts tx1">招数 二 和 五</text>
+
+      <line x1="350" y1="192" x2="350" y2="216" class="svg-l"/>
+      <text x="362" y="209" class="svg-tm">知道</text>
+
+      <rect x="215" y="216" width="270" height="40" rx="4" class="svg-face"/>
+      <text x="350" y="241" text-anchor="middle" class="svg-t">我走了几步，但走不通</text>
+
+      <path d="M 215 236 L 150 236 L 150 290" class="svg-l" marker-end="url(#ah6)"/>
+      <rect x="30" y="290" width="240" height="56" rx="4" class="f1"/>
+      <text x="150" y="314" text-anchor="middle" class="svg-t tx1">倒着走 · 找不变量 · 换角度</text>
+      <text x="150" y="334" text-anchor="middle" class="svg-ts tx1">招数 四、七、三</text>
+
+      <line x1="350" y1="256" x2="350" y2="300" class="svg-l"/>
+
+      <rect x="290" y="300" width="380" height="76" rx="4" class="f2"/>
+      <text x="480" y="326" text-anchor="middle" class="svg-t tx2">九招都过了一遍，而且真的卡满了 20 分钟</text>
+      <text x="480" y="348" text-anchor="middle" class="svg-ts tx2">现在才可以去问人或者问 AI —— 而且要问「给我一个提示」</text>
+      <text x="480" y="366" text-anchor="middle" class="svg-ts tx2">不是问「答案是什么」</text>
+    </svg>
+    <figcaption><b>二十分钟这个数字不是随便定的。</b>大脑处理陌生结构需要时间，而且卡住的那段时间本身就是学习——你在给这道题的每一条死路做标记，下次就不会再走。太早求助，等于把最有价值的那段时间省掉了。</figcaption>
+  </figure>
+
+  <h4 class="min">算完之后：四把尺子</h4>
+  <p>算出答案不等于做完。下面四件事加起来不超过一分钟，能挡掉绝大多数低级失分：</p>
+  <ul class="plain">
+    <li><strong>量级对不对。</strong>算出一个人身高 2000 米、一个班有 0.7 个人、概率等于 1.4，就不用往下检查了，一定错了。这一招最快，先用它。</li>
+    <li><strong>单位对不对。</strong>问面积，答案的单位应该是平方；问速度，应该是「长度除以时间」。单位不对，说明中间某一步乘除反了。</li>
+    <li><strong>代个特例试试。</strong>推出一个含 n 的公式，就代 <span class="m">n = 1</span> 或 <span class="m">n = 2</span> 进去，跟手算的结果比一比。公式推错的话，这一步几乎百分百能抓出来。</li>
+    <li><strong>反着验一遍。</strong>解方程解出 <span class="m">x = 3</span>，就把 3 代回<em>原来那个方程</em>——注意是原方程，不是你化简过的那一步，不然错在化简你就查不出来。</li>
+  </ul>
+
+  <h4 class="min">三道示范</h4>
+  <p>光看招数清单学不会招数，得看它被用出来。下面三道题一道比一道难，我把每一步的犹豫和试错都写下来，包括走了弯路的部分——因为真实的解题过程本来就长这样，教科书上那种一步到位的写法是<em>整理过的结果</em>，不是<em>思考的过程</em>。</p>
+
+  <div class="run">
+    <div class="q">
+      <span class="id">示范一 · 现在就能做</span>
+      <p>一个 8×8 的棋盘上，一共能数出多少个正方形？</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">① 理解</div>
+        <div class="c">
+          <p>先问清楚：题目问的是<em>所有</em>正方形，不只是最小的那些格子。2×2 的算不算？算。整个棋盘本身 8×8 的算不算？也算。</p>
+          <p>所以答案肯定比 64 大。这一步花了十秒，但如果跳过，后面全白做。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">② 计划<br>招数 二</div>
+        <div class="c">
+          <p>8×8 直接数会乱。<strong>先试小数字</strong>：从 1×1 的棋盘开始。</p>
+          <p>1×1 棋盘：1 个正方形。<br>2×2 棋盘：4 个小的，加 1 个整体，共 5 个。<br>3×3 棋盘：9 个小的 + 4 个 2×2 的 + 1 个 3×3 的 = 14 个。</p>
+          <p>数列是 1, 5, 14。看出来了吗——<span class="m">1</span>，<span class="m">1+4</span>，<span class="m">1+4+9</span>。是平方数在累加。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">③ 执行</div>
+        <div class="c">
+          <p>但光看出规律不够，得知道<em>为什么</em>。在 3×3 棋盘上数 2×2 的正方形：它的左上角能放在哪儿？只能放在左上角那个 2×2 的区域里，所以有 <span class="m">2×2 = 4</span> 个位置。</p>
+          <p>推广开：在 <span class="m">n×n</span> 棋盘上数 <span class="m">k×k</span> 的正方形，左上角有 <span class="m">(n−k+1)</span> 行、<span class="m">(n−k+1)</span> 列可以放，所以有 <span class="m">(n−k+1)²</span> 个。</p>
+          <p>于是 8×8 棋盘上：</p>
+          <div class="demo"><p class="calc">1×1 的有 8² = 64 个<br>2×2 的有 7² = 49 个<br>…… 一路到 ……<br>8×8 的有 1² = 1 个</p>
+          <p class="calc">总数 = 1² + 2² + … + 8² = 204</p></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">④ 回顾</div>
+        <div class="c">
+          <p>用第三把尺子验一下：把公式用在 <span class="m">n = 2</span> 上，得 <span class="m">1² + 2² = 5</span>，跟前面手数的 5 对上了。放心了。</p>
+          <p><strong>这道题真正教了什么？</strong>不是 204 这个数，是<em>「问左上角能放在哪儿」这个转换</em>——把「数正方形」变成了「数位置」。数东西数不清的时候，换个东西数，这个念头以后会反复用到。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="run">
+    <div class="q">
+      <span class="id">示范二 · 要想一会儿</span>
+      <p><span class="m">n</span> 条直线，最多能把平面分成几块？</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">① 理解<br>招数 九</div>
+        <div class="c">
+          <p>「最多」这两个字是关键，说明摆法有讲究。什么摆法块数最多？直觉上：别让两条线平行（平行就少一个交点），也别让三条线交于同一点（那样浪费）。先把这条直觉记下来，等会儿要用。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">② 计划<br>招数 二</div>
+        <div class="c">
+          <p><strong>先试小数字</strong>，而且要动手画。</p>
+        </div>
+      </div>
+    </div>
+    <figure style="margin:0 1.5rem 1.4rem">
+      <svg viewBox="0 0 700 190" role="img" aria-label="零到三条直线把平面分块的四张示意图，区域数依次为1、2、4、7。">
+        <rect x="30" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <text x="100" y="164" text-anchor="middle" class="svg-tm">0 条 → 1 块</text>
+
+        <rect x="205" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <line x1="205" y1="85" x2="345" y2="85" class="svg-l"/>
+        <text x="275" y="164" text-anchor="middle" class="svg-tm">1 条 → 2 块</text>
+
+        <rect x="380" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <line x1="380" y1="85" x2="520" y2="85" class="svg-l"/>
+        <line x1="450" y1="30" x2="450" y2="140" class="svg-l"/>
+        <text x="450" y="164" text-anchor="middle" class="svg-tm">2 条 → 4 块</text>
+
+        <rect x="555" y="30" width="140" height="110" rx="3" class="svg-face"/>
+        <line x1="555" y1="70" x2="695" y2="70" class="svg-l"/>
+        <line x1="600" y1="30" x2="660" y2="140" class="svg-l"/>
+        <line x1="660" y1="30" x2="600" y2="140" class="svg-l"/>
+        <text x="625" y="164" text-anchor="middle" class="svg-tm">3 条 → 7 块</text>
+      </svg>
+    </figure>
+    <div class="steps" style="padding-top:0">
+      <div class="step">
+        <div class="n">③ 执行</div>
+        <div class="c">
+          <p>数列是 <span class="m">1, 2, 4, 7</span>。差是 <span class="m">1, 2, 3</span>。猜测：第 <span class="m">n</span> 条线加上去，会多分出 <span class="m">n</span> 块。</p>
+          <p>但猜测不等于知道。<strong>为什么第 n 条线正好多分出 n 块？</strong>这才是这道题的心脏。</p>
+          <p>画一下就清楚了：新的第 <span class="m">n</span> 条线，跟前面 <span class="m">n−1</span> 条各交一次（这就是刚才那句「别平行、别三线共点」在起作用），所以它身上有 <span class="m">n−1</span> 个交点。<span class="m">n−1</span> 个点把这条直线切成了 <span class="m">n</span> 段。而每一段都从中间劈开了一块旧区域，把它变成两块——所以正好多出 <span class="m">n</span> 块。</p>
+          <div class="demo"><p class="calc">块数 = 1 + (1 + 2 + 3 + … + n)</p>
+          <p>括号里就是 1 到 n 求和，等于 <span class="m">n(n+1)/2</span>。所以：</p>
+          <p class="calc">最多分成 &nbsp; 1 + n(n+1)/2 &nbsp; 块</p></div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">④ 回顾</div>
+        <div class="c">
+          <p>验一下：<span class="m">n = 3</span> 代进去得 <span class="m">1 + 6 = 7</span>，跟画出来的一样。<span class="m">n = 0</span> 得 1，也对。</p>
+          <p><strong>这道题真正教了什么？</strong>三件事。第一，<em>递推</em>——不去正面硬算第 n 步，而是搞清楚「从第 n−1 步到第 n 步多了什么」。第二，看出规律只是一半，说清楚<em>为什么</em>是那个规律才是另一半，而且是更值钱的一半。第三，注意最后那个 <span class="m">n(n+1)/2</span>——它和示范一里的平方和一样，都是<em>数列求和</em>。同一个工具在两道完全不同的题里出现，这就是「体系」两个字的意思。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="run">
+    <div class="q">
+      <span class="id">示范三 · 看着不可能，换个角度就破了</span>
+      <p>一个 8×8 的棋盘，去掉<em>对角</em>的两个角格，剩下 62 格。能不能用 31 张 1×2 的骨牌把它铺满？（骨牌不能重叠、不能出界，横竖都行。）</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">① 理解</div>
+        <div class="c">
+          <p>62 格，31 张骨牌，每张盖 2 格，数量正好对得上。所以「格子数不够」这条路堵死了——如果不行，一定是别的原因。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">② 第一次尝试<br>（走了弯路）</div>
+        <div class="c">
+          <p>先老老实实试着铺。铺了几分钟，每次都在最后剩下两个不相邻的格子。</p>
+          <p>试了七八种铺法都失败，于是开始怀疑：<strong>会不会根本就不可能？</strong></p>
+          <p>这个念头的转折很重要。<em>「证明能做到」只要给出一个例子，「证明做不到」得排除所有可能——后者需要完全不同的武器。</em>这时候就该想起招数七。</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">③ 招数 七<br>找不变量</div>
+        <div class="c">
+          <p>要找一样「不管怎么铺都不变」的东西。棋盘天生是黑白相间的，那就利用起来：</p>
+          <p><strong>关键观察：一张 1×2 的骨牌，不管横放竖放，永远盖住一黑一白。</strong>相邻的格子颜色必定不同，这是棋盘的定义决定的，逃不掉。</p>
+          <p>所以 31 张骨牌一定盖住 31 个黑格和 31 个白格。这就是那个不变量。</p>
+        </div>
+      </div>
+    </div>
+    <figure style="margin:0 1.5rem 1.4rem">
+      <svg viewBox="0 0 700 250" role="img" aria-label="八乘八棋盘去掉对角两个同色角格后的染色图，剩下三十个深色格和三十二个浅色格，数量不相等。">
+        <rect x="40" y="20" width="208" height="208" class="svg-face"/>
+        <rect x="40" y="20" width="26" height="26" class="f2"/><rect x="92" y="20" width="26" height="26" class="f2"/><rect x="144" y="20" width="26" height="26" class="f2"/><rect x="196" y="20" width="26" height="26" class="f2"/>
+        <rect x="66" y="46" width="26" height="26" class="f2"/><rect x="118" y="46" width="26" height="26" class="f2"/><rect x="170" y="46" width="26" height="26" class="f2"/><rect x="222" y="46" width="26" height="26" class="f2"/>
+        <rect x="40" y="72" width="26" height="26" class="f2"/><rect x="92" y="72" width="26" height="26" class="f2"/><rect x="144" y="72" width="26" height="26" class="f2"/><rect x="196" y="72" width="26" height="26" class="f2"/>
+        <rect x="66" y="98" width="26" height="26" class="f2"/><rect x="118" y="98" width="26" height="26" class="f2"/><rect x="170" y="98" width="26" height="26" class="f2"/><rect x="222" y="98" width="26" height="26" class="f2"/>
+        <rect x="40" y="124" width="26" height="26" class="f2"/><rect x="92" y="124" width="26" height="26" class="f2"/><rect x="144" y="124" width="26" height="26" class="f2"/><rect x="196" y="124" width="26" height="26" class="f2"/>
+        <rect x="66" y="150" width="26" height="26" class="f2"/><rect x="118" y="150" width="26" height="26" class="f2"/><rect x="170" y="150" width="26" height="26" class="f2"/><rect x="222" y="150" width="26" height="26" class="f2"/>
+        <rect x="40" y="176" width="26" height="26" class="f2"/><rect x="92" y="176" width="26" height="26" class="f2"/><rect x="144" y="176" width="26" height="26" class="f2"/><rect x="196" y="176" width="26" height="26" class="f2"/>
+        <rect x="66" y="202" width="26" height="26" class="f2"/><rect x="118" y="202" width="26" height="26" class="f2"/><rect x="170" y="202" width="26" height="26" class="f2"/><rect x="222" y="202" width="26" height="26" class="f2"/>
+
+        <rect x="40" y="20" width="26" height="26" class="fm" stroke-width="2"/>
+        <line x1="42" y1="22" x2="64" y2="44" class="svg-l" stroke="currentColor"/>
+        <line x1="64" y1="22" x2="42" y2="44" class="svg-l" stroke="currentColor"/>
+        <rect x="222" y="202" width="26" height="26" class="fm" stroke-width="2"/>
+        <line x1="224" y1="204" x2="246" y2="226" class="svg-l" stroke="currentColor"/>
+        <line x1="246" y1="204" x2="224" y2="226" class="svg-l" stroke="currentColor"/>
+
+        <text x="290" y="52" class="svg-t">去掉的两个角格</text>
+        <text x="290" y="74" class="svg-ts">在棋盘上永远是同一种颜色</text>
+
+        <rect x="290" y="100" width="26" height="26" class="f2"/>
+        <text x="326" y="118" class="svg-t">深色剩下 &nbsp;32 − 2 = 30 格</text>
+        <rect x="290" y="140" width="26" height="26" class="svg-face"/>
+        <text x="326" y="158" class="svg-t">浅色剩下 &nbsp;32 格</text>
+
+        <line x1="290" y1="184" x2="660" y2="184" class="svg-l-soft"/>
+        <text x="290" y="208" class="svg-t txm">31 张骨牌需要 31 深 + 31 浅</text>
+        <text x="290" y="228" class="svg-t txm">而手上是 30 深 + 32 浅 —— 配不上</text>
+      </svg>
+    </figure>
+    <div class="steps" style="padding-top:0">
+      <div class="step">
+        <div class="n">④ 收网</div>
+        <div class="c">
+          <p>对角的两个角格，在棋盘上<strong>颜色是相同的</strong>（不信可以看看真棋盘的 a1 和 h8）。去掉它们，就等于一口气去掉了两个同色格。</p>
+          <p>于是剩下的 62 格里，一种颜色 30 个，另一种颜色 32 个。</p>
+          <p>可是 31 张骨牌必须盖住 31 个 + 31 个。<strong>30 ≠ 31。所以不可能。</strong>不是我们不够聪明，是它压根不存在。∎</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">⑤ 回顾</div>
+        <div class="c">
+          <p>回头看，整道题的全部难度都在<em>想到去染色</em>这一下。染色跟题目字面上一个字都不沾——题目里根本没提颜色。是解题的人自己往图上加了一层信息，而这层信息恰好是不变的。</p>
+          <p><strong>这道题真正教了什么？</strong>三件事。第一，<em>「证明做不到」和「证明做得到」是两种完全不同的活儿</em>，前者几乎总是要找不变量。第二，<em>你可以给题目添加它本来没有的结构</em>——染色、编号、分组、取余数，都是这类动作。第三，也是最重要的一点：<em>试了很多次都失败，本身就是一条重要的信息</em>。它是提醒你换武器的信号，不是你笨的证据。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sub" id="toolbox-learn">下半 · 学习：数学是垒起来的</h3>
+
+  <p>解题讲的是「这一道题怎么办」，这一半讲的是「怎么让学过的东西不跑掉」。两件事都重要，但下面这一半更少有人认真讲。</p>
+
+  <div class="rule-box">数学跟历史、生物那类科目有一个结构性的区别：<strong>它是垒的，不是摊的。</strong>历史课这一章没听懂，下一章照样能听。数学不行——分数没弄明白，斜率就是空的；斜率是空的，导数就没有落脚点。<strong>数学欠的债会连本带利。</strong></div>
+
+  <p>这个区别决定了下面全部的方法。因为知识是垒起来的，所以「哪里塌了」比「学了多少」重要得多；也因为它是垒起来的，回头补一块地基的收益，往往比往上多垒三层还大。</p>
+
+  <h4 class="min">最省力的一招：合上书</h4>
+  <p>如果这一整节只能记住一句话，记这句：<strong>看懂了不等于学会了。</strong></p>
+  <p>翻着书看例题，每一步都点头，这叫「被动重读」。它给人一种流畅感，让人以为自己会了——但那个流畅感来自<em>书</em>，不是来自你。真正的检验只有一个：<strong>合上书，拿张白纸，自己从头做一遍。</strong></p>
+  <p>这一招在心理学里叫「主动回忆」，几十年的实验反复证明它的效果远超反复看。而且它有个附带好处：你会立刻知道自己卡在哪一步，而不是模模糊糊觉得「大概都会」。</p>
+  <p>它的唯一缺点是<em>难受</em>。合上书的那一刻会感到明显的吃力，而反复看书很舒服。这个难受本身就是学习正在发生的信号——舒服的那种复习，基本上什么都没发生。</p>
+
+  <h4 class="min">隔几天再来一次</h4>
+  <p>今天学会的东西，如果一直不碰，几天后就开始漏。但如果在<em>快要忘掉的时候</em>再捡一次，它待得住的时间会大幅拉长；再隔更久捡一次，就更长。这叫间隔重复。</p>
+  <p>具体到做法不用搞复杂：新学的内容，<strong>当天、隔两三天、隔一周</strong>各花五分钟合上书回忆一遍，比考试前一晚花三小时管用得多。关键是那三次都必须是「合上书回忆」，不是「翻开书再看一遍」。</p>
+
+  <h4 class="min">别把同一类题连着刷</h4>
+  <p>一口气做二十道一模一样类型的题，感觉很好——越做越快，越做越顺。但那个「顺」是假的：第二题开始你就不再判断该用什么方法了，因为你知道跟第一题一样。而考试里最难的一步恰恰是<em>判断该用哪招</em>。</p>
+  <p>把不同类型的题<strong>混着做</strong>，会明显更慢、更容易错、感觉更差——然后在考试里表现得明显更好。这个反差在教育研究里出现过很多次，靠谱得让人不太舒服。</p>
+  <p>实用版本：作业按类型做完之后，隔几天从<em>前面几章</em>随机挑五道混着再做一遍。五道就够。</p>
+
+  <h4 class="min">错题：先分诊，再治</h4>
+  <p>「整理错题本」几乎人人听过，但大多数错题本没用，因为它们把所有错题当成同一种病。<strong>做错至少有三种完全不同的原因，治法互不通用。</strong>抄一遍正确解法只对其中一种有效。</p>
+
+  <figure>
+    <svg viewBox="0 0 700 300" role="img" aria-label="错题分诊图：一道做错的题分成三种原因——不知道该用什么方法、方法对但算错、根本看错题，每种对应不同的处理方式。">
+      <defs>
+        <marker id="ah7" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="255" y="20" width="190" height="42" rx="4" class="fm"/>
+      <text x="350" y="46" text-anchor="middle" class="svg-t txm">一道做错的题</text>
+
+      <path d="M 300 62 L 140 62 L 140 96" class="svg-l" marker-end="url(#ah7)"/>
+      <path d="M 350 62 L 350 96" class="svg-l" marker-end="url(#ah7)"/>
+      <path d="M 400 62 L 560 62 L 560 96" class="svg-l" marker-end="url(#ah7)"/>
+
+      <rect x="30" y="96" width="220" height="54" rx="4" class="f2"/>
+      <text x="140" y="119" text-anchor="middle" class="svg-t tx2">不知道该用什么方法</text>
+      <text x="140" y="139" text-anchor="middle" class="svg-ts tx2">病在知识</text>
+
+      <rect x="255" y="96" width="190" height="54" rx="4" class="f2"/>
+      <text x="350" y="119" text-anchor="middle" class="svg-t tx2">方法对，但算错了</text>
+      <text x="350" y="139" text-anchor="middle" class="svg-ts tx2">病在执行</text>
+
+      <rect x="450" y="96" width="220" height="54" rx="4" class="f2"/>
+      <text x="560" y="119" text-anchor="middle" class="svg-t tx2">根本看错了题</text>
+      <text x="560" y="139" text-anchor="middle" class="svg-ts tx2">病在读题</text>
+
+      <line x1="140" y1="150" x2="140" y2="176" class="svg-l"/>
+      <line x1="350" y1="150" x2="350" y2="176" class="svg-l"/>
+      <line x1="560" y1="150" x2="560" y2="176" class="svg-l"/>
+
+      <rect x="30" y="176" width="220" height="90" rx="4" class="f1"/>
+      <text x="140" y="200" text-anchor="middle" class="svg-t tx1">回去补那一块</text>
+      <text x="140" y="222" text-anchor="middle" class="svg-ts tx1">往回追到真正没懂的那层</text>
+      <text x="140" y="240" text-anchor="middle" class="svg-ts tx1">抄答案在这里完全没用</text>
+
+      <rect x="255" y="176" width="190" height="90" rx="4" class="f1"/>
+      <text x="350" y="200" text-anchor="middle" class="svg-t tx1">写慢一点</text>
+      <text x="350" y="222" text-anchor="middle" class="svg-ts tx1">每步单独一行</text>
+      <text x="350" y="240" text-anchor="middle" class="svg-ts tx1">别在脑子里跳步</text>
+
+      <rect x="450" y="176" width="220" height="90" rx="4" class="f1"/>
+      <text x="560" y="200" text-anchor="middle" class="svg-t tx1">读完先复述一遍</text>
+      <text x="560" y="222" text-anchor="middle" class="svg-ts tx1">把条件一条条圈出来</text>
+      <text x="560" y="240" text-anchor="middle" class="svg-ts tx1">这是最容易改掉的一种</text>
+
+      <text x="350" y="290" text-anchor="middle" class="svg-tm">同一道错题，三种病因，三种治法 —— 不分诊就治，等于没治</text>
+    </svg>
+    <figcaption><b>「粗心」不是一个诊断，是一个借口。</b>说「我就是粗心」等于不打算改。真正有用的做法是分清楚：是符号抄错了、是运算顺序搞混了、还是心算跳步跳崩了。每一种都有具体的、可以练的对策，而笼统的「下次细心点」没有。</figcaption>
+  </figure>
+
+  <h4 class="min">怎么读一本数学书</h4>
+  <p>数学书不能像小说那样读。一页小说可能三分钟，<strong>一页数学书花一小时是正常的</strong>，而且不代表你慢。具体做法：</p>
+  <ul class="plain">
+    <li><strong>手里必须有笔。</strong>不动笔读数学，跟不动嘴读外语差不多，看着在学，其实没有。</li>
+    <li><strong>看到定理，先合上书自己试着证一下。</strong>哪怕只试两分钟、根本证不出来也值——因为你会知道难在哪儿，然后书上的证明就从「一串步骤」变成了「原来这里是这么绕过去的」。</li>
+    <li><strong>看到例子，把数字改小自己再做一遍。</strong>书上用 <span class="m">n = 100</span>，你就用 <span class="m">n = 3</span> 亲手算一遍。</li>
+    <li><strong>看到「显然」「容易看出」，停下来。</strong>这两个词是作者省略了步骤的信号，而省略的地方往往正是关键。补出来，或者标个记号回头问。</li>
+    <li><strong>每读完一节，合上书说一句「这一节在讲什么」。</strong>说不出来就是没读完，倒回去。</li>
+  </ul>
+
+  <h4 class="min">什么时候可以看答案</h4>
+  <p>看答案不可耻，早看才可耻。判断标准很简单：<strong>你有没有真的卡满，而且把九招都过了一遍。</strong>过了这一关，看答案是高效学习；没过就看，是在花时间买一个「我会了」的错觉。</p>
+  <p>还有一件更要紧的事：<strong>看完答案之后必须再做一步</strong>，否则前面全白搭。合上答案，隔至少半小时——最好是第二天——从空白纸开始自己重做一遍。</p>
+  <p>因为「看懂别人的解法」和「自己想得出解法」在大脑里是两件不同的事。只做前者，下次遇到同类题还是不会。这一步不做，看答案就真的等于抄答案。</p>
+
+  <h4 class="min">计算器、CAS 和 AI</h4>
+  <p>这一节在别的书上找不到，因为它太新了。但它可能是这一代人学数学面对的最大变量，所以值得说清楚。</p>
+  <p>先说底层逻辑。<strong>数学能力是在「卡住—挣扎—自己出来」这段过程里长出来的，不是在「看到正确答案」的那一刻长出来的。</strong>任何工具，只要它让你跳过挣扎那一段，它就在削弱你；只要它让你挣扎得更有效，它就在帮你。计算器、CAS、AI，全部适用这一条。</p>
+
+  <div class="split">
+    <div class="good">
+      <h5>这样用，是加速</h5>
+      <ul>
+        <li>「我卡在这一步了，<strong>别告诉我答案</strong>，给我一个提示就好」</li>
+        <li>「我是这么想的（写出你的思路），这个思路有问题吗？」——让它当审稿人，不当作者</li>
+        <li>「这个概念当初是为了解决什么才被发明出来的？」——问动机。这恰恰是教科书最缺、AI 最擅长的</li>
+        <li>「再给我三道同类型但换了花样的题」——当出题机用</li>
+        <li>「这个我没听懂，换一种完全不同的方式解释一遍」</li>
+        <li>「我这个证明有没有漏洞？」——让它挑刺</li>
+        <li>用 CAS 或计算器<strong>验算</strong>自己手算的结果，或者处理那些又长又没有思维含量的数值计算</li>
+      </ul>
+    </div>
+    <div class="bad">
+      <h5>这样用，是自毁</h5>
+      <ul>
+        <li>题目拍进去，抄答案。这是最直接的一种，也是最没有争议的一种</li>
+        <li>还没卡满二十分钟就去问</li>
+        <li>问完之后不合上重做——「看懂了」和「会了」之间隔着一整条河</li>
+        <li>让它替你做<strong>整个作业</strong>。作业的目的从来不是交上去那张纸，而是你写它时脑子里发生的事</li>
+        <li>凡是需要手上功夫的地方全交给 CAS——因数分解、通分、求导这类基本操作，手不熟，后面复杂问题里就腾不出脑子想别的</li>
+        <li>相信它说的每一步而不自己验一遍</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="rule-box">最后这一条要单独强调：<strong>AI 会用极其自信的语气说错话，数学上尤其如此。</strong>它算错的时候，看起来和算对时一模一样——没有犹豫，没有提示，格式一样漂亮。所以凡是它给出的推理，你都得能自己验一遍。</div>
+
+  <p>而这件事反过来其实是好消息：<em>「检查别人的推理有没有漏洞」本身就是一项一流的数学能力</em>，而且过去很难练——你手边哪有那么多带着错误的推理可以查？现在有了。把 AI 当成一个知识极广、偶尔会自信地胡说八道的同学，你的任务是听懂它、并且抓住它的错。这么用，它是你能有的最好的陪练。</p>
+
+  <div class="rule-box">一句话版本：<strong>让工具帮你想得更远，别让它替你想。</strong></div>
+</section>
+<div class="pagenav">
+  <a href="index.html"><span class="dir">上一页</span><span class="t">§ 1 · 全景图</span></a>
+  <a class="next" href="strand-0-language.html"><span class="dir">下一页</span><span class="t">主线零 · 数学的语言与证明</span></a>
+</div>
+</main>
+</body>
+</html>

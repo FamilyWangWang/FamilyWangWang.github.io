@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>全景图 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="全景图 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/">
+</head>
+<body>
+<header class="masthead">
+  <div class="page-frame">
+    <p class="eyebrow">Ein Atlas der Mathematik · 第一版</p>
+    <h1>数学版图</h1>
+    <p class="sub">学校按年级教数学，一年切一刀，切得很整齐，但没人告诉你整块大陆长什么样。这本册子反过来做：先给你整块大陆，再告诉你现在站在哪儿。</p>
+    <div class="meta">
+      <span>七条主线 · 三层海拔</span>
+      <span>从算术起步 · 一路通到大学门口</span>
+      <span>七条主线 · 四份附页 · 中文版第一版</span>
+    </div>
+  </div>
+</header>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html" aria-current="page">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/index.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<section id="how">
+  <h2 class="sec"><span class="num">§ 0</span>怎么读这张图</h2>
+  <p class="sec-lead">这本册子只有两个结构。一个是横着的<strong>主线</strong>，一个是竖着的<strong>海拔</strong>。搞懂这两个词，剩下的都是内容。</p>
+
+  <h3 class="sub">主线：数学在问的七个问题</h3>
+  <p>数学不是一门课，是七种不同的好奇心，各自发育了两千多年，中间不断互相借工具。把它们摊开，是这样七条：</p>
+  <ul class="plain">
+    <li><strong>数与数系</strong>——「有多少？」以及「什么样的东西配叫数？」</li>
+    <li><strong>代数与结构</strong>——「未知的东西，怎么把它逼出来？」</li>
+    <li><strong>形与空间</strong>——「东西长什么样，占多大地方？」</li>
+    <li><strong>函数与变化</strong>——「一样东西变了，另一样跟着怎么变？」</li>
+    <li><strong>概率与统计</strong>——「说不准的事，怎么说得准一点？」</li>
+    <li><strong>离散与算法</strong>——「一步一步来的话，要走多少步？」</li>
+    <li><strong>建模与应用</strong>——「现实里这么乱的一摊事，怎么塞进公式里？」</li>
+  </ul>
+  <p>底下还垫着第零条：<strong>数学的语言与证明</strong>。它不回答问题，它规定「什么样的回答才算数」。学校几乎从不系统地教它，但正是它把上面七条从「七堆知识」粘成了「一门学问」。所以它在图上是地基那一层，不是第八条。</p>
+
+  <h3 class="sub">海拔：同一条路上的三个高度</h3>
+  <p>每条主线都从五年级一路通到大学以后。同一条主线，山脚和山顶完全是两种风景，但确实是同一条路。所以每一块内容都会标出海拔：</p>
+
+  <div class="legend">
+    <div class="row">
+      <span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span>
+      <p><strong>不需要前置知识。</strong>会算术、接受得了「用字母代表数」，就能读。今天读，今天就能用上。</p>
+    </div>
+    <div class="row">
+      <span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span>
+      <p><strong>需要一点底子</strong>：会解方程，认得函数和坐标系。中学后半程的分量几乎全压在这一层，各国的升学考试考的也都是这儿。</p>
+    </div>
+    <div class="row">
+      <span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span>
+      <p><strong>大学以及更远处的风景</strong>。这一层<em>只做导览</em>，不要求懂，只求他知道那儿有东西、叫什么名字、长什么样。</p>
+    </div>
+  </div>
+
+  <p>三层的用法是：每一章都可以只读山脚那部分，读完就是完整的一章，山腰和山顶可以留到明年、后年。这本册子不是读一遍的东西，是每年回来一次、每次多解锁一层的东西。</p>
+
+  <h3 class="sub">每张卡片长一个样</h3>
+  <p>知识点用卡片装，每张卡片永远是同样六格：<strong>一句话是什么</strong>、<strong>它为了解决什么才被发明</strong>、<strong>一个小到能自己动手的例子</strong>、<strong>上游和下游</strong>、<strong>常见的坑</strong>、<strong>德语原词</strong>。</p>
+  <p>其中「上游和下游」那一格最要紧。它是这本册子跟教科书唯一的实质区别：教科书告诉你这一节讲什么，这一格告诉你这一节接在谁后面、又通向谁。读到第三张卡片你就会习惯它，读到第三十张，那张网就在脑子里了。</p>
+</section>
+
+<hr>
+
+<section id="atlas">
+  <h2 class="sec"><span class="num">§ 1</span>全景图</h2>
+  <p class="sec-lead">七行是主线，三列是海拔。整个高中数学，加上大学门口的那一圈风景，都在这一张表里。这张表可以单独打印出来贴墙上。</p>
+
+  <div class="wide scroller">
+  <table class="atlas">
+    <thead>
+      <tr>
+        <th style="width:120px">主线 ↓ 　海拔 →</th>
+        <th style="width:27%">山脚<span>不需要前置知识</span><span class="here">他在这一层</span></th>
+        <th style="width:36%">山腰<span>需要代数与函数打底</span></th>
+        <th style="width:27%">山顶与远方<span>大学以后 · 只做导览</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="strand">一 · 数与数系<em>Zahlen</em></th>
+        <td class="c1">自然数与位值制 · 四则运算的多重意义 · 负数 · 分数与小数 · 素数与整除</td>
+        <td class="c2">无理数与实数轴 · 幂、根、对数三兄弟 · 科学记数法与误差 · 复数（选修）· 数列的第一瞥</td>
+        <td class="c3">可数与不可数 · 实数的严格构造 · 代数数与超越数 · 数论与 RSA 加密 · p-进数</td>
+      </tr>
+      <tr>
+        <th class="strand">二 · 代数与结构<em>Algebra</em></th>
+        <td class="c1">字母代替数 · 化简与合并同类项 · 一元一次方程 · 二项公式 · 不等式</td>
+        <td class="c2">二次方程与判别式 · 因式分解 · 多项式与零点 · 线性方程组与高斯消元 · 矩阵入门</td>
+        <td class="c3">群、环、域 · 伽罗瓦理论（五次方程为何无公式）· 线性代数 I/II · 抽象代数</td>
+      </tr>
+      <tr>
+        <th class="strand">三 · 形与空间<em>Geometrie</em></th>
+        <td class="c1">角与平行线 · 三角形的构造与全等 · 圆的基本量 · 面积与体积 · 对称与变换</td>
+        <td class="c2">勾股定理家族 · 相似与射线定理 · 三角学与单位圆 · 正弦余弦定理 · 向量、直线与平面、点积叉积（中学几何的终点站）</td>
+        <td class="c3">非欧几何 · 拓扑与欧拉公式 · 微分几何 · 射影几何 · 分形与维数</td>
+      </tr>
+      <tr>
+        <th class="strand">四 · 函数与变化<em>Analysis</em></th>
+        <td class="c1">正比与反比 · 坐标系 · 一次函数与斜率 · 从表格到图像</td>
+        <td class="c2">函数动物园（幂、指、对、三角、有理式）· 平移伸缩的家族规律 · 极限直觉 · 导数与曲线讨论 · 积分与微积分基本定理 · 增长与衰减模型（中学数学分量最重的一块）</td>
+        <td class="c3">ε-δ 严格化 · 多元微积分 · 级数与泰勒展开 · 傅里叶分析 · 复分析 · 微分方程</td>
+      </tr>
+      <tr>
+        <th class="strand">五 · 概率与统计<em>Stochastik</em></th>
+        <td class="c1">平均数中位数 · 相对频率 · 树形图与路径法则 · 简单古典概型</td>
+        <td class="c2">组合计数与二项系数 · 条件概率与贝叶斯 · 随机变量、期望与方差 · 二项分布与正态分布 · 假设检验与两类错误（统计的分水岭）</td>
+        <td class="c3">大数定律与中心极限定理 · 随机过程 · 贝叶斯统计 · 统计学习与机器学习</td>
+      </tr>
+      <tr>
+        <th class="strand">六 · 离散与算法<em>Diskrete Math.</em></th>
+        <td class="c1">数列与规律 · 真与假的判断 · 二进制与其他进制 · 简单计数</td>
+        <td class="c2">递推与数学归纳法 · 图论入门（七桥问题、最短路）· 鸽笼原理 · 数值方法（牛顿法、数值积分）· 算法的步数感</td>
+        <td class="c3">复杂度与 P 对 NP · 密码学 · 编码与纠错 · 组合优化 · 计算理论</td>
+      </tr>
+      <tr>
+        <th class="strand">七 · 建模与应用<em>Modellieren</em></th>
+        <td class="c1">百分比与利息 · 单位换算与量纲 · 数量级估算 · 比例尺</td>
+        <td class="c2">建模五步循环（现实→模型→求解→回译→检验）· 复利与指数增长 · 物理里的数学 · 图表如何骗人</td>
+        <td class="c3">运筹学与最优化 · 数理金融 · 数据科学 · 数学建模竞赛</td>
+      </tr>
+      <tr class="bedrock">
+        <th class="strand">零 · 数学的语言<em>贯穿全书</em></th>
+        <td>集合与元素 · 一句话是真是假 · 「所有」和「存在」· 「当且仅当」· 举一个反例</td>
+        <td>定义、公理、定理各干什么 · 直接证明 · 反证法 · 数学归纳法 · 充分与必要 · 逆否命题</td>
+        <td>数理逻辑 · 集合论与选择公理 · 哥德尔不完备定理 · 计算机辅助证明（Lean、Coq）</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="font-size:.87rem;color:var(--ink-2);margin-top:1rem">屏幕窄的话这张表可以左右拖动。打印建议 A3 横向或 A2。</p>
+</section>
+
+<section id="network">
+  <h3 class="sub">主线之间是怎么互相借工具的</h3>
+  <p>七条主线不是七个抽屉。真正让数学变成一门学问的，是它们之间那些借来借去的关系。下面这张图只画了最主要的几条借道——真实的网比这密得多，但这几条是必须先看见的。</p>
+
+  <figure class="wide">
+    <svg viewBox="0 0 1000 470" role="img" aria-label="七条主线之间的主要依赖关系图：数与数系向代数、几何、概率输送工具；代数与几何合流成函数与分析；函数与分析再输往概率统计和建模应用；数学的语言作为地基支撑全部七条。">
+      <defs>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+        </marker>
+      </defs>
+
+      <rect x="30" y="392" width="940" height="52" rx="4" class="svg-face" stroke-dasharray="5 4"/>
+      <text x="500" y="415" text-anchor="middle" class="svg-t">零 · 数学的语言与证明</text>
+      <text x="500" y="433" text-anchor="middle" class="svg-ts">定义 · 公理 · 定理 · 反证 · 归纳 —— 上面每一条主线都站在这层上</text>
+
+      <rect x="30" y="180" width="170" height="72" rx="4" class="f1"/>
+      <text x="115" y="209" text-anchor="middle" class="svg-t tx1">一 · 数与数系</text>
+      <text x="115" y="230" text-anchor="middle" class="svg-ts tx1">ℕ ℤ ℚ ℝ ℂ</text>
+
+      <rect x="270" y="70" width="170" height="72" rx="4" class="f1"/>
+      <text x="355" y="99" text-anchor="middle" class="svg-t tx1">二 · 代数与结构</text>
+      <text x="355" y="120" text-anchor="middle" class="svg-ts tx1">把未知数逼出来</text>
+
+      <rect x="270" y="290" width="170" height="72" rx="4" class="f1"/>
+      <text x="355" y="319" text-anchor="middle" class="svg-t tx1">三 · 形与空间</text>
+      <text x="355" y="340" text-anchor="middle" class="svg-ts tx1">图形与度量</text>
+
+      <rect x="530" y="180" width="180" height="72" rx="4" class="f2"/>
+      <text x="620" y="209" text-anchor="middle" class="svg-t tx2">四 · 函数与变化</text>
+      <text x="620" y="230" text-anchor="middle" class="svg-ts tx2">中学的重头戏</text>
+
+      <rect x="790" y="70" width="180" height="72" rx="4" class="f2"/>
+      <text x="880" y="99" text-anchor="middle" class="svg-t tx2">五 · 概率与统计</text>
+      <text x="880" y="120" text-anchor="middle" class="svg-ts tx2">说不准的事</text>
+
+      <rect x="790" y="290" width="180" height="72" rx="4" class="f2"/>
+      <text x="880" y="319" text-anchor="middle" class="svg-t tx2">七 · 建模与应用</text>
+      <text x="880" y="340" text-anchor="middle" class="svg-ts tx2">咬住现实</text>
+
+      <rect x="530" y="30" width="180" height="30" rx="4" class="f3"/>
+      <text x="620" y="50" text-anchor="middle" class="svg-ts tx3">六 · 离散与算法</text>
+
+      <path d="M 200 200 L 264 105" class="svg-l" marker-end="url(#ah)"/>
+      <text x="222" y="146" class="svg-tm">运算规律</text>
+
+      <path d="M 200 232 L 264 320" class="svg-l" marker-end="url(#ah)"/>
+      <text x="206" y="290" class="svg-tm">度量要用数</text>
+
+      <path d="M 440 112 L 524 196" class="svg-l" marker-end="url(#ah)"/>
+      <text x="452" y="146" class="svg-tm">方程 · 未知数</text>
+
+      <path d="M 440 320 L 524 236" class="svg-l" marker-end="url(#ah)"/>
+      <text x="452" y="300" class="svg-tm">坐标系这座桥</text>
+
+      <path d="M 710 200 L 784 116" class="svg-l" marker-end="url(#ah)"/>
+      <text x="716" y="152" class="svg-tm">分布 · 积分</text>
+
+      <path d="M 710 232 L 784 316" class="svg-l" marker-end="url(#ah)"/>
+      <text x="716" y="300" class="svg-tm">增长模型</text>
+
+      <path d="M 620 176 L 620 66" class="svg-l-soft" stroke-dasharray="4 4" marker-end="url(#ah)"/>
+      <text x="632" y="130" class="svg-tm">近似 · 数值解</text>
+
+      <path d="M 500 388 L 500 262" class="svg-l-soft" stroke-dasharray="4 4"/>
+      <path d="M 115 388 L 115 258" class="svg-l-soft" stroke-dasharray="4 4"/>
+      <path d="M 880 388 L 880 368" class="svg-l-soft" stroke-dasharray="4 4"/>
+    </svg>
+    <figcaption><b>坐标系是整张图上最重要的一条箭头。</b>笛卡尔把「形」翻译成了「数」，几何题从此可以用算的，代数题也可以画出来看。这一步之后，代数和几何合流成了分析，也就是中学后半程分值最高的那一大块。虚线表示「站在上面」而不是「输送工具」。</figcaption>
+  </figure>
+</section>
+<hr>
+
+<section id="contents">
+  <h2 class="sec"><span class="num">目录</span>这本册子有哪些册页</h2>
+  <p class="sec-lead">每一页都可以单独读完，不用按顺序。灰掉的还没写。</p>
+
+  <div class="contents">
+    <a href="toolbox.html"><span class="no">§ 2</span><span class="nm">工具箱</span><span class="ds">解题的九招与四步、卡住了怎么办、学习方法、错题分诊、AI 怎么用才不自毁</span></a>
+    <a href="strand-0-language.html"><span class="no">主线 零</span><span class="nm">数学的语言与证明</span><span class="ds">集合、命题、所有与存在、如果那么、定义公理定理、五件武器、归纳法</span></a>
+    <a href="strand-1-numbers.html"><span class="no">主线 一</span><span class="nm">数与数系</span><span class="ds">从数数到复数，五次撞墙五次造新数：负数、分数、素数、无理数、幂根对数</span></a>
+    <a href="strand-2-algebra.html"><span class="no">主线 二</span><span class="nm">代数与结构</span><span class="ds">从「把 x 解出来」到「研究结构本身」：二项公式、配方法、因式分解、方程组、矩阵</span></a>
+    <a href="strand-3-geometry.html"><span class="no">主线 三</span><span class="nm">形与空间</span><span class="ds">形状里什么不变：全等、相似与平方立方定律、勾股、三角学、坐标那座桥、向量</span></a>
+    <a href="strand-4-analysis.html"><span class="no">主线 四</span><span class="nm">函数与变化</span><span class="ds">怎么变、变多快、一共变了多少——以及后两个问题原来是同一个：极限、导数、积分、微分方程</span></a>
+    <a href="strand-5-stochastics.html"><span class="no">主线 五</span><span class="nm">概率与统计</span><span class="ds">让「说不准」也能精确地说出来：计数、贝叶斯、期望、分布、检验、相关不是因果</span></a>
+    <a href="strand-6-discrete.html"><span class="no">主线 六</span><span class="nm">离散与算法</span><span class="ds">一步一步来的话要走多少步：递推、二进制、算法、复杂度、图论、鸽笼、数值方法、密码学</span></a>
+    <a href="strand-7-modelling.html"><span class="no">主线 七</span><span class="nm">建模与应用</span><span class="ds">数学怎么咬住现实：建模循环、量纲、估算、复利、线性模型、优化、图表陷阱、模型的边界</span></a>
+    <a href="exam-perspective.html"><span class="no">可选附页</span><span class="nm">考试视角</span><span class="ds">正文不提考试，都放这里：分量地图、丢分处总索引、考前定位塌方、考场操作、刷题的正确刷法</span></a>
+    <a href="lab.html"><span class="no">附页</span><span class="nm">实验室</span><span class="ds">七个能拖着玩的小实验：斜率、抛物线的三个把手、单位圆变成正弦波、割线滑成切线、黎曼和、二项分布长成正态、用随机点数 π</span></a>
+    <a href="progress.html"><span class="no">附页</span><span class="nm">进度表</span><span class="ds">114 个格子，点一下换一次颜色：还没学 / 学过了 / 掌握了。存在本机浏览器里，不上传任何地方</span></a>
+    <a href="poster.html"><span class="no">附页</span><span class="nm">挂墙版</span><span class="ds">整本册子压成一张 A2 贴书桌旁：全景表、主线之间的关系图、四条贯穿全书的暗线</span></a>
+  </div>
+
+  <div class="pagenav">
+    <a class="next" href="toolbox.html"><span class="dir">下一页</span><span class="t">§ 2 · 工具箱</span></a>
+  </div>
+</section>
+</main>
+</body>
+</html>

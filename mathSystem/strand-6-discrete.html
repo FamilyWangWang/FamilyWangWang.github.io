@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线六 · 离散与算法 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-6-discrete.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线六 · 离散与算法 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-6-discrete.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html" aria-current="page">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-6-diskret.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线六</h1>
+
+<section id="s6">
+  <h2 class="sec"><span class="num">主线 六</span>离散与算法</h2>
+  <p class="sec-lead">主线四处理的是<strong>连续</strong>的世界——曲线光滑，可以无限细分。这一条处理的是<strong>跳着走</strong>的世界：一个一个数的、一步一步做的、中间没有过渡的。</p>
+
+  <p>而它反复在问同一个问题：<strong>一步一步来的话，要走多少步？</strong></p>
+
+  <p>这个问题看起来朴素，但它是这条主线的全部脊梁。三步能做完的事和三百万步能做完的事，在数学上可能同样「有解」，在现实里却是能做和做不到的区别。<em>「有办法」和「办法用得起」，是两回事。</em></p>
+
+  <p>还有一件事让这条主线在今天格外重要：<strong>计算机只会离散的东西。</strong>它没有真正的实数（只有有限位的近似），没有真正的连续（只有一小步一小步），也没有直觉（只有明确的规则）。所以主线四那些漂亮的连续理论，真要交给机器去算，都得先被「切成一块一块」——这就是数值方法的来历，也是这两条主线的接口。</p>
+
+  <p>最后，这条主线的山顶上有一堵墙，跟前面见过的两堵是同一个家族：主线二里伽罗瓦证明<em>五次方程没有求根公式</em>，主线零里哥德尔证明<em>有些真话证不出来</em>，这里的墙是——<strong>有些问题，机器永远算不完。</strong>数学里最深刻的结论，又一次是「做不到」。</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>数列与递推 · 一个接一个</h3>
+      <p class="de">Folge · Rekursion</p>
+    </div>
+    <div class="body">
+      <p class="lead">数列就是排好队的一串数。而描述它有两种完全不同的方式，<strong>这两种方式的对立，会一路贯穿到计算机科学。</strong></p>
+
+      <div class="field">
+        <span class="lbl">先说个小观察</span>
+        <p>数列其实就是<strong>定义域为自然数的函数</strong>（主线四 4.1）。输入 1 得第一项，输入 2 得第二项。之所以换个名字叫「数列」而不叫「函数」，只是因为它的输入是跳着的，不是连续的。<em>这就是「离散」这个词的全部意思。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">两种描述方式</span>
+        <div class="demo">
+          <p><strong>显式</strong>（explizit）：直接给出第 n 项。<span class="m">aₙ = 3n + 2</span>。想知道第 100 项？代进去，一步到位。</p>
+          <p><strong>递推</strong>（rekursiv）：给出起点和「怎么从上一项得到下一项」。<span class="m">a₁ = 5</span>，<span class="m">aₙ = aₙ₋₁ + 3</span>。想知道第 100 项？得从头走 99 步。</p>
+        </div>
+        <p>显式看起来明显更好用，但递推有它不可替代的地方：<strong>很多现实过程天生就是递推的。</strong>今年的人口取决于去年的人口，明天的存款取决于今天的存款，下一步的位置取决于这一步的位置。写递推式往往是自然的，而找出对应的显式公式常常很难，有时根本不存在。</p>
+        <p>最有名的例子是<strong>斐波那契数列</strong>：<span class="m">1, 1, 2, 3, 5, 8, 13, 21, …</span>，每一项是前两项之和。递推式一行就写完，显式公式却长得吓人，而且里面居然出现了无理数 <span class="m">√5</span>——一个全是整数的数列，通项公式却要用无理数才写得出来。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">怎么证明一个递推公式是对的</span>
+        <p>递推和<strong>数学归纳法</strong>是天生一对：递推说「从第 n 步能走到第 n+1 步」，归纳法说「只要能一步步传下去，加上起点成立，就对所有 n 成立」。<em>主线零 0.7 那排多米诺骨牌，正是为这一章准备的。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>函数（主线四 4.1）· 数学归纳法（主线零 0.7）· 自然数（主线一 1.1）</div>
+          <div><span class="lbl">下游</span>算法与循环（6.4）· 递归算法 · 极限与级数（主线四 4.5）· 增长模型（主线七）· 差分方程</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>看到几项就断定规律，是最容易出错的地方。<span class="m">1, 2, 4, 8, …</span> 下一项一定是 16 吗？也可能是 15——如果规律是「圆上取 n 个点两两连线，把圆分成几块」，那个数列正好是 <span class="m">1, 2, 4, 8, 16, 31</span>，第六项突然不是 32。</p>
+          <p><em>看出规律只是猜想，证明它才是数学</em>（工具箱招数二和主线零 0.6）。这个例子值得记住，因为它专治「我看出来了所以肯定是这样」。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Folge</b> 数列</span>
+          <span><b>Glied</b> 项</span>
+          <span><b>explizit / rekursiv</b> 显式 / 递推</span>
+          <span><b>Rekursionsformel</b> 递推公式</span>
+          <span><b>arithmetische Folge</b> 等差数列</span>
+          <span><b>geometrische Folge</b> 等比数列</span>
+          <span><b>Fibonacci-Folge</b> 斐波那契数列</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>二进制与信息 · 一个问题值多少</h3>
+      <p class="de">Dualsystem · Bit</p>
+    </div>
+    <div class="body">
+      <p class="lead">计算机用二进制，不是因为二进制更「数学」，而是因为<strong>电路只分得清两件事：通电和不通电。</strong>而从这个朴素的限制里，长出了「信息」这个可以度量的概念。</p>
+
+      <div class="field">
+        <span class="lbl">位值制换个底数而已</span>
+        <p>主线一 1.2 说过，位值制的关键是「同一个符号在不同位置代表不同大小」。把底数从 10 换成 2，规则一模一样，只是每一位只有 0 和 1 两种选择：</p>
+        <p class="calc">1101₂ = 1×8 + 1×4 + 0×2 + 1×1 = 13</p>
+        <p>八位二进制能表示 <span class="m">2⁸ = 256</span> 种状态，这就是一个字节（Byte）。<em>每多一位，能表示的状态就翻倍</em>——又是指数（主线四 4.3）。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个是非问题，值一个比特</span>
+        <p>这是这张卡片真正想说的事。想象猜数字游戏：我心里想一个 1 到 1000 的数，你只能问是非题。<strong>最少要问几次？</strong></p>
+        <div class="demo">
+          <p>笨办法：「是 1 吗？是 2 吗？」——最坏要问 1000 次。</p>
+          <p>聪明办法：「比 500 大吗？」不管答案是什么，剩下的可能性都少了一半。再问一次，又少一半。</p>
+          <p class="calc">1000 → 500 → 250 → 125 → 63 → 32 → 16 → 8 → 4 → 2 → 1</p>
+          <p><strong>10 次就够了。</strong>因为 <span class="m">2¹⁰ = 1024 &gt; 1000</span>。</p>
+        </div>
+        <p>这就是「信息量」的原始定义：<em>一个好问题的价值，在于它能把可能性砍掉多少。</em>而每次砍一半这个动作，是这一整章的主角——下一张卡片会看到它变成算法，再下一张会看到它变成一个复杂度类别。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>位值制（主线一 1.2）· 幂（主线一 1.8）· 对数（主线一 1.8——问几次就是求 log₂）</div>
+          <div><span class="lbl">下游</span>逻辑门（6.3）· 二分查找与 O(log n)（6.5）· 信息论 · 数据压缩 · 密码学（6.9）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Dualsystem</b> 二进制</span>
+          <span><b>Binärzahl</b> 二进制数</span>
+          <span><b>Bit / Byte</b> 比特 / 字节</span>
+          <span><b>Stelle</b> 数位</span>
+          <span><b>Informationsgehalt</b> 信息量</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>逻辑与布尔代数 · 真假也能做运算</h3>
+      <p class="de">Boolesche Algebra · Wahrheitstafel</p>
+    </div>
+    <div class="body">
+      <p class="lead">主线零 0.2 说命题非真即假。如果把「真」写成 1、「假」写成 0，那么<strong>逻辑就变成了一种代数</strong>——而这种代数，可以用电路直接实现。</p>
+
+      <div class="field">
+        <span class="lbl">三个基本运算</span>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:12%">A</th><th style="width:12%">B</th><th style="width:22%">A UND B<br><span style="font-size:12px">与 · 都真才真</span></th><th style="width:22%">A ODER B<br><span style="font-size:12px">或 · 有一个真就真</span></th><th style="width:22%">NICHT A<br><span style="font-size:12px">非 · 反过来</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><td>真</td><td>真</td><td class="cheap">真</td><td class="cheap">真</td><td>假</td></tr>
+            <tr><td>真</td><td>假</td><td>假</td><td class="cheap">真</td><td>假</td></tr>
+            <tr><td>假</td><td>真</td><td>假</td><td class="cheap">真</td><td class="cheap">真</td></tr>
+            <tr><td>假</td><td>假</td><td>假</td><td>假</td><td class="cheap">真</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>注意数学里的「或」是<strong>包含性的</strong>：A 或 B 为真，包括「两个都真」的情况。日常说「要茶还是咖啡」通常是二选一，数学里的「或」不是这个意思。这个差别在读题时会出事。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">从真值表到电路</span>
+        <p>1937 年，二十一岁的香农在硕士论文里指出：<strong>布尔代数的三种运算，可以用开关电路一比一实现。</strong>两个开关串联就是「与」（都合上才通电），并联就是「或」（有一个合上就通电）。</p>
+        <p>这篇论文被称为二十世纪最重要的硕士论文之一，因为它把一门抽象的逻辑学，和一堆铜线接到了一起。<strong>今天芯片里几十亿个晶体管，做的就是这张真值表上的事。</strong>你手机里跑的一切——视频、游戏、这个页面——最底层全是这四行。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>命题与真假（主线零 0.2）· 否定与量词（主线零 0.3）· 集合的交并（主线零 0.1，与并交完全对应）</div>
+          <div><span class="lbl">下游</span>数字电路与芯片 · 编程里的条件判断 · 数据库查询 · 搜索引擎的 AND/OR · 数理逻辑（主线零山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Boolesche Algebra</b> 布尔代数</span>
+          <span><b>Wahrheitstafel</b> 真值表</span>
+          <span><b>UND / ODER / NICHT</b> 与 / 或 / 非</span>
+          <span><b>Logikgatter</b> 逻辑门</span>
+          <span><b>Schaltung</b> 电路</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>算法 · 把做法说清楚到能交给机器</h3>
+      <p class="de">Algorithmus</p>
+    </div>
+    <div class="body">
+      <p class="lead">算法就是一套<strong>说得足够死板</strong>的做法：每一步都明确，不需要任何判断力，而且保证能停下来。</p>
+
+      <div class="field">
+        <span class="lbl">三个必须满足的条件</span>
+        <div class="demo">
+          <p><strong>明确</strong>——每一步该做什么毫无歧义，不能有「适当调整」「凭感觉」。</p>
+          <p><strong>有限</strong>——步数是有限的，不能无限展开。</p>
+          <p><strong>会停</strong>——对任何合法输入都能结束，不会卡死在原地打转。</p>
+        </div>
+        <p>第三条听起来是废话，其实是这一章山顶那堵墙的入口：<em>「判断一个程序会不会停下来」这个问题本身，被证明了没有算法能解决。</em>（见山顶。）</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个两千三百岁、今天还在跑的算法</span>
+        <p><strong>欧几里得算法</strong>求两个数的最大公因数，写于公元前 300 年左右，是人类记录下来的最早的算法之一。它到今天还在你的电脑里跑：</p>
+        <div class="proof">
+          <span class="lbl">求 gcd(1071, 462)</span>
+          <p>用大的除以小的，取余数；然后用除数和余数重复这一步，直到余数为 0。</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.02rem">1071 ÷ 462 = 2 余 147<br>462 ÷ 147 = 3 余 21<br>147 ÷ 21 = 7 余 0　　←　停</p>
+          <p>最后那个除数 <strong>21</strong> 就是最大公因数。</p>
+          <p>为什么管用？因为能同时整除 1071 和 462 的数，也一定能整除它们的余数 147。<em>问题被换成了一个更小的同类问题</em>——这正是工具箱招数五「先解一个更容易的」，也是 6.1 的递推思想。</p>
+        </div>
+        <p>对比一下：如果用主线一 1.6 的办法（两个数都做素因数分解再比对），遇到几百位的大数就完全跑不动了。<strong>同一个问题，两种算法，能不能用的差别在这儿。</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>递推（6.1）· 整除与余数（主线一 1.6）· 逻辑（6.3）</div>
+          <div><span class="lbl">下游</span>复杂度（6.5）· 数值方法（6.8）· 密码学（6.9）· 编程 · 可计算性（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Algorithmus</b> 算法</span>
+          <span><b>Schleife</b> 循环</span>
+          <span><b>Verzweigung</b> 分支</span>
+          <span><b>terminieren</b> 终止</span>
+          <span><b>euklidischer Algorithmus</b> 欧几里得算法</span>
+          <span><b>Rest</b> 余数</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 · 本章最实用的一页</span></span>
+      <h3>步数感 · 一百万和二十的区别</h3>
+      <p class="de">Komplexität · Laufzeit</p>
+    </div>
+    <div class="body">
+      <p class="lead">两个算法都能解决同一个问题，一个要走一百万步，一个要走二十步。<strong>在数学上它们同样「有解」，在现实里一个能用一个不能。</strong></p>
+
+      <div class="field">
+        <span class="lbl">先看那个二十步是怎么来的</span>
+        <p>在一本按字母排好序的词典里找一个词。一页一页翻，一百万个词就要翻一百万次。但你不会那么干——你会翻到中间，看要找的词在前半还是后半，然后只在那一半里继续。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 290" role="img" aria-label="二分查找示意：每一步把待查范围砍掉一半，一百万条数据二十步就剩一条。">
+          <text x="90" y="55" text-anchor="end" class="svg-tm">0 步</text>
+          <rect x="110" y="40" width="480" height="20" class="f2"/>
+          <text x="598" y="55" class="svg-tm">100 万</text>
+
+          <text x="90" y="87" text-anchor="end" class="svg-tm">1 步</text>
+          <rect x="110" y="72" width="240" height="20" class="f2"/>
+          <text x="358" y="87" class="svg-tm">50 万</text>
+
+          <text x="90" y="119" text-anchor="end" class="svg-tm">2 步</text>
+          <rect x="110" y="104" width="120" height="20" class="f2"/>
+          <text x="238" y="119" class="svg-tm">25 万</text>
+
+          <text x="90" y="151" text-anchor="end" class="svg-tm">3 步</text>
+          <rect x="110" y="136" width="60" height="20" class="f2"/>
+          <text x="178" y="151" class="svg-tm">12.5 万</text>
+
+          <text x="90" y="183" text-anchor="end" class="svg-tm">4 步</text>
+          <rect x="110" y="168" width="30" height="20" class="f2"/>
+          <text x="148" y="183" class="svg-tm">6.25 万</text>
+
+          <text x="90" y="215" text-anchor="end" class="svg-tm">5 步</text>
+          <rect x="110" y="200" width="15" height="20" class="f2"/>
+          <text x="133" y="215" class="svg-tm">3.1 万</text>
+
+          <text x="90" y="243" text-anchor="end" class="svg-tm">…</text>
+          <rect x="110" y="232" width="6" height="16" class="fm"/>
+          <text x="124" y="245" class="svg-tm txm">第 20 步：只剩 1 个</text>
+
+          <line x1="40" y1="264" x2="660" y2="264" class="svg-l-soft"/>
+          <text x="40" y="282" class="svg-t">一个一个找要 100 万步；每次砍一半只要 20 步。差了五万倍。</text>
+        </svg>
+        <figcaption><b>每次砍一半，需要的步数是 log₂n。</b>这就是 6.2 那个猜数字游戏，换了个身份出现。<b>注意主线一 1.8 的对数在这里的意义：它把「翻倍多少次」这个问题变成了一个可以直接算的数。</b>对数函数增长得极慢——数据量从一百万涨到十亿（一千倍），步数只从 20 涨到 30。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">一张值得盯着看一分钟的表</span>
+        <p>下面这几类「增长速度」几乎覆盖了实际遇到的所有算法。表里是<em>大致的步数</em>：</p>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:17%">增长类型</th><th style="width:13%">n = 10</th><th style="width:16%">n = 1000</th><th style="width:20%">n = 100 万</th><th style="width:34%">典型例子</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><b>O(1)</b><br>常数</td><td class="cheap">1</td><td class="cheap">1</td><td class="cheap">1</td><td>直接取第 k 个元素</td></tr>
+            <tr><td><b>O(log n)</b><br>对数</td><td class="cheap">3</td><td class="cheap">10</td><td class="cheap">20</td><td>二分查找、查词典</td></tr>
+            <tr><td><b>O(n)</b><br>线性</td><td class="cheap">10</td><td class="cheap">1 000</td><td>100 万</td><td>一个一个扫一遍</td></tr>
+            <tr><td><b>O(n log n)</b></td><td class="cheap">33</td><td>1 万</td><td>2 000 万</td><td>好的排序算法</td></tr>
+            <tr><td><b>O(n²)</b><br>平方</td><td class="cheap">100</td><td>100 万</td><td class="dear">1 万亿</td><td>两两比较、笨排序</td></tr>
+            <tr><td><b>O(2ⁿ)</b><br>指数</td><td>1 024</td><td class="dear">宇宙年龄不够</td><td class="dear">别想了</td><td>穷举所有可能组合</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <p>看最后两行。<span class="m">O(n²)</span> 在 n=1000 时还能忍，到一百万就已经是一万亿步——普通电脑要算好几个小时。而 <span class="m">O(2ⁿ)</span> 在 n=100 时，需要的步数就已经超过了宇宙中原子的总数。<strong>指数级不是「慢一点」，是「永远算不完」。</strong>这正是主线四 4.3 那场赛跑的现实后果。</p>
+        <p><em>「先让它跑对，再让它跑快」是句好建议——但如果你选的是 O(2ⁿ) 的办法，它永远不会跑对，因为它根本跑不完。</em>换算法，不是优化代码。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>对数（主线一 1.8）· 指数增长（主线四 4.3）· 算法（6.4）· 计数（主线五 5.2）</div>
+          <div><span class="lbl">下游</span>P 对 NP（山顶）· 密码学的安全性（6.9）· 数据结构 · 一切编程</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Komplexität</b> 复杂度</span>
+          <span><b>Laufzeit</b> 运行时间</span>
+          <span><b>Landau-Symbol O</b> 大 O 记号</span>
+          <span><b>binäre Suche</b> 二分查找</span>
+          <span><b>Sortieralgorithmus</b> 排序算法</span>
+          <span><b>effizient</b> 高效的</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>图论 · 只保留「谁连着谁」</h3>
+      <p class="de">Graph · Knoten und Kanten</p>
+    </div>
+    <div class="body">
+      <p class="lead">图论的诞生有一个明确的日子和一个具体的问题。而它的诞生方式，正是<strong>数学建模最经典的一次示范</strong>：把一张真实的地图，扔掉所有细节，只留下「谁连着谁」。</p>
+
+      <div class="field">
+        <span class="lbl">柯尼斯堡的七座桥</span>
+        <p>十八世纪的柯尼斯堡城被河分成四块，中间架着七座桥。当地人有个消遣：<em>能不能走一圈，每座桥恰好过一次？</em>谁也走不通，但谁也说不清为什么。</p>
+        <p>1736 年欧拉解决了它，而他解决的方式比答案本身重要得多。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 320" role="img" aria-label="柯尼斯堡七桥问题：左边是四块陆地和七座桥的地图，右边抽象成四个顶点和七条边的图。">
+          <defs>
+            <marker id="f0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="50" y="40" width="260" height="40" rx="3" class="f1"/>
+          <text x="180" y="65" text-anchor="middle" class="svg-t tx1">A · 北岸</text>
+          <rect x="50" y="200" width="260" height="40" rx="3" class="f1"/>
+          <text x="180" y="225" text-anchor="middle" class="svg-t tx1">C · 南岸</text>
+          <rect x="70" y="120" width="90" height="40" rx="3" class="f1"/>
+          <text x="115" y="145" text-anchor="middle" class="svg-t tx1">B · 岛</text>
+          <rect x="210" y="120" width="90" height="40" rx="3" class="f1"/>
+          <text x="255" y="145" text-anchor="middle" class="svg-t tx1">D</text>
+
+          <line x1="95" y1="80" x2="95" y2="120" class="svg-l" stroke-width="2.5"/>
+          <line x1="135" y1="80" x2="135" y2="120" class="svg-l" stroke-width="2.5"/>
+          <line x1="95" y1="200" x2="95" y2="160" class="svg-l" stroke-width="2.5"/>
+          <line x1="135" y1="200" x2="135" y2="160" class="svg-l" stroke-width="2.5"/>
+          <line x1="255" y1="80" x2="255" y2="120" class="svg-l" stroke-width="2.5"/>
+          <line x1="255" y1="200" x2="255" y2="160" class="svg-l" stroke-width="2.5"/>
+          <line x1="160" y1="140" x2="210" y2="140" class="svg-l" stroke-width="2.5"/>
+          <text x="180" y="272" text-anchor="middle" class="svg-t">四块陆地 · 七座桥</text>
+
+          <path d="M 336 140 L 376 140" class="svg-l" marker-end="url(#f0)"/>
+          <text x="356" y="128" text-anchor="middle" class="svg-tm">扔掉细节</text>
+
+          <path d="M 530 60 Q 475 85 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M 530 60 Q 505 115 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M 530 220 Q 475 195 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M 530 220 Q 505 165 450 140" fill="none" stroke="currentColor" stroke-width="1.8"/>
+          <line x1="530" y1="60" x2="610" y2="140" class="svg-l" stroke-width="1.8"/>
+          <line x1="530" y1="220" x2="610" y2="140" class="svg-l" stroke-width="1.8"/>
+          <line x1="450" y1="140" x2="610" y2="140" class="svg-l" stroke-width="1.8"/>
+
+          <circle cx="530" cy="60" r="17" class="f2" stroke-width="2"/>
+          <text x="530" y="65" text-anchor="middle" class="svg-t tx2">A</text>
+          <circle cx="450" cy="140" r="17" class="fm" stroke-width="2"/>
+          <text x="450" y="145" text-anchor="middle" class="svg-t txm">B</text>
+          <circle cx="530" cy="220" r="17" class="f2" stroke-width="2"/>
+          <text x="530" y="225" text-anchor="middle" class="svg-t tx2">C</text>
+          <circle cx="610" cy="140" r="17" class="f2" stroke-width="2"/>
+          <text x="610" y="145" text-anchor="middle" class="svg-t tx2">D</text>
+
+          <text x="556" y="42" class="svg-tm">度数 3</text>
+          <text x="424" y="176" text-anchor="end" class="svg-tm txm">度数 5</text>
+          <text x="556" y="244" class="svg-tm">度数 3</text>
+          <text x="636" y="176" class="svg-tm">度数 3</text>
+          <text x="530" y="272" text-anchor="middle" class="svg-t">四个顶点 · 七条边</text>
+
+          <line x1="40" y1="288" x2="660" y2="288" class="svg-l-soft"/>
+          <text x="40" y="308" class="svg-t">四个顶点的度数全是奇数 —— 而一笔画最多只能有两个奇数度的点。所以走不通。</text>
+        </svg>
+        <figcaption><b>欧拉真正的贡献，是意识到桥有多长、岛有多大、河往哪儿流，全都无关。</b>唯一要紧的是「哪块地和哪块地之间有几座桥」。把地图换成四个点和七条线之后，问题立刻变得可以分析——<b>这就是抽象的威力，也是主线七要讲的建模的第一步：决定忽略什么。</b><br><br>他的论证也很朴实：一笔画的路上，每经过一个点必定「进去一次、出来一次」，用掉两条边。所以除了起点和终点，每个点的边数都必须是偶数。柯尼斯堡四个点全是奇数，无解。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">图论今天在你身边</span>
+        <ul class="plain">
+          <li><strong>导航</strong>——路口是点，路段是边，找最短路径。你手机上每一次「开始导航」都在跑图算法。</li>
+          <li><strong>社交网络</strong>——人是点，关系是边。「六度分隔」说的是这张图的直径很小。</li>
+          <li><strong>互联网</strong>——网页是点，链接是边。谷歌最早的排名算法 PageRank，本质上是在这张巨图上算一个特征向量（主线二 2.9 的矩阵）。</li>
+          <li><strong>排课与调度</strong>——把「不能同时进行」的事连起来，问题变成给图的顶点染色，使相邻顶点不同色。</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>集合与关系（主线零 0.1）· 计数（主线五 5.2）· 抽象与建模（主线七 7.1）</div>
+          <div><span class="lbl">下游</span>最短路与网络流 · 图着色与四色定理（主线零山顶）· 矩阵表示（主线二 2.9）· 组合优化 · 复杂度理论（山顶）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Graph</b> 图</span>
+          <span><b>Knoten</b> 顶点</span>
+          <span><b>Kante</b> 边</span>
+          <span><b>Grad</b> 度数</span>
+          <span><b>Eulerkreis</b> 欧拉回路</span>
+          <span><b>kürzester Weg</b> 最短路</span>
+          <span><b>zusammenhängend</b> 连通的</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.7 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>鸽笼原理 · 简单到可笑，好用到离谱</h3>
+      <p class="de">Schubfachprinzip</p>
+    </div>
+    <div class="body">
+      <p class="lead"><strong>n+1 只鸽子飞进 n 个笼子，必定有一个笼子里至少有两只。</strong>就这么一句话，而且显然到不需要证明——可它能推出一些相当惊人的结论。</p>
+
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="鸽笼原理示意：五只鸽子放进四个笼子，必定有一个笼子装了两只。">
+          <text x="350" y="36" text-anchor="middle" class="svg-t">5 只鸽子，4 个笼子</text>
+          <rect x="120" y="60" width="100" height="76" rx="4" class="fm"/>
+          <circle cx="150" cy="98" r="15" class="f2" stroke-width="2"/>
+          <circle cx="190" cy="98" r="15" class="f2" stroke-width="2"/>
+          <rect x="250" y="60" width="100" height="76" rx="4" class="svg-face"/>
+          <circle cx="300" cy="98" r="15" class="f2" stroke-width="2"/>
+          <rect x="380" y="60" width="100" height="76" rx="4" class="svg-face"/>
+          <circle cx="430" cy="98" r="15" class="f2" stroke-width="2"/>
+          <rect x="510" y="60" width="100" height="76" rx="4" class="svg-face"/>
+          <circle cx="560" cy="98" r="15" class="f2" stroke-width="2"/>
+          <text x="170" y="158" text-anchor="middle" class="svg-tm txm">挤了两只</text>
+          <line x1="60" y1="180" x2="660" y2="180" class="svg-l-soft"/>
+          <text x="60" y="200" class="svg-t">不管你怎么放，总有一个笼子至少装两只 —— 但它不告诉你是哪一个</text>
+        </svg>
+        <figcaption><b>注意最后半句，那是这条原理最有意思的地方。</b>它证明了「存在」，却完全不指出「是谁」。这是主线零 0.3 里 <span class="svg-tm">∃</span> 类命题的典型证法——<b>存在性证明，不等于能把东西找出来。</b></figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">两个例子</span>
+        <div class="demo">
+          <p><strong>柏林至少有两个人，头发根数完全相同。</strong></p>
+          <p>人头上大约有十几万根头发，就算上限算到 100 万根，「可能的头发根数」也只有 100 万种（笼子）。而柏林有 370 多万人（鸽子）。鸽子比笼子多，所以必定有两个人头发根数一样——<em>而且不止两个。</em></p>
+          <p>注意这个论证的性质：我们没数过任何人的头发，却确定地知道这件事是真的。<strong>这就是数学最迷人的地方之一。</strong></p>
+          <p><strong>任意 13 个人里，必有两人生日在同一个月。</strong>12 个月是笼子，13 个人是鸽子。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>计数（主线五 5.2）· 存在量词（主线零 0.3）</div>
+          <div><span class="lbl">下游</span>组合数学 · 竞赛数学里的常客 · 哈希碰撞（计算机里必然发生的原因就是它）· 数据压缩的极限</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">别和生日悖论搞混</span>
+          <p>鸽笼原理说的是<em>必然</em>：23 个人里不一定有两人同一天生日。而著名的「生日悖论」说的是<em>概率</em>：23 个人里有两人同一天生日的概率已经超过 50%——这是主线五的地盘，靠的是「两两配对有 253 组」这个计数。</p>
+          <p><strong>「必然有」和「很可能有」是两条不同的路。</strong>前者属于这条主线，后者属于主线五。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Schubfachprinzip</b> 鸽笼原理</span>
+          <span><b>Taubenschlagprinzip</b> 鸽笼原理（别称）</span>
+          <span><b>Existenzbeweis</b> 存在性证明</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.8 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>数值方法 · 算不出精确解的时候</h3>
+      <p class="de">Numerik · Näherungsverfahren</p>
+    </div>
+    <div class="body">
+      <p class="lead">主线四给了很多漂亮的公式，可现实里绝大多数方程<strong>根本没有公式解</strong>。这时候的办法是：不求精确答案，求一个<em>足够接近</em>的答案——而且让机器一步步逼近。</p>
+
+      <div class="field">
+        <span class="lbl">这不是退而求其次</span>
+        <p>先纠正一个常见的误会：数值方法不是「解不出来才用的下策」。</p>
+        <p>主线二 2.10 说五次方程没有求根公式，主线四 4.9 说 <span class="m">e^(−x²)</span> 没有初等原函数。<strong>这些「没有」是被证明了的，不是暂时的。</strong>真实世界的工程问题——飞机绕流、天气、桥梁受力、蛋白质折叠——几乎全都属于这一类。所以数值方法不是备胎，<em>它就是绝大多数科学计算实际在做的事。</em></p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">牛顿法：用切线一步步逼近</span>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="牛顿法迭代示意：从一个猜测出发沿切线滑到 x 轴得到更好的猜测，几步之后逼近真正的根。">
+          <path d="M 120 234 Q 360 254 600 34" fill="none" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="60" y1="230" x2="650" y2="230" class="svg-l"/>
+
+          <line x1="560" y1="70" x2="370" y2="230" class="svg-l-soft"/>
+          <line x1="370" y1="190" x2="275" y2="230" class="svg-l-soft"/>
+          <line x1="275" y1="220" x2="227" y2="230" class="svg-l-soft"/>
+
+          <line x1="370" y1="230" x2="370" y2="190" class="svg-l-soft" stroke-dasharray="3 3"/>
+          <line x1="275" y1="230" x2="275" y2="220" class="svg-l-soft" stroke-dasharray="3 3"/>
+
+          <circle cx="560" cy="70" r="4.5" class="fm" stroke-width="2"/>
+          <circle cx="370" cy="190" r="4.5" class="f2" stroke-width="2"/>
+          <circle cx="275" cy="220" r="4.5" class="f2" stroke-width="2"/>
+          <circle cx="180" cy="230" r="5" class="f1" stroke-width="2"/>
+
+          <text x="560" y="252" text-anchor="middle" class="svg-tm txm">x₀ 随便猜</text>
+          <text x="370" y="252" text-anchor="middle" class="svg-tm tx2">x₁</text>
+          <text x="275" y="252" text-anchor="middle" class="svg-tm tx2">x₂</text>
+          <text x="180" y="252" text-anchor="middle" class="svg-tm tx1">真正的根</text>
+
+          <line x1="60" y1="272" x2="660" y2="272" class="svg-l-soft"/>
+          <text x="60" y="292" class="svg-t">沿切线滑到 x 轴，就得到一个更好的猜测。重复几次，误差小得惊人。</text>
+        </svg>
+        <figcaption><b>牛顿法把主线四的导数变成了一台求解机器。</b>做法只有一句话：在当前猜测处画切线，看它和 x 轴交在哪儿，那就是下一个猜测。它收敛得极快——每迭代一次，正确的位数大致<b>翻倍</b>。你按计算器上的 <span class="svg-tm">√</span> 键时，芯片里跑的往往就是它的变体。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">把连续切成离散</span>
+        <p>数值方法的通用套路，就是这条主线和主线四的接口：<strong>把连续的东西切成有限多块。</strong></p>
+        <div class="demo">
+          <p>算积分？切成矩形加起来——<em>那就是主线四 4.8 的黎曼和，它本来就是一个数值方法。</em></p>
+          <p>解微分方程？把时间切成小段，每一小段当成直线走——这叫欧拉法。天气预报就是这么算的：把大气切成几百万个小格子，一步步推进几小时。</p>
+          <p>求导数？用差商代替微商，也就是别取极限，取一个很小的 Δx 就停。</p>
+        </div>
+        <p>代价是<strong>误差</strong>，而误差管理是这门学问的核心：切得越细越准，但计算量越大。<em>这就是 6.5 那张表在真实工程里的样子——精度和时间之间永远要做交易。</em></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>导数与切线（主线四 4.6）· 黎曼和（主线四 4.8）· 极限（主线四 4.5）· 复杂度（6.5）· 递推（6.1）</div>
+          <div><span class="lbl">下游</span>科学计算 · 天气预报与气候模型 · 工程仿真 · 机器学习的梯度下降 · 大学 Numerik</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>计算机里的小数是<strong>有限位</strong>的近似，所以 <span class="m">0.1 + 0.2</span> 在大多数编程语言里<em>不等于</em> <span class="m">0.3</span>——差一个极小的量。这不是 bug，是二进制表示不了 0.1（就像十进制表示不了 1/3）。</p>
+          <p>单次误差微不足道，但迭代几百万次之后可能会累积到面目全非。<em>「计算机算的是数学，但不是精确的数学」</em>——这是数值方法这门课第一节的内容。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Numerik</b> 数值分析</span>
+          <span><b>Näherungsverfahren</b> 近似方法</span>
+          <span><b>Newton-Verfahren</b> 牛顿法</span>
+          <span><b>Iteration</b> 迭代</span>
+          <span><b>Konvergenz</b> 收敛</span>
+          <span><b>Rundungsfehler</b> 舍入误差</span>
+          <span><b>Diskretisierung</b> 离散化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">6.9 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰 → 山顶</span></span>
+      <h3>密码学 · 素数正在保护你</h3>
+      <p class="de">Kryptographie</p>
+    </div>
+    <div class="body">
+      <p class="lead">现代密码学建立在一个听起来很简单的现象上：<strong>有些事情正着做很容易，倒着做极其困难。</strong>而这个现象，你在这本册子里已经遇到过四次了。</p>
+
+      <div class="field">
+        <span class="lbl">又是那台引擎</span>
+        <p>把这本册子里出现过的「正着容易倒着难」排一排：</p>
+        <div class="demo">
+          <p><strong>主线一 1.6</strong>　两个大素数相乘，几毫秒。把乘积分解回去，几百万年。</p>
+          <p><strong>主线四 4.9</strong>　任何初等函数都能求导。求原函数？很多根本没有。</p>
+          <p><strong>主线五</strong>　已知模型算概率，容易。已知数据推模型，难，而且答案不唯一。</p>
+          <p><strong>这一张</strong>　加密，一瞬间。没有钥匙解密，比宇宙年龄还久。</p>
+        </div>
+        <p>这类函数叫<strong>单向函数</strong>。<em>整个互联网的安全，建立在「某些逆运算太难」这件事上。</em>这条从主线一就开始的线索，在这里终于变成了每天几十亿次的实际用途。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">公开密钥：一把锁人人可拿，钥匙只有你有</span>
+        <p>传统加密有个死结：怎么把密钥安全地告诉对方？如果通道本来就不安全，密钥也会被截走。</p>
+        <p>1970 年代的突破是<strong>公开密钥</strong>：造一对钥匙，一把公开、一把私藏。任何人都能用公钥把消息锁上，但<em>只有私钥能打开</em>——连锁上的人自己都打不开。</p>
+        <p>用挂锁打比方：我把一堆开着的挂锁散给全世界，谁想给我寄东西，就用我的锁把箱子锁上。锁谁都能扣，但钥匙只在我手里。<strong>RSA 算法就是把这件事用素数实现出来的</strong>，安全性完全依赖「分解大数很难」这件事。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一件值得知道的事</span>
+        <p>「分解大数很难」目前<strong>没有被证明</strong>，只是几十年来没人找到快办法。<em>如果哪天有人证明它其实不难，或者量子计算机成熟到能跑 Shor 算法，今天的加密体系要整个换掉。</em></p>
+        <p>这件事正在真实发生：各国的密码标准机构已经在推「后量子密码」，就是为这一天做准备。<strong>数论曾经是「最没用」的数学分支——哈代在 1940 年还专门为它的无用而骄傲过。现在它撑着整个互联网。</strong></p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>素数与因数分解（主线一 1.6）· 同余与余数（6.4）· 复杂度（6.5）· 幂运算（主线一 1.8）</div>
+          <div><span class="lbl">下游</span>网络安全 · 数字签名与区块链 · 量子计算 · 大学 Kryptographie</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Kryptographie</b> 密码学</span>
+          <span><b>Verschlüsselung</b> 加密</span>
+          <span><b>öffentlicher Schlüssel</b> 公钥</span>
+          <span><b>privater Schlüssel</b> 私钥</span>
+          <span><b>Einwegfunktion</b> 单向函数</span>
+          <span><b>Modulo-Rechnung</b> 模运算</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista6">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>这条主线的山顶上，有本书里的<strong>第三堵墙</strong>。同样<strong>不要求懂</strong>。</p>
+
+  <div class="vista">
+    <h4>P 对 NP：世界上最贵的一道数学题</h4>
+    <p>有一类问题，<em>验证</em>一个答案很容易，但<em>找到</em>那个答案似乎极难。给你一份排好的课表，你几分钟就能检查它有没有冲突；可要从零排出一份来，可能要试到天荒地老。</p>
+    <p><strong>P</strong> 是「能快速解决」的问题，<strong>NP</strong> 是「能快速验证」的问题。所有 P 类问题显然都在 NP 里。反过来呢——<em>凡是能快速验证的，是不是也能快速解决？</em></p>
+    <p>这就是 <strong>P = NP?</strong>，克雷数学研究所悬赏一百万美元的七个千禧年问题之一，五十多年无人解决。绝大多数专家相信 P ≠ NP（也就是有些问题确实只能靠碰运气式的搜索），但没人能证明。</p>
+    <p>它的赌注大得吓人：<em>如果 P = NP，今天所有的加密都会瞬间失效</em>（因为解密就是「验证容易但求解难」的典型），但同时，蛋白质折叠、物流优化、芯片设计这些问题也会一夜之间变得可解。<strong>整个数字世界的安全，压在一个没被证明的猜想上。</strong></p>
+
+    <h4>第三堵墙：有些问题机器永远算不完</h4>
+    <p>6.4 说算法必须「会停下来」。那么能不能写一个程序，输入任意一段代码，判断它会不会死循环？</p>
+    <p>1936 年，图灵证明了<strong>不可能</strong>。这叫<strong>停机问题</strong>，而他的证法和主线零里哥德尔的手法几乎是同一个套路：<em>假设有这样的程序，然后构造一个「专门跟它作对」的程序，导致矛盾。</em></p>
+    <p>把三堵墙放在一起看，本书的一条暗线就清楚了：</p>
+    <p><strong>伽罗瓦</strong>（主线二）——五次方程没有求根公式。<strong>哥德尔</strong>（主线零）——有些真话在系统内证不出来。<strong>图灵</strong>（这里）——有些问题机器算不完。</p>
+    <p><em>数学最深刻的成就，常常不是「我做到了」，而是「谁也做不到，我证明给你看」。</em>而知道边界在哪儿，本身就是巨大的进步——图灵为了证明这件事，顺手定义出了「什么叫计算机」，那就是今天所有电脑的理论蓝图。</p>
+
+    <h4>纠错码：让出错的信道传对信息</h4>
+    <p>信号会受干扰，存储会出错。可你的手机通话清晰、光盘划了道还能读、火星探测器隔着几亿公里传回的照片一个像素都不差。<strong>靠的是纠错码</strong>——故意加进去一些冗余，让接收方不但能<em>发现</em>错误，还能<em>算出</em>原来是什么。</p>
+    <p>它的数学基础是主线二山顶那些有限域上的代数。<em>一门看起来最抽象的学问，结果成了让整个通信世界能正常运转的地基。</em></p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Diskrete Mathematik</strong>——图论、组合、数论，计算机专业第一年</li>
+      <li><strong>Algorithmen und Datenstrukturen</strong>——6.4 和 6.5 的正式展开</li>
+      <li><strong>Berechenbarkeit und Komplexität</strong>——停机问题与 P/NP</li>
+      <li><strong>Numerik</strong>——6.8 的展开，和主线四接上</li>
+      <li><strong>Kryptographie / Codierungstheorie</strong>——密码学与编码</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss6">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead">这一章的词在德国中学数学课上出现得不多，但在信息课（Informatik）和大学里是基础词汇。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>离散数学</td><td class="de">diskrete Mathematik</td><td class="en">discrete mathematics</td></tr>
+      <tr><td>数列 / 项</td><td class="de">Folge / Glied</td><td class="en">sequence / term</td></tr>
+      <tr><td>显式 / 递推</td><td class="de">explizit / rekursiv</td><td class="en">explicit / recursive</td></tr>
+      <tr><td>等差 / 等比数列</td><td class="de">arithmetische / geometrische Folge</td><td class="en">arithmetic / geometric sequence</td></tr>
+      <tr><td>斐波那契数列</td><td class="de">Fibonacci-Folge</td><td class="en">Fibonacci sequence</td></tr>
+      <tr><td>二进制 / 二进制数</td><td class="de">Dualsystem / Binärzahl</td><td class="en">binary / binary number</td></tr>
+      <tr><td>比特 / 字节</td><td class="de">Bit / Byte</td><td class="en">bit / byte</td></tr>
+      <tr><td>信息量</td><td class="de">Informationsgehalt</td><td class="en">information content</td></tr>
+      <tr><td>布尔代数</td><td class="de">Boolesche Algebra</td><td class="en">Boolean algebra</td></tr>
+      <tr><td>真值表</td><td class="de">Wahrheitstafel</td><td class="en">truth table</td></tr>
+      <tr><td>与 / 或 / 非</td><td class="de">UND / ODER / NICHT</td><td class="en">AND / OR / NOT</td></tr>
+      <tr><td>逻辑门 / 电路</td><td class="de">Logikgatter / Schaltung</td><td class="en">logic gate / circuit</td></tr>
+      <tr><td>算法</td><td class="de">Algorithmus</td><td class="en">algorithm</td></tr>
+      <tr><td>循环 / 分支</td><td class="de">Schleife / Verzweigung</td><td class="en">loop / branch</td></tr>
+      <tr><td>终止</td><td class="de">terminieren</td><td class="en">terminate</td></tr>
+      <tr><td>欧几里得算法</td><td class="de">euklidischer Algorithmus</td><td class="en">Euclidean algorithm</td></tr>
+      <tr><td>余数 / 模运算</td><td class="de">Rest / Modulo-Rechnung</td><td class="en">remainder / modular arithmetic</td></tr>
+      <tr><td>复杂度 / 运行时间</td><td class="de">Komplexität / Laufzeit</td><td class="en">complexity / runtime</td></tr>
+      <tr><td>大 O 记号</td><td class="de">Landau-Symbol O</td><td class="en">big-O notation</td></tr>
+      <tr><td>二分查找</td><td class="de">binäre Suche</td><td class="en">binary search</td></tr>
+      <tr><td>排序算法</td><td class="de">Sortieralgorithmus</td><td class="en">sorting algorithm</td></tr>
+      <tr><td>图 / 顶点 / 边</td><td class="de">Graph / Knoten / Kante</td><td class="en">graph / vertex / edge</td></tr>
+      <tr><td>度数 / 连通的</td><td class="de">Grad / zusammenhängend</td><td class="en">degree / connected</td></tr>
+      <tr><td>欧拉回路 / 最短路</td><td class="de">Eulerkreis / kürzester Weg</td><td class="en">Eulerian circuit / shortest path</td></tr>
+      <tr><td>鸽笼原理</td><td class="de">Schubfachprinzip</td><td class="en">pigeonhole principle</td></tr>
+      <tr><td>存在性证明</td><td class="de">Existenzbeweis</td><td class="en">existence proof</td></tr>
+      <tr><td>数值分析 / 近似方法</td><td class="de">Numerik / Näherungsverfahren</td><td class="en">numerics / approximation</td></tr>
+      <tr><td>牛顿法 / 迭代</td><td class="de">Newton-Verfahren / Iteration</td><td class="en">Newton's method / iteration</td></tr>
+      <tr><td>收敛 / 舍入误差</td><td class="de">Konvergenz / Rundungsfehler</td><td class="en">convergence / rounding error</td></tr>
+      <tr><td>离散化</td><td class="de">Diskretisierung</td><td class="en">discretisation</td></tr>
+      <tr><td>密码学 / 加密</td><td class="de">Kryptographie / Verschlüsselung</td><td class="en">cryptography / encryption</td></tr>
+      <tr><td>公钥 / 私钥</td><td class="de">öffentlicher / privater Schlüssel</td><td class="en">public / private key</td></tr>
+      <tr><td>单向函数</td><td class="de">Einwegfunktion</td><td class="en">one-way function</td></tr>
+      <tr><td>停机问题</td><td class="de">Halteproblem</td><td class="en">halting problem</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs6">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">一道也不用算。答得上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li>数列和函数是什么关系？「离散」这个词到底在说什么？</li>
+    <li>显式公式和递推公式各有什么长处？为什么很多现实过程天生是递推的？</li>
+    <li>猜一个 1 到 1000 的数，最少要问几个是非题？这个数和哪个函数有关？</li>
+    <li>数学里的「或」和日常说的「或」有什么不同？</li>
+    <li>香农的硕士论文把哪两样东西接到了一起？为什么说你手机里跑的一切最底层都是那四行真值表？</li>
+    <li>欧几里得算法为什么管用？它用的是工具箱里的哪一招？</li>
+    <li><span class="m">O(n²)</span> 和 <span class="m">O(2ⁿ)</span> 的区别有多大？为什么说「指数级不是慢一点，是永远算不完」？</li>
+    <li>欧拉解决七桥问题时，真正的贡献是什么？他扔掉了什么？</li>
+    <li>为什么柏林一定有两个人头发根数相同？我们数过谁的头发吗？</li>
+    <li>鸽笼原理证明了「存在」，但它能告诉你「是谁」吗？这属于主线零里的哪种命题？</li>
+    <li>为什么说数值方法不是「解不出来才用的下策」？</li>
+    <li>「正着容易倒着难」在这本册子里出现过哪四次？它今天在保护什么？</li>
+    <li>如果有人证明了 P = NP，会发生什么好事和什么坏事？</li>
+    <li>伽罗瓦、哥德尔、图灵三个人证明的事情，有什么共同点？</li>
+  </ol>
+</section>
+
+<div class="pagenav">
+  <a href="strand-5-stochastics.html"><span class="dir">上一页</span><span class="t">主线五 · 概率与统计</span></a>
+  <a class="next" href="strand-7-modelling.html"><span class="dir">下一页</span><span class="t">主线七 · 建模与应用</span></a>
+</div>
+
+</main>
+</body>
+</html>

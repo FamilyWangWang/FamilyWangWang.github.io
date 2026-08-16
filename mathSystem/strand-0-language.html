@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主线零 · 数学的语言与证明 · 数学版图</title>
+<link rel="stylesheet" href="assets/atlas.css">
+
+<meta name="description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="canonical" href="https://familywangwang.github.io/mathSystem/strand-0-language.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:title" content="主线零 · 数学的语言与证明 · 数学版图">
+<meta property="og:description" content="按数学方向组织的中德双语知识图谱，包含互动实验、学习进度和 A2 挂墙版。">
+<meta property="og:url" content="https://familywangwang.github.io/mathSystem/strand-0-language.html">
+</head>
+<body>
+<nav class="toc">
+  <div class="page-frame">
+    <ul>
+      <li class="hub-link"><a href="/">← 文档中心</a></li>
+      <li><a href="index.html">全景图</a></li>
+      <li><a href="toolbox.html">工具箱</a></li>
+      <li><a href="strand-0-language.html" aria-current="page">零 · 语言与证明</a></li>
+      <li><a href="strand-1-numbers.html">一 · 数与数系</a></li>
+      <li><a href="strand-2-algebra.html">二 · 代数与结构</a></li>
+      <li><a href="strand-3-geometry.html">三 · 形与空间</a></li>
+      <li><a href="strand-4-analysis.html">四 · 函数与变化</a></li>
+      <li><a href="strand-5-stochastics.html">五 · 概率与统计</a></li>
+      <li><a href="strand-6-discrete.html">六 · 离散与算法</a></li>
+      <li><a href="strand-7-modelling.html">七 · 建模与应用</a></li>
+      <li><a href="exam-perspective.html">附页 · 考试视角</a></li>
+      <li><a href="lab.html">实验室</a></li>
+      <li><a href="progress.html">进度表</a></li>
+      <li><a href="poster.html">挂墙版</a></li>
+      <li class="lang"><a href="de/strang-0-sprache.html">Deutsch</a></li>
+    </ul>
+  </div>
+</nav>
+<main>
+<h1 class="sr-only">主线零</h1>
+<section id="s0">
+  <h2 class="sec"><span class="num">主线 零</span>数学的语言与证明</h2>
+  <p class="sec-lead">这条主线不回答任何数学问题。它管的是另一件事：<strong>什么样的回答才算数。</strong></p>
+
+  <p>其余七条主线各自研究一样东西——数、形、变化、随机。这一条不研究任何东西，它研究<em>那七条主线说话的方式</em>。所以它在全景图上不是第八条，而是垫在底下的那一层。</p>
+
+  <p>它也是学校最不教的一条。课本会教你解方程，但很少有人告诉你「解出来了」到底是什么意思；会让你证明两个三角形全等，但很少有人讲清楚「证明」这个动作本身遵守什么规则。结果是很多人学了十年数学，却从没意识到自己一直在一套非常严格的语法里说话。</p>
+
+  <p>这条主线要做的，就是把那套语法拿到台面上来。它有一个很实在的好处：<strong>一旦你看清了这套语法，别的所有主线都会变得容易一些</strong>，因为你终于知道自己在读什么了。</p>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.1 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>集合 · 数学的容器</h3>
+      <p class="de">Menge · set</p>
+    </div>
+    <div class="body">
+      <p class="lead">把一些东西放在一起当成一个整体看，这个整体就叫集合。就这么简单——简单到它可以当整个数学的地基。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>数学里到处需要说「这一类东西」：所有偶数、所有三角形、所有小于 10 的素数、掷骰子所有可能的结果。集合就是为了给「这一类东西」一个正式的说法。</p>
+        <p>它看起来平淡，但十九世纪末数学家发现了一件让人吃惊的事：<strong>几乎所有数学对象都可以用集合搭出来。</strong>数可以用集合定义，函数可以定义成一种特殊的集合，几何图形就是点的集合。集合论因此成了整座数学大厦的地基——虽然大部分人盖楼的时候并不需要往下看那么深。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子</span>
+        <div class="demo">
+          <p>写法是花括号：<span class="m">A = {2, 3, 5, 7}</span>，读作「A 是由 2、3、5、7 组成的集合」。</p>
+          <p class="calc">3 ∈ A　　（3 属于 A）<br>4 ∉ A　　（4 不属于 A）<br>{2, 3} ⊂ A　（{2,3} 是 A 的子集）</p>
+          <p>两个集合可以做运算，跟数的加减很像：</p>
+          <p class="calc">A ∪ B　并集：A 里的加上 B 里的<br>A ∩ B　交集：两边都有的<br>A \ B　差集：A 里有但 B 里没有的</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>没有。这是整本册子里最底下的一块砖。</div>
+          <div><span class="lbl">下游</span>函数的定义域与值域（主线四）· 概率的样本空间（主线五）· 数系 ℕ ℤ ℚ ℝ ℂ 本身就是集合（主线一）· 几何图形作为点集（主线三）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>集合里不分顺序，也不数重复。</strong><span class="m">{1, 2, 3}</span>、<span class="m">{3, 2, 1}</span> 和 <span class="m">{1, 2, 2, 3}</span> 是<em>同一个</em>集合。如果顺序重要，那你要的是「数列」或者「元组」，不是集合。这个区别在概率题里会真的坑到人。</p>
+          <p>还有个容易混的：<span class="m">∈</span> 是「元素属于集合」，<span class="m">⊂</span> 是「集合是集合的一部分」。<span class="m">3 ∈ A</span> 对，<span class="m">3 ⊂ A</span> 错；<span class="m">{3} ⊂ A</span> 对，<span class="m">{3} ∈ A</span> 错（除非 A 里真的装着一个集合）。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Menge</b> 集合</span>
+          <span><b>Element</b> 元素</span>
+          <span><b>Teilmenge</b> 子集</span>
+          <span><b>Vereinigung</b> 并集</span>
+          <span><b>Schnittmenge</b> 交集</span>
+          <span><b>Differenzmenge</b> 差集</span>
+          <span><b>leere Menge ∅</b> 空集</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.2 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>命题 · 一句话是真是假</h3>
+      <p class="de">Aussage · proposition</p>
+    </div>
+    <div class="body">
+      <p class="lead">能判断真假的陈述句，叫命题。数学书上的每一句正经话都是命题——这是数学和其他所有文体最大的区别。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>「今天几号？」不是命题，因为问句没有真假。「这道题真难」也不是命题，因为「难」没有客观标准。但「17 是素数」是命题（真的），「所有偶数都能被 4 整除」也是命题（假的）。</p>
+        <p>为什么要专门强调这件事？因为它规定了数学的<strong>游戏规则</strong>：在数学里，一句话要么真要么假，没有「差不多」「大概」「某种意义上」。这种苛刻正是数学能层层往上垒的原因——每一块砖都必须是实心的，不然上面的全塌。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子</span>
+        <div class="demo">
+          <p>判断下面哪些是命题：</p>
+          <p class="calc">「7 + 5 = 12」　　　　　　是，而且真<br>
+          「7 + 5 = 13」　　　　　　是，但假<br>
+          「x + 5 = 12」　　　　　　不是——x 没定，真假就没定<br>
+          「请把方程解出来」　　　　不是，祈使句<br>
+          「√2 是无理数」　　　　　是，而且真（主线一证过了）</p>
+          <p>第三个特别值得留意。含未知数的式子本身没有真假，它要等到「对所有 x」或者「存在某个 x」这样的话补上去，才变成命题。这就是下一张卡片的内容。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>集合（0.1），因为很多命题说的就是集合里的事</div>
+          <div><span class="lbl">下游</span>量词（0.3）· 蕴含（0.4）· 一切定理与证明 · 布尔代数与逻辑电路（主线六）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>「这句话是假的」——这句话是真是假？真的话它就是假的，假的话它就是真的。它<strong>不是命题</strong>，是个悖论。这类自我指涉的句子在两千年里一直是个哲学玩具，直到二十世纪才发现它藏着数学的一个根本限制。那是这条主线山顶上的风景（见 0.9）。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Aussage</b> 命题</span>
+          <span><b>wahr / falsch</b> 真 / 假</span>
+          <span><b>Aussageform</b> 含变量的开语句</span>
+          <span><b>Verneinung</b> 否定</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.3 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚 → 山腰</span></span>
+      <h3>「所有」和「存在」· 数学里最有用的不对称</h3>
+      <p class="de">Allquantor ∀ · Existenzquantor ∃</p>
+    </div>
+    <div class="body">
+      <p class="lead">数学里几乎每个重要的句子，开头都藏着「所有」或者「存在」。而这两个词有一个极其有用的不对称：<strong>推翻其中一个，和推翻另一个，代价差了天上地下。</strong></p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>「素数是奇数」——这句话什么意思？是说「所有素数都是奇数」（假的，2 就不是），还是「存在奇数的素数」（真的）？日常语言在这里含糊得要命，而数学不能含糊。所以专门造了两个符号：</p>
+        <p class="calc" style="font-family:var(--f-serif);font-size:1.1rem">∀ &nbsp;读作「对所有」　　∃ &nbsp;读作「存在」</p>
+        <p>写清楚之后，刚才那句话的两种意思就完全分开了，一个假一个真，再也混不了。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">那个不对称</span>
+        <p>下面这张表值得单独记住。它是数学里最省力的杠杆之一，也直接解释了为什么「举反例」是那么强大的一招：</p>
+        <div class="scroller">
+        <table class="matrix">
+          <thead>
+            <tr><th style="width:24%"></th><th style="width:38%">要<b>证明</b>它</th><th style="width:38%">要<b>推翻</b>它</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>∀</b> 所有 x 都满足 P<br><span style="font-size:12.5px;color:var(--ink-2)">「所有素数都是奇数」</span></td>
+              <td class="dear"><b>贵。</b>必须对每一个 x 都成立，通常得给一个覆盖全部情况的一般性论证</td>
+              <td class="cheap"><b>便宜。</b>找到<em>一个</em>反例就够了——比如 2</td>
+            </tr>
+            <tr>
+              <td><b>∃</b> 存在某个 x 满足 P<br><span style="font-size:12.5px;color:var(--ink-2)">「存在偶数的素数」</span></td>
+              <td class="cheap"><b>便宜。</b>找到<em>一个</em>例子就够了——比如 2</td>
+              <td class="dear"><b>贵。</b>必须证明没有任何一个 x 满足，要扫遍全部</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <p>这张表的实用价值是：<strong>拿到一个不确定的命题，先花两分钟找反例。</strong>因为如果它是错的，反例往往几分钟就能找到；而如果找了半天找不到，你对它为什么成立的理解也会深很多，证明反而更好写了。工具箱里的招数三讲的就是这件事。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">一个小例子：否定「所有」</span>
+        <div class="demo">
+          <p>「所有天鹅都是白的」的否定是什么？</p>
+          <p>不是「所有天鹅都不是白的」。是<strong>「存在一只天鹅不是白的」</strong>。</p>
+          <p class="calc">¬(∀x : P(x))　⟺　∃x : ¬P(x)<br>¬(∃x : P(x))　⟺　∀x : ¬P(x)</p>
+          <p>否定的时候，<span class="m">∀</span> 和 <span class="m">∃</span> 互换，然后否定跑到里面去。这条规则在写反证法的时候天天要用——反证法第一步就是否定结论。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>命题（0.2）· 集合（0.1）</div>
+          <div><span class="lbl">下游</span>反证法（0.6）· 极限的 ε-δ 定义（大学 Analysis，那里是三四个量词套在一起）· 「至少有一个解」「恰好有一个解」这类说法（主线二）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>量词的顺序不能换。</strong>「每个人都有一个妈妈」和「有一个人是所有人的妈妈」，符号上只差了 <span class="m">∀</span> 和 <span class="m">∃</span> 的先后，意思天差地别。</p>
+          <p class="calc" style="font-size:.98rem">∀ 人 x, ∃ 人 y : y 是 x 的妈妈　　（真）<br>∃ 人 y, ∀ 人 x : y 是 x 的妈妈　　（假）</p>
+          <p>这个坑在中学不太致命，但到了大学的极限定义会立刻要命——「连续」和「一致连续」的全部区别就在两个量词的顺序上。现在留个印象就好。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>für alle ∀</b> 对所有</span>
+          <span><b>es existiert ∃</b> 存在</span>
+          <span><b>Allquantor</b> 全称量词</span>
+          <span><b>Existenzquantor</b> 存在量词</span>
+          <span><b>Gegenbeispiel</b> 反例</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.4 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>「如果…那么」· 最容易被误解的连接词</h3>
+      <p class="de">Implikation · hinreichend und notwendig</p>
+    </div>
+    <div class="body">
+      <p class="lead"><span class="m">A ⟹ B</span> 的意思是「A 成立的话，B 就一定成立」。它<strong>不</strong>意味着反过来也对——而几乎所有人在几乎所有场合都会不小心把它反过来用。</p>
+
+      <div class="field">
+        <span class="lbl">它为了解决什么才出现</span>
+        <p>「下雨则地湿」是真的。「地湿则下雨」呢？不一定——可能是洒水车过去了。这两句话完全不同，但日常说话时人们经常滑来滑去。</p>
+        <p>数学不允许滑。所以从一个 <span class="m">A ⟹ B</span> 出发，衍生出了三个亲戚，而它们的真假关系恰好构成一个非常漂亮的图案：</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 300" role="img" aria-label="原命题、逆命题、否命题、逆否命题的四方阵，原命题与逆否命题等价，逆命题与否命题等价。">
+          <rect x="60" y="30" width="250" height="86" rx="4" class="f1"/>
+          <text x="185" y="58" text-anchor="middle" class="svg-t tx1">原命题　A ⟹ B</text>
+          <text x="185" y="81" text-anchor="middle" class="svg-ts tx1">下雨 ⟹ 地湿</text>
+          <text x="185" y="102" text-anchor="middle" class="svg-ts tx1">真</text>
+
+          <rect x="390" y="30" width="250" height="86" rx="4" class="fm"/>
+          <text x="515" y="58" text-anchor="middle" class="svg-t txm">逆命题　B ⟹ A</text>
+          <text x="515" y="81" text-anchor="middle" class="svg-ts txm">地湿 ⟹ 下雨</text>
+          <text x="515" y="102" text-anchor="middle" class="svg-ts txm">不一定</text>
+
+          <rect x="390" y="170" width="250" height="86" rx="4" class="fm"/>
+          <text x="515" y="198" text-anchor="middle" class="svg-t txm">否命题　¬A ⟹ ¬B</text>
+          <text x="515" y="221" text-anchor="middle" class="svg-ts txm">没下雨 ⟹ 地不湿</text>
+          <text x="515" y="242" text-anchor="middle" class="svg-ts txm">不一定</text>
+
+          <rect x="60" y="170" width="250" height="86" rx="4" class="f1"/>
+          <text x="185" y="198" text-anchor="middle" class="svg-t tx1">逆否命题　¬B ⟹ ¬A</text>
+          <text x="185" y="221" text-anchor="middle" class="svg-ts tx1">地不湿 ⟹ 没下雨</text>
+          <text x="185" y="242" text-anchor="middle" class="svg-ts tx1">真</text>
+
+          <line x1="185" y1="120" x2="185" y2="166" class="svg-l" stroke-width="2"/>
+          <text x="196" y="147" class="svg-tm tx1">永远同真假</text>
+          <line x1="515" y1="120" x2="515" y2="166" class="svg-l" stroke-width="2"/>
+          <text x="526" y="147" class="svg-tm txm">永远同真假</text>
+
+          <line x1="314" y1="73" x2="386" y2="73" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <text x="350" y="66" text-anchor="middle" class="svg-tm">≠</text>
+          <line x1="314" y1="213" x2="386" y2="213" class="svg-l-soft" stroke-dasharray="4 4"/>
+          <text x="350" y="206" text-anchor="middle" class="svg-tm">≠</text>
+
+          <text x="350" y="288" text-anchor="middle" class="svg-tm">左边一列是一回事，右边一列是另一回事 —— 横着走会出错，竖着走永远安全</text>
+        </svg>
+        <figcaption><b>逆否命题和原命题永远同真假，这条性质是反证法的全部基础。</b>「地不湿，所以没下雨」这个推理是绝对可靠的，哪怕它听起来比原句绕。当一个命题正面难证的时候，就去证它的逆否命题——这一招在数学里用得极多。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">充分与必要：两个绕口的词</span>
+        <div class="demo">
+          <p>如果 <span class="m">A ⟹ B</span>，那么：</p>
+          <p><strong>A 是 B 的充分条件</strong>——有 A 就<em>够了</em>，足以保证 B。<br>
+          <strong>B 是 A 的必要条件</strong>——想要 A 成立，<em>必须</em>先有 B。</p>
+          <p>中文这两个词很绕，德语反而直白：<span class="m-up m">hinreichend</span> 就是「够用了」，<span class="m-up m">notwendig</span> 就是「必需的」。用德语的字面意思去想，反而不容易错。</p>
+          <p>举例：「是正方形」<span class="m">⟹</span>「是长方形」。所以「是正方形」对「是长方形」来说是充分的（是正方形就够了），「是长方形」对「是正方形」来说是必要的（不是长方形就绝不可能是正方形）。</p>
+          <p>如果两个方向都成立，就写 <span class="m">A ⟺ B</span>，读作<strong>「当且仅当」</strong>（德语 <span class="m-up m">genau dann, wenn</span>）。这时候 A 和 B 是同一件事的两种说法。数学定义里的「当且仅当」几乎总是这个意思。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>命题（0.2）· 否定与量词（0.3）</div>
+          <div><span class="lbl">下游</span>反证法（0.6）· 一切几何证明（主线三）· 方程的同解变形（主线二，每一步化简其实都在用 ⟺）· 条件概率（主线五，那里 <span class="m">P(B|A)</span> 和蕴含长得像但完全不同）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>解方程时的箭头方向。</strong>两边平方是 <span class="m">⟹</span> 不是 <span class="m">⟺</span>——它可能凭空造出根来。所以解完之后必须把根代回原方程检验，那不是老师要求的仪式，是数学上真的必要的一步。反过来，两边同时加一个数是 <span class="m">⟺</span>，不会丢根也不会多根。</p>
+          <p>养成习惯：每化简一步，心里问一句「这一步是双向的吗」。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Implikation</b> 蕴含</span>
+          <span><b>Umkehrung</b> 逆命题</span>
+          <span><b>Kontraposition</b> 逆否命题</span>
+          <span><b>hinreichend</b> 充分的</span>
+          <span><b>notwendig</b> 必要的</span>
+          <span><b>genau dann, wenn</b> 当且仅当</span>
+          <span><b>äquivalent</b> 等价的</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.5 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>定义、公理、定理 · 各干什么</h3>
+      <p class="de">Definition · Axiom · Satz</p>
+    </div>
+    <div class="body">
+      <p class="lead">数学书上的句子分几种，各有各的身份。搞混它们，读数学就永远隔着一层。</p>
+
+      <div class="field">
+        <span class="lbl">三种身份</span>
+        <p><strong>定义（Definition）</strong>——给一个东西起名字。定义<em>没有对错</em>，只有好用不好用。「我们把只能被 1 和自己整除、且大于 1 的数叫素数」——你不能说这句话是错的，你只能说它有没有用。（而它极其有用，见主线一 1.6。）</p>
+        <p><strong>公理（Axiom）</strong>——不加证明就接受的出发点。公理也<em>不是被发现的真理</em>，是被<strong>选</strong>出来的起点。你得从某个地方开始，不然就要无限往回追问。</p>
+        <p><strong>定理（Satz）</strong>——从定义和公理出发，一步步推出来的结论。定理<em>必须证明</em>。这是唯一一种需要你付出劳动的句子。</p>
+        <p>另外还有两个跑龙套的：<strong>引理（Lemma）</strong>是为了证大定理而先证的小定理，<strong>推论（Korollar）</strong>是大定理证完之后顺手就掉下来的结果。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 280" role="img" aria-label="数学的三层建筑结构图：底层是定义，中层是公理，上层是定理与推论，箭头表示上层由下层推出。">
+          <defs>
+            <marker id="a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <rect x="120" y="190" width="460" height="58" rx="4" class="svg-face"/>
+          <text x="350" y="214" text-anchor="middle" class="svg-t">定义 · Definition</text>
+          <text x="350" y="234" text-anchor="middle" class="svg-ts">给东西起名字 —— 无所谓真假，只问好不好用</text>
+
+          <rect x="150" y="112" width="400" height="58" rx="4" class="f1"/>
+          <text x="350" y="136" text-anchor="middle" class="svg-t tx1">公理 · Axiom</text>
+          <text x="350" y="156" text-anchor="middle" class="svg-ts tx1">选定的出发点 —— 不证明，因为总得从某处开始</text>
+
+          <rect x="190" y="34" width="320" height="58" rx="4" class="f2"/>
+          <text x="350" y="58" text-anchor="middle" class="svg-t tx2">定理 · Satz</text>
+          <text x="350" y="78" text-anchor="middle" class="svg-ts tx2">必须证明 —— 唯一要付出劳动的一层</text>
+
+          <line x1="350" y1="186" x2="350" y2="174" class="svg-l" marker-end="url(#a0)"/>
+          <line x1="350" y1="108" x2="350" y2="96" class="svg-l" marker-end="url(#a0)"/>
+
+          <rect x="540" y="34" width="130" height="58" rx="4" class="f2"/>
+          <text x="605" y="58" text-anchor="middle" class="svg-ts tx2">推论 Korollar</text>
+          <text x="605" y="78" text-anchor="middle" class="svg-ts tx2">顺手掉下来的</text>
+          <line x1="514" y1="63" x2="536" y2="63" class="svg-l" marker-end="url(#a0)"/>
+
+          <rect x="30" y="34" width="130" height="58" rx="4" class="f2"/>
+          <text x="95" y="58" text-anchor="middle" class="svg-ts tx2">引理 Lemma</text>
+          <text x="95" y="78" text-anchor="middle" class="svg-ts tx2">为大定理铺路</text>
+          <line x1="164" y1="63" x2="186" y2="63" class="svg-l" marker-end="url(#a0)"/>
+        </svg>
+        <figcaption><b>换掉公理，就得到另一套数学。</b>这不是比喻。欧几里得的第五公设被换掉之后，长出来的就是非欧几何——三角形内角和不再是 180 度，而爱因斯坦的广义相对论正好需要那种几何。数学不研究「什么是真的」，它研究「从什么推出什么」。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">一个真实的故事：第五公设</span>
+        <div class="demo">
+          <p>欧几里得列了五条公理。前四条都短小明白（比如「两点之间可以画一条直线」），第五条却又长又拗口，说的大意是「过直线外一点，只能画一条平行线」。</p>
+          <p>两千年里，无数数学家觉得第五条太复杂，一定能从前四条推出来，于是拼命尝试。全部失败。</p>
+          <p>到十九世纪，有人换了个思路：<strong>如果它推不出来，那我干脆假设它是错的，看看会不会撞出矛盾。</strong>结果撞不出矛盾——反而长出了一整套自洽的新几何：球面上，过直线外一点一条平行线也画不出来；双曲面上，能画无穷多条。</p>
+          <p>这个故事之所以重要，是因为它彻底改变了人们对数学的理解：<em>公理不是从天上抄下来的真理，是我们自己选的规则。选不同的规则，玩不同的游戏，而每个游戏都可能对应现实的某一面。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>命题（0.2）· 蕴含（0.4）</div>
+          <div><span class="lbl">下游</span>证明的方法（0.6）· 欧氏几何的公理体系（主线三）· 非欧几何（主线三山顶）· 概率的公理化（主线五）· 哥德尔不完备定理（0.9）</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p>读书时把定义当定理来「理解」，是最常见的浪费。看到「定义：……」，不要问「为什么是这样」，要问<strong>「这么定义有什么好处」</strong>。前一个问题没有答案，后一个问题往往能让你一下看懂整节。</p>
+          <p>反过来，看到「定理：……」，就必须问「凭什么」——那儿是有证明的，而且证明才是内容本身。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Definition</b> 定义</span>
+          <span><b>Axiom</b> 公理</span>
+          <span><b>Satz / Theorem</b> 定理</span>
+          <span><b>Lemma / Hilfssatz</b> 引理</span>
+          <span><b>Korollar / Folgerung</b> 推论</span>
+          <span><b>Beweis</b> 证明</span>
+          <span><b>Voraussetzung</b> 前提</span>
+          <span><b>Behauptung</b> 待证的结论</span>
+        </div>
+        <p style="font-size:.93rem;color:var(--ink-2)">德国课本里的证明常常用固定格式开头：<span class="m-up m">Voraussetzung</span>（已知）、<span class="m-up m">Behauptung</span>（求证）、<span class="m-up m">Beweis</span>（证明），最后用 <span class="m-up m">q.e.d.</span> 或 ∎ 收尾。看到这三个词就知道自己读到哪一段了。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.6 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>证明的五件武器</h3>
+      <p class="de">Beweismethoden</p>
+    </div>
+    <div class="body">
+      <p class="lead">「证明」听起来玄，其实翻来覆去就是五种打法。知道有哪五种，卡住的时候就有地方可挑。</p>
+
+      <div class="moves">
+        <div class="move">
+          <span class="when">大多数时候的默认选择</span>
+          <h5>一 · 直接证明</h5>
+          <p>从已知出发，一步一步推到结论。<em>每一步都必须有理由</em>——用了哪条定义、哪条定理、哪条运算律。这是最朴素也最常用的一种。</p>
+        </div>
+        <div class="move">
+          <span class="when">要证「不可能」「唯一」「无穷多」</span>
+          <h5>二 · 反证法</h5>
+          <p>先假设结论<em>错的</em>，然后推出一个明显荒谬的东西，于是那个假设站不住。主线一里用了两次：素数无穷多、√2 不是分数。<em>凡是要证「做不到」，先想它。</em></p>
+        </div>
+        <div class="move">
+          <span class="when">要推翻一个说法</span>
+          <h5>三 · 举反例</h5>
+          <p>只要找到一个不成立的例子，整句「所有…」就倒了。这是最便宜的武器（见 0.3 那张表）。<em>拿到不确定的命题，先花两分钟试着推翻它。</em></p>
+        </div>
+        <div class="move">
+          <span class="when">情况天然分成几类</span>
+          <h5>四 · 分情况讨论</h5>
+          <p>把所有可能切成互不重叠、又能盖全的几块，一块一块证。<em>关键是「不重不漏」——漏一种情况，整个证明就废了。</em>带绝对值、带正负号的题几乎都要用它。</p>
+        </div>
+        <div class="move">
+          <span class="when">结论对每个正整数 n 都成立</span>
+          <h5>五 · 数学归纳法</h5>
+          <p>推倒第一块骨牌，再证明「每一块倒了下一块就会倒」。<em>无穷多个命题，两步就全证完了。</em>它太重要，下面单独给一张卡片。</p>
+        </div>
+        <div class="move">
+          <span class="when">正面难走的时候</span>
+          <h5>加一招 · 走逆否</h5>
+          <p>不证 <span class="m">A ⟹ B</span>，改证 <span class="m">¬B ⟹ ¬A</span>。两者永远同真假（见 0.4 那张方阵图），而后者常常好走得多。<em>严格说它是反证法的近亲。</em></p>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>「举例子」不是证明。</strong>验证了 100 个数都符合，也证明不了「所有数都符合」。例子只能<em>推翻</em>全称命题，不能证明它。这是初学者最常犯、也最要命的一个错。</p>
+          <p>反过来：证明「存在」的时候，举出一个例子<em>就是</em>完整的证明。两者的区别完全在于那句话开头是 <span class="m">∀</span> 还是 <span class="m">∃</span>。回去看 0.3 那张表。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>direkter Beweis</b> 直接证明</span>
+          <span><b>Widerspruchsbeweis</b> 反证法</span>
+          <span><b>Gegenbeispiel</b> 反例</span>
+          <span><b>Fallunterscheidung</b> 分情况讨论</span>
+          <span><b>vollständige Induktion</b> 数学归纳法</span>
+          <span><b>Kontraposition</b> 逆否</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.7 　<span class="tier t2"><span class="gauge g2"><i></i><i></i><i></i></span>山腰</span></span>
+      <h3>数学归纳法 · 一排无穷长的多米诺</h3>
+      <p class="de">vollständige Induktion</p>
+    </div>
+    <div class="body">
+      <p class="lead">要证明一件事对<em>每一个</em>正整数都成立，而正整数有无穷多个。归纳法用两步就干完了这件看起来不可能的事。</p>
+
+      <div class="field">
+        <span class="lbl">它为什么管用</span>
+        <p>想象一排无穷长的多米诺骨牌。你想让它们全倒，需要确认两件事，而且只需要这两件：</p>
+        <p><strong>第一，第一块确实倒了。</strong>（归纳起点，Induktionsanfang）<br>
+        <strong>第二，不管是第几块，只要它倒了，它后面那块就一定会倒。</strong>（归纳步骤，Induktionsschritt）</p>
+        <p>这两条都成立的话，全部无穷多块必然全倒——第一块倒推倒第二块，第二块推倒第三块，一直传下去，没有任何一块能幸免。你没有一块一块去推，但你确实证明了它们都会倒。</p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 700 220" role="img" aria-label="多米诺骨牌示意归纳法：第一块被推倒，每一块倒下带倒下一块，一直传递到无穷。">
+          <defs>
+            <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="currentColor"/>
+            </marker>
+          </defs>
+          <line x1="40" y1="150" x2="660" y2="150" class="svg-l-soft"/>
+
+          <g transform="rotate(-52 76 150)"><rect x="66" y="88" width="20" height="62" rx="2" class="fm"/></g>
+          <text x="60" y="176" class="svg-tm txm">n = 1</text>
+          <text x="46" y="196" class="svg-tm txm">推倒它</text>
+
+          <g transform="rotate(-30 156 150)"><rect x="146" y="88" width="20" height="62" rx="2" class="f1"/></g>
+          <text x="144" y="176" class="svg-tm">n = 2</text>
+
+          <g transform="rotate(-14 236 150)"><rect x="226" y="88" width="20" height="62" rx="2" class="f1"/></g>
+          <text x="224" y="176" class="svg-tm">n = 3</text>
+
+          <rect x="306" y="88" width="20" height="62" rx="2" class="f1"/>
+          <text x="304" y="176" class="svg-tm">n = 4</text>
+          <rect x="376" y="88" width="20" height="62" rx="2" class="f1"/>
+          <rect x="446" y="88" width="20" height="62" rx="2" class="f1"/>
+          <rect x="516" y="88" width="20" height="62" rx="2" class="f1"/>
+          <rect x="586" y="88" width="20" height="62" rx="2" class="f1"/>
+          <text x="628" y="126" class="svg-tm">…… 无穷</text>
+
+          <path d="M 250 60 L 320 60" class="svg-l" marker-end="url(#a1)"/>
+          <text x="285" y="48" text-anchor="middle" class="svg-tm">倒了就推倒下一块</text>
+
+          <text x="350" y="212" text-anchor="middle" class="svg-tm">两步：① 第一块倒　② 每一块都能推倒下一块　⟹ 全部都倒</text>
+        </svg>
+        <figcaption><b>你没有推倒无穷多块骨牌，你只是保证了它们非倒不可。</b>这是数学处理无穷的典型手法——不去逐个检查，而是找一个能自我传递的机制。</figcaption>
+      </figure>
+
+      <div class="field">
+        <span class="lbl">一个完整的例子</span>
+        <div class="proof">
+          <span class="lbl">证明：1 + 2 + 3 + … + n = n(n+1)/2</span>
+          <p><strong>起点（n = 1）：</strong>左边是 1，右边是 <span class="m">1·2/2 = 1</span>。相等，第一块倒了。</p>
+          <p><strong>步骤：</strong>假设对某个 <span class="m">n = k</span> 成立，也就是</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">1 + 2 + … + k = k(k+1)/2</p>
+          <p>现在看 <span class="m">n = k+1</span>。左边比刚才多加了一个 <span class="m">k+1</span>：</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">1 + 2 + … + k + (k+1) = k(k+1)/2 + (k+1)</p>
+          <p>右边提出公因式 <span class="m">(k+1)</span>：</p>
+          <p class="calc" style="font-family:var(--f-serif);font-size:1.05rem">= (k+1)·(k/2 + 1) = (k+1)(k+2)/2</p>
+          <p>而这正是把 <span class="m">n = k+1</span> 代进原公式该有的样子。所以第 k 块倒了，第 k+1 块就一定倒。</p>
+          <p>两步都完成，公式对所有正整数 n 成立。∎</p>
+        </div>
+        <p>注意这个公式你已经见过两次了：工具箱示范二用它算 n 条直线分平面，主线一 1.3 提到过高斯的故事。<strong>现在它终于被真正证明了。</strong>前两次都是「看出规律」，这一次是「知道它必然成立」——这就是这条主线存在的意义。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>量词（0.3）· 蕴含（0.4）· 自然数（主线一 1.1）</div>
+          <div><span class="lbl">下游</span>数列与递推（主线六）· 二项式定理（主线二）· 递归算法的正确性（主线六）· 几乎所有关于「对任意 n」的结论</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="trap">
+          <span class="lbl">常见的坑</span>
+          <p><strong>「这不是循环论证吗？我怎么能假设要证的东西成立？」</strong>——这是每个人第一次学归纳法都会有的疑问，而且问得很好。</p>
+          <p>答案是：你假设的不是「结论对所有 n 成立」，而是「结论对<em>某一个</em> n 成立」，然后去证明它会传给下一个。你证明的是<strong>一条传递规则</strong>，不是结论本身。规则加上起点，才推出结论。</p>
+          <p>另一个坑：<strong>起点不能忘。</strong>只证了传递规则、没证第一块倒，等于排好了一整排骨牌但没人去推——它们会一直立着。这一步只要一行，但漏了整个证明就无效。</p>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>vollständige Induktion</b> 数学归纳法</span>
+          <span><b>Induktionsanfang</b> 归纳起点</span>
+          <span><b>Induktionsvoraussetzung</b> 归纳假设</span>
+          <span><b>Induktionsschritt</b> 归纳步骤</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <span class="id">0.8 　<span class="tier t1"><span class="gauge g1"><i></i><i></i><i></i></span>山脚</span></span>
+      <h3>符号是怎么来的 · 一张换气的卡片</h3>
+      <p class="de">mathematische Notation</p>
+    </div>
+    <div class="body">
+      <p class="lead">数学看起来满纸符号，可这些符号绝大多数还不到五百岁。在那之前，数学是<strong>用大白话写的</strong>。</p>
+
+      <div class="field">
+        <span class="lbl">用文字做数学是什么感觉</span>
+        <p>十六世纪的一道方程，写出来大概长这样：</p>
+        <div class="demo">
+          <p style="font-family:var(--f-serif);font-size:1.05rem">「求一数，其立方与其六倍之和，等于二十。」</p>
+          <p>翻译成现在的写法就是 <span class="m">x³ + 6x = 20</span>。</p>
+        </div>
+        <p>读一句还行，但整页整页这么写，人是没法在脑子里操作的。<strong>符号的发明，本质上是把思考的负担从脑子挪到纸上。</strong>这跟工具箱里「招数一：画出来」是同一个道理，只是规模大得多。</p>
+      </div>
+
+      <div class="field">
+        <span class="lbl">几个符号的来历</span>
+        <ul class="plain">
+          <li><span class="m">+</span> 和 <span class="m">−</span>：十五世纪德国商人的仓库记号，箱子装多了画一横加一竖，少了画一横。后来被数学书借走。</li>
+          <li><span class="m">=</span>：1557 年，英国人 Robert Recorde 发明。他的理由很可爱：<em>没有两样东西能比两条平行线更相等。</em>在那之前人们写「aequalis」或者干脆写「等于」。</li>
+          <li><span class="m">√</span>：可能来自拉丁文 radix（根）的首字母 r 写快了变形而来。上面那条横线是后加的，用来圈住被开方的范围。</li>
+          <li><span class="m">x</span> 表示未知数：笛卡尔的习惯。他用字母表末尾的 <span class="m">x, y, z</span> 表示未知的，开头的 <span class="m">a, b, c</span> 表示已知的——这个约定我们今天还在用，四百年没变。</li>
+          <li><span class="m">∑</span> 和 <span class="m">∫</span>：分别是希腊字母 Sigma（Summe 的 S）和拉长的字母 s（summa 的 s）。都是「求和」的意思，一个离散一个连续。</li>
+        </ul>
+      </div>
+
+      <div class="field">
+        <span class="lbl">好记号会替你思考</span>
+        <p>这不是修辞。牛顿和莱布尼茨各自独立发明了微积分，但用了不同的记号：牛顿在字母上点一个点，莱布尼茨写成 <span class="m">dy/dx</span>。</p>
+        <p>结果是：莱布尼茨的记号<em>长得像一个分数</em>，于是链式法则写出来就像分数约分一样自然。英国数学界出于爱国情绪坚持用牛顿的点，落后了欧洲大陆整整一百年。</p>
+        <p><strong>选对符号，一半的思考是记号自己完成的。</strong>这也是为什么值得花力气把式子写整齐——写得清楚，往往就想得清楚。</p>
+      </div>
+
+      <div class="field">
+        <div class="links">
+          <div><span class="lbl">上游</span>没有，随时可读</div>
+          <div><span class="lbl">下游</span>字母代数（主线二）· 函数记号 f(x)（主线四）· 求和号与积分号（主线四）· LaTeX 与数学排版</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="lbl">德语原词</span>
+        <div class="terms">
+          <span><b>Notation</b> 记号</span>
+          <span><b>Variable</b> 变量</span>
+          <span><b>Term</b> 代数式</span>
+          <span><b>Gleichung</b> 方程</span>
+          <span><b>Summenzeichen ∑</b> 求和号</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vista0">
+  <h3 class="sub"><span class="tier t3"><span class="gauge g3"><i></i><i></i><i></i></span>山顶与远方</span></h3>
+  <p>这条主线的山顶特别陡，因为它通向的是数学对<em>自己</em>的反思。下面这几段同样<strong>不要求懂</strong>，知道有这回事就够了——但它们大概是整本册子里最值得在某个晚上发一会儿呆的部分。</p>
+
+  <div class="vista">
+    <h4>把「推理」本身变成数学对象</h4>
+    <p>如果证明有固定的规则，那规则本身能不能拿来研究？十九世纪末，人们开始把命题写成符号、把推理步骤写成运算，于是「逻辑」从哲学变成了数学的一个分支，叫<strong>数理逻辑</strong>。</p>
+    <p>这件事有个意外的副产品：既然推理可以形式化成符号操作，那机器就能做。今天的计算机、编程语言、乃至芯片里的逻辑门，全都是这条路上长出来的。<em>0.2 那张卡片里的「真」和「假」，就是后来的 1 和 0。</em></p>
+
+    <h4>集合论差点塌了：罗素悖论</h4>
+    <p>0.1 说集合是数学的地基。1901 年罗素问了一个简单得要命的问题，差点把地基掀了：</p>
+    <p><em>「所有不包含自己的集合」组成的集合，包不包含它自己？</em></p>
+    <p>包含的话，按定义它就不该包含自己；不包含的话，按定义它就该包含自己。怎么走都是矛盾。通俗版是理发师悖论：村里的理发师给且只给「所有不给自己刮胡子的人」刮胡子，那他给不给自己刮？</p>
+    <p>这个悖论逼着数学家重建了集合论的地基（现在用的叫 ZFC 公理系统），不再允许「随便什么条件都能凑成一个集合」。地基补好了，但所有人都吓出了一身汗。</p>
+
+    <h4>哥德尔：有些真话，永远证不出来</h4>
+    <p>罗素之后，希尔伯特提出一个宏伟计划：给全部数学找一套公理，证明它既<em>不会自相矛盾</em>，又能<em>证明出所有真命题</em>。这是数学史上最有野心的工程。</p>
+    <p>1931 年，二十五岁的哥德尔证明了它<strong>不可能</strong>。他的不完备定理说：任何一个足够强、且不自相矛盾的公理系统里，一定存在<em>真的、但在这个系统里证不出来</em>的命题。而且系统还没法证明自己不矛盾。</p>
+    <p>他的办法妙到近乎恶作剧：给每个命题编一个号，然后构造出一句话，翻译过来意思是「这句话在本系统内证不出来」。跟 0.2 那个「这句话是假的」是远房亲戚——只不过哥德尔把它变成了严格的数学。</p>
+    <p>这不是坏消息，是深刻的消息。它划出了形式推理的边界，而知道边界在哪儿，本身就是巨大的进步。</p>
+
+    <h4>机器开始参与证明了</h4>
+    <p>1976 年，四色定理（任何地图用四种颜色就能染好，相邻区域不同色）被证明了——但那个证明把问题归结成一千多种情况，靠计算机逐个检查。当时数学界吵翻了：<em>一个人类无法通读的证明，算不算证明？</em></p>
+    <p>今天这已经不是问题了。<strong>Lean</strong>、<strong>Coq</strong> 这类证明助手可以逐行检查一个证明有没有漏洞，严格程度远超人类审稿人；一些顶尖数学家正在把重要定理一条条形式化进去。AI 也开始参与——不是替人证明，而是帮着搜索可能的路径。</p>
+    <p>某种意义上，这条主线正在他这一代人手里活起来。</p>
+
+    <h4 style="margin-bottom:.8rem">这条路在大学叫什么</h4>
+    <ul class="plain" style="margin-top:0">
+      <li><strong>Logik</strong>（逻辑）——把 0.2 到 0.4 严格化，通常是数学系或计算机系一年级</li>
+      <li><strong>Mengenlehre</strong>（集合论）——0.1 的正式展开，以及罗素悖论之后的重建</li>
+      <li><strong>Beweistheorie</strong>（证明论）——研究证明本身的结构，哥德尔的地盘</li>
+      <li><strong>Berechenbarkeitstheorie</strong>（可计算性理论）——「什么问题机器算不出来」，和主线六接上</li>
+    </ul>
+  </div>
+</section>
+
+<hr>
+
+<section id="gloss0">
+  <h2 class="sec"><span class="num">附录 一</span>本章德语术语表</h2>
+  <p class="sec-lead">这一章的词在德国课本里出现频率极高，尤其是证明格式那几个——认得它们，读任何一本德语数学书都会顺很多。</p>
+
+  <div class="scroller">
+  <table class="glossary">
+    <thead><tr><th style="width:26%">中文</th><th style="width:40%">Deutsch</th><th style="width:34%">English</th></tr></thead>
+    <tbody>
+      <tr><td>集合 / 元素</td><td class="de">Menge / Element</td><td class="en">set / element</td></tr>
+      <tr><td>子集</td><td class="de">Teilmenge</td><td class="en">subset</td></tr>
+      <tr><td>并集 / 交集</td><td class="de">Vereinigung / Schnittmenge</td><td class="en">union / intersection</td></tr>
+      <tr><td>空集</td><td class="de">leere Menge ∅</td><td class="en">empty set</td></tr>
+      <tr><td>命题</td><td class="de">Aussage</td><td class="en">proposition / statement</td></tr>
+      <tr><td>真 / 假</td><td class="de">wahr / falsch</td><td class="en">true / false</td></tr>
+      <tr><td>否定</td><td class="de">Verneinung / Negation</td><td class="en">negation</td></tr>
+      <tr><td>对所有 ∀</td><td class="de">für alle · Allquantor</td><td class="en">for all · universal quantifier</td></tr>
+      <tr><td>存在 ∃</td><td class="de">es existiert · Existenzquantor</td><td class="en">there exists · existential quantifier</td></tr>
+      <tr><td>反例</td><td class="de">Gegenbeispiel</td><td class="en">counterexample</td></tr>
+      <tr><td>蕴含</td><td class="de">Implikation</td><td class="en">implication</td></tr>
+      <tr><td>逆命题</td><td class="de">Umkehrung</td><td class="en">converse</td></tr>
+      <tr><td>逆否命题</td><td class="de">Kontraposition</td><td class="en">contrapositive</td></tr>
+      <tr><td>充分的 / 必要的</td><td class="de">hinreichend / notwendig</td><td class="en">sufficient / necessary</td></tr>
+      <tr><td>当且仅当</td><td class="de">genau dann, wenn</td><td class="en">if and only if</td></tr>
+      <tr><td>等价的</td><td class="de">äquivalent</td><td class="en">equivalent</td></tr>
+      <tr><td>定义</td><td class="de">Definition</td><td class="en">definition</td></tr>
+      <tr><td>公理</td><td class="de">Axiom</td><td class="en">axiom</td></tr>
+      <tr><td>定理</td><td class="de">Satz / Theorem</td><td class="en">theorem</td></tr>
+      <tr><td>引理</td><td class="de">Lemma / Hilfssatz</td><td class="en">lemma</td></tr>
+      <tr><td>推论</td><td class="de">Korollar / Folgerung</td><td class="en">corollary</td></tr>
+      <tr><td>证明</td><td class="de">Beweis</td><td class="en">proof</td></tr>
+      <tr><td>已知 / 求证</td><td class="de">Voraussetzung / Behauptung</td><td class="en">hypothesis / claim</td></tr>
+      <tr><td>直接证明</td><td class="de">direkter Beweis</td><td class="en">direct proof</td></tr>
+      <tr><td>反证法</td><td class="de">Widerspruchsbeweis</td><td class="en">proof by contradiction</td></tr>
+      <tr><td>分情况讨论</td><td class="de">Fallunterscheidung</td><td class="en">case analysis</td></tr>
+      <tr><td>数学归纳法</td><td class="de">vollständige Induktion</td><td class="en">mathematical induction</td></tr>
+      <tr><td>归纳起点 / 归纳步骤</td><td class="de">Induktionsanfang / Induktionsschritt</td><td class="en">base case / inductive step</td></tr>
+      <tr><td>记号</td><td class="de">Notation</td><td class="en">notation</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="qs0">
+  <h2 class="sec"><span class="num">附录 二</span>体系性问题</h2>
+  <p class="sec-lead">一道也不用算。答得上来，这一章就真的读完了。</p>
+
+  <ol class="qs">
+    <li>「定义」和「定理」，哪一个可以问「它是对的吗」？哪一个不能？为什么？</li>
+    <li>推翻「所有天鹅都是白的」要做多少工作？推翻「存在一只黑天鹅」呢？为什么代价差这么多？</li>
+    <li>「下雨则地湿」和「地不湿则没下雨」，为什么必然同真假？用自己的话讲一遍。</li>
+    <li>为什么举一百个例子不能证明一个「所有…」的命题，但举一个例子就能证明一个「存在…」的命题？</li>
+    <li>归纳法里「假设 n = k 时成立」，这不是在假设要证的东西吗？它为什么不是循环论证？</li>
+    <li>解方程时两边平方，箭头是 <span class="m">⟹</span> 还是 <span class="m">⟺</span>？这个区别在实际做题时会造成什么后果？</li>
+    <li>换掉欧几里得第五公设会发生什么？这件事说明「公理」到底是什么性质的东西？</li>
+    <li>主线一里的两个证明（素数无穷、√2 无理），各用了这一章的哪件武器？</li>
+    <li>如果这一章从整本册子里删掉，其余七条主线还剩下什么？</li>
+  </ol>
+</section>
+<div class="pagenav">
+  <a href="toolbox.html"><span class="dir">上一页</span><span class="t">§ 2 · 工具箱</span></a>
+  <a class="next" href="strand-1-numbers.html"><span class="dir">下一页</span><span class="t">主线一 · 数与数系</span></a>
+</div>
+</main>
+</body>
+</html>
