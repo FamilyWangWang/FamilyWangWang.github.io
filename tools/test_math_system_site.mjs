@@ -152,7 +152,32 @@ async function main() {
         );
         if (overflow) errors.push(`${relative}: page overflow at ${viewport.width}px`);
         if (await page.locator("h1").count() === 0) errors.push(`${relative}: missing h1`);
+        if (await page.locator("nav.toc .toc-primary").count() !== 1) {
+          errors.push(`${relative}: compact navigation missing`);
+        }
+        if (await page.locator("nav.toc details.toc-menu").count() !== 1) {
+          errors.push(`${relative}: navigation menu missing`);
+        }
+        const navHeight = await page.locator("nav.toc").evaluate((node) => node.getBoundingClientRect().height);
+        if (navHeight > 80) errors.push(`${relative}: navigation is ${navHeight}px tall at ${viewport.width}px`);
       }
+    }
+
+    for (const viewport of [{ width: 1440, height: 1000 }, { width: 375, height: 812 }]) {
+      await page.setViewportSize(viewport);
+      await page.goto(`${origin}/mathSystem/strand-2-algebra.html`, { waitUntil: "load" });
+      await page.locator("nav.toc summary").click();
+      if (await page.locator("nav.toc .toc-panel a").count() !== 14) {
+        errors.push(`navigation menu does not contain 14 project links at ${viewport.width}px`);
+      }
+      const panel = await page.locator("nav.toc .toc-panel").boundingBox();
+      if (!panel || panel.x < 0 || panel.x + panel.width > viewport.width + 1) {
+        errors.push(`navigation panel leaves viewport at ${viewport.width}px`);
+      }
+      const menuOverflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth
+      );
+      if (menuOverflow) errors.push(`open navigation causes page overflow at ${viewport.width}px`);
     }
 
     await page.setViewportSize({ width: 1440, height: 1000 });

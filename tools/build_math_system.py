@@ -46,11 +46,39 @@ ID_RE = re.compile(r"\bid=[\"']([^\"']+)[\"']", re.IGNORECASE)
 PUBLIC_CSS = r"""
 
 /* Public documentation hub additions. Source content remains unchanged. */
-.page-frame{width:min(100% - 2.5rem,760px);margin-inline:auto;padding-bottom:6rem}
+.page-frame{width:min(100% - 2.5rem,760px);margin-inline:auto}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-nav.toc li.hub-link a{color:var(--mark);font-weight:600}
+nav.toc{overflow:visible;margin-bottom:3rem;padding:0}
+nav.toc .toc-primary{position:relative;display:flex;align-items:center;gap:.65rem;min-height:52px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em}
+nav.toc .toc-hub,nav.toc .toc-root{flex:none;color:var(--ink-2);font-weight:500}
+nav.toc .toc-hub{color:var(--mark);font-weight:600}
+nav.toc .toc-separator{color:var(--rule)}
+nav.toc .toc-current{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+nav.toc .toc-actions{display:flex;align-items:center;gap:.55rem;margin-left:auto;flex:none}
+nav.toc .toc-menu summary,nav.toc .toc-language{display:inline-flex;align-items:center;min-height:30px;box-sizing:border-box;border:1px solid var(--rule);border-radius:3px;background:var(--paper);padding:.28rem .65rem;color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-decoration:none;cursor:pointer}
+nav.toc .toc-menu summary{list-style:none}
+nav.toc .toc-menu summary::-webkit-details-marker{display:none}
+nav.toc .toc-menu summary::after{content:"+";margin-left:.5rem;color:var(--mark)}
+nav.toc .toc-menu[open] summary{border-color:var(--mark);color:var(--mark)}
+nav.toc .toc-menu[open] summary::after{content:"−"}
+nav.toc .toc-language{color:var(--mark);border-color:var(--mark)}
+nav.toc .toc-panel{position:absolute;top:calc(100% + 1px);right:0;z-index:30;width:min(720px,calc(100vw - 2rem));box-sizing:border-box;border:1px solid var(--rule);border-top:2px solid var(--mark);background:var(--paper);padding:.8rem;box-shadow:0 14px 34px rgba(20,28,35,.12)}
+nav.toc .toc-panel ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem .8rem;margin:0;padding:0;white-space:normal}
+nav.toc .toc-panel li{min-width:0}
+nav.toc .toc-panel a{display:block;border:0;padding:.48rem .55rem;line-height:1.45}
+nav.toc .toc-panel a:hover{background:var(--surface);border:0}
+nav.toc .toc-panel a[aria-current="page"]{background:var(--mark-bg);color:var(--mark);font-weight:600}
 .public-download{width:min(100% - 2.5rem,1500px);margin:0 auto 2rem;padding:1rem 1.2rem;border:1px solid var(--el1-line);border-radius:4px;background:var(--el1-bg);color:var(--el1);font-size:.93rem}
 .public-download a{color:inherit;font-weight:600}
+@media (max-width:640px){
+  nav.toc .page-frame{width:100%;box-sizing:border-box;padding:0 1rem}
+  nav.toc .toc-primary{gap:.5rem;min-height:48px}
+  nav.toc .toc-root,nav.toc .toc-separator{display:none}
+  nav.toc .toc-current{font-size:11px}
+  nav.toc .toc-menu summary,nav.toc .toc-language{min-height:29px;padding:.25rem .5rem}
+  nav.toc .toc-panel{width:calc(100vw - 2rem)}
+  nav.toc .toc-panel ul{grid-template-columns:1fr;max-height:min(68vh,540px);overflow-y:auto}
+}
 @media print{.public-download{display:none!important}}
 """
 
@@ -188,6 +216,71 @@ def replace_semantic_wrapper(text: str, tag: str) -> str:
     return pattern.sub(replacement, text)
 
 
+def compact_public_navigation(text: str, language: str) -> str:
+    pattern = re.compile(
+        r"<nav\b[^>]*class=[\"'][^\"']*\btoc\b[^\"']*[\"'][^>]*>\s*"
+        r"<div\b[^>]*class=[\"'][^\"']*\bpage-frame\b[^\"']*[\"'][^>]*>\s*"
+        r"<ul[^>]*>(.*?)</ul>\s*</div>\s*</nav>",
+        re.IGNORECASE | re.DOTALL,
+    )
+
+    def replacement(match: re.Match[str]) -> str:
+        items = match.group(1)
+        current_match = re.search(
+            r"<a\b[^>]*aria-current=[\"']page[\"'][^>]*>(.*?)</a>",
+            items,
+            re.IGNORECASE | re.DOTALL,
+        )
+        language_match = re.search(
+            r"<li\b[^>]*class=[\"'][^\"']*\blang\b[^\"']*[\"'][^>]*>\s*"
+            r"<a\b[^>]*href=[\"']([^\"']+)[\"'][^>]*>(.*?)</a>\s*</li>",
+            items,
+            re.IGNORECASE | re.DOTALL,
+        )
+        if not current_match or not language_match:
+            raise RuntimeError("navigation is missing its current-page or language link")
+
+        current = html.unescape(re.sub(r"<[^>]+>", "", current_match.group(1))).strip()
+        language_href = language_match.group(1)
+        language_label = html.unescape(re.sub(r"<[^>]+>", "", language_match.group(2))).strip()
+        menu_items = items[:language_match.start()] + items[language_match.end():]
+        menu_items = re.sub(r"^[ \t]+$", "", menu_items, flags=re.MULTILINE).strip()
+        labels = {
+            "hub": "Dokumentzentrum" if language == "de" else "文档中心",
+            "root": "Mathematikatlas" if language == "de" else "数学版图",
+            "menu": "Inhalt" if language == "de" else "目录",
+            "nav": "Seitennavigation" if language == "de" else "站点导航",
+            "contents": "Atlas-Inhalt" if language == "de" else "数学版图目录",
+        }
+        return f'''<nav class="toc" aria-label="{labels["nav"]}">
+  <div class="page-frame">
+    <div class="toc-primary">
+      <a class="toc-hub" href="/">← {labels["hub"]}</a>
+      <span class="toc-separator" aria-hidden="true">/</span>
+      <a class="toc-root" href="index.html">{labels["root"]}</a>
+      <span class="toc-separator" aria-hidden="true">/</span>
+      <span class="toc-current">{html.escape(current)}</span>
+      <div class="toc-actions">
+        <details class="toc-menu">
+          <summary>{labels["menu"]}</summary>
+          <div class="toc-panel" aria-label="{labels["contents"]}">
+            <ul>
+{menu_items}
+            </ul>
+          </div>
+        </details>
+        <a class="toc-language" href="{html.escape(language_href, quote=True)}">{html.escape(language_label)}</a>
+      </div>
+    </div>
+  </div>
+</nav>'''
+
+    updated, count = pattern.subn(replacement, text, count=1)
+    if count != 1:
+        raise RuntimeError("could not replace the source navigation")
+    return updated
+
+
 def inject_head(text: str, relative: pathlib.PurePosixPath, language: str) -> str:
     title_match = re.search(r"<title>(.*?)</title>", text, re.IGNORECASE | re.DOTALL)
     title = html.unescape(re.sub(r"<[^>]+>", "", title_match.group(1))).strip() if title_match else "数学版图"
@@ -215,15 +308,7 @@ def publicize_html(text: str, relative: pathlib.PurePosixPath) -> str:
     text = inject_head(text, relative, language)
     for tag in ("header", "nav", "footer"):
         text = replace_semantic_wrapper(text, tag)
-    label = "Dokumentzentrum" if language == "de" else "文档中心"
-    hub_item = f'<li class="hub-link"><a href="/">← {label}</a></li>'
-    text = re.sub(
-        r"(<nav\b[^>]*class=[\"'][^\"']*\btoc\b[^\"']*[\"'][^>]*>.*?<ul[^>]*>)",
-        lambda match: match.group(1) + "\n      " + hub_item,
-        text,
-        count=1,
-        flags=re.IGNORECASE | re.DOTALL,
-    )
+    text = compact_public_navigation(text, language)
     if not re.search(r"<h1\b", text, re.IGNORECASE):
         title_match = re.search(r"<title>(.*?)</title>", text, re.IGNORECASE | re.DOTALL)
         title = html.unescape(title_match.group(1)).split(" · ", 1)[0] if title_match else "数学版图"

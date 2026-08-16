@@ -344,9 +344,37 @@ button.chip .tick{font-family:var(--f-mono); font-size:10px; margin-right:.4em; 
   background:var(--surface); color:var(--ink-2); border:1px solid var(--rule); border-radius:3px; margin-top:.8rem}
 
 /* Public documentation hub additions. Source content remains unchanged. */
-.page-frame{width:min(100% - 2.5rem,760px);margin-inline:auto;padding-bottom:6rem}
+.page-frame{width:min(100% - 2.5rem,760px);margin-inline:auto}
 .sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-nav.toc li.hub-link a{color:var(--mark);font-weight:600}
+nav.toc{overflow:visible;margin-bottom:3rem;padding:0}
+nav.toc .toc-primary{position:relative;display:flex;align-items:center;gap:.65rem;min-height:52px;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em}
+nav.toc .toc-hub,nav.toc .toc-root{flex:none;color:var(--ink-2);font-weight:500}
+nav.toc .toc-hub{color:var(--mark);font-weight:600}
+nav.toc .toc-separator{color:var(--rule)}
+nav.toc .toc-current{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+nav.toc .toc-actions{display:flex;align-items:center;gap:.55rem;margin-left:auto;flex:none}
+nav.toc .toc-menu summary,nav.toc .toc-language{display:inline-flex;align-items:center;min-height:30px;box-sizing:border-box;border:1px solid var(--rule);border-radius:3px;background:var(--paper);padding:.28rem .65rem;color:var(--ink);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-decoration:none;cursor:pointer}
+nav.toc .toc-menu summary{list-style:none}
+nav.toc .toc-menu summary::-webkit-details-marker{display:none}
+nav.toc .toc-menu summary::after{content:"+";margin-left:.5rem;color:var(--mark)}
+nav.toc .toc-menu[open] summary{border-color:var(--mark);color:var(--mark)}
+nav.toc .toc-menu[open] summary::after{content:"−"}
+nav.toc .toc-language{color:var(--mark);border-color:var(--mark)}
+nav.toc .toc-panel{position:absolute;top:calc(100% + 1px);right:0;z-index:30;width:min(720px,calc(100vw - 2rem));box-sizing:border-box;border:1px solid var(--rule);border-top:2px solid var(--mark);background:var(--paper);padding:.8rem;box-shadow:0 14px 34px rgba(20,28,35,.12)}
+nav.toc .toc-panel ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem .8rem;margin:0;padding:0;white-space:normal}
+nav.toc .toc-panel li{min-width:0}
+nav.toc .toc-panel a{display:block;border:0;padding:.48rem .55rem;line-height:1.45}
+nav.toc .toc-panel a:hover{background:var(--surface);border:0}
+nav.toc .toc-panel a[aria-current="page"]{background:var(--mark-bg);color:var(--mark);font-weight:600}
 .public-download{width:min(100% - 2.5rem,1500px);margin:0 auto 2rem;padding:1rem 1.2rem;border:1px solid var(--el1-line);border-radius:4px;background:var(--el1-bg);color:var(--el1);font-size:.93rem}
 .public-download a{color:inherit;font-weight:600}
+@media (max-width:640px){
+  nav.toc .page-frame{width:100%;box-sizing:border-box;padding:0 1rem}
+  nav.toc .toc-primary{gap:.5rem;min-height:48px}
+  nav.toc .toc-root,nav.toc .toc-separator{display:none}
+  nav.toc .toc-current{font-size:11px}
+  nav.toc .toc-menu summary,nav.toc .toc-language{min-height:29px;padding:.25rem .5rem}
+  nav.toc .toc-panel{width:calc(100vw - 2rem)}
+  nav.toc .toc-panel ul{grid-template-columns:1fr;max-height:min(68vh,540px);overflow-y:auto}
+}
 @media print{.public-download{display:none!important}}
