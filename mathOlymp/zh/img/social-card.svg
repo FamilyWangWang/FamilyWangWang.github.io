@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#17221c"/>
+  <circle cx="930" cy="315" r="220" fill="none" stroke="#F7F2E8" stroke-width="8"/>
+  <path d="m930 70 212 368H718L930 70Z" fill="none" stroke="#D85A4D" stroke-width="8"/>
+  <text x="90" y="255" fill="#F7F2E8" font-family="Georgia,serif" font-size="96">mathOlymp</text>
+  <text x="96" y="340" fill="#D8DACE" font-family="Arial,sans-serif" font-size="34">Mathematik-Olympiade lernen</text>
+  <text x="96" y="395" fill="#D8DACE" font-family="Arial,sans-serif" font-size="34">数学奥赛学习</text>
+</svg>
