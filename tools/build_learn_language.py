@@ -401,7 +401,7 @@ def page_shell(
   {body}
   <footer class="site-footer">
     <span>公开脱敏版 · Public learning edition</span>
-    <span>源版本 {html.escape(source_sha[:8])} · {html.escape(source_date[:10])}</span>
+    <span>自动生成 · Generated from sanitized Markdown</span>
   </footer>
   <script src="/learnLanguage/assets/app.js" defer></script>
 </body>
@@ -650,8 +650,9 @@ def main() -> None:
         if not required.exists():
             raise SystemExit(f"missing build asset: {required}")
 
-    source_sha = git_value(source, "rev-parse", "HEAD")
-    source_date = git_value(source, "show", "-s", "--format=%cI", "HEAD")
+    content_paths = ("de", "en", "de_vocab", "en_vocab")
+    source_sha = git_value(source, "log", "-1", "--format=%H", "--", *content_paths)
+    source_date = git_value(source, "log", "-1", "--format=%cI", "--", *content_paths)
     markdown_count = len(list(source.rglob("*.md")))
     source_links = validate_source_links(source)
     documents, included, excluded = discover(source)
