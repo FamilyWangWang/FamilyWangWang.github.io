@@ -158,15 +158,30 @@ async function main() {
         if (await page.locator("nav.toc details.toc-menu").count() !== 1) {
           errors.push(`${relative}: navigation menu missing`);
         }
-        const navHeight = await page.locator("nav.toc").evaluate((node) => node.getBoundingClientRect().height);
-        if (navHeight > 80) errors.push(`${relative}: navigation is ${navHeight}px tall at ${viewport.width}px`);
+        const navBox = await page.locator("nav.toc").boundingBox();
+        const menuOpen = await page.locator("nav.toc details.toc-menu").evaluate((node) => node.open);
+        if (viewport.width >= 1024) {
+          if (!navBox || navBox.x !== 0 || Math.abs(navBox.width - 224) > 1 || navBox.height < viewport.height) {
+            errors.push(`${relative}: desktop sidebar has unexpected geometry at ${viewport.width}px`);
+          }
+          if (!menuOpen) errors.push(`${relative}: desktop sidebar menu is not open at ${viewport.width}px`);
+        } else {
+          if (!navBox || navBox.height > 80) {
+            errors.push(`${relative}: compact navigation is too tall at ${viewport.width}px`);
+          }
+          if (menuOpen) errors.push(`${relative}: compact navigation starts open at ${viewport.width}px`);
+        }
       }
     }
 
     for (const viewport of [{ width: 1440, height: 1000 }, { width: 375, height: 812 }]) {
       await page.setViewportSize(viewport);
       await page.goto(`${origin}/mathSystem/strand-2-algebra.html`, { waitUntil: "load" });
-      await page.locator("nav.toc summary").click();
+      const menu = page.locator("nav.toc details.toc-menu");
+      if (viewport.width < 1024) await page.locator("nav.toc summary").click();
+      if (!(await menu.evaluate((node) => node.open))) {
+        errors.push(`navigation menu is not open at ${viewport.width}px`);
+      }
       if (await page.locator("nav.toc .toc-panel a").count() !== 14) {
         errors.push(`navigation menu does not contain 14 project links at ${viewport.width}px`);
       }
