@@ -230,8 +230,45 @@ footer.end{border-top:1px solid var(--rule); margin-top:4rem; padding-top:2rem;
 
 .rule-box{border-left:2px solid var(--mark); padding:.2rem 0 .2rem 1.1rem; margin:1.6rem 0; font-size:1.03rem}
 
+/* The public documentation hub turns this site's navigation into breadcrumbs plus
+   a menu. On reading-sized desktop screens, keep that menu visible as a proper
+   left-hand table of contents; compact screens retain the generated top menu. */
+@media screen and (min-width:1024px){
+  body:has(> nav.toc .toc-primary){padding-left:14rem}
+  body:has(> nav.toc .toc-primary) > nav.toc{
+    position:fixed; inset:0 auto 0 0; z-index:30; width:14rem;
+    margin:0; padding:0; overflow-y:auto;
+    border-right:1px solid var(--rule); border-bottom:0;
+    background:var(--paper);
+  }
+  body:has(> nav.toc .toc-primary) > nav.toc .page-frame{width:auto; margin:0; padding:1.3rem 1rem 2rem}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-primary{display:block; min-height:0}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-hub,
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-root,
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-current{display:block; overflow:visible; white-space:normal}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-hub{margin-bottom:.45rem}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-root{font-size:13px; color:var(--ink); margin-bottom:.15rem}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-current{font-size:10.5px; color:var(--ink-3); line-height:1.5}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-separator{display:none}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-actions{display:flex; flex-direction:column; align-items:stretch; gap:.8rem; margin:1rem 0 0}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-language{align-self:flex-start; order:-1}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-menu summary{display:none}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-menu > .toc-panel,
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-menu:not([open]) > .toc-panel{
+    display:block; position:static; width:auto; padding:.8rem 0 0;
+    border:0; border-top:1px solid var(--rule); box-shadow:none; background:transparent;
+  }
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-panel ul{display:grid; grid-template-columns:1fr; gap:.12rem; max-height:none; overflow:visible}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-panel a{padding:.42rem .5rem; white-space:normal; line-height:1.45; border-radius:2px}
+  body:has(> nav.toc .toc-primary) > nav.toc .toc-panel a[aria-current="page"]{border-left:2px solid var(--mark); padding-left:calc(.5rem - 2px)}
+  body:has(> nav.toc .toc-primary) .wide{
+    width:min(1060px,calc(100vw - 16.5rem));
+    margin-left:calc(50% - min(530px,calc((100vw - 16.5rem) / 2)));
+  }
+}
+
 @media print{
-  body{background:#fff; color:#000; font-size:11pt}
+  body{background:#fff; color:#000; font-size:11pt; padding-left:0}
   nav.toc{display:none}
   .wide{width:100%; margin-left:0}
   .card,figure,table.atlas{break-inside:avoid}
