@@ -93,3 +93,144 @@
     if (search && results && !search.contains(event.target)) results.hidden = true;
   });
 })();
+
+
+// Practical communication controls; all text remains available without JavaScript.
+(function () {
+  const toolkit = document.querySelector('[data-toolkit]');
+  if (toolkit) {
+    const filter = toolkit.querySelector('[data-task-filter]');
+    const onlySaved = toolkit.querySelector('[data-favorites-only]');
+    const status = toolkit.querySelector('[data-toolkit-status]');
+    const cards = Array.from(toolkit.querySelectorAll('[data-template]'));
+    const key = 'learnLanguage.communication.favorites.' + toolkit.dataset.language;
+    let favorites = new Set();
+    try {
+      const stored = JSON.parse(localStorage.getItem(key) || '[]');
+      if (Array.isArray(stored)) favorites = new Set(stored.filter(x => typeof x === 'string'));
+    } catch (_) {
+      status.textContent = '当前浏览器不能读取收藏；仍可使用和复制模板。';
+    }
+    function applyFilter() {
+      cards.forEach(card => {
+        const saved = favorites.has(card.dataset.templateId);
+        const button = card.querySelector('[data-save]');
+        button.setAttribute('aria-pressed', String(saved));
+        button.textContent = saved ? '取消收藏' : '收藏模板';
+        card.hidden = (filter.value !== 'all' && card.dataset.task !== filter.value) || (onlySaved.checked && !saved);
+      });
+      toolkit.querySelector('[data-empty]').hidden = cards.some(card => !card.hidden);
+    }
+    cards.forEach(card => {
+      const field = card.querySelector('[data-template-text]');
+      const original = field.value;
+      card.querySelector('[data-reset]').addEventListener('click', () => {
+        field.value = original;
+        status.textContent = '已恢复原模板。';
+      });
+      card.querySelector('[data-save]').addEventListener('click', () => {
+        const id = card.dataset.templateId;
+        favorites.has(id) ? favorites.delete(id) : favorites.add(id);
+        try {
+          localStorage.setItem(key, JSON.stringify(Array.from(favorites)));
+          status.textContent = favorites.has(id) ? '已收藏模板。' : '已取消收藏。';
+        } catch (_) {
+          status.textContent = '当前浏览器不能保存收藏；本次页面内仍可使用。';
+        }
+        applyFilter();
+      });
+      card.querySelector('[data-copy]').addEventListener('click', async () => {
+        try {
+          if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText(field.value);
+          status.textContent = /\[[^\]]+\]/.test(field.value)
+            ? '已复制；发送前请替换方括号中的信息。'
+            : '已复制；发送前请核对内容。';
+        } catch (_) {
+          field.focus();
+          field.select();
+          status.textContent = '自动复制不可用，已选中文字。请使用系统的复制操作。';
+        }
+      });
+    });
+    filter.addEventListener('change', applyFilter);
+    onlySaved.addEventListener('change', applyFilter);
+    applyFilter();
+  }
+
+  const lab = document.querySelector('[data-listening-lab]');
+  if (!lab) return;
+  const status = lab.querySelector('[data-speech-status]');
+  if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+    status.textContent = '当前浏览器不支持设备朗读。可以展开文字，练习提取信息和回应。';
+    return;
+  }
+  const synth = window.speechSynthesis;
+  const language = lab.querySelector('[data-listening-item]').dataset.language;
+  const voiceSelect = lab.querySelector('[data-voice]');
+  const rate = lab.querySelector('[data-rate]');
+  const speakButtons = Array.from(lab.querySelectorAll('[data-speak]'));
+  let voices = [];
+  let active = null;
+  let generation = 0;
+  lab.querySelector('.speech-controls').hidden = false;
+  speakButtons.forEach(button => { button.hidden = false; });
+  function updateVoices() {
+    const selected = voiceSelect.value;
+    voices = synth.getVoices().filter(voice => voice.lang.toLowerCase().startsWith(language));
+    voiceSelect.replaceChildren();
+    voices.forEach(voice => {
+      const option = document.createElement('option');
+      option.value = voice.voiceURI;
+      option.textContent = voice.name + ' (' + voice.lang + ')';
+      voiceSelect.appendChild(option);
+    });
+    if (voices.some(voice => voice.voiceURI === selected)) voiceSelect.value = selected;
+    voiceSelect.disabled = voices.length === 0;
+    speakButtons.forEach(button => { button.disabled = voices.length === 0; });
+    if (!active) status.textContent = voices.length
+      ? '可播放设备合成语音。先读问题，再播放留言；文字和答案在下方折叠区。'
+      : '未找到相应语言的设备语音。可安装设备的语言语音后重开本页，或展开文字练习。';
+  }
+  function stop() {
+    generation += 1;
+    synth.cancel();
+    active = null;
+    speakButtons.forEach(button => button.removeAttribute('aria-current'));
+  }
+  speakButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      stop();
+      const voice = voices.find(item => item.voiceURI === voiceSelect.value);
+      if (!voice) { updateVoices(); return; }
+      const item = button.closest('[data-listening-item]');
+      active = new SpeechSynthesisUtterance(item.querySelector('[data-speech-text]').textContent);
+      active.voice = voice;
+      active.lang = voice.lang;
+      active.rate = Number(rate.value);
+      const ticket = generation;
+      button.setAttribute('aria-current', 'true');
+      status.textContent = '正在播放：' + item.querySelector('h2').textContent;
+      active.onend = () => {
+        if (ticket !== generation) return;
+        active = null;
+        button.removeAttribute('aria-current');
+        status.textContent = '播放结束。请先自己回应，再展开答案。';
+      };
+      active.onerror = () => {
+        if (ticket !== generation) return;
+        active = null;
+        button.removeAttribute('aria-current');
+        status.textContent = '设备朗读未能完成。请重试或展开文字练习。';
+      };
+      synth.speak(active);
+    });
+  });
+  lab.querySelector('[data-stop]').addEventListener('click', () => {
+    stop();
+    status.textContent = '已停止播放。';
+  });
+  window.addEventListener('pagehide', stop);
+  synth.addEventListener('voiceschanged', updateVoices);
+  updateVoices();
+})();
