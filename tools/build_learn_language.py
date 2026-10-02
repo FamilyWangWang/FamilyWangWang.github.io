@@ -27,14 +27,14 @@ TRACKS = {
         "code": "DE",
         "name": "德语口语实战",
         "target": "Deutsch im Alltag",
-        "description": "从真实场景进入德语：日常对话、俚语边界与口语语法。",
+        "description": "从真实场景进入德语：日常对话、沟通语法、书信与使用边界。",
         "kind": "场景口语",
     },
     "en": {
         "code": "EN",
         "name": "英语口语实战",
         "target": "English in Real Life",
-        "description": "从教科书表达走向真实英语：场景、地区差异与自然口语。",
+        "description": "从真实场景进入英语：日常对话、沟通语法、书信与地区差异。",
         "kind": "场景口语",
     },
     "de_vocab": {
@@ -65,7 +65,8 @@ COMMON_GROUPS = {
     "08-socialLeisure": "社交休闲",
     "09-email": "邮件写作",
     "10-socialMedia": "社交媒体",
-    "grammarInAction": "口语语法",
+    "grammar": "日常沟通语法",
+    "grammarInAction": "口语补充专题",
     "slang": "俚语专题",
 }
 
@@ -232,6 +233,20 @@ def rewrite_markdown_links(text: str) -> str:
     return REF_LINK_RE.sub(reference, MD_LINK_RE.sub(inline, text))
 
 
+def public_markdown(text: str) -> str:
+    """Omit source-only planning links without publishing internal plans."""
+    lines = []
+    for line in text.splitlines():
+        if line.lstrip().startswith("- ") and any(
+            pathlib.PurePosixPath(match.group(2).split("#", 1)[0]).name
+            in {"PLAN.md", "GRAMMAR_PLAN.md"}
+            for match in MD_LINK_RE.finditer(line)
+        ):
+            continue
+        lines.append(line)
+    return "\n".join(lines)
+
+
 def group_for(track: str, relative: pathlib.PurePosixPath) -> tuple[str, str]:
     parts = relative.parts
     if track in ("de", "en"):
@@ -256,21 +271,26 @@ def discover(source: pathlib.Path) -> tuple[list[Document], list[str], list[str]
             rel = pathlib.PurePosixPath(source_path.relative_to(track_root).as_posix())
             repo_rel = f"{track}/{rel.as_posix()}"
             excluded_file = (
-                rel.name in {"README.md", "PLAN.md"}
+                rel.name == "PLAN.md"
+                or rel.as_posix() == "README.md"
                 or (track.endswith("_vocab") and rel.parts[0] == "index")
             )
             if excluded_file:
                 excluded.append(repo_rel)
                 continue
             text = source_path.read_text(encoding="utf-8")
-            clean = rewrite_markdown_links(sanitize(text))
+            clean = rewrite_markdown_links(sanitize(public_markdown(text)))
             validate_public_text(clean, repo_rel)
             heading = HEADING_RE.search(clean)
             if not heading:
                 raise SystemExit(f"missing H1 in {repo_rel}")
             title = re.sub(r"[*_`]", "", heading.group(1)).strip()
             group_key, group_title = group_for(track, rel)
-            output_rel = rel.with_suffix(".html")
+            output_rel = (
+                rel.with_name("index.html")
+                if rel.name == "README.md"
+                else rel.with_suffix(".html")
+            )
             documents.append(
                 Document(
                     track=track,
@@ -653,7 +673,9 @@ def main() -> None:
     content_paths = ("de", "en", "de_vocab", "en_vocab")
     source_sha = git_value(source, "log", "-1", "--format=%H", "--", *content_paths)
     source_date = git_value(source, "log", "-1", "--format=%cI", "--", *content_paths)
-    markdown_count = len(list(source.rglob("*.md")))
+    markdown_count = sum(
+        len(list((source / track).rglob("*.md"))) for track in TRACK_ORDER
+    )
     source_links = validate_source_links(source)
     documents, included, excluded = discover(source)
     if markdown_count != len(included) + len(excluded):
