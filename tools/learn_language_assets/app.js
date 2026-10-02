@@ -234,3 +234,100 @@
   synth.addEventListener('voiceschanged', updateVoices);
   updateVoices();
 })();
+
+
+(function () {
+  document.querySelectorAll('[data-branch-scenario]').forEach(scenario => {
+    const source = scenario.querySelector('[data-branch-source]');
+    const player = scenario.querySelector('[data-branch-player]');
+    const nodes = new Map(Array.from(source.querySelectorAll('[data-branch-node]')).map(node => [node.dataset.branchNode, node]));
+    if (!nodes.has('start') || Array.from(source.querySelectorAll('[data-next]')).some(choice => !nodes.has(choice.dataset.next))) return;
+    let path = [{ id: 'start', draft: '' }];
+    const content = document.createElement('div');
+    content.className = 'branch-current';
+    const draftLabel = document.createElement('label');
+    draftLabel.textContent = '先写自己的回应，再参考下面的选项（也可以先说出来）';
+    const draft = document.createElement('textarea');
+    draft.rows = 3;
+    draft.setAttribute('aria-label', scenario.querySelector('h2').textContent + '：自己的回应');
+    draftLabel.appendChild(draft);
+    const controls = document.createElement('div');
+    controls.className = 'branch-controls';
+    const back = document.createElement('button');
+    back.type = 'button';
+    back.textContent = '返回上一步';
+    const restart = document.createElement('button');
+    restart.type = 'button';
+    restart.textContent = '从头重来';
+    const status = document.createElement('p');
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    const log = document.createElement('details');
+    const summary = document.createElement('summary');
+    summary.textContent = '查看本轮对话记录';
+    const logList = document.createElement('ol');
+    log.append(summary, logList);
+    controls.append(back, restart);
+    player.append(content, controls, status, log);
+    source.hidden = true;
+    player.hidden = false;
+    function render(focus) {
+      const current = path[path.length - 1];
+      const node = nodes.get(current.id).cloneNode(true);
+      const choices = Array.from(node.querySelectorAll('[data-branch-choice]'));
+      content.replaceChildren(node);
+      if (choices.length) {
+        const list = node.querySelector('ul');
+        draft.value = current.draft;
+        node.insertBefore(draftLabel, list);
+        choices.forEach(choice => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'branch-choice';
+          button.textContent = choice.textContent;
+          button.dataset.next = choice.dataset.next;
+          choice.replaceWith(button);
+          button.addEventListener('click', () => {
+            current.draft = draft.value;
+            current.reply = button.textContent;
+            path.push({ id: button.dataset.next, draft: '' });
+            render(true);
+          });
+        });
+      }
+      back.disabled = path.length === 1;
+      status.textContent = choices.length
+        ? '已回应 ' + (path.length - 1) + ' 次。先尝试自己的说法，再选一句继续。'
+        : '本轮走到这里。请看结果说明，也可以返回尝试另一条路。';
+      logList.replaceChildren();
+      path.forEach(step => {
+        const add = (label, text) => {
+          const item = document.createElement('li');
+          item.textContent = label + text;
+          logList.appendChild(item);
+        };
+        add('对方：', nodes.get(step.id).querySelector('[data-other-line]').textContent);
+        if (step.draft.trim()) add('你的草稿：', step.draft);
+        if (step.reply) add('你选择的回应：', step.reply);
+      });
+      if (focus) {
+        node.setAttribute('tabindex', '-1');
+        node.focus({ preventScroll: true });
+        node.scrollIntoView({ behavior: 'auto', block: 'nearest' });
+      }
+    }
+    draft.addEventListener('input', () => { path[path.length - 1].draft = draft.value; });
+    back.addEventListener('click', () => {
+      if (path.length === 1) return;
+      path.pop();
+      delete path[path.length - 1].reply;
+      render(true);
+    });
+    restart.addEventListener('click', () => {
+      path = [{ id: 'start', draft: '' }];
+      log.open = false;
+      render(true);
+    });
+    render(false);
+  });
+})();

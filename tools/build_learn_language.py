@@ -484,8 +484,8 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
             f'''<a class="track-row" href="./{track}/communication/">
               <span class="track-number">{number:02d}</span>
               <span class="track-code">{TRACKS[track]['code']}</span>
-              <span class="track-name"><strong>{language}沟通实战</strong><small>听不懂怎么办 · 读通知 · 把事情办完</small></span>
-              <span class="track-kind">沟通应对 · 模板工具 · 留言听辨</span>
+              <span class="track-name"><strong>{language}沟通实战</strong><small>对话分支 · 自然表达 · 把事情办完</small></span>
+              <span class="track-kind">分支练习 · 自然表达 · 模板与听辨</span>
               <b aria-hidden="true">↗</b>
             </a>'''
         )
