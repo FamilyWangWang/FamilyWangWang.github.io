@@ -1,15 +1,15 @@
 {
   "project": "learnLanguage",
   "source_repository": "private Markdown source",
-  "source_commit": "f6b233fa955c873f09076c73e432bda3b9a42e5c",
-  "source_commit_date": "2026-10-02T16:31:40+02:00",
-  "generated_at": "2026-10-02T16:31:40+02:00",
-  "source_markdown": 774,
-  "published_documents": 764,
-  "source_links_checked": 22654,
+  "source_commit": "483625bea96dc81361a6705eb7db6443ca9a789d",
+  "source_commit_date": "2026-10-02T21:24:47+02:00",
+  "generated_at": "2026-10-02T21:24:47+02:00",
+  "source_markdown": 784,
+  "published_documents": 774,
+  "source_links_checked": 22698,
   "tracks": {
-    "de": 211,
-    "en": 211,
+    "de": 216,
+    "en": 216,
     "de_vocab": 171,
     "en_vocab": 171
   },
@@ -180,6 +180,11 @@
     "de/communication/11-toneAndAudience.md",
     "de/communication/12-boundariesAndDisagreement.md",
     "de/communication/13-listeningPractice.md",
+    "de/communication/14-consideringAndDeciding.md",
+    "de/communication/15-thankingAndDeclining.md",
+    "de/communication/16-requestsAndReminders.md",
+    "de/communication/17-clarifyingAndDisagreeing.md",
+    "de/communication/18-branchingPractice.md",
     "de/communication/README.md",
     "de/communication/toolkit.md",
     "de/grammar/01-introducingYourself.md",
@@ -391,6 +396,11 @@
     "en/communication/11-toneAndAudience.md",
     "en/communication/12-boundariesAndDisagreement.md",
     "en/communication/13-listeningPractice.md",
+    "en/communication/14-consideringAndDeciding.md",
+    "en/communication/15-thankingAndDeclining.md",
+    "en/communication/16-requestsAndReminders.md",
+    "en/communication/17-clarifyingAndDisagreeing.md",
+    "en/communication/18-branchingPractice.md",
     "en/communication/README.md",
     "en/communication/toolkit.md",
     "en/grammar/01-introducingYourself.md",
@@ -791,5 +801,5 @@
     "en_vocab/PLAN.md",
     "en_vocab/README.md"
   ],
-  "build_fingerprint": "ff5d23860f0be7761705efc2894b5c56cb5ce97b5daf15a57628e84ec54103b4"
+  "build_fingerprint": "b8e23baaa84016b637a00d41830f7489cd1a750abdff07f1fbd8c9ae62372ddd"
 }

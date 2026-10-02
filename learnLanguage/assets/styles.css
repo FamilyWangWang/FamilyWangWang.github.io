@@ -440,3 +440,32 @@ button, input { font: inherit; }
   .toolkit-controls > label:first-child { width: 100%; }
   .toolkit-controls select { width: 100%; }
 }
+
+
+.branching-practice [hidden] { display: none !important; }
+.branch-scenario { margin: 36px 0; padding: 24px 0; border-top: 1px solid var(--line); }
+.prose .branch-scenario h2 { margin-top: 12px; }
+.branch-current { margin: 24px 0; }
+.branch-current h3 { margin-top: 18px; }
+.branch-controls { display: flex; flex-wrap: wrap; gap: 12px; }
+.branching-practice button {
+  max-width: 100%; min-height: 44px; padding: 10px 14px; font: inherit; line-height: 1.6;
+  border: 1px solid var(--line); border-radius: 4px; color: inherit; background: var(--paper-solid); cursor: pointer;
+}
+.branching-practice button:hover { border-color: currentColor; }
+.branching-practice button:disabled { opacity: .5; cursor: default; }
+.branching-practice .branch-choice { display: block; width: 100%; text-align: left; }
+.branch-current ul { list-style: none; padding-left: 0; }
+.branch-current li { margin: 12px 0; }
+.branching-practice textarea {
+  display: block; width: 100%; min-height: 110px; margin: 10px 0 18px; padding: 12px;
+  resize: vertical; font: inherit; line-height: 1.65; border: 1px solid var(--line);
+  border-radius: 4px; background: var(--paper-solid); color: inherit;
+}
+.branching-practice :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.branching-practice summary { cursor: pointer; min-height: 44px; padding-top: 8px; }
+.branching-practice [role="status"] { color: var(--muted); }
+.branching-practice [data-branch-feedback] { padding: 14px; border-left: 3px solid var(--accent); }
+@media (max-width: 760px) {
+  .branching-practice button { overflow-wrap: anywhere; }
+}
