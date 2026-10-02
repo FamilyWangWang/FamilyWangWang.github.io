@@ -461,6 +461,22 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
               <b aria-hidden="true">↗</b>
             </a>'''
         )
+    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 1):
+        language = "德语" if track == "de" else "英语"
+        chapters = sum(
+            1 for doc in documents
+            if doc.track == track and doc.group_key == "grammar"
+            and re.match(r"^[0-9]{2}-", doc.source_path.name)
+        )
+        rows.append(
+            f'''<a class="track-row" href="./{track}/grammar/">
+              <span class="track-number">{number:02d}</span>
+              <span class="track-code">{TRACKS[track]['code']}</span>
+              <span class="track-name"><strong>{language}实用语法</strong><small>对话 · 聊天 · 信件沟通</small></span>
+              <span class="track-kind">日常沟通语法 · {chapters} 章 + 速查表</span>
+              <b aria-hidden="true">↗</b>
+            </a>'''
+        )
     body = f'''<header class="root-nav shell">
       <a href="../">← DOCUMENT CENTER</a><span>learnLanguage</span>
     </header>
@@ -468,11 +484,11 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
       <section class="root-hero shell">
         <div class="root-kicker">03 · PUBLIC LANGUAGE ARCHIVE</div>
         <h1>learn<br><em>Language</em></h1>
-        <p>从真实场景到系统词汇。选择语言，再选择今天要解决的问题。</p>
+        <p>从真实场景、实用语法到系统词汇。选择语言，再选择今天要解决的问题。</p>
         <div class="language-mark" aria-hidden="true"><span>DE</span><i>EN</i><b>中</b></div>
       </section>
       <section class="track-section shell" aria-labelledby="tracks-title">
-        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">四个入口，一套方法</h2><p>场景教程强调自然表达和使用边界；主题词汇强调级别、辨义、复现与自测。</p></div>
+        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">六个入口，一套方法</h2><p>场景教程帮助自然表达；实用语法解决对话、聊天和信件沟通；主题词汇帮助辨义、复现与自测。</p></div>
         <div class="track-list">{''.join(rows)}</div>
       </section>
       <section class="root-note shell">
@@ -483,7 +499,7 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
     </main>'''
     return page_shell(
         title="learnLanguage · 语言学习档案",
-        description="面向中文母语成年学习者的德语与英语场景教程和主题词汇库。",
+        description="面向中文母语成年学习者的德语与英语场景教程、实用语法和主题词汇库。",
         body=body,
         body_class="root-page",
         source_sha=source_sha,
