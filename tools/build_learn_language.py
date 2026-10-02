@@ -66,6 +66,7 @@ COMMON_GROUPS = {
     "09-email": "邮件写作",
     "10-socialMedia": "社交媒体",
     "grammar": "日常沟通语法",
+    "communication": "日常沟通实战",
     "grammarInAction": "口语补充专题",
     "slang": "俚语专题",
 }
@@ -477,6 +478,17 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
               <b aria-hidden="true">↗</b>
             </a>'''
         )
+    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 3):
+        language = "德语" if track == "de" else "英语"
+        rows.append(
+            f'''<a class="track-row" href="./{track}/communication/">
+              <span class="track-number">{number:02d}</span>
+              <span class="track-code">{TRACKS[track]['code']}</span>
+              <span class="track-name"><strong>{language}沟通实战</strong><small>听不懂怎么办 · 读通知 · 把事情办完</small></span>
+              <span class="track-kind">沟通应对 · 模板工具 · 留言听辨</span>
+              <b aria-hidden="true">↗</b>
+            </a>'''
+        )
     body = f'''<header class="root-nav shell">
       <a href="../">← DOCUMENT CENTER</a><span>learnLanguage</span>
     </header>
@@ -488,7 +500,7 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
         <div class="language-mark" aria-hidden="true"><span>DE</span><i>EN</i><b>中</b></div>
       </section>
       <section class="track-section shell" aria-labelledby="tracks-title">
-        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">六个入口，一套方法</h2><p>场景教程帮助自然表达；实用语法解决对话、聊天和信件沟通；主题词汇帮助辨义、复现与自测。</p></div>
+        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">八个入口，一套方法</h2><p>场景、语法与词汇打好基础；沟通实战帮助应对卡壳、读懂通知、跟进办事，另有可编辑模板与留言听辨。</p></div>
         <div class="track-list">{''.join(rows)}</div>
       </section>
       <section class="root-note shell">

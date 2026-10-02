@@ -406,3 +406,37 @@ button, input { font: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* Communication tools follow the existing reading layout. */
+.communication-toolkit [hidden], .listening-lab [hidden] { display: none !important; }
+.toolkit-controls, .speech-controls, .template-actions {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+}
+.communication-toolkit label, .listening-lab label { display: block; }
+.communication-toolkit select, .listening-lab select,
+.communication-toolkit button, .listening-lab button {
+  max-width: 100%; min-height: 44px; padding: 8px 12px; font: inherit;
+  border: 1px solid var(--line); border-radius: 4px; color: inherit; background: var(--paper-solid);
+}
+.communication-toolkit button, .listening-lab button { cursor: pointer; }
+.communication-toolkit button:hover, .listening-lab button:hover { border-color: currentColor; }
+.communication-toolkit button[aria-pressed="true"] { border-color: currentColor; font-weight: 700; }
+.listening-lab button:disabled { opacity: .55; cursor: default; }
+.communication-toolkit textarea {
+  display: block; box-sizing: border-box; width: 100%; max-width: 100%; margin: 10px 0 16px;
+  padding: 14px; line-height: 1.65; font: inherit; resize: vertical; min-height: 150px;
+  border: 1px solid var(--line); border-radius: 4px; color: inherit; background: var(--paper-solid);
+}
+.communication-toolkit :focus-visible, .listening-lab :focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.template-item, .listening-item { padding: 24px 0; border-bottom: 1px solid var(--line); }
+.prose .template-item h2, .prose .listening-item h2 { margin-top: 12px; }
+[data-toolkit-status], [data-speech-status] { min-height: 1.6em; color: var(--muted); }
+.listening-lab details { margin-top: 18px; }
+.listening-lab summary { cursor: pointer; min-height: 44px; }
+@media (max-width: 760px) {
+  .speech-controls > label { width: 100%; }
+  .speech-controls select { width: 100%; }
+  .toolkit-controls > label:first-child { width: 100%; }
+  .toolkit-controls select { width: 100%; }
+}
