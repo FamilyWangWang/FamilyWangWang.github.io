@@ -1,15 +1,15 @@
 {
   "project": "learnLanguage",
   "source_repository": "private Markdown source",
-  "source_commit": "483625bea96dc81361a6705eb7db6443ca9a789d",
-  "source_commit_date": "2026-10-02T21:24:47+02:00",
-  "generated_at": "2026-10-02T21:24:47+02:00",
-  "source_markdown": 784,
-  "published_documents": 774,
-  "source_links_checked": 22698,
+  "source_commit": "60dba7660169cb3d2ff8813bb5f935bcaa1bf609",
+  "source_commit_date": "2026-10-09T11:30:53+02:00",
+  "generated_at": "2026-10-09T11:30:53+02:00",
+  "source_markdown": 790,
+  "published_documents": 780,
+  "source_links_checked": 22780,
   "tracks": {
-    "de": 216,
-    "en": 216,
+    "de": 219,
+    "en": 219,
     "de_vocab": 171,
     "en_vocab": 171
   },
@@ -187,6 +187,9 @@
     "de/communication/18-branchingPractice.md",
     "de/communication/README.md",
     "de/communication/toolkit.md",
+    "de/expressions/notebook.md",
+    "de/expressions/practice.md",
+    "de/expressions/README.md",
     "de/grammar/01-introducingYourself.md",
     "de/grammar/02-wordOrder.md",
     "de/grammar/03-referringBack.md",
@@ -403,6 +406,9 @@
     "en/communication/18-branchingPractice.md",
     "en/communication/README.md",
     "en/communication/toolkit.md",
+    "en/expressions/notebook.md",
+    "en/expressions/practice.md",
+    "en/expressions/README.md",
     "en/grammar/01-introducingYourself.md",
     "en/grammar/02-describingSituations.md",
     "en/grammar/03-referringBack.md",
@@ -801,5 +807,5 @@
     "en_vocab/PLAN.md",
     "en_vocab/README.md"
   ],
-  "build_fingerprint": "b8e23baaa84016b637a00d41830f7489cd1a750abdff07f1fbd8c9ae62372ddd"
+  "build_fingerprint": "b408cfd0a770e1131015297d06e996cdb5a78cea5692bfc181572b1d1481620d"
 }

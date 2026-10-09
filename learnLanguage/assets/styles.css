@@ -469,3 +469,12 @@ button, input { font: inherit; }
 @media (max-width: 760px) {
   .branching-practice button { overflow-wrap: anywhere; }
 }
+
+/* Expression lookup uses the same controls and cards as the communication tools. */
+.communication-toolkit input[type="search"] {
+  width: min(100%, 24rem); padding: .65rem .8rem; border: 1px solid var(--line);
+  border-radius: .25rem; background: var(--paper); color: var(--ink); font: inherit;
+}
+[data-expression-count] { color: var(--muted); }
+
+.prose.expression-article h1 { font-size: clamp(1.8rem, 3vw, 3.3rem); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 24px; }
