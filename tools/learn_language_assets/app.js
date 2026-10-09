@@ -53,9 +53,17 @@
     }
     loadSearch().then(function (rows) {
       const terms = query.split(/\s+/).filter(Boolean);
+      if (input.value.trim().toLocaleLowerCase() !== query) return;
+      function relevance(row) {
+        const title = row.title.toLocaleLowerCase();
+        const group = row.group.toLocaleLowerCase();
+        return (title.includes(query) ? 100 : 0) + terms.reduce(function (score, term) {
+          return score + (title.includes(term) ? 10 : 0) + (group.includes(term) ? 3 : 0);
+        }, 0);
+      }
       const matches = rows.filter(function (row) {
         return terms.every(function (term) { return row.haystack.includes(term); });
-      }).slice(0, 24);
+      }).sort(function (a, b) { return relevance(b) - relevance(a); }).slice(0, 24);
       results.innerHTML = matches.length
         ? matches.map(function (row) {
             return '<a href="' + row.url + '"><strong>' + escapeHtml(row.title) +
