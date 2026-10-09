@@ -1,0 +1,1 @@
+const c={H:1,C:12,N:14,O:16,Na:23,Mg:24,Al:27,S:32,Cl:35.5,K:39,Ca:40,Fe:56,Cu:64,Zn:65,Ag:108};function a(n){return n.reduce((o,[r,t])=>{const e=c[r];if(e===void 0)throw new Error(`core/chem: 相对原子质量表里没有 ${r}——先补表（写出处），不要在条目里自己写`);return o+e*t},0)}export{c as A,a as m};
