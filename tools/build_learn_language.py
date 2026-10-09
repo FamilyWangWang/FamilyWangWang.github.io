@@ -619,10 +619,25 @@ def render_article(
     source_date: str,
 ) -> str:
     info = TRACKS[doc.track]
-    position = track_docs.index(doc)
-    previous = track_docs[position - 1] if position else None
-    following = track_docs[position + 1] if position + 1 < len(track_docs) else None
+    reading_order = [
+        "reading.md", "reading-help.md", "reading-decline.md",
+        "reading-disappointment.md", "reading-expectations.md",
+        "reading-missing-word.md", "reading-feelings.md",
+        "reading-repair.md", "reading-organize.md",
+    ]
+    is_reading = doc.group_key == "pragmatics" and doc.source_path.name in reading_order
     group_docs = [item for item in track_docs if item.group_key == doc.group_key]
+    if is_reading:
+        group_docs = sorted(
+            [item for item in group_docs if item.source_path.name in reading_order],
+            key=lambda item: reading_order.index(item.source_path.name),
+        )
+    navigation_docs = group_docs if is_reading else track_docs
+    position = navigation_docs.index(doc)
+    previous = navigation_docs[position - 1] if position else None
+    following = navigation_docs[position + 1] if position + 1 < len(navigation_docs) else None
+    display_group_title = "表达阅读教程" if is_reading else doc.group_title
+    group_count = len(group_docs) - 1 if is_reading else len(group_docs)
     sidebar_links = "".join(
         f'<a href="{item.url}" class="{"current" if item is doc else ""}">{html.escape(item.title)}</a>'
         for item in group_docs
@@ -640,18 +655,18 @@ def render_article(
     body_html = markdown_to_html(doc.sanitized_markdown)
     body = f'''<header class="reader-top shell">
       <a href="/learnLanguage/{doc.track}/">← {html.escape(info['name'])}</a>
-      <span>{html.escape(doc.group_title)}</span>
+      <span>{html.escape(display_group_title)}</span>
       {search_markup(doc.track)}
       <button class="menu-button" type="button" data-menu-button aria-expanded="false">目录</button>
     </header>
     <div class="reader-layout shell">
       <aside class="reader-sidebar" data-sidebar>
         <a class="sidebar-home" href="/learnLanguage/{doc.track}/">全部目录</a>
-        <p>{html.escape(doc.group_title)} · {len(group_docs)} 篇</p>
+        <p>{html.escape(display_group_title)} · {group_count} 篇</p>
         <nav aria-label="本组文章">{sidebar_links}</nav>
       </aside>
       <main id="main" class="reader-main">
-        <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(doc.group_title)}</span></div>
+        <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(display_group_title)}</span></div>
         {risk_notice(doc)}
         <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key == 'pragmatics' else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
