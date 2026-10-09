@@ -493,3 +493,6 @@ button, input { font: inherit; }
 .note-item { padding: 1rem 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
 .note-item p { white-space: pre-wrap; }
 .study-dashboard :focus-visible, .pragmatics-notebook :focus-visible, .pragmatics-progress :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Keep dialogue roles readable while the story table scrolls on narrow screens. */
+.story-listening th:first-child, .story-listening td:first-child { min-width: 4em; white-space: nowrap; }
