@@ -68,6 +68,7 @@ COMMON_GROUPS = {
     "grammar": "日常沟通语法",
     "communication": "日常沟通实战",
     "expressions": "地道表达",
+    "pragmatics": "语气、情感与言外之意",
     "grammarInAction": "口语补充专题",
     "slang": "俚语专题",
 }
@@ -405,6 +406,7 @@ def page_shell(
     source_sha: str,
     source_date: str,
 ) -> str:
+    pragmatics_script = '<script src="/learnLanguage/assets/pragmatics.js" defer></script>' if "data-pragmatics" in body or "data-study-dashboard" in body else ""
     track_attr = f' data-track="{track}"' if track else ""
     search_index = f'/learnLanguage/assets/search-{track}.json' if track else ""
     search_attr = f' data-search-index="{search_index}"' if search_index else ""
@@ -426,6 +428,7 @@ def page_shell(
     <span>自动生成 · Generated from sanitized Markdown</span>
   </footer>
   <script src="/learnLanguage/assets/app.js" defer></script>
+  {pragmatics_script}
 </body>
 </html>
 '''
@@ -501,6 +504,16 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
               <b aria-hidden="true">↗</b>
             </a>'''
         )
+    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 7):
+        language = "德语" if track == "de" else "英语"
+        chapters = sum(1 for doc in documents if doc.track == track and doc.group_key == "pragmatics" and re.match(r"^[0-9]{2}-", doc.source_path.name))
+        rows.append(
+            f'''<a class="track-row" href="./{track}/pragmatics/">
+              <span class="track-number">{number:02d}</span><span class="track-code">{TRACKS[track]['code']}</span>
+              <span class="track-name"><strong>{language}语气与情感</strong><small>听懂对方 · 表达自己 · 修复误会</small></span>
+              <span class="track-kind">{chapters} 章 · 对话与分支 · 笔记与复习</span><b aria-hidden="true">↗</b>
+            </a>'''
+        )
     body = f'''<header class="root-nav shell">
       <a href="../">← DOCUMENT CENTER</a><span>learnLanguage</span>
     </header>
@@ -512,7 +525,7 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
         <div class="language-mark" aria-hidden="true"><span>DE</span><i>EN</i><b>中</b></div>
       </section>
       <section class="track-section shell" aria-labelledby="tracks-title">
-        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">十个入口，一套方法</h2><p>场景、语法与词汇打好基础；沟通实战帮助应对卡壳、读懂通知、跟进办事，另有地道表达、可编辑模板与留言听辨。</p></div>
+        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">{len(rows)} 个入口，一套方法</h2><p>场景、语法与词汇打好基础；沟通实战帮助应对卡壳、读懂通知、跟进办事，再用语气与情感课程学习关系沟通，另有地道表达、模板与留言听辨。</p></div>
         <div class="track-list">{''.join(rows)}</div>
       </section>
       <section class="root-note shell">
@@ -640,7 +653,7 @@ def render_article(
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(doc.group_title)}</span></div>
         {risk_notice(doc)}
-        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ''}">{body_html}</article>
+        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key == 'pragmatics' else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''
@@ -706,7 +719,7 @@ def main() -> None:
         raise SystemExit(f"source is not a Git checkout: {source}")
     if output == source or source in output.parents:
         raise SystemExit("output must not be inside the private source repository")
-    for required in (ASSET_DIR / "styles.css", ASSET_DIR / "app.js"):
+    for required in (ASSET_DIR / "styles.css", ASSET_DIR / "app.js", ASSET_DIR / "pragmatics.js"):
         if not required.exists():
             raise SystemExit(f"missing build asset: {required}")
 
@@ -726,6 +739,7 @@ def main() -> None:
     assets.mkdir()
     shutil.copy2(ASSET_DIR / "styles.css", assets / "styles.css")
     shutil.copy2(ASSET_DIR / "app.js", assets / "app.js")
+    shutil.copy2(ASSET_DIR / "pragmatics.js", assets / "pragmatics.js")
 
     (output / "index.html").write_text(
         render_root(documents, source_sha, source_date), encoding="utf-8", newline="\n"

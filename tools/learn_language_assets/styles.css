@@ -478,3 +478,18 @@ button, input { font: inherit; }
 [data-expression-count] { color: var(--muted); }
 
 .prose.expression-article h1 { font-size: clamp(1.8rem, 3vw, 3.3rem); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 24px; }
+
+.prose.pragmatics-article h1 { font-size: clamp(1.8rem, 3vw, 3.3rem); line-height: 1.2; letter-spacing: -.02em; margin-bottom: 24px; }
+.study-controls, .pragmatics-progress { display: flex; flex-wrap: wrap; gap: .6rem; }
+.pragmatics-progress { margin: 1.4rem 0 2rem; padding: 1rem 0; border-block: 1px solid var(--line); }
+.pragmatics-progress p { flex-basis: 100%; margin: 0 0 .5rem; }
+.study-controls button, .pragmatics-progress button, .note-item button { padding: .65rem .8rem; border: 1px solid var(--line); border-radius: .25rem; background: var(--paper-solid); color: var(--ink); font: inherit; cursor: pointer; }
+.study-controls button[aria-pressed="true"] { border-color: var(--ink); font-weight: 700; }
+.study-dashboard [hidden], .pragmatics-notebook [hidden] { display: none !important; }
+[data-study-state], [data-progress-status], [data-study-status], [data-note-status] { color: var(--muted); }
+[data-study-state] { display: inline-block; font-size: .85rem; }
+.pragmatics-notebook label { display: block; margin: 1rem 0; }
+.pragmatics-notebook textarea { display: block; width: 100%; padding: .8rem; margin-top: .4rem; border: 1px solid var(--line); background: var(--paper-solid); color: var(--ink); font: inherit; resize: vertical; }
+.note-item { padding: 1rem 0; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.note-item p { white-space: pre-wrap; }
+.study-dashboard :focus-visible, .pragmatics-notebook :focus-visible, .pragmatics-progress :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
