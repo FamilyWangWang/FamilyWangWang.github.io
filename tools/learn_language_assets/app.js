@@ -103,6 +103,12 @@
     const onlySaved = toolkit.querySelector('[data-favorites-only]');
     const status = toolkit.querySelector('[data-toolkit-status]');
     const cards = Array.from(toolkit.querySelectorAll('[data-template]'));
+    const expressionSearch = toolkit.querySelector('[data-expression-search]');
+    const expressionCount = toolkit.querySelector('[data-expression-count]');
+    const isExpressionLibrary = toolkit.hasAttribute('data-expression-library');
+    const unsavedLabel = isExpressionLibrary ? '收藏表达' : '收藏模板';
+    const itemName = isExpressionLibrary ? '表达' : '模板';
+    const searchableText = new Map(cards.map(card => [card, card.textContent.toLocaleLowerCase()]));
     const key = 'learnLanguage.communication.favorites.' + toolkit.dataset.language;
     let favorites = new Set();
     try {
@@ -112,28 +118,31 @@
       status.textContent = '当前浏览器不能读取收藏；仍可使用和复制模板。';
     }
     function applyFilter() {
+      const query = expressionSearch ? expressionSearch.value.trim().toLocaleLowerCase() : '';
       cards.forEach(card => {
         const saved = favorites.has(card.dataset.templateId);
         const button = card.querySelector('[data-save]');
         button.setAttribute('aria-pressed', String(saved));
-        button.textContent = saved ? '取消收藏' : '收藏模板';
-        card.hidden = (filter.value !== 'all' && card.dataset.task !== filter.value) || (onlySaved.checked && !saved);
+        button.textContent = saved ? '取消收藏' : unsavedLabel;
+        card.hidden = (filter.value !== 'all' && card.dataset.task !== filter.value) || (onlySaved.checked && !saved) || (query && !searchableText.get(card).includes(query));
       });
-      toolkit.querySelector('[data-empty]').hidden = cards.some(card => !card.hidden);
+      const visibleCount = cards.filter(card => !card.hidden).length;
+      toolkit.querySelector('[data-empty]').hidden = visibleCount > 0;
+      if (expressionCount) expressionCount.textContent = `显示 ${visibleCount} / ${cards.length} 条表达`;
     }
     cards.forEach(card => {
       const field = card.querySelector('[data-template-text]');
       const original = field.value;
       card.querySelector('[data-reset]').addEventListener('click', () => {
         field.value = original;
-        status.textContent = '已恢复原模板。';
+        status.textContent = isExpressionLibrary ? '已恢复原例句。' : '已恢复原模板。';
       });
       card.querySelector('[data-save]').addEventListener('click', () => {
         const id = card.dataset.templateId;
         favorites.has(id) ? favorites.delete(id) : favorites.add(id);
         try {
           localStorage.setItem(key, JSON.stringify(Array.from(favorites)));
-          status.textContent = favorites.has(id) ? '已收藏模板。' : '已取消收藏。';
+          status.textContent = favorites.has(id) ? `已收藏${itemName}。` : '已取消收藏。';
         } catch (_) {
           status.textContent = '当前浏览器不能保存收藏；本次页面内仍可使用。';
         }
@@ -153,6 +162,7 @@
         }
       });
     });
+    if (expressionSearch) expressionSearch.addEventListener('input', applyFilter);
     filter.addEventListener('change', applyFilter);
     onlySaved.addEventListener('change', applyFilter);
     applyFilter();

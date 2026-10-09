@@ -67,6 +67,7 @@ COMMON_GROUPS = {
     "10-socialMedia": "社交媒体",
     "grammar": "日常沟通语法",
     "communication": "日常沟通实战",
+    "expressions": "地道表达",
     "grammarInAction": "口语补充专题",
     "slang": "俚语专题",
 }
@@ -489,6 +490,17 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
               <b aria-hidden="true">↗</b>
             </a>'''
         )
+    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 5):
+        language = "德语" if track == "de" else "英语"
+        rows.append(
+            f'''<a class="track-row" href="./{track}/expressions/">
+              <span class="track-number">{number:02d}</span>
+              <span class="track-code">{TRACKS[track]['code']}</span>
+              <span class="track-name"><strong>{language}地道表达</strong><small>词都认识，整句却不懂</small></span>
+              <span class="track-kind">语境解读 · 含义搜索 · 收藏与练习</span>
+              <b aria-hidden="true">↗</b>
+            </a>'''
+        )
     body = f'''<header class="root-nav shell">
       <a href="../">← DOCUMENT CENTER</a><span>learnLanguage</span>
     </header>
@@ -500,7 +512,7 @@ def render_root(documents: list[Document], source_sha: str, source_date: str) ->
         <div class="language-mark" aria-hidden="true"><span>DE</span><i>EN</i><b>中</b></div>
       </section>
       <section class="track-section shell" aria-labelledby="tracks-title">
-        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">八个入口，一套方法</h2><p>场景、语法与词汇打好基础；沟通实战帮助应对卡壳、读懂通知、跟进办事，另有可编辑模板与留言听辨。</p></div>
+        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">十个入口，一套方法</h2><p>场景、语法与词汇打好基础；沟通实战帮助应对卡壳、读懂通知、跟进办事，另有地道表达、可编辑模板与留言听辨。</p></div>
         <div class="track-list">{''.join(rows)}</div>
       </section>
       <section class="root-note shell">
@@ -628,7 +640,7 @@ def render_article(
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(doc.group_title)}</span></div>
         {risk_notice(doc)}
-        <article class="prose">{body_html}</article>
+        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''
