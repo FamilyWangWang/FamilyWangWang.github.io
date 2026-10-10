@@ -25,16 +25,16 @@ TRACK_ORDER = ("de", "en", "de_vocab", "en_vocab")
 TRACKS = {
     "de": {
         "code": "DE",
-        "name": "德语口语实战",
+        "name": "德语学习",
         "target": "Deutsch im Alltag",
-        "description": "从真实场景进入德语：日常对话、沟通语法、书信与使用边界。",
+        "description": "按学习问题选择德语阅读教程、语气课程、实用语法、生活场景与主题词汇。",
         "kind": "场景口语",
     },
     "en": {
         "code": "EN",
-        "name": "英语口语实战",
+        "name": "英语学习",
         "target": "English in Real Life",
-        "description": "从真实场景进入英语：日常对话、沟通语法、书信与地区差异。",
+        "description": "按学习问题选择英语阅读教程、语气课程、实用语法、生活场景与主题词汇。",
         "kind": "场景口语",
     },
     "de_vocab": {
@@ -253,7 +253,9 @@ def public_markdown(text: str) -> str:
 def group_for(track: str, relative: pathlib.PurePosixPath) -> tuple[str, str]:
     parts = relative.parts
     if track in ("de", "en"):
-        if parts[0] == "commonExpressions":
+        if relative.as_posix() == "catalog.md":
+            key = "00-guide"
+        elif parts[0] == "commonExpressions":
             key = "00-guide" if len(parts) == 2 else parts[1]
         else:
             key = parts[0]
@@ -262,7 +264,7 @@ def group_for(track: str, relative: pathlib.PurePosixPath) -> tuple[str, str]:
     return key, VOCAB_GROUPS.get(key, key)
 
 
-def discover(source: pathlib.Path) -> tuple[list[Document], list[str], list[str]]:
+def discover(source: pathlib.Path, navigation: dict) -> tuple[list[Document], list[str], list[str]]:
     documents: list[Document] = []
     included: list[str] = []
     excluded: list[str] = []
@@ -289,6 +291,9 @@ def discover(source: pathlib.Path) -> tuple[list[Document], list[str], list[str]
                 raise SystemExit(f"missing H1 in {repo_rel}")
             title = re.sub(r"[*_`]", "", heading.group(1)).strip()
             group_key, group_title = group_for(track, rel)
+            if track in {"de", "en"}:
+                group_key = navigation["course_reclassifications"].get(rel.as_posix(), group_key)
+                group_title = navigation["course_group_titles"].get(group_key, group_title)
             output_rel = (
                 rel.with_name("index.html")
                 if rel.name == "README.md"
@@ -408,7 +413,8 @@ def page_shell(
 ) -> str:
     pragmatics_script = '<script src="/learnLanguage/assets/pragmatics.js" defer></script>' if "data-pragmatics" in body or "data-study-dashboard" in body else ""
     track_attr = f' data-track="{track}"' if track else ""
-    search_index = f'/learnLanguage/assets/search-{track}.json' if track else ""
+    language = track.removesuffix("_vocab") if track else None
+    search_index = f'/learnLanguage/assets/search-{language}-all.json' if language else ""
     search_attr = f' data-search-index="{search_index}"' if search_index else ""
     return f'''<!doctype html>
 <html lang="zh-Hans">
@@ -444,147 +450,142 @@ def track_groups(documents: list[Document]) -> list[tuple[str, str, list[Documen
 
 
 def search_markup(track: str) -> str:
+    language = "德语" if track.removesuffix("_vocab") == "de" else "英语"
     return f'''<div class="search" data-search>
-      <label class="sr-only" for="search-{track}">搜索本栏目</label>
-      <input id="search-{track}" type="search" placeholder="搜索词语、场景或文章…" autocomplete="off" data-search-input>
+      <label class="sr-only" for="search-{track}">搜索{language}教程与词汇</label>
+      <input id="search-{track}" type="search" placeholder="搜索{language}教程与词汇…" autocomplete="off" data-search-input>
       <span class="search-key">⌘ K</span>
       <div class="search-results" data-search-results hidden></div>
     </div>'''
 
 
-def render_root(documents: list[Document], source_sha: str, source_date: str) -> str:
-    counts = {track: sum(1 for doc in documents if doc.track == track) for track in TRACK_ORDER}
-    rows = []
-    for number, track in enumerate(TRACK_ORDER, 1):
-        info = TRACKS[track]
-        rows.append(
-            f'''<a class="track-row" href="./{track}/">
-              <span class="track-number">{number:02d}</span>
-              <span class="track-code">{info['code']}</span>
-              <span class="track-name"><strong>{info['name']}</strong><small>{info['target']}</small></span>
-              <span class="track-kind">{info['kind']} · {counts[track]} 篇</span>
-              <b aria-hidden="true">↗</b>
-            </a>'''
+def navigation_url(track: str, entry: dict) -> str:
+    path = f"{track}_vocab/README.md" if entry.get("vocabulary") else f"{track}/{entry['path']}"
+    return "/learnLanguage/" + rewrite_target(path)
+
+
+def language_navigation(track: str) -> str:
+    language = track.removesuffix("_vocab")
+    links = []
+    for code, name in (("de", "德语"), ("en", "英语")):
+        current = ' aria-current="location"' if language == code else ""
+        links.append(f'<a href="/learnLanguage/{code}/"{current}>{name}</a>')
+    return '<nav class="language-nav" aria-label="选择语言">' + "".join(links) + '</nav>'
+
+
+def render_root(documents: list[Document], source_sha: str, source_date: str, navigation: dict) -> str:
+    sections = []
+    for language in navigation["languages"]:
+        track, name = language["track"], language["name"]
+        entries = navigation["learning_sections"] + [{
+            "title": "主题词汇", "vocabulary": True,
+            "description": "按主题查词、搭配和例句，补足生活、工作与抽象表达所需的词汇。",
+        }]
+        rows = "".join(
+            f'<li><a href="{navigation_url(track, entry)}"><strong>{entry["title"]}</strong>'
+            f'<span>{entry["description"]}</span><b aria-hidden="true">↗</b></a></li>'
+            for entry in entries
         )
-    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 1):
-        language = "德语" if track == "de" else "英语"
-        chapters = sum(
-            1 for doc in documents
-            if doc.track == track and doc.group_key == "grammar"
-            and re.match(r"^[0-9]{2}-", doc.source_path.name)
-        )
-        rows.append(
-            f'''<a class="track-row" href="./{track}/grammar/">
-              <span class="track-number">{number:02d}</span>
-              <span class="track-code">{TRACKS[track]['code']}</span>
-              <span class="track-name"><strong>{language}实用语法</strong><small>对话 · 聊天 · 信件沟通</small></span>
-              <span class="track-kind">日常沟通语法 · {chapters} 章 + 速查表</span>
-              <b aria-hidden="true">↗</b>
-            </a>'''
-        )
-    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 3):
-        language = "德语" if track == "de" else "英语"
-        rows.append(
-            f'''<a class="track-row" href="./{track}/communication/">
-              <span class="track-number">{number:02d}</span>
-              <span class="track-code">{TRACKS[track]['code']}</span>
-              <span class="track-name"><strong>{language}沟通实战</strong><small>对话分支 · 自然表达 · 把事情办完</small></span>
-              <span class="track-kind">分支练习 · 自然表达 · 模板与听辨</span>
-              <b aria-hidden="true">↗</b>
-            </a>'''
-        )
-    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 5):
-        language = "德语" if track == "de" else "英语"
-        rows.append(
-            f'''<a class="track-row" href="./{track}/expressions/">
-              <span class="track-number">{number:02d}</span>
-              <span class="track-code">{TRACKS[track]['code']}</span>
-              <span class="track-name"><strong>{language}地道表达</strong><small>词都认识，整句却不懂</small></span>
-              <span class="track-kind">语境解读 · 含义搜索 · 收藏与练习</span>
-              <b aria-hidden="true">↗</b>
-            </a>'''
-        )
-    for number, track in enumerate(("de", "en"), len(TRACK_ORDER) + 7):
-        language = "德语" if track == "de" else "英语"
-        chapters = sum(1 for doc in documents if doc.track == track and doc.group_key == "pragmatics" and re.match(r"^[0-9]{2}-", doc.source_path.name))
-        rows.append(
-            f'''<a class="track-row" href="./{track}/pragmatics/">
-              <span class="track-number">{number:02d}</span><span class="track-code">{TRACKS[track]['code']}</span>
-              <span class="track-name"><strong>{language}语气与情感</strong><small>听懂对方 · 表达自己 · 修复误会</small></span>
-              <span class="track-kind">{chapters} 章 · 对话与分支 · 笔记与复习</span><b aria-hidden="true">↗</b>
-            </a>'''
-        )
-    body = f'''<header class="root-nav shell">
-      <a href="../">← DOCUMENT CENTER</a><span>learnLanguage</span>
-    </header>
+        sections.append(f'''<section class="language-section" id="{track}-learning" aria-labelledby="{track}-title">
+          <header><p>{language['target']} · {track.upper()}</p><h2 id="{track}-title">{name}</h2>
+          <a class="directory-link" href="./{track}/">进入{name}学习目录 <span aria-hidden="true">↗</span></a></header>
+          <p class="language-intro">以下入口都属于{name}。可以直接选一个问题，也可以先进入目录，了解各类内容。</p>
+          <ul class="language-entries">{rows}</ul>
+        </section>''')
+    body = f'''<header class="root-nav shell"><a href="../">← 文档中心</a><span>learnLanguage</span></header>
     <main id="main">
-      <section class="root-hero shell">
-        <div class="root-kicker">03 · PUBLIC LANGUAGE ARCHIVE</div>
-        <h1>learn<br><em>Language</em></h1>
-        <p>从真实场景、实用语法到系统词汇。选择语言，再选择今天要解决的问题。</p>
-        <div class="language-mark" aria-hidden="true"><span>DE</span><i>EN</i><b>中</b></div>
+      <section class="directory-hero root-directory-hero shell">
+        <p class="directory-kicker">learnLanguage</p><h1>英语与德语学习</h1>
+        <p class="directory-lede">先选择语言，再按今天想理解或表达的事情进入。阅读教程、生活场景、语法与词汇都有各自的说明。</p>
+        <nav class="language-choice" aria-label="进入语言学习目录">
+          <a href="./de/"><strong>德语</strong><span>Deutsch · 进入学习目录</span><b aria-hidden="true">↗</b></a>
+          <a href="./en/"><strong>英语</strong><span>English · 进入学习目录</span><b aria-hidden="true">↗</b></a>
+        </nav>
       </section>
-      <section class="track-section shell" aria-labelledby="tracks-title">
-        <div class="section-intro"><span>01 · 学习路径</span><h2 id="tracks-title">{len(rows)} 个入口，一套方法</h2><p>场景、语法与词汇打好基础；沟通实战帮助应对卡壳、读懂通知、跟进办事，再用语气与情感课程学习关系沟通，另有地道表达、模板与留言听辨。</p></div>
-        <div class="track-list">{''.join(rows)}</div>
-      </section>
-      <section class="root-note shell">
-        <span>02 · 阅读说明</span>
-        <h2>语言可以练习，现实规则需要复核</h2>
-        <div><p>医疗、法律、税务、移民和平台规则只作为语言场景，不构成专业建议。</p><p>带有年份的内容是资料快照；实际办理事务前，请核对当前官方信息。</p></div>
+      <div class="language-directory shell">{''.join(sections)}</div>
+      <section class="directory-note shell"><h2>怎样开始</h2>
+        <p>已有基础，可以直接选择当前问题。想系统提高表达时，先读表达阅读教程，再用语法理解句子组成，用语气课程理解态度与关系；主题词汇用于补足具体词语。练习与工具按需要使用。</p>
+        <p>课程中的办事、医疗与公共事务用于学习语言。实际办理时，请核对当前机构的要求。</p>
       </section>
     </main>'''
-    return page_shell(
-        title="learnLanguage · 语言学习档案",
-        description="面向中文母语成年学习者的德语与英语场景教程、实用语法和主题词汇库。",
-        body=body,
-        body_class="root-page",
-        source_sha=source_sha,
-        source_date=source_date,
+    return page_shell(title="learnLanguage · 英语与德语学习", description="先选英语或德语，再按学习目标找到阅读教程、生活场景、语法与主题词汇。",
+        body=body, body_class="root-page directory-page", source_sha=source_sha, source_date=source_date)
+
+
+def is_optional_practice(doc: Document) -> bool:
+    name = doc.source_path.name
+    return (
+        (doc.group_key == "pragmatics" and name.startswith("practice-") and name != "practice-guide.md")
+        or (doc.group_key == "expressions" and name == "practice.md")
+        or (doc.group_key == "communication" and name in {"13-listeningPractice.md", "18-branchingPractice.md"})
     )
 
 
-def render_track_landing(track: str, documents: list[Document], source_sha: str, source_date: str) -> str:
+def render_catalog_group(track: str, key: str, title: str, docs: list[Document], description: str, guide: str) -> str:
+    reading = [doc for doc in docs if not is_optional_practice(doc)]
+    practice = [doc for doc in docs if is_optional_practice(doc)]
+    preferred = "reading.md" if key == "pragmatics" else "README.md"
+    first = next((doc for doc in reading if doc.source_path.name == preferred), reading[0])
+    if key == "00-guide":
+        first = next((doc for doc in reading if doc.source_relative.as_posix() == guide), first)
+    start_label = "先读八篇表达阅读教程" if key == "pragmatics" else "从这里开始"
+    start = f'<a class="catalog-start" href="{first.url}">{start_label} <span aria-hidden="true">↗</span></a>'
+    if key == "pragmatics":
+        index = next(doc for doc in reading if doc.source_path.name == "README.md")
+        start += f'<a class="catalog-start" href="{index.url}">48 章课程与专题目录 <span aria-hidden="true">↗</span></a>'
+    lists = []
+    for items, label in ((reading, "阅读与速查"), (practice, "可选练习")):
+        if not items:
+            continue
+        links = "".join(f'<li><a href="{doc.url}"><span>{html.escape(doc.title)}</span><b aria-hidden="true">↗</b></a></li>' for doc in items)
+        lists.append(f'<details class="catalog-articles"><summary>查看{label}目录 <span>{len(items)} 篇</span></summary><ol>{links}</ol></details>')
+    return f'<section class="catalog-group" id="topic-{key}"><h3>{html.escape(title)}</h3><p class="catalog-description">{html.escape(description)}</p><div class="catalog-starts">{start}</div>{"".join(lists)}</section>'
+
+
+def render_track_landing(track: str, documents: list[Document], source_sha: str, source_date: str, navigation: dict) -> str:
     info = TRACKS[track]
-    groups = track_groups(documents)
-    group_html = []
-    for index, (_, title, docs) in enumerate(groups, 1):
-        links = "".join(
-            f'<li><a href="./{doc.output_relative.as_posix()}"><span>{html.escape(doc.title)}</span><b>↗</b></a></li>'
-            for doc in docs
-        )
-        group_html.append(
-            f'''<details class="catalog-group" open>
-              <summary><span>{index:02d}</span><h3>{html.escape(title)}</h3><small>{len(docs)} 篇</small></summary>
-              <ol>{links}</ol>
-            </details>'''
-        )
-    body = f'''<header class="reader-top shell">
-      <a href="../">← learnLanguage</a>
-      <span>{html.escape(info['name'])}</span>
-      {search_markup(track)}
-    </header>
+    code = track.removesuffix("_vocab")
+    language = next(item for item in navigation["languages"] if item["track"] == code)
+    name = language["name"]
+    vocabulary = track.endswith("_vocab")
+    groups = {key: (title, docs) for key, title, docs in track_groups(documents)}
+    collections = navigation["vocabulary_collections" if vocabulary else "course_collections"]
+    descriptions = navigation["vocabulary_groups" if vocabulary else "course_groups"]
+    rendered, handled, jumps = [], set(), []
+    for index, collection in enumerate(collections, 1):
+        available = [key for key in collection["groups"] if key in groups]
+        if not available:
+            continue
+        anchor = f"collection-{index}"
+        jumps.append(f'<a href="#{anchor}">{collection["title"]}</a>')
+        inner = "".join(render_catalog_group(track, key, groups[key][0], groups[key][1], descriptions[key], language["guide"]) for key in available)
+        handled.update(available)
+        intro = f'<p>{collection["description"]}</p>' if collection.get("description") else ""
+        rendered.append(f'<section class="catalog-collection" id="{anchor}"><header><h2>{collection["title"]}</h2>{intro}</header>{inner}</section>')
+    if handled != set(groups):
+        raise SystemExit(f"navigation has unclassified groups in {track}: {sorted(set(groups) - handled)}")
+    if vocabulary:
+        orientation = f'''<section class="directory-orientation shell"><h2>这本词汇书怎样使用</h2>
+        <p>按正在谈的主题查词，结合搭配与例句理解用法，不必先从头背完整本书。需要组成句子或处理一段对话时，可以回到{name}学习目录。</p>
+        <div class="directory-actions"><a href="/learnLanguage/{track}/00-howToUse.html">先读词汇书使用方法</a><a href="/learnLanguage/{code}/">回到{name}学习目录</a></div></section>'''
+        back_url, back_label = f"/learnLanguage/{code}/", f"{name}学习"
+        lede = "这里按主题整理词义、搭配、例句和使用范围。先选当前需要的主题，再打开详细文章目录。"
+        extra = ""
+    else:
+        goals = "".join(f'<li><a href="{navigation_url(track, entry)}">{entry["title"]}<span aria-hidden="true">↗</span></a></li>' for entry in navigation["goals"])
+        orientation = f'<section class="directory-orientation shell" id="learning-goals"><h2>按眼前的问题进入</h2><ul class="goal-links">{goals}</ul></section>'
+        back_url, back_label = "/learnLanguage/", "语言总入口"
+        lede = f"这里汇集{name}的阅读教程、语气课程、语法与生活场景。每类内容先说明解决什么问题；详细文章目录可以按需要展开。主题词汇另有按主题整理的入口。"
+        extra = f'<div class="directory-actions"><a href="/learnLanguage/{code}_vocab/">{name}主题词汇：按主题查词与搭配</a><a href="/learnLanguage/{code}/catalog.html">查看完整章节目录</a></div>'
+    body = f'''<header class="reader-top directory-top shell"><a href="{back_url}">← {back_label}</a>{language_navigation(track)}{search_markup(track)}</header>
     <main id="main">
-      <section class="track-hero shell">
-        <p class="track-kicker">{html.escape(info['kind'])} · {len(documents)} 篇</p>
-        <h1>{html.escape(info['name'])}</h1>
-        <div class="track-lede"><strong>{html.escape(info['target'])}</strong><p>{html.escape(info['description'])}</p></div>
-        <span class="track-watermark" aria-hidden="true">{html.escape(info['code'])}</span>
-      </section>
-      <section class="catalog shell" aria-labelledby="catalog-title">
-        <div class="catalog-intro"><span>目录</span><h2 id="catalog-title">按主题开始</h2><p>每篇内容都保留原有练习、表格与交叉链接。</p></div>
-        <div class="catalog-groups">{''.join(group_html)}</div>
-      </section>
+      <section class="directory-hero shell"><p class="directory-kicker">{name} · {'主题词汇' if vocabulary else '阅读教程与场景表达'}</p><h1>{info['name']}</h1><p class="directory-lede">{lede}</p>{extra}</section>
+      {orientation}
+      <section class="catalog directory-catalog shell" aria-labelledby="catalog-title"><div class="catalog-heading"><h2 id="catalog-title">{'按主题查词' if vocabulary else '按内容选择'}</h2><p>先看分类介绍，再从适合的入口开始。完整文章列表保留在各分类下面。</p></div>
+      <nav class="catalog-jumps" aria-label="跳到目录分类">{''.join(jumps)}</nav>{''.join(rendered)}</section>
     </main>'''
-    return page_shell(
-        title=f"{info['name']} · learnLanguage",
-        description=info["description"],
-        body=body,
-        body_class="track-page",
-        track=track,
-        source_sha=source_sha,
-        source_date=source_date,
-    )
+    return page_shell(title=f"{info['name']} · learnLanguage", description=info["description"], body=body,
+        body_class="track-page directory-page", track=track, source_sha=source_sha, source_date=source_date)
 
 
 def risk_notice(doc: Document) -> str:
@@ -626,6 +627,7 @@ def render_article(
         "reading-repair.md", "reading-organize.md",
     ]
     is_reading = doc.group_key == "pragmatics" and doc.source_path.name in reading_order
+
     def is_practice_page(item: Document) -> bool:
         return (
             item.group_key == "pragmatics"
@@ -751,14 +753,17 @@ def main() -> None:
         if not required.exists():
             raise SystemExit(f"missing build asset: {required}")
 
-    content_paths = ("de", "en", "de_vocab", "en_vocab")
+    content_paths = ("de", "en", "de_vocab", "en_vocab", "navigation.json")
     source_sha = git_value(source, "log", "-1", "--format=%H", "--", *content_paths)
     source_date = git_value(source, "log", "-1", "--format=%cI", "--", *content_paths)
     markdown_count = sum(
         len(list((source / track).rglob("*.md"))) for track in TRACK_ORDER
     )
     source_links = validate_source_links(source)
-    documents, included, excluded = discover(source)
+    navigation = json.loads((source / "navigation.json").read_text(encoding="utf-8"))
+    if navigation.get("version") != 1:
+        raise SystemExit("unsupported navigation configuration version")
+    documents, included, excluded = discover(source, navigation)
     if markdown_count != len(included) + len(excluded):
         raise SystemExit("content inventory mismatch")
 
@@ -770,14 +775,14 @@ def main() -> None:
     shutil.copy2(ASSET_DIR / "pragmatics.js", assets / "pragmatics.js")
 
     (output / "index.html").write_text(
-        render_root(documents, source_sha, source_date), encoding="utf-8", newline="\n"
+        render_root(documents, source_sha, source_date, navigation), encoding="utf-8", newline="\n"
     )
     for track in TRACK_ORDER:
         track_docs = [doc for doc in documents if doc.track == track]
         track_output = output / track
         track_output.mkdir(parents=True, exist_ok=True)
         (track_output / "index.html").write_text(
-            render_track_landing(track, track_docs, source_sha, source_date),
+            render_track_landing(track, track_docs, source_sha, source_date, navigation),
             encoding="utf-8",
             newline="\n",
         )
@@ -799,6 +804,22 @@ def main() -> None:
             json.dumps(search_rows, ensure_ascii=False, separators=(",", ":")),
             encoding="utf-8",
             newline="\n",
+        )
+
+    for language in navigation["languages"]:
+        code = language["track"]
+        rows = []
+        for doc in documents:
+            if doc.track in {code, code + "_vocab"}:
+                rows.append({
+                    "url": doc.url,
+                    "title": doc.title,
+                    "group": TRACKS[doc.track]["name"] + " · " + doc.group_title,
+                    "text": plain_text(doc.sanitized_markdown),
+                })
+        (assets / f"search-{code}-all.json").write_text(
+            json.dumps(rows, ensure_ascii=False, separators=(",", ":")),
+            encoding="utf-8", newline="\n",
         )
 
     manifest = {
