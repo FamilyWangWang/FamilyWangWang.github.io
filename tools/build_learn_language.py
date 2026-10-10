@@ -626,17 +626,30 @@ def render_article(
         "reading-repair.md", "reading-organize.md",
     ]
     is_reading = doc.group_key == "pragmatics" and doc.source_path.name in reading_order
-    group_docs = [item for item in track_docs if item.group_key == doc.group_key]
+    def is_practice_page(item: Document) -> bool:
+        return (
+            item.group_key == "pragmatics"
+            and item.source_path.name.startswith("practice-")
+            and item.source_path.name != "practice-guide.md"
+        )
+
+    is_practice = is_practice_page(doc)
+    group_docs = [
+        item for item in track_docs
+        if item.group_key == doc.group_key and is_practice_page(item) == is_practice
+    ]
     if is_reading:
         group_docs = sorted(
             [item for item in group_docs if item.source_path.name in reading_order],
             key=lambda item: reading_order.index(item.source_path.name),
         )
-    navigation_docs = group_docs if is_reading else track_docs
+    navigation_docs = group_docs if is_reading or is_practice else [
+        item for item in track_docs if not is_practice_page(item)
+    ]
     position = navigation_docs.index(doc)
     previous = navigation_docs[position - 1] if position else None
     following = navigation_docs[position + 1] if position + 1 < len(navigation_docs) else None
-    display_group_title = "表达阅读教程" if is_reading else doc.group_title
+    display_group_title = "表达阅读教程" if is_reading else "语气与情感练习" if is_practice else doc.group_title
     group_count = len(group_docs) - 1 if is_reading else len(group_docs)
     sidebar_links = "".join(
         f'<a href="{item.url}" class="{"current" if item is doc else ""}">{html.escape(item.title)}</a>'
