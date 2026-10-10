@@ -535,7 +535,7 @@ def render_catalog_group(track: str, key: str, title: str, docs: list[Document],
     if key == "00-guide":
         first = next((doc for doc in reading if doc.source_relative.as_posix() == guide), first)
     start_label = ("先读八篇表达阅读教程" if key == "pragmatics" else
-                   "从十二篇表达方法开始" if key == "expression-building" else "从这里开始")
+                   "从表达方法开始" if key == "expression-building" else "从这里开始")
     start = f'<a class="catalog-start" href="{first.url}">{start_label} <span aria-hidden="true">↗</span></a>'
     if key == "pragmatics":
         index = next(doc for doc in reading if doc.source_path.name == "README.md")
