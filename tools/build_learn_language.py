@@ -524,7 +524,7 @@ def is_optional_practice(doc: Document) -> bool:
 def render_catalog_group(track: str, key: str, title: str, docs: list[Document], description: str, guide: str) -> str:
     reading = [doc for doc in docs if not is_optional_practice(doc)]
     practice = [doc for doc in docs if is_optional_practice(doc)]
-    if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication"}:
+    if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths"}:
         reading.sort(key=lambda doc: (
             0 if doc.source_path.name == "README.md" else
             2 if doc.source_path.name == "sources.md" else 1,
@@ -547,7 +547,7 @@ def render_catalog_group(track: str, key: str, title: str, docs: list[Document],
             continue
         links = "".join(f'<li><a href="{doc.url}"><span>{html.escape(doc.title)}</span><b aria-hidden="true">↗</b></a></li>' for doc in items)
         count_label = (f'{sum(doc.source_path.name[:2].isdigit() for doc in items)} 篇正文及目录、参考'
-                       if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication"} else f'{len(items)} 篇')
+                       if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths"} else f'{len(items)} 篇')
         lists.append(f'<details class="catalog-articles"><summary>查看{label}目录 <span>{count_label}</span></summary><ol>{links}</ol></details>')
     return f'<section class="catalog-group" id="topic-{key}"><h3>{html.escape(title)}</h3><p class="catalog-description">{html.escape(description)}</p><div class="catalog-starts">{start}</div>{"".join(lists)}</section>'
 
@@ -637,7 +637,7 @@ def render_article(
         "reading-repair.md", "reading-organize.md",
     ]
     is_reading = doc.group_key == "pragmatics" and doc.source_path.name in reading_order
-    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication"}
+    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths"}
 
     def is_practice_page(item: Document) -> bool:
         return (
@@ -702,7 +702,7 @@ def render_article(
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(display_group_title)}</span></div>
         {risk_notice(doc)}
-        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication'} else ''}">{body_html}</article>
+        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication', 'conversation-methods', 'learning-paths'} else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''
