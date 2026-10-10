@@ -524,7 +524,7 @@ def is_optional_practice(doc: Document) -> bool:
 def render_catalog_group(track: str, key: str, title: str, docs: list[Document], description: str, guide: str) -> str:
     reading = [doc for doc in docs if not is_optional_practice(doc)]
     practice = [doc for doc in docs if is_optional_practice(doc)]
-    if key == "expression-building":
+    if key in {"expression-building", "reading-methods"}:
         reading.sort(key=lambda doc: (
             0 if doc.source_path.name == "README.md" else
             2 if doc.source_path.name == "sources.md" else 1,
@@ -535,7 +535,8 @@ def render_catalog_group(track: str, key: str, title: str, docs: list[Document],
     if key == "00-guide":
         first = next((doc for doc in reading if doc.source_relative.as_posix() == guide), first)
     start_label = ("先读八篇表达阅读教程" if key == "pragmatics" else
-                   "从表达方法开始" if key == "expression-building" else "从这里开始")
+                   "从表达方法开始" if key == "expression-building" else
+                   "从句子与篇章阅读开始" if key == "reading-methods" else "从这里开始")
     start = f'<a class="catalog-start" href="{first.url}">{start_label} <span aria-hidden="true">↗</span></a>'
     if key == "pragmatics":
         index = next(doc for doc in reading if doc.source_path.name == "README.md")
@@ -546,7 +547,7 @@ def render_catalog_group(track: str, key: str, title: str, docs: list[Document],
             continue
         links = "".join(f'<li><a href="{doc.url}"><span>{html.escape(doc.title)}</span><b aria-hidden="true">↗</b></a></li>' for doc in items)
         count_label = (f'{sum(doc.source_path.name[:2].isdigit() for doc in items)} 篇正文及目录、参考'
-                       if key == "expression-building" else f'{len(items)} 篇')
+                       if key in {"expression-building", "reading-methods"} else f'{len(items)} 篇')
         lists.append(f'<details class="catalog-articles"><summary>查看{label}目录 <span>{count_label}</span></summary><ol>{links}</ol></details>')
     return f'<section class="catalog-group" id="topic-{key}"><h3>{html.escape(title)}</h3><p class="catalog-description">{html.escape(description)}</p><div class="catalog-starts">{start}</div>{"".join(lists)}</section>'
 
@@ -636,7 +637,7 @@ def render_article(
         "reading-repair.md", "reading-organize.md",
     ]
     is_reading = doc.group_key == "pragmatics" and doc.source_path.name in reading_order
-    is_expression_building = doc.group_key == "expression-building"
+    is_method_course = doc.group_key in {"expression-building", "reading-methods"}
 
     def is_practice_page(item: Document) -> bool:
         return (
@@ -655,13 +656,13 @@ def render_article(
             [item for item in group_docs if item.source_path.name in reading_order],
             key=lambda item: reading_order.index(item.source_path.name),
         )
-    if is_expression_building:
+    if is_method_course:
         group_docs.sort(key=lambda item: (
             0 if item.source_path.name == "README.md" else
             2 if item.source_path.name == "sources.md" else 1,
             item.source_path.name,
         ))
-    navigation_docs = group_docs if is_reading or is_practice or is_expression_building else [
+    navigation_docs = group_docs if is_reading or is_practice or is_method_course else [
         item for item in track_docs if not is_practice_page(item)
     ]
     position = navigation_docs.index(doc)
@@ -670,7 +671,7 @@ def render_article(
     display_group_title = "表达阅读教程" if is_reading else "语气与情感练习" if is_practice else doc.group_title
     group_count = (len(group_docs) - 1 if is_reading else
                    sum(item.source_path.name[0:2].isdigit() for item in group_docs)
-                   if is_expression_building else len(group_docs))
+                   if is_method_course else len(group_docs))
     sidebar_links = "".join(
         f'<a href="{item.url}" class="{"current" if item is doc else ""}">{html.escape(item.title)}</a>'
         for item in group_docs
@@ -701,7 +702,7 @@ def render_article(
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(display_group_title)}</span></div>
         {risk_notice(doc)}
-        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building'} else ''}">{body_html}</article>
+        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods'} else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''
