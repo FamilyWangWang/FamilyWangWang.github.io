@@ -1,19 +1,20 @@
 {
   "project": "learnLanguage",
   "source_repository": "private Markdown source",
-  "source_commit": "39d2e83e55ff62c2336a75dc6c965b34e4563355",
-  "source_commit_date": "2026-10-10T09:03:40+02:00",
-  "generated_at": "2026-10-10T09:03:40+02:00",
-  "source_markdown": 1086,
-  "published_documents": 1076,
-  "source_links_checked": 25454,
+  "source_commit": "c3550accbd64b2ee1c63027d3b99e3164901baf8",
+  "source_commit_date": "2026-10-10T10:01:09+02:00",
+  "generated_at": "2026-10-10T10:01:09+02:00",
+  "source_markdown": 1088,
+  "published_documents": 1078,
+  "source_links_checked": 25897,
   "tracks": {
-    "de": 367,
-    "en": 367,
+    "de": 368,
+    "en": 368,
     "de_vocab": 171,
     "en_vocab": 171
   },
   "included": [
+    "de/catalog.md",
     "de/commonExpressions/00-spokenGermanGuide.md",
     "de/commonExpressions/01-social/01-greeting.md",
     "de/commonExpressions/01-social/02-introduction.md",
@@ -381,6 +382,7 @@
     "de/slang/05-workplace.md",
     "de/slang/06-internet.md",
     "de/slang/07-avoid.md",
+    "en/catalog.md",
     "en/commonExpressions/00-spokenEnglishGuide.md",
     "en/commonExpressions/01-social/01-greeting.md",
     "en/commonExpressions/01-social/02-introduction.md",
@@ -1103,5 +1105,5 @@
     "en_vocab/PLAN.md",
     "en_vocab/README.md"
   ],
-  "build_fingerprint": "62ba24b9811441532c1c998071c7ebfd3bd63784dd28338e3c97798ce96e2e79"
+  "build_fingerprint": "e7f6308e98557fafa07a5eacd480e1d9d524906cd9ee8139f9cc4cf4c9384335"
 }
