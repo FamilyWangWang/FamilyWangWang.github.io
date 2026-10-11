@@ -637,6 +637,9 @@ def render_article(
         "reading-repair.md", "reading-organize.md",
     ]
     is_reading = doc.group_key == "pragmatics" and doc.source_path.name in reading_order
+    story_order = ["stories.md", "story-contact.md", "story-work.md",
+                   "story-home.md", "story-service.md"]
+    is_story = doc.group_key == "pragmatics" and doc.source_path.name in story_order
     strength_order = ["strength.md", "strength-warmth.md", "strength-concern.md",
                       "strength-feedback.md", "strength-boundaries.md",
                       "strength-requests.md", "strength-responsibility.md"]
@@ -660,6 +663,11 @@ def render_article(
             [item for item in group_docs if item.source_path.name in reading_order],
             key=lambda item: reading_order.index(item.source_path.name),
         )
+    if is_story:
+        group_docs = sorted(
+            [item for item in group_docs if item.source_path.name in story_order],
+            key=lambda item: story_order.index(item.source_path.name),
+        )
     if is_strength:
         group_docs = sorted(
             [item for item in group_docs if item.source_path.name in strength_order],
@@ -671,14 +679,14 @@ def render_article(
             2 if item.source_path.name == "sources.md" else 1,
             item.source_path.name,
         ))
-    navigation_docs = group_docs if is_reading or is_strength or is_practice or is_method_course else [
+    navigation_docs = group_docs if is_reading or is_story or is_strength or is_practice or is_method_course else [
         item for item in track_docs if not is_practice_page(item)
     ]
     position = navigation_docs.index(doc)
     previous = navigation_docs[position - 1] if position else None
     following = navigation_docs[position + 1] if position + 1 < len(navigation_docs) else None
-    display_group_title = "表达力度专题" if is_strength else "表达阅读教程" if is_reading else "语气与情感练习" if is_practice else doc.group_title
-    group_count = (len(group_docs) - 1 if is_reading or is_strength else
+    display_group_title = "表达力度专题" if is_strength else "表达阅读教程" if is_reading else "连续故事" if is_story else "语气与情感练习" if is_practice else doc.group_title
+    group_count = (len(group_docs) - 1 if is_reading or is_story or is_strength else
                    sum(item.source_path.name[0:2].isdigit() for item in group_docs)
                    if is_method_course else len(group_docs))
     sidebar_links = "".join(
