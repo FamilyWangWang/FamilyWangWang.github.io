@@ -641,6 +641,7 @@ def render_article(
                    "story-home.md", "story-service.md"]
     is_story = doc.group_key == "pragmatics" and doc.source_path.name in story_order
     topic_orders = {
+        "工具与参考": ["quick-reference.md", "expression-map.md", "practice-guide.md", "training.md", "notebook.md", "sources.md"],
         "消息语气专题": ["messaging.md", "messaging-short.md", "messaging-signals.md", "messaging-timing.md", "messaging-work.md"],
         "中文直译专题": ["translation.md", "translation-choice.md", "translation-ending.md", "translation-care.md", "translation-pressure.md"],
     }
@@ -698,7 +699,8 @@ def render_article(
     previous = navigation_docs[position - 1] if position else None
     following = navigation_docs[position + 1] if position + 1 < len(navigation_docs) else None
     display_group_title = topic_title if topic_title else "表达力度专题" if is_strength else "表达阅读教程" if is_reading else "连续故事" if is_story else "语气与情感练习" if is_practice else doc.group_title
-    group_count = (len(group_docs) - 1 if topic_title or is_reading or is_story or is_strength else
+    group_count = (len(group_docs) if topic_title == "工具与参考" else
+                   len(group_docs) - 1 if topic_title or is_reading or is_story or is_strength else
                    sum(item.source_path.name[0:2].isdigit() for item in group_docs)
                    if is_method_course else len(group_docs))
     sidebar_links = "".join(
@@ -731,7 +733,7 @@ def render_article(
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(display_group_title)}</span></div>
         {risk_notice(doc)}
-        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication', 'conversation-methods', 'learning-paths', 'whole-text-reading'} else ''}">{body_html}</article>
+        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication', 'conversation-methods', 'learning-paths', 'whole-text-reading'} else ''}{' reference-tool-article' if topic_title == '工具与参考' else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''

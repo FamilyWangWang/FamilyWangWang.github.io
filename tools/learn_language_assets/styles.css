@@ -589,3 +589,19 @@ button, input { font: inherit; }
   .catalog-collection > header { grid-column: 1; }
   .catalog-jumps { gap: 0 20px; }
 }
+
+/* Tool comparisons and task links stay together on narrow screens. */
+@media (max-width: 760px) {
+  .reference-tool-article table {
+    min-width: 0;
+    width: 100%;
+    table-layout: fixed;
+    font-size: .9rem;
+    line-height: 1.8;
+  }
+  .reference-tool-article :is(th, td) {
+    overflow-wrap: anywhere;
+    padding: 12px 8px;
+  }
+  .reference-tool-article :is(th, td):first-child { width: 32%; }
+}
