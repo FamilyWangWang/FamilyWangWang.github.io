@@ -264,7 +264,7 @@
     const content = document.createElement('div');
     content.className = 'branch-current';
     const draftLabel = document.createElement('label');
-    draftLabel.textContent = '先写自己的回应，再参考下面的选项（也可以先说出来）';
+    draftLabel.textContent = '你的回应（可选，也可以直接选择下面的参考回应）';
     const draft = document.createElement('textarea');
     draft.rows = 3;
     draft.setAttribute('aria-label', scenario.querySelector('h2').textContent + '：自己的回应');
@@ -315,7 +315,7 @@
       }
       back.disabled = path.length === 1;
       status.textContent = choices.length
-        ? '已回应 ' + (path.length - 1) + ' 次。先尝试自己的说法，再选一句继续。'
+        ? '已回应 ' + (path.length - 1) + ' 次。可以直接选参考回应，或写下自己的说法。'
         : '本轮走到这里。请看结果说明，也可以返回尝试另一条路。';
       logList.replaceChildren();
       path.forEach(step => {
