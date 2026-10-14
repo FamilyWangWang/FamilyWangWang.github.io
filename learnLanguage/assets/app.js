@@ -180,7 +180,7 @@
   if (!lab) return;
   const status = lab.querySelector('[data-speech-status]');
   if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
-    status.textContent = '当前浏览器不支持设备朗读。可以展开文字，练习提取信息和回应。';
+    status.textContent = '当前浏览器不支持设备朗读。原文、中文和解读仍可直接阅读。';
     return;
   }
   const synth = window.speechSynthesis;
@@ -207,8 +207,8 @@
     voiceSelect.disabled = voices.length === 0;
     speakButtons.forEach(button => { button.disabled = voices.length === 0; });
     if (!active) status.textContent = voices.length
-      ? '可播放设备合成语音。先读问题，再播放留言；文字和答案在下方折叠区。'
-      : '未找到相应语言的设备语音。可安装设备的语言语音后重开本页，或展开文字练习。';
+      ? '可播放设备合成语音。下方原文和中文可直接阅读，也可收起原文后听读。'
+      : '未找到相应语言的设备语音。原文、中文和解读仍可直接阅读。';
   }
   function stop() {
     generation += 1;
@@ -233,13 +233,13 @@
         if (ticket !== generation) return;
         active = null;
         button.removeAttribute('aria-current');
-        status.textContent = '播放结束。请先自己回应，再展开答案。';
+        status.textContent = '播放结束。可以对照原文、中文和回应解读。';
       };
       active.onerror = () => {
         if (ticket !== generation) return;
         active = null;
         button.removeAttribute('aria-current');
-        status.textContent = '设备朗读未能完成。请重试或展开文字练习。';
+        status.textContent = '设备朗读未能完成。可以重试，或直接阅读下方文字。';
       };
       synth.speak(active);
     });

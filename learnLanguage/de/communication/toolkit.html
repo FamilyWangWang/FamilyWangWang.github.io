@@ -31,8 +31,8 @@
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/de/">DE</a><span>/</span><span>沟通卡住与办事流程</span></div>
         
         <article class="prose"><h1 id="德语随手查用的沟通工具">德语随手查用的沟通工具</h1>
-<p>先选今天要办的事，再把方括号里的信息换成自己的内容。文字可以编辑后复制，常用模板可以收藏。收藏保存在当前浏览器；换设备不会同步。编辑内容不会自动保存，刷新会恢复模板。</p>
-<p>正式发出前检查日期、编号、称呼和附件。这里不会替你发送消息。</p>
+<p>按今天要办的事找模板，先看中文含义，再把方括号里的内容换成当前信息。模板可编辑、复制和收藏；下面的中文帮助理解，复制按钮只复制外语消息。</p>
+<p>收藏保存在当前浏览器，不会自动跨设备同步。编辑内容不会自动保存，刷新会恢复模板；需要保留自己的版本时，先复制到自己的笔记。发出前核对日期、编号、称呼和附件。</p>
 <div class="communication-toolkit" data-toolkit data-language="de">
 <div class="toolkit-controls"><label>我要做什么 <select data-task-filter aria-label="按沟通任务筛选"><option value="all">全部任务</option>
 <option value="听不清">听不清</option>
@@ -46,74 +46,86 @@
 <p data-empty hidden>这里还没有模板。换一个任务，或取消“只看收藏”。</p>
 <section class="template-item" data-template data-template-id="repeat" data-task="听不清">
 <h2>听不清时间</h2>
-<p>听懂地点，但时间没听清；请求只重复时间。</p>
+<p>先说明地点已经听懂，让对方只补时间。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="听不清时间模板">Den Ort habe ich verstanden, aber nicht die Uhrzeit. Könnten Sie die Uhrzeit bitte noch einmal sagen?</textarea></label>
+<p><strong>模板含义：</strong>地点我听懂了，但时间没听清。您能重复一下时间吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="explain" data-task="听不清">
 <h2>请换说法</h2>
-<p>听到词但不理解。</p>
+<p>听清了声音却不理解意思时，用这句请求解释。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="请换说法模板">Ich bin nicht sicher, was Sie damit meinen. Könnten Sie das bitte anders ausdrücken?</textarea></label>
+<p><strong>模板含义：</strong>我不太确定您这句话的意思。您能换一种表达吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="book" data-task="预约改期">
 <h2>预约询问</h2>
-<p>替换日期和可用时段。</p>
+<p>填清事项和可用时段，等对方给出具体空位。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="预约询问模板">Guten Tag, ich würde gern einen Termin für [Anliegen] vereinbaren. Ich könnte am [Datum] zwischen [Uhrzeit] und [Uhrzeit]. Wäre in diesem Zeitraum etwas frei?</textarea></label>
+<p><strong>模板含义：</strong>您好，我想为[事项]约一个时间。[日期]的[开始时间]到[结束时间]之间我方便。那个时段有空位吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="reschedule" data-task="预约改期">
 <h2>已有预约改期</h2>
-<p>替换旧预约与建议时间；等回复再视为确认。</p>
+<p>旧日期定位原预约，新日期和时段说明改期希望。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="已有预约改期模板">Guten Tag, leider kann ich den Termin am [altes Datum] um [Uhrzeit] nicht wahrnehmen. Könnten wir ihn auf [neues Datum] verschieben? Ich könnte zwischen [Uhrzeit] und [Uhrzeit]. Vielen Dank.</textarea></label>
+<p><strong>模板含义：</strong>您好，很遗憾，我无法赴[原日期][原时间]的预约。我们能改到[新日期]吗？我在[开始时间]到[结束时间]之间有空。谢谢。</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="repair" data-task="说明问题">
 <h2>报修</h2>
-<p>只写观察到的问题，补充位置与开始时间。</p>
+<p>发现日期与在家日期可能不同，分别填写；现象写自己观察到的情况。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="报修模板">Guten Tag, in [Ort] gibt es folgendes Problem: [Beobachtung]. Ich habe es am [Datum] bemerkt. Könnten Sie bitte eine Überprüfung vereinbaren? Ich bin am [Datum] zwischen [Uhrzeit] und [Uhrzeit] zu Hause.</textarea></label>
+<p><strong>模板含义：</strong>您好，[地点]有如下问题：[观察到的现象]。我在[发现日期]注意到了它。您能安排一次检查吗？我会在[在家日期]的[开始时间]到[结束时间]之间在家。</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="unresolved" data-task="说明问题">
 <h2>问题仍未解决</h2>
-<p>描述维修后仍存在的具体情况。</p>
+<p>上门日期和当前现象帮助对方接回原事项。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="问题仍未解决模板">Vielen Dank für den Besuch am [Datum]. Leider besteht das Problem weiterhin: [Beobachtung]. Könnten Sie mir bitte mitteilen, was der nächste Schritt ist?</textarea></label>
+<p><strong>模板含义：</strong>谢谢您在[日期]上门。很遗憾，问题仍然存在：[观察到的现象]。请您告诉我下一步怎么处理，好吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="followup" data-task="催回复">
 <h2>中性跟进</h2>
-<p>引用原消息，提出一个具体问题。</p>
+<p>消息日期与主题用于定位；当前状态是尚未收到答复。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="中性跟进模板">Guten Tag, ich möchte wegen meiner Nachricht vom [Datum] zu [Thema] nachfragen. Bisher habe ich noch keine Antwort erhalten. Könnten Sie mir bitte sagen, wie der aktuelle Stand ist? Vielen Dank.</textarea></label>
+<p><strong>模板含义：</strong>您好，我想跟进[日期]发出的关于[主题]的消息。我还没收到回复。请您告知当前状态好吗？谢谢。</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="deadline" data-task="催回复">
 <h2>询问预计时间</h2>
-<p>你的期限是请求，对方确认后才是约定。</p>
+<p>填入真实需要信息的日期和原因，询问能否按期回复。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="询问预计时间模板">Ich benötige die Information bis zum [Datum], weil [Grund]. Können Sie mir bitte sagen, ob eine Rückmeldung bis dahin möglich ist?</textarea></label>
+<p><strong>模板含义：</strong>因为[原因]，我最迟[日期]需要这些信息。您能告诉我能否最迟在该日期回复吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="file" data-task="材料确认">
 <h2>补发附件</h2>
-<p>发送前核对实际附件。</p>
+<p>附好文件后再使用，接收结果仍需对方确认。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="补发附件模板">Entschuldigung, in meiner letzten E-Mail fehlte der Anhang. Die Datei [Name] ist jetzt angehängt. Könnten Sie mir bitte den Eingang bestätigen?</textarea></label>
+<p><strong>模板含义：</strong>抱歉，我上一封邮件缺了附件。文件[文件名]现在已经附上。请您确认已收到，好吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="received" data-task="材料确认">
 <h2>已提交但仍被提醒</h2>
-<p>提供提交日期，请核查；不直接重复发送敏感资料。</p>
+<p>日期和渠道说明已经完成的提交动作，收到与否仍待核查。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="已提交但仍被提醒模板">Ich habe [Unterlage] bereits am [Datum] über [Kanal] eingereicht. Könnten Sie bitte prüfen, ob die Unterlage bei Ihnen eingegangen ist?</textarea></label>
+<p><strong>模板含义：</strong>我在[日期]已经通过[渠道]提交了[材料]。请您核查一下是否收到，好吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="decline" data-task="拒绝提醒">
 <h2>拒绝邀请</h2>
-<p>不想承诺下次时，不加虚假的下次邀请。</p>
+<p>明确本次不参加，并祝对方活动愉快，没有承诺下次参加。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="拒绝邀请模板">Danke für die Einladung. Diesmal bin ich nicht dabei. Ich wünsche euch einen schönen Abend!</textarea></label>
+<p><strong>模板含义：</strong>谢谢你的邀请。这次我不参加了。祝你们度过愉快的晚上！</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 <section class="template-item" data-template data-template-id="boundary" data-task="拒绝提醒">
 <h2>无法接下任务</h2>
-<p>替换任务与真实情况。</p>
+<p>如果只需要拒绝，删除替代帮助那句；保留它时，应填你确实愿意提供的帮助。</p>
 <label>德语消息 <textarea rows="5" data-template-text aria-label="无法接下任务模板">Das kann ich bis [Datum] leider nicht übernehmen. Ich könnte stattdessen [Alternative] anbieten. Würde das helfen?</textarea></label>
+<p><strong>模板含义：</strong>很遗憾，我无法在[日期]这个期限内承担这项任务。我可以改为提供[替代帮助]。这样有帮助吗？</p>
 <div class="template-actions"><button type="button" data-copy>复制消息</button> <button type="button" data-save aria-pressed="false">收藏模板</button> <button type="button" data-reset>恢复模板</button></div>
 </section>
 </div>
@@ -123,7 +135,7 @@
 <li><strong>我在说哪件事</strong>：引用日期、预约或消息主题。</li>
 <li><strong>现在是什么情况</strong>：只写已知事实，说明哪里没懂、没收到或没解决。</li>
 <li><strong>我希望下一步是什么</strong>：一个明确问题，或给出两种时间选择。</li>
-<li><strong>最后确认</strong>：时间、地点、谁行动，是否还需要回复。</li>
+<li><strong>最后确认</strong>：核对已接受的时间与地点、由谁行动，以及是否还需要回复。</li>
 </ol>
 <p><a href="index.html">沟通实战目录</a> · <a href="../grammar/quick-reference.html">语法任务速查</a> · <a href="13-listeningPractice.html">短留言听辨</a></p></article>
         <nav class="article-pager" aria-label="前后文章"><a rel="prev" href="/learnLanguage/de/communication/index.html"><small>上一篇</small><span>德语日常沟通实战</span></a><a rel="next" href="/learnLanguage/de/conversation-methods/01-purpose-focus.html"><small>下一篇</small><span>01 对方听懂事实以后，还需要知道你希望怎样回应</span></a></nav>

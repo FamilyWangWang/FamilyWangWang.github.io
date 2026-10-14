@@ -31,71 +31,84 @@
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/en/">EN</a><span>/</span><span>沟通卡住与办事流程</span></div>
         
         <article class="prose"><h1 id="18-分支对话-对方回复了-下一句怎么接">18 分支对话：对方回复了，下一句怎么接</h1>
-<p>六个日常场景。先看自己的目标和对方的话，试着说一句或写在草稿里，再选择一个回应，看看对话会怎样继续。没有分数；不同说法会带来不同结果，有些路线还没有把事情办完。</p>
-<p>可以返回上一步尝试另一种回应，或从头重来。草稿只保留在当前练习中；刷新或重来会清空。文字较长时可以先读，也可以自己朗读。</p>
+<p>六个模拟场景把预约、维修、跟进、拒绝和澄清放进几轮谈话。可以直接选参考回应，看下一句和结果；草稿是可选的。原句、中文与解读一起提供，帮助你看清哪条信息改变了后续。</p>
+<p>返回上一步可比较另一条路线，重来或刷新会清空本次草稿。没有分数，不需要先写答案才能继续；关闭脚本时仍可直接阅读全部步骤。</p>
 <div class="branching-practice" data-branching-practice>
 <section class="branch-scenario" data-branch-scenario data-scenario-id="appointment" data-language="en">
 <h2>预约没有空位</h2>
 <p>你明天想预约，但可以改到周五。目标是确认最终时间和地点，而不是只得到一个提议。</p>
 <div class="branch-player" data-branch-player hidden></div>
 <div class="branch-source" data-branch-source>
-<p>也可直接阅读下面各个步骤，比较不同回答的后果。</p>
+<p>下面按节点列出全部路线，关闭脚本时也能阅读原句、中文与结果。</p>
 <section data-branch-node="start">
 <h3>对方说</h3>
-<p data-other-line lang="en">Unfortunately, we don’t have anything available tomorrow.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>先判断是否能换时间；急着用时，也可以询问其他可行渠道。</p>
+<p data-other-line lang="en">Unfortunately, we don’t have anything available tomorrow.<br>
+<span lang="zh">很遗憾，明天没有可预约的时段。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>明天没有空位是当前限制。你可以换到本周其他时间，也可以说明紧急程度后询问别的办法。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="times">Do you have anything available later this week?</span></li>
-<li><span data-branch-choice data-next="urgent">It’s urgent for me. Is there another option?</span></li>
+<li><span data-branch-choice data-next="times">Do you have anything available later this week?
+<span lang="zh">这周晚些时候还有可预约的时段吗？</span></span></li>
+<li><span data-branch-choice data-next="urgent">It’s urgent for me. Is there another option?
+<span lang="zh">这件事对我很紧急。还有别的办法吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="times">
 <h3>对方说</h3>
-<p data-other-line lang="en">We have an appointment available on Friday at three p.m.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>这是提议；可以接受，也可以先确认地点。</p>
+<p data-other-line lang="en">We have an appointment available on Friday at three p.m.<br>
+<span lang="zh">周五下午三点有可预约的时段。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方提出周五三点；一条回应接受并问地点，另一条直接接受，地点会在后续回复中给出。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="place">Friday at three p.m. works for me. Is that at your city-centre branch?</span></li>
-<li><span data-branch-choice data-next="confirmed">Thank you. I’ll take the appointment on Friday at three p.m.</span></li>
+<li><span data-branch-choice data-next="place">Friday at three p.m. works for me. Is that at your city-centre branch?
+<span lang="zh">周五下午三点对我合适。是在您市中心的分店吗？</span></span></li>
+<li><span data-branch-choice data-next="confirmed">Thank you. I’ll take the appointment on Friday at three p.m.
+<span lang="zh">谢谢，我就约周五下午三点。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="place">
 <h3>对方说</h3>
-<p data-other-line lang="en">Yes, at our city-centre branch.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>现在把时间、地点一起复述，避免仅确认地点而忘了接受预约。</p>
+<p data-other-line lang="en">Yes, at our city-centre branch.<br>
+<span lang="zh">对，在我们市中心的分店。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>上一句已经表示周五三点合适，这一轮再得到地点确认。现在把时间地点合起来复述，让双方核对的是同一版安排。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="confirmed">Thank you. I’ll confirm Friday at three p.m. at the city-centre branch.</span></li>
+<li><span data-branch-choice data-next="confirmed">Thank you. That works for me: Friday at three p.m. at the city-centre branch.
+<span lang="zh">谢谢，这个安排我方便：周五下午三点，市中心分店。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="urgent">
 <h3>对方说</h3>
-<p data-other-line lang="en">You could try our other branch, but we can’t book anything there for you.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>对方给了方向，并没有替你预约。</p>
+<p data-other-line lang="en">You could try our other branch, but we can’t book anything there for you.<br>
+<span lang="zh">您可以试试我们的另一家分店，但我们无法在那边替您预约。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>另一家分店是可询问的方向，当前工作人员不能替你在那里预约。你可以请求联系方式，也可以回到本周晚些时候的空位。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="alternative">Could you give me the contact details for the other branch, please?</span></li>
-<li><span data-branch-choice data-next="times">In that case, I’d prefer a slot later this week. What’s available?</span></li>
+<li><span data-branch-choice data-next="alternative">Could you give me the contact details for the other branch, please?
+<span lang="zh">请您给我另一家分店的联系方式好吗？</span></span></li>
+<li><span data-branch-choice data-next="times">In that case, I’d prefer a slot later this week. What’s available?
+<span lang="zh">这样的话，我更愿意约这周晚些时候。还有哪些时段？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="confirmed">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">All right, Friday at three p.m. at the city-centre branch.</p>
-<p data-branch-feedback>本轮已确认时间与地点。真实预约时还应核对具体日期和需带物品。</p>
+<p data-other-line lang="en">All right, Friday at three p.m. at the city-centre branch.<br>
+<span lang="zh">好的，周五下午三点，市中心分店。</span></p>
+<p data-branch-feedback>本轮对方复述了周五三点和市中心分店，双方安排一致。这里仍用相对日期“周五”；使用时要换成当前真实日期。</p>
 </section>
 <section data-branch-node="alternative">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">I’ll send you the contact details. Please contact the other branch directly.</p>
-<p data-branch-feedback>你拿到了联系方法，但预约还没完成。下一步是联系另一家，而不是按已预约处理。</p>
+<p data-other-line lang="en">I’ll send you the contact details. Please contact the other branch directly.<br>
+<span lang="zh">我会给您发联系方式。请直接联系另一家分店。</span></p>
+<p data-branch-feedback>对方答应发送联系方式，尚未说已发送。收到后还要联系另一家分店，当前并没有完成新的预约。</p>
 </section>
 </div>
 </section>
@@ -104,57 +117,69 @@
 <p>你报修后，对方只给出上午时段，但你上午不在家。目标是得到双方都确认的上门时段。</p>
 <div class="branch-player" data-branch-player hidden></div>
 <div class="branch-source" data-branch-source>
-<p>也可直接阅读下面各个步骤，比较不同回答的后果。</p>
+<p>下面按节点列出全部路线，关闭脚本时也能阅读原句、中文与结果。</p>
 <section data-branch-node="start">
 <h3>对方说</h3>
-<p data-other-line lang="en">Our technician could come tomorrow between nine and eleven a.m.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>你上午不在家，需要明确冲突，不要先接受后再希望对方猜到你的限制。</p>
+<p data-other-line lang="en">Our technician could come tomorrow between nine and eleven a.m.<br>
+<span lang="zh">我们的维修人员明天上午九点到十一点可以上门。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方给的是明天上午，但你上午不在家。先说清冲突，再询问下午或另一天，对方才知道要换哪一项。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="afternoon">I won’t be home in the morning. Would a visit after two p.m. be possible?</span></li>
-<li><span data-branch-choice data-next="day">That doesn’t work for me. Is another day available?</span></li>
+<li><span data-branch-choice data-next="afternoon">I won’t be home in the morning. Would a visit after two p.m. be possible?
+<span lang="zh">我上午不在家。能安排下午两点之后上门吗？</span></span></li>
+<li><span data-branch-choice data-next="day">That doesn’t work for me. Is another day available?
+<span lang="zh">这个时间我不方便。还有别的日期吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="afternoon">
 <h3>对方说</h3>
-<p data-other-line lang="en">Unfortunately, tomorrow afternoon isn’t possible. We’re available on Friday between two and four p.m.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>想确认周五前，可先查日历；暂时不答复不等于接受。</p>
+<p data-other-line lang="en">Unfortunately, tomorrow afternoon isn’t possible. We’re available on Friday between two and four p.m.<br>
+<span lang="zh">很遗憾，明天下午不行。周五下午两点到四点我们有空。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>明天下午也不行，对方改提周五下午两点到四点。若这个范围合适就接受；尚未查日历时，先问答复期限。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="confirmed">Friday between two and four p.m. works for me. Please ring the bell marked Chen.</span></li>
-<li><span data-branch-choice data-next="pending">I need to check my calendar. When do you need a reply?</span></li>
+<li><span data-branch-choice data-next="confirmed">Friday between two and four p.m. works for me. Please ring the bell marked Chen.
+<span lang="zh">周五下午两点到四点对我合适。请按标有Chen的门铃。</span></span></li>
+<li><span data-branch-choice data-next="pending">I need to check my calendar. When do you need a reply?
+<span lang="zh">我需要查一下日历。您什么时候需要我回复？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="day">
 <h3>对方说</h3>
-<p data-other-line lang="en">We could visit on Friday between two and four p.m.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>明确说可以还是需要再查；不要用“可能吧”让对方以为已经确认。</p>
+<p data-other-line lang="en">We could visit on Friday between two and four p.m.<br>
+<span lang="zh">我们周五下午两点到四点可以上门。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>周五两点到四点是新的提议。你可以明确接受并复述，也可以继续说明周五不合适，再找下周。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="confirmed">Thank you, that works. Friday between two and four p.m., is that right?</span></li>
-<li><span data-branch-choice data-next="nextweek">Unfortunately, Friday doesn’t work either. Could we look for a slot next week?</span></li>
+<li><span data-branch-choice data-next="confirmed">Thank you, that works. Friday between two and four p.m., is that right?
+<span lang="zh">谢谢，这个时间合适。是周五下午两点到四点，对吗？</span></span></li>
+<li><span data-branch-choice data-next="nextweek">Unfortunately, Friday doesn’t work either. Could we look for a slot next week?
+<span lang="zh">很遗憾，周五也不方便。我们能找下周的时段吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="confirmed">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Yes, we’ve booked you in for Friday between two and four p.m.</p>
-<p data-branch-feedback>双方确认了周五的时段。示例没有替你确定现实中的具体日期，真实沟通还需日期与地址。</p>
+<p data-other-line lang="en">Yes, we’ve booked you in for Friday between two and four p.m.<br>
+<span lang="zh">对，我们已经为您安排了周五下午两点到四点的时段。</span></p>
+<p data-branch-feedback>对方说已经登记周五两点到四点的上门时段。预约完成，但维修是否解决问题要等上门后再反馈。</p>
 </section>
 <section data-branch-node="pending">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Please let us know by five p.m. today. We’ll hold the slot until then.</p>
-<p data-branch-feedback>还需要你在约定时间前答复。把“给我留着”与“最终预约确认”区分开。</p>
+<p data-other-line lang="en">Please let us know by five p.m. today. We’ll hold the slot until then.<br>
+<span lang="zh">请最迟今天下午五点告诉我们。到那时之前，我们会为您保留这个时段。</span></p>
+<p data-branch-feedback>对方暂留时段到今天下午五点，并要求你最迟五点回复。它为核对日历留出时间，还需要你给出最终答复。</p>
 </section>
 <section data-branch-node="nextweek">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Yes. Please give us two time windows when you’ll be home.</p>
-<p data-branch-feedback>下一步由你提供两个时段，尚未约定具体上门时间。可以练习接一句自己的可用时间。</p>
+<p data-other-line lang="en">Yes. Please give us two time windows when you’ll be home.<br>
+<span lang="zh">可以。请提供两个您会在家的时间范围。</span></p>
+<p data-branch-feedback>对方同意继续寻找，并请你提供两个在家时段。下一步由你补信息，具体上门时间尚未确定。</p>
 </section>
 </div>
 </section>
@@ -163,63 +188,76 @@
 <p>你问过维修状态，没有收到具体答复。目标是问清当前状态、预计时间和是否需要你补充信息。</p>
 <div class="branch-player" data-branch-player hidden></div>
 <div class="branch-source" data-branch-source>
-<p>也可直接阅读下面各个步骤，比较不同回答的后果。</p>
+<p>下面按节点列出全部路线，关闭脚本时也能阅读原句、中文与结果。</p>
 <section data-branch-node="start">
 <h3>对方说</h3>
-<p data-other-line lang="en">We’ve received your request.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>收到不代表已处理完。问一个明确问题，比再次发相同投诉更容易得到具体信息。</p>
+<p data-other-line lang="en">We’ve received your request.<br>
+<span lang="zh">我们已经收到您的请求。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方只确认收到。你还可以问处理状态，或提出自己希望收到信息的期限，请对方判断能否做到。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="status">Thank you. What’s the current status?</span></li>
-<li><span data-branch-choice data-next="deadline">I need the information by tomorrow. Would a reply by then be possible?</span></li>
+<li><span data-branch-choice data-next="status">Thank you. What’s the current status?
+<span lang="zh">谢谢。目前是什么状态？</span></span></li>
+<li><span data-branch-choice data-next="deadline">I need the information by tomorrow. Would a reply by then be possible?
+<span lang="zh">我最迟明天需要这些信息。能在那个期限内回复吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="status">
 <h3>对方说</h3>
-<p data-other-line lang="en">We’re still looking into it. We don’t have a final answer yet.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>接着问预计时间或是否缺材料。</p>
+<p data-other-line lang="en">We’re still looking into it. We don’t have a final answer yet.<br>
+<span lang="zh">我们仍在调查这件事，还没有最终答复。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>当前仍在核查，还没有最终结果。接着问预计回复时间，或问是否需要你补材料，都会把下一步变得具体。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="estimate">Roughly when can I expect a reply?</span></li>
-<li><span data-branch-choice data-next="info">Do you need any more information from me?</span></li>
+<li><span data-branch-choice data-next="estimate">Roughly when can I expect a reply?
+<span lang="zh">大约什么时候能收到回复？</span></span></li>
+<li><span data-branch-choice data-next="info">Do you need any more information from me?
+<span lang="zh">您还需要我提供更多信息吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="deadline">
 <h3>对方说</h3>
-<p data-other-line lang="en">Unfortunately, we can’t promise a reply by tomorrow. We expect an update by Friday.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>对方没有接受你的明天期限，也没有保证周五必定完成。</p>
+<p data-other-line lang="en">Unfortunately, we can’t promise a reply by tomorrow. We expect an update by Friday.<br>
+<span lang="zh">很遗憾，我们不能保证最迟明天回复。我们预计最迟周五会有更新。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方没有接受最迟明天的期限，改给最迟周五的预计更新。你可问无消息时怎样跟进，也可核对是否需要补信息。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="agreed">Thank you. Should I follow up on Friday if I haven’t heard anything?</span></li>
-<li><span data-branch-choice data-next="info">Do you need anything else from me to move things forward?</span></li>
+<li><span data-branch-choice data-next="agreed">Thank you. Should I follow up on Friday if I haven’t heard anything?
+<span lang="zh">谢谢。如果周五仍没收到消息，我应该再跟进吗？</span></span></li>
+<li><span data-branch-choice data-next="info">Do you need anything else from me to move things forward?
+<span lang="zh">为了推进这件事，您还需要我提供什么吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="estimate">
 <h3>对方说</h3>
-<p data-other-line lang="en">We expect an update by Friday. Please contact us again if you haven’t heard by then.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>你获得了预计时间和再次联系条件。可以复述下一步。</p>
+<p data-other-line lang="en">We expect an update by Friday. Please contact us again if you haven’t heard by then.<br>
+<span lang="zh">我们预计最迟周五会有更新。如果到那时您仍没收到消息，请再联系我们。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>预计最迟周五，并约定没有消息时再联系。回应可以把这个条件复述出来，不必把预计时间读成事情已经办结。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="agreed">Thank you. I’ll follow up on Friday if I haven’t received a reply by then.</span></li>
+<li><span data-branch-choice data-next="agreed">Thank you. I’ll follow up on Friday if I haven’t received a reply by then.
+<span lang="zh">谢谢。如果到了周五我仍未收到答复，就再跟进。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="info">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">No, we have all the details we need at the moment. We expect to get back to you by Friday.</p>
-<p data-branch-feedback>目前无需补资料。预计回复仍不是已完成处理；真实有期限时仍需自己留意。</p>
+<p data-other-line lang="en">No, we have all the details we need at the moment. We expect to get back to you by Friday.<br>
+<span lang="zh">不需要，我们目前已有所有需要的细节。预计最迟周五再回复您。</span></p>
+<p data-branch-feedback>目前材料已经齐全，不需要补交。下一次联系仍是最迟周五的预计更新，最终处理结果尚未给出。</p>
 </section>
 <section data-branch-node="agreed">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Yes, please. You don’t need to submit anything else at the moment.</p>
-<p data-branch-feedback>这轮沟通明确了跟进条件，当前不用再交材料。不会凭一句“收到”误以为事情办完。</p>
+<p data-other-line lang="en">Yes, please. You don’t need to submit anything else at the moment.<br>
+<span lang="zh">是的，请这样做。您目前不需要再提交其他东西。</span></p>
+<p data-branch-feedback>对方接受无消息时再次跟进的安排，并说明当前无需补交。你知道了何时再联系，以及眼下可以先等什么。</p>
 </section>
 </div>
 </section>
@@ -228,62 +266,75 @@
 <p>你已经决定这次不参加，不想承诺下一次。目标是保持友好，同时不给对方错误期待。</p>
 <div class="branch-player" data-branch-player hidden></div>
 <div class="branch-source" data-branch-source>
-<p>也可直接阅读下面各个步骤，比较不同回答的后果。</p>
+<p>下面按节点列出全部路线，关闭脚本时也能阅读原句、中文与结果。</p>
 <section data-branch-node="start">
 <h3>对方说</h3>
-<p data-other-line lang="en">Come along! I’m sure it’ll be fun.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>你已经决定不去，清楚拒绝比含糊的“也许”更合适。两种回答会造成不同期待。</p>
+<p data-other-line lang="en">Come along! I’m sure it’ll be fun.<br>
+<span lang="zh">来吧！我相信一定会很有趣。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>你已经决定本次不去。一条回应明确拒绝，另一条“也许”会让对方认为仍有机会；接下来可以比较两种期待。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="clear">Thanks, but I won’t be joining this time. Have a lovely evening.</span></li>
-<li><span data-branch-choice data-next="maybe">Maybe. I’ll see.</span></li>
+<li><span data-branch-choice data-next="clear">Thanks, but I won’t be joining this time. Have a lovely evening.
+<span lang="zh">谢谢，不过这次我不参加了。祝你们度过愉快的晚上。</span></span></li>
+<li><span data-branch-choice data-next="maybe">Maybe. I’ll see.
+<span lang="zh">也许吧。我再看看。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="clear">
 <h3>对方说</h3>
-<p data-other-line lang="en">All right. Shall I ask you again next time?</p>
-<details markdown="1"><summary>看提示</summary>
-<p>接受以后再被问，不等于承诺以后参加。</p>
+<p data-other-line lang="en">All right. Shall I ask you again next time?<br>
+<span lang="zh">好的。下次我再问你，好吗？</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方问的是以后还可不可以邀请你。允许以后再问，与答应下一次出席是两件事。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="open">Sure, but I don’t want to commit to anything yet.</span></li>
-<li><span data-branch-choice data-next="boundary">Thanks, I’d rather let you know myself when I’d like to join.</span></li>
+<li><span data-branch-choice data-next="open">Sure, but I don’t want to commit to anything yet.
+<span lang="zh">可以，不过我现在还不想作任何承诺。</span></span></li>
+<li><span data-branch-choice data-next="boundary">Thanks, I’d rather let you know myself when I’d like to join.
+<span lang="zh">谢谢，我更希望在想参加时由我自己告诉你。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="maybe">
 <h3>对方说</h3>
-<p data-other-line lang="en">I’ll include you in the plans for now. Please let me know by tomorrow.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>含糊回应让对方继续为你安排。现在可以澄清，不需要继续维持这个误会。</p>
+<p data-other-line lang="en">I’ll include you in the plans for now. Please let me know by tomorrow.<br>
+<span lang="zh">我暂时先把你算进安排。请最迟明天告诉我。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方暂时把你计入安排，并请最迟明天回复。你仍可以纠正刚才的含糊表达；再说“好”会留下尚未修复的期待。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="corrected">Sorry, I wasn’t clear. Please plan without me; I won’t be coming this time.</span></li>
-<li><span data-branch-choice data-next="unclear">Okay.</span></li>
+<li><span data-branch-choice data-next="corrected">Sorry, I wasn’t clear. Please plan without me; I won’t be coming this time.
+<span lang="zh">抱歉，我刚才没说清。请不用把我算进去，这次我不会来。</span></span></li>
+<li><span data-branch-choice data-next="unclear">Okay.
+<span lang="zh">好的。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="open">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Okay, I’ll ask you again next time.</p>
-<p data-branch-feedback>这次明确不参加，允许未来邀请，没有承诺未来出席。</p>
+<p data-other-line lang="en">Okay, I’ll ask you again next time.<br>
+<span lang="zh">好，下次我再问你。</span></p>
+<p data-branch-feedback>这次不参加已经说清，未来仍可邀请你。对方答应下次再问，并没有说你下次一定会来。</p>
 </section>
 <section data-branch-node="boundary">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Understood. I’ll wait for you to let me know.</p>
-<p data-branch-feedback>你明确了以后由自己发起。只有确实希望这样时才选这句话。</p>
+<p data-other-line lang="en">Understood. I’ll wait for you to let me know.<br>
+<span lang="zh">明白了，我等你主动告诉我。</span></p>
+<p data-branch-feedback>以后由你想参加时主动联系，对方会等待。这个结果适合你确实希望自己发起的情况。</p>
 </section>
 <section data-branch-node="corrected">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Thanks for clearing that up. We’ll plan without you.</p>
-<p data-branch-feedback>及时澄清，修复了“也许”造成的错误期待。</p>
+<p data-other-line lang="en">Thanks for clearing that up. We’ll plan without you.<br>
+<span lang="zh">谢谢你解释清楚。我们安排时就不把你算进去了。</span></p>
+<p data-branch-feedback>你改正了之前含糊的“也许”，对方确认这次不把你计入安排。当前误会已得到修复。</p>
 </section>
 <section data-branch-node="unclear">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">All right, I’ll wait to hear from you tomorrow.</p>
-<p data-branch-feedback>这条路还留下了错误期待。可以返回上一步练习澄清：你已经决定不参加，应该明确说出来。</p>
+<p data-other-line lang="en">All right, I’ll wait to hear from you tomorrow.<br>
+<span lang="zh">好的，那我等你明天告诉我。</span></p>
+<p data-branch-feedback>对方仍等你明天答复，但你原本已经决定不参加。这条路线保留了误会，可以返回看看明确拒绝怎样改变结果。</p>
 </section>
 </div>
 </section>
@@ -292,127 +343,150 @@
 <p>你希望保留预约，只改时间。目标是先修复误会，再确认新时间，不要被动接受取消。</p>
 <div class="branch-player" data-branch-player hidden></div>
 <div class="branch-source" data-branch-source>
-<p>也可直接阅读下面各个步骤，比较不同回答的后果。</p>
+<p>下面按节点列出全部路线，关闭脚本时也能阅读原句、中文与结果。</p>
 <section data-branch-node="start">
 <h3>对方说</h3>
-<p data-other-line lang="en">All right, I’ll cancel your appointment.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>对方理解成取消，你其实想改期。先改正关键含义。</p>
+<p data-other-line lang="en">All right, I’ll cancel your appointment.<br>
+<span lang="zh">好的，我会取消您的预约。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方准备取消预约，但你要的是改时间。先把取消与改期区分开，再讨论新安排。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="reschedule">Sorry, I don’t want to cancel; I’d like to reschedule.</span></li>
-<li><span data-branch-choice data-next="cancelled">Yes, thank you.</span></li>
+<li><span data-branch-choice data-next="reschedule">Sorry, I don’t want to cancel; I’d like to reschedule.
+<span lang="zh">抱歉，我不是想取消，而是想改期。</span></span></li>
+<li><span data-branch-choice data-next="cancelled">Yes, thank you.
+<span lang="zh">对，谢谢。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="reschedule">
 <h3>对方说</h3>
-<p data-other-line lang="en">Sorry about that. When would work for you?</p>
-<details markdown="1"><summary>看提示</summary>
-<p>给出你能接受的时间范围。</p>
+<p data-other-line lang="en">Sorry about that. When would work for you?<br>
+<span lang="zh">抱歉。您什么时候方便？</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>误会已澄清，现在问你可用时间。你可以给出周五两点之后，也可以先请求暂时保留旧安排，等查好日历再联系。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="offer">I’m available on Friday after two p.m.</span></li>
-<li><span data-branch-choice data-next="keep">I need to check my calendar first. Could you keep the original appointment for now?</span></li>
+<li><span data-branch-choice data-next="offer">I’m available on Friday after two p.m.
+<span lang="zh">我周五下午两点之后有空。</span></span></li>
+<li><span data-branch-choice data-next="keep">I need to check my calendar first. Could you keep the original appointment for now?
+<span lang="zh">我需要先查一下日历。您能暂时保留原来的预约吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="offer">
 <h3>对方说</h3>
-<p data-other-line lang="en">We have a slot on Friday at three p.m.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>现在接受提议，并询问旧安排是否已被替换。</p>
+<p data-other-line lang="en">We have a slot on Friday at three p.m.<br>
+<span lang="zh">周五下午三点有一个可预约的时段。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方提出周五三点。回应先表示这个时间合适，再询问它是否替换旧预约，让新旧安排的关系清楚。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="confirmed">That works. Will this replace the original appointment with Friday at three p.m.?</span></li>
+<li><span data-branch-choice data-next="confirmed">That works. Will this replace the original appointment with Friday at three p.m.?
+<span lang="zh">这个时间合适。这会把原来的预约改为周五下午三点吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="keep">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Yes, we’ll keep the original appointment for now. Please contact us once you know another time.</p>
-<p data-branch-feedback>你暂时保留旧预约，仍需再联系，不要假定已经改期。</p>
+<p data-other-line lang="en">Yes, we’ll keep the original appointment for now. Please contact us once you know another time.<br>
+<span lang="zh">可以，我们会暂时保留原预约。确定另一个时间后，请再联系我们。</span></p>
+<p data-branch-feedback>对方明确保留旧预约。你仍需查好另一时间后联系，当前并未改期。</p>
 </section>
 <section data-branch-node="confirmed">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Yes, that’s right. The original appointment is cancelled, and the new one is on Friday at three p.m.</p>
-<p data-branch-feedback>修复了取消／改期的误会，明确只有新预约保留。</p>
+<p data-other-line lang="en">Yes, that’s right. The original appointment is cancelled, and the new one is on Friday at three p.m.<br>
+<span lang="zh">对，没错。原预约取消，新预约是周五下午三点。</span></p>
+<p data-branch-feedback>对方说旧预约取消、新预约为周五三点。替换关系清楚，保留下来的是新安排。</p>
 </section>
 <section data-branch-node="cancelled">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">Your appointment has been cancelled. Please contact us if you’d like to book another one.</p>
-<p data-branch-feedback>“对，谢谢”确认了对方错误的理解。你的目标尚未完成；返回第一步，练习说清是改期。</p>
+<p data-other-line lang="en">Your appointment has been cancelled. Please contact us if you’d like to book another one.<br>
+<span lang="zh">您的预约已经取消。如果想另约一次，请联系我们。</span></p>
+<p data-branch-feedback>这条路确认了取消，结果与只想改期的目标不同。可以返回第一步，比较先澄清会怎样继续。</p>
 </section>
 </div>
 </section>
 <section class="branch-scenario" data-branch-scenario data-scenario-id="online" data-language="en">
 <h2>被要求线上办理，但不知道怎么做</h2>
-<p>工作人员说只能从网站预约。目标是问到准确入口和下一步，不假装已经知道怎么操作。</p>
+<p>工作人员说可以从网站预约。你还不知道页面在哪，需要问清入口和提交后的确认方式。</p>
 <div class="branch-player" data-branch-player hidden></div>
 <div class="branch-source" data-branch-source>
-<p>也可直接阅读下面各个步骤，比较不同回答的后果。</p>
+<p>下面按节点列出全部路线，关闭脚本时也能阅读原句、中文与结果。</p>
 <section data-branch-node="start">
 <h3>对方说</h3>
-<p data-other-line lang="en">You can book the appointment through our website.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>对方说了渠道，但你仍不知道页面在哪。可以问具体入口。</p>
+<p data-other-line lang="en">You can book the appointment through our website.<br>
+<span lang="zh">您可以通过我们的网站预约。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方说可以从网站预约，没有说其他渠道都不可用。你现在缺的是准确入口，所以可以继续问页面在哪。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="where">Could you tell me where to find the booking page on your website, please?</span></li>
-<li><span data-branch-choice data-next="notclear">Okay, thank you.</span></li>
+<li><span data-branch-choice data-next="where">Could you tell me where to find the booking page on your website, please?
+<span lang="zh">请您告诉我网站上的预约页面在哪里，好吗？</span></span></li>
+<li><span data-branch-choice data-next="notclear">Okay, thank you.
+<span lang="zh">好的，谢谢。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="where">
 <h3>对方说</h3>
-<p data-other-line lang="en">First click “Services”, then “Book an appointment”.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>这些是虚构网站按钮名；练习听懂先后步骤，再确认是否找到。</p>
+<p data-other-line lang="en">First click “Services”, then “Book an appointment”.<br>
+<span lang="zh">先点击“Services”（服务），再点击“Book an appointment”（预约）。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>这是模拟网站的按钮顺序。若只找到第一个按钮，就说清缺的部分；若已找到页面，可以进一步问确认方式。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="link">I can see “Services”, but not “Book an appointment”. Could you send me a direct link?</span></li>
-<li><span data-branch-choice data-next="confirmation">I’ve found the page. Will I receive a confirmation after booking?</span></li>
+<li><span data-branch-choice data-next="link">I can see “Services”, but not “Book an appointment”. Could you send me a direct link?
+<span lang="zh">我看到了“Services”（服务），但没看到“Book an appointment”（预约）。您能给我发直接链接吗？</span></span></li>
+<li><span data-branch-choice data-next="confirmation">I’ve found the page. Will I receive a confirmation after booking?
+<span lang="zh">我找到页面了。预约后会收到确认信息吗？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="link">
 <h3>对方说</h3>
-<p data-other-line lang="en">Yes, I’ll email you the link.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>得到链接只是找到了办理入口，还未完成预约。</p>
+<p data-other-line lang="en">Yes, I’ll email you the link.<br>
+<span lang="zh">可以，我会通过邮件给您发链接。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方答应通过邮件发链接，尚未说已经发送。等待链接时也可以先问完成标志，收到后再打开页面办理。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="confirmation">Thank you. How will I know the booking is complete?</span></li>
+<li><span data-branch-choice data-next="confirmation">Thank you. How will I know the booking is complete?
+<span lang="zh">谢谢。我怎么知道预约已经完成？</span></span></li>
 </ul>
 </section>
 <section data-branch-node="confirmation">
 <h3>对方说</h3>
-<p data-other-line lang="en">After submitting, you’ll receive a confirmation email. If it doesn’t arrive, please check your spam folder too.</p>
-<details markdown="1"><summary>看提示</summary>
-<p>对方说明了此虚构网站的完成标志。实际网站的提交和确认规则需看页面说明。</p>
+<p data-other-line lang="en">After submitting, you’ll receive a confirmation email. If it doesn’t arrive, please check your spam folder too.<br>
+<span lang="zh">提交之后，您会收到一封确认邮件。如果没有收到，请也检查垃圾邮件文件夹。</span></p>
+<details markdown="1" open><summary>当前信息与回应思路</summary>
+<p>对方说明这个模拟网站在提交之后发确认邮件，并补了没收到时的检查办法。你接着表示会办理并检查确认，不是在此刻声称已完成。</p>
 </details>
 <p>可以尝试的回应：</p>
 <ul>
-<li><span data-branch-choice data-next="ready">Thank you. I’ll book through the page and check the confirmation afterwards.</span></li>
+<li><span data-branch-choice data-next="ready">Thank you. I’ll book through the page and check the confirmation afterwards.
+<span lang="zh">谢谢。我会通过页面预约，之后再查看确认信息。</span></span></li>
 </ul>
 </section>
 <section data-branch-node="ready">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">You’re welcome. If you can’t open the page, please contact us again.</p>
-<p data-branch-feedback>你已知道入口、步骤和确认方式。真正提交前还需要自己填写并核对信息。</p>
+<p data-other-line lang="en">You’re welcome. If you can’t open the page, please contact us again.<br>
+<span lang="zh">不客气。如果打不开页面，请再联系我们。</span></p>
+<p data-branch-feedback>你已知道办理入口、按钮顺序和确认方式，但还需要自己填写并提交。此处完成的是问清步骤，不是完成预约。</p>
 </section>
 <section data-branch-node="notclear">
 <h3>这一轮的结果</h3>
-<p data-other-line lang="en">You’re welcome. Goodbye.</p>
-<p data-branch-feedback>对话结束，但你仍不知道入口。可以返回第一步，练习追问具体页面，而不是只礼貌结束。</p>
+<p data-other-line lang="en">You’re welcome. Goodbye.<br>
+<span lang="zh">不客气，再见。</span></p>
+<p data-branch-feedback>对话已经结束，但页面位置仍没问到。可以返回比较追问入口的路线，看一个具体问题增加了什么信息。</p>
 </section>
 </div>
 </section>
 </div>
 
-<h2 id="把参考句换成自己的表达">把参考句换成自己的表达</h2>
-<p>选完一条路线后，看看对话记录，换掉其中的日期、时段或具体问题，再从头用自己的话说一次。只要含义、信息和场合合适，不需要背得一字不差。</p>
+<h2 id="读完一条路线之后">读完一条路线之后</h2>
+<p>看看最后确定了什么、还需要谁做什么，再返回比较另一种回应。想自己说时，可以替换日期和具体问题；参考句的价值在于看清信息与行动，不必逐字背诵。需要写一条实际消息时，可以到<a href="toolkit.html">沟通工具</a>查用相应模板。</p>
 <p><a href="14-consideringAndDeciding.html">中文意思：考虑与决定</a> · <a href="16-requestsAndReminders.html">请求与提醒</a> · <a href="17-clarifyingAndDisagreeing.html">澄清与不同意见</a> · <a href="index.html">返回沟通实战目录</a></p></article>
         <nav class="article-pager" aria-label="前后文章"><a rel="prev" href="/learnLanguage/en/communication/17-clarifyingAndDisagreeing.html"><small>上一篇</small><span>17 “不是这个意思”：澄清、立场与条件</span></a><a rel="next" href="/learnLanguage/en/communication/index.html"><small>下一篇</small><span>英语日常沟通实战</span></a></nav>
       </main>
