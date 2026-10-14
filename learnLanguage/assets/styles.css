@@ -291,7 +291,7 @@ button, input { font: inherit; }
 .risk-note strong { font-size: .72rem; letter-spacing: .08em; }
 .risk-note p { margin: 0; font-size: .78rem; line-height: 1.65; }
 
-.prose { color: #233d37; font-size: 1rem; line-height: 1.85; }
+.prose { color: #233d37; font-size: 1rem; line-height: 1.85; overflow-wrap: anywhere; }
 .prose > h1:first-child { margin-top: 0; }
 .prose h1 { margin: 0 0 48px; color: var(--ink); font: 500 clamp(2.7rem, 5.3vw, 5.4rem)/1.03 var(--serif); letter-spacing: -.045em; text-wrap: balance; }
 .prose h2 { margin: 72px 0 24px; padding-top: 22px; border-top: 1px solid var(--ink); color: var(--ink); font: 500 clamp(1.8rem, 3vw, 2.8rem)/1.15 var(--serif); letter-spacing: -.025em; }

@@ -1,12 +1,12 @@
 {
   "project": "learnLanguage",
   "source_repository": "private Markdown source",
-  "source_commit": "9c26c7dd32bd78b0119640b362ea5b6cc6389338",
-  "source_commit_date": "2026-10-14T12:13:37+02:00",
-  "generated_at": "2026-10-14T12:13:37+02:00",
+  "source_commit": "8560de33b286716df785b9a1afb8bb87f6d220f6",
+  "source_commit_date": "2026-10-14T14:12:18+02:00",
+  "generated_at": "2026-10-14T14:12:18+02:00",
   "source_markdown": 1518,
   "published_documents": 1508,
-  "source_links_checked": 28618,
+  "source_links_checked": 28658,
   "tracks": {
     "de": 583,
     "en": 583,
