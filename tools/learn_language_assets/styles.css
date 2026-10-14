@@ -454,7 +454,7 @@ button, input { font: inherit; }
 }
 .branching-practice button:hover { border-color: currentColor; }
 .branching-practice button:disabled { opacity: .5; cursor: default; }
-.branching-practice .branch-choice { display: block; width: 100%; text-align: left; }
+.branching-practice .branch-choice { display: block; width: 100%; text-align: left; white-space: pre-line; }
 .branch-current ul { list-style: none; padding-left: 0; }
 .branch-current li { margin: 12px 0; }
 .branching-practice textarea {
