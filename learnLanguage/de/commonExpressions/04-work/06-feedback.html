@@ -31,9 +31,12 @@
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/de/">DE</a><span>/</span><span>工作职场</span></div>
         
         <article class="prose"><h1 id="德语问题与反馈-先找线索-再把建议落到具体地方">德语问题与反馈：先找线索，再把建议落到具体地方</h1>
-<p>故障、代码建议和客户会反馈，看起来都是“出了问题”，处理方式却不同。下面先看团队排查，再读一对一建议，最后明确客户会上的分工。Thomas、Lukas、Sarah与Wei用du，Frau Weber与Wei用Sie，称呼随关系保持。</p>
+<p>故障、代码建议和客户会反馈，看起来都是“出了问题”，处理方式却不同。下面先看团队排查，再读一对一建议，最后明确客户会上的分工。Thomas、Lukas、Sarah与Alex用du，Frau Weber与Alex用Sie，称呼随关系保持。</p>
+<h2 id="场景背景-故障要查证-反馈要指出具体位置">场景背景：故障要查证，反馈要指出具体位置</h2>
+<p>Störung是故障，Fehlermeldung是错误信息，Rückmeldung / Feedback是反馈。IT会谈Deployment（部署）、Logs（日志）、Rollback（回滚）和Patch（补丁），不熟术语时请对方解释动作即可，不需要先学会所有英语借词才敢提问。</p>
+<p>先看团队处理线上故障，再读同事对函数名的建议，最后到客户会反馈。三种讨论都要说清对象，但各自需要的证据和下一步不同。</p>
 <h2 id="服务故障-谁做了部署-不等于原因已经确定">服务故障：谁做了部署，不等于原因已经确定</h2>
-<p>客户报告故障，Wei说明自己发布了版本，团队随即分工。</p>
+<p>客户报告故障，Alex说明自己发布了版本，团队随即分工。</p>
 <p><strong>Lukas：</strong></p>
 <blockquote>
 <p>Leute, wir haben ein Problem. Der Kunde hat angerufen — das Deployment von gestern ist gecrasht.</p>
@@ -71,9 +74,9 @@
 <p>看看日志，也许能找到线索。</p>
 <p><strong>Lukas：</strong></p>
 <blockquote>
-<p>Gut. Wei, du kümmerst dich um die Analyse. Thomas, du bereitest schon mal ein Rollback vor, falls wir das nicht schnell fixen können. Sarah, du informierst den Kunden, dass wir dran sind.</p>
+<p>Gut. Alex, du kümmerst dich um die Analyse. Thomas, du bereitest schon mal ein Rollback vor, falls wir das nicht schnell fixen können. Sarah, du informierst den Kunden, dass wir dran sind.</p>
 </blockquote>
-<p>Wei负责分析，Thomas先备好回滚方案，以防无法快速修复。Sarah通知客户正在处理。</p>
+<p>Alex负责分析，Thomas先备好回滚方案，以防无法快速修复。Sarah通知客户正在处理。</p>
 <p><strong>Sarah：</strong></p>
 <blockquote>
 <p>Mach ich.</p>
@@ -99,8 +102,11 @@
 <p>Einverstanden. Prüft den Patch zuerst gemeinsam in der Testumgebung. Meldet mir das Ergebnis, bevor wir die Freigabe klären. Danach dokumentieren wir den Vorfall und besprechen, wie wir das Risiko verringern.</p>
 </blockquote>
 <p>同意，先在测试环境一起核补丁，告诉我结果，再明确发布批准。之后记录事件，并讨论如何降低风险。</p>
-<p>Das war ich先回答谁操作过，不必立刻把它等同于“所有后果都是我的错”。Fingerpointing是互相指责，Thomas把讨论拉回排查。日志是线索，könnte保留不兼容的可能，直到测试环境复现，才更有依据讨论修复。</p>
-<p>Wei提出补丁并请Thomas一起核查，Lukas先同意共同测试，再要结果以明确发布批准。Rollback准备与实际执行不同，补丁看起来简单也不跳过核对。danach dokumentieren安排事后记录，是为了复盘和降低风险，不能因为写了总结就保证以后永不再发生。</p>
+<h3 id="承认做过操作以后-继续查真实原因">承认做过操作以后，继续查真实原因</h3>
+<p><strong>Gecrasht</strong> 说崩溃，<strong>Mist! / Oh nein!</strong> 可表达懊恼；Scheiße更粗，不能因为紧急就当成每种工作关系都接受的普通词。<strong>Das war ich.</strong> 确认操作人，<strong>Okay, passiert.</strong> 在这里先缓和，再处理，不是已证明无过失或无后果。</p>
+<p><strong>Ich schau mir die Logs an.</strong> 用sich etwas anschauen说查看，<strong>Vielleicht finde ich etwas.</strong> 保留只是可能找到线索。<strong>Wir sind dran.</strong> 是正在处理，<strong>sich um die Analyse kümmern</strong> 是负责分析；这与sich für etwas verantworten（为某事负责、作解释）不总是同义。</p>
+<p><strong>Es liegt an der Bibliothek.</strong> 才是明确指原因，未证实时应说Es könnte daran liegen.。<strong>Patchen</strong> 是打补丁，Fix是修复；<strong>Post-mortem</strong> 在技术讨论中指事后复盘，分析影响、原因与后续改进，不因这个名称就保证不追责或不再发生。</p>
+<p>日志先提供线索，再在测试环境复现库的兼容问题，团队才讨论补丁。Lukas批准的是共同测试、回报结果后再明确发布许可；回滚准备与实际执行分开，事后记录用于查原因与改流程。</p>
 <details>
 <summary>需要时查看这一段的句式与含义对照</summary>
 <p>下面把省略补足，或用较直白的词说明含义。对照不自动改变称呼，也不是必须替换原句的“正式版本”。</p>
@@ -141,9 +147,9 @@
 <p>看看日志，也许能找到线索。</p>
 <p><strong>Lukas：</strong></p>
 <blockquote>
-<p>Gut. Wei, du kümmerst dich um die Analyse. Thomas, du bereitest schon mal ein Rollback vor, falls wir das nicht schnell fixen können. Sarah, du informierst den Kunden, dass wir dran sind.</p>
+<p>Gut. Alex, du kümmerst dich um die Analyse. Thomas, du bereitest schon mal ein Rollback vor, falls wir das nicht schnell fixen können. Sarah, du informierst den Kunden, dass wir dran sind.</p>
 </blockquote>
-<p>Wei负责分析，Thomas先备好回滚方案，以防无法快速修复。Sarah通知客户正在处理。</p>
+<p>Alex负责分析，Thomas先备好回滚方案，以防无法快速修复。Sarah通知客户正在处理。</p>
 <p><strong>Sarah：</strong></p>
 <blockquote>
 <p>Das mache ich.</p>
@@ -171,12 +177,12 @@
 <p>同意，先在测试环境一起核补丁，告诉我结果，再明确发布批准。之后记录事件，并讨论如何降低风险。</p>
 </details>
 <h2 id="同事建议-函数名哪里不清楚-给一个例子">同事建议：函数名哪里不清楚，给一个例子</h2>
-<p>另一次，Thomas私下说某处代码难读，Wei要求具体例子。</p>
+<p>另一次，Thomas私下说某处代码难读，Alex要求具体例子。</p>
 <p><strong>Thomas：</strong></p>
 <blockquote>
-<p>Wei, kann ich dich mal kurz was fragen?</p>
+<p>Alex, kann ich dich mal kurz was fragen?</p>
 </blockquote>
-<p>Wei，可以问个事吗？</p>
+<p>Alex，可以问个事吗？</p>
 <p><strong>Du：</strong></p>
 <blockquote>
 <p>Klar, was gibt's?</p>
@@ -212,16 +218,18 @@
 <p>Danke, mit dem Beispiel kann ich etwas anfangen. Wenn ich bei einem Hinweis anderer Meinung bin, würde ich das gern mit dir besprechen.</p>
 </blockquote>
 <p>谢谢，有了例子就知道怎么改。如果对某条建议有不同意见，也想和你讨论。</p>
-<p>Hast du ein konkretes Beispiel?让反馈从泛泛难读走到calcStuff这个名字。名字只说算点东西，没说算什么；Wei说明实际计算每月总额，再改成calculateMonthlyTotal，也检查调用处，建议与动作就能对应。</p>
-<p>nicht böse gemeint说明说话人的意图，但听者仍可评估内容是否准确。mit dem Beispiel kann ich etwas anfangen是有了例子知道怎么用；若不同意也可以继续讨论。反馈可以有用，不必把每条批评都预设为好意、正确或必须接受。</p>
+<h3 id="难读-走到一个函数名-意见才方便检验">“难读”走到一个函数名，意见才方便检验</h3>
+<p><strong>Ehrlich gesagt</strong> 引出坦率看法，<strong>unglücklich gewählt</strong> 形容某个名称选择不够恰当，不是在说作者倒霉。<strong>Hast du mal'n konkretes Beispiel?</strong> 中mal'n是mal ein，追问具体例子便能看见问题位置。</p>
+<p><strong>Aussagekräftiger</strong> 是更能说明内容的比较级，<strong>Da wäre ein … Name hilfreich.</strong> 用wäre提建议。<strong>Umbenennen</strong> 是重新命名，<strong>sich beeilen</strong> 是赶时间；是否当时写得匆忙，并不能只凭函数名断定。若认可，可说Da hast du recht.再说具体怎样改；若不同意，也能把理由继续讲清。</p>
+<p>calcStuff只说算某些东西，没说明算什么。Alex解释是月度总额，再改成calculateMonthlyTotal并检查调用处，意见与动作对应。nicht böse gemeint说明意图，听者仍可核内容；有具体例子才知道怎样采用。</p>
 <details>
 <summary>需要时查看这一段的句式与含义对照</summary>
 <p>下面把省略补足，或用较直白的词说明含义。对照不自动改变称呼，也不是必须替换原句的“正式版本”。</p>
 <p><strong>Thomas：</strong></p>
 <blockquote>
-<p>Wei, kann ich dich kurz etwas fragen?</p>
+<p>Alex, kann ich dich kurz etwas fragen?</p>
 </blockquote>
-<p>Wei，可以问个事吗？</p>
+<p>Alex，可以问个事吗？</p>
 <p><strong>Du：</strong></p>
 <blockquote>
 <p>Klar, was gibt es?</p>
@@ -259,12 +267,12 @@
 <p>谢谢，有了例子就知道怎么改。如果对某条建议有不同意见，也想和你讨论。</p>
 </details>
 <h2 id="主管反馈-先问自己在会上的角色">主管反馈：先问自己在会上的角色</h2>
-<p>Frau Weber注意到Wei在客户会上安静，Wei说当时不清楚分工。</p>
+<p>Frau Weber注意到Alex在客户会上安静，Alex说当时不清楚分工。</p>
 <p><strong>Frau Weber：</strong></p>
 <blockquote>
-<p>Wei, ich muss Ihnen mal eine Rückmeldung geben. Bei dem letzten Kundenmeeting ist mir aufgefallen, dass Sie sehr still waren. Haben Sie sich zurückgehalten?</p>
+<p>Alex, ich muss Ihnen mal eine Rückmeldung geben. Bei dem letzten Kundenmeeting ist mir aufgefallen, dass Sie sehr still waren. Haben Sie sich zurückgehalten?</p>
 </blockquote>
-<p>Wei，需要反馈一下。上次客户会上注意到您很安静，是有意保留意见吗？</p>
+<p>Alex，需要反馈一下。上次客户会上注意到您很安静，是有意保留意见吗？</p>
 <p><strong>Du：</strong></p>
 <blockquote>
 <p>Ja, da sprechen Sie etwas an. Mir war nicht ganz klar, was meine Rolle in dem Meeting sein sollte. Soll ich mich mehr einbringen?</p>
@@ -285,16 +293,18 @@
 <p>Gern. Und wenn Sie unsicher sind, fragen Sie mich vorher. Das ist kein Zeichen von Schwäche.</p>
 </blockquote>
 <p>不客气，不确定就提前问，不是软弱的表现。</p>
-<p>sich zurückhalten可表示没有把意见说出来，不自动说明能力差。Wei问角色，主管明确需要两个迁移风险要点，商务部分由自己负责；这样“更积极”才有范围，不是每个问题都要抢着答。</p>
-<p>Danke für den Hinweis确认收到具体提醒，vorher fragen把不确定的问题放到会前。kein Zeichen von Schwäche在此鼓励提问，只描述这次支持性的回应，不由此推断任何国家的主管都一定这样。关系从句也能帮助你指出是哪个文件、哪次会议或哪段代码需要再看。</p>
+<h3 id="主管的观察与自己的角色-可以一起核清">主管的观察与自己的角色，可以一起核清</h3>
+<p><strong>Mir ist aufgefallen, dass …</strong> 是我注意到某事，<strong>sich zurückhalten</strong> 可说有所保留、没有主动发言。<strong>Sich einbringen</strong> 说参与并贡献自己的判断，未必是增加发言次数。<strong>Mir war nicht ganz klar, was meine Rolle sein sollte.</strong> 说明当时不清楚期待的角色。</p>
+<p><strong>Da sprechen Sie etwas an.</strong> 是您提到一个值得说的问题，<strong>Danke für den Hinweis.</strong> 感谢提醒。分清技术与商务责任后，Alex才知道下次准备什么；kein Zeichen von Schwäche鼓励先问，不等于任何反馈都自动友善正确。</p>
+<p>主管负责商务部分，Alex准备两个技术风险点，并在会前核开放问题。自己的角色一清楚，“多参与”就成为补上团队需要的判断，而不是所有问题都要抢答。</p>
 <details>
 <summary>需要时查看这一段的句式与含义对照</summary>
 <p>下面把省略补足，或用较直白的词说明含义。对照不自动改变称呼，也不是必须替换原句的“正式版本”。</p>
 <p><strong>Frau Weber：</strong></p>
 <blockquote>
-<p>Wei, ich muss Ihnen eine Rückmeldung geben. Bei dem letzten Kundenmeeting ist mir aufgefallen, dass Sie sehr still waren. Haben Sie sich zurückgehalten?</p>
+<p>Alex, ich muss Ihnen eine Rückmeldung geben. Bei dem letzten Kundenmeeting ist mir aufgefallen, dass Sie sehr still waren. Haben Sie sich zurückgehalten?</p>
 </blockquote>
-<p>Wei，需要反馈一下。上次客户会上注意到您很安静，是有意保留意见吗？</p>
+<p>Alex，需要反馈一下。上次客户会上注意到您很安静，是有意保留意见吗？</p>
 <p><strong>Du：</strong></p>
 <blockquote>
 <p>Ja, da sprechen Sie etwas an. Mir war nicht ganz klar, was meine Rolle in dem Meeting sein sollte. Soll ich mich mehr einbringen?</p>
@@ -317,6 +327,10 @@
 <p>不客气，不确定就提前问，不是软弱的表现。</p>
 </details>
 <p>要准确指定某一份材料或某一次问题，可接着读<a href="../../grammar/19-relativeClauses.html">关系从句</a>，让反馈所指的对象清楚。</p>
+<h2 id="自己给反馈-也把内容放在可讨论的对象上">自己给反馈，也把内容放在可讨论的对象上</h2>
+<p>Für mich war diese Funktion schwer zu verstehen, weil der Name die Berechnung nicht erklärt. 先说自己的阅读困难，再指出函数名；Kannst du die Berechnung im Namen deutlich machen?接具体请求。直接说Du schreibst schlecht.则把问题扩到人，容易让讨论失去对象。</p>
+<p>合并、发布等术语可说Code zusammenführen、eine Version bereitstellen，也会见到mergen、deployen等借词写法；借词拼写和分词形式并非都能机械加同一个词尾，重要材料可用清楚的德语动作说明。不熟技术的人应得到解释，而不是被要求用术语证明融入。</p>
+<p><strong>Klar, was gibt's?</strong> 接在“可以问个事吗”后，先同意听，再问什么事，不是先同意尚未说出的建议。<strong>Klartext reden</strong>是把话说明白，可以指出具体问题，也可能让人感到生硬；是否有帮助仍看内容与回应，不由一句“我们就是直接”自动决定。</p>
 <h2 id="需要时回看关键表达">需要时回看关键表达</h2>
 <details>
 <summary>展开表达速查</summary>
