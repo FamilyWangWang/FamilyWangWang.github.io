@@ -1,3 +1,3 @@
-commit: db4e6697b2401da30d6eacfb64159f823fe194d5
+commit: 6c96b1502ba0a67f4719f40ed76907135653f4a3
 ref:    main
-built:  2026-10-25T17:52:08Z
+built:  2026-10-25T18:35:08Z
