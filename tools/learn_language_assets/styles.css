@@ -608,3 +608,6 @@ button, input { font: inherit; }
 
 /* Keep teaching bookmarks clear of the sticky reader header. */
 .prose :is(h1, h2, h3, h4, h5, h6, a)[id] { scroll-margin-top: 110px; }
+
+/* Allow long chapter titles to wrap within the previous/next grid. */
+.article-pager > * { min-width: 0; overflow-wrap: anywhere; }
