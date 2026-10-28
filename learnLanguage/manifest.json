@@ -1,17 +1,17 @@
 {
   "project": "learnLanguage",
   "source_repository": "private Markdown source",
-  "source_commit": "fa77c598344650b36e77b00c22a30bc1266eb4af",
-  "source_commit_date": "2026-10-28T07:07:13+01:00",
-  "generated_at": "2026-10-28T07:07:13+01:00",
+  "source_commit": "deb7a3064d01835b14de5bfc84081cfed3a30d7d",
+  "source_commit_date": "2026-10-28T07:49:30+01:00",
+  "generated_at": "2026-10-28T07:49:30+01:00",
   "source_markdown": 1518,
-  "published_documents": 1508,
-  "source_links_checked": 35395,
+  "published_documents": 1514,
+  "source_links_checked": 35525,
   "tracks": {
     "de": 583,
     "en": 583,
-    "de_vocab": 171,
-    "en_vocab": 171
+    "de_vocab": 174,
+    "en_vocab": 174
   },
   "included": [
     "de/attitude-judgment/01-request-distance.md",
@@ -1351,6 +1351,9 @@
     "de_vocab/21-funktionswoerter/03-adverbienUndGradpartikeln.md",
     "de_vocab/21-funktionswoerter/04-modalpartikelnUndSprecherhaltung.md",
     "de_vocab/21-funktionswoerter/05-fuellwoerterUndTextverknuepfung.md",
+    "de_vocab/index/alphabetical.md",
+    "de_vocab/index/byLevel.md",
+    "de_vocab/PLAN.md",
     "en_vocab/00-howToUse.md",
     "en_vocab/01-body/01-externalBodyParts.md",
     "en_vocab/01-body/02-internalOrgans.md",
@@ -1521,19 +1524,16 @@
     "en_vocab/21-functionWords/02-prepositionsAndPrepositionalPhrases.md",
     "en_vocab/21-functionWords/03-degreeWordsAndIntensifiers.md",
     "en_vocab/21-functionWords/04-discourseMarkersAndFillers.md",
-    "en_vocab/21-functionWords/05-stanceInferenceAndModality.md"
+    "en_vocab/21-functionWords/05-stanceInferenceAndModality.md",
+    "en_vocab/index/alphabetical.md",
+    "en_vocab/index/byLevel.md",
+    "en_vocab/PLAN.md"
   ],
   "excluded": [
     "de/README.md",
     "en/README.md",
-    "de_vocab/index/alphabetical.md",
-    "de_vocab/index/byLevel.md",
-    "de_vocab/PLAN.md",
     "de_vocab/README.md",
-    "en_vocab/index/alphabetical.md",
-    "en_vocab/index/byLevel.md",
-    "en_vocab/PLAN.md",
     "en_vocab/README.md"
   ],
-  "build_fingerprint": "d5cefcd2107df34abb1aa2217e8d418e28320f55fd445a5021baea8a8cc0f8a5"
+  "build_fingerprint": "5ee6a6d7be4a494798031446db1ea2c719e45035ea4489b691066e1dcf9f3143"
 }
