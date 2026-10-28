@@ -18,6 +18,18 @@
   const results = document.querySelector('[data-search-results]');
   const indexUrl = body.dataset.searchIndex;
 
+  function normalizeAlias(value) {
+    return value.normalize('NFKC').toLocaleLowerCase().replace(/[\s\p{P}\p{S}]/gu, '');
+  }
+
+  function aliasScore(row, normalizedQuery) {
+    if (!row.normalizedAliases || !normalizedQuery) return 0;
+    if (row.normalizedAliases.includes(normalizedQuery)) return 500;
+    return normalizedQuery.length >= 4 && row.normalizedAliases.some(function (alias) {
+      return alias.includes(normalizedQuery);
+    }) ? 200 : 0;
+  }
+
   function loadSearch() {
     if (searchData) return Promise.resolve(searchData);
     if (!searchPromise && indexUrl) {
@@ -29,9 +41,13 @@
         .then(function (data) {
           searchData = data.map(function (item) {
             item.haystack = (item.title + ' ' + item.group + ' ' + item.text).toLocaleLowerCase();
+            item.normalizedAliases = (item.aliases || []).map(normalizeAlias);
             return item;
           });
           return searchData;
+        }).catch(function (error) {
+          searchPromise = null;
+          throw error;
         });
     }
     return searchPromise || Promise.resolve([]);
@@ -53,32 +69,35 @@
     }
     loadSearch().then(function (rows) {
       const terms = query.split(/\s+/).filter(Boolean);
+      const normalizedQuery = normalizeAlias(query);
       if (input.value.trim().toLocaleLowerCase() !== query) return;
       function relevance(row) {
         const title = row.title.toLocaleLowerCase();
         const group = row.group.toLocaleLowerCase();
-        return (title.includes(query) ? 100 : 0) + terms.reduce(function (score, term) {
+        return aliasScore(row, normalizedQuery) + (title.includes(query) ? 100 : 0) + terms.reduce(function (score, term) {
           return score + (title.includes(term) ? 10 : 0) + (group.includes(term) ? 3 : 0);
         }, 0);
       }
       const matches = rows.filter(function (row) {
-        return terms.every(function (term) { return row.haystack.includes(term); });
+        return aliasScore(row, normalizedQuery) > 0 || terms.every(function (term) { return row.haystack.includes(term); });
       }).sort(function (a, b) { return relevance(b) - relevance(a); }).slice(0, 24);
       results.innerHTML = matches.length
         ? matches.map(function (row) {
             return '<a href="' + row.url + '"><strong>' + escapeHtml(row.title) +
-              '</strong><small>' + escapeHtml(row.group) + '</small></a>';
+              '</strong><small>' + escapeHtml(row.group) + '</small>' +
+              (row.reason ? '<small>' + escapeHtml(row.reason) + '</small>' : '') + '</a>';
           }).join('')
         : '<p class="search-empty">没有找到匹配内容。</p>';
       results.hidden = false;
     }).catch(function () {
+      if (input.value.trim().toLocaleLowerCase() !== query) return;
       results.innerHTML = '<p class="search-empty">搜索索引暂时不可用。</p>';
       results.hidden = false;
     });
   }
 
   if (input) {
-    input.addEventListener('focus', loadSearch);
+    input.addEventListener('focus', function () { loadSearch().catch(function () { return null; }); });
     input.addEventListener('input', runSearch);
   }
 
