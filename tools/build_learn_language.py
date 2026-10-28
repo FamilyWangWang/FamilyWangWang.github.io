@@ -534,7 +534,7 @@ def is_optional_practice(doc: Document) -> bool:
 def render_catalog_group(track: str, key: str, title: str, docs: list[Document], description: str, guide: str) -> str:
     reading = [doc for doc in docs if not is_optional_practice(doc)]
     practice = [doc for doc in docs if is_optional_practice(doc)]
-    if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths"}:
+    if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths", "authentic-reading"}:
         reading.sort(key=lambda doc: (
             0 if doc.source_path.name == "README.md" else
             2 if doc.source_path.name == "sources.md" else 1,
@@ -557,7 +557,7 @@ def render_catalog_group(track: str, key: str, title: str, docs: list[Document],
             continue
         links = "".join(f'<li><a href="{doc.url}"><span>{html.escape(doc.title)}</span><b aria-hidden="true">↗</b></a></li>' for doc in items)
         count_label = (f'{sum(doc.source_path.name[:2].isdigit() for doc in items)} 篇正文及目录、参考'
-                       if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths"} else f'{len(items)} 篇')
+                       if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths", "authentic-reading"} else f'{len(items)} 篇')
         lists.append(f'<details class="catalog-articles"><summary>查看{label}目录 <span>{count_label}</span></summary><ol>{links}</ol></details>')
     return f'<section class="catalog-group" id="topic-{key}"><h3>{html.escape(title)}</h3><p class="catalog-description">{html.escape(description)}</p><div class="catalog-starts">{start}</div>{"".join(lists)}</section>'
 
@@ -683,7 +683,7 @@ def render_article(
                       "strength-feedback.md", "strength-boundaries.md",
                       "strength-requests.md", "strength-responsibility.md"]
     is_strength = doc.group_key == "pragmatics" and doc.source_path.name in strength_order
-    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths"}
+    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths", "authentic-reading", "reading-support"}
 
     def is_practice_page(item: Document) -> bool:
         return (
