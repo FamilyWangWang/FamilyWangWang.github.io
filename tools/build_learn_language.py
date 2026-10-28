@@ -737,6 +737,8 @@ def render_article(
         else '<span></span>'
     )
     body_html = markdown_to_html(doc.sanitized_markdown)
+    if doc.track.endswith("_vocab") and doc.source_relative.parts[0] == "index":
+        body_html = re.sub(r"<td>([ABC][12])</td>", r'<td style="white-space:nowrap">\1</td>', body_html)
     body = f'''<header class="reader-top shell">
       <a href="/learnLanguage/{doc.track}/">← {html.escape(info['name'])}</a>
       <span>{html.escape(display_group_title)}</span>
