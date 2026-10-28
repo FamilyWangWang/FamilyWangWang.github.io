@@ -606,6 +606,19 @@ def render_track_landing(track: str, documents: list[Document], source_sha: str,
         back_url, back_label = "/learnLanguage/", "语言总入口"
         lede = f"这里汇集{name}的阅读教程、语气课程、语法与生活场景。每类内容先说明解决什么问题；详细文章目录可以按需要展开。主题词汇另有按主题整理的入口。"
         extra = f'<div class="directory-actions"><a href="/learnLanguage/{code}_vocab/">{name}主题词汇：按主题查词与搭配</a><a href="/learnLanguage/{code}/catalog.html">查看完整章节目录</a></div>'
+        if navigation.get("course_landing_intro"):
+            guide_doc = next(doc for doc in documents if doc.track == track and doc.source_relative.as_posix() == language["guide"])
+            track_root = guide_doc.source_path.parents[len(guide_doc.source_relative.parts) - 1]
+            readme = (track_root / "README.md").read_text(encoding="utf-8-sig")
+            intro = re.split(r"(?m)^## 主要内容\s*$", readme, maxsplit=1)[0]
+            intro = re.sub(r"(?m)^# .+\n", "", intro, count=1).strip()
+            lead, _, intro = intro.partition("\n\n")
+            lede = html.escape(plain_text(lead))
+            intro = rewrite_markdown_links(sanitize(public_markdown(intro)))
+            validate_public_text(intro, f"{track}/README.md introduction")
+            intro_html = markdown_to_html(intro).replace("<ul>", '<ul class="goal-links">', 1)
+            orientation = '<section class="directory-orientation shell" id="learning-goals"><div class="prose">' + intro_html + '</div></section>'
+            extra = ""
     body = f'''<header class="reader-top directory-top shell"><a href="{back_url}">← {back_label}</a>{language_navigation(track)}{search_markup(track)}</header>
     <main id="main">
       <section class="directory-hero shell"><p class="directory-kicker">{name} · {'主题词汇' if vocabulary else '阅读教程与场景表达'}</p><h1>{info['name']}</h1><p class="directory-lede">{lede}</p>{extra}</section>
