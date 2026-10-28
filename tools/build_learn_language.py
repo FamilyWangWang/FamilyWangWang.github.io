@@ -236,18 +236,27 @@ def rewrite_markdown_links(text: str) -> str:
     return REF_LINK_RE.sub(reference, MD_LINK_RE.sub(inline, text))
 
 
-def public_markdown(text: str) -> str:
-    """Omit source-only planning links without publishing internal plans."""
+def public_markdown(text: str, *, reader_plan: bool = False) -> str:
+    """Keep reader plans only for opted-in vocabulary tracks; omit maintenance blocks."""
+    if text.count("<!-- source-only:start -->") != text.count("<!-- source-only:end -->"):
+        raise SystemExit("unbalanced source-only maintenance block")
+    text = re.sub(r"<!-- source-only:start -->[\s\S]*?<!-- source-only:end -->", "", text)
     lines = []
     for line in text.splitlines():
         if line.lstrip().startswith("- ") and any(
             pathlib.PurePosixPath(match.group(2).split("#", 1)[0]).name
-            in {"PLAN.md", "GRAMMAR_PLAN.md"}
+            in ({"GRAMMAR_PLAN.md"} if reader_plan else {"PLAN.md", "GRAMMAR_PLAN.md"})
             for match in MD_LINK_RE.finditer(line)
         ):
             continue
         lines.append(line)
     return "\n".join(lines)
+
+
+def search_text(doc: Document) -> str:
+    if doc.track.endswith("_vocab") and doc.source_relative.parts[0] == "index":
+        return plain_text(doc.sanitized_markdown.split("\n## ", 1)[0])
+    return plain_text(doc.sanitized_markdown)
 
 
 def group_for(track: str, relative: pathlib.PurePosixPath) -> tuple[str, str]:
@@ -260,7 +269,7 @@ def group_for(track: str, relative: pathlib.PurePosixPath) -> tuple[str, str]:
         else:
             key = parts[0]
         return key, COMMON_GROUPS.get(key, key)
-    key = "00-guide" if len(parts) == 1 else parts[0]
+    key = "00-guide" if len(parts) == 1 or parts[0] == "index" else parts[0]
     return key, VOCAB_GROUPS.get(key, key)
 
 
@@ -275,16 +284,17 @@ def discover(source: pathlib.Path, navigation: dict) -> tuple[list[Document], li
         for source_path in sorted(track_root.rglob("*.md")):
             rel = pathlib.PurePosixPath(source_path.relative_to(track_root).as_posix())
             repo_rel = f"{track}/{rel.as_posix()}"
-            excluded_file = (
-                rel.name == "PLAN.md"
-                or rel.as_posix() == "README.md"
-                or (track.endswith("_vocab") and rel.parts[0] == "index")
+            reader_plan = track.endswith("_vocab") and "PLAN.md" in navigation.get("vocabulary_reader_pages", [])
+            reader_page = track.endswith("_vocab") and rel.as_posix() in navigation.get("vocabulary_reader_pages", [])
+            excluded_file = rel.as_posix() == "README.md" or (
+                (rel.name == "PLAN.md" or (track.endswith("_vocab") and rel.parts[0] == "index"))
+                and not reader_page
             )
             if excluded_file:
                 excluded.append(repo_rel)
                 continue
-            text = source_path.read_text(encoding="utf-8")
-            clean = rewrite_markdown_links(sanitize(public_markdown(text)))
+            text = source_path.read_text(encoding="utf-8-sig")
+            clean = rewrite_markdown_links(sanitize(public_markdown(text, reader_plan=reader_plan)))
             validate_public_text(clean, repo_rel)
             heading = HEADING_RE.search(clean)
             if not heading:
@@ -578,6 +588,15 @@ def render_track_landing(track: str, documents: list[Document], source_sha: str,
         orientation = f'''<section class="directory-orientation shell"><h2>这本词汇书怎样使用</h2>
         <p>按正在谈的主题查词，结合搭配与例句理解用法，不必先从头背完整本书。需要组成句子或处理一段对话时，可以回到{name}学习目录。</p>
         <div class="directory-actions"><a href="/learnLanguage/{track}/00-howToUse.html">先读词汇书使用方法</a><a href="/learnLanguage/{code}/">回到{name}学习目录</a></div></section>'''
+        if navigation.get("vocabulary_landing_intro"):
+            guide_doc = next(doc for doc in documents if doc.track == track and doc.source_relative.as_posix() == "00-howToUse.md")
+            readme = (guide_doc.source_path.parent / "README.md").read_text(encoding="utf-8-sig")
+            intro = re.split(r"(?m)^## 目录\s*$", readme, maxsplit=1)[0]
+            intro = re.sub(r"(?m)^# .+\n", "", intro, count=1)
+            intro = re.sub(r'<a id="[^"]+"></a>\s*', "", intro)
+            intro = rewrite_markdown_links(sanitize(public_markdown(intro, reader_plan=True)))
+            validate_public_text(intro, f"{track}/README.md introduction")
+            orientation = '<section class="directory-orientation shell"><div class="prose">' + markdown_to_html(intro) + '</div></section>'
         back_url, back_label = f"/learnLanguage/{code}/", f"{name}学习"
         lede = "这里按主题整理词义、搭配、例句和使用范围。先选当前需要的主题，再打开详细文章目录。"
         extra = ""
@@ -847,7 +866,7 @@ def main() -> None:
                     "url": doc.url,
                     "title": doc.title,
                     "group": doc.group_title,
-                    "text": plain_text(doc.sanitized_markdown),
+                    "text": search_text(doc),
                 }
             )
         (assets / f"search-{track}.json").write_text(
@@ -865,7 +884,7 @@ def main() -> None:
                     "url": doc.url,
                     "title": doc.title,
                     "group": TRACKS[doc.track]["name"] + " · " + doc.group_title,
-                    "text": plain_text(doc.sanitized_markdown),
+                    "text": search_text(doc),
                 })
         (assets / f"search-{code}-all.json").write_text(
             json.dumps(rows, ensure_ascii=False, separators=(",", ":")),
