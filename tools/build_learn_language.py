@@ -534,7 +534,7 @@ def is_optional_practice(doc: Document) -> bool:
 def render_catalog_group(track: str, key: str, title: str, docs: list[Document], description: str, guide: str) -> str:
     reading = [doc for doc in docs if not is_optional_practice(doc)]
     practice = [doc for doc in docs if is_optional_practice(doc)]
-    if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading"}:
+    if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths"}:
         reading.sort(key=lambda doc: (
             0 if doc.source_path.name == "README.md" else
             2 if doc.source_path.name == "sources.md" else 1,
@@ -557,7 +557,7 @@ def render_catalog_group(track: str, key: str, title: str, docs: list[Document],
             continue
         links = "".join(f'<li><a href="{doc.url}"><span>{html.escape(doc.title)}</span><b aria-hidden="true">↗</b></a></li>' for doc in items)
         count_label = (f'{sum(doc.source_path.name[:2].isdigit() for doc in items)} 篇正文及目录、参考'
-                       if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading"} else f'{len(items)} 篇')
+                       if key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths"} else f'{len(items)} 篇')
         lists.append(f'<details class="catalog-articles"><summary>查看{label}目录 <span>{count_label}</span></summary><ol>{links}</ol></details>')
     return f'<section class="catalog-group" id="topic-{key}"><h3>{html.escape(title)}</h3><p class="catalog-description">{html.escape(description)}</p><div class="catalog-starts">{start}</div>{"".join(lists)}</section>'
 
@@ -683,7 +683,7 @@ def render_article(
                       "strength-feedback.md", "strength-boundaries.md",
                       "strength-requests.md", "strength-responsibility.md"]
     is_strength = doc.group_key == "pragmatics" and doc.source_path.name in strength_order
-    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading"}
+    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths"}
 
     def is_practice_page(item: Document) -> bool:
         return (
@@ -767,7 +767,7 @@ def render_article(
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(display_group_title)}</span></div>
         {risk_notice(doc)}
-        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication', 'conversation-methods', 'learning-paths', 'whole-text-reading'} else ''}{' reference-tool-article' if topic_title == '工具与参考' else ''}">{body_html}</article>
+        <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication', 'conversation-methods', 'learning-paths', 'whole-text-reading', 'topic-paths'} else ''}{' reference-tool-article' if topic_title == '工具与参考' else ''}">{body_html}</article>
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''
@@ -822,6 +822,54 @@ def safe_prepare_output(output: pathlib.Path) -> None:
     resolved.mkdir(parents=True)
 
 
+def search_alias_rows(source: pathlib.Path, documents: list[Document]) -> dict[str, list[dict]]:
+    result = {"en": [], "de": []}
+    path = source / "search-aliases.json"
+    if not path.exists():
+        return result
+    data = json.loads(path.read_text(encoding="utf-8-sig"))
+    if data.get("version") != 1 or not isinstance(data.get("groups"), list):
+        raise SystemExit("invalid search alias configuration")
+    by_path = {f"{d.track}/{d.source_relative.as_posix()}": d for d in documents}
+    ids, phrases = set(), {"en": {}, "de": {}}
+    for group in data["groups"]:
+        key = group["id"]
+        if key in ids or not re.fullmatch(r"q[0-9]{2,}", key):
+            raise SystemExit("duplicate or invalid question id")
+        ids.add(key)
+        aliases = [group["question"]] + group["aliases"]
+        if not all(isinstance(a, str) and a.strip() for a in aliases):
+            raise SystemExit("empty question or alias")
+        for language in ("en", "de"):
+            entry = group["languages"][language]
+            targets = {}
+            for role in ("primary", "application", "route", "lookup"):
+                target, _, anchor = entry[role].partition("#")
+                doc = by_path.get(target)
+                if doc is None or doc.track != language:
+                    raise SystemExit(f"invalid or cross-language search target: {entry[role]}")
+                if anchor and f'id="{anchor}"' not in doc.sanitized_markdown:
+                    raise SystemExit(f"missing lookup anchor: {entry[role]}")
+                targets[role] = doc.url + ("#" + anchor if anchor else "")
+            for alias in aliases:
+                normalized = "".join(c for c in unicodedata.normalize("NFKC", alias).lower()
+                                     if not c.isspace() and unicodedata.category(c)[0] not in "PS")
+                if normalized in phrases[language] and phrases[language][normalized] != key:
+                    raise SystemExit("ambiguous duplicate search alias")
+                phrases[language][normalized] = key
+            if not entry["reason"].strip() or not entry["answer"].strip():
+                raise SystemExit("search question requires a reason and explanation")
+            row = {"url": targets["lookup"], "title": group["question"],
+                "group": "中文困惑 · " + by_path[entry["route"]].title,
+                "text": entry["answer"], "aliases": aliases, "reason": entry["reason"],
+                "question_id": key, "primary_url": targets["primary"],
+                "application_url": targets["application"], "route_url": targets["route"]}
+            row = json.loads(sanitize(json.dumps(row, ensure_ascii=False)))
+            validate_public_text(json.dumps(row, ensure_ascii=False), "search alias " + key)
+            result[language].append(row)
+    return result
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--source", type=pathlib.Path, required=True)
@@ -837,7 +885,7 @@ def main() -> None:
         if not required.exists():
             raise SystemExit(f"missing build asset: {required}")
 
-    content_paths = ("de", "en", "de_vocab", "en_vocab", "navigation.json")
+    content_paths = ("de", "en", "de_vocab", "en_vocab", "navigation.json", "search-aliases.json")
     source_sha = git_value(source, "log", "-1", "--format=%H", "--", *content_paths)
     source_date = git_value(source, "log", "-1", "--format=%cI", "--", *content_paths)
     markdown_count = sum(
@@ -848,6 +896,7 @@ def main() -> None:
     if navigation.get("version") != 1:
         raise SystemExit("unsupported navigation configuration version")
     documents, included, excluded = discover(source, navigation)
+    alias_rows = search_alias_rows(source, documents)
     if markdown_count != len(included) + len(excluded):
         raise SystemExit("content inventory mismatch")
 
@@ -884,6 +933,7 @@ def main() -> None:
                     "text": search_text(doc),
                 }
             )
+        search_rows.extend(alias_rows.get(track, []))
         (assets / f"search-{track}.json").write_text(
             json.dumps(search_rows, ensure_ascii=False, separators=(",", ":")),
             encoding="utf-8",
@@ -901,6 +951,7 @@ def main() -> None:
                     "group": TRACKS[doc.track]["name"] + " · " + doc.group_title,
                     "text": search_text(doc),
                 })
+        rows.extend(alias_rows[code])
         (assets / f"search-{code}-all.json").write_text(
             json.dumps(rows, ensure_ascii=False, separators=(",", ":")),
             encoding="utf-8", newline="\n",
@@ -914,6 +965,8 @@ def main() -> None:
         "generated_at": source_date,
         "source_markdown": markdown_count,
         "published_documents": len(documents),
+        "search_alias_rows": {code: len(rows) for code, rows in alias_rows.items()},
+        "search_alias_data_sha256": hashlib.sha256((source / "search-aliases.json").read_bytes()).hexdigest() if (source / "search-aliases.json").exists() else None,
         "source_links_checked": source_links,
         "tracks": {
             track: sum(1 for doc in documents if doc.track == track) for track in TRACK_ORDER
