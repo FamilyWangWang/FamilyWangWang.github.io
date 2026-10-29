@@ -1,20 +1,20 @@
 {
   "project": "learnLanguage",
   "source_repository": "private Markdown source",
-  "source_commit": "c65e3ecfe1d26377832fa7a13e07cc5239ccad61",
-  "source_commit_date": "2026-10-29T08:06:59+01:00",
-  "generated_at": "2026-10-29T08:06:59+01:00",
-  "source_markdown": 1566,
-  "published_documents": 1562,
+  "source_commit": "0b7b3263f4c370e64896a5c046667d64a72b7660",
+  "source_commit_date": "2026-10-29T08:28:42+01:00",
+  "generated_at": "2026-10-29T08:28:42+01:00",
+  "source_markdown": 1573,
+  "published_documents": 1569,
   "search_alias_rows": {
     "en": 60,
     "de": 60
   },
   "search_alias_data_sha256": "3667e12b41ee26c6ae713c824ae8e4e49a70e5c7a2eb1c2ee16f4a7fdf1ad7af",
-  "source_links_checked": 38582,
+  "source_links_checked": 38632,
   "tracks": {
-    "de": 606,
-    "en": 606,
+    "de": 610,
+    "en": 609,
     "de_vocab": 175,
     "en_vocab": 175
   },
@@ -41,6 +41,10 @@
     "de/authentic-reading/04-cycle-requirements.md",
     "de/authentic-reading/05-weather-definition.md",
     "de/authentic-reading/06-science-invitation.md",
+    "de/authentic-reading/07-complete-road-rules.md",
+    "de/authentic-reading/08-complete-oak-pig.md",
+    "de/authentic-reading/09-complete-hungry-fox.md",
+    "de/authentic-reading/10-complete-lion-hare.md",
     "de/authentic-reading/README.md",
     "de/catalog.md",
     "de/clear-communication/01-spoken-written.md",
@@ -647,6 +651,9 @@
     "en/authentic-reading/04-weather-outlook.md",
     "en/authentic-reading/05-moon-definition.md",
     "en/authentic-reading/06-moon-correction.md",
+    "en/authentic-reading/07-complete-park-forest.md",
+    "en/authentic-reading/08-complete-largest-park.md",
+    "en/authentic-reading/09-complete-wind-sun.md",
     "en/authentic-reading/README.md",
     "en/catalog.md",
     "en/clear-communication/01-spoken-written.md",
@@ -1588,5 +1595,5 @@
     "de_vocab/README.md",
     "en_vocab/README.md"
   ],
-  "build_fingerprint": "5fb80630d841f81ceed4805149d57a25f95b07849636fb712493e33013a04c4e"
+  "build_fingerprint": "fd2966c09f691724cdd52350ebade5c8aa514ed6322a7469a1e4dc3132eead01"
 }
