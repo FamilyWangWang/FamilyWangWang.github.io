@@ -368,3 +368,183 @@
     render(false);
   });
 })();
+
+// Whole-article reading records. Separate keys leave existing learning tools intact.
+(function () {
+  'use strict';
+  const track = document.body.dataset.track;
+  const tools = document.querySelector('[data-reader-tools]');
+  const desk = document.querySelector('[data-reading-dashboard]');
+  const summary = document.querySelector('[data-reading-summary]');
+  if (!['en', 'de', 'en_vocab', 'de_vocab'].includes(track) || (!tools && !desk && !summary)) return;
+  const key = 'learnLanguage.reader.v1.' + track;
+  const prefix = '/learnLanguage/' + track + '/';
+  const changedElsewhere = '另一标签页已修改这篇笔记。当前输入尚未保存；先复制需要保留的文字，再载入已存笔记。';
+  let catalogPromise = null;
+  let autoPaused = false;
+  function safePath(value) {
+    if (typeof value !== 'string' || !value.startsWith(prefix) || !value.endsWith('.html') || /[%][25][efc]|[\\?#]/i.test(value)) return false;
+    try { const u = new URL(value, location.origin); return u.origin === location.origin && u.pathname === value && !u.search && !u.hash; } catch (_) { return false; }
+  }
+  function fail(message) { throw new Error(message); }
+  function read() {
+    let raw;
+    try { raw = localStorage.getItem(key); } catch (_) { return fail('浏览器暂时不能读取本区记录。正文仍可阅读，恢复后可重试。'); }
+    const fresh = {version: 1, articles: Object.create(null)};
+    if (raw === null) return fresh;
+    let data;
+    try { data = JSON.parse(raw); } catch (_) { return fail('本区记录格式无法读取，旧数据未被覆盖。请保留本站数据，稍后重试。'); }
+    if (!data || data.version !== 1 || !data.articles || typeof data.articles !== 'object' || Array.isArray(data.articles)) return fail('本区记录版本或格式无法读取，旧数据未被覆盖。');
+    const rows = Object.entries(data.articles);
+    if (rows.length > 2000) return fail('本区记录超出当前可读取范围，旧数据未被覆盖。');
+    for (const [path, row] of rows) {
+      if (!safePath(path) || !row || typeof row !== 'object' || Array.isArray(row) || typeof row.favorite !== 'boolean' || typeof row.note !== 'string' || row.note.length > 1000 || typeof row.anchor !== 'string' || row.anchor.length > 300 || /[\u0000-\u001f]/.test(row.anchor)) return fail('本区有无法读取的记录，旧数据未被覆盖。');
+      const clean = {favorite: row.favorite, note: row.note, anchor: row.anchor};
+      for (const field of ['readAt', 'positionAt', 'favoriteAt', 'noteAt']) {
+        const value = row[field] === undefined ? 0 : row[field];
+        if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 8640000000000000) return fail('本区记录时间格式无法读取，旧数据未被覆盖。');
+        clean[field] = value;
+      }
+      fresh.articles[path] = clean;
+    }
+    return fresh;
+  }
+  function empty() { return {favorite: false, note: '', anchor: '', readAt: 0, positionAt: 0, favoriteAt: 0, noteAt: 0}; }
+  function write(data) {
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (_) { return fail('保存未成功，浏览器可能禁止保存或空间不足。当前输入仍在，请保留文字后重试。'); }
+    autoPaused = false;
+  }
+  function edit(path, change) {
+    const data = read(), row = data.articles[path] || empty();
+    change(row); data.articles[path] = row; write(data); return row;
+  }
+  function element(tag, text, className) {
+    const e = document.createElement(tag); if (text !== undefined) e.textContent = text; if (className) e.className = className; return e;
+  }
+  function link(label, url) { const a = element('a', label); a.href = url; return a; }
+  function time(value) { return value ? new Date(value).toLocaleDateString('zh-CN') : ''; }
+  function catalog() {
+    if (!catalogPromise) catalogPromise = fetch(document.body.dataset.readingCatalog || '/learnLanguage/assets/reading-' + track + '.json').then(r => {
+      if (!r.ok) throw Error('目录暂时未能载入；说明和主题链接仍可阅读，请重试。'); return r.json();
+    }).then(rows => {
+      if (!Array.isArray(rows)) throw Error('目录暂时无法读取，请重试。');
+      const map = new Map();
+      rows.forEach(row => {
+        if (!row || !safePath(row.url) || typeof row.title !== 'string' || typeof row.topic !== 'string' || typeof row.topicTitle !== 'string' || !Array.isArray(row.headings) || row.headings.some(h => typeof h.id !== 'string' || typeof h.title !== 'string') || map.has(row.url)) throw Error('目录暂时无法读取，请重试。');
+        map.set(row.url, row);
+      }); return map;
+    }).catch(error => { catalogPromise = null; throw error; });
+    return catalogPromise;
+  }
+  function destination(path, row, meta) {
+    const h = meta.headings.find(h => h.id === row.anchor);
+    return {url: path + (h ? '#' + encodeURIComponent(h.id) : ''), label: h ? h.title : (row.anchor ? '原小节已调整，返回篇首' : '篇首')};
+  }
+  function latest(data, map) {
+    return Object.entries(data.articles).filter(([p, r]) => r.readAt > 0 && map.has(p)).sort((a, b) => b[1].readAt - a[1].readAt || a[0].localeCompare(b[0]))[0];
+  }
+  if (tools) {
+    tools.hidden = false;
+    const path = tools.dataset.url;
+    if (!safePath(path)) return;
+    const favorite = tools.querySelector('[data-reader-favorite]'), note = tools.querySelector('[data-reader-note]'), save = tools.querySelector('[data-reader-save]'), status = tools.querySelector('[data-reader-status]'), resume = tools.querySelector('[data-reader-resume]'), remember = tools.querySelector('[data-reader-remember]'), reload = tools.querySelector('[data-reader-reload]'), retry = tools.querySelector('[data-reader-retry]'), position = tools.querySelector('[data-reader-position]');
+    let baseline = '', dirty = false, lastAnchor = null, lastTime = 0;
+    const headings = Array.from(document.querySelectorAll('article.prose h2[id], article.prose h3[id]'));
+    function currentAnchor() {
+      if (headings.length && scrollY + innerHeight >= document.documentElement.scrollHeight - 3) return headings[headings.length - 1].id;
+      let selected = ''; for (const h of headings) { if (h.getBoundingClientRect().top <= 150) selected = h.id; else break; } return selected;
+    }
+    function error(e) { status.textContent = e.message || '记录暂时不可用，请重试。'; retry.hidden = false; autoPaused = true; }
+    function refresh(row) {
+      favorite.setAttribute('aria-pressed', String(row.favorite)); favorite.textContent = row.favorite ? '已收藏 · 取消' : '收藏本文';
+      if (!dirty) { note.value = row.note; baseline = row.note; }
+      const h = headings.find(h => h.id === row.anchor);
+      resume.hidden = !row.positionAt; resume.href = path + (h ? '#' + encodeURIComponent(h.id) : '');
+      position.textContent = row.positionAt ? '已记住：' + (h ? h.textContent : row.anchor ? '原小节已调整，回到篇首' : '篇首') : '尚未记住本篇位置。';
+    }
+    function readView() { try { refresh(read().articles[path] || empty()); status.textContent = dirty ? '当前修改尚未保存。' : '本区记录保存在当前浏览器。'; retry.hidden = true; autoPaused = false; } catch (e) { error(e); } }
+    readView();
+    favorite.addEventListener('click', () => { try { const row = edit(path, row => { row.favorite = !row.favorite; row.favoriteAt = Date.now(); }); refresh(row); status.textContent = row.favorite ? '已收藏本文。' : '已取消本文收藏。'; retry.hidden = true; } catch (e) { error(e); } });
+    note.addEventListener('input', () => { dirty = note.value !== baseline; status.textContent = dirty ? '当前修改尚未保存；离开前请点击保存。' : '与已存笔记一致。'; });
+    function saveNote() {
+      try {
+        const row = edit(path, row => { if (row.note !== baseline && row.note !== note.value) return fail(changedElsewhere); row.note = note.value; row.noteAt = Date.now(); });
+        baseline = row.note; dirty = false; refresh(row); reload.hidden = true; retry.hidden = true; status.textContent = row.note ? '笔记已保存到本浏览器。' : '笔记已清空，其他记录保留。';
+      } catch (e) { if (e.message === changedElsewhere) reload.hidden = false; error(e); }
+    }
+    save.addEventListener('click', saveNote);
+    note.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); saveNote(); } });
+    reload.addEventListener('click', () => { try { const row = read().articles[path] || empty(); dirty = false; refresh(row); reload.hidden = true; retry.hidden = true; autoPaused = false; status.textContent = '已载入另一标签页保存的笔记。'; note.focus(); } catch (e) { error(e); } });
+    retry.addEventListener('click', readView);
+    function keep(manual, exiting) {
+      if (!manual && (autoPaused || tools.dataset.continue !== 'true' || (document.visibilityState === 'hidden' && !exiting))) return;
+      const anchor = currentAnchor(), now = Date.now();
+      if (!manual && anchor === lastAnchor && now - lastTime < 30000) return;
+      try {
+        const row = edit(path, row => { if (anchor || manual || !row.positionAt) { row.anchor = anchor; row.positionAt = now; } if (!exiting) row.readAt = now; }); lastAnchor = anchor; lastTime = now; refresh(row);
+        if (manual) { status.textContent = '已记住当前位置；可以从本区阅读记录继续。'; retry.hidden = true; }
+      } catch (e) { error(e); }
+    }
+    remember.addEventListener('click', () => keep(true));
+    let scrollTimer;
+    addEventListener('scroll', () => { clearTimeout(scrollTimer); scrollTimer = setTimeout(() => keep(false), 700); }, {passive: true});
+    setTimeout(() => keep(false), 1200);
+    addEventListener('pagehide', () => { if (!autoPaused && tools.dataset.continue === 'true') keep(false, true); });
+    addEventListener('storage', e => {
+      if (e.key !== key && e.key !== null) return;
+      try { const row = read().articles[path] || empty(); if (dirty && row.note !== baseline) { reload.hidden = false; status.textContent = changedElsewhere; } refresh(row); } catch (err) { error(err); }
+    });
+  }
+  if (desk || summary) {
+    const host = desk || summary, status = host.querySelector('[data-reading-status]'), retry = host.querySelector('[data-reading-retry]'), continuation = host.querySelector('[data-reading-continue]');
+    let map = null, token = 0;
+    if (desk) desk.hidden = false;
+    if (summary) summary.hidden = false;
+    const range = desk && desk.querySelector('[data-reading-range]'), topic = desk && desk.querySelector('[data-reading-topic]'), list = desk && desk.querySelector('[data-reading-list]');
+    function render() {
+      const data = read(), last = latest(data, map); continuation.replaceChildren();
+      if (last) { const [path, row] = last, meta = map.get(path), to = destination(path, row, meta); continuation.append(link('继续阅读：' + meta.title, to.url), element('span', '记住的位置：' + to.label, 'reading-position')); }
+      else continuation.append(element('p', '还没有本区阅读位置。先选一篇正文，或在文章里记住当前位置。'));
+      if (!desk) { status.textContent = '只显示本区在当前浏览器的记录。'; return; }
+      const saved = Object.entries(data.articles).filter(([p, r]) => map.has(p) && (r.favorite || r.note || r.readAt));
+      const selected = saved.filter(([p, r]) => (!topic.value || map.get(p).topic === topic.value) && (range.value !== 'favorites' || r.favorite) && (range.value !== 'notes' || r.note) && (range.value !== 'recent' || r.readAt));
+      selected.sort((a, b) => Math.max(b[1].readAt, b[1].noteAt, b[1].favoriteAt) - Math.max(a[1].readAt, a[1].noteAt, a[1].favoriteAt) || a[0].localeCompare(b[0]));
+      list.replaceChildren();
+      const groups = new Map();
+      selected.forEach(([path, row]) => { const meta = map.get(path); if (!groups.has(meta.topic)) groups.set(meta.topic, []); groups.get(meta.topic).push([path, row, meta]); });
+      groups.forEach(items => {
+        const section = element('section'), h = element('h3', items[0][2].topicTitle), ul = element('ul'); section.append(h, ul);
+        items.forEach(([path, row, meta]) => {
+          const li = element('li'), to = destination(path, row, meta); li.append(link(meta.title, row.readAt ? to.url : path));
+          li.append(element('p', [row.favorite ? '已收藏' : '', row.readAt ? '读过 ' + time(row.readAt) : '', row.note ? '有笔记' : ''].filter(Boolean).join(' · '), 'reading-meta'));
+          if (row.readAt) li.append(element('p', '阅读位置：' + to.label, 'reading-meta'));
+          if (row.note) li.append(element('p', row.note, 'reading-note-text'));
+          if (row.favorite) {
+            const button = element('button', '取消本篇收藏'); button.type = 'button'; button.setAttribute('aria-label', '取消收藏：' + meta.title);
+            button.addEventListener('click', () => { try { edit(path, r => { r.favorite = false; r.favoriteAt = Date.now(); }); render(); status.textContent = '已取消收藏，笔记和阅读位置保留。'; range.focus(); } catch (e) { showError(e); } }); li.append(button);
+          }
+          ul.append(li);
+        }); list.append(section);
+      });
+      if (!selected.length) list.append(element('p', saved.length ? '当前筛选下没有记录，可以换一个主题或范围。' : '这里还没有记录。先打开一篇文章，再收藏或保存笔记。'));
+      const unavailable = Object.keys(data.articles).filter(p => !map.has(p)).length;
+      status.textContent = '本区共 ' + saved.length + ' 篇有记录，当前显示 ' + selected.length + ' 篇。' + (unavailable ? ' 另有 ' + unavailable + ' 篇暂不在当前目录，原记录保留。' : '');
+    }
+    function showError(e) { status.textContent = e.message || '记录暂时未能载入，请重试。'; retry.hidden = false; }
+    async function load() {
+      const current = ++token; status.textContent = '正在读取本区记录…';
+      try {
+        const loaded = await catalog(); if (current !== token) return; map = loaded;
+        if (desk && !topic.options.length) {
+          topic.add(new Option('全部主题', '')); const groups = new Map(); map.forEach(row => groups.set(row.topic, row.topicTitle)); groups.forEach((title, id) => topic.add(new Option(title, id)));
+        }
+        if (desk) { range.disabled = false; topic.disabled = false; }
+        render(); retry.hidden = true;
+      } catch (e) { if (current === token) showError(e); }
+    }
+    retry.addEventListener('click', load);
+    if (desk) [range, topic].forEach(control => control.addEventListener('change', () => { try { render(); } catch (e) { showError(e); } }));
+    addEventListener('storage', e => { if ((e.key === key || e.key === null) && map) { try { render(); } catch (err) { showError(err); } } });
+    load();
+  }
+})();

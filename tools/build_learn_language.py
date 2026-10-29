@@ -13,6 +13,7 @@ import shutil
 import subprocess
 import unicodedata
 from dataclasses import dataclass
+from functools import lru_cache
 from urllib.parse import unquote
 
 import markdown
@@ -301,6 +302,8 @@ def discover(source: pathlib.Path, navigation: dict) -> tuple[list[Document], li
                 raise SystemExit(f"missing H1 in {repo_rel}")
             title = re.sub(r"[*_`]", "", heading.group(1)).strip()
             group_key, group_title = group_for(track, rel)
+            if rel.name == "reading-desk.md":
+                group_key, group_title = "reading-records", "阅读记录"
             if track in {"de", "en"}:
                 group_key = navigation["course_reclassifications"].get(rel.as_posix(), group_key)
                 group_title = navigation["course_group_titles"].get(group_key, group_title)
@@ -411,6 +414,12 @@ def plain_text(markdown_text: str) -> str:
     return re.sub(r"\s+", " ", html.unescape(text)).strip()
 
 
+@lru_cache(maxsize=3)
+def asset_url(name: str) -> str:
+    version = hashlib.sha256((ASSET_DIR / name).read_bytes()).hexdigest()[:12]
+    return f"/learnLanguage/assets/{name}?v={version}"
+
+
 def page_shell(
     *,
     title: str,
@@ -421,8 +430,8 @@ def page_shell(
     source_sha: str,
     source_date: str,
 ) -> str:
-    pragmatics_script = '<script src="/learnLanguage/assets/pragmatics.js" defer></script>' if "data-pragmatics" in body or "data-study-dashboard" in body else ""
-    track_attr = f' data-track="{track}"' if track else ""
+    pragmatics_script = f'<script src="{asset_url("pragmatics.js")}" defer></script>' if "data-pragmatics" in body or "data-study-dashboard" in body else ""
+    track_attr = f' data-track="{track}" data-reading-catalog="/learnLanguage/assets/reading-{track}.json?v={source_sha[:12]}"' if track else ""
     language = track.removesuffix("_vocab") if track else None
     search_index = f'/learnLanguage/assets/search-{language}-all.json' if language else ""
     search_attr = f' data-search-index="{search_index}"' if search_index else ""
@@ -433,7 +442,7 @@ def page_shell(
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="{html.escape(description, quote=True)}">
   <link rel="icon" href="/favicon.svg">
-  <link rel="stylesheet" href="/learnLanguage/assets/styles.css">
+  <link rel="stylesheet" href="{asset_url("styles.css")}">
   <title>{html.escape(title)}</title>
 </head>
 <body class="{body_class}"{track_attr}{search_attr}>
@@ -443,7 +452,7 @@ def page_shell(
     <span>公开脱敏版 · Public learning edition</span>
     <span>自动生成 · Generated from sanitized Markdown</span>
   </footer>
-  <script src="/learnLanguage/assets/app.js" defer></script>
+  <script src="{asset_url("app.js")}" defer></script>
   {pragmatics_script}
 </body>
 </html>
@@ -622,6 +631,7 @@ def render_track_landing(track: str, documents: list[Document], source_sha: str,
     body = f'''<header class="reader-top directory-top shell"><a href="{back_url}">← {back_label}</a>{language_navigation(track)}{search_markup(track)}</header>
     <main id="main">
       <section class="directory-hero shell"><p class="directory-kicker">{name} · {'主题词汇' if vocabulary else '阅读教程与场景表达'}</p><h1>{info['name']}</h1><p class="directory-lede">{lede}</p>{extra}</section>
+      {reading_summary(track) if navigation.get("reader_features") else ""}
       {orientation}
       <section class="catalog directory-catalog shell" aria-labelledby="catalog-title"><div class="catalog-heading"><h2 id="catalog-title">{'按主题查词' if vocabulary else '按内容选择'}</h2><p>先看分类介绍，再从适合的入口开始。完整文章列表保留在各分类下面。</p></div>
       <nav class="catalog-jumps" aria-label="跳到目录分类">{''.join(jumps)}</nav>{''.join(rendered)}</section>
@@ -655,11 +665,46 @@ def risk_notice(doc: Document) -> str:
     return '''<aside class="risk-note"><strong>语言场景提示</strong><p>本页用于学习表达，不构成医疗、法律、金融或行政建议。规则与流程可能变化，请以当前官方信息为准。</p></aside>'''
 
 
+def reader_tools(doc: Document) -> str:
+    eligible = doc.source_path.name not in {"README.md", "catalog.md", "sources.md", "PLAN.md", "reading-guide.md"} and doc.source_relative.parts[0] != "index"
+    return f'''<section class="reader-tools" data-reader-tools data-url="{html.escape(doc.url, quote=True)}" data-continue="{str(eligible).lower()}" aria-label="本篇阅读记录" hidden>
+    <div class="reading-actions"><button type="button" data-reader-favorite aria-pressed="false">收藏本文</button><button type="button" data-reader-remember>记住当前位置</button><a href="/learnLanguage/{doc.track}/reading-desk.html">本区阅读记录</a><a data-reader-resume href="{doc.url}" hidden>从上次位置继续</a></div>
+    <p data-reader-position>尚未记住本篇位置。</p>
+    <details><summary>简短笔记</summary><label for="a12-article-note">本篇笔记（最多1000字；写完点击保存，也可按Ctrl／Command＋Enter）</label><textarea id="a12-article-note" maxlength="1000" data-reader-note></textarea>
+    <div class="reading-actions"><button type="button" data-reader-save>保存笔记</button><button type="button" data-reader-reload hidden>载入已存笔记</button></div><p>清空文字再保存可删除笔记；尚未保存的输入不会在离开后保留。</p></details>
+    <p data-reader-status role="status" aria-live="polite">只在当前浏览器保存，不自动跨设备同步。</p><button type="button" data-reader-retry hidden>重试读取</button></section>'''
+
+
+def reading_dashboard(track: str) -> str:
+    return '''<section class="reading-dashboard" data-reading-dashboard hidden aria-label="本区阅读记录">
+    <h2>接着读与按主题回看</h2><div data-reading-continue></div>
+    <div class="reading-filters"><label for="a12-range">查看范围<select id="a12-range" data-reading-range disabled><option value="all">全部记录</option><option value="favorites">仅收藏</option><option value="notes">有笔记</option><option value="recent">最近读过</option></select></label>
+    <label for="a12-topic">按主题回看<select id="a12-topic" data-reading-topic disabled></select></label></div>
+    <p data-reading-status role="status" aria-live="polite">正在读取本区记录…</p><button type="button" data-reading-retry hidden>重试读取</button><div data-reading-list></div></section>'''
+
+
+def reading_summary(track: str) -> str:
+    return f'''<section class="reading-summary" data-reading-summary hidden aria-label="本区继续阅读"><h2>继续阅读</h2><div data-reading-continue></div><p data-reading-status role="status" aria-live="polite"></p><a href="/learnLanguage/{track}/reading-desk.html">本区收藏、笔记与主题回看</a><button type="button" data-reading-retry hidden>重试读取</button></section>'''
+
+
+def reading_topics(track: str, docs: list[Document]) -> str:
+    groups = {}
+    for doc in docs:
+        if doc.source_path.name != "reading-desk.md":
+            groups.setdefault(doc.group_key, []).append(doc)
+    links = []
+    for key, rows in groups.items():
+        first = next((d for d in rows if d.source_path.name == "README.md"), rows[0])
+        links.append(f'<li><a href="{first.url}">{html.escape(first.group_title)}</a></li>')
+    return '<nav class="reading-topic-index prose" aria-label="本区主题目录"><h2>重新选题：本区主题入口</h2><p>这些链接始终可读，不需要已有个人记录。想系统选课，也可以回到本区完整目录。</p><ul>' + ''.join(links) + '</ul></nav>'
+
+
 def render_article(
     doc: Document,
     track_docs: list[Document],
     source_sha: str,
     source_date: str,
+    reader_features: bool = False,
 ) -> str:
     info = TRACKS[doc.track]
     reading_order = [
@@ -683,7 +728,7 @@ def render_article(
                       "strength-feedback.md", "strength-boundaries.md",
                       "strength-requests.md", "strength-responsibility.md"]
     is_strength = doc.group_key == "pragmatics" and doc.source_path.name in strength_order
-    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths", "authentic-reading", "reading-support"}
+    is_method_course = doc.group_key in {"expression-building", "reading-methods", "attitude-judgment", "clear-communication", "conversation-methods", "learning-paths", "whole-text-reading", "topic-paths", "authentic-reading", "reading-support", "reading-records"}
 
     def is_practice_page(item: Document) -> bool:
         return (
@@ -725,7 +770,7 @@ def render_article(
             item.source_path.name,
         ))
     navigation_docs = group_docs if topic_title or is_reading or is_story or is_strength or is_practice or is_method_course else [
-        item for item in track_docs if not is_practice_page(item)
+        item for item in track_docs if not is_practice_page(item) and item.group_key != "reading-records"
     ]
     position = navigation_docs.index(doc)
     previous = navigation_docs[position - 1] if position else None
@@ -749,7 +794,12 @@ def render_article(
         if following
         else '<span></span>'
     )
+    is_desk = doc.source_path.name == "reading-desk.md"
     body_html = markdown_to_html(doc.sanitized_markdown)
+    tools_html = reader_tools(doc) if reader_features and not is_desk else ""
+    topics_html = reading_topics(doc.track, track_docs) if reader_features and is_desk else ""
+    if reader_features and is_desk:
+        body_html = body_html.replace("</p>", "</p>" + reading_dashboard(doc.track), 1)
     if doc.track.endswith("_vocab") and doc.source_relative.parts[0] == "index":
         body_html = re.sub(r"<td>([ABC][12])</td>", r'<td style="white-space:nowrap">\1</td>', body_html)
     body = f'''<header class="reader-top shell">
@@ -761,13 +811,15 @@ def render_article(
     <div class="reader-layout shell">
       <aside class="reader-sidebar" data-sidebar>
         <a class="sidebar-home" href="/learnLanguage/{doc.track}/">全部目录</a>
-        <p>{html.escape(display_group_title)} · {group_count} 篇</p>
+        <p>{html.escape(display_group_title)} · {"本区工具" if is_desk else str(group_count) + " 篇"}</p>
         <nav aria-label="本组文章">{sidebar_links}</nav>
       </aside>
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/{doc.track}/">{html.escape(info['code'])}</a><span>/</span><span>{html.escape(display_group_title)}</span></div>
+        {tools_html}
         {risk_notice(doc)}
         <article class="prose{' expression-article' if doc.group_key == 'expressions' else ' pragmatics-article' if doc.group_key in {'pragmatics', 'expression-building', 'reading-methods', 'attitude-judgment', 'clear-communication', 'conversation-methods', 'learning-paths', 'whole-text-reading', 'topic-paths'} else ''}{' reference-tool-article' if topic_title == '工具与参考' else ''}">{body_html}</article>
+        {topics_html}
         <nav class="article-pager" aria-label="前后文章">{previous_link}{next_link}</nav>
       </main>
     </div>'''
@@ -920,11 +972,15 @@ def main() -> None:
             newline="\n",
         )
         search_rows = []
+        reading_rows = []
         for doc in track_docs:
             destination = track_output / pathlib.Path(doc.output_relative.as_posix())
             destination.parent.mkdir(parents=True, exist_ok=True)
-            rendered = render_article(doc, track_docs, source_sha, source_date)
+            rendered = render_article(doc, track_docs, source_sha, source_date, reader_features=navigation.get("reader_features", False))
             destination.write_text(rendered, encoding="utf-8", newline="\n")
+            if navigation.get("reader_features") and doc.source_path.name != "reading-desk.md":
+                headings = [{"id": html.unescape(m.group(1)), "title": html.unescape(TAG_RE.sub("", m.group(2)))} for m in re.finditer(r'<h[23]\b[^>]*id="([^"]+)"[^>]*>(.*?)</h[23]>', rendered, re.S)]
+                reading_rows.append({"url": doc.url, "title": doc.title, "topic": doc.group_key, "topicTitle": doc.group_title, "headings": headings})
             search_rows.append(
                 {
                     "url": doc.url,
@@ -933,6 +989,8 @@ def main() -> None:
                     "text": search_text(doc),
                 }
             )
+        if navigation.get("reader_features"):
+            (assets / f"reading-{track}.json").write_text(json.dumps(reading_rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8", newline="\n")
         search_rows.extend(alias_rows.get(track, []))
         (assets / f"search-{track}.json").write_text(
             json.dumps(search_rows, ensure_ascii=False, separators=(",", ":")),
