@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="英语学习：英语整篇阅读">
   <link rel="icon" href="/favicon.svg">
-  <link rel="stylesheet" href="/learnLanguage/assets/styles.css">
+  <link rel="stylesheet" href="/learnLanguage/assets/styles.css?v=2b2b93e8a55c">
   <title>英语整篇阅读 · 英语学习</title>
 </head>
-<body class="reader-page" data-track="en" data-search-index="/learnLanguage/assets/search-en-all.json">
+<body class="reader-page" data-track="en" data-reading-catalog="/learnLanguage/assets/reading-en.json?v=f52dc0417c76" data-search-index="/learnLanguage/assets/search-en-all.json">
   <a class="skip-link" href="#main">跳到正文</a>
   <header class="reader-top shell">
       <a href="/learnLanguage/en/">← 英语学习</a>
@@ -29,6 +29,12 @@
       </aside>
       <main id="main" class="reader-main">
         <div class="breadcrumbs"><a href="/learnLanguage/">learnLanguage</a><span>/</span><a href="/learnLanguage/en/">EN</a><span>/</span><span>整篇阅读</span></div>
+        <section class="reader-tools" data-reader-tools data-url="/learnLanguage/en/whole-text-reading/index.html" data-continue="false" aria-label="本篇阅读记录" hidden>
+    <div class="reading-actions"><button type="button" data-reader-favorite aria-pressed="false">收藏本文</button><button type="button" data-reader-remember>记住当前位置</button><a href="/learnLanguage/en/reading-desk.html">本区阅读记录</a><a data-reader-resume href="/learnLanguage/en/whole-text-reading/index.html" hidden>从上次位置继续</a></div>
+    <p data-reader-position>尚未记住本篇位置。</p>
+    <details><summary>简短笔记</summary><label for="a12-article-note">本篇笔记（最多1000字；写完点击保存，也可按Ctrl／Command＋Enter）</label><textarea id="a12-article-note" maxlength="1000" data-reader-note></textarea>
+    <div class="reading-actions"><button type="button" data-reader-save>保存笔记</button><button type="button" data-reader-reload hidden>载入已存笔记</button></div><p>清空文字再保存可删除笔记；尚未保存的输入不会在离开后保留。</p></details>
+    <p data-reader-status role="status" aria-live="polite">只在当前浏览器保存，不自动跨设备同步。</p><button type="button" data-reader-retry hidden>重试读取</button></section>
         
         <article class="prose pragmatics-article"><h1 id="英语整篇阅读">英语整篇阅读</h1>
 <p>一句一句能读懂，合起来却抓不住文章时，可以在这里观察全文怎样展开：细节如何在后段获得新意义，人物如何随信息变化作选择，一段评价又怎样保留条件。课程共有46篇正文，分为下面五组；英语与德语各自提供完整材料，可以分别阅读。</p>
@@ -143,6 +149,7 @@
 <p>单个长句的主干、指代或连接关系卡住时，读<a href="../reading-methods/index.html">句子与篇章阅读</a>，补清当前关系后返回全文。文章已经理解，想让自己的消息也容易跟随，可以读<a href="../clear-communication/21-edit-request.html">从原稿到成稿</a>，看信息顺序怎样改变阅读。想安排持续阅读的节奏，查看<a href="../learning-paths/04-connected-reading.html">连续阅读路线</a>。这些入口按需要使用，不是开始本课前的必修清单。</p>
 <p>课程原文均为教学创作，人物、机构、经历和安排用于说明语言。中文含义跟随本语言原文的信息与先后；英语与德语的细节和措辞可能不同，不必把一套解释机械套到另一套材料上。</p>
 <p><a href="sources.html">参考与使用说明</a> · <a href="../index.html">英语学习入口</a> · <a href="../learning-paths/index.html">完整学习路线</a></p></article>
+        
         <nav class="article-pager" aria-label="前后文章"><span></span><a rel="next" href="/learnLanguage/en/whole-text-reading/01-unplanned-saturday.html"><small>下一篇</small><span>01 一次没按计划进行的周六：事情怎样转向</span></a></nav>
       </main>
     </div>
@@ -150,7 +157,7 @@
     <span>公开脱敏版 · Public learning edition</span>
     <span>自动生成 · Generated from sanitized Markdown</span>
   </footer>
-  <script src="/learnLanguage/assets/app.js" defer></script>
+  <script src="/learnLanguage/assets/app.js?v=a04f9dd0e72b" defer></script>
   
 </body>
 </html>
