@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="德语学习：德语阅读记录">
   <link rel="icon" href="/favicon.svg">
-  <link rel="stylesheet" href="/learnLanguage/assets/styles.css?v=2b2b93e8a55c">
+  <link rel="stylesheet" href="/learnLanguage/assets/styles.css?v=790867ef64da">
   <title>德语阅读记录 · 德语学习</title>
 </head>
-<body class="reader-page" data-track="de" data-reading-catalog="/learnLanguage/assets/reading-de.json?v=025516e07cee" data-search-index="/learnLanguage/assets/search-de-all.json">
+<body class="reader-page" data-track="de" data-reading-catalog="/learnLanguage/assets/reading-de.json?v=f1007423f6a2" data-search-index="/learnLanguage/assets/search-de-all.json">
   <a class="skip-link" href="#main">跳到正文</a>
   <header class="reader-top shell">
       <a href="/learnLanguage/de/">← 德语学习</a>
@@ -36,13 +36,24 @@
     <h2>接着读与按主题回看</h2><div data-reading-continue></div>
     <div class="reading-filters"><label for="a12-range">查看范围<select id="a12-range" data-reading-range disabled><option value="all">全部记录</option><option value="favorites">仅收藏</option><option value="notes">有笔记</option><option value="recent">最近读过</option></select></label>
     <label for="a12-topic">按主题回看<select id="a12-topic" data-reading-topic disabled></select></label></div>
-    <p data-reading-status role="status" aria-live="polite">正在读取本区记录…</p><button type="button" data-reading-retry hidden>重试读取</button><div data-reading-list></div></section>
+    <p data-reading-status role="status" aria-live="polite">正在读取本区记录…</p><button type="button" data-reading-retry hidden>重试读取</button><div data-reading-list></div><details class="reading-backup" data-reading-backup><summary>备份与恢复本区记录</summary>
+    <p>先保存其他文章中尚未保存的笔记，再导出。本区整篇收藏、笔记和阅读位置保存在一个文件中，不自动上传或同步。</p>
+    <button type="button" data-backup-export>导出本区备份</button>
+    <p>恢复时先选同一区的备份，再预览。收藏状态和阅读位置采用较新的记录；当前已有的不同笔记默认保留，由你逐篇选择。备份中的空笔记不会删除当前笔记。</p>
+    <label for="b3-backup-file">选择本区备份文件（JSON，最多8MB）<input type="file" id="b3-backup-file" accept=".json,application/json" data-backup-file></label>
+    <div class="reading-actions"><button type="button" data-backup-preview>预览备份</button><button type="button" data-backup-apply disabled>合并恢复</button><button type="button" data-backup-cancel>取消预览</button></div>
+    <p data-backup-status role="status" aria-live="polite">先预览再恢复；选择文件不会立即写入。</p><div data-backup-details></div></details></section>
 <h2 id="怎样接着读">怎样接着读</h2>
 <p>阅读正文时，页面会在本浏览器记住最近读到的小节。你也可以点击“记住当前位置”；从这里的“继续阅读”或正文上方的“从上次位置继续”进入，就回到记住的小节。打开文章时不会自动跳走，原来的段落和书签链接仍然可以直接使用。课程目录和来源说明不会自动替代最近阅读的正文；旧小节调整后，入口会回到这篇文章的开头。</p>
 <p>先按当前主题回看，需要重读的内容可以选“仅收藏”；想回顾自己的理解，选“有笔记”。笔记写完后点击“保存笔记”，清空文字再保存即可删除。<strong>尚未保存的输入不会在离开页面后保留</strong>；保存失败时，页面会保留当前输入并提示重试，不会把失败说成已保存。</p>
 <h2 id="本地保存与同步边界">本地保存与同步边界</h2>
 <p>记录只保存在当前浏览器为本站保存的数据中，不上传服务器，也没有账号或自动跨设备同步。换设备、换浏览器、清理本站数据，或结束某些无痕浏览会话后，原记录可能不再可用。同一浏览器里的其他本站标签页可以看到已保存的更新；两处同时修改同一条笔记时，会提醒冲突，不会悄悄覆盖另一份笔记。</p>
 <p>这里的整篇收藏与原有表达词条、沟通模板收藏和语气练习记录各有用途，旧功能仍在原入口使用。记住小节只表示阅读位置，不表示已经学会；笔记用于保存自己的理解，不替代原文、完整情境和讲解。</p>
+<h2 id="备份后-怎样在另一处继续">备份后，怎样在另一处继续</h2>
+<p>在上面的“备份与恢复本区记录”中点击“导出本区备份”，再检查浏览器是否已保存文件。导出包含本区整篇收藏、已保存的简短笔记和阅读位置；先保存其他文章里仍在输入的笔记。英语、德语和两套词汇要分别导出，旧表达词条、沟通模板收藏和练习记录不在这份备份中。</p>
+<p>换到另一设备或浏览器后，打开本站同一区的阅读记录页，选择备份文件，点击“预览备份”。页面会列出新增和已有记录，以及不同的笔记；预览不会写入。默认保留当前已有的不同笔记，也可逐篇选择备份版本。两份合计不超过1000字时可以合并保留；超过时先保留两份备份文件，再选择本区要显示的内容，不会截断文字。</p>
+<p>确认后点击“合并恢复”。收藏状态、阅读位置分别采用时间较新的记录，已有内容不会因备份缺少这篇就被删除；备份里的空笔记也不会删除当前笔记。目录暂时找不到的篇目仍保留在记录里。预览后其他标签页又改了记录时，需要重新预览；格式不符、错区、版本不支持或保存失败时会提示，当前记录保持。</p>
+<p>备份由浏览器下载，你决定保存在设备的哪个位置；恢复也在本机处理，不上传文件，没有自动同步。文件含有你的笔记，分享文件前先看清内容。清理本站数据后，只有此前另存的备份才能用于恢复；清理以后再导出空记录，不能找回已经删除的内容。</p>
 <h2 id="四个独立入口">四个独立入口</h2>
 <p><a href="../en/reading-desk.html">英语阅读记录</a> · <a href="../de/reading-desk.html">德语阅读记录</a> · <a href="../en_vocab/reading-desk.html">英语词汇阅读记录</a> · <a href="../de_vocab/reading-desk.html">德语词汇阅读记录</a></p>
 <h2 id="没有启用脚本时">没有启用脚本时</h2>
@@ -57,7 +68,7 @@
     <span>公开脱敏版 · Public learning edition</span>
     <span>自动生成 · Generated from sanitized Markdown</span>
   </footer>
-  <script src="/learnLanguage/assets/app.js?v=a04f9dd0e72b" defer></script>
+  <script src="/learnLanguage/assets/app.js?v=0df8690666d4" defer></script>
   
 </body>
 </html>
