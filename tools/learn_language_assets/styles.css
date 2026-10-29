@@ -647,3 +647,12 @@ button, input { font: inherit; }
   .reading-actions > * { max-width: 100%; }
   .reading-summary { width: calc(100% - 32px); }
 }
+
+/* Reading backups keep native controls and long notes usable on small screens. */
+.reading-backup { margin-top: 1.4rem; border-top: 1px solid var(--line, #d7dce3); padding-top: 1rem; }
+.reading-backup summary { cursor: pointer; font-weight: 650; }
+.reading-backup label { display: block; margin: .8rem 0; }
+.reading-backup input, .reading-backup select { display: block; max-width: 100%; width: 100%; box-sizing: border-box; margin-top: .4rem; font: inherit; }
+.reading-backup input[type=file] { white-space: normal; }
+.reading-backup p, .backup-conflict h4 { overflow-wrap: anywhere; }
+.backup-conflict { margin: 1rem 0; padding: .7rem; border: 1px solid var(--line, #d7dce3); border-radius: .35rem; }

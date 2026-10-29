@@ -387,9 +387,11 @@
     try { const u = new URL(value, location.origin); return u.origin === location.origin && u.pathname === value && !u.search && !u.hash; } catch (_) { return false; }
   }
   function fail(message) { throw new Error(message); }
-  function read() {
-    let raw;
-    try { raw = localStorage.getItem(key); } catch (_) { return fail('浏览器暂时不能读取本区记录。正文仍可阅读，恢复后可重试。'); }
+  function stored() {
+    try { return localStorage.getItem(key); } catch (_) { return fail('浏览器暂时不能读取本区记录。正文仍可阅读，恢复后可重试。'); }
+  }
+  function read() { return parse(stored()); }
+  function parse(raw) {
     const fresh = {version: 1, articles: Object.create(null)};
     if (raw === null) return fresh;
     let data;
@@ -443,6 +445,95 @@
   function latest(data, map) {
     return Object.entries(data.articles).filter(([p, r]) => r.readAt > 0 && map.has(p)).sort((a, b) => b[1].readAt - a[1].readAt || a[0].localeCompare(b[0]))[0];
   }
+  // Backup uses the same path/schema validator and only the current track key.
+  function setupBackup(refreshDesk) {
+    const host = desk.querySelector('[data-reading-backup]');
+    if (!host) return;
+    const file = host.querySelector('[data-backup-file]'), previewButton = host.querySelector('[data-backup-preview]'), apply = host.querySelector('[data-backup-apply]'), cancel = host.querySelector('[data-backup-cancel]'), output = host.querySelector('[data-backup-details]'), status = host.querySelector('[data-backup-status]');
+    let pending = null, sequence = 0;
+    function reset(message) {
+      sequence++; pending = null; apply.disabled = true; previewButton.disabled = false; output.replaceChildren();
+      if (message) status.textContent = message;
+    }
+    function merge(base, incoming, choices) {
+      const result = parse(JSON.stringify(base));
+      for (const [path, row] of Object.entries(incoming.articles)) {
+        const old = result.articles[path];
+        if (!old) { result.articles[path] = {...row}; continue; }
+        if (row.favoriteAt > old.favoriteAt) { old.favorite = row.favorite; old.favoriteAt = row.favoriteAt; }
+        if (row.positionAt > old.positionAt) { old.anchor = row.anchor; old.positionAt = row.positionAt; }
+        old.readAt = Math.max(old.readAt, row.readAt);
+        if (!old.note && row.note) { old.note = row.note; old.noteAt = row.noteAt; }
+        else if (old.note === row.note) old.noteAt = Math.max(old.noteAt, row.noteAt);
+        else if (old.note && row.note) {
+          const choice = choices.get(path);
+          if (choice && choice.value === 'backup') { old.note = row.note; old.noteAt = Date.now(); }
+          else if (choice && choice.value === 'both') { old.note += '\n\n——备份中的笔记——\n' + row.note; old.noteAt = Date.now(); }
+        }
+      }
+      // The combined result must satisfy the same limits as ordinary records.
+      return parse(JSON.stringify(result));
+    }
+    host.querySelector('[data-backup-export]').addEventListener('click', () => {
+      try {
+        const data = read(), pack = {format: 'learnLanguage-reading-backup', version: 1, track, exportedAt: new Date().toISOString(), data};
+        const blob = new Blob([JSON.stringify(pack, null, 2) + '\n'], {type: 'application/json'}), url = URL.createObjectURL(blob), a = document.createElement('a');
+        a.href = url; a.download = 'learnLanguage-' + track + '-reading-' + new Date().toISOString().slice(0, 10) + '.json';
+        document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 30000);
+        status.textContent = '已将本区 ' + Object.keys(data.articles).length + ' 篇记录交给浏览器下载。请检查文件是否已保存；其中含有已保存的笔记，不含其他区或旧工具记录。';
+      } catch (e) { status.textContent = '未能导出：' + e.message; }
+    });
+    file.addEventListener('change', () => reset(file.files.length ? '已选择文件。点击“预览备份”检查内容，当前记录尚未改变。' : '没有选择文件，当前记录未改变。'));
+    cancel.addEventListener('click', () => { reset('已取消预览，当前记录未改变。'); file.value = ''; file.focus(); });
+    previewButton.addEventListener('click', async () => {
+      reset(); const current = sequence, selected = file.files[0];
+      if (!selected) { status.textContent = '请先选择本区导出的备份文件。'; file.focus(); return; }
+      previewButton.disabled = true; status.textContent = '正在本机检查备份，当前记录尚未改变…';
+      try {
+        if (selected.size > 8 * 1024 * 1024) throw Error('文件超过8MB，请选择本工具导出的单区备份。');
+        let pack; try { pack = JSON.parse((await selected.text()).replace(/^\uFEFF/, '')); } catch (_) { throw Error('文件不是可读取的备份格式。'); }
+        if (!pack || pack.format !== 'learnLanguage-reading-backup' || pack.version !== 1) throw Error('不支持这个备份格式或版本。');
+        if (pack.track !== track) throw Error('备份不属于本区。请到对应的英语、德语或词汇阅读记录入口恢复。');
+        if (typeof pack.exportedAt !== 'string' || !Number.isFinite(Date.parse(pack.exportedAt))) throw Error('备份日期格式无法读取。');
+        const incoming = parse(JSON.stringify(pack.data)), map = await catalog();
+        if (current !== sequence) return;
+        const raw = stored(), base = parse(raw), choices = new Map(), entries = Object.entries(incoming.articles);
+        let added = 0, unavailable = 0, conflicts = 0;
+        for (const [path, row] of entries) {
+          const old = base.articles[path]; if (!old) added++; if (!map.has(path)) unavailable++;
+          if (!old || !old.note || !row.note || old.note === row.note) continue;
+          conflicts++;
+          const section = element('section', undefined, 'backup-conflict'), title = map.has(path) ? map.get(path).title : path;
+          section.append(element('h4', title), element('p', '当前笔记：' + old.note, 'reading-note-text'), element('p', '备份笔记：' + row.note, 'reading-note-text'));
+          const label = element('label', '这篇笔记怎样处理'), select = document.createElement('select');
+          select.setAttribute('data-backup-choice', ''); select.setAttribute('aria-label', '笔记处理：' + title);
+          select.add(new Option('保留当前笔记', 'current')); select.add(new Option('使用备份笔记', 'backup'));
+          if ((old.note + '\n\n——备份中的笔记——\n' + row.note).length <= 1000) select.add(new Option('合并保留两份', 'both'));
+          else section.append(element('p', '两份合并超过1000字，本次不能合并。请先导出当前记录，保留两份文件后再选择。'));
+          label.append(select); section.append(label); output.append(section); choices.set(path, select);
+        }
+        // Check combined path count before offering to apply, without writing.
+        merge(base, incoming, choices);
+        const detail = element('p', '备份共 ' + entries.length + ' 篇，将新增 ' + added + ' 篇，合并已有 ' + (entries.length - added) + ' 篇；不同笔记 ' + conflicts + ' 篇。' + (unavailable ? '其中 ' + unavailable + ' 篇暂不在目录，仍保留记录，当前无法从目录打开。' : ''));
+        output.prepend(detail); pending = {raw, base, incoming, choices}; apply.disabled = false;
+        status.textContent = '预览完成，当前记录尚未改变。不同笔记默认保留当前内容；确认各项选择后点击“合并恢复”。';
+      } catch (e) { if (current === sequence) { pending = null; output.replaceChildren(); status.textContent = '无法预览：' + e.message + ' 当前记录未改变。'; } }
+      finally { if (current === sequence) previewButton.disabled = false; }
+    });
+    apply.addEventListener('click', () => {
+      if (!pending) return;
+      try {
+        if (stored() !== pending.raw) { reset('当前记录在预览后发生了变化。请重新预览，避免覆盖新内容。'); return; }
+        const merged = merge(pending.base, pending.incoming, pending.choices);
+        const same = JSON.stringify(merged) === JSON.stringify(pending.base);
+        if (!same) write(merged);
+        pending = null; apply.disabled = true; output.replaceChildren(); file.value = ''; refreshDesk();
+        status.textContent = same ? '与当前记录一致，无需写入。其他区和旧工具记录未改变。' : '本区记录已合并恢复。其他区和旧工具记录未改变；请保留备份文件，需要时还可再次预览。';
+      } catch (e) { status.textContent = '恢复未成功：' + e.message + ' 当前预览仍保留，处理后可重试。'; }
+    });
+    addEventListener('storage', e => { if ((e.key === key || e.key === null) && (pending || previewButton.disabled)) reset('本区记录已在另一标签页改变。请重新预览，再决定怎样合并。'); });
+  }
+
   if (tools) {
     tools.hidden = false;
     const path = tools.dataset.url;
@@ -545,6 +636,7 @@
     retry.addEventListener('click', load);
     if (desk) [range, topic].forEach(control => control.addEventListener('change', () => { try { render(); } catch (e) { showError(e); } }));
     addEventListener('storage', e => { if ((e.key === key || e.key === null) && map) { try { render(); } catch (err) { showError(err); } } });
+    if (desk) setupBackup(load);
     load();
   }
 })();

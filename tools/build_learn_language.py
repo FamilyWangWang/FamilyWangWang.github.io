@@ -680,7 +680,13 @@ def reading_dashboard(track: str) -> str:
     <h2>接着读与按主题回看</h2><div data-reading-continue></div>
     <div class="reading-filters"><label for="a12-range">查看范围<select id="a12-range" data-reading-range disabled><option value="all">全部记录</option><option value="favorites">仅收藏</option><option value="notes">有笔记</option><option value="recent">最近读过</option></select></label>
     <label for="a12-topic">按主题回看<select id="a12-topic" data-reading-topic disabled></select></label></div>
-    <p data-reading-status role="status" aria-live="polite">正在读取本区记录…</p><button type="button" data-reading-retry hidden>重试读取</button><div data-reading-list></div></section>'''
+    <p data-reading-status role="status" aria-live="polite">正在读取本区记录…</p><button type="button" data-reading-retry hidden>重试读取</button><div data-reading-list></div><details class="reading-backup" data-reading-backup><summary>备份与恢复本区记录</summary>
+    <p>先保存其他文章中尚未保存的笔记，再导出。本区整篇收藏、笔记和阅读位置保存在一个文件中，不自动上传或同步。</p>
+    <button type="button" data-backup-export>导出本区备份</button>
+    <p>恢复时先选同一区的备份，再预览。收藏状态和阅读位置采用较新的记录；当前已有的不同笔记默认保留，由你逐篇选择。备份中的空笔记不会删除当前笔记。</p>
+    <label for="b3-backup-file">选择本区备份文件（JSON，最多8MB）<input type="file" id="b3-backup-file" accept=".json,application/json" data-backup-file></label>
+    <div class="reading-actions"><button type="button" data-backup-preview>预览备份</button><button type="button" data-backup-apply disabled>合并恢复</button><button type="button" data-backup-cancel>取消预览</button></div>
+    <p data-backup-status role="status" aria-live="polite">先预览再恢复；选择文件不会立即写入。</p><div data-backup-details></div></details></section>'''
 
 
 def reading_summary(track: str) -> str:
